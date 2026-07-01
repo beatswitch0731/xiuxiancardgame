@@ -1,0 +1,733 @@
+{
+  "realm": "rebirth",
+  "realmName": "转世宿命",
+  "_description": "转世宿命卡（P0-6）：前世纪忆(5)/前世仇敌(5)/前世遗物(5)/天道印记(5)，共20张。转世时注入卡组。",
+  "karmaCards": {
+    "pastLifeSwordMemory": "rb_memory_sword",
+    "pastLifeSpellMemory": "rb_memory_spell",
+    "pastLifePillMemory": "rb_memory_pill",
+    "pastLifeBodyMemory": "rb_memory_body",
+    "pastLifeCombatMemory": "rb_memory_combat",
+    "pastLifeEnemyQi": "rb_enemy_qi",
+    "pastLifeEnemyFoundation": "rb_enemy_foundation",
+    "pastLifeEnemyGolden": "rb_enemy_golden",
+    "pastLifeEnemyNascent": "rb_enemy_nascent",
+    "pastLifeEnemyDeity": "rb_enemy_deity",
+    "pastLifeHeirloomSword": "rb_heirloom_sword",
+    "pastLifeHeirloomSpellbook": "rb_heirloom_spell",
+    "pastLifeHeirloomPill": "rb_heirloom_pill",
+    "pastLifeHeirloomTreasure": "rb_heirloom_treasure",
+    "pastLifeHeirloomLifespan": "rb_heirloom_lifespan",
+    "heavenMark1": "rb_heaven_1",
+    "heavenMark2": "rb_heaven_2",
+    "heavenMark3": "rb_heaven_mid",
+    "heavenMark4": "rb_heaven_4",
+    "heavenMark5": "rb_heaven_final"
+  },
+  "cards": [
+    {
+      "id": "rb_memory_sword",
+      "type": "DESTINY",
+      "title": "前世记忆·剑意",
+      "description": "你拿起剑时——手指不自觉地掐了一个前世最拿手的剑诀。肌肉记得，灵根不记得。剑诀的力量远不如前世，但那股熟悉的触感让你心头一颤：你的手曾经握过更好的剑。",
+      "realm": "qi,foundation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "memory",
+        "sword"
+      ],
+      "requirements": {
+        "minLifeCount": 1,
+        "pastPath": "sword"
+      },
+      "choices": {
+        "left": {
+          "text": "顺势而为——重走剑修之路",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 8,
+            "fortune": 3
+          }
+        },
+        "right": {
+          "text": "今生换一条路——不重复前世",
+          "effects": {
+            "daoHeart": 12,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_memory_spell",
+      "type": "DESTINY",
+      "title": "前世记忆·法术",
+      "description": "你第一次运转灵力时——法诀自动成形了。那手势、那韵律——你今生的身体还没学会，但你前世的手指记得。太古法阵的残影在你指尖一闪而过。你的法修之路，比别人快了好几倍——但也危险好几倍。",
+      "realm": "qi,foundation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "memory",
+        "spell"
+      ],
+      "requirements": {
+        "minLifeCount": 1,
+        "pastPath": "spell"
+      },
+      "choices": {
+        "left": {
+          "text": "追寻前世的法——找到未尽的路",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 5,
+            "fortune": -5
+          }
+        },
+        "right": {
+          "text": "避开前世的陷阱——学新的法术",
+          "effects": {
+            "daoHeart": 15,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_memory_pill",
+      "type": "DESTINY",
+      "title": "前世记忆·丹道",
+      "description": "你第一次炼丹就成功了——炼出的丹品质之高让旁观的老修士目瞪口呆。因为你前世的丹道修为已经成了你的本能——你闭着眼睛都知道火候几时该变。但你闻到了一股焦味——不是丹炉，是你前世死亡的焦味。你的前世是炼丹炼到道基崩塌而死的。",
+      "realm": "qi,foundation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "memory",
+        "pill"
+      ],
+      "requirements": {
+        "minLifeCount": 1,
+        "pastPath": "pill"
+      },
+      "choices": {
+        "left": {
+          "text": "继续炼丹——但记住前世的教训",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 10,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "戒丹——前世就是死在丹上的",
+          "effects": {
+            "daoHeart": 15,
+            "health": 5,
+            "cultivation": -5
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_memory_body",
+      "type": "DESTINY",
+      "title": "前世记忆·金刚骨",
+      "description": "你的肉身比同阶修士坚韧得多——不是修炼的结果，是前世的遗赠。你前世练体成痴——把骨骼淬炼到了金刚境界，然后死于肉身太强而道心跟不上。骨头的记忆留在了你的轮回里——比道心的记忆还深。",
+      "realm": "qi,foundation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "memory",
+        "body"
+      ],
+      "requirements": {
+        "minLifeCount": 1,
+        "pastPath": "body"
+      },
+      "choices": {
+        "left": {
+          "text": "善用金刚骨——走体修大道",
+          "effects": {
+            "health": 15,
+            "cultivation": 5,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "修心——弥补前世最大的短板",
+          "effects": {
+            "daoHeart": 20,
+            "health": 5,
+            "cultivation": -5
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_memory_combat",
+      "type": "DESTINY",
+      "title": "前世记忆·搏杀本能",
+      "description": "第一次遇到妖兽时——你的身体在你思考之前就动了。躲闪、借力、反击——你甚至没意识到自己在做什么，妖兽已经倒地了。然后你开始发抖——不是因为恐惧，是因为你想起前世也是这样杀妖兽的——一直杀到麻木。",
+      "realm": "qi,foundation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "memory"
+      ],
+      "requirements": {
+        "minLifeCount": 1
+      },
+      "choices": {
+        "left": {
+          "text": "接受这个本能——它救了你的命",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": -5,
+            "karmaBad": 3
+          }
+        },
+        "right": {
+          "text": "克制本能——此生不走杀戮之道",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_enemy_qi",
+      "type": "DESTINY",
+      "title": "仇人的转世",
+      "description": "你在坊市看到了一个人——ta的长相你第一次见，但ta的背影让你浑身发凉。那个在炼气期害你一世无法突破的仇人——转世了。ta现在只是个卖灵草的凡人小贩，对前世一无所知。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "enemy"
+      ],
+      "requirements": {
+        "minLifeCount": 1
+      },
+      "choices": {
+        "left": {
+          "text": "放过ta——此人此生无罪",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 15,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "报复——前世的账也要算",
+          "effects": {
+            "daoHeart": -10,
+            "karmaBad": 15,
+            "cultivation": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_enemy_foundation",
+      "type": "DESTINY",
+      "title": "筑基期的宿敌",
+      "description": "前世杀你的人现身了——此生ta已经筑基，而且修为还在你之上。ta不认识你，但你认识ta——那张脸再怎么轮回都变不了。ta正带着一群弟子演练剑阵，完全没有注意到你的目光。",
+      "realm": "qi,foundation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "enemy"
+      ],
+      "requirements": {
+        "minLifeCount": 1
+      },
+      "choices": {
+        "left": {
+          "text": "隐忍——等自己强大了再说",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 10,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "警告ta——'你欠我一条命——前世的'",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": -10,
+            "karmaGood": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_enemy_golden",
+      "type": "DESTINY",
+      "title": "金丹宿怨",
+      "description": "前世最大的仇人——那个在你渡劫时背后捅刀的人——也转世了。此生ta是个修士，正在冲击金丹。有人告诉你ta的道基里有一道裂痕——来历不明，但你知道答案：那是你前世的诅咒。你的死，在ta的道心上留下了无法愈合的疤。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "enemy",
+        "revelation"
+      ],
+      "requirements": {
+        "minLifeCount": 2
+      },
+      "choices": {
+        "left": {
+          "text": "告诉ta真相——'那道裂痕是我'",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 20,
+            "fortune": -10
+          }
+        },
+        "right": {
+          "text": "沉默——让ta带着裂痕活下去",
+          "effects": {
+            "daoHeart": -5,
+            "karmaBad": 10,
+            "fortune": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_enemy_nascent",
+      "type": "DESTINY",
+      "title": "元婴仇敌",
+      "description": "前世的最终boss——一个你用了三世都没能打败的对手——出现在你面前。此生ta已经是元婴大能，统领一方势力。但ta看起来不一样了——不是老了，是累了。ta第一句话是：'我知道你是谁——我也知道我是谁。我想和你谈谈。不是打架。'",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "enemy",
+        "resolution"
+      ],
+      "requirements": {
+        "minLifeCount": 3
+      },
+      "choices": {
+        "left": {
+          "text": "'说吧——三世恩怨，该了了'",
+          "effects": {
+            "daoHeart": 30,
+            "karmaGood": 25,
+            "fortune": 10,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "拔剑——'三世的账凭你一句话就想清？'",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": -15,
+            "karmaBad": 20,
+            "health": -25
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_enemy_deity",
+      "type": "DESTINY",
+      "title": "宿命的尽头",
+      "description": "三世宿敌最终没有成为你的敌人——你们一起站在天道引擎面前。ta说：'你知道我为什么总是杀你吗？——因为你每次都在做和我一样的事。我杀的不是你，是我自己。'你们同时把手放在了天道引擎的核心上。",
+      "realm": "deity,tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "enemy",
+        "finale"
+      ],
+      "requirements": {
+        "minLifeCount": 3
+      },
+      "choices": {
+        "left": {
+          "text": "'我们一起——改变天道'",
+          "effects": {
+            "daoHeart": 40,
+            "karmaGood": 30,
+            "cultivation": 20,
+            "fortune": 20
+          }
+        },
+        "right": {
+          "text": "让ta先——你殿后",
+          "effects": {
+            "daoHeart": 25,
+            "karmaGood": 20,
+            "health": -30
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_heirloom_sword",
+      "type": "DESTINY",
+      "title": "前世的佩剑",
+      "description": "一柄剑从远处飞来——穿过了云层、穿过了界域——直直地落在你面前，剑身入地三尺。这是你第一世的佩剑——你死后它飞走了，飞了一百多年，终于找到了你转世的位置。剑身上有一道你自己刻的铭文：'等我回来。'",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "heirloom",
+        "sword"
+      ],
+      "requirements": {
+        "minLifeCount": 1,
+        "pastPath": "sword"
+      },
+      "choices": {
+        "left": {
+          "text": "拔剑——'我回来了'",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 20,
+            "treasure": "前世佩剑"
+          }
+        },
+        "right": {
+          "text": "让它继续飞——'去找下一个我'",
+          "effects": {
+            "daoHeart": 20,
+            "karmaGood": 15,
+            "fortune": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_heirloom_spell",
+      "type": "DESTINY",
+      "title": "禁术残卷",
+      "description": "你在遗迹中发现了一卷法术残卷——上面的符文你全都认识，因为这是你前世亲手写的。这是你没有完成的一个禁术阵法——一个可以封印天道引擎一部分功能的阵法。你前世死在完成它的前一天。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "heirloom",
+        "spell"
+      ],
+      "requirements": {
+        "minLifeCount": 1,
+        "pastPath": "spell"
+      },
+      "choices": {
+        "left": {
+          "text": "完成它——替前世的自己做完",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 20,
+            "treasure": "禁术阵法残卷"
+          }
+        },
+        "right": {
+          "text": "烧掉——前世未完成的东西不该困住今生",
+          "effects": {
+            "daoHeart": 25,
+            "karmaGood": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_heirloom_pill",
+      "type": "DESTINY",
+      "title": "半成品仙丹",
+      "description": "前世丹炉的废墟里，你找到了一枚半成品的丹药——它在炉里炼了一百年，吸收了前世炉火最后的热量。丹成了半颗——另一半在爆炸中毁掉了。这半颗丹的药力足以让任何金丹修士直接突破元婴。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "heirloom",
+        "pill"
+      ],
+      "requirements": {
+        "minLifeCount": 1,
+        "pastPath": "pill"
+      },
+      "choices": {
+        "left": {
+          "text": "服下——用前世的力量突破",
+          "effects": {
+            "cultivation": 30,
+            "daoHeart": -5,
+            "health": -10
+          }
+        },
+        "right": {
+          "text": "留着——关键时刻再用",
+          "effects": {
+            "fortune": 15,
+            "daoHeart": 10,
+            "pill": "半成品仙丹"
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_heirloom_treasure",
+      "type": "DESTINY",
+      "title": "前世法宝",
+      "description": "一件法宝从天上落了下来——是前世你的本命法器。它在你死后自行隐入了虚空，等了一百年才找到你的转世。它变得更强了——一百年的虚空淬炼让它进化出了新的能力。但它也变得更冷漠了——它在惩罚你前世没有保护好它。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "heirloom",
+        "treasure"
+      ],
+      "requirements": {
+        "minLifeCount": 1
+      },
+      "choices": {
+        "left": {
+          "text": "重新炼化——修补前世遗憾",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 15,
+            "treasure": "进化本命法器"
+          }
+        },
+        "right": {
+          "text": "让它自由——前世的羁绊不该绑住它",
+          "effects": {
+            "daoHeart": 25,
+            "karmaGood": 15
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_heirloom_lifespan",
+      "type": "DESTINY",
+      "title": "前世的寿元",
+      "description": "你感到丹田里多了一股不属于今生的力量——那是你前世没有用完的寿元。前世提前死了——死在渡劫失败之后——但他的寿命还有八十年没活完。那八十年的时问化作了你丹田里的一团金色暖光。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "heirloom",
+        "lifespan"
+      ],
+      "requirements": {
+        "minLifeCount": 1
+      },
+      "choices": {
+        "left": {
+          "text": "融入己身——把前世的八十年活回来",
+          "effects": {
+            "health": 25,
+            "cultivation": 15,
+            "daoHeart": 10,
+            "lifespan": 80
+          }
+        },
+        "right": {
+          "text": "散入天地——还给这个世界",
+          "effects": {
+            "karmaGood": 30,
+            "daoHeart": 25,
+            "fortune": 15
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_heaven_1",
+      "type": "DESTINY",
+      "title": "天道印记·初痕",
+      "description": "你转世的第一世结束时——天道在你灵根上印了一道浅浅的痕迹。它不是惩罚，不是奖励——是'记录'。你每次转世，天道都会记录——但你不确定它记录的目的是什么。",
+      "realm": "qi,foundation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "heaven_mark",
+        "mystery"
+      ],
+      "requirements": {
+        "minLifeCount": 1
+      },
+      "choices": {
+        "left": {
+          "text": "仔细观察印记——搞清楚它的意义",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": -5
+          }
+        },
+        "right": {
+          "text": "忽略——修炼要紧",
+          "effects": {
+            "cultivation": 10,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_heaven_2",
+      "type": "DESTINY",
+      "title": "天道印记·双痕",
+      "description": "第二次转世后——灵根上出现了第二道印记。两道印记开始产生共鸣——你偶尔能看到一些不属于今生的画面。不是记忆——更像是天道档案里的片段。你开始怀疑：你的每一次转世，都在被天道存档。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "heaven_mark",
+        "mystery"
+      ],
+      "requirements": {
+        "minLifeCount": 2
+      },
+      "choices": {
+        "left": {
+          "text": "追寻印记的源头——'天道为什么要记录我？'",
+          "effects": {
+            "daoHeart": 15,
+            "fortune": -10,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "接受——'天道自有安排'",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_heaven_mid",
+      "type": "DESTINY",
+      "title": "天道印记·觉醒",
+      "description": "第三道印记出现了——和前两道不同，这一道刻下时，你听到了一个声音——是你自己的声音，但来自第一世：'天道在存档——不是要收割你——是要学习你。你是它的变量。它用你的轮回数据来优化天劫——所以每一世的天劫都不一样——它在变聪明。'",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "heaven_mark",
+        "revelation"
+      ],
+      "requirements": {
+        "minLifeCount": 3
+      },
+      "choices": {
+        "left": {
+          "text": "利用这个机制——每世刻意制造新的变数",
+          "effects": {
+            "daoHeart": 25,
+            "cultivation": 15,
+            "fortune": 10,
+            "karmaGood": 15
+          }
+        },
+        "right": {
+          "text": "停止轮回——'我不做天道的实验品'",
+          "effects": {
+            "daoHeart": 30,
+            "karmaGood": 20,
+            "cultivation": -10
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_heaven_4",
+      "type": "DESTINY",
+      "title": "天道印记·失控",
+      "description": "第四道印记出现时——出了意外。印记的纹路开始侵蚀你的灵根——不是天道故意的，是它存档太多次了，你的灵根开始承载不了这么多'历史'。只有两个选择：清洗灵根——删除所有前世记忆；或者承受侵蚀——让灵根变异。",
+      "realm": "deity,tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "heaven_mark",
+        "crisis"
+      ],
+      "requirements": {
+        "minLifeCount": 4
+      },
+      "choices": {
+        "left": {
+          "text": "清洗灵根——'忘掉一切，重新开始'",
+          "effects": {
+            "health": 20,
+            "daoHeart": -20,
+            "cultivation": 15
+          }
+        },
+        "right": {
+          "text": "承受侵蚀——让灵根变异",
+          "effects": {
+            "health": -30,
+            "daoHeart": 25,
+            "cultivation": 20,
+            "fortune": -10
+          }
+        }
+      }
+    },
+    {
+      "id": "rb_heaven_final",
+      "type": "DESTINY",
+      "title": "天道印记·终章",
+      "description": "第五道印记刻下时——天道引擎停了整整三天。因为你的轮回数据太丰富了——五世的因果、五世的道、五世的死亡和重生——天道引擎无法理解你为什么不放弃。一个声音从引擎核心传来——不是天道的，是你自己的——来自第一世：'我知道你在听——这一世，我来改你的代码。'",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "rebirth",
+        "heaven_mark",
+        "finale"
+      ],
+      "requirements": {
+        "minLifeCount": 5
+      },
+      "choices": {
+        "left": {
+          "text": "进入天道引擎核心——改写规则",
+          "effects": {
+            "daoHeart": 50,
+            "cultivation": 30,
+            "karmaGood": 40,
+            "fortune": 30
+          }
+        },
+        "right": {
+          "text": "炸了它——用五世的因果力量",
+          "effects": {
+            "daoHeart": 40,
+            "karmaGood": 30,
+            "cultivation": 25,
+            "health": -50
+          }
+        }
+      }
+    }
+  ]
+}

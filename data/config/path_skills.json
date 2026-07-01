@@ -1,0 +1,120 @@
+{
+  "skills": {
+    "sword": {
+      "name": "剑修",
+      "skills": [
+        {
+          "id": "sword_crit",
+          "name": "剑气纵横",
+          "desc": "战斗时暴击率+15%",
+          "unlockRealm": "foundation",
+          "passive": { "critRate": 15 },
+          "flavor": "一剑破万法——要么中了，要么死了。"
+        },
+        {
+          "id": "sword_dao_resist",
+          "name": "剑心通明",
+          "desc": "道心损伤减半",
+          "unlockRealm": "golden",
+          "passive": { "daoResist": 0.5 },
+          "flavor": "剑在人在，剑碎——人也不会死。"
+        },
+        {
+          "id": "sword_blood",
+          "name": "血剑共鸣",
+          "desc": "血量低于30%时，攻击翻倍",
+          "unlockRealm": "nascent",
+          "passive": { "lowHpAtkBonus": 2.0 },
+          "flavor": "越濒死，越危险——这就是剑修。"
+        }
+      ]
+    },
+    "spell": {
+      "name": "法修",
+      "skills": [
+        {
+          "id": "spell_fortune",
+          "name": "道法自然",
+          "desc": "灵石获取+20%",
+          "unlockRealm": "foundation",
+          "passive": { "spiritStoneBonus": 0.2 },
+          "flavor": "天地灵气，尽归我身。"
+        },
+        {
+          "id": "spell_meditation",
+          "name": "静心明道",
+          "desc": "冥想效果翻倍",
+          "unlockRealm": "golden",
+          "passive": { "meditationBonus": 2.0 },
+          "flavor": "静下来，整个世界都是你的道场。"
+        },
+        {
+          "id": "spell_element",
+          "name": "五行精通",
+          "desc": "暴击率+10%，秘境探索加成",
+          "unlockRealm": "nascent",
+          "passive": { "critRate": 10, "dungeonBonus": 5 },
+          "flavor": "金木水火土——皆是吾友。"
+        }
+      ]
+    },
+    "body": {
+      "name": "体修",
+      "skills": [
+        {
+          "id": "body_hp",
+          "name": "金刚不坏",
+          "desc": "气血上限+30",
+          "unlockRealm": "foundation",
+          "passive": { "maxHp": 30 },
+          "flavor": "万法不侵，只是皮厚。"
+        },
+        {
+          "id": "body_regen",
+          "name": "气血再生",
+          "desc": "每轮回血3",
+          "unlockRealm": "golden",
+          "passive": { "hpRegen": 3 },
+          "flavor": "伤口？什么伤口？"
+        },
+        {
+          "id": "body_iron",
+          "name": "肉身成圣",
+          "desc": "防御+20%",
+          "unlockRealm": "nascent",
+          "passive": { "def": 20 },
+          "flavor": "凡人之躯，对抗天劫——已经赢了。"
+        }
+      ]
+    },
+    "pill": {
+      "name": "丹修",
+      "skills": [
+        {
+          "id": "pill_effect",
+          "name": "丹道真意",
+          "desc": "丹药效果+50%",
+          "unlockRealm": "foundation",
+          "passive": { "pillBonus": 0.5 },
+          "flavor": "万物皆丹——包括你自己。"
+        },
+        {
+          "id": "pill_poison",
+          "name": "万毒不侵",
+          "desc": "毒属性伤害减半",
+          "unlockRealm": "golden",
+          "passive": { "poisonResist": 0.5 },
+          "flavor": "炼丹的人，早就被毒习惯了。"
+        },
+        {
+          "id": "pill_create",
+          "name": "造化丹鼎",
+          "desc": "灵石可换取额外丹药效果",
+          "unlockRealm": "nascent",
+          "passive": { "stoneToPill": 20 },
+          "flavor": "你有灵石，我有丹方——双赢。"
+        }
+      ]
+    }
+  }
+}

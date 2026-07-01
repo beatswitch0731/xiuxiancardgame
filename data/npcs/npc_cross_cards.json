@@ -1,0 +1,125 @@
+{
+  "description": "NPC交叉互动预设卡牌 —— 高品质手写戏剧性场景，覆盖8个NPC的关键交叉时刻。由NpcSystem在交叉互动触发时优先查询，有预设则用预设，无预设则用动态模板生成。",
+  "presetCards": [
+    {
+      "id": "npc_cross_bai_ren_xue_sha_first",
+      "title": "正道之壁·魔道之锋",
+      "description": "青云剑宗山门前，两股气息几乎同时出现。\n\n西边——白刃真人负手立于云端，青衣猎猎，剑意含而不发。\n\n东边——血煞老祖踏着一道赤虹，血光映红半边天。\n\n两人相距百丈，中间恰好是——你。\n\n「百年了，」血煞先开口，声音像铁砂碾过骨头，「你每次见我，剑都是出鞘的。」\n\n「因为你每次来，」白刃的拇指抵在剑格上，「都该拔剑。」",
+      "npcIds": ["bai_ren", "xue_sha"],
+      "status": "rival",
+      "location": "宗门",
+      "realm": "golden",
+      "once": true,
+      "weight": 1000,
+      "tags": ["npc_cross", "dramatic", "rival", "bai_ren_xue_sha"],
+      "choices": {
+        "left": {
+          "text": "挡在两人中间：「何必见面就拔剑」",
+          "effects": { "heroism": 10, "daoHeart": 5, "npc_relation:bai_ren:xue_sha": 15 },
+          "npcAffection": { "bai_ren": 3, "xue_sha": 2 }
+        },
+        "right": {
+          "text": "后退一步，让开中间——看他们解决",
+          "effects": { "wisdom": 8, "npc_relation:bai_ren:xue_sha": -30 },
+          "npcAffection": { "bai_ren": -1, "xue_sha": -1 }
+        }
+      }
+    },
+    {
+      "id": "npc_cross_jian_linger_yin_xue_sword",
+      "title": "青鸾与血蝶",
+      "description": "坊市灵草街上，剑灵儿正在挑选剑穗。\n\n殷血从街角走来，一身暗红——她在这条街上，像一滴血落入清水中。\n\n剑灵儿的手从剑穗上移开，按上了剑柄。\n\n「你的剑还在我这里，」殷血的声音不急不缓，「要不要拿回去？」\n\n剑灵儿脸色微变：「我的青鸾果然是——」\n\n「不是偷，」殷血截断她，嘴角微翘，「是捡。你丢在战场上的东西，按魔道的规矩就是我的。」\n\n两人之间隔着三步——这距离刚好够一把剑刺穿。",
+      "npcIds": ["jian_linger", "yin_xue"],
+      "status": "rival",
+      "location": "坊市",
+      "realm": "foundation",
+      "once": true,
+      "weight": 900,
+      "tags": ["npc_cross", "dramatic", "rival", "jian_linger_yin_xue"],
+      "choices": {
+        "left": {
+          "text": "对殷血说：「把青鸾还给她」",
+          "effects": { "daoHeart": 5, "bond_jian_linger": 8, "bond_yin_xue": -3 },
+          "npcAffection": { "jian_linger": 8, "yin_xue": -3 }
+        },
+        "right": {
+          "text": "拦下剑灵儿：「一把剑而已，不值得」",
+          "effects": { "wisdom": 5, "bond_jian_linger": -2, "bond_yin_xue": 5 },
+          "npcAffection": { "jian_linger": -2, "yin_xue": 5 }
+        }
+      }
+    },
+    {
+      "id": "npc_cross_bai_ren_jian_linger_lesson",
+      "title": "最后的心法",
+      "description": "剑崖上，白刃真人在教剑灵儿一套心法。\n\n你远远站着——你不是来偷师的，只是刚好路过。\n\n「剑道不是比谁更快，」白刃的声音不高，但在崖壁间回荡得格外清晰。「是比谁在出剑之前，能先收住。」\n\n剑灵儿握剑的手在发抖——那是她练了三年都没能突破的一招。\n\n「你要不要来帮她看看？」白刃忽然转向你藏身的方向，「你的剑气，我也认得。」",
+      "npcIds": ["bai_ren", "jian_linger"],
+      "status": "master-disciple",
+      "location": "剑崖",
+      "realm": "foundation",
+      "once": true,
+      "weight": 800,
+      "tags": ["npc_cross", "dramatic", "master_disciple"],
+      "choices": {
+        "left": {
+          "text": "上前——「用你自己的节奏，别追求快」",
+          "effects": { "wisdom": 5, "daoHeart": 3, "bond_jian_linger": 8, "bond_bai_ren": 3 },
+          "npcAffection": { "jian_linger": 8, "bai_ren": 3 }
+        },
+        "right": {
+          "text": "继续站着不动——让他们师徒自己解决",
+          "effects": { "wisdom": 3, "bond_bai_ren": 2 },
+          "npcAffection": { "bai_ren": 2 }
+        }
+      }
+    },
+    {
+      "id": "npc_cross_xue_sha_yin_xue_family",
+      "title": "血脉的真相",
+      "description": "血煞魔宫深处，殷血跪在血煞老祖面前——但你看到她攥紧了拳，指甲嵌进掌心。\n\n「你到底还要瞒我到什么时候？」殷血的声线在颤抖。\n\n血煞沉默了很久。魔域的阴风将他的白发吹得四散。\n\n「你母亲的事，」他终于开口，像是咬碎了什么，「我本来打算到我死的那天都不说。」\n\n殷血猛地抬头——她等了这句话，等了二十年。\n\n你站在门外。不该在场。但你的脚步声出卖了你。",
+      "npcIds": ["xue_sha", "yin_xue"],
+      "status": "master-disciple",
+      "location": "魔域",
+      "realm": "golden",
+      "once": true,
+      "weight": 950,
+      "tags": ["npc_cross", "dramatic", "master_disciple", "xue_sha_yin_xue_secret"],
+      "choices": {
+        "left": {
+          "text": "推门进去——「有些真相，活着不说就死了」",
+          "effects": { "heroism": 8, "daoHeart": 5, "bond_yin_xue": 15, "bond_xue_sha": -5 },
+          "npcAffection": { "yin_xue": 15, "xue_sha": -5 }
+        },
+        "right": {
+          "text": "转身离开——这是他们的家事",
+          "effects": { "wisdom": 5, "bond_xue_sha": 5, "bond_yin_xue": -3 },
+          "npcAffection": { "xue_sha": 5, "yin_xue": -3 }
+        }
+      }
+    },
+    {
+      "id": "npc_cross_tian_ji_jiuwei_prophecy",
+      "title": "千年的债",
+      "description": "天机阁顶层。天机老人在喝茶。\n\n九尾溯月站在门口，九条尾巴在月光下如银瀑——她没有刻意收起来。\n\n「你来讨债了。」天机放下茶杯，语气平静得像在说今天的天气。\n\n「一千年了，」溯月的声音冷得像月光，「你欠我一个解释。」\n\n「我给了你预言。」\n\n「你给了我一族的死亡。」\n\n天机老人沉默片刻，从袖中取出一枚旧竹简。竹简上有被火烧过的痕迹。「我没给——我是想阻止。但命运不是预言决定的，是行动。你的族人没有行动。」\n\n溯月接过竹简的手在抖。",
+      "npcIds": ["tian_ji", "jiuwei"],
+      "status": "estranged",
+      "location": "坊市",
+      "realm": "nascent",
+      "once": true,
+      "weight": 1000,
+      "tags": ["npc_cross", "dramatic", "prophecy", "tian_ji_jiuwei"],
+      "choices": {
+        "left": {
+          "text": "对天机老人说：「给她真正的答案」",
+          "effects": { "daoHeart": 8, "wisdom": 5, "npc_relation:tian_ji:jiuwei": 20 },
+          "npcAffection": { "tian_ji": -3, "jiuwei": 8 }
+        },
+        "right": {
+          "text": "对溯月说：「恨了一千年，不如问清真相」",
+          "effects": { "wisdom": 8, "bond_jiuwei": 10, "npc_relation:tian_ji:jiuwei": 10 },
+          "npcAffection": { "jiuwei": 10, "tian_ji": 3 }
+        }
+      }
+    }
+  ]
+}

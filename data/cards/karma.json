@@ -1,0 +1,1119 @@
+{
+  "realm": "karma",
+  "realmName": "因果报应",
+  "_description": "因果卡是延迟触发的叙事卡。当 karmaSeed.delay 归零时，对应因果卡被抽出。",
+  "karmaCards": {
+    "whiteFox": "k_fox_returns",
+    "foxGratitude": "k_fox_gratitude",
+    "tianshuStarted": "k_tianshu_echo",
+    "tianshuDeep": "k_tianshu_revelation",
+    "bodyTrialStarted": "k_body_echo",
+    "bodyTrialDeep": "k_body_ascension",
+    "swordBetrayed": "k_sword_betrayal",
+    "swordHonor": "k_sword_honor",
+    "swordLegacyStarted": "k_sword_legacy_start",
+    "swordLegacyTrial": "k_sword_legacy_trial",
+    "swordLegacyEcho": "k_sword_legacy_echo",
+    "spellHidden": "k_spell_hidden",
+    "spellRevealed": "k_spell_revealed",
+    "spellCodexStarted": "k_spell_codex_start",
+    "spellCodexRefused": "k_spell_codex_refused",
+    "spellCodexEcho": "k_spell_codex_echo",
+    "pillPoison": "k_pill_poison",
+    "pillCure": "k_pill_cure",
+    "pillMasterStarted": "k_pill_master_start",
+    "pillMasterSacrifice": "k_pill_master_sacrifice",
+    "pillMasterEcho": "k_pill_master_echo",
+    "combatScar": "k_combat_scar",
+    "combatGlory": "k_combat_glory",
+    "companionSacrifice": "k_comp_sacrifice",
+    "companionTrust": "k_comp_trust",
+    "factionUprising": "k_faction_uprising",
+    "factionPeace": "k_faction_peace",
+    "lifespanWaste": "k_lifespan_waste",
+    "fortuneWheel": "k_fortune_wheel",
+    "betrayedNpc": "k_betrayed_npc"
+  },
+  "cards": [
+    {
+      "id": "k_fox_returns",
+      "type": "KARMA",
+      "title": "狐影再现",
+      "description": "你曾在山中救过一只白狐。今天，一个白衣女子出现在你面前——她的眼睛像极了那只狐狸。她手里捧着一枚丹药，正是你最需要的凝婴丹。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "good"
+      ],
+      "choices": {
+        "left": {
+          "text": "接过丹药",
+          "effects": {
+            "pill": "nascent",
+            "cultivation": 20,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "询问她的身份",
+          "effects": {
+            "daoHeart": 15,
+            "fortune": 10
+          },
+          "karmaSeed": {
+            "id": "foxGratitude",
+            "delay": 12,
+            "realm": "deity",
+            "priority": 3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_fox_returns.png"
+    },
+    {
+      "id": "k_fox_gratitude",
+      "type": "KARMA",
+      "title": "白狐报恩·终章",
+      "description": "白衣女子终于坦言——她就是你救过的那只白狐。她原本计划用千年修为为你挡一次天劫，但天道发现了她的打算。现在——她需要用另一种方式报恩。",
+      "realm": "deity",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "good",
+        "revelation"
+      ],
+      "choices": {
+        "left": {
+          "text": "让她传你白狐部的秘术",
+          "effects": {
+            "cultivation": 30,
+            "fortune": 20,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "要她保重自己",
+          "effects": {
+            "karmaGood": 25,
+            "daoHeart": 25,
+            "fortune": 15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_fox_gratitude.png"
+    },
+    {
+      "id": "k_tianshu_echo",
+      "type": "KARMA",
+      "title": "万卷楼的回响",
+      "description": "你开始研究《天道书》的第三天，做了一个梦。梦里有人在撕书——每一页撕下来的纸都变成了一只黑色的蝴蝶。醒来时，你发现自己手上握着一页残篇。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "spell",
+        "mystery"
+      ],
+      "choices": {
+        "left": {
+          "text": "研读残篇",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": -10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "将残篇藏入万卷楼",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_tianshu_echo.png"
+    },
+    {
+      "id": "k_tianshu_revelation",
+      "type": "KARMA",
+      "title": "天道书的真相",
+      "description": "你终于拼出了《天道书》的完整内容——飞升不是仙路，是收割。上界每七千年发动一次'飞升'——把所有突破渡劫期的修士全部吞噬，用来维持'天道引擎'的运转。上一批被收割的，是天机老人的师兄弟。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "spell",
+        "revelation",
+        "world"
+      ],
+      "choices": {
+        "left": {
+          "text": "决定对抗天道",
+          "effects": {
+            "daoHeart": 30,
+            "fortune": -20,
+            "karmaGood": 20
+          }
+        },
+        "right": {
+          "text": "接受命运，继续修炼",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": -15,
+            "karmaBad": 15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_tianshu_revelation.png"
+    },
+    {
+      "id": "k_body_echo",
+      "type": "KARMA",
+      "title": "肉身试炼的回响",
+      "description": "钢骨试炼过去很久了，但你发现自己的骨骼上出现了淡淡的金色纹路。殷血说这是'金刚初成'的征兆——你在无意间，已经摸到了体修的最高门槛。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "body"
+      ],
+      "choices": {
+        "left": {
+          "text": "继续淬炼金身",
+          "effects": {
+            "health": 20,
+            "cultivation": 15,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "转修雷体",
+          "effects": {
+            "cultivation": 10,
+            "fortune": 10,
+            "health": -10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_body_echo.png"
+    },
+    {
+      "id": "k_body_ascension",
+      "type": "KARMA",
+      "title": "金刚不坏",
+      "description": "万钧瀑布下，你一坐就是七天七夜。当第八天的晨曦刺破水帘时，你的身体发出了一声钟鸣——周围的修士都听到了。那是金刚体大成的钟声。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "body",
+        "achievement"
+      ],
+      "choices": {
+        "left": {
+          "text": "接受金刚体",
+          "effects": {
+            "health": 40,
+            "daoHeart": 20,
+            "cultivation": 15
+          }
+        },
+        "right": {
+          "text": "把金刚之力传给武盟弟子",
+          "effects": {
+            "karmaGood": 30,
+            "daoHeart": 25,
+            "health": -15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_body_ascension.png"
+    },
+    {
+      "id": "k_sword_betrayal",
+      "type": "KARMA",
+      "title": "背叛的剑",
+      "description": "你被同门从背后偷袭。剑刺穿你的肩膀——不是敌人的剑，是你曾敬重的那个人的。他面无表情地说：'剑道只有一个人能走到头。'",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "sword",
+        "betrayal"
+      ],
+      "choices": {
+        "left": {
+          "text": "拔剑一决胜负",
+          "effects": {
+            "health": -30,
+            "cultivation": 20,
+            "daoHeart": 15,
+            "karmaBad": 5
+          }
+        },
+        "right": {
+          "text": "弃剑而去",
+          "effects": {
+            "daoHeart": -15,
+            "karmaGood": 15,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_sword_betrayal.png"
+    },
+    {
+      "id": "k_sword_honor",
+      "type": "KARMA",
+      "title": "剑的誓言",
+      "description": "白刃真人在剑冢前召见你。他递给你一柄剑——那是他师弟的遗物。'剑出无悔——这四个字，我错了七十年。今天传给你，是希望你比我更早明白。'",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "sword",
+        "mentor"
+      ],
+      "choices": {
+        "left": {
+          "text": "接过师弟的剑",
+          "effects": {
+            "daoHeart": 25,
+            "cultivation": 20,
+            "treasure": "剑心佩"
+          }
+        },
+        "right": {
+          "text": "请白刃真人留着",
+          "effects": {
+            "daoHeart": 15,
+            "fortune": 10,
+            "karmaGood": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_sword_honor.png"
+    },
+    {
+      "id": "k_spell_hidden",
+      "type": "KARMA",
+      "title": "隐藏的法阵",
+      "description": "你在天枢道院的地基下发现了一个隐藏的法阵——属于上界。法阵的核心是七个'飞升者'的元婴。他们不是飞升了——他们被献祭了。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "spell",
+        "horror"
+      ],
+      "choices": {
+        "left": {
+          "text": "破坏法阵",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 15,
+            "cultivation": -10
+          }
+        },
+        "right": {
+          "text": "研究法阵功能",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": -15,
+            "karmaBad": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_spell_hidden.png"
+    },
+    {
+      "id": "k_spell_revealed",
+      "type": "KARMA",
+      "title": "天枢院的裂痕",
+      "description": "因为你的发现，天枢道院分裂成了两派——一派要公开真相对抗上界，另一派主张维持现状以求自保。玄机真人请你选择站队。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "spell",
+        "faction"
+      ],
+      "choices": {
+        "left": {
+          "text": "站在真相一边",
+          "effects": {
+            "karmaGood": 25,
+            "daoHeart": 20,
+            "fortune": -10
+          }
+        },
+        "right": {
+          "text": "站在自保一边",
+          "effects": {
+            "karmaBad": 15,
+            "daoHeart": -10,
+            "fortune": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_spell_revealed.png"
+    },
+    {
+      "id": "k_pill_poison",
+      "type": "KARMA",
+      "title": "毒丹反噬",
+      "description": "你服下的那枚丹药有问题——不是药效的问题，是药引。药引用的是万毒门的禁药。你的身体开始出现紫黑色的纹路。药圣说能救你——但他要价很高。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "pill",
+        "poison"
+      ],
+      "choices": {
+        "left": {
+          "text": "接受药圣的条件",
+          "effects": {
+            "health": 15,
+            "karmaBad": 15,
+            "spiritStone": -30
+          }
+        },
+        "right": {
+          "text": "自行解毒",
+          "effects": {
+            "health": -15,
+            "daoHeart": 15,
+            "cultivation": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_pill_poison.png"
+    },
+    {
+      "id": "k_pill_cure",
+      "type": "KARMA",
+      "title": "以命炼药",
+      "description": "药圣说——要解你身上的万毒，需要一株'净世莲'。莲只开在万毒门的禁地。他愿意用自己的修为做药引，但你得去采。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "pill",
+        "quest"
+      ],
+      "choices": {
+        "left": {
+          "text": "前往禁地采莲",
+          "effects": {
+            "health": -20,
+            "cultivation": 20,
+            "karmaGood": 15,
+            "pill": "净世莲丹"
+          }
+        },
+        "right": {
+          "text": "拒绝——靠自己压制毒素",
+          "effects": {
+            "daoHeart": 20,
+            "health": -10,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_pill_cure.png"
+    },
+    {
+      "id": "k_combat_scar",
+      "type": "KARMA",
+      "title": "旧伤复发",
+      "description": "那次战斗中留下的伤疤突然裂开了。不是因为外力——是因为那道伤里封着一丝妖兽的残念。它在你体内活了，正在啃噬你的根基。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "scar"
+      ],
+      "choices": {
+        "left": {
+          "text": "以修为强行镇压",
+          "effects": {
+            "cultivation": -15,
+            "health": 10,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "以道心炼化残念",
+          "effects": {
+            "daoHeart": -10,
+            "cultivation": 20,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_combat_scar.png"
+    },
+    {
+      "id": "k_combat_glory",
+      "type": "KARMA",
+      "title": "战名远扬",
+      "description": "你在那场战斗中击败的妖兽是有名字的——'裂山吼'，金丹期以下无人敢惹。你的战绩传回了宗门，连白刃真人都多看了你一眼。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "glory"
+      ],
+      "choices": {
+        "left": {
+          "text": "接受赞誉",
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 15,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "低调处事",
+          "effects": {
+            "daoHeart": 15,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_combat_glory.png"
+    },
+    {
+      "id": "k_comp_sacrifice",
+      "type": "KARMA",
+      "title": "道侣的牺牲",
+      "description": "你重伤昏迷的三天里，你的道侣用自己的元神为你温养经脉。醒来时，ta头发白了一半。ta笑着说'没事'——但你知道，ta损失了至少三十年的修为。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "companion",
+        "sacrifice"
+      ],
+      "choices": {
+        "left": {
+          "text": "发誓护ta一世",
+          "effects": {
+            "daoHeart": 25,
+            "karmaGood": 15,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "用灵药回报",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 20,
+            "spiritStone": -20
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_comp_sacrifice.png"
+    },
+    {
+      "id": "k_comp_trust",
+      "type": "KARMA",
+      "title": "信任何价",
+      "description": "有人传话——说你的道侣在背后出卖了你。证据是一封信，信上确实是ta的笔迹。但你也知道，ta从不写信。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "companion",
+        "trust"
+      ],
+      "choices": {
+        "left": {
+          "text": "相信道侣，追查真相",
+          "effects": {
+            "daoHeart": 20,
+            "fortune": 10,
+            "karmaGood": 10
+          }
+        },
+        "right": {
+          "text": "质问ta",
+          "effects": {
+            "daoHeart": -10,
+            "karmaBad": 5,
+            "cultivation": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_comp_trust.png"
+    },
+    {
+      "id": "k_faction_uprising",
+      "type": "KARMA",
+      "title": "势力反目",
+      "description": "你在宗门内的声望上升得太快了——快到有人开始害怕。一封匿名信送到了长老会，指控你勾结魔道。没有证据，但怀疑本身就是罪名。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "faction",
+        "betrayal"
+      ],
+      "choices": {
+        "left": {
+          "text": "在长老会上自辩",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 10,
+            "karmaGood": 5
+          }
+        },
+        "right": {
+          "text": "离开宗门独自修行",
+          "effects": {
+            "daoHeart": -5,
+            "cultivation": 20,
+            "fortune": 15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_faction_uprising.png"
+    },
+    {
+      "id": "k_faction_peace",
+      "type": "KARMA",
+      "title": "势力的感激",
+      "description": "还记得你调和的那场内斗吗？两派的弟子都记在心里。今天，两派的代表一起找到了你——他们想请你做一个决定。一个会影响宗门百年命运的决定。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "faction",
+        "legacy"
+      ],
+      "choices": {
+        "left": {
+          "text": "主张两派合一",
+          "effects": {
+            "karmaGood": 25,
+            "daoHeart": 20,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "主张各走各路",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 25
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_faction_peace.png"
+    },
+    {
+      "id": "k_lifespan_waste",
+      "type": "KARMA",
+      "title": "寿元的警钟",
+      "description": "你意识到自己浪费了太多时间在无意义的争斗上。道心告诉你——时间不多了。你掰着手指算了自己剩下的寿元，发现如果再不突破，你将坐化在筑基期。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "lifespan",
+        "urgency"
+      ],
+      "choices": {
+        "left": {
+          "text": "不顾一切冲刺突破",
+          "effects": {
+            "cultivation": 30,
+            "daoHeart": -15,
+            "health": -20
+          }
+        },
+        "right": {
+          "text": "接受命运，从容修行",
+          "effects": {
+            "daoHeart": 20,
+            "fortune": 15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_lifespan_waste.png"
+    },
+    {
+      "id": "k_fortune_wheel",
+      "type": "KARMA",
+      "title": "命运的轮盘",
+      "description": "你偶尔得到的那件东西——看似平平无奇——被一位游方道士认出来了。'此物是上古大能的本命法器碎片。你要么用它，要么毁了它——留着，只会招来杀身之祸。'",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "fortune",
+        "dilemma"
+      ],
+      "choices": {
+        "left": {
+          "text": "炼化碎片为己用",
+          "effects": {
+            "cultivation": 25,
+            "fortune": -15,
+            "karmaBad": 10
+          }
+        },
+        "right": {
+          "text": "毁掉碎片",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_fortune_wheel.png"
+    },
+    {
+      "id": "k_betrayed_npc",
+      "type": "KARMA",
+      "title": "破碎的信任",
+      "description": "那个曾对你微笑的 NPC 在你背后捅了一刀——不是物理上的。ta把你告诉ta的一个秘密，当成了晋升的筹码。你站在山顶，看着自己最脆弱的部分被当众展示。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "betrayal",
+        "npc"
+      ],
+      "choices": {
+        "left": {
+          "text": "以直报怨",
+          "effects": {
+            "daoHeart": 15,
+            "karmaBad": 10,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "以德报怨",
+          "effects": {
+            "karmaGood": 25,
+            "daoHeart": 20,
+            "cultivation": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_betrayed_npc.png"
+    },
+    {
+      "id": "k_echo_past_life",
+      "type": "KARMA",
+      "title": "前世回响",
+      "description": "一阵晕眩——你看到了前世最后一刻的画面。那是一座血色弥漫的山门，一个你不认识却无比熟悉的背影。那个人的道和你截然不同，但你看到他倒下的时候，你的心也跟着痛了。\n\n你低头看着自己的手——这不是你的第一双手。你活过，死过，又活了。前世的记忆如碎裂的镜子一样扎在你的识海里——无法完整拼凑，却也无法抹去。\n\n一个老者路过，看了你一眼，意味深长地说：'年轻人——你的眼神，不像只有一世的人。'",
+      "choices": {
+        "left": {
+          "text": "追寻前世记忆",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5,
+            "fortune": -5
+          }
+        },
+        "right": {
+          "text": "放下——此生即是此生",
+          "effects": {
+            "daoHeart": 15,
+            "fortune": 5
+          }
+        }
+      },
+      "realm": "qi,foundation,golden",
+      "requirements": {
+        "minLifeCount": 1
+      },
+      "priority": 35,
+      "sceneImage": "assets/cards/events/scene_karma_k_echo_past_life.png"
+    },
+    {
+      "id": "k_echo_path_mastery",
+      "type": "KARMA",
+      "title": "功法记忆",
+      "description": "你的手指不由自主地掐了一个剑诀——不，你此生是法修，但你前世是剑修。那股剑意像深埋在地下的古铜器，被岁月锈蚀却依旧在。\n\n你试着运转法力——指尖划过空气的轨迹竟然无意间画出了一道剑罡。虽然微弱，却真实存在。\n\n一个念头在你脑海中闪现：前世的功法，也许不是完全消失了。",
+      "choices": {
+        "left": {
+          "text": "融合前世剑意",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 3,
+            "health": -3
+          }
+        },
+        "right": {
+          "text": "专注此世之道",
+          "effects": {
+            "daoHeart": 8,
+            "cultivation": 3,
+            "fortune": 3
+          }
+        }
+      },
+      "realm": "foundation,golden,nascent",
+      "requirements": {
+        "minLifeCount": 2,
+        "differentPaths": true
+      },
+      "priority": 35,
+      "sceneImage": "assets/cards/events/scene_karma_k_echo_path_mastery.png"
+    },
+    {
+      "id": "k_echo_karma_chain",
+      "type": "KARMA",
+      "title": "三世因果",
+      "description": "你站在一座废弃的道观前——道观的石门上刻着三个名字。第一个是你第一世的名字，第二个是你上一世的名字，第三个——是空白的。\n\n一个老道士推开了道观的门，他看起来眼熟——不是认识，是'前世认识'。他说：'你来了。三世了——你还不知道自己在修的到底是什么道吗？'\n\n他递给你一面古镜。镜子里不是你的脸——是你每一世死亡时的最后一个表情。你看到自己——三张不同的脸上，是一样的不甘心。",
+      "choices": {
+        "left": {
+          "text": "我要找到真正的道",
+          "effects": {
+            "daoHeart": 20,
+            "cultivation": 10,
+            "fortune": 5,
+            "karmaGood": 10
+          }
+        },
+        "right": {
+          "text": "道即是活着——活下去就是道",
+          "effects": {
+            "health": 15,
+            "cultivation": 10,
+            "karmaBad": 5
+          }
+        }
+      },
+      "realm": "golden,nascent,deity",
+      "requirements": {
+        "minLifeCount": 3
+      },
+      "priority": 40,
+      "sceneImage": "assets/cards/events/scene_karma_k_echo_karma_chain.png"
+    },
+    {
+      "id": "k_sword_legacy_start",
+      "type": "KARMA",
+      "title": "心剑初成·回响",
+      "description": "自从你用心念铸成了第一把心剑，剑冢里的古剑们就开始认你——它们在你路过时发出轻微的共鸣。剑冢的守卫老头拦住你，把一块玉符塞进你手心：'这是剑祖的遗物。它在发热——自从你来了之后。'",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "sword",
+        "legacy"
+      ],
+      "choices": {
+        "left": {
+          "text": "接下玉符，感受剑祖意志",
+          "effects": {
+            "daoHeart": 20,
+            "cultivation": 15,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "让守卫归还剑冢",
+          "effects": {
+            "karmaGood": 15,
+            "daoHeart": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_sword_legacy_start.png"
+    },
+    {
+      "id": "k_sword_legacy_trial",
+      "type": "KARMA",
+      "title": "剑道最终试炼",
+      "description": "剑冢深处——一把没有剑身的剑柄悬浮在空中。它在等你。白刃真人站在旁边，沉默如剑。\n\n剑柄上的铭文写着：'执此剑者，持一颗无剑之心；无剑之心，天下皆可为剑。'\n\n你握住了它——剑身从你的道心中生长出来，由纯粹的意念凝聚，无形却锋利至极。这就是传说中的'道剑'。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "sword",
+        "ultimate"
+      ],
+      "choices": {
+        "left": {
+          "text": "以道剑开辟新剑道",
+          "effects": {
+            "daoHeart": 30,
+            "cultivation": 20,
+            "fortune": 15
+          }
+        },
+        "right": {
+          "text": "将道剑传给最值得的人",
+          "effects": {
+            "karmaGood": 25,
+            "daoHeart": 20,
+            "cultivation": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_sword_legacy_trial.png"
+    },
+    {
+      "id": "k_sword_legacy_echo",
+      "type": "KARMA",
+      "title": "剑道传承·尾声",
+      "description": "剑道传承完成很久之后——你发现自己的剑意开始影响周围的年轻修士。有一个少年，剑法烂得出奇，但他握剑的方式和你当年一模一样。\n\n他问你：'前辈，什么是剑道？'\n\n你看着他，想起了白刃真人看你时的那个眼神。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "sword",
+        "mentor",
+        "legacy"
+      ],
+      "choices": {
+        "left": {
+          "text": "收他为徒，传剑道",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 25,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "让他自己去找答案",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_sword_legacy_echo.png"
+    },
+    {
+      "id": "k_spell_codex_start",
+      "type": "KARMA",
+      "title": "禁术初启·余震",
+      "description": "自从你学了禁术基础，你的手指在无意间会划出一些奇怪的符文——不是你学过的任何法术。太古法修的记忆碎片开始浮现：一个盛大的法阵、无数法修的元婴燃烧发光、以及上界狰狞的笑脸。\n\n慕青岚看到你指尖的符文，脸色大变。'你看到了多少？'",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "spell",
+        "forbidden"
+      ],
+      "choices": {
+        "left": {
+          "text": "告诉她你看到的一切",
+          "effects": {
+            "daoHeart": 15,
+            "fortune": -10,
+            "karmaGood": 10
+          }
+        },
+        "right": {
+          "text": "只说了一部分",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_spell_codex_start.png"
+    },
+    {
+      "id": "k_spell_codex_refused",
+      "type": "KARMA",
+      "title": "契约的报复",
+      "description": "你拒绝了虚空深处那个东西的契约。\n\n三个月后，它来找你算账了——不是直接现身，而是悄悄侵蚀你的识海边缘。你在修炼时看到了它的影子，听到了它的声音：'你以为封印能挡住我多久？'\n\n玄机真人告诉你：唯一能彻底断开这条联系的方法，是用道心的火焰烧掉那个裂缝。但那个代价——是一段记忆。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "spell",
+        "horror",
+        "choice"
+      ],
+      "choices": {
+        "left": {
+          "text": "用道心之火烧掉裂缝——哪段记忆，就哪段",
+          "effects": {
+            "daoHeart": 30,
+            "fortune": -15,
+            "karmaGood": 15
+          }
+        },
+        "right": {
+          "text": "继续与它周旋——保留记忆",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": -20,
+            "karmaBad": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_spell_codex_refused.png"
+    },
+    {
+      "id": "k_spell_codex_echo",
+      "type": "KARMA",
+      "title": "禁术之书·后记",
+      "description": "禁术之书的封印最终彻底稳固了——太古法修的残魂消散，万卷楼恢复了平静。\n\n但慕青岚找到你，递给你一卷手抄——那是她亲手抄录的太古法修在被封印之前留下的最后几页心得。\n\n她说：'他不是坏人。只是走了一条没有人能陪他走完的路。'\n\n你看着那几页字——它们是你见过的最孤独的文字。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "spell",
+        "companion",
+        "epilogue"
+      ],
+      "choices": {
+        "left": {
+          "text": "研读心得，踏上他未走完的路",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 15,
+            "karmaBad": 5
+          }
+        },
+        "right": {
+          "text": "将心得永久封存于万卷楼",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 20,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_spell_codex_echo.png"
+    },
+    {
+      "id": "k_pill_master_start",
+      "type": "KARMA",
+      "title": "因果丹的后效",
+      "description": "大量炼制因果丹之后，你发现自己对因果的感知变得异常敏锐——你能看到人与人之间的因果丝线，金色的、红色的、黑色的。\n\n药圣说这是'丹眼'开启，是丹修中最罕见的天赋。他的声音里有说不清的复杂情绪——'我炼了三百年丹，从没开过丹眼。你炼了几个月。'",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "pill",
+        "talent"
+      ],
+      "choices": {
+        "left": {
+          "text": "运用丹眼感知天地因果",
+          "effects": {
+            "fortune": 20,
+            "daoHeart": 10,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "收敛丹眼——看多了太沉重",
+          "effects": {
+            "daoHeart": 20,
+            "karmaGood": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_pill_master_start.png"
+    },
+    {
+      "id": "k_pill_master_sacrifice",
+      "type": "KARMA",
+      "title": "毁丹之后",
+      "description": "你毁掉了因果丹的那一刻，五粒丹的因果力量炸裂开来——化作一场金色的雨，落在了神农丹谷方圆百里的土地上。\n\n三天后，谷中的草药疯长。一株已经枯死的万年雪莲重新开花。药圣站在莲前，哭了——这是他三百年来第一次落泪。\n\n他说：'你毁的不是丹——是一道天道试题。答案是，人情比天道值钱。'",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "pill",
+        "sacrifice",
+        "revelation"
+      ],
+      "choices": {
+        "left": {
+          "text": "采下雪莲，炼最后一粒丹",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 20,
+            "pill": "万年雪莲丹"
+          }
+        },
+        "right": {
+          "text": "让雪莲继续开着——不炼了",
+          "effects": {
+            "karmaGood": 30,
+            "daoHeart": 25,
+            "fortune": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_pill_master_sacrifice.png"
+    },
+    {
+      "id": "k_pill_master_echo",
+      "type": "KARMA",
+      "title": "丹道宗师·尾声",
+      "description": "失传丹方的故事在修真界悄悄流传——没有人知道完整的版本，但'有人炼出了三千年前失传的因果丹'这件事，被写进了神农丹谷的年志。\n\n药圣在临终前把你叫到床前，把他手里那本《因果丹经》递给了你。\n\n封底有一行字，是他今天才写的：'此书传予那个比我更疯的家伙——但比我更有资格。'",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "karma",
+        "pill",
+        "mentor",
+        "legacy"
+      ],
+      "choices": {
+        "left": {
+          "text": "接过丹经，继承药圣之道",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 30,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "将丹经捐给神农丹谷",
+          "effects": {
+            "karmaGood": 25,
+            "daoHeart": 20
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_karma_k_pill_master_echo.png"
+    }
+  ]
+}

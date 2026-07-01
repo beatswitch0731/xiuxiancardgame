@@ -1,0 +1,121 @@
+{
+  "quest": {
+    "id": "sword_legacy",
+    "name": "剑道传承",
+    "type": "QUEST",
+    "startRealm": "foundation",
+    "pathRestriction": "sword",
+    "trigger": {
+      "minTurn": 8,
+      "requiredFlags": null,
+      "forbiddenFlags": ["swordLegacyCompleted"],
+      "requiredAttributes": { "daoHeart": 40 },
+      "priority": 7
+    },
+    "entryCardId": "q_sword_1",
+    "chainLength": 4,
+    "factionRewards": {
+      "qingyun_sword": 20,
+      "wumeng_alliance": -5
+    },
+    "rewardOnComplete": {
+      "attributes": { "cultivation": 25, "daoHeart": 20, "fortune": 10 },
+      "flags": ["swordLegacyCompleted"],
+      "karmaSeeds": [
+        { "id": "swordLegacyEcho", "delay": 12, "realm": "nascent", "priority": 3 }
+      ]
+    }
+  },
+  "cards": [
+    {
+      "id": "q_sword_1",
+      "title": "剑冢遗音",
+      "description": "青云剑宗深处——一处被遗忘的剑冢。你路过时，一柄生锈的古剑轻轻震鸣。白刃真人停下脚步：'它三百年没响过了。它在对你说话。'\n\n剑身上刻着一行模糊的小字：'持剑者知道剑的重量——不是铁的重量，是心的重量。'",
+      "type": "QUEST",
+      "questId": "sword_legacy",
+      "questStep": 1,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "握住剑柄",
+          "effects": { "cultivation": 5, "daoHeart": 15, "health": -5 },
+          "questNext": "q_sword_2"
+        },
+        "right": {
+          "text": "恭敬地退开",
+          "effects": { "daoHeart": 10, "fortune": 5 },
+          "questEnd": true
+        }
+      }
+    },
+    {
+      "id": "q_sword_2",
+      "title": "铸剑之悟",
+      "description": "古剑指引你找到了一本残破的铸剑谱——不是教你打铁。它教的是'心剑'——用心念铸剑，而非炉火。\n\n你闭眼冥想，在识海中一剑一剑地铸——每一锤下去，你的道心都在震动。不知过了多久，你睁开眼——手中空无一物，但你知道那把剑已经在了。",
+      "type": "QUEST",
+      "questId": "sword_legacy",
+      "questStep": 2,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "继续铸心剑",
+          "effects": { "cultivation": 10, "daoHeart": 15 },
+          "questNext": "q_sword_3"
+        },
+        "right": {
+          "text": "铸一把实实在在的铁剑",
+          "effects": { "cultivation": 5, "daoHeart": 5, "health": 5 },
+          "questNext": "q_sword_3"
+        }
+      }
+    },
+    {
+      "id": "q_sword_3",
+      "title": "出鞘之试",
+      "description": "你终于铸成了心剑——但需要真正的试剑。剑冢中的千万柄剑突然同时震动，一柄飞到你面前——不是你的心剑，是试剑石。\n\n一道声音回荡：'真正的剑修——不用剑的时候最强。因为剑在你心里。现在——让我看看。'",
+      "type": "QUEST",
+      "questId": "sword_legacy",
+      "questStep": 3,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "以心剑迎战",
+          "effects": { "cultivation": 15, "daoHeart": 20, "health": -10 },
+          "questNext": "q_sword_4",
+          "karmaSeed": { "id": "swordLegacyStarted", "delay": 6, "realm": "golden", "priority": 2 }
+        },
+        "right": {
+          "text": "选择一柄实剑",
+          "effects": { "cultivation": 10, "health": 5, "fortune": 5 },
+          "questNext": "q_sword_4"
+        }
+      }
+    },
+    {
+      "id": "q_sword_4",
+      "title": "剑之道",
+      "description": "最后一课——白刃真人带着你来到一座无人的山崖。他说：'扔了你的剑。'\n\n你犹豫了一瞬——然后把心剑从识海中解开。剑化作一道光，消散在风中。\n\n白刃真人笑了——这么多年，这是你第一次看到他笑。他说：'很好。剑修的最高境界——不是手里有剑，是万物皆可为剑。'",
+      "type": "QUEST",
+      "questId": "sword_legacy",
+      "questStep": 4,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "彻底放下——悟剑道",
+          "effects": { "cultivation": 20, "daoHeart": 30, "fortune": 10 },
+          "questEnd": true,
+          "karmaSeed": { "id": "swordLegacyTrial", "delay": 10, "realm": "nascent", "priority": 2 }
+        },
+        "right": {
+          "text": "偷偷留一缕剑意",
+          "effects": { "cultivation": 25, "daoHeart": 10, "karmaBad": 5 },
+          "questEnd": true
+        }
+      }
+    }
+  ]
+}

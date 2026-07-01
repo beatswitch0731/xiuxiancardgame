@@ -1,0 +1,656 @@
+{
+  "realm": "deity",
+  "realmName": "化神期",
+  "cards": [
+    {
+      "id": "d_awakening",
+      "title": "化神初醒",
+      "description": "元婴与你彻底融为一体。你不再有'肉身'和'元神'之分——你就是你，完整而透明。你睁开眼睛——世界变了。空气里每一粒灵气都有自己的名字。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "感悟天地新貌",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "立即闭关巩固境界",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_awakening.png"
+    },
+    {
+      "id": "d_domain",
+      "title": "领域初成",
+      "description": "化神修士的标志——领域。你的领域开始在你周身十丈内成型。剑修的领域是剑意洪流，法修的领域是元素风暴——你的领域，是什么样？",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "以杀意铸领域",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": -5,
+            "karmaBad": 10
+          }
+        },
+        "right": {
+          "text": "以道心化领域",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 10,
+            "karmaGood": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_domain.png"
+    },
+    {
+      "id": "d_soul_wander",
+      "title": "神游太虚",
+      "description": "你的神念可以脱离肉身游历千里。你闭上眼睛——下一个瞬间，你站在万里之外的雪山顶端。一个白发老道正在那里等你，他看起来等了很多年。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "上前与老道对话",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "悄然退去——不问因果",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": -3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_soul_wander.png"
+    },
+    {
+      "id": "d_heart_demon",
+      "title": "心魔反噬",
+      "description": "化神期的心魔不再是幻象——它已经长成了另一个你。它站在你面前，用你的声音说：'你一路修行，到底是为了什么？你骗得了天道，骗不了自己。'",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 8,
+      "prerequisites": {
+        "daoHeart": {
+          "max": 30
+        }
+      },
+      "choices": {
+        "left": {
+          "text": "承认——我亦不知为何修行",
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": -10
+          },
+          "karmaSeed": {
+            "id": "combatScar",
+            "delay": 5,
+            "realm": "deity",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "一剑斩之——妖言惑众",
+          "effects": {
+            "health": -20,
+            "daoHeart": 10,
+            "cultivation": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_heart_demon.png"
+    },
+    {
+      "id": "d_sect_master",
+      "title": "宗门之巅",
+      "description": "你回到宗门——所有人跪了一地。连掌门都不敢正眼看你。你说'不必多礼'——但你知道，从今天起，你不再属于人间。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "传道授业，留道统于宗门",
+          "effects": {
+            "karmaGood": 15,
+            "daoHeart": 10,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "割断宗门联系——修真无牵挂",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 5,
+            "karmaBad": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_sect_master.png"
+    },
+    {
+      "id": "d_old_monster",
+      "title": "老怪物",
+      "description": "你遇到了一个活了两千年的化神老怪。他坐在一棵枯树下，枯树却在他身边发了芽。他看了你一眼——'年轻人，要不要听听飞升之后的事情？'",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 7,
+      "choices": {
+        "left": {
+          "text": "洗耳恭听",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "道不同不相为谋",
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_old_monster.png"
+    },
+    {
+      "id": "d_heaven_dao",
+      "title": "天道感应",
+      "description": "你感到了一种前所未有的牵引——天空之上，有什么在观察你。不是恶意，不是善意——只是一种注视。像是考官在看考生的卷子。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "坦然接受天道的审视",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "屏蔽感应——还没准备好",
+          "effects": {
+            "cultivation": 5,
+            "daoHeart": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_heaven_dao.png"
+    },
+    {
+      "id": "d_enemy_territory",
+      "title": "闯入敌域",
+      "description": "你在神游时误入了一个渡劫期老怪的领域。领域内——时间流速是外面的百倍。一炷香等于一百年。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 7,
+      "choices": {
+        "left": {
+          "text": "破域而出——以力证道",
+          "effects": {
+            "cultivation": 15,
+            "health": -20,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "静坐百年——顺势修炼",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_enemy_territory.png"
+    },
+    {
+      "id": "d_disciples",
+      "title": "收徒",
+      "description": "一个资质惊艳的少年跪在你面前磕了三个头。他说他的村子被魔修屠了，他走了一千里路只为拜你为师。他的眼神让你想起从前的自己。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "收他为徒——传承道统",
+          "effects": {
+            "karmaGood": 15,
+            "daoHeart": 10,
+            "cultivation": -5
+          }
+        },
+        "right": {
+          "text": "给他灵石让他离开——修行是自己的路",
+          "effects": {
+            "spiritStone": -30,
+            "cultivation": 5,
+            "daoHeart": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_disciples.png"
+    },
+    {
+      "id": "d_sword_domain",
+      "title": "万剑来朝",
+      "description": "你的剑域展开了。方圆百里的剑都在颤抖——无论主人是谁，剑都在向你朝拜。一个渡劫期的剑修冷冷地看着你——他的剑也在抖。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 6,
+      "pathRestriction": "sword",
+      "choices": {
+        "left": {
+          "text": "收剑意——不与前辈争锋",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "不——我的剑道不容退让",
+          "effects": {
+            "cultivation": 20,
+            "health": -15,
+            "daoHeart": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_sword_domain.png"
+    },
+    {
+      "id": "d_spell_origin",
+      "title": "法术起源",
+      "description": "你在修炼中顿悟——所有法术都是同一种力量的不同方言。雷咒和春风咒的区别不过是一个音符。你开始掌握'法术源代码'。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 6,
+      "pathRestriction": "spell",
+      "choices": {
+        "left": {
+          "text": "继续深研——触碰天道本源",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 10,
+            "fortune": -5
+          }
+        },
+        "right": {
+          "text": "适可而止——有些秘密不该知道",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_spell_origin.png"
+    },
+    {
+      "id": "d_body_saint",
+      "title": "肉身成圣",
+      "description": "你的肉身已经强到可以硬抗化神法器。但你感觉到一种极限——肉身的进化需要一个'契机'。一个老体修告诉你：'跳进太阳。'",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 6,
+      "pathRestriction": "body",
+      "choices": {
+        "left": {
+          "text": "以地心之火淬体",
+          "effects": {
+            "cultivation": 15,
+            "health": -15
+          }
+        },
+        "right": {
+          "text": "不——保守修炼",
+          "effects": {
+            "cultivation": 5,
+            "daoHeart": 3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_body_saint.png"
+    },
+    {
+      "id": "d_pill_tao",
+      "title": "丹道无极",
+      "description": "你炼出了一颗前所未有的丹——九转金丹。丹成之时，天空裂开一道缝，一道金光落在丹鼎上。连天道都要来抢你的丹。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 6,
+      "pathRestriction": "pill",
+      "choices": {
+        "left": {
+          "text": "服下九转金丹",
+          "effects": {
+            "cultivation": 30,
+            "daoHeart": 5,
+            "fortune": -10
+          }
+        },
+        "right": {
+          "text": "封存金丹——时机未到",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_pill_tao.png"
+    },
+    {
+      "id": "d_lifespan",
+      "title": "寿元之感",
+      "description": "八百年的寿元让你有时间做一些别人做不到的事。你回到凡人界——你出生的那个村庄已经不见了，取而代之的是一座城市。城墙上刻着你的名字。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "为家乡布下守护禁制",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 10,
+            "spiritStone": -50
+          },
+          "karmaSeed": {
+            "id": "lifespanWaste",
+            "delay": 3,
+            "realm": "tribulation",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "凡人自有命数——不干涉",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": -3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_lifespan.png"
+    },
+    {
+      "id": "d_karma_count",
+      "title": "因果清算",
+      "description": "天眼之下——你看到所有与你有关的人、事、物都被因果丝线相连。有些线是金色的，有些线是红色的，有些线是黑色的。黑色的那些——是你在修仙路上结下的血仇。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 8,
+      "prerequisites": {
+        "flags": {
+          "karmaBad": 30
+        }
+      },
+      "choices": {
+        "left": {
+          "text": "一一了结因果——以赔偿赎罪",
+          "effects": {
+            "spiritStone": -80,
+            "karmaGood": 20,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "斩断因果线——我欠的已还清",
+          "effects": {
+            "karmaBad": 10,
+            "daoHeart": -10,
+            "cultivation": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_karma_count.png"
+    },
+    {
+      "id": "d_immortal_trace",
+      "title": "仙人遗迹",
+      "description": "你在东海之滨发现了一个仙人遗府——不是渡劫失败者的洞府，是真仙飞升前的故居。门楣上写着一行字：'凡所有相，皆为虚妄——除了这壶酒。'",
+      "type": "DUNGEON",
+      "realm": "deity",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "进入仙人遗府",
+          "dungeon": {
+            "id": "immortal_ruins",
+            "nodes": [
+              {
+                "card": "ir_gate"
+              },
+              {
+                "card": "ir_test"
+              },
+              {
+                "card": "ir_treasure"
+              },
+              {
+                "card": "ir_truth"
+              }
+            ]
+          }
+        },
+        "right": {
+          "text": "在门外行礼后离开——不敢惊扰仙人",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_immortal_trace.png"
+    },
+    {
+      "id": "d_auction",
+      "title": "化神拍卖会",
+      "description": "修真界最高规格的拍卖会——只有化神以上才有资格入座。拍品从星核到化神丹，从异兽骸骨到残缺的仙器。",
+      "type": "SHOP",
+      "realm": "deity",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "竞拍化神丹 (200灵石)",
+          "effects": {
+            "spiritStone": -200,
+            "pill": "化神丹",
+            "cultivation": 10
+          },
+          "karmaSeed": {
+            "id": "spellRevealed",
+            "delay": 6,
+            "realm": "deity",
+            "priority": 1
+          }
+        },
+        "right": {
+          "text": "竞拍残缺仙器 (300灵石)",
+          "effects": {
+            "spiritStone": -300,
+            "cultivation": 25,
+            "daoHeart": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_auction.png"
+    },
+    {
+      "id": "d_star_gazing",
+      "title": "观星悟道",
+      "description": "你独自站在最高峰观星。星象变幻——你看到了渡劫的征兆。不是天劫——是命运的劫数。你的命星在闪烁。",
+      "type": "NORMAL",
+      "realm": "deity",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "接受命运的提示",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 10,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "我命由我不由天",
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 15,
+            "fortune": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_dt_d_star_gazing.png"
+    },
+    {
+      "id": "break_deity",
+      "title": "化神圆满·冲击渡劫",
+      "description": "你的领域已经足够强大。化神巅峰——你感觉到天劫的召唤。突破渡劫意味着你要面对修仙路上最恐怖的一道坎——九九八十一道天雷。百人中只有一人能过。你准备好了吗？",
+      "type": "BREAKTHROUGH",
+      "realm": "deity",
+      "weight": 0,
+      "tags": [
+        "breakthrough"
+      ],
+      "choices": {
+        "left": {
+          "text": "引天劫——冲击渡劫",
+          "breakSuccess": 0.35,
+          "effects": {}
+        },
+        "right": {
+          "text": "再修炼一阵——稳扎稳打",
+          "effects": {
+            "cultivation": 15
+          }
+        }
+      },
+      "successText": "九九八十一道天雷落下——你扛住了。肉身焦黑，神魂却前所未有地明亮。渡劫期——你已经是修真界金字塔尖的存在。",
+      "failText": "第七十二道天雷落下时你撑不住了。肉身崩碎，元婴溃散——但你的神念没有消散。你听到了天道的声音：'再来一次。'",
+      "sceneImage": "assets/cards/events/scene_dt_break_deity.png"
+    }
+  ],
+  "dungeons": {
+    "immortal_ruins": {
+      "id": "immortal_ruins",
+      "name": "仙人遗府",
+      "description": "真仙飞升前的故居，藏着飞升的秘密",
+      "nodeCount": 4
+    }
+  },
+  "dungeonCards": {
+    "ir_gate": {
+      "id": "ir_gate",
+      "title": "凡所有相",
+      "description": "遗府大门上刻着一面古镜。镜中的你不是现在的你——是飞升后的你。飞升后的你看着你，笑了笑，把手指放在唇上：'嘘。'",
+      "dungeon": "immortal_ruins",
+      "nodeIndex": 0,
+      "choices": {
+        "left": {
+          "text": "推门而入",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "先解读门上符文",
+          "effects": {
+            "fortune": 5,
+            "cultivation": 10
+          }
+        }
+      }
+    },
+    "ir_test": {
+      "id": "ir_test",
+      "title": "仙人三问",
+      "description": "遗府的大厅中浮现了三道身影——仙人的三道执念。第一问：'为何修行？'第二问：'为何渡劫？'第三问：'为何飞升？'",
+      "dungeon": "immortal_ruins",
+      "nodeIndex": 1,
+      "choices": {
+        "left": {
+          "text": "如实作答——道心所指",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "沉默——答案在心中",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    "ir_treasure": {
+      "id": "ir_treasure",
+      "title": "登仙之物",
+      "description": "你发现了仙人遗留的三件宝物——一把断剑、一卷残谱、一颗灰丹。你只能带走一件——仙人留字说：'选你最不需要的，才是真仙。'",
+      "dungeon": "immortal_ruins",
+      "nodeIndex": 2,
+      "choices": {
+        "left": {
+          "text": "取走渡劫丹",
+          "effects": {
+            "pill": "渡劫丹",
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "取走残破仙器",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 5
+          }
+        }
+      }
+    },
+    "ir_truth": {
+      "id": "ir_truth",
+      "title": "仙人的秘密",
+      "description": "遗府最深处——仙人的一缕残念。他说了一句让你脊背发凉的话：'飞升？呵——你知道飞升之后是什么吗？算了，等你上去就知道了。'",
+      "dungeon": "immortal_ruins",
+      "nodeIndex": 3,
+      "choices": {
+        "left": {
+          "text": "追问飞升之后的真相",
+          "effects": {
+            "daoHeart": -10,
+            "cultivation": 15,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "不去追问——走自己的路",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 10
+          }
+        }
+      }
+    }
+  }
+}

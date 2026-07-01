@@ -1,0 +1,65 @@
+{
+  "order": ["qi", "foundation", "golden", "nascent", "deity", "tribulation"],
+  "realms": {
+    "qi": {
+      "name": "炼气期",
+      "index": 0,
+      "cultivationMax": 100,
+      "cultivationThreshold": 100,
+      "lifespanBonus": 0,
+      "breakthroughCard": "break_qi",
+      "pillRequired": "foundation",
+      "pillName": "筑基丹"
+    },
+    "foundation": {
+      "name": "筑基期",
+      "index": 1,
+      "cultivationMax": 100,
+      "cultivationThreshold": 100,
+      "lifespanBonus": 50,
+      "breakthroughCard": "break_foundation",
+      "pillRequired": "golden",
+      "pillName": "结金丹"
+    },
+    "golden": {
+      "name": "金丹期",
+      "index": 2,
+      "cultivationMax": 100,
+      "cultivationThreshold": 100,
+      "lifespanBonus": 100,
+      "breakthroughCard": "break_golden",
+      "pillRequired": "nascent",
+      "pillName": "凝婴丹"
+    },
+    "nascent": {
+      "name": "元婴期",
+      "index": 3,
+      "cultivationMax": 100,
+      "cultivationThreshold": 100,
+      "lifespanBonus": 300,
+      "breakthroughCard": "break_nascent",
+      "pillRequired": "deity",
+      "pillName": "化神丹"
+    },
+    "deity": {
+      "name": "化神期",
+      "index": 4,
+      "cultivationMax": 100,
+      "cultivationThreshold": 100,
+      "lifespanBonus": 800,
+      "breakthroughCard": "break_deity",
+      "pillRequired": "tribulation",
+      "pillName": "渡劫丹"
+    },
+    "tribulation": {
+      "name": "渡劫期",
+      "index": 5,
+      "cultivationMax": 100,
+      "cultivationThreshold": 100,
+      "lifespanBonus": 2000,
+      "breakthroughCard": "break_tribulation",
+      "pillRequired": null,
+      "pillName": null
+    }
+  }
+}

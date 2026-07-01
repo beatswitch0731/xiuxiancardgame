@@ -1,0 +1,238 @@
+{
+  "description": "三层位置体系 —— 主场景(T1) → 细粒度位置(T2) → 隐藏位置(T3)。包含场景卡牌池。",
+  "locations": {
+    "宗门": {
+      "name": "青云剑宗",
+      "tier": 1,
+      "atmosphere": { "bgClass": "loc-sect", "borderColor": "#c9a96e", "particleType": "cloud", "description": "云雾缭绕，剑鸣清越" },
+      "subLocations": ["宗门大殿", "藏经阁", "炼丹房", "后山竹林", "剑崖"],
+      "description": "青云剑宗——天下剑修的圣地。巍峨殿宇依山而建，灵气如瀑，从万仞绝壁上倾泻。空气中弥漫着剑气、丹香和千年古木的气息。",
+      "music": "serene"
+    },
+    "坊市": {
+      "name": "修仙坊市",
+      "tier": 1,
+      "atmosphere": { "bgClass": "loc-market", "borderColor": "#d4443b", "particleType": "spark", "description": "人声鼎沸，灵石流转" },
+      "subLocations": ["坊市中心", "万宝楼", "天机阁", "铁匠铺", "灵草街"],
+      "description": "修士聚集的交易之所。叫卖声、讨价还价声、剑气碰撞声此起彼伏。铜钱纹的灯笼下，灵石的光芒照亮了各怀心思的脸。",
+      "music": "bustling"
+    },
+    "秘境": {
+      "name": "上古秘境",
+      "tier": 1,
+      "atmosphere": { "bgClass": "loc-dungeon", "borderColor": "#5b7fff", "particleType": "rune", "description": "符文流转，危机暗藏" },
+      "subLocations": ["秘境入口", "试炼通道", "灵脉矿洞", "古修洞府"],
+      "description": "上古大能留下的试炼之地。石壁上刻着失传的功法，地底深处埋着从未有人触碰过的宝物——还有从未有人活着离开的陷阱。",
+      "music": "mysterious"
+    },
+    "洞府": {
+      "name": "修士洞府",
+      "tier": 1,
+      "atmosphere": { "bgClass": "loc-cave", "borderColor": "#4a7c59", "particleType": "mist", "description": "幽静冥想，灵雾弥漫" },
+      "subLocations": ["炼气室", "丹房", "剑室", "灵兽棚"],
+      "description": "你的私人修炼之所。石壁上爬满了灵藤，泉水潺潺，月华透过洞顶的天然裂缝洒下。这里每一寸空气都浸透了你的气息。",
+      "music": "peaceful"
+    },
+    "魔域": {
+      "name": "血煞魔域",
+      "tier": 1,
+      "atmosphere": { "bgClass": "loc-demon", "borderColor": "#7b2d3b", "particleType": "ember", "description": "魔气弥漫，压抑邪异" },
+      "subLocations": ["魔域外城", "血煞宫", "魔泉", "白骨荒野"],
+      "description": "人间与魔界的夹缝——正道修士提起此地都会皱眉。黑色岩石上流淌着暗红色的魔泉，空气中弥漫着铁锈和檀香混合的奇异气味。",
+      "music": "ominous"
+    },
+    "天道虚空": {
+      "name": "天道虚空",
+      "tier": 1,
+      "atmosphere": { "bgClass": "loc-void", "borderColor": "transparent", "particleType": "star", "description": "无尽虚空，直面天道" },
+      "subLocations": ["天道裂缝", "因果之海", "时间回廊"],
+      "description": "飞升的前一站——虚无中没有上下左右，只有星辰般的因果之线从你身上延伸出去，连接着每一个被你影响的人。天道的轰鸣在头颅内回响。",
+      "music": "transcendent"
+    },
+    "剑崖": {
+      "name": "剑崖",
+      "tier": 2,
+      "parent": "宗门",
+      "atmosphere": { "bgClass": "loc-sect", "borderColor": "#8eb8d0", "particleType": "spark", "description": "剑气纵横，铁锈味的微风" },
+      "tier1_desc": "万仞绝壁，剑气纵横千年留下的痕迹如蛛网密布。风吹过时，崖壁发出低沉的呜咽——据说那是历代在此悟道的剑修残魂。",
+      "tier2_desc": "你注意到崖壁最底部的剑痕与其他不同——不是劈砍，而是「写」。有人在崖壁上，用剑刻下了一整篇……情书？落款处没有名字，只有一个「白」字。",
+      "transitionFlags": {
+        "bai_ren_departed": "剑气消散，崖壁开始风化。那只「白」字的情书，现在读来，字字如泪。白刃真人的剑意已经离开这片绝壁——就像他离开了这个人间。"
+      }
+    }
+  },
+
+  "cards": [
+    {
+      "id": "loc_sect_first",
+      "title": "青云剑宗",
+      "description": "万仞绝壁上，青云缭绕。无数剑修曾在此悟道，剑气在崖壁上刻下千年的痕迹。空气中弥漫着铁锈和松香——每一口呼吸都在淬炼你的剑心。",
+      "type": "LOCATION",
+      "location": "宗门",
+      "layer": 1,
+      "realm": "qi",
+      "once": true,
+      "weight": 0,
+      "sceneImage": "assets/cards/events/scene_dt_d_sword_domain.png",
+      "tags": ["location", "first_visit"],
+      "choices": {
+        "left": { "text": "闭目感受剑气", "effects": { "cultivation": 5, "daoHeart": 2 } },
+        "right": { "text": "快步走进宗门大殿", "effects": { "daoHeart": 1, "fortune": 2 } }
+      }
+    },
+    {
+      "id": "loc_sect_deep",
+      "title": "青云剑宗·深处",
+      "description": "你来这里已经很多次了。但今天不太一样——你注意到大殿梁柱上刻着一行小字，不是剑修的笔迹，而是……丹修的印记。这座名门正统的剑宗，地底埋着什么？",
+      "type": "LOCATION",
+      "location": "宗门",
+      "layer": 2,
+      "realm": "foundation",
+      "once": true,
+      "weight": 0,
+      "sceneImage": "assets/cards/events/scene_dt_d_disciples.png",
+      "tags": ["location", "deep_lore", "sect_secret"],
+      "choices": {
+        "left": { "text": "循着丹修印记追踪下去", "effects": { "wisdom": 3, "find_clue": "sect_alchemy_secret" } },
+        "right": { "text": "不去管它，安心修炼", "effects": { "daoHeart": 5 } }
+      }
+    },
+    {
+      "id": "loc_market_first",
+      "title": "修仙坊市",
+      "description": "铜钱纹的灯笼挂满整条长街，灵石的光芒将人脸照得像鬼。散修们蹲在路边叫卖，身后是万宝楼的金字牌匾——一座朴素而喧嚣的修士之城。",
+      "type": "LOCATION",
+      "location": "坊市",
+      "layer": 1,
+      "realm": "qi",
+      "once": true,
+      "weight": 0,
+      "sceneImage": "assets/cards/events/scene_fd_f_market.png",
+      "tags": ["location", "first_visit"],
+      "choices": {
+        "left": { "text": "逛一逛万宝楼", "effects": { "fortune": 3 }, "openShop": true },
+        "right": { "text": "先看看散修卖什么", "effects": { "wisdom": 2, "spiritStone": 10 } }
+      }
+    },
+    {
+      "id": "loc_dungeon_first",
+      "title": "上古秘境",
+      "description": "符文在石壁上流转，像活着的血管。远处传来低沉的嗡鸣——是机关，还是某种上古生物的呼吸？你的手本能地按上了剑柄。",
+      "type": "LOCATION",
+      "location": "秘境",
+      "layer": 1,
+      "realm": "foundation",
+      "once": true,
+      "weight": 0,
+      "sceneImage": "assets/cards/events/scene_dt_d_ruins.png",
+      "tags": ["location", "first_visit", "dungeon"],
+      "choices": {
+        "left": { "text": "小心探索", "effects": { "cultivation": 8, "fortune": -2 } },
+        "right": { "text": "先做好万全准备再深入", "effects": { "wisdom": 5, "daoHeart": 3 } }
+      }
+    },
+    {
+      "id": "loc_cave_first",
+      "title": "修士洞府",
+      "description": "你的洞府——石壁上灵藤如瀑，泉水叮咚。月光从洞顶的裂缝洒下，在地上画出银色的光斑。这一刻的宁静，是修仙路上最奢侈的东西。",
+      "type": "LOCATION",
+      "location": "洞府",
+      "layer": 1,
+      "realm": "qi",
+      "once": true,
+      "weight": 0,
+      "sceneImage": "assets/cards/events/scene_event_qi_meditation.png",
+      "tags": ["location", "first_visit", "introspective"],
+      "choices": {
+        "left": { "text": "静坐冥想", "effects": { "cultivation": 3, "daoHeart": 5 } },
+        "right": { "text": "整理法宝丹药", "effects": { "fortune": 3, "wisdom": 2 } }
+      }
+    },
+    {
+      "id": "loc_demon_first",
+      "title": "血煞魔域",
+      "description": "脚下是暗红色的岩石，每一步都像踩在凝固的血上。魔泉从石缝中渗出，发出嘶嘶声。血煞老祖曾在这里修炼千年——你能感觉到他在看着你。",
+      "type": "LOCATION",
+      "location": "魔域",
+      "layer": 1,
+      "realm": "golden",
+      "once": true,
+      "weight": 0,
+      "sceneImage": "assets/cards/companions/scene_comp_xuesha_laozu_bloodfeast.png",
+      "tags": ["location", "first_visit", "ominous"],
+      "choices": {
+        "left": { "text": "保持警惕，观察四周", "effects": { "daoHeart": 3, "wisdom": 3 } },
+        "right": { "text": "放开神识，感受魔域", "effects": { "cultivation": 8, "karmaBad": 5 } }
+      }
+    },
+    {
+      "id": "loc_void_first",
+      "title": "天道虚空",
+      "description": "你站在虚无之中。没有方向、没有重力、没有声音——只有星辰般明亮的因果之线从你的心口延伸出去。每一根线都连接着一个你影响过的人。天道在这里注视着你，不评判，只是看着。",
+      "type": "LOCATION",
+      "location": "天道虚空",
+      "layer": 1,
+      "realm": "deity",
+      "once": true,
+      "weight": 0,
+      "sceneImage": "assets/cards/events/scene_dt_d_heaven_dao.png",
+      "tags": ["location", "first_visit", "transcendent"],
+      "choices": {
+        "left": { "text": "追寻因果之线，回顾一生", "effects": { "daoHeart": 10, "wisdom": 5 } },
+        "right": { "text": "直面天道，不做回顾", "effects": { "cultivation": 15, "daoHeart": -5 } }
+      }
+    },
+    {
+      "id": "loc_sword_cliff_first",
+      "title": "剑崖",
+      "description": "万仞绝壁，剑气纵横千年留下的痕迹如蛛网密布。风吹过时，崖壁发出低沉的呜咽——据说那是历代在此悟道的剑修残魂。",
+      "type": "LOCATION",
+      "location": "剑崖",
+      "layer": 1,
+      "realm": "qi",
+      "once": true,
+      "weight": 0,
+      "sceneImage": "assets/cards/events/scene_dt_d_sword_domain.png",
+      "tags": ["location", "sword_path"],
+      "choices": {
+        "left": { "text": "闭目感受剑气", "effects": { "cultivation": 5, "sword_insight": 1 } },
+        "right": { "text": "仔细观察剑痕", "effects": { "wisdom": 3, "find_clue": "ancient_sword_manual" } }
+      }
+    },
+    {
+      "id": "loc_sword_cliff_deep",
+      "title": "剑崖·深处",
+      "description": "你注意到崖壁最底部的剑痕与其他不同——不是劈砍，而是「写」。有人在崖壁上，用剑刻下了一整篇……情书？落款处没有名字，只有一个「白」字。",
+      "type": "LOCATION",
+      "location": "剑崖",
+      "layer": 2,
+      "realm": "foundation",
+      "once": true,
+      "weight": 0,
+      "sceneImage": "assets/cards/events/scene_dt_d_disciples.png",
+      "tags": ["location", "deep_lore", "bai_ren_secret"],
+      "choices": {
+        "left": { "text": "默默记下，不告诉任何人", "effects": { "wisdom": 3, "bond_bai_ren": 2 } },
+        "right": { "text": "抄录下来，也许有用", "effects": { "wisdom": 1, "treasure": "sword_cliff_rubbing" } }
+      }
+    },
+    {
+      "id": "loc_sword_cliff_gone",
+      "title": "剑崖·人去崖空",
+      "description": "剑气消散，崖壁开始风化。那只「白」字的情书，现在读来字字如泪。白刃真人的剑意已经离开了这片绝壁——就像他离开了这个人间。但风吹过时，你仍然能听到一个声音，在教你最后一式剑法。",
+      "type": "LOCATION",
+      "location": "剑崖",
+      "layer": 0,
+      "realm": "golden",
+      "once": true,
+      "weight": 0,
+      "sceneImage": "assets/cards/companions/scene_comp_bai_ren_sworddebate.png",
+      "tags": ["location", "transition", "bai_ren_departed"],
+      "eventFlag": "bai_ren_departed",
+      "choices": {
+        "left": { "text": "跪下，行最后一次弟子礼", "effects": { "daoHeart": 15, "sword_insight": 5 } },
+        "right": { "text": "拔剑，和残存剑意切磋最后一次", "effects": { "cultivation": 1, "combat_skill": 1 } }
+      }
+    }
+  ]
+}

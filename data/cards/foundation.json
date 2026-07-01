@@ -1,0 +1,598 @@
+{
+  "realm": "foundation",
+  "realmName": "筑基期",
+  "cards": [
+    {
+      "id": "q_foundation",
+      "title": "筑基初成",
+      "description": "你成功筑基，体内灵力液化，感知大增。",
+      "type": "NORMAL",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "稳固根基",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 0
+          }
+        },
+        "right": {
+          "text": "趁热打铁",
+          "effects": {
+            "cultivation": 15,
+            "health": -10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_fd_q_foundation.png"
+    },
+    {
+      "id": "f_mission",
+      "title": "宗门任务",
+      "description": "掌门发布任务，清缴附近妖兽。",
+      "type": "COMBAT",
+      "realm": "foundation",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "接取普通任务",
+          "effects": {
+            "spiritStone": 15,
+            "cultivation": 10,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "挑战高阶妖兽",
+          "effects": {
+            "cultivation": 25,
+            "health": -20,
+            "karmaBad": 5
+          }
+        }
+      },
+      "tags": [
+        "combat",
+        "mission"
+      ],
+      "enemy": {
+        "name": "妖兽·烈焰虎",
+        "hp": 40,
+        "atk": 10,
+        "def": 3,
+        "critRate": 8,
+        "special": "烈焰吐息",
+        "specialChance": 0.2,
+        "specialDmg": 5
+      },
+      "combatRewards": {
+        "cultivation": 12,
+        "spiritStone": 15,
+        "pill": "筑基丹"
+      },
+      "sceneImage": "assets/cards/events/scene_fd_f_mission.png"
+    },
+    {
+      "id": "f_sect",
+      "title": "派系之争",
+      "description": "宗门内两派长老明争暗斗，你要站队吗？",
+      "type": "NORMAL",
+      "realm": "foundation",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "保持中立",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "依附强势一方",
+          "effects": {
+            "spiritStone": 30,
+            "karmaBad": 10
+          }
+        },
+        "up": {
+          "text": "支持弱势一方",
+          "effects": {
+            "karmaGood": 15,
+            "fortune": -10
+          }
+        }
+      },
+      "tags": [
+        "social",
+        "faction"
+      ],
+      "sceneImage": "assets/cards/events/scene_fd_f_sect.png"
+    },
+    {
+      "id": "f_demon2",
+      "title": "魔修邀约",
+      "description": "一位魔修邀你共探上古遗迹，宝物平分。",
+      "type": "NORMAL",
+      "realm": "foundation",
+      "weight": 7,
+      "choices": {
+        "left": {
+          "text": "断然拒绝",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 5
+          },
+          "karmaSeed": {
+            "id": "combatScar",
+            "delay": 6,
+            "realm": "golden",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "合作共赢",
+          "effects": {
+            "cultivation": 30,
+            "treasure": "demonTome",
+            "karmaBad": 20
+          }
+        }
+      },
+      "tags": [
+        "demon",
+        "temptation"
+      ],
+      "sceneImage": "assets/cards/events/scene_fd_f_demon2.png"
+    },
+    {
+      "id": "f_artifact",
+      "title": "法宝出世",
+      "description": "拍卖会上出现一件适合你功法的法宝。",
+      "type": "NORMAL",
+      "realm": "foundation",
+      "weight": 6,
+      "choices": {
+        "left": {
+          "text": "竞拍拿下",
+          "effects": {
+            "spiritStone": -50,
+            "treasure": "pathRelic",
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "放弃观望",
+          "effects": {
+            "daoHeart": 5
+          }
+        }
+      },
+      "tags": [
+        "trade",
+        "treasure"
+      ],
+      "sceneImage": "assets/cards/events/scene_fd_f_artifact.png"
+    },
+    {
+      "id": "f_master",
+      "title": "师尊指点",
+      "description": "你的师尊单独召见你，要传你一门秘术。",
+      "type": "NORMAL",
+      "realm": "foundation",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "诚心受教",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "讨价还价",
+          "effects": {
+            "cultivation": 15,
+            "karmaBad": 5
+          }
+        }
+      },
+      "tags": [
+        "social",
+        "cultivation"
+      ],
+      "sceneImage": "assets/cards/events/scene_fd_f_master.png"
+    },
+    {
+      "id": "f_love",
+      "title": "红颜知己",
+      "description": "一位妖族女子与你志趣相投，欲与你结为道侣。",
+      "type": "NORMAL",
+      "realm": "foundation",
+      "weight": 5,
+      "choices": {
+        "left": {
+          "text": "人妖殊途",
+          "effects": {
+            "daoHeart": 5,
+            "karmaGood": 5
+          }
+        },
+        "right": {
+          "text": "欣然接受",
+          "effects": {
+            "companion": "demon",
+            "cultivation": -5,
+            "karmaBad": 10
+          }
+        }
+      },
+      "tags": [
+        "social",
+        "romance",
+        "cross_race"
+      ],
+      "sceneImage": "assets/cards/events/scene_fd_f_love.png"
+    },
+    {
+      "id": "f_trial",
+      "title": "秘境开启",
+      "description": "十年一度的秘境开启，你收到了入场令牌。",
+      "type": "DUNGEON",
+      "realm": "foundation",
+      "weight": 5,
+      "choices": {
+        "left": {
+          "text": "出售令牌",
+          "effects": {
+            "spiritStone": 40
+          },
+          "karmaSeed": {
+            "id": "swordHonor",
+            "delay": 8,
+            "realm": "golden",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "进入探险",
+          "effects": {
+            "health": -10,
+            "cultivation": 30
+          },
+          "dungeon": "mysteryRealm"
+        }
+      },
+      "tags": [
+        "dungeon",
+        "exploration"
+      ],
+      "sceneImage": "assets/cards/events/scene_fd_f_trial.png"
+    },
+    {
+      "id": "f_karma",
+      "title": "旧因结果",
+      "description": "多年前你随手救下的白狐，如今化作人形前来报恩。",
+      "type": "KARMA",
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "婉拒离去",
+          "effects": {
+            "daoHeart": 5,
+            "karmaGood": -10
+          }
+        },
+        "right": {
+          "text": "收为道侣",
+          "effects": {
+            "companion": "whiteFox",
+            "cultivation": 15,
+            "karmaGood": 10
+          }
+        }
+      },
+      "tags": [
+        "karma",
+        "companion"
+      ],
+      "sceneImage": "assets/cards/events/scene_fd_f_karma.png"
+    },
+    {
+      "id": "f_tribulation",
+      "title": "心魔来袭",
+      "description": "修炼中忽见幻象，前世恩怨扑面而来。",
+      "type": "NORMAL",
+      "realm": "foundation",
+      "weight": 6,
+      "choices": {
+        "left": {
+          "text": "斩断幻象",
+          "effects": {
+            "daoHeart": 15,
+            "karmaBad": 5
+          }
+        },
+        "right": {
+          "text": "直面心魔",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": -10
+          }
+        }
+      },
+      "tags": [
+        "mental"
+      ],
+      "sceneImage": "assets/cards/events/scene_fd_f_tribulation.png"
+    },
+    {
+      "id": "f_market",
+      "title": "坊市冲突",
+      "description": "你心仪的材料被他人抢先买走。",
+      "type": "NORMAL",
+      "realm": "foundation",
+      "weight": 7,
+      "choices": {
+        "left": {
+          "text": "高价截胡",
+          "effects": {
+            "spiritStone": -30,
+            "cultivation": 15,
+            "karmaBad": 5
+          }
+        },
+        "right": {
+          "text": "另寻他法",
+          "effects": {
+            "fortune": 10
+          },
+          "karmaSeed": {
+            "id": "fortuneWheel",
+            "delay": 8,
+            "realm": "golden",
+            "priority": 1
+          }
+        }
+      },
+      "tags": [
+        "trade",
+        "conflict"
+      ],
+      "sceneImage": "assets/cards/events/scene_fd_f_market.png"
+    },
+    {
+      "id": "f_foxGratitude",
+      "title": "白狐报恩",
+      "description": "一阵香风拂过，那只你曾经救下的白狐化作一位银发白衣女子。她盈盈一拜：\"恩公，奴家白落霜，今日特来报恩。白狐一族的因果，从来不算轻。\"",
+      "type": "KARMA",
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "婉拒美意",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": -5,
+            "fortune": -5
+          }
+        },
+        "right": {
+          "text": "收为道侣",
+          "effects": {
+            "companion": "whiteFox",
+            "cultivation": 20,
+            "karmaGood": 15,
+            "fortune": 10
+          }
+        }
+      },
+      "tags": [
+        "karma",
+        "companion",
+        "destiny"
+      ],
+      "sceneImage": "assets/cards/events/scene_fd_f_foxGratitude.png"
+    },
+    {
+      "id": "break_foundation",
+      "title": "金丹初凝",
+      "description": "筑基圆满，灵液凝丹。丹成几品，在此一举。",
+      "type": "BOTTLENECK",
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "九死冲关",
+          "effects": {
+            "health": -40,
+            "daoHeart": -15
+          },
+          "breakSuccess": 0.45
+        },
+        "right": {
+          "text": "水磨工夫",
+          "effects": {
+            "daoHeart": 8
+          },
+          "breakSuccess": 0.75
+        },
+        "up": {
+          "text": "服用结金丹",
+          "effects": {
+            "daoHeart": 5
+          },
+          "breakSuccess": 1
+        },
+        "down": {
+          "text": "暂缓突破",
+          "effects": {
+            "cultivation": -40,
+            "daoHeart": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_fd_break_foundation.png"
+    },
+    {
+      "id": "f_shop",
+      "title": "拍卖行",
+      "description": "筑基后你第一次参加拍卖会。台上在拍三样东西：剑心佩、避尘珠和一瓶结金丹。",
+      "type": "SHOP",
+      "realm": "foundation",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "拍剑心佩 (60灵石)",
+          "effects": {
+            "spiritStone": -60,
+            "treasure": "剑心佩"
+          },
+          "costCheck": {
+            "spiritStone": 60
+          },
+          "karmaSeed": {
+            "id": "pillPoison",
+            "delay": 10,
+            "realm": "golden",
+            "priority": 1
+          }
+        },
+        "right": {
+          "text": "拍结金丹 (50灵石)",
+          "effects": {
+            "spiritStone": -50,
+            "pill": "结金丹"
+          },
+          "costCheck": {
+            "spiritStone": 50
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_fd_f_shop.png"
+    },
+    {
+      "id": "f_bribe",
+      "title": "疏通关系",
+      "description": "你想在宗门里更进一步，但需要打点一些关系。30灵石说多不多说少不少——值不值得？",
+      "type": "SHOP",
+      "realm": "foundation",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "花灵石打点 (30灵石)",
+          "effects": {
+            "spiritStone": -30,
+            "daoHeart": 5,
+            "fortune": 10,
+            "cultivation": 5
+          },
+          "costCheck": {
+            "spiritStone": 30
+          }
+        },
+        "right": {
+          "text": "靠自己本事",
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_fd_f_bribe.png"
+    }
+  ],
+  "dungeons": {
+    "mysteryRealm": {
+      "name": "神秘秘境",
+      "nodes": [
+        {
+          "type": "event",
+          "card": "realm_elder"
+        },
+        {
+          "type": "battle",
+          "card": "realm_guardian"
+        },
+        {
+          "type": "reward",
+          "card": "realm_treasure"
+        }
+      ]
+    }
+  },
+  "dungeonCards": {
+    "realm_elder": {
+      "id": "realm_elder",
+      "title": "秘境残魂",
+      "description": "一位上古残魂向你讲述天地秘辛。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "虚心聆听",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "追问功法",
+          "effects": {
+            "cultivation": 25,
+            "karmaBad": 5
+          }
+        }
+      }
+    },
+    "realm_guardian": {
+      "id": "realm_guardian",
+      "title": "秘境守护者",
+      "description": "阵灵化身拦路，测试来者实力。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "以力破阵",
+          "effects": {
+            "health": -30,
+            "cultivation": 25
+          }
+        },
+        "right": {
+          "text": "寻阵眼破之",
+          "effects": {
+            "cultivation": 20,
+            "fortune": 10
+          }
+        }
+      }
+    },
+    "realm_treasure": {
+      "id": "realm_treasure",
+      "title": "秘境核心",
+      "description": "阵眼处有一件灵宝，等待有缘人。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "滴血认主",
+          "effects": {
+            "treasure": "realmCore",
+            "cultivation": 20
+          }
+        },
+        "right": {
+          "text": "带走材料",
+          "effects": {
+            "spiritStone": 80,
+            "pill": "golden"
+          }
+        }
+      }
+    }
+  },
+  "karmaCards": {
+    "whiteFox": "f_karma",
+    "foxGratitude": "f_foxGratitude"
+  }
+}

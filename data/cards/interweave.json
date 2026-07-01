@@ -1,0 +1,647 @@
+{
+  "realm": "interweave",
+  "realmName": "跨线交织事件",
+  "_description": "7条故事线交织点卡牌：师门×正魔/正魔×红尘/红尘×天道/师门×红尘/道侣×正魔/道侣×师门/前世×今生。每点3-5张。",
+  "karmaCards": {
+    "sectHuntDemon": "iw_sect_hunt_demon",
+    "sectProtectDemon": "iw_sect_protect",
+    "familyHostage": "iw_family_hostage",
+    "familySaved": "iw_family_saved",
+    "cutMortalTies": "iw_cut_ties_tribulation",
+    "keepMortalTies": "iw_keep_ties_tribulation",
+    "sectFamilyConflict": "iw_sect_family_clash",
+    "sectFamilyUnity": "iw_sect_family_unity",
+    "compDemonConflict": "iw_comp_demon_clash",
+    "compSectDisapprove": "iw_comp_sect_forbid",
+    "pastLifeNpc": "iw_past_life_npc",
+    "pastLifeEnemy": "iw_past_life_enemy"
+  },
+  "cards": [
+    {
+      "id": "iw_sect_hunt_demon",
+      "type": "SPECIAL",
+      "title": "清理门户",
+      "description": "你的一个同门——也是你的朋友——被发现在偷偷修炼魔功。执事长老下令：'清理门户。'他不看你——他在看你的剑。",
+      "realm": "golden",
+      "weight": 6,
+      "path": null,
+      "tags": [
+        "interweave",
+        "sect_demonic",
+        "moral"
+      ],
+      "requiresFlags": {
+        "demonSideChosen": null
+      },
+      "choices": {
+        "left": {
+          "text": "执行命令——清理门户",
+          "effects": {
+            "daoHeart": -20,
+            "karmaBad": 20,
+            "cultivation": 10
+          },
+          "karmaSeed": {
+            "id": "sectHuntDemon",
+            "seedType": "grudge",
+            "delay": 8,
+            "priority": 4
+          }
+        },
+        "right": {
+          "text": "放他走——'逃吧——别回来了'",
+          "effects": {
+            "karmaGood": 15,
+            "daoHeart": 10,
+            "fortune": -10
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_sect_protect",
+      "type": "SPECIAL",
+      "title": "师尊的包庇",
+      "description": "白刃真人私下里找到你——他知道你在接触魔道。'我不问你是不是——'他顿了顿，'但是如果执事会的人来找你，我会说你在替我做任务。别让我失望。'",
+      "realm": "golden",
+      "weight": 5,
+      "path": "sword",
+      "tags": [
+        "interweave",
+        "sect_demonic",
+        "protect"
+      ],
+      "requiresFlags": {
+        "demonAccepted": null
+      },
+      "choices": {
+        "left": {
+          "text": "'我不会让你的包庇白费的'",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "'不必——我自己承担'",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": -5
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_sect_demon_ambush",
+      "type": "SPECIAL",
+      "title": "两难之境",
+      "description": "魔道弟子袭击了宗门的一处资源点——你的任务是带队夺回。但到了现场你发现，带头的魔修是你曾经放过的那个人。他认出了你——他的手下也认出了你。",
+      "realm": "golden",
+      "weight": 6,
+      "path": null,
+      "tags": [
+        "interweave",
+        "sect_demonic",
+        "dilemma"
+      ],
+      "requiresFlags": {
+        "sectHuntDemon": null
+      },
+      "choices": {
+        "left": {
+          "text": "战斗——过去的交情不算数",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": -10,
+            "karmaBad": 10,
+            "health": -15
+          }
+        },
+        "right": {
+          "text": "劝降——'你欠我一条命'",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 10,
+            "fortune": 5
+          },
+          "karmaSeed": {
+            "id": "demonTurnedGood",
+            "seedType": "karma",
+            "delay": 12,
+            "priority": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_family_hostage",
+      "type": "SPECIAL",
+      "title": "家人",
+      "description": "魔道找到了你的软肋——你在凡间的家人。一封信送到了你的洞府：'你的母亲在万毒门做客——不是强迫的。但她想见你。'你手指发麻——不是因为魔气，是恐惧。",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "interweave",
+        "demonic_mortal",
+        "crisis"
+      ],
+      "requiresFlags": {
+        "demonSideChosen": null
+      },
+      "choices": {
+        "left": {
+          "text": "立刻去——不管是不是陷阱",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": -20,
+            "health": -15
+          },
+          "nextCard": "iw_family_saved"
+        },
+        "right": {
+          "text": "冷静——先派人打探真假",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_family_saved",
+      "type": "SPECIAL",
+      "title": "母亲的眼泪",
+      "description": "你的母亲真的在万毒门——但她是自愿来的。'他们说你在做危险的事——娘帮不了你修行，但娘可以帮你求他们不要伤害你。'她跪在魔道长老面前替你求情——一个凡人，跪在一群可以弹指间杀了她的修士面前。",
+      "realm": "golden",
+      "weight": 0,
+      "path": null,
+      "tags": [
+        "interweave",
+        "demonic_mortal",
+        "family"
+      ],
+      "choices": {
+        "left": {
+          "text": "拉母亲起来——'娘——不值得'",
+          "effects": {
+            "daoHeart": 25,
+            "karmaGood": 15,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "对魔道长老说——'有本事冲我来'",
+          "effects": {
+            "daoHeart": 15,
+            "karmaBad": 10,
+            "health": -20,
+            "fortune": -10
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_sect_family_clash",
+      "type": "SPECIAL",
+      "title": "宗门与家族",
+      "description": "宗门要求所有弟子断绝凡尘关系——'一心向道，凡人羁绊是修行的最大障碍。'但你的家族每年都来山门送东西——母亲做的糕点，父亲酿的酒。执事长老问：'你是修士还是凡人？'",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "interweave",
+        "sect_mortal",
+        "conflict"
+      ],
+      "choices": {
+        "left": {
+          "text": "'我是修士——但也是儿子'",
+          "effects": {
+            "daoHeart": 20,
+            "karmaGood": 10,
+            "fortune": -5
+          },
+          "karmaSeed": {
+            "id": "sectFamilyConflict",
+            "seedType": "karma",
+            "delay": 8,
+            "priority": 3
+          }
+        },
+        "right": {
+          "text": "断绝关系——'让他们走吧'",
+          "effects": {
+            "daoHeart": -15,
+            "cultivation": 15,
+            "karmaBad": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_sect_family_unity",
+      "type": "SPECIAL",
+      "title": "道与亲",
+      "description": "你抗住了宗门的压力，没有断绝凡尘关系。三年后，你的家族在宗门山下开了一家小客栈——修士们渐渐发现，这家客栈的老板娘比你见过的任何长老都懂人情世故。她煮的茶能让暴躁的剑修安静下来。",
+      "realm": "golden",
+      "weight": 3,
+      "path": null,
+      "tags": [
+        "interweave",
+        "sect_mortal",
+        "resolution"
+      ],
+      "requiresFlags": {
+        "sectFamilyConflict": null
+      },
+      "choices": {
+        "left": {
+          "text": "常回家看看——陪母亲喝茶",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 10,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "远远看着——不想引来麻烦",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_cut_ties_tribulation",
+      "type": "SPECIAL",
+      "title": "天劫·无情道",
+      "description": "天劫降临了——因为你斩断了红尘羁绊，天道给了你一条'清净路'。雷劫劈下来的时候，你看到每一道雷光里都映着一张脸——母亲、朋友、曾经爱过的人。天道在问：'你真的能忘？'",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "interweave",
+        "mortal_heaven",
+        "tribulation"
+      ],
+      "requiresFlags": {
+        "cutMortalTies": null
+      },
+      "choices": {
+        "left": {
+          "text": "'不能忘——那就让天劫来得更猛烈些'",
+          "effects": {
+            "daoHeart": 25,
+            "health": -30,
+            "cultivation": 15,
+            "karmaGood": 15
+          },
+          "desc": "天劫被你的道心震动了——它没见过一个修士敢这么对它说话。雷光中的脸消失了——不是因为天道放过了你，是因为你的记忆比天劫还坚硬。"
+        },
+        "right": {
+          "text": "闭上眼睛——接受天劫的净化",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": -15,
+            "health": -15,
+            "karmaBad": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_keep_ties_tribulation",
+      "type": "SPECIAL",
+      "title": "天劫·有情道",
+      "description": "天劫来了——但因为你的红尘羁绊太深，雷劫变得格外暴烈。每一道雷光里都有一个人的影子——母亲、师父、道侣——他们不是来阻挡天劫的，是来和你一起扛的。",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "interweave",
+        "mortal_heaven",
+        "tribulation"
+      ],
+      "requiresFlags": {
+        "keepMortalTies": null
+      },
+      "choices": {
+        "left": {
+          "text": "让他们一起扛——'我不怕欠你们'",
+          "effects": {
+            "daoHeart": 20,
+            "health": -20,
+            "karmaGood": 15,
+            "fortune": 5
+          },
+          "desc": "羁绊不是负担——是你的第二重灵根。他们的影子替你挡下了最重的那几道雷。"
+        },
+        "right": {
+          "text": "把所有人推开——'这是我的劫'",
+          "effects": {
+            "daoHeart": 15,
+            "health": -35,
+            "cultivation": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_comp_demon_clash",
+      "type": "SPECIAL",
+      "title": "道不同",
+      "description": "你的道侣找到了你——不是来温存的。ta的眼睛里有你从未见过的冷意：'告诉我——魔功的事是不是真的。'ta没说第二个字——不需要说。你看着ta，ta看着你，中间隔着一道比天劫还宽的裂缝。",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "interweave",
+        "companion_demonic",
+        "crisis"
+      ],
+      "requiresFlags": {
+        "demonAccepted": null
+      },
+      "choices": {
+        "left": {
+          "text": "'是真的——你能接受吗？'",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": -10
+          },
+          "companionEffects": {
+            "compId": null,
+            "affectionDelta": -30,
+            "bondDelta": -1,
+            "trustDelta": -20
+          }
+        },
+        "right": {
+          "text": "'我不需要你的同意'——转身离开",
+          "effects": {
+            "daoHeart": -10,
+            "karmaBad": 10
+          },
+          "companionEffects": {
+            "compId": null,
+            "affectionDelta": -40,
+            "bondDelta": -2,
+            "trustDelta": -30
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_comp_demon_reconcile",
+      "type": "SPECIAL",
+      "title": "重修旧好",
+      "description": "那个离开的道侣——回来了。ta站在你洞府门口，浑身是伤。原来ta不是离开你——是去查殷血的底，想帮你找一条不用入魔也能变强的路。ta失败了——但ta回来了。",
+      "realm": "golden",
+      "weight": 4,
+      "path": null,
+      "tags": [
+        "interweave",
+        "companion_demonic",
+        "reconciliation"
+      ],
+      "choices": {
+        "left": {
+          "text": "抱住ta——'别再做这种事了'",
+          "effects": {
+            "daoHeart": 25,
+            "karmaGood": 15,
+            "fortune": 10
+          },
+          "companionEffects": {
+            "compId": null,
+            "affectionDelta": 25,
+            "bondDelta": 1,
+            "trustDelta": 30
+          }
+        },
+        "right": {
+          "text": "'你不该去——但谢谢你'",
+          "effects": {
+            "daoHeart": 15,
+            "fortune": 5
+          },
+          "companionEffects": {
+            "compId": null,
+            "affectionDelta": 15,
+            "trustDelta": 20
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_comp_sect_forbid",
+      "type": "SPECIAL",
+      "title": "师门的阻挠",
+      "description": "宗门执事会正式通知你：你选的道侣'出身不正'——ta的家族和魔道有过往来，不适合与内门弟子结成道侣。白刃真人没有表态——但他的沉默本身就是一个态度。",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "interweave",
+        "companion_sect",
+        "conflict"
+      ],
+      "choices": {
+        "left": {
+          "text": "为ta辩护——'道侣之事我自己决定'",
+          "effects": {
+            "daoHeart": 20,
+            "fortune": -15,
+            "karmaGood": 10
+          },
+          "karmaSeed": {
+            "id": "compSectDisapprove",
+            "seedType": "bloodline",
+            "delay": 6,
+            "priority": 5
+          }
+        },
+        "right": {
+          "text": "放弃——'宗门规矩大过个人感情'",
+          "effects": {
+            "daoHeart": -20,
+            "karmaBad": 10,
+            "cultivation": 10
+          },
+          "companionEffects": {
+            "compId": null,
+            "affectionDelta": -50,
+            "bondDelta": -2
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_comp_sect_approve",
+      "type": "SPECIAL",
+      "title": "师父的认可",
+      "description": "白刃真人私下把你们俩叫到剑冢——不是来训话的。他把自己年轻时的道侣的发簪拿了出来——'我没能保护好她——不是因为宗门反对，是因为天劫。'他看着ta：'你能帮他渡劫吗？'",
+      "realm": "golden",
+      "weight": 4,
+      "path": "sword",
+      "tags": [
+        "interweave",
+        "companion_sect",
+        "approval"
+      ],
+      "requiresFlags": {
+        "compSectDisapprove": null
+      },
+      "choices": {
+        "left": {
+          "text": "'能——我能'（ta抢在你之前开口）",
+          "effects": {
+            "daoHeart": 25,
+            "karmaGood": 15,
+            "fortune": 10
+          },
+          "companionEffects": {
+            "compId": null,
+            "affectionDelta": 20,
+            "bondDelta": 1
+          }
+        },
+        "right": {
+          "text": "'我要自己渡劫——但我会活着回来见她'",
+          "effects": {
+            "daoHeart": 20,
+            "cultivation": 10,
+            "fortune": 5
+          },
+          "companionEffects": {
+            "compId": null,
+            "affectionDelta": 10,
+            "bondDelta": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_past_life_npc",
+      "type": "SPECIAL",
+      "title": "似曾相识",
+      "description": "你遇到了一个人——ta的脸你不认识，但ta的神态让你恍惚。你知道这个人在你前世和你很亲近——不是道侣，也许是一个帮过你的人，也许是你要报恩的人。ta的命数快要尽了——前世欠的，今生该还了。",
+      "realm": "golden",
+      "weight": 4,
+      "path": null,
+      "tags": [
+        "interweave",
+        "past_present",
+        "npc"
+      ],
+      "requirements": {
+        "minLifeCount": 1
+      },
+      "choices": {
+        "left": {
+          "text": "帮助ta——不问道理",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 15,
+            "fortune": 10,
+            "spiritStone": -20
+          },
+          "karmaSeed": {
+            "id": "pastLifeNpc",
+            "seedType": "karma",
+            "delay": 5,
+            "priority": 6
+          }
+        },
+        "right": {
+          "text": "旁观——'前世的账不该今生算'",
+          "effects": {
+            "daoHeart": 10,
+            "karmaBad": 5,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_past_life_enemy",
+      "type": "SPECIAL",
+      "title": "前世的仇",
+      "description": "你找到了——前世杀你的人。此生ta是个普通散修，看起来毫无威胁，甚至对你笑了一下。但你识海里前世的记忆在尖叫。杀——还是不杀？杀了，你就和前世的自己一样；不杀，你的道心里永远有一根刺。",
+      "realm": "golden",
+      "weight": 4,
+      "path": null,
+      "tags": [
+        "interweave",
+        "past_present",
+        "enemy"
+      ],
+      "requirements": {
+        "minLifeCount": 2
+      },
+      "choices": {
+        "left": {
+          "text": "放过ta——'此生的我没有理由杀你'",
+          "effects": {
+            "daoHeart": 30,
+            "karmaGood": 25,
+            "cultivation": -5
+          },
+          "karmaSeed": {
+            "id": "pastLifeEnemy",
+            "seedType": "fate",
+            "delay": 4,
+            "priority": 8
+          }
+        },
+        "right": {
+          "text": "杀——'血债血偿'",
+          "effects": {
+            "daoHeart": -20,
+            "karmaBad": 25,
+            "cultivation": 15,
+            "fortune": -15
+          }
+        }
+      }
+    },
+    {
+      "id": "iw_past_life_friend",
+      "type": "SPECIAL",
+      "title": "故人重逢",
+      "description": "你找到了前世最好的朋友——ta还活着，而且已经是化神期的大能了。但ta不认识你——因为你换了一张脸，换了一个灵根，换了一个名字。ta对你说：'年轻人——你让我想起一个人。一个死了一百年的人。'ta哭了。",
+      "realm": "golden",
+      "weight": 4,
+      "path": null,
+      "tags": [
+        "interweave",
+        "past_present",
+        "friend"
+      ],
+      "requirements": {
+        "minLifeCount": 2
+      },
+      "choices": {
+        "left": {
+          "text": "'那个人——是我'",
+          "effects": {
+            "daoHeart": 20,
+            "fortune": 10,
+            "karmaGood": 15
+          },
+          "desc": "ta沉默了很久。然后笑了——笑声里有一百年的沧桑。'我就知道你不会那么容易死。'"
+        },
+        "right": {
+          "text": "沉默——'我不确定ta能不能承受这个真相'",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 10
+          }
+        }
+      }
+    }
+  ]
+}

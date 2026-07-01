@@ -1,0 +1,1006 @@
+{
+  "_meta": {
+    "description": "六章主线里程碑卡牌 — 每章5张，修为阈值20/40/60/80时强制注入，100为突破卡",
+    "total": 30,
+    "card_id_format": "ch_{realm}_{threshold}",
+    "type": "MILESTONE",
+    "updated": "2026-06-30"
+  },
+  "ch_qi_20": {
+    "id": "ch_qi_20",
+    "title": "灵根觉醒",
+    "description": "丹田深处，沉寂多年的经脉突然颤动。你感受到一缕若有若无的灵气在体内流转——这就是修行者所说的'气感'。但你的灵根似乎残缺不全，仅有剑脉微微回应。",
+    "type": "MILESTONE",
+    "realm": "qi",
+    "threshold": 20,
+    "chapter": "凡尘初醒",
+    "chapterNum": 1,
+    "choices": {
+      "left": {
+        "text": "追寻剑脉",
+        "desc": "顺着那道微弱的剑意感应，去找寻残剑碎片的源头。",
+        "effects": {
+          "cultivation": 15,
+          "daoHeart": 10
+        },
+        "karmaSeed": "causal:sword_awakening"
+      },
+      "right": {
+        "text": "修补灵根",
+        "desc": "试图运转周天，强行唤醒其他残缺经脉。",
+        "effects": {
+          "cultivation": 10,
+          "health": -5,
+          "fortune": 5
+        },
+        "karmaSeed": "causal:root_repair_attempt"
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_start_sword.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_qi_20.png"
+  },
+  "ch_qi_40": {
+    "id": "ch_qi_40",
+    "title": "初遇机缘",
+    "chapterNum": 1,
+    "description": "你在一座废弃道观中发现了半卷古朴的修炼法门，其上文字已模糊不清，但隐隐透出不凡之气。观外有散修路过，似乎也察觉到了此地的灵气波动。",
+    "type": "MILESTONE",
+    "realm": "qi",
+    "threshold": 40,
+    "chapter": "凡尘初醒",
+    "choices": {
+      "left": {
+        "text": "独吞功法",
+        "desc": "迅速藏好半卷法门，假装若无其事。",
+        "effects": {
+          "cultivation": 20,
+          "karmaBad": 3
+        },
+        "karmaSeed": "causal:hoarded_manual"
+      },
+      "right": {
+        "text": "分享机缘",
+        "desc": "招呼散修一同参悟，结下善缘。",
+        "effects": {
+          "cultivation": 10,
+          "karmaGood": 5,
+          "fortune": 3
+        },
+        "karmaSeed": "causal:shared_opportunity"
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_cave.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_qi_40.png"
+  },
+  "ch_qi_60": {
+    "id": "ch_qi_60",
+    "title": "师承抉择",
+    "chapterNum": 1,
+    "description": "两位前辈同时向你伸出橄榄枝——一位是剑宗外门长老，以杀伐入道；一位是丹霞谷的炼丹师，以济世为心。你必须在二人之间做出抉择，此决定将影响整个修行之路。",
+    "type": "MILESTONE",
+    "realm": "qi",
+    "threshold": 60,
+    "chapter": "凡尘初醒",
+    "choices": {
+      "left": {
+        "text": "拜入剑宗",
+        "desc": "以杀证道，剑意即心意。",
+        "effects": {
+          "cultivation": 20,
+          "daoHeart": 10,
+          "karmaBad": 2
+        },
+        "karmaSeed": "causal:sword_sect_path"
+      },
+      "right": {
+        "text": "随丹师修行",
+        "desc": "济世为怀，炼丹悟道。",
+        "effects": {
+          "cultivation": 12,
+          "daoHeart": 5,
+          "karmaGood": 3,
+          "pill": 1
+        },
+        "karmaSeed": "causal:alchemy_path"
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_elder.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_qi_60.png"
+  },
+  "ch_qi_80": {
+    "id": "ch_qi_80",
+    "title": "入道试炼",
+    "chapterNum": 1,
+    "description": "师门设下试炼——深入妖兽出没的迷雾森林，取回一株百年灵草。林中毒雾弥漫，妖兽嘶吼不绝于耳。你握紧手中的剑，知道自己没有退路。",
+    "type": "MILESTONE",
+    "realm": "qi",
+    "threshold": 80,
+    "chapter": "凡尘初醒",
+    "choices": {
+      "left": {
+        "text": "正面迎战",
+        "desc": "以剑开路，斩妖前行。",
+        "effects": {
+          "cultivation": 15,
+          "health": -10
+        },
+        "combatChance": 0.4
+      },
+      "right": {
+        "text": "潜行绕路",
+        "desc": "避其锋芒，绕道而行。",
+        "effects": {
+          "cultivation": 8,
+          "fortune": 3
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_bodyTrial.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_qi_80.png"
+  },
+  "ch_qi_100": {
+    "id": "ch_qi_100",
+    "title": "突破筑基",
+    "chapterNum": 1,
+    "description": "灵气如潮水般涌入丹田。你盘膝而坐，运转心法，丹田内气旋初成。这是筑基的关键时刻——选择何种方式凝结道基，将决定你未来的修行之道。",
+    "type": "MILESTONE",
+    "realm": "qi",
+    "threshold": 100,
+    "chapter": "凡尘初醒",
+    "isBreakthrough": true,
+    "choices": {
+      "left": {
+        "text": "稳扎稳打",
+        "desc": "以稳为主，不贪不急，筑基水到渠成。",
+        "effects": {
+          "cultivation": 15,
+          "health": 10,
+          "daoHeart": 5
+        },
+        "breakSuccess": 1
+      },
+      "right": {
+        "text": "冲击极限",
+        "desc": "不惜代价冲击更高品质的道基。",
+        "effects": {
+          "cultivation": 25,
+          "health": -15,
+          "fortune": 5
+        },
+        "breakSuccess": 0.7
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_qi_100.png"
+  },
+  "ch_foundation_20": {
+    "id": "ch_foundation_20",
+    "title": "拜入宗门",
+    "description": "你正式踏入宗门山门。青云缭绕的三宗四派各有千秋——剑宗以战养道，丹霞谷以药证道，天机阁以算问道。长老们的目光落在这位灵根残缺却意志过人的少年身上。",
+    "type": "MILESTONE",
+    "realm": "foundation",
+    "threshold": 20,
+    "chapter": "宗门风云",
+    "chapterNum": 2,
+    "choices": {
+      "left": {
+        "text": "效忠师门",
+        "desc": "宣誓效忠，换取宗门资源与庇护。",
+        "effects": {
+          "cultivation": 15,
+          "daoHeart": 5,
+          "fortune": 5
+        },
+        "karmaSeed": "causal:loyal_to_sect"
+      },
+      "right": {
+        "text": "保持距离",
+        "desc": "接受宗门庇护但不立誓，保留自由之身。",
+        "effects": {
+          "cultivation": 8,
+          "daoHeart": -3,
+          "fortune": 8
+        },
+        "karmaSeed": "causal:free_agent"
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_elder.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_foundation_20.png"
+  },
+  "ch_foundation_40": {
+    "id": "ch_foundation_40",
+    "title": "师门历练",
+    "description": "长老派你下山执行第一次外出任务——调查一座偏远山村的异象。村民称夜半时分有黑影在山间游荡，牲畜接连失踪。你背上行囊，踏出山门。",
+    "type": "MILESTONE",
+    "realm": "foundation",
+    "threshold": 40,
+    "chapter": "宗门风云",
+    "chapterNum": 2,
+    "choices": {
+      "left": {
+        "text": "调查真相",
+        "desc": "深入山林追踪黑影，查清幕后真凶。",
+        "effects": {
+          "cultivation": 12,
+          "karmaGood": 3
+        },
+        "karmaSeed": "causal:village_mystery",
+        "combatChance": 0.3
+      },
+      "right": {
+        "text": "先保村民",
+        "desc": "布阵护村，优先确保凡人安全。",
+        "effects": {
+          "cultivation": 6,
+          "daoHeart": 8,
+          "karmaGood": 5
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_foundation_40.png"
+  },
+  "ch_foundation_60": {
+    "id": "ch_foundation_60",
+    "title": "门派纷争",
+    "description": "内门弟子与外门弟子因一枚灵矿的开采权爆发冲突。你的同门拉你站队，而中立者将两面树敌。宗门内的暗流正在涌动。",
+    "type": "MILESTONE",
+    "realm": "foundation",
+    "threshold": 60,
+    "chapter": "宗门风云",
+    "chapterNum": 2,
+    "choices": {
+      "left": {
+        "text": "支持同门",
+        "desc": "站在与你亲近的弟子一边，巩固人脉。",
+        "effects": {
+          "cultivation": 10,
+          "karmaBad": 3,
+          "fortune": 5
+        }
+      },
+      "right": {
+        "text": "试图调停",
+        "desc": "从中斡旋，试图平息争端。",
+        "effects": {
+          "cultivation": 5,
+          "daoHeart": 5,
+          "karmaGood": 5
+        },
+        "karmaSeed": "causal:mediator"
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_fellow.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_foundation_60.png"
+  },
+  "ch_foundation_80": {
+    "id": "ch_foundation_80",
+    "title": "红尘试炼",
+    "description": "你再次踏入凡间。街市上的叫卖声、孩童的嬉笑声、老者的叹息声——与山上清修截然不同。一位算命先生拦住了你：'公子印堂发黑，百日之内必有大劫。'",
+    "type": "MILESTONE",
+    "realm": "foundation",
+    "threshold": 80,
+    "chapter": "宗门风云",
+    "chapterNum": 2,
+    "choices": {
+      "left": {
+        "text": "详细询问",
+        "desc": "请算命先生细说端倪，付上一块灵石。",
+        "effects": {
+          "fortune": 10,
+          "spiritStone": -1
+        }
+      },
+      "right": {
+        "text": "一笑而过",
+        "desc": "江湖术士之言，不足为信。",
+        "effects": {
+          "cultivation": 10,
+          "daoHeart": 3
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_fortune.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_foundation_80.png"
+  },
+  "ch_foundation_100": {
+    "id": "ch_foundation_100",
+    "title": "突破金丹",
+    "description": "丹田内液态真元开始旋转凝固。宗门长老齐聚护法——这是凝聚金丹的关键。你的每一个选择都将刻入金丹的道纹之中，不可更改。",
+    "type": "MILESTONE",
+    "realm": "foundation",
+    "threshold": 100,
+    "chapter": "宗门风云",
+    "chapterNum": 2,
+    "isBreakthrough": true,
+    "choices": {
+      "left": {
+        "text": "凝聚纯阳金丹",
+        "desc": "以浩然正气铸丹，偏向正道。",
+        "effects": {
+          "cultivation": 20,
+          "daoHeart": 10,
+          "karmaGood": 5
+        },
+        "breakSuccess": 0.85
+      },
+      "right": {
+        "text": "融合阴阳真意",
+        "desc": "不拘正魔，追求大道本真。",
+        "effects": {
+          "cultivation": 18,
+          "karmaGood": 2,
+          "karmaBad": 2,
+          "fortune": 5
+        },
+        "breakSuccess": 0.75
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_foundation_100.png"
+  },
+  "ch_golden_20": {
+    "id": "ch_golden_20",
+    "title": "金丹初成",
+    "description": "丹田内一颗金色圆丹缓缓旋转，散发出温热的气息。你终于踏入了金丹期——一个真正的修士行列。但也从这一刻起，魔道注意到了你的存在。",
+    "type": "MILESTONE",
+    "realm": "golden",
+    "threshold": 20,
+    "chapter": "丹心问道",
+    "chapterNum": 3,
+    "choices": {
+      "left": {
+        "text": "闭关巩固",
+        "desc": "深居简出，稳固金丹根基。",
+        "effects": {
+          "cultivation": 15,
+          "daoHeart": 5,
+          "health": 10
+        }
+      },
+      "right": {
+        "text": "游历四方",
+        "desc": "携金丹游历天下，增广见闻。",
+        "effects": {
+          "cultivation": 10,
+          "fortune": 8,
+          "karmaGood": 2
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_cave.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_golden_20.png"
+  },
+  "ch_golden_40": {
+    "id": "ch_golden_40",
+    "title": "秘境探索",
+    "description": "宗门藏经阁中藏着通往太虚秘境的传送阵。秘境中时间流速与外界不同，一日可抵百日苦修。但秘境深处亦有大恐怖——上古禁制与凶兽横行。",
+    "type": "MILESTONE",
+    "realm": "golden",
+    "threshold": 40,
+    "chapter": "丹心问道",
+    "chapterNum": 3,
+    "choices": {
+      "left": {
+        "text": "深入秘境",
+        "desc": "冒险潜入秘境深处，博取机缘。",
+        "effects": {
+          "cultivation": 20,
+          "health": -15,
+          "fortune": 8
+        },
+        "combatChance": 0.5,
+        "karmaSeed": "causal:ruins_explorer"
+      },
+      "right": {
+        "text": "只在边缘修行",
+        "desc": "在外围借助时间流速安全修炼。",
+        "effects": {
+          "cultivation": 12,
+          "daoHeart": 3
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_cave.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_golden_40.png"
+  },
+  "ch_golden_60": {
+    "id": "ch_golden_60",
+    "title": "正魔抉择",
+    "chapterNum": 3,
+    "description": "一位黑衣女子拦住了你的去路。她的修为深不可测，周身散发着令人窒息的威压。'正道之路步步为营，你何不随我入魔道——那里没有规矩，只有力量。'",
+    "type": "MILESTONE",
+    "realm": "golden",
+    "threshold": 60,
+    "chapter": "丹心问道",
+    "choices": {
+      "left": {
+        "text": "严词拒绝",
+        "desc": "正道修仙，不堕魔渊。",
+        "effects": {
+          "daoHeart": 10,
+          "karmaGood": 5,
+          "cultivation": 5
+        },
+        "karmaSeed": "causal:rejected_demon_path"
+      },
+      "right": {
+        "text": "犹豫动摇",
+        "desc": "她说得不无道理……",
+        "effects": {
+          "karmaBad": 5,
+          "cultivation": 10,
+          "daoHeart": -5
+        },
+        "karmaSeed": "causal:demon_temptation"
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_golden_60.png"
+  },
+  "ch_golden_80": {
+    "id": "ch_golden_80",
+    "title": "道侣机缘",
+    "description": "在一处灵泉瀑布旁，你遇到了一个同样在修行的身影。她/他转头看你，目光清亮。空气中弥漫着说不清的情愫——修仙之路漫长而寂寞，有人同行或许是福分。",
+    "type": "MILESTONE",
+    "chapterNum": 3,
+    "realm": "golden",
+    "threshold": 80,
+    "chapter": "丹心问道",
+    "choices": {
+      "left": {
+        "text": "主动交谈",
+        "desc": "上前攀谈，借着修行话题拉近距离。",
+        "effects": {
+          "cultivation": 8,
+          "karmaGood": 3,
+          "fortune": 5
+        },
+        "karmaSeed": "causal:companion_meeting"
+      },
+      "right": {
+        "text": "保持距离",
+        "desc": "修仙之人当断尘缘，默默离去。",
+        "effects": {
+          "cultivation": 10,
+          "daoHeart": 5
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_fortune.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_golden_80.png"
+  },
+  "ch_golden_100": {
+    "id": "ch_golden_100",
+    "title": "突破元婴",
+    "description": "金丹碎裂，元婴将出。这是修仙路上最惊险的一关——丹碎成婴，九死一生。金丹碎裂的剧痛犹如万箭穿心，但元婴化形之后的天地将截然不同。",
+    "type": "MILESTONE",
+    "chapterNum": 3,
+    "realm": "golden",
+    "threshold": 100,
+    "chapter": "丹心问道",
+    "isBreakthrough": true,
+    "choices": {
+      "left": {
+        "text": "服丹护婴",
+        "desc": "吞服护婴宝丹，稳妥渡过丹碎之劫。",
+        "effects": {
+          "cultivation": 15,
+          "health": -5
+        },
+        "breakSuccess": 0.9,
+        "requires": {
+          "pill": 1
+        }
+      },
+      "right": {
+        "text": "硬抗丹碎",
+        "desc": "不信丹药，以自身意志硬抗碎丹之痛。",
+        "effects": {
+          "cultivation": 25,
+          "health": -20,
+          "daoHeart": 10
+        },
+        "breakSuccess": 0.55
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_golden_100.png"
+  },
+  "ch_nascent_20": {
+    "id": "ch_nascent_20",
+    "title": "元婴化形",
+    "description": "丹田内一个小小的人影盘膝而坐，与你面目相同。元婴已成，你感受着化为神魂出窍的神奇——世界在你眼中变得前所未有的清晰，大道法则如丝线般在天地间交织。",
+    "type": "MILESTONE",
+    "realm": "nascent",
+    "threshold": 20,
+    "chapter": "碎丹成婴",
+    "chapterNum": 4,
+    "choices": {
+      "left": {
+        "text": "元婴出游",
+        "desc": "放任元婴离体游历，体悟天地法则。",
+        "effects": {
+          "cultivation": 15,
+          "fortune": 8,
+          "health": -5
+        }
+      },
+      "right": {
+        "text": "固守丹田",
+        "desc": "稳固元婴根基，不急于求成。",
+        "effects": {
+          "cultivation": 10,
+          "health": 10,
+          "daoHeart": 5
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_spellTome.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_nascent_20.png"
+  },
+  "ch_nascent_40": {
+    "id": "ch_nascent_40",
+    "title": "天劫预兆",
+    "chapterNum": 4,
+    "description": "深夜打坐时，天空突然雷光乍现，劈落在你面前三寸。这不是巧合——天道已经注意到了你。你的突破速度太快了，天劫正在试探你的底细。",
+    "type": "MILESTONE",
+    "realm": "nascent",
+    "threshold": 40,
+    "chapter": "碎丹成婴",
+    "choices": {
+      "left": {
+        "text": "积蓄力量",
+        "desc": "放缓修炼速度，全力准备渡劫资源。",
+        "effects": {
+          "cultivation": 5,
+          "health": 10,
+          "daoHeart": 5
+        },
+        "karmaSeed": "causal:prepared_for_tribulation"
+      },
+      "right": {
+        "text": "逆天而上",
+        "desc": "既然天道注意到我，那就让它来吧。",
+        "effects": {
+          "cultivation": 15,
+          "fortune": 8,
+          "daoHeart": -3
+        },
+        "karmaSeed": "causal:defied_heavens"
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_nascent_40.png"
+  },
+  "ch_nascent_60": {
+    "id": "ch_nascent_60",
+    "title": "因果清算",
+    "chapterNum": 4,
+    "description": "修真界的因果轮盘开始转动。你过去种下的善因与恶因同时发芽——有人在远方因你的善举而得救，也有人在暗处因你的冷漠而记恨。此刻所有选择都浮出水面。",
+    "type": "MILESTONE",
+    "realm": "nascent",
+    "threshold": 60,
+    "chapter": "碎丹成婴",
+    "choices": {
+      "left": {
+        "text": "偿还因果",
+        "desc": "主动寻找需要帮助的人，了结旧债。",
+        "effects": {
+          "karmaGood": 8,
+          "daoHeart": 5,
+          "cultivation": 3
+        },
+        "karmaSeed": "causal:debts_paid"
+      },
+      "right": {
+        "text": "快意恩仇",
+        "desc": "有恩报恩有仇报仇，不欠心债。",
+        "effects": {
+          "karmaBad": -5,
+          "cultivation": 10,
+          "karmaGood": 2
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_fortune.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_nascent_60.png"
+  },
+  "ch_nascent_80": {
+    "id": "ch_nascent_80",
+    "title": "宿命抉择",
+    "chapterNum": 4,
+    "description": "道心深处升起一个声音——你的灵根残缺本应无法修行，是'混沌漏洞'体质让你逆天而行。天机阁的长老警告你：'混沌体质要么成仙要么成魔，没有第三条路。'此刻你必须面对自己的宿命。",
+    "type": "MILESTONE",
+    "realm": "nascent",
+    "threshold": 80,
+    "chapter": "碎丹成婴",
+    "choices": {
+      "left": {
+        "text": "顺应天命",
+        "desc": "接受混沌体质的宿命，坦然面对正魔之别。",
+        "effects": {
+          "daoHeart": 10,
+          "cultivation": 12,
+          "fortune": -5
+        }
+      },
+      "right": {
+        "text": "我命由我",
+        "desc": "开辟第三条路——天道不容，我便逆天。",
+        "effects": {
+          "cultivation": 18,
+          "daoHeart": -5,
+          "karmaBad": 3,
+          "fortune": 10
+        },
+        "karmaSeed": "causal:defy_fate"
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_fellow.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_nascent_80.png"
+  },
+  "ch_nascent_100": {
+    "id": "ch_nascent_100",
+    "title": "突破化神",
+    "chapterNum": 4,
+    "description": "元婴睁开双眼，周身金光大放。化神——元婴成长为元神，从此真正的分神化念，一念千里。但这最后的蜕变需要以自身精血为引。你割破手指，血滴落入丹田。",
+    "type": "MILESTONE",
+    "realm": "nascent",
+    "threshold": 100,
+    "chapter": "碎丹成婴",
+    "isBreakthrough": true,
+    "choices": {
+      "left": {
+        "text": "以善念化神",
+        "desc": "以一生修行善果为锚，化神入正道。",
+        "effects": {
+          "cultivation": 20,
+          "daoHeart": 10,
+          "karmaGood": 8
+        },
+        "breakSuccess": 0.8
+      },
+      "right": {
+        "text": "以意志化神",
+        "desc": "不借外力，以纯粹的意志炼化元神。",
+        "effects": {
+          "cultivation": 25,
+          "health": -20,
+          "fortune": 5
+        },
+        "breakSuccess": 0.6
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_nascent_100.png"
+  },
+  "ch_deity_20": {
+    "id": "ch_deity_20",
+    "title": "化神之变",
+    "chapterNum": 5,
+    "description": "化神之后，你的感知超越了肉身。你能看到凡人身上的因果丝线、天地间的灵气潮流、远处的杀意与善意。这种无所不知的感觉令人沉醉，但也令人恐惧。",
+    "type": "MILESTONE",
+    "realm": "deity",
+    "threshold": 20,
+    "chapter": "神游太虚",
+    "choices": {
+      "left": {
+        "text": "低调隐修",
+        "desc": "收敛气息，不欲引人注目。",
+        "effects": {
+          "cultivation": 10,
+          "health": 10,
+          "daoHeart": 5
+        }
+      },
+      "right": {
+        "text": "威震群雄",
+        "desc": "化神威压横扫四方，确立地位。",
+        "effects": {
+          "cultivation": 18,
+          "karmaBad": 5,
+          "daoHeart": -3
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_cave.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_deity_20.png"
+  },
+  "ch_deity_40": {
+    "id": "ch_deity_40",
+    "title": "上古秘辛",
+    "chapterNum": 5,
+    "description": "你在一处荒废的上古遗迹中发现了半块石碑。碑文记载：'混沌漏洞体质乃上古大劫之遗，持此体质者，或为救世之人，或为灭世之源。'你终于明白了自己的特殊之处。",
+    "type": "MILESTONE",
+    "realm": "deity",
+    "threshold": 40,
+    "chapter": "神游太虚",
+    "choices": {
+      "left": {
+        "text": "追寻真相",
+        "desc": "深入遗迹，寻找另一半石碑。",
+        "effects": {
+          "cultivation": 15,
+          "fortune": 10,
+          "health": -10
+        },
+        "karmaSeed": "causal:ancient_truth",
+        "combatChance": 0.4
+      },
+      "right": {
+        "text": "毁碑灭迹",
+        "desc": "打破石碑，不让秘密被他人发现。",
+        "effects": {
+          "cultivation": 10,
+          "daoHeart": -5,
+          "karmaBad": 5
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_cave.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_deity_40.png"
+  },
+  "ch_deity_60": {
+    "id": "ch_deity_60",
+    "title": "世界崩塌",
+    "chapterNum": 5,
+    "description": "天边出现了一道裂缝——不是比喻，是真正的空间裂缝。天道正在崩塌。所有化神以上的修士都感受到了这股震动。苍生涂炭的征兆已经出现。你该怎么做？",
+    "type": "MILESTONE",
+    "realm": "deity",
+    "threshold": 60,
+    "chapter": "神游太虚",
+    "choices": {
+      "left": {
+        "text": "守护苍生",
+        "desc": "以化神之力护住一方天地，庇佑凡人。",
+        "effects": {
+          "karmaGood": 10,
+          "daoHeart": 8,
+          "health": -15
+        }
+      },
+      "right": {
+        "text": "抓住机遇",
+        "desc": "天道崩塌必有异宝出世，趁机搜罗机缘。",
+        "effects": {
+          "cultivation": 20,
+          "fortune": 10,
+          "karmaBad": 8
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_deity_60.png"
+  },
+  "ch_deity_80": {
+    "id": "ch_deity_80",
+    "title": "众生因果",
+    "chapterNum": 5,
+    "description": "化神后期的你能够看到每个人的因果线。无数丝线从你身上延伸出去，连接到每一个你曾经帮助或伤害过的人。他们此刻的处境——或喜或悲，或生或死——都与你的选择息息相关。",
+    "type": "MILESTONE",
+    "realm": "deity",
+    "threshold": 80,
+    "chapter": "神游太虚",
+    "choices": {
+      "left": {
+        "text": "斩断因果",
+        "desc": "以化神之力斩断所有因果线，再无牵挂。",
+        "effects": {
+          "cultivation": 25,
+          "karmaBad": 10,
+          "daoHeart": -10
+        }
+      },
+      "right": {
+        "text": "承担因果",
+        "desc": "认领每一根因果线，承担所有后果。",
+        "effects": {
+          "karmaGood": 10,
+          "daoHeart": 15,
+          "health": -10
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_fellow.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_deity_80.png"
+  },
+  "ch_deity_100": {
+    "id": "ch_deity_100",
+    "title": "突破渡劫",
+    "chapterNum": 5,
+    "description": "化神大圆满。天空乌云密布，雷龙在云层中游走。天道锁定了你——突破渡劫的不是实力，而是勇气。你深吸一口气，踏入虚空。九重雷劫，来吧。",
+    "type": "MILESTONE",
+    "realm": "deity",
+    "threshold": 100,
+    "chapter": "神游太虚",
+    "isBreakthrough": true,
+    "choices": {
+      "left": {
+        "text": "以法宝渡劫",
+        "desc": "祭出所有法宝，以物抗雷。",
+        "effects": {
+          "cultivation": 18,
+          "health": -5
+        },
+        "breakSuccess": 0.85,
+        "requires": {
+          "treasure": 1
+        }
+      },
+      "right": {
+        "text": "以肉身硬扛",
+        "desc": "不借外物，以本命精元对抗雷劫。",
+        "effects": {
+          "cultivation": 28,
+          "health": -30,
+          "daoHeart": 15
+        },
+        "breakSuccess": 0.5
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_deity_100.png"
+  },
+  "ch_tribulation_20": {
+    "id": "ch_tribulation_20",
+    "title": "天劫降临",
+    "chapterNum": 6,
+    "description": "第一道劫雷劈落。紫金色的雷电直贯天灵。你强忍住经脉撕裂的剧痛，运转化神期留下的所有底蕴来对抗。九九雷劫才刚刚开始。",
+    "type": "MILESTONE",
+    "realm": "tribulation",
+    "threshold": 20,
+    "chapter": "天劫飞升",
+    "choices": {
+      "left": {
+        "text": "全力防御",
+        "desc": "将全部灵力凝为护体罡气，硬接劫雷。",
+        "effects": {
+          "cultivation": 15,
+          "health": -10,
+          "daoHeart": 5
+        }
+      },
+      "right": {
+        "text": "引导劫雷",
+        "desc": "以阵道之法引导劫雷淬炼肉身。",
+        "effects": {
+          "cultivation": 10,
+          "health": -5,
+          "fortune": 8
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_20.png"
+  },
+  "ch_tribulation_40": {
+    "id": "ch_tribulation_40",
+    "title": "九九雷劫",
+    "chapterNum": 6,
+    "description": "第四十道劫雷已过，你的衣袍焦黑，但眼神愈发清明。天道似乎惊讶于你的韧性，劫雷的品质开始变化——不再只是毁灭，还蕴含着造化。每一道雷都在锤炼你的元神。",
+    "type": "MILESTONE",
+    "realm": "tribulation",
+    "threshold": 40,
+    "chapter": "天劫飞升",
+    "choices": {
+      "left": {
+        "text": "炼化劫雷",
+        "desc": "尝试将劫雷之力纳入己身。",
+        "effects": {
+          "cultivation": 20,
+          "health": -15,
+          "fortune": 10
+        }
+      },
+      "right": {
+        "text": "稳步渡过",
+        "desc": "保持防守姿态，不贪不冒进。",
+        "effects": {
+          "cultivation": 12,
+          "health": -5,
+          "daoHeart": 5
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_40.png"
+  },
+  "ch_tribulation_60": {
+    "id": "ch_tribulation_60",
+    "title": "心魔大劫",
+    "chapterNum": 6,
+    "description": "第六十道劫雷不再劈在身上——它劈在心上。你的心魔显形了：它有着你的脸，穿着你的衣服，但眼神中充满愤恨与不甘。它质问你的每一个选择、每一道伤口。",
+    "type": "MILESTONE",
+    "realm": "tribulation",
+    "threshold": 60,
+    "chapter": "天劫飞升",
+    "choices": {
+      "left": {
+        "text": "直面心魔",
+        "desc": "不躲不闪，与自己的心魔对话。",
+        "effects": {
+          "daoHeart": 15,
+          "cultivation": 10,
+          "health": -5
+        }
+      },
+      "right": {
+        "text": "斩杀心魔",
+        "desc": "以剑斩之，不留余地。",
+        "effects": {
+          "cultivation": 15,
+          "daoHeart": -5,
+          "karmaBad": 5
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_fellow.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_60.png"
+  },
+  "ch_tribulation_80": {
+    "id": "ch_tribulation_80",
+    "title": "最后抉择",
+    "chapterNum": 6,
+    "description": "第八十道劫雷劈落之后，天地寂静。一道天光从裂缝中射出，那是仙界的入口。但此刻你看到了凡间——那个灵根残缺的少年站在废弃道观中，正在做出第一个选择。一切因果都将在此结算。",
+    "type": "MILESTONE",
+    "realm": "tribulation",
+    "threshold": 80,
+    "chapter": "天劫飞升",
+    "choices": {
+      "left": {
+        "text": "了却凡尘",
+        "desc": "以仙人之姿降下机缘，回报凡间恩人。",
+        "effects": {
+          "karmaGood": 15,
+          "daoHeart": 10,
+          "cultivation": 5
+        }
+      },
+      "right": {
+        "text": "斩断凡尘",
+        "desc": "仙人不应留情，斩断一切尘缘。",
+        "effects": {
+          "cultivation": 20,
+          "karmaBad": 10,
+          "daoHeart": -10
+        }
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_q_fortune.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_80.png"
+  },
+  "ch_tribulation_100": {
+    "id": "ch_tribulation_100",
+    "title": "飞升陨落",
+    "chapterNum": 6,
+    "description": "最后一道劫雷——九九归一雷。这道雷决定了你的一切。你的师友、仇敌、爱人、过往——所有因果都化作这道雷中的一部分。接住它，你就是仙；接不住，就从头再来。",
+    "type": "MILESTONE",
+    "realm": "tribulation",
+    "threshold": 100,
+    "chapter": "天劫飞升",
+    "isBreakthrough": true,
+    "isFinale": true,
+    "choices": {
+      "left": {
+        "text": "兵解重修",
+        "desc": "自知无法接住这一雷，主动散去修为重来。",
+        "effects": {
+          "daoHeart": 20
+        },
+        "breakSuccess": 0,
+        "karmaSeed": "causal:reincarnation"
+      },
+      "right": {
+        "text": "拼死渡劫",
+        "desc": "集毕生修为于一点，硬抗这最后一道雷。",
+        "effects": {
+          "cultivation": 50
+        },
+        "breakSuccess": 0.4
+      }
+    },
+    "sceneImage": "assets/cards/events/scene_qi_ending_ascension.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_100.png"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "quest": {
+    "id": "pill_master",
+    "name": "失传丹方",
+    "type": "QUEST",
+    "startRealm": "foundation",
+    "pathRestriction": "pill",
+    "trigger": {
+      "minTurn": 8,
+      "requiredFlags": null,
+      "forbiddenFlags": ["pillMasterCompleted"],
+      "requiredAttributes": { "fortune": 35 },
+      "priority": 7
+    },
+    "entryCardId": "q_pill_1",
+    "chainLength": 4,
+    "factionRewards": {
+      "shennong_dangu": 20,
+      "tianshu_academy": 5
+    },
+    "rewardOnComplete": {
+      "attributes": { "cultivation": 20, "daoHeart": 15, "fortune": 10 },
+      "resources": { "spiritStone": 30 },
+      "flags": ["pillMasterCompleted"],
+      "karmaSeeds": [
+        { "id": "pillMasterEcho", "delay": 8, "realm": "golden", "priority": 3 }
+      ]
+    }
+  },
+  "cards": [
+    {
+      "id": "q_pill_1",
+      "title": "药王谷的密卷",
+      "description": "神农丹谷——药圣私下召见你。他递给一个布满灰尘的木匣——里面是一卷用金箔封边的古简。'这是上古丹方——失传了三千年。我老了，配不出——但你的手还年轻。'\n\n你打开古简——配方上用的不是草药，是因果。第一味药：'善因三丝'。",
+      "type": "QUEST",
+      "questId": "pill_master",
+      "questStep": 1,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "接受药圣的托付",
+          "effects": { "cultivation": 5, "daoHeart": 10, "fortune": 5 },
+          "questNext": "q_pill_2"
+        },
+        "right": {
+          "text": "婉拒——因果炼丹太危险",
+          "effects": { "daoHeart": 5, "fortune": 10 },
+          "questEnd": true
+        }
+      }
+    },
+    {
+      "id": "q_pill_2",
+      "title": "因果炼丹",
+      "description": "你按照古简上的法门——用神识将微量的因果从天地间抽离出来。第一根'善因丝'——从一个老农还泪的故事里提炼。第二根——从一个母亲为子祈福的香火里提炼。\n\n手指被因果之力灼得焦黑——但丹炉里，第一粒'因果丹'正在成型。",
+      "type": "QUEST",
+      "questId": "pill_master",
+      "questStep": 2,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "继续炼制——投入更多因果",
+          "effects": { "cultivation": 10, "health": -10, "karmaGood": 10 },
+          "questNext": "q_pill_3",
+          "karmaSeed": [
+            { "id": "pillMasterStarted", "delay": 5, "realm": "golden", "priority": 2 },
+            { "id": "pillPoison", "delay": 7, "realm": "nascent", "priority": 3 }
+          ]
+        },
+        "right": {
+          "text": "到此为止——一粒就够了",
+          "effects": { "cultivation": 5, "health": 5, "fortune": 5 },
+          "questNext": "q_pill_3"
+        }
+      }
+    },
+    {
+      "id": "q_pill_3",
+      "title": "因果丹的代价",
+      "description": "五粒因果丹——金光流转，每一粒都包含一段世间因果。药圣颤抖着手拿起一粒——然后放了下来。他说：'这些丹，不是给人吃的。它们是给天道看的——证明人可以操纵因果。'\n\n话音未落，天空暗了下来。天道注意到了。",
+      "type": "QUEST",
+      "questId": "pill_master",
+      "questStep": 3,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "毁掉因果丹",
+          "effects": { "daoHeart": 20, "karmaGood": 20, "cultivation": -5 },
+          "questNext": "q_pill_4",
+          "karmaSeed": [
+            { "id": "pillMasterSacrifice", "delay": 8, "realm": "nascent", "priority": 3 },
+            { "id": "pillCure", "delay": 6, "realm": "golden", "priority": 2 }
+          ]
+        },
+        "right": {
+          "text": "藏起来——这是力量",
+          "effects": { "cultivation": 20, "daoHeart": -10, "karmaBad": 10 },
+          "questNext": "q_pill_4"
+        }
+      }
+    },
+    {
+      "id": "q_pill_4",
+      "title": "丹之极意",
+      "description": "无论你做了什么选择——药圣看着你，眼神复杂。他说：'你不是在炼丹——你是在修一条从没有人走过的丹道。因果为药，天道为炉。你比我强——因为比我更疯。'\n\n他递给你一个空瓶子——说：'这才是最好的丹方——不是炼什么，是不炼什么。真正的丹修知道，有些东西不该炼。'",
+      "type": "QUEST",
+      "questId": "pill_master",
+      "questStep": 4,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "醍醐灌顶——领悟丹道",
+          "effects": { "cultivation": 25, "daoHeart": 20, "karmaGood": 5 },
+          "questEnd": true
+        },
+        "right": {
+          "text": "沉默接过瓶子",
+          "effects": { "cultivation": 15, "daoHeart": 15, "fortune": 10 },
+          "questEnd": true
+        }
+      }
+    }
+  ]
+}

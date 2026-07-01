@@ -1,0 +1,48 @@
+{
+  "paths": {
+    "sword": {
+      "name": "剑修",
+      "icon": "⚔️",
+      "desc": "一剑破万法，高攻高风险",
+      "startCard": "q_start_sword",
+      "bonuses": {
+        "cultivation": 5,
+        "daoHeart": 3,
+        "health": -5
+      }
+    },
+    "spell": {
+      "name": "法修",
+      "icon": "🔮",
+      "desc": "诸术并修，多选项策略",
+      "startCard": "q_start_spell",
+      "bonuses": {
+        "cultivation": 3,
+        "daoHeart": 5,
+        "fortune": 3
+      }
+    },
+    "body": {
+      "name": "体修",
+      "icon": "🛡️",
+      "desc": "肉身成圣，气血雄厚",
+      "startCard": "q_start_body",
+      "bonuses": {
+        "cultivation": 0,
+        "health": 20,
+        "daoHeart": 5
+      }
+    },
+    "pill": {
+      "name": "丹修",
+      "icon": "🧪",
+      "desc": "以丹入道，资源转换",
+      "startCard": "q_start_pill",
+      "bonuses": {
+        "cultivation": 3,
+        "spiritStone": 10,
+        "fortune": 5
+      }
+    }
+  }
+}

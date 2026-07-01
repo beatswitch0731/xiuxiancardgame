@@ -1,0 +1,103 @@
+{
+  "items": [
+    {
+      "id": "shop_pill_foundation",
+      "name": "筑基丹",
+      "type": "pill",
+      "price": 20,
+      "realm": "qi",
+      "desc": "突破筑基期的必需品。不买的话就得靠运气。",
+      "effect": { "pillId": "foundation" }
+    },
+    {
+      "id": "shop_pill_healing",
+      "name": "回春丹",
+      "type": "pill",
+      "price": 10,
+      "realm": "qi",
+      "desc": "恢复 15 点体力。",
+      "effect": { "healHp": 15 }
+    },
+    {
+      "id": "shop_pill_mind",
+      "name": "清心丹",
+      "type": "pill",
+      "price": 12,
+      "realm": "foundation",
+      "desc": "恢复 10 点道心。",
+      "effect": { "healDaoHeart": 10 }
+    },
+    {
+      "id": "shop_pill_golden",
+      "name": "结金丹",
+      "type": "pill",
+      "price": 50,
+      "realm": "foundation",
+      "desc": "突破金丹期的必需品。",
+      "effect": { "pillId": "golden" }
+    },
+    {
+      "id": "shop_pill_burst",
+      "name": "爆灵丹",
+      "type": "pill",
+      "price": 25,
+      "realm": "golden",
+      "desc": "临时增加 15 点修为。",
+      "effect": { "tempCultivation": 15 }
+    },
+    {
+      "id": "shop_pill_nascent_pill",
+      "name": "凝婴丹",
+      "type": "pill",
+      "price": 120,
+      "realm": "golden",
+      "desc": "突破元婴期的必需品。极其昂贵。",
+      "effect": { "pillId": "nascent" }
+    },
+    {
+      "id": "shop_treasure_iron_armor",
+      "name": "玄铁甲",
+      "type": "treasure",
+      "price": 30,
+      "realm": "qi",
+      "desc": "防御法宝。战斗时 +5 防御。",
+      "effect": { "treasureId": "玄铁甲" }
+    },
+    {
+      "id": "shop_treasure_gourd",
+      "name": "灵泉葫芦",
+      "type": "treasure",
+      "price": 25,
+      "realm": "qi",
+      "desc": "回复法宝。每轮恢复 2 体力。",
+      "effect": { "treasureId": "灵泉葫芦" }
+    },
+    {
+      "id": "shop_treasure_sword_token",
+      "name": "剑心佩",
+      "type": "treasure",
+      "price": 60,
+      "realm": "foundation",
+      "desc": "剑修法宝。+8 攻击 +5% 暴击。",
+      "effect": { "treasureId": "剑心佩" }
+    },
+    {
+      "id": "shop_treasure_dust_pearl",
+      "name": "避尘珠",
+      "type": "treasure",
+      "price": 40,
+      "realm": "foundation",
+      "desc": "福缘法宝。厄运来临时可催动。",
+      "effect": { "treasureId": "避尘珠" }
+    },
+    {
+      "id": "shop_npc_favor",
+      "name": "灵石打点",
+      "type": "npc_favor",
+      "price": 30,
+      "realm": "qi",
+      "desc": "花灵石疏通关系，提升势力声望或NPC好感。",
+      "effect": { "npcFavor": 15 }
+    }
+  ]
+}

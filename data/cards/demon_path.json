@@ -1,0 +1,1294 @@
+{
+  "realm": "demon_path",
+  "realmName": "正魔抉择线",
+  "_description": "正魔线三幕结构事件卡。第一幕：试探(炼气)8张 / 第二幕：卷入(筑基)12张 / 第三幕：深耕(金丹)15张",
+  "karmaCards": {
+    "demonRefused": "dp_refused_revenge",
+    "demonAccepted": "dp_accepted_trial",
+    "orthodoxWarned": "dp_orthodox_test",
+    "demonSideChosen": "dp_demon_master_visit",
+    "orthodoxSideChosen": "dp_orthodox_mentor",
+    "demonInternalConflict": "dp_demon_schism",
+    "orthodoxInternalConflict": "dp_orthodox_schism",
+    "demonDeepBond": "dp_blood_oath",
+    "orthodoxDeepBond": "dp_sect_heirloom",
+    "betrayalChoice": "dp_final_stand"
+  },
+  "cards": [
+    {
+      "id": "dp_demon_whisper",
+      "type": "SPECIAL",
+      "title": "耳边的低语",
+      "description": "你在后山修炼时，耳边响起一个陌生的声音：'你的灵根不差——但在正道，你永远只是芸芸众生中的一个。魔道可以让你成为唯一。'你环顾四周，空无一人。",
+      "realm": "qi",
+      "weight": 8,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "first_contact",
+        "mystery"
+      ],
+      "choices": {
+        "left": {
+          "text": "'你是谁？'——追问声源",
+          "effects": {
+            "daoHeart": 3,
+            "fortune": -5
+          },
+          "karmaSeed": {
+            "id": "demonFirstContact",
+            "seedType": "grudge",
+            "delay": 8,
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "无视——专心修炼",
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 3
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_orthodox_warning",
+      "type": "SPECIAL",
+      "title": "执事长老的警告",
+      "description": "宗门执事长老忽然叫住你——他的眼神很锐利。'最近有没有陌生人在后山找你说话？'他顿了顿，'如果有——立刻上报。那不是普通的散修。'",
+      "realm": "qi",
+      "weight": 7,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "orthodox",
+        "warning"
+      ],
+      "requiresFlags": {
+        "demonFirstContact": null
+      },
+      "choices": {
+        "left": {
+          "text": "如实告知——'有声音在找我'",
+          "effects": {
+            "daoHeart": 8,
+            "karmaGood": 5,
+            "fortune": 3
+          },
+          "karmaSeed": {
+            "id": "orthodoxWarned",
+            "seedType": "karma",
+            "delay": 10,
+            "priority": 3
+          }
+        },
+        "right": {
+          "text": "隐瞒——'没有'",
+          "effects": {
+            "daoHeart": -5,
+            "cultivation": 5,
+            "karmaBad": 5
+          },
+          "karmaSeed": {
+            "id": "lieToSect",
+            "seedType": "grudge",
+            "delay": 12,
+            "priority": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_face",
+      "type": "SPECIAL",
+      "title": "魔道来客",
+      "description": "那个声音的主人终于现身了——一个穿着黑袍的中年修士，眉心有一点殷红的印记。他的笑容很奇怪——明明在笑，却让你后背发凉。'我叫殷血——别怕，我不是来打架的。我是来给你一个选择的。'",
+      "realm": "qi",
+      "weight": 6,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "face_to_face",
+        "choice"
+      ],
+      "requiresFlags": {
+        "demonFirstContact": null,
+        "lieToSect": null
+      },
+      "choices": {
+        "left": {
+          "text": "'什么选择？'——听他说完",
+          "effects": {
+            "daoHeart": -3,
+            "fortune": -5
+          },
+          "nextCard": "dp_demon_offer"
+        },
+        "right": {
+          "text": "拔剑——'魔道妖人，滚！'",
+          "effects": {
+            "daoHeart": 5,
+            "karmaGood": 5,
+            "health": -10
+          },
+          "karmaSeed": {
+            "id": "demonRefused",
+            "seedType": "grudge",
+            "delay": 15,
+            "priority": 3,
+            "cancelGroup": "demon_path_choice"
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_offer",
+      "type": "SPECIAL",
+      "title": "魔道的饵",
+      "description": "殷血摊开手掌——掌心里是一枚黑色的令牌。'拿着它——只是看看魔道是怎么修炼的。不喜欢的话，随时可以扔了。'他的语气轻描淡写，但你知道这枚令牌不简单。",
+      "realm": "qi",
+      "weight": 0,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "offer"
+      ],
+      "choices": {
+        "left": {
+          "text": "接过令牌——'只是看看'",
+          "effects": {
+            "daoHeart": -8,
+            "cultivation": 10,
+            "karmaBad": 8
+          },
+          "karmaSeed": {
+            "id": "demonAccepted",
+            "seedType": "grudge",
+            "delay": 12,
+            "priority": 3,
+            "cancelGroup": "demon_path_choice"
+          }
+        },
+        "right": {
+          "text": "拒绝——'不必了'",
+          "effects": {
+            "daoHeart": 8,
+            "karmaGood": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_first_lesson",
+      "type": "SPECIAL",
+      "title": "第一课：魔气入体",
+      "description": "你试着按照令牌里记录的方法运转魔气——一股灼热的力量从丹田涌出，和你的灵力完全不同。它在吞噬——吞噬你的杂念、你的犹豫、甚至你的怜悯。你感到自己变强了。也变冷了。",
+      "realm": "qi",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "training"
+      ],
+      "requiresFlags": {
+        "demonAccepted": null
+      },
+      "choices": {
+        "left": {
+          "text": "继续修炼魔功",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": -10,
+            "health": 5,
+            "karmaBad": 10
+          }
+        },
+        "right": {
+          "text": "停下——'这不是我要的'",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 10,
+            "cultivation": -5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_orthodox_test",
+      "type": "SPECIAL",
+      "title": "宗门的考验",
+      "description": "执事长老单独召见你。'宗门最近发现有人在传授魔功——你是这条线索上的人。'他把一个测试法器放在桌上：'把手放上去——如果你是清白的，它不会亮。'",
+      "realm": "qi",
+      "weight": 6,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "orthodox",
+        "test"
+      ],
+      "requiresFlags": {
+        "demonAccepted": null,
+        "orthodoxWarned": null
+      },
+      "choices": {
+        "left": {
+          "text": "坦然接受测试",
+          "effects": {
+            "daoHeart": 5,
+            "karmaGood": 5
+          },
+          "desc": "法器微微一亮——但长老只是皱了皱眉。'微弱的外道气息……不算违规。去吧。'"
+        },
+        "right": {
+          "text": "拒绝——'我拒绝这种侮辱'",
+          "effects": {
+            "daoHeart": -3,
+            "karmaBad": 3,
+            "fortune": -10
+          },
+          "desc": "长老的目光冷了三分。'你可以拒绝——但我记住你了。'"
+        }
+      }
+    },
+    {
+      "id": "dp_sect_elder_suspicion",
+      "type": "SPECIAL",
+      "title": "长老的目光",
+      "description": "不止一位长老开始用异样的眼光看你——不是敌意，是审视。你的修行速度太快了，快得不正常。白刃真人路过时拍了一下你的肩膀：'走得快不重要——走得稳才重要。'",
+      "realm": "qi",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "orthodox",
+        "suspicion"
+      ],
+      "choices": {
+        "left": {
+          "text": "放慢修炼——不出风头",
+          "effects": {
+            "cultivation": -5,
+            "daoHeart": 8,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "不管——实力才是硬道理",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": -5,
+            "fortune": -5,
+            "karmaBad": 3
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_end_of_qi",
+      "type": "SPECIAL",
+      "title": "炼气将尽",
+      "description": "炼气期的终点近在眼前。你站在山崖上，风吹来两种味道——一边是正道香火的气息，一边是远方荒原的腥甜。两条路，一个你。",
+      "realm": "qi",
+      "weight": 7,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act_end",
+        "reflection"
+      ],
+      "choices": {
+        "left": {
+          "text": "望向正道——坚定了道心",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "望向远方——心里泛起涟漪",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": -5,
+            "fortune": -5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_conflict_erupts",
+      "type": "SPECIAL",
+      "title": "第一次冲突",
+      "description": "筑基第三天——你在坊市附近遭遇了一场伏击。袭击你的不是妖兽——是一个魔道散修。他在被你击退时大笑：'殷血大人说的没错——你还真是块好料子。'",
+      "realm": "foundation",
+      "weight": 8,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "conflict",
+        "act2"
+      ],
+      "choices": {
+        "left": {
+          "text": "追上去——问清楚谁派他来的",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 5,
+            "health": -15
+          },
+          "karmaSeed": {
+            "id": "huntDemonMessenger",
+            "seedType": "grudge",
+            "delay": 8,
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "报告宗门——'有人盯着我'",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 5,
+            "fortune": 3
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_ambush_by_orthodox",
+      "type": "SPECIAL",
+      "title": "正道的暗箭",
+      "description": "你以为正道都是光明磊落？几个同门截住了你——不是聊修炼，是怀疑你。'有人看到殷血的人找过你。解释一下。'领头的是内门弟子李寒——他的剑已经拔了一半。",
+      "realm": "foundation",
+      "weight": 7,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "orthodox",
+        "betrayal"
+      ],
+      "requiresFlags": {
+        "demonAccepted": null
+      },
+      "choices": {
+        "left": {
+          "text": "'他只是想拉拢我——我拒绝了'（半真半假）",
+          "effects": {
+            "daoHeart": -5,
+            "fortune": 5
+          },
+          "karmaSeed": {
+            "id": "lieToPeers",
+            "seedType": "grudge",
+            "delay": 10,
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "'这和你们无关'——硬碰硬",
+          "effects": {
+            "health": -20,
+            "daoHeart": 5,
+            "karmaBad": 5
+          },
+          "karmaSeed": {
+            "id": "enmityWithPeers",
+            "seedType": "grudge",
+            "delay": 6,
+            "priority": 3
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_recruit_again",
+      "type": "SPECIAL",
+      "title": "殷血的第二次邀请",
+      "description": "殷血又来了——这次不是在荒山野岭，而是在你的洞府里。他就坐在你的蒲团上，喝着你的茶。'上次的令牌还在你手上吧——用了吗？'他看起来很有耐心——魔道通常不是这样的。",
+      "realm": "foundation",
+      "weight": 7,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "recruitment",
+        "act2"
+      ],
+      "choices": {
+        "left": {
+          "text": "'你到底想从我这里得到什么？'",
+          "effects": {
+            "daoHeart": 3,
+            "fortune": -3
+          },
+          "nextCard": "dp_demon_truth"
+        },
+        "right": {
+          "text": "赶他走——'别再来了'",
+          "effects": {
+            "daoHeart": 8,
+            "karmaGood": 5
+          },
+          "karmaSeed": {
+            "id": "demonRefusedTwice",
+            "seedType": "grudge",
+            "delay": 12,
+            "priority": 4
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_truth",
+      "type": "SPECIAL",
+      "title": "殷血的秘密",
+      "description": "殷血沉默了很久。终于开口：'我三百年前是正道弟子——和你现在一个样。后来我发现——正道修的不是道，是规矩。魔道修的不是魔，是自由。'他掀起袖子——手臂上有一道剑伤，疤痕狰狞：'这是当年白刃真人留下的。他是我师兄。'",
+      "realm": "foundation",
+      "weight": 0,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "reveal",
+        "lore"
+      ],
+      "choices": {
+        "left": {
+          "text": "'所以你是来报仇的？'",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "'你找错人了——我不是你'",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 5,
+            "fortune": 3
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_blood_moon_mission",
+      "type": "SPECIAL",
+      "title": "血月任务",
+      "description": "宗门下发了一个任务——剿灭一处魔道据点。但到了地方你发现：那些'魔道'在护着一个村子。妖兽潮来了——正道不管，魔道在守。领队的弟子说：'不用管村民——目标只有魔修。'",
+      "realm": "foundation",
+      "weight": 8,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "moral_test",
+        "act2"
+      ],
+      "choices": {
+        "left": {
+          "text": "违抗命令——先疏散村民",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 15,
+            "cultivation": -5
+          },
+          "karmaSeed": {
+            "id": "savedCivilians",
+            "seedType": "karma",
+            "delay": 10,
+            "priority": 3
+          }
+        },
+        "right": {
+          "text": "服从命令——只针对魔修",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": -10,
+            "karmaBad": 10
+          },
+          "desc": "你告诉自己——这是军令。但村民的哭声让你三天没睡着。"
+        }
+      }
+    },
+    {
+      "id": "dp_captured_by_demon",
+      "type": "SPECIAL",
+      "title": "被俘",
+      "description": "在一次混战中，你被魔道擒获——他们把你绑在祭坛上，没有马上杀你。原因很快揭晓：殷血来了。他站在你面前，居高临下，但语气出奇地平静：'你看——正道放弃了这片区域。三百年了，什么都没变。'",
+      "realm": "foundation",
+      "weight": 6,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "capture",
+        "act2"
+      ],
+      "requiresFlags": {
+        "demonFirstContact": null
+      },
+      "choices": {
+        "left": {
+          "text": "'放了我——或者杀了我'",
+          "effects": {
+            "daoHeart": 10,
+            "health": -10
+          },
+          "karmaSeed": {
+            "id": "defiedDemon",
+            "seedType": "karma",
+            "delay": 8,
+            "priority": 3
+          }
+        },
+        "right": {
+          "text": "'……正道为什么放弃这片区域？'",
+          "effects": {
+            "daoHeart": -5,
+            "fortune": 5
+          },
+          "karmaSeed": {
+            "id": "demonSideChosen",
+            "seedType": "bloodline",
+            "delay": 6,
+            "priority": 5,
+            "cancelGroup": "demon_path_choice"
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_sect_council",
+      "type": "SPECIAL",
+      "title": "宗门公审",
+      "description": "有人把你告到了宗门公审会——理由是'私通魔道'。你站在大殿中央，四周的长老们面色各异。白刃真人沉默地看着你——他什么都没说。",
+      "realm": "foundation",
+      "weight": 7,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "orthodox",
+        "trial"
+      ],
+      "choices": {
+        "left": {
+          "text": "自辩——'我没有背叛正道'",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": -5,
+            "karmaGood": 5
+          }
+        },
+        "right": {
+          "text": "沉默——让时间说话",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_break_from_sect",
+      "type": "SPECIAL",
+      "title": "诀别师门",
+      "description": "公审的结果是'无罪'——但你知道，从今天起，师门已经不再是家了。白刃真人在你离开大殿时追了上来：'不管你走哪条路——你的剑法是我教的。别丢了剑修的脸。'这是他在赶你走，还是在留你？",
+      "realm": "foundation",
+      "weight": 5,
+      "path": "sword",
+      "tags": [
+        "demon_path",
+        "orthodox",
+        "master"
+      ],
+      "requiresFlags": {
+        "demonAccepted": null
+      },
+      "choices": {
+        "left": {
+          "text": "'师父——我不会让你失望'",
+          "effects": {
+            "daoHeart": 20,
+            "karmaGood": 10,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "沉默行礼——转身离开",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 10,
+            "karmaBad": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_refugee",
+      "type": "SPECIAL",
+      "title": "魔道的难民",
+      "description": "你遇到了一个从魔道逃出来的人——不是修士，是个普通凡人。他全家被魔修炼成了傀儡——他逃了出来，浑身是伤。他说：'魔道说的是自由——但他们的自由是强者的自由，弱者的炼狱。'",
+      "realm": "foundation",
+      "weight": 6,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "refugee",
+        "dark_side"
+      ],
+      "choices": {
+        "left": {
+          "text": "送他去正道宗门安置",
+          "effects": {
+            "karmaGood": 15,
+            "daoHeart": 10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "给他灵石——让他自己找出路",
+          "effects": {
+            "karmaGood": 5,
+            "fortune": 3,
+            "spiritStone": -10
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_end_of_foundation",
+      "type": "SPECIAL",
+      "title": "筑基将尽·分野",
+      "description": "筑基期的结束近在眼前——你已经不是当年那个在后山听到低语的小修士了。你见过魔道的残酷，也见过正道的虚伪。你见过殷血的伤疤，也见过白刃真人的沉默。抉择的时刻快到了。",
+      "realm": "foundation",
+      "weight": 7,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act_end",
+        "reflection"
+      ],
+      "choices": {
+        "left": {
+          "text": "正道——但不再是盲从的正道",
+          "effects": {
+            "daoHeart": 20,
+            "karmaGood": 10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "魔道——但不做殷血那样的人",
+          "effects": {
+            "daoHeart": -10,
+            "cultivation": 15,
+            "karmaBad": 10,
+            "fortune": -5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_camp_visit",
+      "type": "SPECIAL",
+      "title": "踏入魔营",
+      "description": "你第一次正式踏入魔道的领地——万毒门的边界营地。这里和正道截然不同：没有规矩，只有实力。你看到两个魔修因为一块灵石大打出手，周围的人在看热闹——没有人阻止，因为'强者说了算'。",
+      "realm": "golden",
+      "weight": 8,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "world"
+      ],
+      "requiresFlags": {
+        "demonSideChosen": null
+      },
+      "choices": {
+        "left": {
+          "text": "出手制止——'这也太过了'",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 10,
+            "health": -20
+          },
+          "karmaSeed": {
+            "id": "demonLawDefied",
+            "seedType": "grudge",
+            "delay": 8,
+            "priority": 3
+          }
+        },
+        "right": {
+          "text": "旁观——魔道的规则就是如此",
+          "effects": {
+            "daoHeart": -5,
+            "karmaBad": 5,
+            "cultivation": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_factions",
+      "type": "SPECIAL",
+      "title": "魔道的内斗",
+      "description": "魔道不是铁板一块——万毒门、血煞宗、噬心阁三大势力互相牵制。殷血所在的血煞宗主张'秩序中的自由'，而噬心阁主张'绝对自由'——包括自由地杀人。你被卷入了他们的派系之争。",
+      "realm": "golden",
+      "weight": 7,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "faction"
+      ],
+      "requiresFlags": {
+        "demonSideChosen": null
+      },
+      "choices": {
+        "left": {
+          "text": "站在血煞宗一边——秩序中的自由",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 10
+          },
+          "karmaSeed": {
+            "id": "demonFactionChosen",
+            "seedType": "bloodline",
+            "delay": 8,
+            "priority": 4
+          }
+        },
+        "right": {
+          "text": "保持中立——谁也不帮",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": -10,
+            "karmaGood": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_orthodox_reconnaissance",
+      "type": "SPECIAL",
+      "title": "正道的间谍",
+      "description": "正道联盟派了一个卧底潜入魔道——ta找到了你。'我知道你没有彻底入魔——你还有选择。帮我们——把魔道的布防图带出来，正道既往不咎。'",
+      "realm": "golden",
+      "weight": 7,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "spy"
+      ],
+      "requiresFlags": {
+        "demonSideChosen": null
+      },
+      "choices": {
+        "left": {
+          "text": "答应——'我本来就打算离开'",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 15,
+            "fortune": -15
+          },
+          "karmaSeed": {
+            "id": "spyForOrthodox",
+            "seedType": "karma",
+            "delay": 6,
+            "priority": 5
+          }
+        },
+        "right": {
+          "text": "拒绝——'正道也不是我的朋友'",
+          "effects": {
+            "daoHeart": 5,
+            "karmaBad": 10,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_betrayal",
+      "type": "SPECIAL",
+      "title": "魔道的背叛",
+      "description": "你以为殷血对你另眼相看是因为你的天赋——错了。你只是他棋盘上的一枚棋子。他当着你面接见了一个正道使者，两人谈论的事情是：'那个正道派来的间谍——利用完之后，处理掉。'你不是间谍——但他们不需要知道这点。",
+      "realm": "golden",
+      "weight": 6,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "betrayal"
+      ],
+      "requiresFlags": {
+        "demonSideChosen": null
+      },
+      "choices": {
+        "left": {
+          "text": "当面质问殷血",
+          "effects": {
+            "daoHeart": 15,
+            "health": -25,
+            "karmaGood": 10
+          },
+          "karmaSeed": {
+            "id": "demonBetrayal",
+            "seedType": "bloodline",
+            "delay": 4,
+            "priority": 6
+          }
+        },
+        "right": {
+          "text": "假装不知——暗中准备后路",
+          "effects": {
+            "daoHeart": -5,
+            "fortune": 10,
+            "cultivation": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_master_visit",
+      "type": "SPECIAL",
+      "title": "殷血的师父",
+      "description": "殷血的师父找上门了——一个活了八百年的老魔，修为深不可测。他看了看你，笑了：'殷血说你像我——我不信。但我现在信了。'他递给你一卷功法——《血煞真解》。'这是殷血没资格学的。你要不要？'",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "master"
+      ],
+      "requiresFlags": {
+        "demonSideChosen": null
+      },
+      "choices": {
+        "left": {
+          "text": "接过——'教我'",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": -20,
+            "karmaBad": 15,
+            "health": 10
+          },
+          "karmaSeed": {
+            "id": "demonDeepBond",
+            "seedType": "bloodline",
+            "delay": 5,
+            "priority": 7
+          }
+        },
+        "right": {
+          "text": "拒绝——'我不是殷血'",
+          "effects": {
+            "daoHeart": 20,
+            "karmaGood": 10,
+            "health": -15
+          },
+          "karmaSeed": {
+            "id": "demonMasterRefused",
+            "seedType": "grudge",
+            "delay": 8,
+            "priority": 6
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_orthodox_mentor",
+      "type": "SPECIAL",
+      "title": "白刃真人的托付",
+      "description": "白刃真人病倒了——修士不会生病，除非是道伤。他说是年轻时留下的——但你看得出，那伤来自一场和魔道的决斗，对手是殷血。他说：'我不行了——剑道的传承交给你。不要像我一样——在规矩和道心之间选错了方向。'",
+      "realm": "golden",
+      "weight": 5,
+      "path": "sword",
+      "tags": [
+        "demon_path",
+        "act3",
+        "master"
+      ],
+      "requiresFlags": {
+        "orthodoxSideChosen": null
+      },
+      "choices": {
+        "left": {
+          "text": "接过剑道传承——发誓不辜负",
+          "effects": {
+            "daoHeart": 25,
+            "cultivation": 15,
+            "karmaGood": 10,
+            "treasure": "白刃剑谱"
+          },
+          "karmaSeed": {
+            "id": "orthodoxDeepBond",
+            "seedType": "bloodline",
+            "delay": 5,
+            "priority": 7
+          }
+        },
+        "right": {
+          "text": "'师父——你不会有事的'——去寻找灵药",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 15,
+            "fortune": 5,
+            "health": -10
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_blood_oath",
+      "type": "SPECIAL",
+      "title": "血誓",
+      "description": "殷血的师父要求你发一个血誓——效忠血煞宗，永不背叛。这是一个不可撤销的誓约——一旦违背，道基必毁。殷血站在旁边，面无表情，但你看得出他的手在微微颤抖——他曾发过同样的誓。",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "oath"
+      ],
+      "requiresFlags": {
+        "demonDeepBond": null
+      },
+      "choices": {
+        "left": {
+          "text": "发血誓——'我以道基为誓'",
+          "effects": {
+            "daoHeart": -15,
+            "cultivation": 30,
+            "karmaBad": 20
+          },
+          "desc": "血誓烙在你的丹田上——滚烫、冰冷、不可逆。你感到自己的道被钉在了一个方向上。但你也感到前所未有的力量。"
+        },
+        "right": {
+          "text": "拒绝——'道基是我自己的'",
+          "effects": {
+            "daoHeart": 20,
+            "karmaGood": 10,
+            "health": -30,
+            "fortune": -15
+          },
+          "karmaSeed": {
+            "id": "bloodOathRefused",
+            "seedType": "grudge",
+            "delay": 5,
+            "priority": 8
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_sect_heirloom",
+      "type": "SPECIAL",
+      "title": "镇派之宝",
+      "description": "白刃真人在你拒绝发血誓的那个夜晚，派人送来了一把剑——剑身上刻着你的名字。这是镇派之宝之一的'问道剑'。附了一行字：'剑道不需要誓约——只需要你的道。'",
+      "realm": "golden",
+      "weight": 5,
+      "path": "sword",
+      "tags": [
+        "demon_path",
+        "act3",
+        "heirloom"
+      ],
+      "requiresFlags": {
+        "orthodoxDeepBond": null
+      },
+      "choices": {
+        "left": {
+          "text": "握住问道剑——剑鸣如钟",
+          "effects": {
+            "daoHeart": 30,
+            "cultivation": 20,
+            "treasure": "问道剑"
+          },
+          "desc": "剑身发出一声悠长的剑鸣——不是你在驭剑，是剑在认同你。这把剑等了七百年，等到了它认可的人。"
+        },
+        "right": {
+          "text": "将剑送回——'我不配'",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_schism",
+      "type": "SPECIAL",
+      "title": "血煞宗的内战",
+      "description": "血煞宗内部爆发了内战——血誓派对抗自由派。殷血站在自由派一边——他说：'三百年了，我不想再发一次誓。'但他的师父是血誓派的首领。父子反目——你被要求选边。",
+      "realm": "golden",
+      "weight": 6,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "civil_war"
+      ],
+      "requiresFlags": {
+        "demonInternalConflict": null
+      },
+      "choices": {
+        "left": {
+          "text": "站在殷血一边——'自由不该用誓约束缚'",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 10,
+            "health": -25
+          },
+          "karmaSeed": {
+            "id": "demonCivilWarChosen",
+            "seedType": "bloodline",
+            "delay": 4,
+            "priority": 7
+          }
+        },
+        "right": {
+          "text": "离开——'血煞宗的事与我无关'",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": -10,
+            "karmaGood": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_orthodox_schism",
+      "type": "SPECIAL",
+      "title": "正道的裂痕",
+      "description": "正道联盟也不是铁板——天枢道院发现了天道法阵的真相（上界在收割飞升者），要求公开。但其他宗门反对——'这会动摇修真界的根基。'你敬重的白刃真人被迫表态。",
+      "realm": "golden",
+      "weight": 6,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "civil_war",
+        "orthodox"
+      ],
+      "requiresFlags": {
+        "orthodoxInternalConflict": null
+      },
+      "choices": {
+        "left": {
+          "text": "支持公开真相——'修士有权知道'",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 15,
+            "fortune": -15
+          }
+        },
+        "right": {
+          "text": "支持维持稳定——'真相会害死更多人'",
+          "effects": {
+            "daoHeart": -10,
+            "karmaBad": 10,
+            "fortune": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_redemption",
+      "type": "SPECIAL",
+      "title": "殷血的救赎",
+      "description": "内战到了最残酷的时候——殷血被他的师父亲手重伤，奄奄一息。他躺在血泊里，看着你：'我知道你在正道那边也有人——去告诉白刃，对不起。三万六千剑，我每一剑都后悔。'他闭上了眼睛。",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "redemption",
+        "death"
+      ],
+      "requiresFlags": {
+        "demonCivilWarChosen": null
+      },
+      "choices": {
+        "left": {
+          "text": "救他——用自己十年修为换他一命",
+          "effects": {
+            "cultivation": -20,
+            "daoHeart": 25,
+            "karmaGood": 20,
+            "health": -15
+          },
+          "karmaSeed": {
+            "id": "savedYinxue",
+            "seedType": "karma",
+            "delay": 3,
+            "priority": 8
+          }
+        },
+        "right": {
+          "text": "让他走——'告诉白刃的人是你自己'",
+          "effects": {
+            "daoHeart": 10,
+            "karmaBad": 15,
+            "fortune": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_demon_ascend",
+      "type": "SPECIAL",
+      "title": "魔道飞升之秘",
+      "description": "殷血活了——他告诉你一个秘密：魔道的'飞升'和正道的不一样。魔道的飞升不是被收割——是主动吞噬天道引擎的一部分，用几万年的恶业换来超脱。但你也可以选择：吞噬，或者……炸了它。",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "ascension",
+        "revelation"
+      ],
+      "requiresFlags": {
+        "savedYinxue": null
+      },
+      "choices": {
+        "left": {
+          "text": "'炸了它——让所有修士都自由'",
+          "effects": {
+            "daoHeart": 30,
+            "karmaGood": 25,
+            "fortune": -20
+          },
+          "karmaSeed": {
+            "id": "destroyHeavenEngine",
+            "seedType": "fate",
+            "delay": 8,
+            "priority": 10
+          }
+        },
+        "right": {
+          "text": "'吞噬——我不入地狱谁入地狱'",
+          "effects": {
+            "cultivation": 35,
+            "daoHeart": -25,
+            "karmaBad": 25
+          },
+          "karmaSeed": {
+            "id": "consumeHeavenEngine",
+            "seedType": "fate",
+            "delay": 8,
+            "priority": 10,
+            "cancelGroup": "final_path"
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_final_stand",
+      "type": "SPECIAL",
+      "title": "最终抉择",
+      "description": "天道引擎的核心近在眼前——它的光芒照亮了整个界域。殷血和白刃分别站在你身后——一个浑身是魔纹，一个拄着剑。他们等了三百年，等的是这一刻——不是他们自己的抉择，是你的。",
+      "realm": "golden",
+      "weight": 5,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "act3",
+        "finale",
+        "world"
+      ],
+      "requiresFlags": {
+        "demonSideChosen": null
+      },
+      "choices": {
+        "left": {
+          "text": "破而后立——建立新天道",
+          "effects": {
+            "daoHeart": 30,
+            "karmaGood": 30,
+            "cultivation": 20,
+            "fortune": 20
+          },
+          "desc": "你不会重蹈覆辙——新天道没有正道和魔道之分，只有'道'。殷血和白刃同时点了点头——这是他们三百年恩怨中唯一达成的一致。"
+        },
+        "right": {
+          "text": "维持现状——修改天道规则而非推翻",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 15,
+            "fortune": 10,
+            "cultivation": 15
+          },
+          "desc": "不是所有错误都需要摧毁——有些需要修正。天道引擎继续运转，但不再收割——而是引导。"
+        }
+      }
+    },
+    {
+      "id": "dp_refused_revenge",
+      "type": "SPECIAL",
+      "title": "魔道的报复",
+      "description": "你曾经拒绝了殷血的邀请——他没忘记。一群魔修在你最脆弱的时候发动了袭击——不是要杀你，是要让你知道：拒绝魔道不是免费的。",
+      "realm": "golden",
+      "weight": 0,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "karma",
+        "revenge"
+      ],
+      "choices": {
+        "left": {
+          "text": "迎战——让他们知道你不是好惹的",
+          "effects": {
+            "cultivation": 15,
+            "health": -25,
+            "karmaBad": 5
+          }
+        },
+        "right": {
+          "text": "智取——用阵法困住他们",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5,
+            "fortune": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "dp_accepted_trial",
+      "type": "SPECIAL",
+      "title": "魔劫",
+      "description": "接受魔道修炼的后果来了——魔气反噬，你的丹田出现了裂痕。正道不接纳你，魔道也不完全信任你。你站在两个世界的缝隙里——没有一条路是完全属于你的。",
+      "realm": "golden",
+      "weight": 0,
+      "path": null,
+      "tags": [
+        "demon_path",
+        "karma",
+        "trial"
+      ],
+      "choices": {
+        "left": {
+          "text": "同时炼化正魔两种力量",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 15,
+            "health": -25,
+            "fortune": -10
+          },
+          "desc": "你不是第一个尝试的人——大多数都死了。但你感到两种力量在你体内开始融合——不是冲突，是互补。"
+        },
+        "right": {
+          "text": "选择一条路——专心修炼",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 10,
+            "health": 5
+          }
+        }
+      }
+    }
+  ]
+}

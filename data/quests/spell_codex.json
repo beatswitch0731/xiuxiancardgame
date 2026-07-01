@@ -1,0 +1,127 @@
+{
+  "quest": {
+    "id": "spell_codex",
+    "name": "禁术之书",
+    "type": "QUEST",
+    "startRealm": "foundation",
+    "pathRestriction": "spell",
+    "trigger": {
+      "minTurn": 10,
+      "requiredFlags": null,
+      "forbiddenFlags": ["spellCodexCompleted"],
+      "requiredAttributes": { "cultivation": 25 },
+      "priority": 7
+    },
+    "entryCardId": "q_spell_1",
+    "chainLength": 4,
+    "factionRewards": {
+      "tianshu_academy": 15,
+      "tianji_pavilion": 10
+    },
+    "rewardOnComplete": {
+      "attributes": { "cultivation": 30, "daoHeart": 15, "fortune": 5 },
+      "flags": ["spellCodexCompleted"],
+      "karmaSeeds": [
+        { "id": "spellCodexEcho", "delay": 10, "realm": "golden", "priority": 3 }
+      ]
+    }
+  },
+  "cards": [
+    {
+      "id": "q_spell_1",
+      "title": "万卷楼深处",
+      "description": "慕青岚在天枢道院的万卷楼最深处找到了一本书——没有名字，封面上只有一个封印。她说：'这本书被下了十重禁制。玄机真人说，只有法修能解开前三重——然后立刻停下。'\n\n你翻开第一页——不是文字，是一种你从未见过的符文。它在发光。",
+      "type": "QUEST",
+      "questId": "spell_codex",
+      "questStep": 1,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "解开前三重禁制",
+          "effects": { "cultivation": 10, "daoHeart": 10 },
+          "questNext": "q_spell_2"
+        },
+        "right": {
+          "text": "合上书——太危险",
+          "effects": { "daoHeart": 5, "fortune": 10 },
+          "questEnd": true
+        }
+      }
+    },
+    {
+      "id": "q_spell_2",
+      "title": "封印中的声音",
+      "description": "解开第三重禁制的那一刻——你听到了一个声音。它说：'终于有人来了。三千年了——你是第一个听到我说话的法修。'\n\n你环顾四周——没有人。声音来自书页——不，来自封印的内部。一个远古法修的残魂被封印在这本书里。\n\n他说：'你想学真正的禁术吗——还是回去继续念那些安全的五行咒？'",
+      "type": "QUEST",
+      "questId": "spell_codex",
+      "questStep": 2,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "学习禁术基础",
+          "effects": { "cultivation": 15, "daoHeart": -5, "karmaBad": 5 },
+          "questNext": "q_spell_3",
+          "karmaSeed": { "id": "spellCodexStarted", "delay": 5, "realm": "golden", "priority": 2 }
+        },
+        "right": {
+          "text": "只问不学——了解远古法修的历史",
+          "effects": { "cultivation": 5, "daoHeart": 15, "fortune": 8 },
+          "questNext": "q_spell_3"
+        }
+      }
+    },
+    {
+      "id": "q_spell_3",
+      "title": "禁术反噬",
+      "description": "你继续研读禁术——太古法修在你耳边低语，教你撕开空间的方法。你试着在指尖划开一道虚空裂隙——成功了。但裂隙的对面——你看到了一双眼睛在看着你。\n\n不是太古法修的残魂。是别的——更古老的东西。那东西说：'契约。给我一半的道心——我给你看真正的力量。'",
+      "type": "QUEST",
+      "questId": "spell_codex",
+      "questStep": 3,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "拒绝契约，封印裂隙",
+          "effects": { "daoHeart": 25, "cultivation": 5, "health": -10 },
+          "questNext": "q_spell_4",
+          "karmaSeed": [
+            { "id": "spellCodexRefused", "delay": 8, "realm": "nascent", "priority": 3 },
+            { "id": "spellRevealed", "delay": 10, "realm": "golden", "priority": 2 }
+          ]
+        },
+        "right": {
+          "text": "接受契约",
+          "effects": { "cultivation": 25, "daoHeart": -20, "karmaBad": 15 },
+          "questNext": "q_spell_4",
+          "karmaSeed": [
+            { "id": "spellHidden", "delay": 6, "realm": "nascent", "priority": 3 }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q_spell_4",
+      "title": "万卷楼的真相",
+      "description": "禁术之书的最后一页——没有被封印。上面只有一行字：'这本书是用来看守的，不是用来阅读的。'太古法修不是在教你东西——他是在用你的法力加固封印。\n\n慕青岚看着你，眼里有泪。她说：'我早就知道——但我不能说。因为说了封印就会碎。谢谢你——承受了这一切。'",
+      "type": "QUEST",
+      "questId": "spell_codex",
+      "questStep": 4,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "理解——继续加固封印",
+          "effects": { "cultivation": 10, "daoHeart": 25, "karmaGood": 15 },
+          "questEnd": true
+        },
+        "right": {
+          "text": "愤怒——但沉默",
+          "effects": { "cultivation": 20, "daoHeart": 5, "karmaBad": 5 },
+          "questEnd": true
+        }
+      }
+    }
+  ]
+}

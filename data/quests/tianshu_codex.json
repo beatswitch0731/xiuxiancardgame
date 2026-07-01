@@ -1,0 +1,119 @@
+{
+  "quest": {
+    "id": "tianshu_codex",
+    "name": "天枢秘典",
+    "type": "QUEST",
+    "startRealm": "foundation",
+    "pathRestriction": "spell",
+    "trigger": {
+      "minTurn": 15,
+      "requiredFlags": null,
+      "forbiddenFlags": ["tianshuCodexCompleted"],
+      "requiredAttributes": { "daoHeart": 30 },
+      "priority": 6
+    },
+    "entryCardId": "q_tianshu_1",
+    "chainLength": 4,
+    "factionRewards": {
+      "tianshu_academy": 20,
+      "tianji_pavilion": 15,
+      "xuesha_sect": -15
+    },
+    "rewardOnComplete": {
+      "attributes": { "daoHeart": 15, "cultivation": 30 },
+      "flags": ["tianshuCodexCompleted"]
+    }
+  },
+  "cards": [
+    {
+      "id": "q_tianshu_1",
+      "title": "万卷楼的低语",
+      "description": "你在天枢道院的万卷楼修炼时，听到书架深处有微弱的呢喃声。声音来自一本被遗忘的古籍——封面写着《天道·残卷》。",
+      "type": "QUEST",
+      "questId": "tianshu_codex",
+      "questStep": 1,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "翻开古籍",
+          "effects": { "daoHeart": 5, "cultivation": 5 },
+          "questNext": "q_tianshu_2"
+        },
+        "right": {
+          "text": "关上书，当没看到",
+          "effects": { "daoHeart": -3 },
+          "questEnd": true
+        }
+      }
+    },
+    {
+      "id": "q_tianshu_2",
+      "title": "天道残卷——第二页",
+      "description": "古籍的第二页写着一个古老的预言：'天道有缺，非仙能补。飞升非仙路，而是一场选拔。'",
+      "type": "QUEST",
+      "questId": "tianshu_codex",
+      "questStep": 2,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "继续研究",
+          "effects": { "cultivation": 15, "daoHeart": 10, "fortune": 5 },
+          "questNext": "q_tianshu_3"
+        },
+        "right": {
+          "text": "合上——有些事不该知道",
+          "effects": { "daoHeart": 10, "karmaGood": 5 },
+          "questEnd": true
+        }
+      }
+    },
+    {
+      "id": "q_tianshu_3",
+      "title": "天道残卷——第三页",
+      "description": "古籍第三页——上面画着你的脸。不是现在的你——是飞升后的你。画中的你在哭。下面写着一个字：'回'。",
+      "type": "QUEST",
+      "questId": "tianshu_codex",
+      "questStep": 3,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "记住这个画面",
+          "effects": { "daoHeart": 20, "cultivation": 15, "fortune": -10 },
+          "questNext": "q_tianshu_4"
+        },
+        "right": {
+          "text": "撕掉这一页",
+          "effects": { "daoHeart": -10, "karmaBad": 10, "cultivation": 20 },
+          "questNext": "q_tianshu_4"
+        }
+      }
+    },
+    {
+      "id": "q_tianshu_4",
+      "title": "天枢秘典——真相",
+      "description": "你集齐了《天道残卷》的所有碎片。真相是：飞升是一次'收割'——上界每隔千年收割一批最强的修士，抽取他们的修为维持上界运转。这就是天道。",
+      "type": "QUEST",
+      "questId": "tianshu_codex",
+      "questStep": 4,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "接受真相——修仙本就如此",
+          "effects": { "daoHeart": 15, "cultivation": 30, "karmaBad": 20 },
+          "questEnd": true,
+          "karmaSeed": { "id": "tianshuStarted", "delay": 8, "realm": "golden", "priority": 2 }
+        },
+        "right": {
+          "text": "决意对抗天道",
+          "effects": { "daoHeart": 25, "karmaGood": 20, "cultivation": 10 },
+          "questEnd": true,
+          "karmaSeed": { "id": "tianshuDeep", "delay": 10, "realm": "nascent", "priority": 2 }
+        }
+      }
+    }
+  ]
+}

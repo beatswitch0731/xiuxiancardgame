@@ -1,0 +1,1089 @@
+{
+  "companions": [
+    {
+      "id": "bai_luoxuan",
+      "name": "白落霜",
+      "title": "白狐部·道侣",
+      "personality": {
+        "benevolence": 75,
+        "proud": 35,
+        "persistence": 60,
+        "affection": 90,
+        "courage": 45
+      },
+      "startAffection": 30,
+      "startBond": 1,
+      "startTrust": 30,
+      "events": [
+        {
+          "id": "blx_1",
+          "type": "daily",
+          "minAffection": 30,
+          "minBond": 1,
+          "title": "参汤",
+          "desc": "{name}给你煮了一碗参汤。她的手被烫伤了——这是她今天第三次热这碗汤。",
+          "choices": {
+            "left": {
+              "text": "心疼她",
+              "affection": 5,
+              "effects": {
+                "daoHeart": 3
+              }
+            },
+            "right": {
+              "text": "让她小心",
+              "affection": 2,
+              "effects": {}
+            }
+          }
+        },
+        {
+          "id": "blx_2",
+          "type": "daily",
+          "minAffection": 40,
+          "minBond": 1,
+          "title": "采药同行",
+          "desc": "{name}邀你一起去南疆采药。路上遇到一只受伤的幼狐，她蹲下来轻轻抚摸幼狐的毛。",
+          "choices": {
+            "left": {
+              "text": "帮忙医治",
+              "affection": 8,
+              "effects": {
+                "karmaGood": 5,
+                "fortune": 5
+              }
+            },
+            "right": {
+              "text": "赶走幼狐",
+              "affection": -10,
+              "effects": {
+                "karmaBad": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "blx_3",
+          "type": "daily",
+          "minAffection": 50,
+          "minBond": 2,
+          "title": "月下修行",
+          "desc": "满月之夜，{name}的妖力达到巅峰。她拉你在月下一起修炼——她的灵气如银色的丝线缠绕在你周围。",
+          "choices": {
+            "left": {
+              "text": "陪她在月下修炼",
+              "affection": 5,
+              "effects": {
+                "cultivation": 8,
+                "fortune": 3
+              }
+            },
+            "right": {
+              "text": "自己闭关修炼",
+              "affection": -3,
+              "effects": {
+                "cultivation": 12
+              }
+            }
+          }
+        },
+        {
+          "id": "blx_4",
+          "type": "emotional",
+          "minAffection": 60,
+          "minBond": 2,
+          "title": "狐尾",
+          "desc": "你发现{name}的尾巴在开心时会不自觉地轻轻摆动。每次你靠近她，她的尾巴就摇得比平时快一些。",
+          "choices": {
+            "left": {
+              "text": "直接问她",
+              "affection": 3,
+              "effects": {
+                "daoHeart": 3
+              }
+            },
+            "right": {
+              "text": "偷笑不语",
+              "affection": 5,
+              "effects": {
+                "fortune": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "blx_5",
+          "type": "emotional",
+          "minAffection": 50,
+          "minBond": 2,
+          "title": "故乡",
+          "desc": "{name}谈起白狐部的童年——南疆的深山、月下的舞蹈、被正道猎杀的恐惧。她的声音很平静，但眼眶微红。",
+          "choices": {
+            "left": {
+              "text": "愤怒正道的暴行",
+              "affection": 5,
+              "effects": {
+                "karmaBad": 8
+              }
+            },
+            "right": {
+              "text": "安慰她",
+              "affection": 10,
+              "effects": {
+                "karmaGood": 5,
+                "daoHeart": 3
+              }
+            }
+          }
+        },
+        {
+          "id": "blx_6",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 60,
+          "minBond": 3,
+          "realm": "golden",
+          "title": "人妖殊途",
+          "desc": "宗门长老找上门来，要求{name}离开。他们的话很难听——\"人妖殊途，你这是在断送前程。\"",
+          "choices": {
+            "left": {
+              "text": "力保道侣（对抗宗门）",
+              "affection": 20,
+              "bondDelta": 1,
+              "effects": {
+                "daoHeart": -15,
+                "karmaGood": 10
+              }
+            },
+            "right": {
+              "text": "劝她暂避",
+              "affection": -15,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "blx_7",
+          "type": "emotional",
+          "once": true,
+          "minAffection": 80,
+          "minBond": 3,
+          "title": "狐牙",
+          "desc": "{name}把本命狐牙做成项链送给你。她的手在颤抖——不是因为害怕，而是因为这是白狐部最珍贵的仪式。",
+          "choices": {
+            "left": {
+              "text": "郑重收下",
+              "affection": 15,
+              "bondDelta": 1,
+              "effects": {
+                "daoHeart": 10,
+                "fortune": 10
+              }
+            },
+            "right": {
+              "text": "推辞",
+              "affection": -30,
+              "effects": {}
+            }
+          }
+        },
+        {
+          "id": "blx_8",
+          "type": "daily",
+          "minAffection": 70,
+          "minBond": 3,
+          "title": "突破",
+          "desc": "{name}的修为满了，她看着你问该不该冒险突破元婴——风险很大，但在你的注视下她似乎更有勇气。",
+          "choices": {
+            "left": {
+              "text": "鼓励她突破",
+              "affection": 5,
+              "effects": {
+                "cultivation": 5,
+                "fortune": 8
+              }
+            },
+            "right": {
+              "text": "劝她等等",
+              "affection": -5,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "blx_9",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 80,
+          "minBond": 4,
+          "realm": "nascent",
+          "title": "生死相依",
+          "desc": "大战中，一道致命攻击向你袭来。{name}挡在你前面，甚至没有回头。她的背挺得很直。",
+          "choices": {
+            "left": {
+              "text": "舍命相救",
+              "affection": 50,
+              "bondDelta": 1,
+              "effects": {
+                "health": -40,
+                "daoHeart": 15
+              }
+            },
+            "right": {
+              "text": "接受她的牺牲",
+              "affection": 0,
+              "effects": {
+                "daoHeart": -30,
+                "karmaGood": 15,
+                "karmaBad": 20
+              }
+            }
+          }
+        },
+        {
+          "id": "blx_10",
+          "type": "emotional",
+          "once": true,
+          "minAffection": 90,
+          "minBond": 5,
+          "title": "天命道侣",
+          "desc": "{name}用手指在你掌心画了一道白狐部的古老符文。'这是婚契——画了这个，你就是我九辈子的夫君。'",
+          "choices": {
+            "left": {
+              "text": "握住她的手",
+              "affection": 20,
+              "bondDelta": 1,
+              "effects": {
+                "daoHeart": 20,
+                "fortune": 15
+              }
+            },
+            "right": {
+              "text": "笑而不答",
+              "affection": 5,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "jian_linger",
+      "name": "剑灵儿",
+      "title": "青云剑宗·道侣",
+      "personality": {
+        "benevolence": 60,
+        "proud": 85,
+        "persistence": 75,
+        "affection": 30,
+        "courage": 90
+      },
+      "startAffection": 20,
+      "startBond": 1,
+      "startTrust": 15,
+      "events": [
+        {
+          "id": "jle_1",
+          "type": "daily",
+          "minAffection": 20,
+          "minBond": 1,
+          "title": "磨剑",
+          "desc": "{name}发现你的剑钝了，二话不说拿走了。磨完还给你时，剑上刻了一个小小的'灵'字。",
+          "choices": {
+            "left": {
+              "text": "道谢",
+              "affection": 3,
+              "effects": {
+                "cultivation": 3
+              }
+            },
+            "right": {
+              "text": "不以为意",
+              "affection": -5,
+              "effects": {}
+            }
+          }
+        },
+        {
+          "id": "jle_2",
+          "type": "emotional",
+          "minAffection": 40,
+          "minBond": 1,
+          "title": "月下切磋",
+          "desc": "满月夜，{name}在剑冢前等你。她说来切磋——但她的剑比平时慢了很多。月光照在她的脸上，她没在看你——但她的余光一直在。",
+          "choices": {
+            "left": {
+              "text": "认真切磋",
+              "affection": 5,
+              "effects": {
+                "cultivation": 8
+              }
+            },
+            "right": {
+              "text": "陪她看月亮",
+              "affection": 8,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "jle_3",
+          "type": "emotional",
+          "once": true,
+          "minAffection": 60,
+          "minBond": 2,
+          "title": "冰心剑意共鸣",
+          "desc": "你的剑与{name}的冰心剑意产生了共鸣——剑鸣声如冰裂，又似春雷。两柄剑的灵气在空中交汇，形成了一个漩涡。",
+          "choices": {
+            "left": {
+              "text": "顺势合璧",
+              "affection": 12,
+              "effects": {
+                "cultivation": 20,
+                "daoHeart": 10
+              }
+            },
+            "right": {
+              "text": "收剑回避",
+              "affection": -5,
+              "effects": {
+                "daoHeart": -5
+              }
+            }
+          }
+        },
+        {
+          "id": "jle_4",
+          "type": "daily",
+          "minAffection": 50,
+          "minBond": 2,
+          "title": "她输了",
+          "desc": "第一次你赢了她。她的剑被你拨开时愣了一瞬，随即笑了——比月华还亮。",
+          "choices": {
+            "left": {
+              "text": "谦虚",
+              "affection": 3,
+              "effects": {
+                "daoHeart": 5
+              }
+            },
+            "right": {
+              "text": "得意",
+              "affection": -3,
+              "effects": {
+                "daoHeart": -3
+              }
+            }
+          }
+        },
+        {
+          "id": "jle_5",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 50,
+          "minBond": 2,
+          "title": "同门议论",
+          "desc": "同门背后议论'剑灵儿倒贴新弟子'。{name}听到了，但她的第一反应是不让他们来找你的麻烦。",
+          "choices": {
+            "left": {
+              "text": "公开维护她",
+              "affection": 15,
+              "effects": {
+                "daoHeart": 10,
+                "karmaGood": 5
+              }
+            },
+            "right": {
+              "text": "装作没听到",
+              "affection": -10,
+              "effects": {}
+            }
+          }
+        },
+        {
+          "id": "jle_6",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 70,
+          "minBond": 3,
+          "realm": "golden",
+          "title": "师尊之问",
+          "desc": "白刃真人发现了你们的关系。他沉默了许久，问了一句——'你确定是他吗？'",
+          "choices": {
+            "left": {
+              "text": "挺身承认",
+              "affection": 20,
+              "effects": {
+                "daoHeart": 15,
+                "karmaGood": 5
+              }
+            },
+            "right": {
+              "text": "让她先回避",
+              "affection": -5,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "jle_7",
+          "type": "emotional",
+          "minAffection": 80,
+          "minBond": 4,
+          "title": "冰心化暖",
+          "desc": "{name}握着你的手——她的手第一次不是冰凉的了。'我在剑冢练了十年剑，从来不知道冷是什么。现在知道了——是你不在的时候。'",
+          "choices": {
+            "left": {
+              "text": "回应她的心意",
+              "affection": 15,
+              "bondDelta": 1,
+              "effects": {
+                "daoHeart": 15
+              }
+            },
+            "right": {
+              "text": "微笑不语",
+              "affection": 5,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        }
+      ],
+      "factionId": "qingyun_sword"
+    },
+    {
+      "id": "yin_xue",
+      "name": "殷血",
+      "title": "血煞宗·道侣",
+      "personality": {
+        "benevolence": 15,
+        "proud": 90,
+        "persistence": 85,
+        "affection": 20,
+        "courage": 95
+      },
+      "startAffection": 20,
+      "startBond": 1,
+      "startTrust": 10,
+      "events": [
+        {
+          "id": "yxe_1",
+          "type": "daily",
+          "minAffection": 20,
+          "minBond": 1,
+          "title": "约战",
+          "desc": "\"出来。老地方。三招。\"——他靠在枯树下等你，剑尖点在石头上。这是他独特的\"我很想你\"。",
+          "choices": {
+            "left": {
+              "text": "应战",
+              "affection": 5,
+              "effects": {
+                "cultivation": 8
+              }
+            },
+            "right": {
+              "text": "推脱",
+              "affection": -5,
+              "effects": {
+                "daoHeart": -3
+              }
+            }
+          }
+        },
+        {
+          "id": "yxe_2",
+          "type": "emotional",
+          "once": true,
+          "minAffection": 40,
+          "minBond": 2,
+          "title": "酒后真言",
+          "desc": "{name}喝醉了。他靠在你的肩上，第一次交代了血煞宗弟子被正道屠村的往事。他的声音很轻，轻到你怀疑他在梦游。",
+          "choices": {
+            "left": {
+              "text": "认真听着",
+              "affection": 12,
+              "effects": {
+                "daoHeart": 8,
+                "karmaGood": 5
+              }
+            },
+            "right": {
+              "text": "岔开话题",
+              "affection": -3,
+              "effects": {}
+            }
+          }
+        },
+        {
+          "id": "yxe_3",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 60,
+          "minBond": 3,
+          "title": "你受伤了",
+          "desc": "你重伤昏迷。醒来时，发现身边倒了七具血煞宗弟子的尸体——都是{name}杀的。他瘫坐在墙角，剑上全是血。",
+          "choices": {
+            "left": {
+              "text": "握住他的手",
+              "affection": 20,
+              "effects": {
+                "daoHeart": 10
+              }
+            },
+            "right": {
+              "text": "质问为何杀人",
+              "affection": 0,
+              "effects": {
+                "daoHeart": -5
+              }
+            }
+          }
+        },
+        {
+          "id": "yxe_4",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 80,
+          "minBond": 4,
+          "realm": "golden",
+          "title": "正魔之间",
+          "desc": "正魔大战前夕，你站在两军之间。{name}站在对面。你们对望了三息——整个世界仿佛静止了。",
+          "choices": {
+            "left": {
+              "text": "喊他的名字",
+              "affection": 25,
+              "effects": {
+                "daoHeart": 10,
+                "karmaBad": 5
+              }
+            },
+            "right": {
+              "text": "沉默转身",
+              "affection": -30,
+              "effects": {
+                "daoHeart": -15
+              }
+            }
+          }
+        },
+        {
+          "id": "yxe_5",
+          "type": "emotional",
+          "minAffection": 70,
+          "minBond": 3,
+          "title": "剑鸣",
+          "desc": "你的剑和{name}的剑同时嗡鸣——这是不可能的。正道和魔道之剑本应互相排斥。除非——剑出同源。",
+          "choices": {
+            "left": {
+              "text": "探寻同源真相",
+              "affection": 10,
+              "effects": {
+                "cultivation": 15,
+                "daoHeart": 8
+              }
+            },
+            "right": {
+              "text": "忽略不管",
+              "affection": 0,
+              "effects": {
+                "cultivation": 5
+              }
+            }
+          }
+        }
+      ],
+      "factionId": "xuesha_sect"
+    },
+    {
+      "id": "bai_ren",
+      "name": "白刃真人",
+      "title": "青云剑宗·道侣",
+      "personality": {
+        "benevolence": 55,
+        "proud": 80,
+        "persistence": 85,
+        "affection": 10,
+        "courage": 70
+      },
+      "startAffection": 10,
+      "startBond": 1,
+      "startTrust": 15,
+      "events": [
+        {
+          "id": "br_1",
+          "type": "daily",
+          "minAffection": 15,
+          "minBond": 1,
+          "title": "剑道",
+          "desc": "{name}在剑冢等你。他手里握着一柄断剑——那是他师弟的。他很少提起师弟，但今天他开口了。",
+          "choices": {
+            "left": {
+              "text": "认真听着",
+              "affection": 8,
+              "effects": {
+                "daoHeart": 8,
+                "cultivation": 5
+              }
+            },
+            "right": {
+              "text": "离开",
+              "affection": -5,
+              "effects": {}
+            }
+          }
+        },
+        {
+          "id": "br_2",
+          "type": "emotional",
+          "once": true,
+          "minAffection": 30,
+          "minBond": 2,
+          "title": "教诲",
+          "desc": "{name}用剑尖写下四个字：'剑出无悔'。他说这四个字他练了七十年——到今天也没练好。",
+          "choices": {
+            "left": {
+              "text": "追问缘由",
+              "affection": 10,
+              "effects": {
+                "daoHeart": 12
+              }
+            },
+            "right": {
+              "text": "沉默练剑",
+              "affection": 5,
+              "effects": {
+                "cultivation": 10
+              }
+            }
+          }
+        },
+        {
+          "id": "br_3",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 40,
+          "minBond": 2,
+          "realm": "golden",
+          "title": "剑意之争",
+          "desc": "青云剑宗内部分裂——有人质疑{name}的剑意正统性。他需要你站出来说一句话。",
+          "choices": {
+            "left": {
+              "text": "力挺师尊",
+              "affection": 20,
+              "effects": {
+                "daoHeart": 15,
+                "karmaGood": 5
+              }
+            },
+            "right": {
+              "text": "保持沉默",
+              "affection": -10,
+              "effects": {
+                "daoHeart": -5
+              }
+            }
+          }
+        }
+      ],
+      "factionId": "qingyun_sword"
+    },
+    {
+      "id": "mu_qinglan",
+      "name": "慕青岚",
+      "title": "万卷楼·道侣",
+      "personality": {
+        "benevolence": 65,
+        "proud": 20,
+        "persistence": 70,
+        "affection": 40,
+        "courage": 35
+      },
+      "startAffection": 20,
+      "startBond": 1,
+      "startTrust": 20,
+      "events": [
+        {
+          "id": "mql_1",
+          "type": "daily",
+          "minAffection": 20,
+          "minBond": 1,
+          "title": "读书",
+          "desc": "{name}在万卷楼最深处的角落看书——那里没有窗。她说这样就不会有人看到她看天道书时发抖的手。",
+          "choices": {
+            "left": {
+              "text": "陪她一起看",
+              "affection": 5,
+              "effects": {
+                "cultivation": 8,
+                "fortune": 3
+              }
+            },
+            "right": {
+              "text": "站在门口把风",
+              "affection": 8,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "mql_2",
+          "type": "emotional",
+          "once": true,
+          "minAffection": 40,
+          "minBond": 2,
+          "title": "秘密",
+          "desc": "{name}告诉你——天道书最后一页不是空白的。是被'隐藏'了。她破译了隐藏手法——来自上界。飞升不是终点，而是选拔。",
+          "choices": {
+            "left": {
+              "text": "握住她的手",
+              "affection": 15,
+              "effects": {
+                "daoHeart": 15,
+                "fortune": -5
+              }
+            },
+            "right": {
+              "text": "劝她忘记",
+              "affection": -5,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "mql_3",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 50,
+          "minBond": 2,
+          "realm": "golden",
+          "title": "玄机之问",
+          "desc": "玄机真人发现了{name}在研究天道书。他把她叫去单独谈话。她出来时脸色苍白——但眼里有光。",
+          "choices": {
+            "left": {
+              "text": "支持她继续研究",
+              "affection": 15,
+              "effects": {
+                "daoHeart": 10,
+                "karmaGood": 5
+              }
+            },
+            "right": {
+              "text": "劝她停下",
+              "affection": 0,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        }
+      ],
+      "factionId": "tianshu_academy"
+    },
+    {
+      "id": "jiuwei_suyue",
+      "name": "九尾溯月",
+      "title": "九尾部·道侣",
+      "personality": {
+        "benevolence": 40,
+        "proud": 90,
+        "persistence": 75,
+        "affection": 15,
+        "courage": 85
+      },
+      "startAffection": 15,
+      "startBond": 1,
+      "startTrust": 10,
+      "events": [
+        {
+          "id": "jw_1",
+          "type": "daily",
+          "minAffection": 15,
+          "minBond": 1,
+          "title": "试探",
+          "desc": "{name}用九条尾巴围着你绕了一圈——她在感知你的灵气。'你比看起来弱，但比想象中深。'她眯着眼说。",
+          "choices": {
+            "left": {
+              "text": "坦然让她感知",
+              "affection": 8,
+              "effects": {
+                "daoHeart": 5
+              }
+            },
+            "right": {
+              "text": "用灵气反制",
+              "affection": -5,
+              "effects": {
+                "cultivation": 5,
+                "karmaBad": 3
+              }
+            }
+          }
+        },
+        {
+          "id": "jw_2",
+          "type": "emotional",
+          "once": true,
+          "minAffection": 35,
+          "minBond": 2,
+          "title": "万妖往事",
+          "desc": "月夜下，{name}讲起了万妖之劫——她的族人不是被人类猎杀，而是被上界'回收'的。九尾部的使命是看守封印，但封印的另一边——是你的同类。",
+          "choices": {
+            "left": {
+              "text": "追问封印真相",
+              "affection": 10,
+              "effects": {
+                "daoHeart": 10,
+                "fortune": 5
+              }
+            },
+            "right": {
+              "text": "不想知道",
+              "affection": -5,
+              "effects": {
+                "daoHeart": -3
+              }
+            }
+          }
+        },
+        {
+          "id": "jw_3",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 50,
+          "minBond": 3,
+          "realm": "nascent",
+          "title": "妖皇之位",
+          "desc": "九尾部落内争——{name}面临选择：继任妖皇（留在人间）还是留在你身边。她看着你——九条尾巴同时静止。",
+          "choices": {
+            "left": {
+              "text": "支持她继任妖皇",
+              "affection": 20,
+              "effects": {
+                "daoHeart": 15,
+                "karmaGood": 15
+              }
+            },
+            "right": {
+              "text": "要她留在身边",
+              "affection": 10,
+              "effects": {
+                "karmaBad": 5,
+                "daoHeart": 5
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tianji_laoren",
+      "name": "天机老人",
+      "title": "天机阁·道侣",
+      "personality": {
+        "benevolence": 60,
+        "proud": 40,
+        "persistence": 90,
+        "affection": 10,
+        "courage": 50
+      },
+      "startAffection": 10,
+      "startBond": 1,
+      "startTrust": 15,
+      "events": [
+        {
+          "id": "tj_1",
+          "type": "daily",
+          "minAffection": 10,
+          "minBond": 1,
+          "title": "星象",
+          "desc": "{name}指着夜空——'那颗星是你的。'他说得平淡，但你看到他的手在掐算。他已经算了你三百年了。",
+          "choices": {
+            "left": {
+              "text": "询问命数",
+              "affection": 8,
+              "effects": {
+                "daoHeart": 5,
+                "fortune": 5
+              }
+            },
+            "right": {
+              "text": "不想知道未来",
+              "affection": 3,
+              "effects": {
+                "daoHeart": 8
+              }
+            }
+          }
+        },
+        {
+          "id": "tj_2",
+          "type": "emotional",
+          "once": true,
+          "minAffection": 30,
+          "minBond": 2,
+          "title": "窥天",
+          "desc": "{name}破例用天机术为你窥了一次天。看完后，他的手在发抖——他说：'我看不到你的死。你的命数——不在这个天道之内。'",
+          "choices": {
+            "left": {
+              "text": "认真记住这句话",
+              "affection": 10,
+              "effects": {
+                "daoHeart": 15,
+                "fortune": 10
+              }
+            },
+            "right": {
+              "text": "当他是老糊涂",
+              "affection": -5,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "tj_3",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 50,
+          "minBond": 3,
+          "realm": "nascent",
+          "title": "天道反噬",
+          "desc": "{name}为窥天道付出代价——双目开始失明。但他说'不后悔——至少看到了你。'",
+          "choices": {
+            "left": {
+              "text": "帮他寻找复明之法",
+              "affection": 20,
+              "effects": {
+                "karmaGood": 15,
+                "cultivation": 10
+              }
+            },
+            "right": {
+              "text": "接受他的选择",
+              "affection": 10,
+              "effects": {
+                "daoHeart": 15
+              }
+            }
+          }
+        }
+      ],
+      "factionId": "tianji_pavilion"
+    },
+    {
+      "id": "xuesha_laozu",
+      "name": "血煞老祖",
+      "title": "血煞宗·道侣",
+      "personality": {
+        "benevolence": 10,
+        "proud": 95,
+        "persistence": 80,
+        "affection": 5,
+        "courage": 95
+      },
+      "startAffection": 5,
+      "startBond": 1,
+      "startTrust": 5,
+      "events": [
+        {
+          "id": "xs_1",
+          "type": "daily",
+          "minAffection": 10,
+          "minBond": 1,
+          "title": "血宴",
+          "desc": "{name}请你参加血煞宗的'血宴'——不是杀人，是喝一碗血酒。酒是妖兽血酿的，喝下去一股热流直冲丹田。",
+          "choices": {
+            "left": {
+              "text": "一饮而尽",
+              "affection": 10,
+              "effects": {
+                "cultivation": 10,
+                "health": -5,
+                "karmaBad": 5
+              }
+            },
+            "right": {
+              "text": "浅尝辄止",
+              "affection": -3,
+              "effects": {
+                "daoHeart": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "xs_2",
+          "type": "emotional",
+          "once": true,
+          "minAffection": 30,
+          "minBond": 2,
+          "title": "往事",
+          "desc": "{name}喝醉了——这是他七百年来的第一次醉。他提起青云剑宗的日子，提起白刃——他的师兄。他的眼中有泪，但血煞老祖从来不哭。所以那是血。",
+          "choices": {
+            "left": {
+              "text": "默然相陪",
+              "affection": 15,
+              "effects": {
+                "daoHeart": 10
+              }
+            },
+            "right": {
+              "text": "劝他回青云",
+              "affection": -10,
+              "effects": {
+                "karmaGood": 5
+              }
+            }
+          }
+        },
+        {
+          "id": "xs_3",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 50,
+          "minBond": 3,
+          "realm": "nascent",
+          "title": "正邪",
+          "desc": "正道联军围困血煞宗。{name}看着你——你是唯一一个他能信任的正道修士。'出手——还是走？'",
+          "choices": {
+            "left": {
+              "text": "留下帮他——对抗正道",
+              "affection": 30,
+              "effects": {
+                "karmaBad": 20,
+                "daoHeart": 15,
+                "health": -20
+              }
+            },
+            "right": {
+              "text": "试图调停",
+              "affection": 5,
+              "effects": {
+                "karmaGood": 10,
+                "daoHeart": 10
+              }
+            }
+          }
+        }
+      ],
+      "factionId": "xuesha_sect"
+    }
+  ]
+}

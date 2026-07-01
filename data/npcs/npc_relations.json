@@ -1,0 +1,101 @@
+{
+  "description": "NPC间预设关系矩阵 —— 稀疏但有故事。8个NPC共12条关键关系，其他组合默认为 {affinity:0, status:'neutral'}",
+  "relations": [
+    {
+      "npcA": "bai_ren",
+      "npcB": "jian_linger",
+      "affinity": 50,
+      "status": "master-disciple",
+      "history": "剑灵儿从小被白刃真人收为关门弟子，剑道天赋继承正统一脉。",
+      "sharedSecrets": ["白刃真人的剑谱后三式只有剑灵儿知道全文"]
+    },
+    {
+      "npcA": "bai_ren",
+      "npcB": "xue_sha",
+      "affinity": -60,
+      "status": "rival",
+      "history": "正魔两道的千年恩怨浓缩在此人身上。百年前那场大战中，白刃的师兄死在了血煞手上。",
+      "sharedSecrets": ["百年大战的真相并非表面所见——两人都欠着同一个人的人情"]
+    },
+    {
+      "npcA": "bai_ren",
+      "npcB": "tian_ji",
+      "affinity": 30,
+      "status": "ally",
+      "history": "曾联手对抗过一次灭世天劫。天机老人预言了劫数的时间，白刃真人提供了战力。",
+      "sharedSecrets": ["那次天劫中被封印的东西，至今仍在天道虚空中蠕动"]
+    },
+    {
+      "npcA": "tian_ji",
+      "npcB": "jiuwei",
+      "affinity": -20,
+      "status": "estranged",
+      "history": "天机老人千年前预言了九尾一族的覆灭——预言应验后，九尾溯月无法原谅自己没能阻止，也无法原谅预言者。",
+      "sharedSecrets": ["那个预言的真正目的不是揭示未来，而是封印未来——天机老人试图通过预言本身来阻止它"]
+    },
+    {
+      "npcA": "xue_sha",
+      "npcB": "yin_xue",
+      "affinity": 70,
+      "status": "master-disciple",
+      "history": "殷血是血煞魔宫嫡传弟子，从小在血煞老祖身边长大。血煞对她比对任何弟子都更耐心。",
+      "sharedSecrets": ["殷血的母亲曾是血煞的道侣——这个秘密，殷血自己也不知道"]
+    },
+    {
+      "npcA": "xue_sha",
+      "npcB": "mu_qinglan",
+      "affinity": -40,
+      "status": "rival",
+      "history": "慕家满门被魔道清洗时，血煞老祖在场——但他没有出手，只是看着。",
+      "sharedSecrets": ["血煞不出手的原因：他欠慕家先祖一个人情，但偿还方式不是救，而是不亲手杀"]
+    },
+    {
+      "npcA": "jian_linger",
+      "npcB": "mu_qinglan",
+      "affinity": 20,
+      "status": "ally",
+      "history": "同为正道女修，在宗门大比中相识。剑灵儿的率真和慕青岚的沉静形成了奇妙的互补。",
+      "sharedSecrets": ["每次宗门大比前，两人会互换一套剑法心诀"]
+    },
+    {
+      "npcA": "bai_luoxuan",
+      "npcB": "jiuwei",
+      "affinity": 40,
+      "status": "ally",
+      "history": "白落霜是半妖血脉（白狐），九尾溯月是纯血妖族。两人对「异类在修仙界的处境」有天然的共鸣。",
+      "sharedSecrets": ["白落霜的狐丘里藏着一卷九尾一族的上古秘术——是九尾溯月给她的保命底牌"]
+    },
+    {
+      "npcA": "yin_xue",
+      "npcB": "jian_linger",
+      "affinity": -30,
+      "status": "rival",
+      "history": "正魔天然对立。加上两人都暗自倾慕同一个剑修（你），剑气与魔力的碰撞带着一股说不清的酸味。",
+      "sharedSecrets": ["殷血其实偷偷收藏了一把用不上的剑——那是剑灵儿的剑被击落时，她捡回来的"]
+    },
+    {
+      "npcA": "mu_qinglan",
+      "npcB": "tian_ji",
+      "affinity": 10,
+      "status": "neutral",
+      "history": "慕家覆灭前，曾向天机老人问了一卦。天机老人预言了灾难，慕家不信——此事成了两方之间始终没捅破的窗户纸。",
+      "sharedSecrets": ["天机老人保留了那卦的原始竹简——上面有不祥的红字，像一个警告而非预言"]
+    },
+    {
+      "npcA": "bai_luoxuan",
+      "npcB": "yin_xue",
+      "affinity": -10,
+      "status": "neutral",
+      "history": "白落霜作为半妖对魔道的态度比纯正道更复杂。殷血能感觉到这种微妙，但两人从未深谈。",
+      "sharedSecrets": ["白落霜知道殷血母亲的事——这是一次偷听被发现后，殷血选择不杀她的唯一理由"]
+    },
+    {
+      "npcA": "jiuwei",
+      "npcB": "xue_sha",
+      "affinity": 0,
+      "status": "neutral",
+      "history": "血煞老祖对妖族的态度出人意料地尊重——他说过：「妖杀人是为了活，魔杀人是为了道，谁更该死？」",
+      "sharedSecrets": ["血煞年轻时曾被一只九尾狐救过命——那只狐不是溯月，是她的祖母"]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "quest": {
+    "id": "white_fox_line",
+    "name": "白狐报恩",
+    "type": "KARMA",
+    "startRealm": "qi",
+    "pathRestriction": null,
+    "trigger": {
+      "minTurn": 5,
+      "requiredFlags": null,
+      "forbiddenFlags": ["whiteFoxCompleted", "quest_white_fox_line_active"],
+      "requiredAttributes": null,
+      "priority": 8
+    },
+    "entryCardId": "q_whiteFox_quest",
+    "chainLength": 3,
+    "factionRewards": {
+      "qingyun_sword": 5,
+      "tianshu_academy": 5,
+      "shennong_dangu": 5,
+      "tianji_pavilion": 5,
+      "wumeng_alliance": 5,
+      "xuesha_sect": -5
+    },
+    "rewardOnComplete": {
+      "attributes": { "karmaGood": 15, "fortune": 10 },
+      "resources": { "spiritStone": 20 },
+      "flags": ["whiteFoxCompleted"],
+      "karmaSeeds": [
+        { "id": "foxGratitude", "delay": 10, "realm": "foundation", "priority": 2 }
+      ]
+    }
+  },
+  "cards": [
+    {
+      "id": "q_whiteFox_quest",
+      "title": "白狐受困",
+      "description": "山路旁，一只白狐被猎户的铁夹困住后腿，鲜血染红了雪白的皮毛。它眼中含着泪光，似乎在向你求救。",
+      "type": "QUEST",
+      "questId": "white_fox_line",
+      "questStep": 1,
+      "realm": "qi",
+      "npcId": "bai_luoxuan",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "妖兽当诛，取丹炼药",
+          "effects": { "cultivation": 12, "health": -5, "karmaBad": 18 },
+          "questEnd": true
+        },
+        "right": {
+          "text": "掰开铁夹，救它脱困",
+          "effects": { "cultivation": -3, "karmaGood": 18, "fortune": 8 }
+        }
+      }
+    },
+    {
+      "id": "q_whiteFox_2",
+      "title": "白狐的谢礼",
+      "description": "数日后，你在洞府修炼，忽然闻到一阵异香。白狐衔着一株灵草来到洞前，轻轻放在门槛上，朝你点了点头便转身隐入山林。",
+      "type": "QUEST",
+      "questId": "white_fox_line",
+      "questStep": 2,
+      "realm": "qi",
+      "npcId": "bai_luoxuan",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "收下灵草",
+          "effects": { "cultivation": 18, "fortune": 10, "karmaGood": 5 },
+          "questNext": "q_whiteFox_3"
+        },
+        "right": {
+          "text": "追上去道谢",
+          "effects": { "daoHeart": 8, "karmaGood": 8, "fortune": 15 },
+          "questNext": "q_whiteFox_3"
+        }
+      }
+    },
+    {
+      "id": "q_whiteFox_3",
+      "title": "狐踪再现",
+      "description": "又过了一阵，你在采集灵草时再次遇到了那只白狐。它似乎受了些伤，身后还有猎户的狗在追赶。",
+      "type": "QUEST",
+      "questId": "white_fox_line",
+      "questStep": 3,
+      "realm": "qi",
+      "npcId": "bai_luoxuan",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "击退猎狗，护送白狐",
+          "effects": { "health": -15, "karmaGood": 20, "fortune": 10 },
+          "questEnd": true
+        },
+        "right": {
+          "text": "用灵石打发猎户",
+          "effects": { "spiritStone": -20, "karmaGood": 12, "daoHeart": 5 },
+          "questEnd": true
+        }
+      }
+    }
+  ]
+}

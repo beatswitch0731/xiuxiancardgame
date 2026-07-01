@@ -1,0 +1,476 @@
+{
+  "realm": "post_ascension",
+  "realmName": "飞升之后",
+  "_description": "飞升后MVP内容包：飞升过渡(3张)/界域基础(10张)/天道真相初启(5张)，共18张。",
+  "karmaCards": {
+    "ascensionFirstContact": "pa_ascension_moment",
+    "upperRealmArrival": "pa_new_world",
+    "heavenTruthClue": "pa_truth_first_clue"
+  },
+  "cards": [
+    {
+      "id": "pa_ascension_moment",
+      "type": "DESTINY",
+      "title": "飞升",
+      "description": "最后一道天雷劈下——你没有躲。雷光穿透你的身体，但不是毁灭——是重塑。你的每一寸血肉、每一丝灵力、每一个念头都在同时燃烧和重生。你感到自己在“上升”——不是飞行，是天道在拉你。\n\n你回头看了一眼苍茫界——那片你修了一辈子的土地。它变得越来越小，最后缩成一颗蓝色的光点。然后消失了。\n\n你来到了上界。",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "post_ascension",
+        "transition",
+        "milestone"
+      ],
+      "choices": {
+        "left": {
+          "text": "深吸一口气——踏入上界",
+          "effects": {
+            "daoHeart": 20,
+            "cultivation": 30,
+            "fortune": -10,
+            "health": 20
+          }
+        },
+        "right": {
+          "text": "回头最后看一眼——然后迈步",
+          "effects": {
+            "daoHeart": 25,
+            "karmaGood": 10,
+            "cultivation": 15
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_new_world",
+      "type": "DESTINY",
+      "title": "上界·初临",
+      "description": "你站在一片你从未见过的天空下——这里的天空不是蓝色的，是淡金色的。灵气浓得像水——你每一次呼吸都感到修为在自动增长。\n\n远处是一座浮在云海上的巨城——比你见过的任何凡人城市都大。城墙上有符文在流动——那不是防御，是装饰。\n\n一个穿着白袍的人飞到你面前，打量了你一眼：‘新来的？’",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "post_ascension",
+        "transition"
+      ],
+      "choices": {
+        "left": {
+          "text": "‘是的——请问这是哪里？’",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 10
+          },
+          "karmaSeed": {
+            "id": "ascensionFirstContact",
+            "seedType": "fate",
+            "delay": 5,
+            "priority": 5
+          }
+        },
+        "right": {
+          "text": "‘你是谁？’——先问清楚对方的身份",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": -5,
+            "cultivation": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_realm_intro",
+      "type": "DESTINY",
+      "title": "界域规则",
+      "description": "白袍人自称‘接引使’——每个飞升者见到的第一个人。他带你在浮空城里转了一圈，一边走一边说：‘上界和苍茫界不一样——这里没有境界之分。所有人都是‘飞升者’——区别只是飞升了几次。’\n\n‘飞升了几次’——这句话让你后背发凉。",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": [
+        "post_ascension",
+        "transition",
+        "lore"
+      ],
+      "choices": {
+        "left": {
+          "text": "‘什么叫做飞升了几次？’",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "沉默——先把信息消化完",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_cloud_city",
+      "type": "NORMAL",
+      "title": "云中城",
+      "description": "浮空城名叫‘云中城’——上界的入口。这里是所有新飞升者聚集的地方。你看到形形色色的修士——有的和你一样刚来，有的已经在这里住了几千年。他们聊天的内容让你震惊——天道、飞升、收割——这些在苍茫界是禁忌的话题，在这里是日常谈资。",
+      "realm": "tribulation",
+      "weight": 5,
+      "tags": [
+        "post_ascension",
+        "exploration"
+      ],
+      "choices": {
+        "left": {
+          "text": "混入人群——多听多看",
+          "effects": {
+            "fortune": 10,
+            "daoHeart": 5,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "找一个看起来资历深的飞升者搭话",
+          "effects": {
+            "fortune": 5,
+            "daoHeart": 5,
+            "cultivation": 5
+          },
+          "nextCard": "pa_veteran_talk"
+        }
+      }
+    },
+    {
+      "id": "pa_veteran_talk",
+      "type": "NORMAL",
+      "title": "老飞升者的忠告",
+      "description": "你搭话的飞升者是个须发皆白的老者。‘我飞升三千年了——见过太多新人。三个忠告：第一，不要相信接引使；第二，不要在天道引擎附近修炼；第三——’他顿了顿：‘不要试图回苍茫界。回不去的。’",
+      "realm": "tribulation",
+      "weight": 3,
+      "tags": [
+        "post_ascension",
+        "warning"
+      ],
+      "choices": {
+        "left": {
+          "text": "‘天道引擎是什么？’",
+          "effects": {
+            "daoHeart": -5,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "‘为什么不能回苍茫界？’",
+          "effects": {
+            "daoHeart": -5,
+            "fortune": -5
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_engine_sighting",
+      "type": "NORMAL",
+      "title": "天道引擎·远观",
+      "description": "你终于远远看到了天道引擎——一个悬浮在云中城上方千里处的东西。它不像任何法器——更像一颗正在运转的心脏。你能感到它在“呼吸”——每一下，整个上界的灵气都在随之波动。\n\n那不是机器——那是活的。",
+      "realm": "tribulation",
+      "weight": 4,
+      "tags": [
+        "post_ascension",
+        "heaven_engine"
+      ],
+      "choices": {
+        "left": {
+          "text": "靠近观察——‘它是什么？’",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": -10,
+            "health": -10,
+            "fortune": -10
+          },
+          "karmaSeed": {
+            "id": "heavenEngineProximity",
+            "seedType": "fate",
+            "delay": 4,
+            "priority": 8
+          }
+        },
+        "right": {
+          "text": "记住位置——下次再来",
+          "effects": {
+            "fortune": 5,
+            "daoHeart": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_harvest_season",
+      "type": "NORMAL",
+      "title": "收割季",
+      "description": "你来的第三天——发生了一件让你终身难忘的事。天道引擎发出了七声钟鸣——然后，云中城里一半的飞升者消失了。不是离开——是凭空蒸发。接引使面不改色地说：‘收割季——每七千年一次。下次轮到谁，看积分。’",
+      "realm": "tribulation",
+      "weight": 5,
+      "tags": [
+        "post_ascension",
+        "harvest",
+        "horror"
+      ],
+      "choices": {
+        "left": {
+          "text": "‘积分？什么积分？’——追问",
+          "effects": {
+            "daoHeart": -10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "沉默——回住处冷静思考",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_point_system",
+      "type": "NORMAL",
+      "title": "积分体系",
+      "description": "你花了好几天才弄明白所谓的‘积分’——每个飞升者都在被天道引擎评分。修为增长加分，渡劫加分，飞升加分——但分数最高的那些人，恰恰是收割季第一个被收割的。\n\n这不是农场——这是养蛊。天道引擎在养出最强的飞升者——然后吞噬他们。",
+      "realm": "tribulation",
+      "weight": 4,
+      "tags": [
+        "post_ascension",
+        "point_system",
+        "revelation"
+      ],
+      "requiresFlags": {
+        "heavenEngineProximity": null
+      },
+      "choices": {
+        "left": {
+          "text": "决定对抗——‘我要炸了它’",
+          "effects": {
+            "daoHeart": 25,
+            "karmaGood": 20,
+            "fortune": -20,
+            "cultivation": -5
+          },
+          "karmaSeed": {
+            "id": "destroyHeavenEngineUpper",
+            "seedType": "fate",
+            "delay": 10,
+            "priority": 10
+          }
+        },
+        "right": {
+          "text": "小心求生——尽量压低积分",
+          "effects": {
+            "daoHeart": -5,
+            "fortune": 15,
+            "cultivation": -10
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_resistance",
+      "type": "NORMAL",
+      "title": "抵抗组织",
+      "description": "有人找到了你——一群自称‘破晓’的飞升者。他们已经策划了几千年——不是要炸天道引擎，是要改它的规则。‘天道引擎不是为了收割——它本来是用来维护界域平衡的。是有人篡改了它的代码。我们要恢复原版。’",
+      "realm": "tribulation",
+      "weight": 4,
+      "tags": [
+        "post_ascension",
+        "resistance",
+        "faction"
+      ],
+      "requiresFlags": {
+        "destroyHeavenEngineUpper": null
+      },
+      "choices": {
+        "left": {
+          "text": "加入‘破晓’——一起修改天道规则",
+          "effects": {
+            "karmaGood": 25,
+            "daoHeart": 20,
+            "fortune": -10
+          }
+        },
+        "right": {
+          "text": "拒绝——‘我自己来’",
+          "effects": {
+            "daoHeart": 15,
+            "fortune": 5,
+            "karmaBad": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_truth_first_clue",
+      "type": "NORMAL",
+      "title": "第一个线索",
+      "description": "破晓组织的人带你去了一个地方——天道引擎的正下方。那里有一块石碑——比你见过的任何碑都老。上面的文字不是任何已知的修士文字，但你居然能看懂——因为这是你前世写下的。\n\n‘吾以三世修为，藏天道原码于此。破晓者得之——改道还天。’——落款是你第一世的名字。",
+      "realm": "tribulation",
+      "weight": 3,
+      "tags": [
+        "post_ascension",
+        "truth",
+        "revelation"
+      ],
+      "requirements": {
+        "minLifeCount": 2
+      },
+      "choices": {
+        "left": {
+          "text": "解读石碑——找回前世留下的天道原码",
+          "effects": {
+            "daoHeart": 30,
+            "cultivation": 20,
+            "fortune": 15,
+            "karmaGood": 25
+          }
+        },
+        "right": {
+          "text": "‘不是我写的——我前世做的事不该影响今生’",
+          "effects": {
+            "daoHeart": 15,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_ancient_cultivator",
+      "type": "NORMAL",
+      "title": "远古飞升者",
+      "description": "你遇到了一个从天道引擎第一次启动时就飞升的修士——他是最老的飞升者，活了几万年。他已经疯了——嘴里反复念着一句话：‘不是上界——是祭坛——我们都是祭品——祭品——’\n\n但他在疯话里夹杂了一个坐标——你记下来了。",
+      "realm": "tribulation",
+      "weight": 3,
+      "tags": [
+        "post_ascension",
+        "ancient",
+        "clue"
+      ],
+      "choices": {
+        "left": {
+          "text": "去坐标位置看看",
+          "effects": {
+            "fortune": -10,
+            "daoHeart": 10,
+            "cultivation": 10
+          },
+          "nextCard": "pa_forbidden_zone"
+        },
+        "right": {
+          "text": "太危险——先收集更多信息",
+          "effects": {
+            "fortune": 5,
+            "daoHeart": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_forbidden_zone",
+      "type": "NORMAL",
+      "title": "禁区",
+      "description": "坐标指向一片被废弃的虚空——这里什么都没有。\n\n不——等一下。你感到这里‘有过’东西——就像一个已经愈合的伤口，但疤痕还在。你用道心感知——看到了。这里曾经是天道引擎的初号机——第一个版本的天道引擎。它被摧毁了。\n\n谁干的？",
+      "realm": "tribulation",
+      "weight": 3,
+      "tags": [
+        "post_ascension",
+        "forbidden",
+        "revelation"
+      ],
+      "choices": {
+        "left": {
+          "text": "搜索残骸——收集初号机的碎片",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 10,
+            "fortune": -15,
+            "health": -10
+          },
+          "karmaSeed": {
+            "id": "firstEngineFragment",
+            "seedType": "fate",
+            "delay": 6,
+            "priority": 8
+          }
+        },
+        "right": {
+          "text": "离开——这里让人不舒服",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "pa_dilemma",
+      "type": "NORMAL",
+      "title": "选择",
+      "description": "你掌握了足够多的信息——现在需要做决定了。\n\n第一：加入破晓，从内部改天道引擎，风险低但需要几千年。\n第二：用初号机的碎片造一个反制装置，炸掉天道引擎，立刻解放所有飞升者——但代价是整个上界可能崩毁。\n第三：吞噬天道引擎的核心，成为新的天道——你自己来定规则。",
+      "realm": "tribulation",
+      "weight": 3,
+      "tags": [
+        "post_ascension",
+        "final_choice"
+      ],
+      "choices": {
+        "left": {
+          "text": "加入破晓——慢慢改",
+          "effects": {
+            "karmaGood": 30,
+            "daoHeart": 25,
+            "fortune": 10,
+            "cultivation": 5
+          },
+          "desc": "你选择了最慢的路——也是最稳妥的路。也许几千年后，会有其他飞升者感谢你今天的决定。"
+        },
+        "right": {
+          "text": "吞噬核心——我来当新天道",
+          "effects": {
+            "cultivation": 50,
+            "daoHeart": -30,
+            "karmaBad": 30,
+            "fortune": 20
+          },
+          "desc": "你感到天道引擎的核心融入了你的丹田——你不再是一个飞升者——你是规则本身。它冷——但它服从你。"
+        }
+      }
+    },
+    {
+      "id": "pa_ending_reform",
+      "type": "NORMAL",
+      "title": "新生",
+      "description": "千年后——一个刚从苍茫界飞升上来的年轻修士，站在云中城门口。接引使对他说：‘欢迎来到上界——’但接引使的台词变了：‘——在这里，你可以选择留下，也可以选择回去。天道不收割任何人——我们改过了。’\n\n那个年轻人问：‘谁改的？’\n\n接引使笑了笑，指了指远处天边的一个光点——那是你的洞府：‘一个比你早飞升一千年的家伙。’",
+      "realm": "tribulation",
+      "weight": 2,
+      "tags": [
+        "post_ascension",
+        "ending",
+        "epilogue"
+      ],
+      "choices": {
+        "left": {
+          "text": "（完结——开启转世重修）",
+          "effects": {
+            "daoHeart": 50,
+            "karmaGood": 50,
+            "fortune": 30
+          }
+        },
+        "right": {
+          "text": "（继续游历上界——探索未知）",
+          "effects": {
+            "cultivation": 30,
+            "fortune": 20
+          }
+        }
+      }
+    }
+  ]
+}

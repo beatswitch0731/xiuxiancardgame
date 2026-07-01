@@ -1,0 +1,777 @@
+{
+  "realm": "nascent",
+  "realmName": "元婴期",
+  "cards": [
+    {
+      "id": "n_awakening",
+      "title": "元婴初醒",
+      "description": "金丹碎裂的瞬间，一个与你一模一样的婴孩在丹田内睁开了眼。它在看着你——或者说，在看着你的灵魂。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "与元婴对视",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 10
+          },
+          "nextCard": "n_ego"
+        },
+        "right": {
+          "text": "强行压制元婴",
+          "effects": {
+            "daoHeart": -5,
+            "cultivation": 20
+          },
+          "karmaSeed": {
+            "id": "lifespanWaste",
+            "delay": 8,
+            "realm": "nascent",
+            "priority": 2
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_awakening.png"
+    },
+    {
+      "id": "n_ego",
+      "title": "心魔内景",
+      "description": "元婴醒了，但也带来了你封印多年的心魔。它化形成你十三岁时杀死的那只妖兽，坐在你的识海里等你。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "直面心魔",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 15,
+            "karmaGood": 5
+          }
+        },
+        "right": {
+          "text": "以剑斩心魔",
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 10,
+            "health": -15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_ego.png"
+    },
+    {
+      "id": "n_hunt",
+      "title": "元婴猎杀",
+      "description": "你听说有邪修专门猎杀新结元婴的修士——元婴是上佳的炼丹材料。你的元婴在丹田内颤抖，但你感觉到的不是恐惧——是愤怒。",
+      "type": "COMBAT",
+      "realm": "nascent",
+      "weight": 10,
+      "tags": [
+        "combat"
+      ],
+      "choices": {
+        "left": {
+          "text": "主动出击，先发制人",
+          "effects": {
+            "cultivation": 20,
+            "health": -20,
+            "karmaBad": 5
+          }
+        },
+        "right": {
+          "text": "设陷阱诱敌",
+          "effects": {
+            "cultivation": 15,
+            "fortune": 5,
+            "daoHeart": 5
+          }
+        }
+      },
+      "enemy": {
+        "name": "邪修·噬婴道人",
+        "hp": 60,
+        "atk": 15,
+        "def": 5,
+        "critRate": 10,
+        "special": "噬魂夺魄",
+        "specialChance": 0.3,
+        "specialDmg": 10,
+        "factionId": "xuesha_sect"
+      },
+      "combatRewards": {
+        "cultivation": 20,
+        "spiritStone": 25
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_hunt.png"
+    },
+    {
+      "id": "n_cave",
+      "title": "元婴洞天",
+      "description": "元婴告诉你——有一处上古洞天只有元婴出窍才能进入。你的肉身留在外面，元婴探入洞天——里面堆满了万年前的宝物。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 12,
+      "choices": {
+        "left": {
+          "text": "取走法宝",
+          "effects": {
+            "spiritStone": 30,
+            "treasure": "炼妖壶"
+          },
+          "dungeon": {
+            "id": "nascent_cave",
+            "nodes": [
+              {
+                "card": "nc_trap"
+              },
+              {
+                "card": "nc_treasure"
+              }
+            ]
+          },
+          "karmaSeed": {
+            "id": "fortuneWheel",
+            "delay": 6,
+            "realm": "deity",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "取走丹药",
+          "effects": {
+            "spiritStone": 10,
+            "pill": "凝婴丹"
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_cave.png"
+    },
+    {
+      "id": "n_old_rival",
+      "title": "故人重逢",
+      "description": "你在坊市遇到了筑基期时结下的宿敌。他的修为也到了元婴——但他的道心看起来比你更沉。他说想和你再比一场。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "应战——以证天道",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 10,
+            "health": -15
+          }
+        },
+        "right": {
+          "text": "一笑泯恩仇",
+          "effects": {
+            "daoHeart": 5,
+            "karmaGood": 10,
+            "cultivation": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_old_rival.png"
+    },
+    {
+      "id": "n_sect_burden",
+      "title": "宗门重担",
+      "description": "掌门找到你——他的头发全白了。他说宗门需要一个元婴长老撑场面，否则会被剑宗吞并。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "担起宗门责任",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 10,
+            "cultivation": -5
+          }
+        },
+        "right": {
+          "text": "修行为重，婉拒",
+          "effects": {
+            "cultivation": 10,
+            "karmaBad": 3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_sect_burden.png"
+    },
+    {
+      "id": "n_out_of_body",
+      "title": "出窍历练",
+      "description": "元婴出窍——你可以以元神形态游历百里。你看到了山脚下一个小村庄正在被妖兽围攻。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "元婴瞬至，灭妖兽",
+          "effects": {
+            "karmaGood": 15,
+            "daoHeart": 5,
+            "health": -10
+          }
+        },
+        "right": {
+          "text": "冷眼旁观——命数如此",
+          "effects": {
+            "karmaBad": 10,
+            "daoHeart": -3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_out_of_body.png"
+    },
+    {
+      "id": "n_meditation",
+      "title": "元婴冥想",
+      "description": "你在洞府闭关。元婴脱离你的肉身，盘坐在虚空中。它看到了一些你看不到的东西——世界是由因果丝线编织的。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 15,
+      "choices": {
+        "left": {
+          "text": "追随因果丝线",
+          "effects": {
+            "cultivation": 12,
+            "daoHeart": 8,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "安心修炼，不涉因果",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_meditation.png"
+    },
+    {
+      "id": "n_sword_spirit",
+      "title": "剑灵觉醒",
+      "description": "你的本命剑突然震动——它吸收了你的元婴气息，剑灵苏醒了。剑灵是一个沉默的少女，她的眼睛是你的眼睛。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 6,
+      "pathRestriction": "sword",
+      "choices": {
+        "left": {
+          "text": "与剑灵融合",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 10,
+            "health": -5
+          }
+        },
+        "right": {
+          "text": "让剑灵独立存在",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 15,
+            "fortune": 10
+          },
+          "karmaSeed": {
+            "id": "swordHonor",
+            "delay": 6,
+            "realm": "deity",
+            "priority": 2
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_sword_spirit.png"
+    },
+    {
+      "id": "n_spell_library",
+      "title": "万法归宗",
+      "description": "你在天枢道院的秘库中发现了一本禁书——上面记载了所有已知法术的「源代码」。翻到最后一页——上面写着你的名字。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 6,
+      "pathRestriction": "spell",
+      "choices": {
+        "left": {
+          "text": "研读禁书",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": -10,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "封存禁书",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_spell_library.png"
+    },
+    {
+      "id": "n_body_tribulation",
+      "title": "肉身天劫",
+      "description": "你的肉身突破了一个新的极限——天劫感应到了。雷云在你的头顶聚集，但你不打算用法力抵挡。你要用肉身硬接天雷。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 6,
+      "pathRestriction": "body",
+      "choices": {
+        "left": {
+          "text": "以肉身硬抗天雷",
+          "effects": {
+            "cultivation": 30,
+            "health": -30,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "用法力架盾",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_body_tribulation.png"
+    },
+    {
+      "id": "n_pill_miracle",
+      "title": "丹道奇缘",
+      "description": "你在炼丹时发现了一种从未见过的反应——当元婴气息渗入丹炉，丹药的品级跳了一阶。药王谷的长老们围在你身边，眼中是敬和妒。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 6,
+      "pathRestriction": "pill",
+      "choices": {
+        "left": {
+          "text": "分享发现",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 10,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "秘而不宣",
+          "effects": {
+            "cultivation": 15,
+            "karmaBad": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_pill_miracle.png"
+    },
+    {
+      "id": "n_heaven_eye",
+      "title": "天眼初开",
+      "description": "元婴开了第三只眼——天眼。你看到每一个人的头顶上都有一根因果线，而你的那根——直冲云霄，看不到尽头。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 5,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "顺着自己的线看",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 10,
+            "fortune": -5
+          }
+        },
+        "right": {
+          "text": "不去追问——水到渠成",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_heaven_eye.png"
+    },
+    {
+      "id": "n_trade_city",
+      "title": "灵墟坊市",
+      "description": "你来到灵墟——化神以下最大的修仙坊市。元婴修士在这里不算什么——路边摆摊的都是金丹。你的灵石在这里能买到好东西。",
+      "type": "SHOP",
+      "realm": "nascent",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "购置涅槃羽 (150灵石)",
+          "effects": {
+            "spiritStone": -150,
+            "treasure": "涅槃羽"
+          }
+        },
+        "right": {
+          "text": "购置凝婴丹 (120灵石)",
+          "effects": {
+            "spiritStone": -120,
+            "pill": "凝婴丹"
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_trade_city.png"
+    },
+    {
+      "id": "n_ancient_ruins",
+      "title": "太古遗迹",
+      "description": "天枢道院发现了化神期修士的太古遗迹。元婴期才有资格进入探索。",
+      "type": "DUNGEON",
+      "realm": "nascent",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "进入遗迹",
+          "dungeon": {
+            "id": "ancient_ruins",
+            "nodes": [
+              {
+                "card": "ar_entrance"
+              },
+              {
+                "card": "ar_hall"
+              },
+              {
+                "card": "ar_secret"
+              },
+              {
+                "card": "ar_boss"
+              }
+            ]
+          }
+        },
+        "right": {
+          "text": "稳妥修炼，不入险地",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_ancient_ruins.png"
+    },
+    {
+      "id": "n_auction",
+      "title": "元婴拍卖会",
+      "description": "灵墟一年一度的元婴拍卖会。台上在拍一瓶'太上忘情水'——据说喝下后可以抹去一段记忆。起拍价 80 灵石。",
+      "type": "SHOP",
+      "realm": "nascent",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "竞拍 (80灵石)",
+          "effects": {
+            "spiritStone": -80,
+            "daoHeart": 15,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "只看看热闹",
+          "effects": {
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_auction.png"
+    },
+    {
+      "id": "n_blood_debt",
+      "title": "血债",
+      "description": "你在金丹期的一桩旧事被翻了出来——你曾参与血洗一个小门派。受害者的子女修成了元婴，正在找你。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 5,
+      "prerequisites": {
+        "flags": {
+          "karmaBad": 50
+        }
+      },
+      "choices": {
+        "left": {
+          "text": "赔偿赎罪 (50灵石)",
+          "effects": {
+            "spiritStone": -50,
+            "karmaGood": 15,
+            "daoHeart": 5
+          },
+          "karmaSeed": {
+            "id": "combatScar",
+            "delay": 5,
+            "realm": "deity",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "以实力让他闭嘴",
+          "effects": {
+            "karmaBad": 10,
+            "health": -20
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_blood_debt.png"
+    },
+    {
+      "id": "n_spirit_vein",
+      "title": "灵脉争夺",
+      "description": "一条新发现的灵石矿脉引发了各大势力的争夺。你收到了两份邀请——剑宗和药王谷都想让你站队。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 7,
+      "choices": {
+        "left": {
+          "text": "站剑宗——武力夺矿",
+          "effects": {
+            "cultivation": 15,
+            "health": -10,
+            "karmaBad": 5
+          }
+        },
+        "right": {
+          "text": "站药王谷——分配开采",
+          "effects": {
+            "spiritStone": 20,
+            "karmaGood": 5,
+            "cultivation": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_spirit_vein.png"
+    },
+    {
+      "id": "n_bridge",
+      "title": "形神之桥",
+      "description": "元婴开始尝试与你的肉身建立更深层的连接——这是一座桥，跨越肉身与元神。桥的另一端——是化神。",
+      "type": "NORMAL",
+      "realm": "nascent",
+      "weight": 5,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "谨慎修桥",
+          "effects": {
+            "cultivation": 12,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "强行贯通",
+          "effects": {
+            "cultivation": 25,
+            "health": -20,
+            "daoHeart": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_ns_n_bridge.png"
+    },
+    {
+      "id": "break_nascent",
+      "title": "元婴大成·冲击化神",
+      "description": "元婴已经长到与你等身大小。它站在你面前——独立、完整、与你四目相对。突破化神意味着你和元婴合二为一——从此之后，你不再是你。你准备好了吗？",
+      "type": "BREAKTHROUGH",
+      "realm": "nascent",
+      "weight": 0,
+      "tags": [
+        "breakthrough"
+      ],
+      "choices": {
+        "left": {
+          "text": "与元婴融为化神",
+          "breakSuccess": 0.45,
+          "effects": {}
+        },
+        "right": {
+          "text": "再修炼一段时间",
+          "effects": {
+            "cultivation": 10
+          }
+        }
+      },
+      "successText": "元婴与你合为一体——你不是变强了，你是变成了另一个人。一个更完整的你。",
+      "failText": "融合失败——元婴在关键时刻退缩了。它说：'你还没准备好放弃我。'",
+      "sceneImage": "assets/cards/events/scene_ns_break_nascent.png"
+    }
+  ],
+  "dungeons": {
+    "ancient_ruins": {
+      "id": "ancient_ruins",
+      "name": "太古遗迹",
+      "description": "化神期修士留下的洞府遗迹",
+      "nodeCount": 4
+    }
+  },
+  "dungeonCards": {
+    "ar_entrance": {
+      "id": "ar_entrance",
+      "title": "遗迹入口",
+      "description": "遗迹大门上刻着太古文字——'非元婴者勿入'。门槛上有一具已死的金丹修士尸骨。",
+      "dungeon": "ancient_ruins",
+      "nodeIndex": 0,
+      "choices": {
+        "left": {
+          "text": "跨过尸骨前进",
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "观察陷阱再进",
+          "effects": {
+            "fortune": 5,
+            "health": 5
+          }
+        }
+      }
+    },
+    "ar_hall": {
+      "id": "ar_hall",
+      "title": "归墟大殿",
+      "description": "大殿中央有一面镜子——镜中映出的是飞升后的你。镜中的你看着你，摇了摇头。",
+      "dungeon": "ancient_ruins",
+      "nodeIndex": 1,
+      "choices": {
+        "left": {
+          "text": "质问镜中的自己",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5,
+            "fortune": -3
+          }
+        },
+        "right": {
+          "text": "不与镜中人对视",
+          "effects": {
+            "cultivation": 10
+          }
+        }
+      }
+    },
+    "ar_secret": {
+      "id": "ar_secret",
+      "title": "密室宝藏",
+      "description": "你发现了洞府主人留下的密室——里面有三样东西：一本功法、一瓶丹药、一件法宝。但密室禁制只允许你取走一样。",
+      "dungeon": "ancient_ruins",
+      "nodeIndex": 2,
+      "choices": {
+        "left": {
+          "text": "取法宝——涅槃羽",
+          "effects": {
+            "treasure": "涅槃羽",
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "取丹药——凝婴丹",
+          "effects": {
+            "pill": "凝婴丹",
+            "cultivation": 10
+          }
+        }
+      }
+    },
+    "ar_boss": {
+      "id": "ar_boss",
+      "title": "守墓之灵",
+      "description": "洞府最深处——化神修士遗留的一道神念化形。它手持残剑，等待挑战者已经八千年。",
+      "dungeon": "ancient_ruins",
+      "nodeIndex": 3,
+      "tags": [
+        "combat",
+        "boss"
+      ],
+      "choices": {
+        "left": {
+          "text": "全力一战",
+          "effects": {
+            "cultivation": 20,
+            "health": -25,
+            "daoHeart": 10,
+            "spiritStone": 30
+          }
+        },
+        "right": {
+          "text": "以元婴对话——说服它消散",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 15,
+            "karmaGood": 10
+          }
+        }
+      },
+      "enemy": {
+        "name": "守墓之灵",
+        "hp": 80,
+        "atk": 18,
+        "def": 8,
+        "critRate": 12,
+        "special": "万古剑意",
+        "specialChance": 0.35,
+        "specialDmg": 15
+      },
+      "combatRewards": {
+        "cultivation": 25,
+        "spiritStone": 30
+      },
+      "type": "COMBAT"
+    },
+    "nc_trap": {
+      "id": "nc_trap",
+      "title": "万古禁制",
+      "description": "你触发了洞天的守护禁制——一道万年前的剑意横在你面前。",
+      "dungeon": "nascent_cave",
+      "nodeIndex": 0,
+      "choices": {
+        "left": {
+          "text": "硬闯",
+          "effects": {
+            "health": -15,
+            "cultivation": 8
+          }
+        },
+        "right": {
+          "text": "元婴绕路",
+          "effects": {
+            "fortune": 5,
+            "cultivation": 5
+          }
+        }
+      }
+    },
+    "nc_treasure": {
+      "id": "nc_treasure",
+      "title": "洞天核心",
+      "description": "洞天核心是一颗悬浮的晶石，周围漂浮着万年前的修士遗物。",
+      "dungeon": "nascent_cave",
+      "nodeIndex": 1,
+      "choices": {
+        "left": {
+          "text": "收取晶石",
+          "effects": {
+            "cultivation": 15,
+            "spiritStone": 20
+          }
+        },
+        "right": {
+          "text": "取走遗物",
+          "effects": {
+            "treasure": "万年玄冰",
+            "fortune": 5
+          }
+        }
+      }
+    }
+  }
+}

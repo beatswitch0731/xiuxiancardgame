@@ -1,0 +1,922 @@
+{
+  "realm": "qi",
+  "realmName": "炼气期",
+  "cards": [
+    {
+      "id": "q_start_sword",
+      "title": "剑种入心",
+      "description": "你在山中拾得一块残剑碎片，剑意入体，隐隐作痛。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "弃剑求稳",
+          "effects": {
+            "cultivation": 5,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "以血养剑",
+          "effects": {
+            "cultivation": 20,
+            "health": -15,
+            "karmaBad": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_q_start_sword.png"
+    },
+    {
+      "id": "q_start_spell",
+      "title": "术法入门",
+      "description": "你获得一本《初级符咒术》，术法繁复，需静心研习。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "循序渐进",
+          "effects": {
+            "cultivation": 12,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "通宵参悟",
+          "effects": {
+            "cultivation": 25,
+            "health": -10,
+            "daoHeart": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_q_start_spell.png"
+    },
+    {
+      "id": "q_start_body",
+      "title": "淬体之痛",
+      "description": "你以瀑布冲击肉身，筋骨哀鸣，但气息渐长。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "适可而止",
+          "effects": {
+            "cultivation": 10,
+            "health": 10
+          }
+        },
+        "right": {
+          "text": "突破极限",
+          "effects": {
+            "cultivation": 22,
+            "health": -5,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_q_start_body.png"
+    },
+    {
+      "id": "q_start_pill",
+      "title": "药庐学徒",
+      "description": "你被一位老丹修收为药童，识百草、辨火候。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "偷学丹方",
+          "effects": {
+            "cultivation": 15,
+            "karmaBad": 10,
+            "pill": "regen"
+          }
+        },
+        "right": {
+          "text": "勤恳跑腿",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 8,
+            "spiritStone": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_q_start_pill.png"
+    },
+    {
+      "id": "q_gathering",
+      "title": "采集灵草",
+      "description": "后山有一片灵草，但附近有低阶妖兽出没。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "冒险采集",
+          "effects": {
+            "cultivation": 15,
+            "health": -10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "远远避开",
+          "effects": {
+            "cultivation": 5,
+            "daoHeart": 5
+          }
+        }
+      },
+      "tags": [
+        "exploration",
+        "risk"
+      ],
+      "sceneImage": "assets/cards/events/scene_event_qi_herb_gather.png"
+    },
+    {
+      "id": "q_meditation",
+      "title": "静坐吐纳",
+      "description": "今日灵气充沛，适合闭关修炼。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 12,
+      "choices": {
+        "left": {
+          "text": "浅尝辄止",
+          "effects": {
+            "cultivation": 8,
+            "daoHeart": 3
+          }
+        },
+        "right": {
+          "text": "深深入定",
+          "effects": {
+            "cultivation": 20,
+            "health": -5,
+            "daoHeart": -3
+          }
+        }
+      },
+      "tags": [
+        "cultivation"
+      ],
+      "sceneImage": "assets/cards/events/scene_event_qi_meditation.png"
+    },
+    {
+      "id": "q_beggar",
+      "title": "老乞赠书",
+      "description": "山门外有个老乞丐，向你讨要灵石。他说有上古秘辛相告。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "置之不理",
+          "effects": {
+            "daoHeart": -5,
+            "fortune": -3
+          }
+        },
+        "right": {
+          "text": "施舍灵石",
+          "effects": {
+            "spiritStone": -10,
+            "fortune": 15,
+            "karmaGood": 10
+          }
+        }
+      },
+      "tags": [
+        "social",
+        "karma"
+      ],
+      "sceneImage": "assets/cards/events/scene_event_qi_beggar.png"
+    },
+    {
+      "id": "q_fellow",
+      "title": "同门比试",
+      "description": "同门弟子向你发起切磋，胜者可得门派贡献。",
+      "type": "COMBAT",
+      "realm": "qi",
+      "weight": 9,
+      "choices": {
+        "left": {
+          "text": "点到为止",
+          "effects": {
+            "cultivation": 8,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "全力出手",
+          "effects": {
+            "cultivation": 15,
+            "health": -10,
+            "karmaBad": 5
+          }
+        }
+      },
+      "tags": [
+        "combat"
+      ],
+      "enemy": {
+        "name": "同门师兄",
+        "hp": 25,
+        "atk": 6,
+        "def": 2,
+        "critRate": 5,
+        "special": "疾风剑",
+        "specialChance": 0.25,
+        "specialDmg": 3,
+        "factionId": "qingyun_sword"
+      },
+      "combatRewards": {
+        "cultivation": 8,
+        "spiritStone": 5
+      },
+      "sceneImage": "assets/cards/events/scene_qi_q_fellow.png"
+    },
+    {
+      "id": "q_whiteFox",
+      "title": "白狐受困",
+      "description": "一只白狐被猎户陷阱所伤，眼中含泪望着你。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 7,
+      "choices": {
+        "left": {
+          "text": "妖兽当诛",
+          "effects": {
+            "cultivation": 10,
+            "karmaBad": 15,
+            "health": -5
+          }
+        },
+        "right": {
+          "text": "救它脱困",
+          "effects": {
+            "cultivation": -5,
+            "karmaGood": 15,
+            "fortune": 5
+          },
+          "karmaSeed": {
+            "id": "whiteFox",
+            "delay": 8,
+            "realm": "foundation",
+            "priority": 1
+          }
+        }
+      },
+      "tags": [
+        "karma",
+        "animal"
+      ],
+      "sceneImage": "assets/cards/events/scene_event_qi_whitefox.png"
+    },
+    {
+      "id": "q_market",
+      "title": "坊市淘宝",
+      "description": "山下坊市热闹非凡，你手中有些灵石。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "购买功法残页",
+          "effects": {
+            "spiritStone": -20,
+            "cultivation": 18
+          },
+          "karmaSeed": {
+            "id": "fortuneWheel",
+            "delay": 10,
+            "realm": "golden",
+            "priority": 1
+          }
+        },
+        "right": {
+          "text": "购买丹药",
+          "effects": {
+            "spiritStone": -15,
+            "pill": "regen"
+          }
+        }
+      },
+      "tags": [
+        "trade"
+      ],
+      "sceneImage": "assets/cards/events/scene_qi_q_market.png"
+    },
+    {
+      "id": "q_demon",
+      "title": "魔道诱惑",
+      "description": "一名魔修暗中传音：「我有捷径，可让你修为暴涨。」",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 6,
+      "choices": {
+        "left": {
+          "text": "严词拒绝",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 5
+          },
+          "karmaSeed": {
+            "id": "combatScar",
+            "delay": 8,
+            "realm": "foundation",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "试探一番",
+          "effects": {
+            "cultivation": 25,
+            "karmaBad": 20,
+            "daoHeart": -10
+          }
+        }
+      },
+      "tags": [
+        "demon",
+        "temptation"
+      ],
+      "sceneImage": "assets/cards/events/scene_qi_q_demon.png"
+    },
+    {
+      "id": "q_elder",
+      "title": "长老讲道",
+      "description": "宗门长老开坛讲道，众生皆可旁听。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 9,
+      "choices": {
+        "left": {
+          "text": "专心听讲",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "借机提问",
+          "effects": {
+            "cultivation": 12,
+            "fortune": 10
+          }
+        }
+      },
+      "tags": [
+        "cultivation",
+        "social"
+      ],
+      "sceneImage": "assets/cards/events/scene_qi_q_elder.png"
+    },
+    {
+      "id": "q_cave",
+      "title": "古洞异响",
+      "description": "你发现一处隐蔽山洞，内有灵气波动，似有机缘。",
+      "type": "DUNGEON",
+      "realm": "qi",
+      "weight": 5,
+      "choices": {
+        "left": {
+          "text": "谨慎离去",
+          "effects": {
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "入内探查",
+          "effects": {
+            "health": -15,
+            "cultivation": 25,
+            "fortune": 10
+          },
+          "dungeon": "ancientCave",
+          "karmaSeed": {
+            "id": "spellHidden",
+            "delay": 12,
+            "realm": "golden",
+            "priority": 2
+          }
+        }
+      },
+      "tags": [
+        "dungeon",
+        "exploration"
+      ],
+      "sceneImage": "assets/cards/events/scene_qi_q_cave.png"
+    },
+    {
+      "id": "q_love",
+      "title": "凡尘姻缘",
+      "description": "山下村镇有一位女子，对你一见倾心。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 6,
+      "choices": {
+        "left": {
+          "text": "斩断红尘",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 8
+          }
+        },
+        "right": {
+          "text": "结为道侣",
+          "effects": {
+            "daoHeart": -5,
+            "cultivation": -5,
+            "companion": "mortal"
+          }
+        }
+      },
+      "tags": [
+        "social",
+        "romance"
+      ],
+      "sceneImage": "assets/cards/events/scene_event_qi_love.png"
+    },
+    {
+      "id": "q_spiritStone",
+      "title": "灵石矿脉",
+      "description": "你偶然发现一条小型灵石矿脉。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 7,
+      "choices": {
+        "left": {
+          "text": "据为己有",
+          "effects": {
+            "spiritStone": 30,
+            "karmaBad": 10
+          }
+        },
+        "right": {
+          "text": "上交宗门",
+          "effects": {
+            "spiritStone": 10,
+            "daoHeart": 10,
+            "karmaGood": 10
+          }
+        }
+      },
+      "tags": [
+        "resource",
+        "karma"
+      ],
+      "sceneImage": "assets/cards/events/scene_event_qi_spirit_mine.png"
+    },
+    {
+      "id": "q_swordTomb",
+      "title": "剑冢共鸣",
+      "description": "你路过一片剑冢，残剑齐鸣，似在呼唤你。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 5,
+      "path": "sword",
+      "choices": {
+        "left": {
+          "text": "取走残剑",
+          "effects": {
+            "treasure": "brokenSword",
+            "cultivation": 10,
+            "karmaBad": 5
+          },
+          "karmaSeed": {
+            "id": "swordHonor",
+            "delay": 10,
+            "realm": "foundation",
+            "priority": 1
+          }
+        },
+        "right": {
+          "text": "凭吊离去",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5
+          }
+        }
+      },
+      "tags": [
+        "path_specific",
+        "sword"
+      ],
+      "sceneImage": "assets/cards/events/scene_event_qi_swordtomb.png"
+    },
+    {
+      "id": "q_pillRecipe",
+      "title": "丹方残卷",
+      "description": "你在旧书摊发现半张丹方，字迹模糊。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 5,
+      "path": "pill",
+      "choices": {
+        "left": {
+          "text": "买下研究",
+          "effects": {
+            "spiritStone": -10,
+            "cultivation": 15,
+            "pill": "foundation"
+          }
+        },
+        "right": {
+          "text": "弃之不顾",
+          "effects": {
+            "fortune": 5
+          },
+          "karmaSeed": {
+            "id": "pillPoison",
+            "delay": 8,
+            "realm": "golden",
+            "priority": 2
+          }
+        }
+      },
+      "tags": [
+        "path_specific",
+        "pill"
+      ],
+      "sceneImage": "assets/cards/events/scene_qi_q_pillRecipe.png"
+    },
+    {
+      "id": "q_spellTome",
+      "title": "咒术典籍",
+      "description": "一本泛黄的咒术典籍摆在书架上，封面有封印。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 5,
+      "path": "spell",
+      "choices": {
+        "left": {
+          "text": "解封研习",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": -5,
+            "karmaBad": 5
+          }
+        },
+        "right": {
+          "text": "敬而远之",
+          "effects": {
+            "daoHeart": 8
+          }
+        }
+      },
+      "tags": [
+        "path_specific",
+        "spell"
+      ],
+      "sceneImage": "assets/cards/events/scene_qi_q_spellTome.png"
+    },
+    {
+      "id": "q_bodyTrial",
+      "title": "肉身试炼",
+      "description": "山崖上有雷电淬体的天然法阵。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 5,
+      "path": "body",
+      "choices": {
+        "left": {
+          "text": "入阵淬炼",
+          "effects": {
+            "cultivation": 18,
+            "health": -10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "留待日后",
+          "effects": {
+            "cultivation": 5
+          },
+          "karmaSeed": {
+            "id": "bodyTrialStarted",
+            "delay": 8,
+            "realm": "foundation",
+            "priority": 2
+          }
+        }
+      },
+      "tags": [
+        "path_specific",
+        "body"
+      ],
+      "sceneImage": "assets/cards/events/scene_qi_q_bodyTrial.png"
+    },
+    {
+      "id": "q_inherit",
+      "title": "前辈遗泽",
+      "description": "一具坐化的骸骨前摆着储物袋，似在等有缘人。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 4,
+      "choices": {
+        "left": {
+          "text": "取之修炼",
+          "effects": {
+            "cultivation": 25,
+            "spiritStone": 20,
+            "karmaBad": 10
+          }
+        },
+        "right": {
+          "text": "安葬遗骨",
+          "effects": {
+            "karmaGood": 15,
+            "fortune": 10,
+            "cultivation": 5
+          }
+        }
+      },
+      "tags": [
+        "karma",
+        "treasure"
+      ],
+      "sceneImage": "assets/cards/events/scene_event_qi_inherit.png"
+    },
+    {
+      "id": "q_fortune",
+      "title": "天现异象",
+      "description": "今夜流星划过，你感到福至心灵。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 6,
+      "choices": {
+        "left": {
+          "text": "打坐感悟",
+          "effects": {
+            "cultivation": 15,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "外出寻宝",
+          "effects": {
+            "fortune": 20,
+            "health": -5
+          }
+        }
+      },
+      "tags": [
+        "fortune"
+      ],
+      "sceneImage": "assets/cards/events/scene_qi_q_fortune.png"
+    },
+    {
+      "id": "break_qi",
+      "title": "炼气圆满",
+      "description": "丹田气旋已至极限，是强行冲关，还是稳中求进？",
+      "type": "BOTTLENECK",
+      "realm": "qi",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "强行突破",
+          "effects": {
+            "health": -25,
+            "daoHeart": -10
+          },
+          "breakSuccess": 0.35
+        },
+        "right": {
+          "text": "稳扎稳打",
+          "effects": {
+            "daoHeart": 5
+          },
+          "breakSuccess": 0.65
+        },
+        "up": {
+          "text": "服用筑基丹",
+          "effects": {
+            "daoHeart": 3
+          },
+          "breakSuccess": 1
+        },
+        "down": {
+          "text": "放弃等待",
+          "effects": {
+            "cultivation": -30,
+            "daoHeart": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_break_qi.png"
+    },
+    {
+      "id": "death",
+      "title": "道消身陨",
+      "description": "你感到生机迅速流逝，一世修行化为泡影。",
+      "type": "DESTINY",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "转世重修",
+          "effects": {
+            "reincarnate": true
+          }
+        },
+        "right": {
+          "text": "转世重修",
+          "effects": {
+            "reincarnate": true
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_death.png"
+    },
+    {
+      "id": "ending_ascension",
+      "title": "飞升成仙",
+      "description": "你历经磨难，终成正果，破空而去。",
+      "type": "DESTINY",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "开启新的轮回",
+          "effects": {
+            "reincarnate": true
+          }
+        },
+        "right": {
+          "text": "开启新的轮回",
+          "effects": {
+            "reincarnate": true
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_ending_ascension.png"
+    },
+    {
+      "id": "path_select",
+      "title": "问道之路",
+      "description": "修仙一途，万法归宗。你选择何种功法作为根基？",
+      "type": "DESTINY",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "剑修 · 一剑破万法",
+          "effects": {
+            "path": "sword"
+          },
+          "nextCard": "q_start_sword"
+        },
+        "right": {
+          "text": "法修 · 诸术并修",
+          "effects": {
+            "path": "spell"
+          },
+          "nextCard": "q_start_spell"
+        },
+        "up": {
+          "text": "体修 · 肉身成圣",
+          "effects": {
+            "path": "body"
+          },
+          "nextCard": "q_start_body"
+        },
+        "down": {
+          "text": "丹修 · 以丹入道",
+          "effects": {
+            "path": "pill"
+          },
+          "nextCard": "q_start_pill"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_path_select.png"
+    },
+    {
+      "id": "q_shop",
+      "title": "山间坊市",
+      "description": "你路过山脚坊市，几个散修摆摊出售杂物。你兜里有些灵石——要不要买点什么？",
+      "type": "SHOP",
+      "realm": "qi",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "买筑基丹 (20灵石)",
+          "effects": {
+            "spiritStone": -20,
+            "pill": "筑基丹"
+          },
+          "costCheck": {
+            "spiritStone": 20
+          }
+        },
+        "right": {
+          "text": "买回春丹 (10灵石)",
+          "effects": {
+            "spiritStone": -10,
+            "pill": "回春丹"
+          },
+          "costCheck": {
+            "spiritStone": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_q_shop.png"
+    }
+  ],
+  "dungeons": {
+    "ancientCave": {
+      "name": "古洞探险",
+      "nodes": [
+        {
+          "type": "event",
+          "card": "cave_spirit"
+        },
+        {
+          "type": "battle",
+          "card": "cave_beast"
+        },
+        {
+          "type": "reward",
+          "card": "cave_reward"
+        }
+      ]
+    }
+  },
+  "dungeonCards": {
+    "cave_spirit": {
+      "id": "cave_spirit",
+      "title": "洞中生灵",
+      "description": "古洞深处有一团灵识，似敌似友。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "恭敬询问",
+          "effects": {
+            "cultivation": 15,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "强行吞噬",
+          "effects": {
+            "cultivation": 25,
+            "karmaBad": 15,
+            "health": -10
+          }
+        }
+      }
+    },
+    "cave_beast": {
+      "id": "cave_beast",
+      "title": "守洞妖兽",
+      "description": "一只巨大的岩甲兽挡住了去路。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "游击消耗",
+          "effects": {
+            "health": -10,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "正面硬撼",
+          "effects": {
+            "health": -25,
+            "cultivation": 20,
+            "treasure": "beastCore"
+          }
+        }
+      }
+    },
+    "cave_reward": {
+      "id": "cave_reward",
+      "title": "洞府宝藏",
+      "description": "你击败了妖兽，发现前人留下的宝物。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "取走灵石",
+          "effects": {
+            "spiritStone": 50
+          }
+        },
+        "right": {
+          "text": "取走功法",
+          "effects": {
+            "cultivation": 30
+          }
+        }
+      }
+    }
+  },
+  "karmaCards": {
+    "whiteFox": "f_karma"
+  }
+}
