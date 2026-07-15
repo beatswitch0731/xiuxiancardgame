@@ -193,27 +193,27 @@
       "desc": "师尊。收留了没人要的你。他对你说了四个字——剑出无悔。这四个字不止是剑诀，是他一生的困局。",
       "arc": "mentor"
     },
-    "tian_ji": {
+    "tianji_laoren": {
       "type": "seer",
       "desc": "先知。他在天机盘中看见了一个空位——那是你的位置。他瞎了——不是因为窥天，是因为看到了不该看的东西。那个东西是你。",
       "arc": "seer"
     },
-    "xue_sha": {
+    "xuesha_laozu": {
       "type": "dark_ally",
       "desc": "黑暗盟友。他不是叛徒——他是守门人。七百年，一个人扛着整个苍茫界的重量。他需要你——需要你来做他不能做的事。",
       "arc": "ally"
     },
-    "bai_luo": {
+    "bai_luoxuan": {
       "type": "companion",
       "desc": "道侣。白狐报恩——但她说报恩是借口。她只是想在有限的生命里，靠近一个人。",
       "arc": "companion"
     },
-    "jian_ling": {
+    "jian_linger": {
       "type": "companion",
       "desc": "道侣。傲娇师姐——她的剑比她的嘴诚实。她说她不屑于道侣——但她的剑气在你靠近时会自己变柔。",
       "arc": "companion"
     },
-    "mu_qing": {
+    "mu_qinglan": {
       "type": "companion",
       "desc": "道侣。书痴——她读书太多，不信人。但你的命数不在天道内——你是她唯一读不懂的书。",
       "arc": "companion"
@@ -223,7 +223,7 @@
       "desc": "道侣。魔修——七岁被灌了血魔功。你说她可以不用再杀人——她信了。不是因为这句话对，是因为说的人是你。",
       "arc": "companion"
     },
-    "jiu_wei": {
+    "jiuwei_suyue": {
       "type": "companion",
       "desc": "道侣。天狐——活了三千年。她见过无数人死去——但她记住的只有你。每一世的你。",
       "arc": "companion"

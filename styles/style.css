@@ -12,6 +12,7 @@
   --border-glow: #3a4560;
   --text-primary: #e8edf5;
   --text-secondary: #8899b0;
+  --text-tertiary: #6b7a8f;
   --accent-gold: #f0b232;
   --accent-cyan: #39d0d8;
   --accent-red: #f85149;
@@ -97,71 +98,45 @@ body {
   align-items: center;
   text-align: center;
   overflow-y: auto;
+  /* 水墨国风：宣纸底纹叠加 */
+  background: 
+    radial-gradient(ellipse at center, rgba(245, 245, 235, 0.85) 0%, rgba(225, 220, 205, 0.96) 100%),
+    url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.06"/></svg>');
 }
 
 .game-title {
   font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', 'Noto Serif SC', serif;
-  font-size: 3.8rem;
+  font-size: 4.2rem;
   font-weight: 900;
   line-height: 1.15;
-  color: #e8c560;
-  letter-spacing: 0.18em;
-  margin-bottom: 14px;
-  /* 仿篆刻/碑拓质感：暖金底色 + 深褐描边 + 多重光晕 */
-  -webkit-text-stroke: 2px rgba(30, 16, 4, 0.85);
-  text-shadow:
-    0 0 48px rgba(232, 197, 96, 0.45),
-    0 0 90px rgba(200, 150, 50, 0.3),
-    0 3px 10px rgba(0, 0, 0, 0.85),
-    3px 3px 0 rgba(8, 4, 0, 0.7),
-    -2px -2px 0 rgba(8, 4, 0, 0.65),
-    2px -2px 0 rgba(8, 4, 0, 0.65),
-    -2px 2px 0 rgba(8, 4, 0, 0.65);
-  animation: titleGlow 4s ease-in-out infinite;
-}
-
-@keyframes titleGlow {
-  0%, 100% {
-    text-shadow:
-      0 0 48px rgba(232, 197, 96, 0.45),
-      0 0 90px rgba(200, 150, 50, 0.3),
-      0 3px 10px rgba(0, 0, 0, 0.85),
-      3px 3px 0 rgba(8, 4, 0, 0.7),
-      -2px -2px 0 rgba(8, 4, 0, 0.65),
-      2px -2px 0 rgba(8, 4, 0, 0.65),
-      -2px 2px 0 rgba(8, 4, 0, 0.65);
-  }
-  50% {
-    text-shadow:
-      0 0 60px rgba(255, 210, 100, 0.55),
-      0 0 110px rgba(220, 160, 60, 0.35),
-      0 3px 10px rgba(0, 0, 0, 0.85),
-      3px 3px 0 rgba(8, 4, 0, 0.7),
-      -2px -2px 0 rgba(8, 4, 0, 0.65),
-      2px -2px 0 rgba(8, 4, 0, 0.65),
-      -2px 2px 0 rgba(8, 4, 0, 0.65);
-  }
+  color: #161412; /* 深墨色 */
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+  /* 水墨晕染感边缘 */
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.8);
+  text-shadow: 
+    2px 2px 8px rgba(0,0,0,0.35),
+    -1px -1px 2px rgba(255,255,255,0.6);
 }
 
 .game-subtitle {
-  font-size: 1.15rem;
-  color: #f0c866;
-  margin-bottom: 10px;
-  letter-spacing: 0.28em;
+  font-size: 1.25rem;
+  color: #2a2420; /* 浓茶色 */
+  margin-bottom: 12px;
+  letter-spacing: 0.35em;
   font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif;
-  font-weight: 700;
-  text-shadow: 0 0 24px rgba(232, 197, 96, 0.5), 0 2px 6px rgba(0,0,0,0.85);
+  font-weight: 800;
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
 }
 
 .game-desc {
-  color: #d0d8e4;
+  color: #4a443d;
   font-size: 0.95rem;
   line-height: 1.75;
   margin-bottom: 32px;
   max-width: 420px;
   font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif;
-  letter-spacing: 0.06em;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+  letter-spacing: 0.1em;
 }
 
 .path-selection h2 {
@@ -244,9 +219,10 @@ body {
 }
 
 .start-tips {
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  margin-top: 16px;
+  color: #6a5d55;
+  font-size: 0.85rem;
+  margin-top: 24px;
+  font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif;
 }
 
 /* Game screen */
@@ -416,6 +392,31 @@ body {
   50% { box-shadow: 0 0 16px rgba(248,81,73,0.7); }
 }
 
+/* ── 目标提示 ── */
+.badge.objective {
+  background: rgba(45, 200, 140, 0.15);
+  color: #2dc88c;
+  border: 1px solid rgba(45, 200, 140, 0.3);
+  animation: objectiveFadeIn 0.8s ease-out;
+}
+
+@keyframes objectiveFadeIn {
+  0% { opacity: 0; transform: translateX(-10px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* ── 寿命预警 ── */
+.resource.lifespan-warning {
+  color: #ef4444;
+  animation: lifespanFlash 0.8s infinite alternate;
+  font-weight: 700;
+}
+
+@keyframes lifespanFlash {
+  0% { color: #ef4444; text-shadow: 0 0 4px rgba(239, 68, 68, 0.5); }
+  100% { color: #ff6b6b; text-shadow: 0 0 12px rgba(255, 107, 107, 0.9); }
+}
+
 .card-source {
   font-size: 0.75rem;
   padding: 2px 8px;
@@ -426,6 +427,16 @@ body {
   position: absolute;
   top: 12px;
   right: 12px;
+}
+
+#three-canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
 }
 
 @keyframes chapterFadeIn {
@@ -866,6 +877,23 @@ body {
   z-index: 2;
 }
 
+/* 添加一层从下往上的暗色渐变遮罩，增强卡牌文字对比度 */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 26px; /* 略小于 card 的 28px 防止溢出边框 */
+  background: linear-gradient(
+    to top,
+    rgba(10, 14, 24, 0.95) 0%,
+    rgba(10, 14, 24, 0.8) 35%,
+    rgba(10, 14, 24, 0.25) 65%,
+    transparent 100%
+  );
+  z-index: 0; /* 使得遮罩位于背景图之上，但位于卡牌内容(如 .card-body z-index:2) 之下 */
+  pointer-events: none;
+}
+
 /* golden border via layered background */
 .card::after {
   content: '';
@@ -949,7 +977,21 @@ body {
   background-image: none;
 }
 
-/* ============ COMBAT_UI 战斗卡牌 ============ */
+/* ============ TUTORIAL 引导卡牌 ============ */
+.card-tutorial {
+  background: linear-gradient(180deg,
+    rgba(20, 24, 34, 0.95) 0%,
+    rgba(18, 22, 30, 0.95) 50%,
+    rgba(15, 18, 26, 0.98) 100%);
+  border-color: rgba(240, 178, 50, 0.45);
+}
+.card-tutorial::after {
+  background: linear-gradient(135deg,
+    rgba(240, 178, 50, 0.45) 0%,
+    rgba(232, 197, 96, 0.2) 40%,
+    rgba(240, 178, 50, 0.35) 100%);
+}
+.card-tutorial { box-shadow: var(--shadow-card), 0 0 40px rgba(240, 178, 50, 0.3); }
 .card-combat_ui {
   background: linear-gradient(180deg,
     rgba(30, 10, 10, 0.95) 0%,
@@ -1412,6 +1454,7 @@ body {
   font-weight: 800;
   line-height: 1.3;
   color: var(--text-primary);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85), 0 0 12px rgba(0, 0, 0, 0.6);
 }
 
 .card-body {
@@ -1423,7 +1466,7 @@ body {
 
 .card-portrait {
   width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 16 / 9;
   border-radius: 16px;
   overflow: visible;
   margin: 0 0 20px;
@@ -1802,6 +1845,7 @@ body {
   font-size: 1.08rem;
   line-height: 1.85;
   color: var(--text-secondary);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 /* swipe-instruction 已移除 → 选项内容直接从 choice-btn 的 choice-text 显示 */
@@ -3674,38 +3718,54 @@ body {
 }
 
 /* ================================================
-   沉浸 v2.0 — 名字创建界面
+   沉浸 v2.0 — 名字创建界面 (水墨丹青风)
    ================================================ */
-.name-creation { margin: 24px 0 16px; text-align: center; }
-.name-creation h2 { font-size: 1.25rem; color: #e8c560; margin-bottom: 6px; font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif; font-weight: 800; letter-spacing: 0.1em; text-shadow: 0 0 16px rgba(232,197,96,0.4), 0 2px 4px rgba(0,0,0,0.8); }
-.name-hint { color: #c8d0dc; font-size: 0.85rem; margin-bottom: 14px; font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+.name-creation { margin: 32px 0 24px; text-align: center; }
+.name-creation h2 { font-size: 1.4rem; color: #161412; margin-bottom: 10px; font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif; font-weight: 900; letter-spacing: 0.15em; }
+.name-hint { color: #4a443d; font-size: 0.9rem; margin-bottom: 24px; font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif; }
+
 .name-input-wrap {
-  display: flex; align-items: center; justify-content: center;
-  gap: 10px; margin-bottom: 18px;
+  position: relative;
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  margin-bottom: 36px;
 }
 .name-input {
-  width: 180px; padding: 10px 14px; font-size: 1.4rem; text-align: center;
-  background: rgba(20, 16, 10, 0.7);
-  border: 2px solid rgba(232, 197, 96, 0.25);
-  border-radius: 8px; color: #e8c560; letter-spacing: 6px;
-  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  width: 220px; padding: 10px 14px; font-size: 1.5rem; text-align: center;
+  background: transparent;
+  border: none; border-bottom: 2px solid #332d29; border-radius: 0;
+  color: #1a1815; letter-spacing: 6px;
+  outline: none; transition: border-color 0.3s;
   font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif;
-  font-weight: 700;
+  font-weight: 800;
 }
-.name-input:focus { border-color: #e8c560; box-shadow: 0 0 18px rgba(232,197,96,0.3), inset 0 0 12px rgba(232,197,96,0.05); }
-.name-input::placeholder { color: rgba(200, 180, 140, 0.5); letter-spacing: 2px; font-size: 0.95rem; font-weight: 400; }
-.name-char-count { font-size: 0.82rem; color: #c0b898; min-width: 30px; font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif; text-shadow: 0 1px 2px rgba(0,0,0,0.6); }
+.name-input:focus { border-bottom-color: #a82e2e; /* 聚焦时变成朱红色 */ }
+.name-input::placeholder { color: rgba(51, 45, 41, 0.35); letter-spacing: 4px; font-size: 1rem; font-weight: 400; }
+
+.name-char-count { 
+  position: absolute; right: -45px; bottom: 12px;
+  font-size: 0.85rem; color: #6a5d55; 
+  font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif; 
+}
+
 .name-confirm-btn {
-  padding: 12px 40px; font-size: 1.1rem;
-  background: linear-gradient(135deg, #e8c560, #c49030);
-  color: #0c0804; border: none; border-radius: 8px; cursor: pointer;
-  font-weight: 800; letter-spacing: 0.15em;
+  padding: 14px 48px; font-size: 1.25rem;
+  background: #a82e2e; /* 朱砂红，印章质感 */
+  color: #f5f0e6; border: 2px solid #8b1d1d; border-radius: 4px; 
+  cursor: pointer;
+  font-weight: 800; letter-spacing: 0.25em;
   font-family: 'STKaiti', 'KaiTi', '华文楷体', '楷体', serif;
-  text-shadow: 0 1px 0 rgba(255,240,200,0.3);
-  box-shadow: 0 2px 12px rgba(200, 150, 40, 0.25);
-  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  box-shadow: 2px 4px 10px rgba(139, 29, 29, 0.25), inset 0 0 10px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  position: relative;
 }
-.name-confirm-btn:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(200, 150, 40, 0.4); }
+.name-confirm-btn::after {
+  content: ''; position: absolute; inset: 2px;
+  border: 1px dashed rgba(255,255,255,0.25);
+  pointer-events: none;
+}
+.name-confirm-btn:hover { background: #b93b3b; transform: translateY(-2px); box-shadow: 2px 6px 15px rgba(139, 29, 29, 0.4); }
 .name-confirm-btn:active { transform: scale(0.97); }
 
 /* ================================================
@@ -4116,3 +4176,8 @@ body {
     font-size: 40px !important;
   }
 }
+  
+/* Critical Health/DaoHeart Pulse */  
+.attr-item.critical .attr-bar { box-shadow: 0 0 10px rgba(239, 68, 68, 0.8), 0 0 20px rgba(239, 68, 68, 0.6); animation: pulseRed 1s infinite alternate; border: 1px solid #ef4444; }  
+@keyframes pulseRed { from { box-shadow: 0 0 10px rgba(239, 68, 68, 0.8); } to { box-shadow: 0 0 20px rgba(239, 68, 68, 1), inset 0 0 10px rgba(239, 68, 68, 0.5); } } 
+ 

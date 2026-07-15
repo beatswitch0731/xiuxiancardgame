@@ -122,9 +122,8 @@
         "desc": "以剑开路，斩妖前行。",
         "effects": {
           "cultivation": 15,
-          "health": -10
-        },
-        "combatChance": 0.4
+          "health": -1
+        }
       },
       "right": {
         "text": "潜行绕路",
@@ -143,32 +142,26 @@
     "title": "突破筑基",
     "chapterNum": 1,
     "description": "灵气如潮水般涌入丹田。你盘膝而坐，运转心法，丹田内气旋初成。这是筑基的关键时刻——选择何种方式凝结道基，将决定你未来的修行之道。",
-    "type": "MILESTONE",
+    "type": "COMBAT",
     "realm": "qi",
     "threshold": 100,
     "chapter": "凡尘初醒",
-    "isBreakthrough": true,
-    "choices": {
-      "left": {
-        "text": "稳扎稳打",
-        "desc": "以稳为主，不贪不急，筑基水到渠成。",
-        "effects": {
-          "cultivation": 15,
-          "health": 10,
-          "daoHeart": 5
-        },
-        "breakSuccess": 1
-      },
-      "right": {
-        "text": "冲击极限",
-        "desc": "不惜代价冲击更高品质的道基。",
-        "effects": {
-          "cultivation": 25,
-          "health": -15,
-          "fortune": 5
-        },
-        "breakSuccess": 0.7
-      }
+    "enemy": {
+      "name": "筑基雷劫",
+      "hp": 60,
+      "maxHp": 60,
+      "atk": 5,
+      "def": 0,
+      "critRate": 0,
+      "special": "天威",
+      "specialChance": 0.3,
+      "specialDmg": 10
+    },
+    "combatRewards": {
+      "breakSuccess": true,
+      "cultivation": 25,
+      "daoHeart": 10,
+      "health": 10
     },
     "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_qi_100.png"
@@ -307,34 +300,27 @@
     "id": "ch_foundation_100",
     "title": "突破金丹",
     "description": "丹田内液态真元开始旋转凝固。宗门长老齐聚护法——这是凝聚金丹的关键。你的每一个选择都将刻入金丹的道纹之中，不可更改。",
-    "type": "MILESTONE",
+    "type": "COMBAT",
+    "chapterNum": 2,
     "realm": "foundation",
     "threshold": 100,
     "chapter": "宗门风云",
-    "chapterNum": 2,
-    "isBreakthrough": true,
-    "choices": {
-      "left": {
-        "text": "凝聚纯阳金丹",
-        "desc": "以浩然正气铸丹，偏向正道。",
-        "effects": {
-          "cultivation": 20,
-          "daoHeart": 10,
-          "karmaGood": 5
-        },
-        "breakSuccess": 0.85
-      },
-      "right": {
-        "text": "融合阴阳真意",
-        "desc": "不拘正魔，追求大道本真。",
-        "effects": {
-          "cultivation": 18,
-          "karmaGood": 2,
-          "karmaBad": 2,
-          "fortune": 5
-        },
-        "breakSuccess": 0.75
-      }
+    "enemy": {
+      "name": "金丹心魔",
+      "hp": 150,
+      "maxHp": 150,
+      "atk": 8,
+      "def": 2,
+      "critRate": 10,
+      "special": "心神震爆",
+      "specialChance": 0.25,
+      "specialDmg": 15
+    },
+    "combatRewards": {
+      "breakSuccess": true,
+      "cultivation": 40,
+      "daoHeart": 15,
+      "spiritStone": 50
     },
     "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_foundation_100.png"
@@ -474,35 +460,27 @@
     "id": "ch_golden_100",
     "title": "突破元婴",
     "description": "金丹碎裂，元婴将出。这是修仙路上最惊险的一关——丹碎成婴，九死一生。金丹碎裂的剧痛犹如万箭穿心，但元婴化形之后的天地将截然不同。",
-    "type": "MILESTONE",
+    "type": "COMBAT",
     "chapterNum": 3,
     "realm": "golden",
     "threshold": 100,
     "chapter": "丹心问道",
-    "isBreakthrough": true,
-    "choices": {
-      "left": {
-        "text": "服丹护婴",
-        "desc": "吞服护婴宝丹，稳妥渡过丹碎之劫。",
-        "effects": {
-          "cultivation": 15,
-          "health": -5
-        },
-        "breakSuccess": 0.9,
-        "requires": {
-          "pill": 1
-        }
-      },
-      "right": {
-        "text": "硬抗丹碎",
-        "desc": "不信丹药，以自身意志硬抗碎丹之痛。",
-        "effects": {
-          "cultivation": 25,
-          "health": -20,
-          "daoHeart": 10
-        },
-        "breakSuccess": 0.55
-      }
+    "enemy": {
+      "name": "元婴天劫",
+      "hp": 300,
+      "maxHp": 300,
+      "atk": 12,
+      "def": 5,
+      "critRate": 15,
+      "special": "九霄神雷",
+      "specialChance": 0.3,
+      "specialDmg": 25
+    },
+    "combatRewards": {
+      "breakSuccess": true,
+      "cultivation": 60,
+      "daoHeart": 20,
+      "spiritStone": 100
     },
     "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_golden_100.png"
@@ -645,32 +623,26 @@
     "title": "突破化神",
     "chapterNum": 4,
     "description": "元婴睁开双眼，周身金光大放。化神——元婴成长为元神，从此真正的分神化念，一念千里。但这最后的蜕变需要以自身精血为引。你割破手指，血滴落入丹田。",
-    "type": "MILESTONE",
+    "type": "COMBAT",
     "realm": "nascent",
     "threshold": 100,
     "chapter": "碎丹成婴",
-    "isBreakthrough": true,
-    "choices": {
-      "left": {
-        "text": "以善念化神",
-        "desc": "以一生修行善果为锚，化神入正道。",
-        "effects": {
-          "cultivation": 20,
-          "daoHeart": 10,
-          "karmaGood": 8
-        },
-        "breakSuccess": 0.8
-      },
-      "right": {
-        "text": "以意志化神",
-        "desc": "不借外力，以纯粹的意志炼化元神。",
-        "effects": {
-          "cultivation": 25,
-          "health": -20,
-          "fortune": 5
-        },
-        "breakSuccess": 0.6
-      }
+    "enemy": {
+      "name": "化神雷罚",
+      "hp": 500,
+      "maxHp": 500,
+      "atk": 20,
+      "def": 10,
+      "critRate": 20,
+      "special": "虚空碎裂",
+      "specialChance": 0.4,
+      "specialDmg": 40
+    },
+    "combatRewards": {
+      "breakSuccess": true,
+      "cultivation": 100,
+      "daoHeart": 30,
+      "spiritStone": 200
     },
     "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_nascent_100.png"

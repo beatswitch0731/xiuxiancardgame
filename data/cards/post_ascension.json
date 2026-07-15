@@ -214,6 +214,9 @@
         "harvest",
         "horror"
       ],
+      "requiresFlags": {
+        "heavenEngineProximity": null
+      },
       "choices": {
         "left": {
           "text": "‘积分？什么积分？’——追问",
@@ -428,7 +431,13 @@
             "fortune": 10,
             "cultivation": 5
           },
-          "desc": "你选择了最慢的路——也是最稳妥的路。也许几千年后，会有其他飞升者感谢你今天的决定。"
+          "desc": "你选择了最慢的路——也是最稳妥的路。也许几千年后，会有其他飞升者感谢你今天的决定。",
+          "karmaSeed": {
+            "id": "dilemmaResolved",
+            "seedType": "fate",
+            "delay": 1,
+            "priority": 5
+          }
         },
         "right": {
           "text": "吞噬核心——我来当新天道",
@@ -438,7 +447,13 @@
             "karmaBad": 30,
             "fortune": 20
           },
-          "desc": "你感到天道引擎的核心融入了你的丹田——你不再是一个飞升者——你是规则本身。它冷——但它服从你。"
+          "desc": "你感到天道引擎的核心融入了你的丹田——你不再是一个飞升者——你是规则本身。它冷——但它服从你。",
+          "karmaSeed": {
+            "id": "dilemmaResolved",
+            "seedType": "fate",
+            "delay": 1,
+            "priority": 5
+          }
         }
       }
     },
@@ -454,6 +469,9 @@
         "ending",
         "epilogue"
       ],
+      "requiresFlags": {
+        "dilemmaResolved": null
+      },
       "choices": {
         "left": {
           "text": "（完结——开启转世重修）",

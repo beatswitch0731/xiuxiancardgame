@@ -19,3 +19,13 @@
 | **[修改]** | `styles/style.css` | 为 3D 容器添加 CSS 定位，确保它处于背景层且不阻挡上层的 DOM 鼠标/触摸事件（`pointer-events: none`）。 |
 
 *(持续记录中...)*
+
+### 3. [已完成] 凡人流古典质感背景集成
+- 新建了 src/systems/ThreeBackgroundSystem.js，实现柔和边缘的粒子渲染与 FlowDirector 色彩流速平滑同步。
+- 在 index.html 和 style.css 中注入了相应的容器代码，并确保它不阻挡任何上层交互 (pointer-events: none)。
+
+### 4. [已完成] 研发文档结构重构与优化
+- 将零散的设计文档和审查报告分类归档至 docs/gdd/（游戏设计文档）、docs/reports/（审计与审查报告）以及 docs/technical/（技术与美术规范）中。
+- 删繁就简，保持根目录的整洁，避免影响开发的心智负担。
+- [2026-07-01] [Fix] �޸��� ui.js �� coherenceLayer �׳��쳣����ѡ�ť�޷���Ⱦ�����⣬���޸��� style.css �п�������������²�������� Bug 
+- [2026-07-01] [Feature] ��ɺ����淨�ع���һ�׶Σ�����UI����������Ϊ/����/��Ѫ��ʵװ�������߾�ʾ��ȫ�µ���Ϸ���㣨Game Over���߼��� 

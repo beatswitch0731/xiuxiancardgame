@@ -91,12 +91,24 @@
         "left": {
           "text": "击退猎狗，护送白狐",
           "effects": { "health": -15, "karmaGood": 20, "fortune": 10 },
-          "questEnd": true
+          "questEnd": true,
+          "karmaSeed": {
+            "id": "whiteFox",
+            "delay": 10,
+            "realm": "nascent",
+            "priority": 1
+          }
         },
         "right": {
           "text": "用灵石打发猎户",
           "effects": { "spiritStone": -20, "karmaGood": 12, "daoHeart": 5 },
-          "questEnd": true
+          "questEnd": true,
+          "karmaSeed": {
+            "id": "whiteFox",
+            "delay": 10,
+            "realm": "nascent",
+            "priority": 1
+          }
         }
       }
     }

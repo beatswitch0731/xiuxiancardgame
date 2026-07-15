@@ -1,0 +1,35 @@
+[
+  {
+    "id": "camp_meditation",
+    "title": "洞府遗迹",
+    "description": "你在崇山峻岭间发现了一处隐秘的废弃洞府，这里灵气浓郁，十分安全。你可以在此稍作修整。",
+    "type": "NORMAL",
+    "tags": ["event", "safe", "rest"],
+    "sceneImage": "assets/cards/events/scene_camp.png",
+    "choices": {
+      "left": {
+        "text": "吐纳疗伤",
+        "desc": "消耗 15 灵石，恢复 2 点气血。",
+        "effects": { "health": 2 },
+        "costCheck": { "spiritStone": 15 }
+      },
+      "right": {
+        "text": "斩却杂念",
+        "desc": "进入冥想，花费 20 灵石，将一张卡牌从牌组中永久移除。",
+        "effects": { "removeCard": true },
+        "costCheck": { "spiritStone": 20 }
+      },
+      "down": {
+        "text": "参悟功法",
+        "desc": "花费 30 灵石，将一张卡牌强化。",
+        "effects": { "upgradeCard": true },
+        "costCheck": { "spiritStone": 30 }
+      },
+      "up": {
+        "text": "飘然离去",
+        "desc": "不作停留。",
+        "effects": {}
+      }
+    }
+  }
+]

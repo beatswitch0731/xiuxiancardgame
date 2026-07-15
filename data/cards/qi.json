@@ -3,6 +3,126 @@
   "realmName": "炼气期",
   "cards": [
     {
+      "id": "tutorial_1",
+      "title": "初入仙途",
+      "description": "你踏入修仙之路，四周灵气氤氲。修为是修仙者的根本——积累修为可提升境界，从炼气直至飞升。滑动卡牌或点击按钮做出选择，每个选择都会影响你的命运。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "继续了解",
+          "effects": {
+            "cultivation": 2
+          },
+          "desc": "稳扎稳打，修为+2",
+          "nextCard": "tutorial_2"
+        },
+        "right": {
+          "text": "跳过引导",
+          "effects": {
+            "cultivation": 5
+          },
+          "desc": "直接开始修仙",
+          "nextCard": "tutorial_4"
+        }
+      },
+      "tags": [
+        "tutorial"
+      ]
+    },
+    {
+      "id": "tutorial_2",
+      "title": "寿元之限",
+      "description": "修仙者与天争命，寿元便是你的时间。每次战斗或受伤都会消耗寿元，寿元耗尽则身死道消，转世重修。珍惜每一点时间，莫要虚度。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "继续了解",
+          "effects": {
+            "daoHeart": 1
+          },
+          "desc": "道心+1",
+          "nextCard": "tutorial_3"
+        },
+        "right": {
+          "text": "跳过引导",
+          "effects": {
+            "daoHeart": 1
+          },
+          "desc": "直接开始",
+          "nextCard": "tutorial_4"
+        }
+      },
+      "tags": [
+        "tutorial"
+      ]
+    },
+    {
+      "id": "tutorial_3",
+      "title": "境界突破",
+      "description": "当修为积累到当前境界上限，你将面临瓶颈。突破有风险——强行冲关成功率低且损伤巨大，稳扎稳打更稳妥。失败会损伤道心，甚至滋生心魔。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "继续了解",
+          "effects": {
+            "fortune": 1
+          },
+          "desc": "福缘+1",
+          "nextCard": "tutorial_4"
+        },
+        "right": {
+          "text": "跳过引导",
+          "effects": {
+            "fortune": 1
+          },
+          "desc": "直接开始",
+          "nextCard": "tutorial_4"
+        }
+      },
+      "tags": [
+        "tutorial"
+      ]
+    },
+    {
+      "id": "tutorial_4",
+      "title": "选择之重",
+      "description": "每张卡牌都有两个或更多选择。向左滑动或点击左侧按钮选择「左」，向右则选「右」。不同选择会带来不同后果——影响修为、气血、道心、善恶因果。选择没有绝对的对错，只看是否适合你的道心。",
+      "type": "NORMAL",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "稳健前行",
+          "effects": {
+            "health": 2,
+            "cultivation": 3
+          },
+          "desc": "气血+2，修为+3"
+        },
+        "right": {
+          "text": "冒险求进",
+          "effects": {
+            "cultivation": 8,
+            "health": -1
+          },
+          "desc": "修为+8，气血-1"
+        }
+      },
+      "tags": [
+        "tutorial"
+      ]
+    },
+    {
       "id": "q_start_sword",
       "title": "剑种入心",
       "description": "你在山中拾得一块残剑碎片，剑意入体，隐隐作痛。",
@@ -22,7 +142,7 @@
           "text": "以血养剑",
           "effects": {
             "cultivation": 20,
-            "health": -15,
+            "health": -2,
             "karmaBad": 5
           }
         }
@@ -49,8 +169,8 @@
           "text": "通宵参悟",
           "effects": {
             "cultivation": 25,
-            "health": -10,
-            "daoHeart": -5
+            "health": -1,
+            "daoHeart": -1
           }
         }
       },
@@ -69,14 +189,14 @@
           "text": "适可而止",
           "effects": {
             "cultivation": 10,
-            "health": 10
+            "health": 2
           }
         },
         "right": {
           "text": "突破极限",
           "effects": {
             "cultivation": 22,
-            "health": -5,
+            "health": -1,
             "fortune": 5
           }
         }
@@ -123,7 +243,7 @@
           "text": "冒险采集",
           "effects": {
             "cultivation": 15,
-            "health": -10,
+            "health": -2,
             "fortune": 5
           }
         },
@@ -160,8 +280,8 @@
           "text": "深深入定",
           "effects": {
             "cultivation": 20,
-            "health": -5,
-            "daoHeart": -3
+            "health": -1,
+            "daoHeart": -1
           }
         }
       },
@@ -219,8 +339,9 @@
           "text": "全力出手",
           "effects": {
             "cultivation": 15,
-            "health": -10,
-            "karmaBad": 5
+            "health": -1,
+            "karmaBad": 5,
+            "triggerCombat": true
           }
         }
       },
@@ -257,7 +378,7 @@
           "effects": {
             "cultivation": 10,
             "karmaBad": 15,
-            "health": -5
+            "health": -1
           }
         },
         "right": {
@@ -495,7 +616,7 @@
           "karmaSeed": {
             "id": "swordHonor",
             "delay": 10,
-            "realm": "foundation",
+            "realm": "nascent",
             "priority": 1
           }
         },
@@ -684,10 +805,7 @@
       "choices": {
         "left": {
           "text": "强行突破",
-          "effects": {
-            "health": -25,
-            "daoHeart": -10
-          },
+          "effects": {},
           "breakSuccess": 0.35
         },
         "right": {
@@ -751,6 +869,50 @@
         },
         "right": {
           "text": "开启新的轮回",
+          "effects": {
+            "reincarnate": true
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_ending_ascension.png"
+    },
+    {
+      "id": "ending_red_dust",
+      "title": "红尘兵解",
+      "description": "你放弃了飞升。肉身兵解，灵魂入轮回——但这一次，有一个人答应在下一世等你。\n\n柳河村——一个新生的婴儿睁开了眼睛。襁褓里有一块碎玉。铁匠老叶抱起他，看了眼天——大雪纷飞。他给这个孩子取名叫凌云。\n\n一切重新开始——但这一次，碎玉在婴儿手里微微发热。",
+      "type": "DESTINY",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "携手来世",
+          "effects": {
+            "reincarnate": true
+          }
+        },
+        "right": {
+          "text": "携手来世",
+          "effects": {
+            "reincarnate": true
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_qi_ending_ascension.png"
+    },
+    {
+      "id": "ending_chaos",
+      "title": "混沌真解",
+      "description": "你以碎玉为钥匙，打开了混沌之门。天道法则在你身上失效——你看到的不仅是苍茫界，是所有三千世界的真相。\n\n混沌虚空中——你站在三千世界之上。仙庭的天门在你身后关闭——不是驱逐，是恐惧。你手里握着的不再是剑，是一道崭新的法则。\n\n无数个世界的三脉残根者同时睁开了眼睛。从今天起——道由我定。",
+      "type": "DESTINY",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "道由我定",
+          "effects": {
+            "reincarnate": true
+          }
+        },
+        "right": {
+          "text": "道由我定",
           "effects": {
             "reincarnate": true
           }
@@ -823,6 +985,22 @@
           },
           "costCheck": {
             "spiritStone": 10
+          }
+        },
+        "up": {
+          "text": "精简感悟 (15灵石)",
+          "effects": {
+            "spiritStone": -15,
+            "removeCard": true
+          },
+          "costCheck": {
+            "spiritStone": 15
+          }
+        },
+        "down": {
+          "text": "囊中羞涩，默默离开",
+          "effects": {
+            "daoHeart": 1
           }
         }
       },

@@ -78,8 +78,9 @@
           "text": "主动出击，先发制人",
           "effects": {
             "cultivation": 20,
-            "health": -20,
-            "karmaBad": 5
+            "health": -2,
+            "karmaBad": 5,
+            "triggerCombat": true
           }
         },
         "right": {
@@ -136,7 +137,7 @@
           "karmaSeed": {
             "id": "fortuneWheel",
             "delay": 6,
-            "realm": "deity",
+            "realm": "golden",
             "priority": 2
           }
         },
@@ -282,7 +283,7 @@
           "karmaSeed": {
             "id": "swordHonor",
             "delay": 6,
-            "realm": "deity",
+            "realm": "nascent",
             "priority": 2
           }
         }

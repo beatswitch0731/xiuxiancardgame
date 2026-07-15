@@ -37,13 +37,89 @@ class GameUI {
     eventBus.on('thread:resolved', (data) => this._onThreadResolved(data));
     // FlowDirector 阶段变更
     eventBus.on('flow:phaseChanged', (data) => this._onPhaseChanged(data));
+    
+    // UI 层级的打牌战斗界面切换
+    eventBus.on('ui:showCombatScreen', () => {
+       this.showScreen('combat');
+    });
+    eventBus.on('ui:hideCombatScreen', () => {
+       this.showScreen('game');
+    });
+    
+    // 绑定卡组查看按钮
+    const viewDeckBtn = document.getElementById('view-deck-btn');
+    const closeDeckBtn = document.getElementById('close-deck-btn');
+    const deckModal = document.getElementById('deck-view-modal');
+    if (viewDeckBtn && deckModal && closeDeckBtn) {
+        viewDeckBtn.addEventListener('click', async () => {
+            await this._renderDeckView();
+            deckModal.style.display = 'flex';
+        });
+        closeDeckBtn.addEventListener('click', () => {
+            deckModal.style.display = 'none';
+        });
+    }
+
     this.renderStartScreen();
+  }
+  
+  async _renderDeckView() {
+      const container = document.getElementById('deck-view-container');
+      if (!container) return;
+      container.innerHTML = '';
+      
+      if (typeof deckCombatSystem === 'undefined' || !deckCombatSystem.masterDeck) {
+          container.innerHTML = '<div style="color: #fff;">尚未解锁卡组功能。</div>';
+          return;
+      }
+      
+      const deck = deckCombatSystem.masterDeck;
+      if (deck.length === 0) {
+          container.innerHTML = '<div style="color: #fff;">你的卡组空空如也。</div>';
+          return;
+      }
+      
+      let cardDB = deckCombatSystem.cardDB;
+      if (!cardDB || Object.keys(cardDB).length === 0) {
+          const cardData = await dataLoader.load('cards:battle_cards');
+          cardDB = {};
+          if (cardData && cardData.battle_cards) {
+              cardData.battle_cards.forEach(c => cardDB[c.id] = c);
+          }
+      }
+      
+      deck.forEach(cardId => {
+          const def = cardDB ? cardDB[cardId] : null;
+          if (!def) {
+              // 如果 cardDB 没加载出来，我们可以发个默认 fallback
+              console.warn("卡牌数据未加载", cardId);
+              return;
+          }
+          
+          const cardEl = document.createElement('div');
+          cardEl.className = 'battle-card';
+          cardEl.dataset.type = def.type;
+          // Reuse styles from deck-combat.css
+          cardEl.style.position = 'relative';
+          cardEl.style.marginLeft = '0'; // reset overlap
+          cardEl.style.transform = 'none'; // reset hover transform scaling issues in modal
+          
+          cardEl.innerHTML = `
+             <div class="card-cost">${def.cost}</div>
+             <div class="card-name">${def.name}</div>
+             <div class="card-type">${def.type === 'attack' ? '攻击' : (def.type === 'skill' ? '技能' : '能力')}</div>
+             <div class="card-desc">${def.description}</div>
+          `;
+          
+          container.appendChild(cardEl);
+      });
   }
 
   cacheElements() {
     this.screens.start = document.getElementById('start-screen');
     this.screens.game = document.getElementById('game-screen');
     this.screens.death = document.getElementById('death-screen');
+    this.screens.combat = document.getElementById('deck-combat-screen');
 
     // 名字创建界面元素
     this.nameInput = document.getElementById('name-input');
@@ -112,9 +188,11 @@ class GameUI {
     this.topSpiritStone = document.getElementById('top-spiritStone');
     this.topLifespan = document.getElementById('top-lifespan');
     this.topTurn = document.getElementById('top-turn');
+    this.resLifespan = document.getElementById('res-lifespan');
     this.topQuest = document.getElementById('top-quest');
     this.topChapter = document.getElementById('top-chapter');
     this.topPhase = document.getElementById('top-phase');
+    this.topObjective = document.getElementById('top-objective');
     // 突破倒计时
     this.btBar = document.getElementById('breakthrough-bar');
     this.btLabel = document.getElementById('bt-label');
@@ -242,8 +320,13 @@ class GameUI {
     this.renderLog();
 
     if (gameState.dead) {
-      this.renderDeathScreen();
-      this.showScreen('death');
+      const card = this.game.getCurrentCard();
+      if (card && card.id && (card.id.startsWith('death_') || card.id.startsWith('ending_'))) {
+        // 当前正在展示死亡卡或结局卡，允许玩家看到并选择后再进入转世流程
+      } else {
+        this.renderDeathScreen();
+        this.showScreen('death');
+      }
     }
   }
 
@@ -295,6 +378,42 @@ class GameUI {
       this.topQuest.style.display = 'inline-block';
     } else if (this.topQuest) {
       this.topQuest.style.display = 'none';
+    }
+
+    // ── 当前目标提示 ──
+    if (this.topObjective) {
+      const realmConfig = gameState.config.realms
+        ? (gameState.config.realms.realms || {})[gameState.realm]
+        : null;
+      const realmOrder = gameState.config.realms ? (gameState.config.realms.order || []) : [];
+      const currentRealmIdx = realmOrder.indexOf(gameState.realm);
+      const nextRealm = realmOrder[currentRealmIdx + 1];
+      const nextRealmName = nextRealm ? gameState.getRealmName(nextRealm) : '';
+      const threshold = realmConfig ? realmConfig.cultivationThreshold : 100;
+      const currentCult = gameState.attributes.cultivation || 0;
+
+      let objText = '';
+      if (gameState.realm === 'tribulation') {
+        objText = '目标：渡劫飞升，证道成仙';
+      } else if (currentCult >= threshold) {
+        objText = `目标：准备突破，觅地闭关`;
+      } else {
+        objText = `目标：积累${threshold}修为突破${nextRealmName || ''}`;
+      }
+      this.topObjective.textContent = objText;
+      this.topObjective.style.display = 'inline-block';
+    }
+
+    // ── 寿命预警 ──
+    if (this.resLifespan && this.topLifespan) {
+      const lifespan = gameState.resources.lifespan || 0;
+      if (lifespan < 20) {
+        this.resLifespan.classList.add('lifespan-warning');
+        this.topLifespan.textContent = `${lifespan} ⚠️`;
+      } else {
+        this.resLifespan.classList.remove('lifespan-warning');
+        this.topLifespan.textContent = lifespan;
+      }
     }
   }
 
@@ -398,6 +517,18 @@ class GameUI {
       bar.style.width = `${Math.min(value, 100)}%`;
       bar.textContent = `${value}`;
       this.labels[key].textContent = `${labels[key]} ${value}`;
+
+      // 生死红线视觉警报
+      if (key === 'health' || key === 'daoHeart') {
+        const item = bar.closest('.attr-item');
+        if (item) {
+          if (value <= 20) {
+            item.classList.add('critical');
+          } else {
+            item.classList.remove('critical');
+          }
+        }
+      }
     }
   }
 
@@ -488,14 +619,18 @@ class GameUI {
     // ── 叙事连贯性层：动态增强描述（支线×线程交叉引用）──
     let descText = card.description;
     if (typeof coherenceLayer !== 'undefined' && coherenceLayer) {
-      const enhanced = coherenceLayer.enhanceDescription(
-        card, this._getGameState(), this._getThreadEngine(), this._getQuestSystem()
-      );
-      if (enhanced && enhanced !== card.description) {
-        descText = enhanced;
+      try {
+        const enhanced = coherenceLayer.enhanceDescription(
+          card, this._getGameState(), this._getThreadEngine(), this._getQuestSystem()
+        );
+        if (enhanced && enhanced !== card.description) {
+          descText = enhanced;
+        }
+      } catch (e) {
+        console.warn('coherenceLayer.enhanceDescription error:', e);
       }
     }
-    this.cardDesc.textContent = descText;
+    this.cardDesc.textContent = descText || '';
 
     // ======== 故事线程指示器 ========
     this._renderThreadIndicator(card);
@@ -528,7 +663,10 @@ class GameUI {
     }
 
     // 卡牌类型标签
-    const typeName = this.getCardTypeName(card.type);
+    let typeName = this.getCardTypeName(card.type);
+    if (card.tags && card.tags.includes('tutorial')) {
+      typeName = '📖 引导';
+    }
     const priority = cardSystem.getLastDrawnPriority();
     if (card.type === 'QUEST') {
       this.cardType.textContent = `支线任务`;
@@ -568,7 +706,11 @@ class GameUI {
 
     // Reset card
     this.cardEl.style.transform = 'translate(0, 0) rotate(0)';
-    this.cardEl.className = `card card-${card.type.toLowerCase()}`;
+    let cardClass = `card card-${(card.type || 'normal').toLowerCase()}`;
+    if (card.tags && card.tags.includes('tutorial')) {
+      cardClass += ' card-tutorial';
+    }
+    this.cardEl.className = cardClass;
 
     // ======== 场景图动态背景 ========
     if (card.sceneImage) {
@@ -596,7 +738,8 @@ class GameUI {
         // ── 叙事连贯性层：选择后果描述 ──
         const descEl = btn.querySelector('.choice-desc');
         if (descEl) {
-          descEl.textContent = choice.desc || '';
+          const preview = this._formatEffectsPreview(choice.effects);
+          descEl.textContent = choice.desc && preview ? `${choice.desc} | ${preview}` : (choice.desc || preview || '');
         }
         // 【沉浸 v2.0】选择预兆 — 按钮按后果类型变色
         const mood = this._choiceMood(choice.effects);
@@ -606,7 +749,8 @@ class GameUI {
   }
 
   /**
-   * COMBAT_UI卡牌渲染 v2.0 — 含灵力条/架势/势层
+   * COMBAT_UI 卡牌渲染 —— 新版 DeckCombatUI 已接管实际战斗界面
+   * 主卡牌区仅作为占位提示，避免依赖旧 combatSystem
    */
   _renderCombatCard(card) {
     const st = card.combatState;
@@ -617,60 +761,21 @@ class GameUI {
       return;
     }
 
-    const p = st.player;
-    const e = st.enemy;
-    const pHpPct = Math.max(0, Math.min(100, Math.round(p.hp / p.maxHp * 100)));
-    const eHpPct = Math.max(0, Math.min(100, Math.round(e.hp / e.maxHp * 100)));
-    const qiPct = st.maxQi ? Math.max(0, Math.min(100, Math.round(st.qi / st.maxQi * 100))) : 0;
-    const stanceIcons = { attack: '⚔', defend: '🛡', break: '💢' };
-    const stanceIcon = stanceIcons[st.stance] || '⚔';
-
-    this.cardTitle.textContent = `${stanceIcon} 回合 ${st.turn} — ${e.name}`;
+    this.cardTitle.textContent = '⚔ 战斗中';
     this.cardDesc.innerHTML = `
       <div class="combat-hud">
-        <div class="combat-hp-row">
-          <span class="combat-label">我方</span>
-          <div class="combat-bar-bg"><div class="combat-bar-fill player-hp" style="width:${pHpPct}%"></div></div>
-          <span class="combat-hp-text">${p.hp}/${p.maxHp}</span>
-        </div>
-        <div class="combat-qi-row">
-          <span class="combat-label">灵力</span>
-          <div class="combat-bar-bg qi-bg"><div class="combat-bar-fill qi-fill" style="width:${qiPct}%"></div></div>
-          <span class="combat-hp-text" style="color:#5ba0f5">${st.qi}/${st.maxQi}</span>
-        </div>
-        <div class="combat-hp-row">
-          <span class="combat-label">${e.name}</span>
-          <div class="combat-bar-bg"><div class="combat-bar-fill enemy-hp" style="width:${eHpPct}%"></div></div>
-          <span class="combat-hp-text">${e.hp}/${e.maxHp}</span>
-        </div>
-        ${st.momentum > 0 ? `<div class="combat-momentum">🔥 连击势: ${'▮'.repeat(st.momentum)}${'▯'.repeat(4-st.momentum)}  [${st.momentum}/4]</div>` : ''}
+        <p>已进入打牌战斗界面，请使用战斗界面进行操作。</p>
       </div>
     `;
     this.cardType.textContent = '战斗';
 
-    // Reset card
     this.cardEl.style.transform = 'translate(0, 0) rotate(0)';
     this.cardEl.className = 'card card-combat_ui';
     this.cardEl.style.backgroundImage = '';
 
-    // 渲染战斗动作按钮 — v2: 动态映射
-    const actions = combatSystem.getActions();
-    const dirSlots = ['left', 'right', 'up', 'down'];
-    this.choiceButtons.forEach(btn => {
-      btn.classList.remove('visible');
-      btn.querySelector('.choice-text').textContent = '';
-    });
-
-    // 如果动作 ≤ 4 个,用4方向; 如果 > 4个,前两个用左右,多余的堆叠在下方
-    actions.forEach((action, i) => {
-      const btn = this.choiceButtons[i];
-      if (btn) {
-        btn.classList.add('visible');
-        btn.querySelector('.choice-text').textContent = action.text;
-        btn.dataset.combatAction = action.id;
-      }
-    });
-    this._currentCardIsCombat = actions;
+    // 隐藏四向选择按钮，避免误触旧 combatSystem 动作
+    this.choiceButtons.forEach(btn => btn.classList.remove('visible'));
+    this._currentCardIsCombat = null;
   }
 
   /**
@@ -876,6 +981,11 @@ class GameUI {
       if (btn && card.choices[key]) {
         btn.classList.add('visible');
         btn.querySelector('.choice-text').textContent = `${dirLabels[dirs[i]]} ${card.choices[key].text}`;
+        const descEl = btn.querySelector('.choice-desc');
+        if (descEl) {
+          const preview = this._formatEffectsPreview(card.choices[key].effects);
+          descEl.textContent = card.choices[key].desc && preview ? `${card.choices[key].desc} | ${preview}` : (card.choices[key].desc || preview || '');
+        }
         btn.dataset.combatAction = dirs[i];
       }
     }
@@ -906,6 +1016,11 @@ class GameUI {
       if (btn && card.choices[key]) {
         btn.classList.add('visible');
         btn.querySelector('.choice-text').textContent = `${dirLabels[dirs[i]]} ${card.choices[key].text}`;
+        const descEl = btn.querySelector('.choice-desc');
+        if (descEl) {
+          const preview = this._formatEffectsPreview(card.choices[key].effects);
+          descEl.textContent = card.choices[key].desc && preview ? `${card.choices[key].desc} | ${preview}` : (card.choices[key].desc || preview || '');
+        }
         btn.dataset.combatAction = dirs[i];
       }
     }
@@ -972,6 +1087,11 @@ class GameUI {
           if (btn) {
             btn.classList.add('visible');
             btn.querySelector('.choice-text').textContent = `${labels[dir]} ${choiceMap[dir].text}`;
+            const descEl = btn.querySelector('.choice-desc');
+            if (descEl) {
+              const preview = this._formatEffectsPreview(choiceMap[dir].effects);
+              descEl.textContent = choiceMap[dir].desc && preview ? `${choiceMap[dir].desc} | ${preview}` : (choiceMap[dir].desc || preview || '');
+            }
             btn.dataset.combatAction = dir;
           }
         }
@@ -1076,6 +1196,11 @@ class GameUI {
           if (btn) {
             btn.classList.add('visible');
             btn.querySelector('.choice-text').textContent = `${labels[dir]} ${choiceMap[dir].text}`;
+            const descEl = btn.querySelector('.choice-desc');
+            if (descEl) {
+              const preview = this._formatEffectsPreview(choiceMap[dir].effects);
+              descEl.textContent = choiceMap[dir].desc && preview ? `${choiceMap[dir].desc} | ${preview}` : (choiceMap[dir].desc || preview || '');
+            }
             btn.dataset.combatAction = dir;
           }
         }
@@ -1171,7 +1296,10 @@ class GameUI {
         btn.classList.add('visible');
         btn.querySelector('.choice-text').textContent = `${dirLabels[dir]} ${choice.text}`;
         const descEl = btn.querySelector('.choice-desc');
-        if (descEl) descEl.textContent = choice.desc || '';
+        if (descEl) {
+          const preview = this._formatEffectsPreview(choice.effects);
+          descEl.textContent = choice.desc && preview ? `${choice.desc} | ${preview}` : (choice.desc || preview || '');
+        }
         const mood = this._choiceMood(choice.effects);
         btn.dataset.mood = mood;
       }
@@ -1279,8 +1407,8 @@ class GameUI {
   }
 
   makeChoice(dir) {
-    if (gameState.dead) { return; }
     const card = this.game.getCurrentCard();
+    if (gameState.dead && card && !card.id.startsWith('death_') && !card.id.startsWith('ending_')) { return; }
 
     // ======== COMBAT_UI 战斗选择拦截 ========
     if (card.type === 'COMBAT_UI') {
@@ -1454,6 +1582,35 @@ class GameUI {
     if (positive > negative * 1.5) return 'blessing';
     if (negative > 0 && positive > 0) return 'tradeoff';
     return 'neutral';
+  }
+
+  /**
+   * P2: 选择后果预览 — 将 effects 格式化为可读的属性变化文本
+   * @param {Object} effects
+   * @returns {string} 如 '修为+5 | 寿元-1'，无效果返回空字符串
+   */
+  _formatEffectsPreview(effects) {
+    if (!effects || typeof effects !== 'object') return '';
+
+    const attrNames = {
+      cultivation: '修为',
+      daoHeart: '道心',
+      karmaGood: '善因',
+      karmaBad: '恶因',
+      fortune: '福缘',
+      health: '气血',
+      spiritStone: '灵石',
+      lifespan: '寿元'
+    };
+
+    const parts = [];
+    for (const [key, value] of Object.entries(effects)) {
+      if (!attrNames[key] || typeof value !== 'number' || value === 0) continue;
+      const sign = value > 0 ? '+' : '';
+      parts.push(`${attrNames[key]}${sign}${value}`);
+    }
+
+    return parts.join(' | ');
   }
 
   // ============ 日志 ============
@@ -1780,7 +1937,7 @@ class GameUI {
 
       // 类型标签
       const typeLabel = item.typeLabel || (item.type === 'pill' ? '💊 丹药' :
-        item.type === 'treasure' ? '🗡 法宝' : item.type === 'npc_favor' ? '🎁 人情' : '📦 杂物');
+        item.type === 'treasure' ? '🗡 法宝' : item.type === 'card' ? '📜 功法' : item.type === 'npc_favor' ? '🎁 人情' : '📦 杂物');
       const rarityName = item.rarityName || '';
 
       el.innerHTML = `
@@ -1846,6 +2003,7 @@ class GameUI {
     if (result.result) {
       if (result.result.type === 'pill') msg = `获得丹药：${result.result.pillId}`;
       else if (result.result.type === 'treasure') msg = `获得法宝：${result.result.treasureId}`;
+      else if (result.result.type === 'card') msg = `已将【${result.result.deckCard}】吸纳入识海牌组中`;
       else if (result.result.type === 'heal') msg = `恢复气血 ${result.result.amount}`;
     }
     this._showShopToast(msg);
@@ -1866,6 +2024,101 @@ class GameUI {
     toast.textContent = msg;
     toast.style.opacity = '1';
     setTimeout(() => { if (toast) toast.style.opacity = '0'; }, 1800);
+  }
+
+  // ============ 删牌弹窗 ============
+  showRemoveCardScreen() {
+    const panel = document.getElementById('remove-card-panel');
+    const container = document.getElementById('remove-card-container');
+    const closeBtn = document.getElementById('remove-card-close');
+    if (!panel || !container || typeof deckCombatSystem === 'undefined') return;
+
+    container.innerHTML = '';
+    const deck = deckCombatSystem.masterDeck;
+
+    if (deck.length === 0) {
+      container.innerHTML = '<p style="color:#888;">你的识海空无一物，无需斩除。</p>';
+    } else {
+      deck.forEach((cardId, index) => {
+        const cardData = deckCombatSystem.cardDB[cardId] || { name: cardId, type: 'attack', cost: 1, desc: '未知卡牌' };
+
+        const cardEl = document.createElement('div');
+        cardEl.className = 'shop-item';
+        cardEl.style.cursor = 'pointer';
+        cardEl.innerHTML = `
+          <div class="shop-item-name">${cardData.name || cardId}</div>
+          <div class="shop-item-desc">${cardData.desc || ''}</div>
+          <div style="margin-top:5px; font-size:12px; color:#ff4a4a;">[点击剥离]</div>
+        `;
+        
+        cardEl.onclick = () => {
+          // 执行删牌
+          deck.splice(index, 1);
+          this._showShopToast(`已斩除杂念：${cardData.name || cardId}`);
+          panel.style.display = 'none';
+          this.renderGame();
+        };
+        container.appendChild(cardEl);
+      });
+    }
+
+    closeBtn.onclick = () => {
+      panel.style.display = 'none';
+      this.renderGame();
+    };
+
+    panel.style.display = 'flex';
+  }
+
+  // ============ 强化牌弹窗 ============
+  showUpgradeCardScreen() {
+    const panel = document.getElementById('upgrade-card-panel');
+    const container = document.getElementById('upgrade-card-container');
+    const closeBtn = document.getElementById('upgrade-card-close');
+    if (!panel || !container || typeof deckCombatSystem === 'undefined') return;
+
+    container.innerHTML = '';
+    const deck = deckCombatSystem.masterDeck;
+
+    // 过滤出未升级的牌
+    const upgradable = deck.map((cardId, index) => {
+       const isUpgraded = typeof cardId === 'string' && cardId.endsWith('+');
+       return { cardId, index, isUpgraded };
+    }).filter(item => !item.isUpgraded);
+
+    if (upgradable.length === 0) {
+      container.innerHTML = '<p style="color:#888;">你的识海中没有可参悟的功法。</p>';
+    } else {
+      upgradable.forEach(item => {
+        const { cardId, index } = item;
+        const cardData = deckCombatSystem.cardDB[cardId] || { name: cardId, type: 'attack', cost: 1, desc: '未知卡牌' };
+
+        const cardEl = document.createElement('div');
+        cardEl.className = 'shop-item';
+        cardEl.style.cursor = 'pointer';
+        cardEl.innerHTML = `
+          <div class="shop-item-name">${cardData.name || cardId}</div>
+          <div class="shop-item-desc">${cardData.desc || ''}</div>
+          <div style="margin-top:5px; font-size:12px; color:#4caf50;">[点击参悟强化]</div>
+        `;
+        
+        cardEl.onclick = () => {
+          // 执行升级：替换为带 + 的 ID
+          deck[index] = cardId + '+';
+          this._showShopToast(`已强化：${cardData.name || cardId}+`);
+          panel.style.display = 'none';
+          this.renderGame();
+        };
+        container.appendChild(cardEl);
+      });
+    }
+
+    closeBtn.onclick = () => {
+      panel.style.display = 'none';
+      this.renderGame();
+    };
+
+    panel.style.display = 'flex';
   }
 
   /**

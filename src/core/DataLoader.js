@@ -1,10 +1,15 @@
 /**
- * DataLoader - JSON数据加载器
+ * DataLoader - JSON数据统一加载器
  *
- * 在纯HTML环境下，所有JSON数据内联到 DATA_MODULES 全局变量中
- * （因为双击打开HTML文件时 fetch 无法跨 file:// 协议加载JSON）
+ * 消除双重维护问题：
+ *   - 开发/维护时只需修改 data/ 目录下的 JSON 文件
+ *   - 运行时优先从外部 JSON 加载（fetch），失败时回退到 DATA_MODULES 内联数据
+ *   - 在 file:// 协议下（双击打开HTML），fetch 跨域失败，自动回退内联数据
  *
- * DataLoader 优先从 DATA_MODULES 读取，fallback 到 fetch（需本地服务器）
+ * 加载优先级：
+ *   1. 缓存（Cache）—— 已加载过的数据优先复用
+ *   2. 外部 JSON（fetch / 同步 XHR）—— 数据唯一维护来源
+ *   3. DATA_MODULES 内联数据 —— file:// 协议 fallback
  */
 class DataLoader {
   constructor() {
@@ -13,7 +18,7 @@ class DataLoader {
   }
 
   /**
-   * 加载指定数据模块（懒加载，带缓存）
+   * 加载指定数据模块（异步，优先从外部JSON fetch，失败回退内联）
    * @param {string} moduleName - 模块名，如 'cards:qi_condensation'
    * @returns {Promise<Object>}
    */
@@ -28,7 +33,7 @@ class DataLoader {
       const data = await loadPromise;
       this.cache.set(moduleName, data);
       this.pendingLoads.delete(moduleName);
-      eventBus.emit('data:loaded', { module: moduleName, count: this._countItems(data) });
+      eventBus.emit('data:loaded', { module: moduleName, count: this._countItems(data), source: 'external' });
       return data;
     } catch (e) {
       this.pendingLoads.delete(moduleName);
@@ -38,17 +43,29 @@ class DataLoader {
   }
 
   /**
-   * 同步加载（如果数据已在 DATA_MODULES 中，直接返回）
+   * 同步加载（优先从外部JSON加载，失败回退内联数据）
    * @param {string} moduleName
    * @returns {Object|null}
    */
   loadSync(moduleName) {
     if (this.cache.has(moduleName)) return this.cache.get(moduleName);
 
-    const data = this._readFromModules(moduleName);
-    if (data !== null) {
-      this.cache.set(moduleName, data);
-      return data;
+    // 优先尝试从外部JSON同步加载（HTTP环境下可用）
+    try {
+      const externalData = this._fetchSync(moduleName);
+      if (externalData !== null) {
+        this.cache.set(moduleName, externalData);
+        return externalData;
+      }
+    } catch (e) {
+      // 同步加载不可用（如浏览器主线程已禁用同步XHR），静默回退
+    }
+
+    // Fallback: 内联数据
+    const inline = this._readFromModules(moduleName);
+    if (inline !== null) {
+      this.cache.set(moduleName, inline);
+      return inline;
     }
     return null;
   }
@@ -86,23 +103,51 @@ class DataLoader {
   // --- 内部方法 ---
 
   _readFromModules(moduleName) {
-    // 优先从 DATA_MODULES 全局变量读取
+    // 从 DATA_MODULES 全局变量读取内联数据
     if (typeof DATA_MODULES !== 'undefined' && DATA_MODULES[moduleName]) {
       return DATA_MODULES[moduleName];
     }
     return null;
   }
 
+  /**
+   * 同步加载外部JSON（best-effort）
+   * 在浏览器主线程中同步XHR已被弃用，但在以下环境可用：
+   *   - Node.js 测试环境
+   *   - Electron / WebView
+   *   - 某些旧版浏览器
+   * 当同步XHR不可用时，会自动回退到内联数据
+   */
+  _fetchSync(moduleName) {
+    if (typeof XMLHttpRequest === 'undefined') return null;
+    const path = `data/${moduleName.replace(/:/g, '/')}.json`;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', path, false); // false = 同步请求
+    xhr.send(null);
+    if (xhr.status === 200 || xhr.status === 0) {
+      return JSON.parse(xhr.responseText);
+    }
+    return null;
+  }
+
   async _fetchAndParse(moduleName) {
-    // 优先内联数据
+    // 1. 优先从外部JSON加载（数据唯一维护来源）
+    const path = `data/${moduleName.replace(/:/g, '/')}.json`;
+    try {
+      const response = await fetch(path);
+      if (response.ok) {
+        return await response.json();
+      }
+    } catch (e) {
+      // fetch 失败（常见原因：file:// 协议跨域、网络断开、文件不存在）
+    }
+
+    // 2. Fallback: 内联数据（双击打开HTML时的兜底方案）
     const inline = this._readFromModules(moduleName);
     if (inline !== null) return inline;
 
-    // Fallback: fetch（需要本地服务器）
-    const path = `data/${moduleName.replace(/:/g, '/')}.json`;
-    const response = await fetch(path);
-    if (!response.ok) throw new Error(`HTTP ${response.status}: ${path}`);
-    return response.json();
+    // 3. 两者都失败，抛出明确错误
+    throw new Error(`Failed to load ${moduleName}: neither external JSON (${path}) nor inline DATA_MODULES available`);
   }
 
   _countItems(data) {

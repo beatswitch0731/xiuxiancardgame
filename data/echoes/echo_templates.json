@@ -73,10 +73,10 @@
       }
     ]
   },
-  "xue_sha": {
+  "xuesha_laozu": {
     "echoTemplates": [
       {
-        "id": "xue_sha_respect_echo",
+        "id": "xuesha_laozu_respect_echo",
         "minTurnGap": 20,
         "minAffection": 40,
         "npcAlive": true,
@@ -84,12 +84,12 @@
         "minRealm": "golden",
         "echoText": "血煞老祖在魔泉边静坐，注意到你来了，没有睁眼。\n\n「很久以前，有个人对我说过和你差不多的话，」他的声音在空旷的魔域里回荡。「那时候我以为他是天真。后来他死了，我才明白——他一直是对的。」\n\n他睁开眼，血色瞳孔里倒映着你的脸。\n\n「别死。这条路上不天真的人活不长——但太天真的人一样活不长。你要搞清楚自己是哪一种。」",
         "echoChoices": {
-          "left": { "text": "「我会活到你后悔说了这些话」", "effects": { "daoHeart": 5, "bond_xue_sha": 8, "karmaGood": 3 } },
-          "right": { "text": "「你的那个人……后来怎么样了？」", "effects": { "wisdom": 8, "bond_xue_sha": 3, "find_clue": "xue_sha_past_love" } }
+          "left": { "text": "「我会活到你后悔说了这些话」", "effects": { "daoHeart": 5, "bond_xuesha_laozu": 8, "karmaGood": 3 } },
+          "right": { "text": "「你的那个人……后来怎么样了？」", "effects": { "wisdom": 8, "bond_xuesha_laozu": 3, "find_clue": "xuesha_laozu_past_love" } }
         }
       },
       {
-        "id": "xue_sha_forgive_echo",
+        "id": "xuesha_laozu_forgive_echo",
         "minTurnGap": 25,
         "minAffection": 60,
         "npcAlive": true,
@@ -97,8 +97,8 @@
         "minRealm": "nascent",
         "echoText": "血煞老祖今天没有穿魔袍。他穿了一件旧得发黄的白衣——你从未见过他这个样子。\n\n「我杀了很多人，」他说，语气平淡得像在报菜名。「但真正让我后悔的，不是杀的那些人——是没有杀的那些。」\n\n他转向你，目光锋利。\n\n「如果你将来要恨我——至少搞清楚你恨的是什么。很多人恨了一辈子，恨的都是错的。」",
         "echoChoices": {
-          "left": { "text": "「我没资格恨你」", "effects": { "bond_xue_sha": 10, "daoHeart": 5 } },
-          "right": { "text": "「我不会恨你——但我也不会原谅」", "effects": { "bond_xue_sha": 5, "daoHeart": 10 } }
+          "left": { "text": "「我没资格恨你」", "effects": { "bond_xuesha_laozu": 10, "daoHeart": 5 } },
+          "right": { "text": "「我不会恨你——但我也不会原谅」", "effects": { "bond_xuesha_laozu": 5, "daoHeart": 10 } }
         }
       }
     ]
@@ -133,10 +133,10 @@
       }
     ]
   },
-  "tian_ji": {
+  "tianji_laoren": {
     "echoTemplates": [
       {
-        "id": "tian_ji_prophecy_echo",
+        "id": "tianji_laoren_prophecy_echo",
         "minTurnGap": 22,
         "minAffection": 30,
         "npcAlive": true,
@@ -145,15 +145,15 @@
         "echoText": "天机老人天机阁的角落里，翻出了一枚很旧的竹简。\n\n「这是我很久以前给人算过的一卦，」他将竹简推到你面前。竹简上写着——不是预言的文字，而是警告的红字。「那人没信我。他的全家都死了。」\n\n他盯着你，目光深得像一口枯井。\n\n「所以我学会了不试图让人相信。但我今天破例了——因为你的卦象和那个人很像。」",
         "echoChoices": {
           "left": { "text": "接过竹简，仔细阅读", "effects": { "wisdom": 10, "find_clue": "ancient_prophecy_warning" } },
-          "right": { "text": "「我不信命——但我信你」", "effects": { "daoHeart": 10, "bond_tian_ji": 8 } }
+          "right": { "text": "「我不信命——但我信你」", "effects": { "daoHeart": 10, "bond_tianji_laoren": 8 } }
         }
       }
     ]
   },
-  "jiuwei": {
+  "jiuwei_suyue": {
     "echoTemplates": [
       {
-        "id": "jiuwei_tribe_memory",
+        "id": "jiuwei_suyue_tribe_memory",
         "minTurnGap": 20,
         "minAffection": 40,
         "npcAlive": true,
@@ -161,12 +161,12 @@
         "minRealm": "nascent",
         "echoText": "九尾溯月今晚现出了九条尾巴——她很少在任何人面前这样做。月光下，她的妖气与月华交缠，美得不像是人间之物。\n\n「以前，我的族人会在月圆之夜一起这样，」她看着月亮，声音里带着一种沉到底的平静。「现在只剩我一个了。」\n\n她转向你，眼中没有泪——妖不哭。\n\n「你不是妖。但你让我觉得——这条命，也许不只属于复仇。」",
         "echoChoices": {
-          "left": { "text": "「你的族人会为你骄傲」", "effects": { "bond_jiuwei": 10, "daoHeart": 5 } },
-          "right": { "text": "默默陪她坐到月落", "effects": { "bond_jiuwei": 15, "wisdom": 3 } }
+          "left": { "text": "「你的族人会为你骄傲」", "effects": { "bond_jiuwei_suyue": 10, "daoHeart": 5 } },
+          "right": { "text": "默默陪她坐到月落", "effects": { "bond_jiuwei_suyue": 15, "wisdom": 3 } }
         }
       },
       {
-        "id": "jiuwei_prophecy_acceptance",
+        "id": "jiuwei_suyue_prophecy_acceptance",
         "minTurnGap": 25,
         "minAffection": 60,
         "npcAlive": true,
@@ -174,8 +174,8 @@
         "minRealm": "deity",
         "echoText": "在天道虚空中，九尾溯月停下脚步。她看着那些因果之线——其中一根，从她心口延伸到天机老人的心口，是暗红色的。\n\n「我恨了他一千年，」她轻声说，「恨他预言了我们一族的覆灭而什么都没做。」\n\n她伸出手，触碰那根暗红的线。\n\n「但现在我看到了——那根线不叫「仇恨」，叫「等待」。他在等我去恨他——因为他觉得那样我能活下去。」\n\n她收回手，眼中的妖气散了一半。\n\n「帮我谢谢他。我没法自己去。」",
         "echoChoices": {
-          "left": { "text": "「我会告诉他」", "effects": { "daoHeart": 15, "bond_jiuwei": 10 } },
-          "right": { "text": "「有些话，你该自己去说」", "effects": { "wisdom": 8, "bond_jiuwei": 5, "bond_tian_ji": 5 } }
+          "left": { "text": "「我会告诉他」", "effects": { "daoHeart": 15, "bond_jiuwei_suyue": 10 } },
+          "right": { "text": "「有些话，你该自己去说」", "effects": { "wisdom": 8, "bond_jiuwei_suyue": 5, "bond_tianji_laoren": 5 } }
         }
       }
     ]

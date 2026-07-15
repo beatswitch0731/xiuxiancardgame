@@ -204,6 +204,12 @@
             "daoHeart": 10,
             "karmaGood": 15,
             "fortune": 5
+          },
+          "karmaSeed": {
+            "id": "factionPeace",
+            "delay": 8,
+            "realm": "nascent",
+            "priority": 2
           }
         },
         "right": {
@@ -216,7 +222,7 @@
           "karmaSeed": {
             "id": "factionUprising",
             "delay": 8,
-            "realm": "nascent",
+            "realm": "golden",
             "priority": 2
           }
         },
@@ -381,7 +387,7 @@
           "karmaSeed": {
             "id": "betrayedNpc",
             "delay": 8,
-            "realm": "golden",
+            "realm": "nascent",
             "priority": 2
           }
         },
@@ -467,7 +473,7 @@
           "karmaSeed": {
             "id": "fortuneWheel",
             "delay": 6,
-            "realm": "nascent",
+            "realm": "golden",
             "priority": 1
           }
         }
@@ -489,10 +495,7 @@
       "choices": {
         "left": {
           "text": "碎丹冲婴",
-          "effects": {
-            "health": -50,
-            "daoHeart": -20
-          },
+          "effects": {},
           "breakSuccess": 0.4
         },
         "right": {
@@ -545,6 +548,22 @@
           },
           "costCheck": {
             "spiritStone": 90
+          }
+        },
+        "up": {
+          "text": "精简感悟 (40灵石)",
+          "effects": {
+            "spiritStone": -40,
+            "removeCard": true
+          },
+          "costCheck": {
+            "spiritStone": 40
+          }
+        },
+        "down": {
+          "text": "囊中羞涩，看看就走",
+          "effects": {
+            "daoHeart": 1
           }
         }
       },

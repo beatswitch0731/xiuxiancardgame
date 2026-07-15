@@ -30,10 +30,33 @@ class ShopSystem {
     const maxIdx = realmOrder.indexOf(realm);
     if (maxIdx < 0) return [];
 
-    return this.items.filter(item => {
+    let available = this.items.filter(item => {
       const itemIdx = realmOrder.indexOf(item.realm);
       return itemIdx <= maxIdx;
     });
+
+    // 动态注入随机的功法卡牌（每次调用时随机挑选2本）
+    if (typeof deckCombatSystem !== 'undefined' && Object.keys(deckCombatSystem.cardDB).length > 0) {
+       const cardIds = Object.keys(deckCombatSystem.cardDB).filter(id => id !== 'strike' && id !== 'defend');
+       if (cardIds.length > 0) {
+         const shuffle = arr => arr.sort(() => 0.5 - Math.random());
+         const selectedCards = shuffle([...cardIds]).slice(0, 2);
+         selectedCards.forEach(cardId => {
+            const cardDef = deckCombatSystem.cardDB[cardId];
+            available.push({
+               id: `card_${cardId}`,
+               name: `功法：${cardDef.name}`,
+               type: 'card',
+               desc: cardDef.desc || '领悟此功法，纳入识海。',
+               price: (cardDef.cost || 1) * 25 + 20, // 根据消耗定价
+               realm: 'qi',
+               effect: { deckCard: cardId }
+            });
+         });
+       }
+    }
+
+    return available;
   }
 
   /**
@@ -104,6 +127,16 @@ class ShopSystem {
     // NPC好感类
     if (item.type === 'npc_favor') {
       return { type: 'npc_favor', amount: effect.npcFavor || 15 };
+    }
+
+    // 功法卡牌类
+    if (item.type === 'card') {
+      if (effect.deckCard) {
+         if (typeof deckCombatSystem !== 'undefined') {
+             deckCombatSystem.masterDeck.push(effect.deckCard);
+         }
+         return { type: 'card', deckCard: effect.deckCard };
+      }
     }
 
     return { type: 'unknown' };

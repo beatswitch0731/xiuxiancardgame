@@ -11,7 +11,7 @@
     },
     {
       "npcA": "bai_ren",
-      "npcB": "xue_sha",
+      "npcB": "xuesha_laozu",
       "affinity": -60,
       "status": "rival",
       "history": "正魔两道的千年恩怨浓缩在此人身上。百年前那场大战中，白刃的师兄死在了血煞手上。",
@@ -19,22 +19,22 @@
     },
     {
       "npcA": "bai_ren",
-      "npcB": "tian_ji",
+      "npcB": "tianji_laoren",
       "affinity": 30,
       "status": "ally",
       "history": "曾联手对抗过一次灭世天劫。天机老人预言了劫数的时间，白刃真人提供了战力。",
       "sharedSecrets": ["那次天劫中被封印的东西，至今仍在天道虚空中蠕动"]
     },
     {
-      "npcA": "tian_ji",
-      "npcB": "jiuwei",
+      "npcA": "tianji_laoren",
+      "npcB": "jiuwei_suyue",
       "affinity": -20,
       "status": "estranged",
       "history": "天机老人千年前预言了九尾一族的覆灭——预言应验后，九尾溯月无法原谅自己没能阻止，也无法原谅预言者。",
       "sharedSecrets": ["那个预言的真正目的不是揭示未来，而是封印未来——天机老人试图通过预言本身来阻止它"]
     },
     {
-      "npcA": "xue_sha",
+      "npcA": "xuesha_laozu",
       "npcB": "yin_xue",
       "affinity": 70,
       "status": "master-disciple",
@@ -42,7 +42,7 @@
       "sharedSecrets": ["殷血的母亲曾是血煞的道侣——这个秘密，殷血自己也不知道"]
     },
     {
-      "npcA": "xue_sha",
+      "npcA": "xuesha_laozu",
       "npcB": "mu_qinglan",
       "affinity": -40,
       "status": "rival",
@@ -59,7 +59,7 @@
     },
     {
       "npcA": "bai_luoxuan",
-      "npcB": "jiuwei",
+      "npcB": "jiuwei_suyue",
       "affinity": 40,
       "status": "ally",
       "history": "白落霜是半妖血脉（白狐），九尾溯月是纯血妖族。两人对「异类在修仙界的处境」有天然的共鸣。",
@@ -75,7 +75,7 @@
     },
     {
       "npcA": "mu_qinglan",
-      "npcB": "tian_ji",
+      "npcB": "tianji_laoren",
       "affinity": 10,
       "status": "neutral",
       "history": "慕家覆灭前，曾向天机老人问了一卦。天机老人预言了灾难，慕家不信——此事成了两方之间始终没捅破的窗户纸。",
@@ -90,8 +90,8 @@
       "sharedSecrets": ["白落霜知道殷血母亲的事——这是一次偷听被发现后，殷血选择不杀她的唯一理由"]
     },
     {
-      "npcA": "jiuwei",
-      "npcB": "xue_sha",
+      "npcA": "jiuwei_suyue",
+      "npcB": "xuesha_laozu",
       "affinity": 0,
       "status": "neutral",
       "history": "血煞老祖对妖族的态度出人意料地尊重——他说过：「妖杀人是为了活，魔杀人是为了道，谁更该死？」",

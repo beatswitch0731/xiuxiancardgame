@@ -223,12 +223,20 @@
             "karmaGood": 10,
             "fortune": -5
           },
-          "karmaSeed": {
-            "id": "sectFamilyConflict",
-            "seedType": "karma",
-            "delay": 8,
-            "priority": 3
-          }
+          "karmaSeed": [
+            {
+              "id": "sectFamilyConflict",
+              "seedType": "karma",
+              "delay": 8,
+              "priority": 3
+            },
+            {
+              "id": "keepMortalTies",
+              "seedType": "karma",
+              "delay": 10,
+              "priority": 3
+            }
+          ]
         },
         "right": {
           "text": "断绝关系——'让他们走吧'",
@@ -236,6 +244,12 @@
             "daoHeart": -15,
             "cultivation": 15,
             "karmaBad": 10
+          },
+          "karmaSeed": {
+            "id": "cutMortalTies",
+            "seedType": "karma",
+            "delay": 10,
+            "priority": 3
           }
         }
       }
@@ -377,6 +391,12 @@
             "affectionDelta": -30,
             "bondDelta": -1,
             "trustDelta": -20
+          },
+          "karmaSeed": {
+            "id": "compDemonClashResolved",
+            "seedType": "karma",
+            "delay": 4,
+            "priority": 3
           }
         },
         "right": {
@@ -390,6 +410,12 @@
             "affectionDelta": -40,
             "bondDelta": -2,
             "trustDelta": -30
+          },
+          "karmaSeed": {
+            "id": "compDemonClashResolved",
+            "seedType": "karma",
+            "delay": 4,
+            "priority": 3
           }
         }
       }
@@ -407,6 +433,9 @@
         "companion_demonic",
         "reconciliation"
       ],
+      "requiresFlags": {
+        "compDemonClashResolved": null
+      },
       "choices": {
         "left": {
           "text": "抱住ta——'别再做这种事了'",

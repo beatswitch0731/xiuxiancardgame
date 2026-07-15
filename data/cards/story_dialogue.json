@@ -274,7 +274,7 @@
       "realm": "golden",
       "weight": 7,
       "once": true,
-      "npcId": "tian_ji",
+      "npcId": "tianji_laoren",
       "tags": ["prophecy", "truth", "seer", "story"],
       "choices": {
         "left": {
@@ -369,7 +369,7 @@
       "realm": "nascent",
       "weight": 7,
       "once": true,
-      "npcId": "xue_sha",
+      "npcId": "xuesha_laozu",
       "tags": ["demonic", "ally", "battle", "story"],
       "choices": {
         "left": {
@@ -518,12 +518,12 @@
       "choices": {
         "left": {
           "text": "破天——撕开天道，让所有人自由",
-          "effects": { "daoHeart": 40, "cultivation": 30, "fortune": -30, "health": -30 },
+          "effects": { "daoHeart": 40, "cultivation": 30, "fortune": -30, "health": -30, "ending": "chaos" },
           "desc": "你走进了混沌之门——不是被吞噬，是穿过。天道在你身后碎裂——不是破坏，是释放。无数被锁住的因果线同时断裂——修仙者不需要再逆天，因为天——不再是牢笼。柳河村的孩子们会抬头看到一道划破天空的剑痕——那道剑痕会永远留在天幕上，告诉他们——有一个人，从这里走出去的——把天劈开了一道缝。"
         },
         "right": {
           "text": "守护——不飞升，留在人间守千年",
-          "effects": { "daoHeart": 30, "karmaGood": 40, "fortune": 20 },
+          "effects": { "daoHeart": 30, "karmaGood": 40, "fortune": 20, "ending": "red_dust" },
           "desc": "你关上了混沌之门——不是放弃，是选择。你落在了柳河村——不是修仙，是打铁。你的剑变成了铁锤——每一锤都落在一个孩子的手心上，教他们握剑。白落霜站在你身边——她的九条尾巴在身后慢慢展开——不是飞升，是陪。'以后——这里就是我们的家。'你说。她笑了——琥珀色的眼睛里映着村里的灯火。'好。'"
         }
       },

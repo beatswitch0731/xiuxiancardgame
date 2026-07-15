@@ -40,6 +40,8 @@ const srcFiles = [
   'src/core/EventBus.js',         // must load first
   'src/core/DataLoader.js',
   'src/core/GameStateManager.js',
+  'src/core/Container.js',
+  'src/services/EffectService.js',
   'src/systems/KarmaSystem.js',
   'src/systems/CardSystem.js',
   'src/systems/QuestSystem.js',
@@ -48,7 +50,8 @@ const srcFiles = [
   'src/systems/FactionSystem.js',
   'src/systems/TreasureSystem.js',
   'src/systems/PathSkillSystem.js',
-  'src/systems/CombatSystem.js',
+  'src/systems/DeckCombatSystem.js',
+  'src/coordinators/CombatCoordinator.js',
   'src/game.js'                   // GameLogic class
 ];
 
@@ -76,7 +79,7 @@ vm.runInContext(`
   this.factionSystem = factionSystem;
   this.treasureSystem = treasureSystem;
   this.pathSkillSystem = pathSkillSystem;
-  this.combatSystem = combatSystem;
+  this.deckCombatSystem = deckCombatSystem;
 
   // Init all systems
   eventBus.events = new Map();
@@ -88,7 +91,7 @@ vm.runInContext(`
   factionSystem.init();
   treasureSystem.init();
   pathSkillSystem.init();
-  combatSystem.init();
+  deckCombatSystem.init();
 
   npcSystem.loadData(DATA_MODULES['npcs:core']);
   companionSystem.loadData(DATA_MODULES['companions:events']);
@@ -102,7 +105,17 @@ vm.runInContext(`
     realms: DATA_MODULES['config:realms'],
     paths: DATA_MODULES['config:paths']
   });
+
+  // Create GameLogic via DI Container
+  this.container = new Container({ debug: false });
+  this.gameLogic = container.game;
+  this.effectService = container.effectService;
+  this.combatCoordinator = container.combatCoordinator;
 `, ctx);
+
+// ── Load battle cards data into DATA_MODULES for DeckCombatSystem ──
+const battleCardsData = JSON.parse(fs.readFileSync('data/cards/battle_cards.json', 'utf-8'));
+vm.runInContext(`DATA_MODULES['cards:battle_cards'] = ${JSON.stringify(battleCardsData)};`, ctx);
 
 // ── Local references to singletons ───────────────────────────
 const csys = ctx.cardSystem;
@@ -112,17 +125,29 @@ const pss = ctx.pathSkillSystem;
 
 // ── Test framework ──────────────────────────────────────────
 let passed = 0, failed = 0;
+const testQueue = [];
 
 function test(name, fn) {
-  try {
-    fn();
-    console.log('  PASS: ' + name);
-    passed++;
-  } catch(e) {
-    console.log('  FAIL: ' + name + ' — ' + e.message);
-    failed++;
-  }
+  testQueue.push({ name, fn });
 }
+
+async function runAllTests() {
+  for (const t of testQueue) {
+    try {
+      await t.fn();
+      console.log('  PASS: ' + t.name);
+      passed++;
+    } catch (e) {
+      console.log('  FAIL: ' + t.name + ' — ' + e.message);
+      failed++;
+    }
+  }
+  console.log('\n========= RESULTS: ' + passed + ' passed, ' + failed + ' failed =========');
+  process.exit(failed > 0 ? 1 : 0);
+}
+
+// Queue all tests during file load, then run at the end
+setTimeout(runAllTests, 0);
 
 // ═════════════════════════════════════════════════════════════
 // 1. DATA MODULES — 22 modules loaded
@@ -443,15 +468,16 @@ test('  cardSystem respects realm pool', () => {
 });
 
 // ═════════════════════════════════════════════════════════════
-// 10. COMBAT SYSTEM
+// 10. COMBAT SYSTEM (DeckCombatSystem + CombatCoordinator)
 // ═════════════════════════════════════════════════════════════
 console.log('\n=== 10. COMBAT SYSTEM ===');
 
-test('  combatSystem initialized', () => {
-  const cbs = ctx.combatSystem;
-  if (!cbs) throw new Error('combatSystem not loaded');
-  if (typeof cbs._start !== 'function') throw new Error('_start not a function');
-  if (typeof cbs.getActions !== 'function') throw new Error('getActions not a function');
+test('  deckCombatSystem initialized', () => {
+  const dcs = ctx.deckCombatSystem;
+  if (!dcs) throw new Error('deckCombatSystem not loaded');
+  if (typeof dcs._start !== 'function') throw new Error('_start not a function');
+  if (typeof dcs.getState !== 'function') throw new Error('getState not a function');
+  if (typeof dcs.flee !== 'function') throw new Error('flee not a function');
 });
 
 test('  combat cards have enemy data', () => {
@@ -482,60 +508,59 @@ test('  dungeon combat cards have enemy data', () => {
   if (!itCombat.enemy) throw new Error('it_combat missing enemy data');
 });
 
-test('  combat start sets active state', () => {
-  const cbs = ctx.combatSystem;
-  cbs.reset();
-  if (cbs.active) throw new Error('should not be active before start');
+test('  combat start sets active state', async () => {
+  const dcs = ctx.deckCombatSystem;
+  dcs.reset();
+  if (dcs.active) throw new Error('should not be active before start');
 
   // Load qi realm and find q_fellow card
   csys._loadRealmCards('qi');
   const card = csys.getCard('q_fellow');
 
-  cbs._start({ card });
-  if (!cbs.active) throw new Error('combat should be active after start');
-  if (!cbs.player || cbs.player.hp <= 0) throw new Error('player HP invalid');
-  if (!cbs.enemy || cbs.enemy.hp <= 0) throw new Error('enemy HP invalid');
-  if (cbs.turn !== 1) throw new Error('should start at turn 1, got ' + cbs.turn);
+  await dcs._start({ card });
+  if (!dcs.active) throw new Error('combat should be active after start');
+  if (!dcs.player || dcs.player.hp <= 0) throw new Error('player HP invalid');
+  if (!dcs.enemy || dcs.enemy.hp <= 0) throw new Error('enemy HP invalid');
+  if (dcs.turn !== 1) throw new Error('should start at turn 1, got ' + dcs.turn);
 
-  cbs.reset();
+  dcs.reset();
 });
 
-test('  combat actions available', () => {
-  const cbs = ctx.combatSystem;
+test('  combat hand available', async () => {
+  const dcs = ctx.deckCombatSystem;
   csys._loadRealmCards('qi');
   const card = csys.getCard('q_fellow');
-  cbs._start({ card });
+  await dcs._start({ card });
 
-  const actions = cbs.getActions();
-  if (!actions || actions.length < 3) throw new Error('Expected >= 3 actions, got ' + (actions ? actions.length : 0));
+  const hand = dcs.hand;
+  if (!hand || hand.length === 0) throw new Error('Expected hand cards, got ' + (hand ? hand.length : 0));
 
-  const actionIds = actions.map(a => a.id);
-  if (!actionIds.includes('attack')) throw new Error('missing attack action');
-  if (!actionIds.includes('defend')) throw new Error('missing defend action');
-  if (!actionIds.includes('flee')) throw new Error('missing flee action');
-
-  cbs.reset();
+  dcs.reset();
 });
 
-test('  combat victory/defeat flow', () => {
-  const cbs = ctx.combatSystem;
+test('  combat victory/defeat flow', async () => {
+  const dcs = ctx.deckCombatSystem;
   csys._loadRealmCards('qi');
   const card = csys.getCard('q_fellow');
-  cbs._start({ card });
+  await dcs._start({ card });
 
-  // Execute attack until one side dies (stress test)
+  // Execute hand[0] until one side dies (stress test)
   let turns = 0;
-  while (cbs.active && turns < 50) {
-    cbs._executeAction({ action: 'attack' });
+  while (dcs.active && turns < 50) {
+    if (dcs.hand.length > 0) {
+      dcs.playCard(0);
+    } else {
+      dcs.endTurn();
+    }
     turns++;
   }
 
   // Combat should have ended
-  if (cbs.active) throw new Error('combat did not complete after ' + turns + ' turns');
+  if (dcs.active) throw new Error('combat did not complete after ' + turns + ' turns');
   // Either victory or defeat — both are valid
-  if (!cbs.log || cbs.log.length === 0) throw new Error('no combat log');
+  if (!dcs.log || dcs.log.length === 0) throw new Error('no combat log');
 
-  cbs.reset();
+  dcs.reset();
 });
 // ═════════════════════════════════════════════════════════════
 // 11. INTERLOCKING — Combat→Faction
@@ -543,17 +568,18 @@ test('  combat victory/defeat flow', () => {
 console.log('\n=== 11. INTERLOCKING — Combat→Faction ===');
 
 test('  _applyFactionReputation exists', () => {
-  const cbs = ctx.combatSystem;
-  if (typeof cbs._applyFactionReputation !== 'function')
+  const cc = ctx.combatCoordinator;
+  if (typeof cc._applyFactionReputation !== 'function')
     throw new Error('_applyFactionReputation missing');
 });
 
-test('  combat victory vs hostile faction boosts righteous', () => {
-  const cbs = ctx.combatSystem;
-  cbs.reset();
+test('  combat victory vs hostile faction boosts righteous', async () => {
+  const cc = ctx.combatCoordinator;
+  const dcs = ctx.deckCombatSystem;
+  dcs.reset();
   csys._loadRealmCards('nascent');
   const card = csys.getCard('n_hunt'); // enemy.factionId = xuesha_sect
-  cbs._start({ card });
+  await dcs._start({ card });
 
   // Set initial reputations
   ctx.factionSystem.reputations = {
@@ -561,22 +587,24 @@ test('  combat victory vs hostile faction boosts righteous', () => {
     tianji_pavilion: 0, wumeng_alliance: 0, xuesha_sect: -10
   };
 
-  // Force victory by setting enemy HP to 0
-  cbs.enemy.hp = 0;
-  cbs.active = false;
-  cbs._applyFactionReputation(true);
+  // Force victory
+  dcs.enemy.hp = 0;
+  dcs.active = false;
+  cc._applyFactionReputation(true);
 
   const rep = ctx.factionSystem.reputations;
   if (rep.qingyun_sword !== 15) throw new Error('qingyun should be 15, got ' + rep.qingyun_sword);
   if (rep.xuesha_sect !== -20) throw new Error('xuesha should be -20, got ' + rep.xuesha_sect);
-  cbs.reset();
+  dcs.reset();
 });
 
-test('  combat defeat reduces all reputations', () => {
-  const cbs = ctx.combatSystem;
+test('  combat defeat reduces all reputations', async () => {
+  const cc = ctx.combatCoordinator;
+  const dcs = ctx.deckCombatSystem;
+  dcs.reset();
   csys._loadRealmCards('nascent');
   const card = csys.getCard('n_hunt');
-  cbs._start({ card });
+  await dcs._start({ card });
 
   ctx.factionSystem.reputations = {
     qingyun_sword: 10, tianshu_academy: 0, shennong_dangu: 5,
@@ -584,15 +612,15 @@ test('  combat defeat reduces all reputations', () => {
   };
 
   // Force defeat
-  cbs.player.hp = 0;
-  cbs.active = false;
-  cbs._applyFactionReputation(false);
+  dcs.player.hp = 0;
+  dcs.active = false;
+  cc._applyFactionReputation(false);
 
   const rep = ctx.factionSystem.reputations;
   if (rep.qingyun_sword !== 8) throw new Error('qingyun should be 8, got ' + rep.qingyun_sword);
   if (rep.shennong_dangu !== 3) throw new Error('dangu should be 3, got ' + rep.shennong_dangu);
   if (rep.xuesha_sect !== -12) throw new Error('xuesha should be -12, got ' + rep.xuesha_sect);
-  cbs.reset();
+  dcs.reset();
 });
 
 // ═════════════════════════════════════════════════════════════
@@ -874,11 +902,17 @@ test('  recordLegacy saves path mastery', () => {
 
 test('  difficulty multiplier scales with lifeCount', () => {
   ctx.gameState.unlocks.lifeCount = 0;
-  // gameLogic may not exist in test sandbox; check combat system directly
-  if (typeof ctx.combatSystem._applyDifficultyScaling !== 'function')
-    throw new Error('_applyDifficultyScaling missing');
-  // With lifeCount=0, diffMult should be ~1
+  const gl = ctx.gameLogic;
+  if (typeof gl.getDifficultyLevel !== 'function')
+    throw new Error('getDifficultyLevel missing');
+  if (typeof gl._getDifficultyMultiplier !== 'function')
+    throw new Error('_getDifficultyMultiplier missing');
+
   ctx.gameState.unlocks.lifeCount = 0;
+  if (gl._getDifficultyMultiplier() !== 1) throw new Error('lifeCount=0 should be 1, got ' + gl._getDifficultyMultiplier());
+
+  ctx.gameState.unlocks.lifeCount = 5;
+  if (gl._getDifficultyMultiplier() !== 1.75) throw new Error('lifeCount=5 should be 1.75, got ' + gl._getDifficultyMultiplier());
 });
 
 // ═════════════════════════════════════════════════════════════
@@ -1016,8 +1050,7 @@ test('  k_echo_karma_chain requires minLifeCount=3', () => {
 // ═════════════════════════════════════════════════════════════
 console.log('\n=== 18a. TREASURE ACTIVE OPTIONS ===');
 
-// Create GameLogic instance in sandbox for testing interlocking methods
-vm.runInContext('this.gameLogic = new GameLogic()', ctx);
+// Create GameLogic instance reference in sandbox for testing interlocking methods
 const gl = ctx.gameLogic;
 
 // Ensure treasure system has active options defined
@@ -1321,6 +1354,3 @@ test('  _checkCompanionCrisis does NOT trigger with low affection', () => {
   compSys.companions.delete('bai_luoxuan');
   ctx.eventBus.events.delete('companion:heartEvent');
 });
-
-console.log('\n========= RESULTS: ' + passed + ' passed, ' + failed + ' failed =========');
-process.exit(failed > 0 ? 1 : 0);

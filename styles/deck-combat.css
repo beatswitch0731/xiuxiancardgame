@@ -1,0 +1,305 @@
+/* 杀戮尖塔式打牌战斗界面 CSS */
+
+.deck-combat-screen {
+  background: rgba(10, 10, 15, 0.45); /* 降低透明度让底层的三维特效穿透显示 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  z-index: 1000;
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.combat-top {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.enemy-area, .player-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.enemy-sprite {
+  font-size: 64px;
+  filter: drop-shadow(0 0 10px #ff4a4a);
+}
+
+.enemy-intent {
+  font-size: 20px;
+  color: #ff4a4a;
+  background: rgba(255, 74, 74, 0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 74, 74, 0.3);
+}
+
+.hearts-container {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 0;
+}
+.heart {
+  width: 24px;
+  height: 24px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff4a4a" stroke="%238b0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>');
+  background-size: cover;
+  transition: transform 0.2s, filter 0.2s;
+}
+.heart.empty {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,0.5)" stroke="%23555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>');
+}
+.heart.shielded {
+  filter: drop-shadow(0 0 6px #4caf50);
+}
+
+.hp-bar {
+  width: 200px;
+  height: 20px;
+  background: #333;
+  border-radius: 10px;
+  border: 2px solid #555;
+  position: relative;
+  overflow: hidden;
+}
+
+.enemy-hp .hp-fill { background: #ff4a4a; width: 100%; height: 100%; transition: width 0.3s; }
+.player-hp .hp-fill { background: #4caf50; width: 100%; height: 100%; transition: width 0.3s; }
+.hp-text {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.status-area {
+  display: flex;
+  gap: 5px;
+  min-height: 24px;
+}
+.status-icon {
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.combat-middle {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.combat-logs {
+  width: 300px;
+  height: 150px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.combat-bottom {
+  flex: 0 0 250px;
+  position: relative;
+}
+
+.combat-resources {
+  position: absolute;
+  left: 20px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.qi-orb {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #4db8ff 0%, #005f9e 80%, #002244 100%);
+  border: 3px solid #88d3ff;
+  box-shadow: 0 0 20px rgba(77, 184, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.end-turn-btn {
+  background: #b76e22;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: all 0.2s;
+}
+.end-turn-btn:hover { background: #d68733; transform: scale(1.05); }
+.end-turn-btn:active { transform: scale(0.95); }
+
+.deck-piles {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pile {
+  background: rgba(255,255,255,0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #555;
+}
+
+.player-hand {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: -30px;
+  width: 600px;
+  height: 200px;
+}
+
+/* 战斗卡牌 */
+.battle-card {
+  width: 130px;
+  height: 180px;
+  background: linear-gradient(135deg, #2c3e50, #1a252f);
+  border: 2px solid #5d6d7e;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  color: #ecf0f1;
+  position: relative;
+  transition: transform 0.2s, z-index 0s;
+  cursor: pointer;
+  margin-left: -20px;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+}
+.battle-card:first-child { margin-left: 0; }
+.battle-card:hover {
+  transform: translateY(-40px) scale(1.1);
+  z-index: 100 !important;
+  border-color: #f1c40f;
+  box-shadow: 0 0 20px rgba(241, 196, 15, 0.4);
+}
+
+.card-cost {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 30px;
+  height: 30px;
+  background: #4db8ff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border: 2px solid #fff;
+  color: #000;
+}
+.card-name {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 16px;
+  border-bottom: 1px solid #5d6d7e;
+  padding-bottom: 5px;
+}
+.card-type {
+  font-size: 12px;
+  text-align: center;
+  color: #bdc3c7;
+  margin-top: 2px;
+}
+.card-desc {
+  font-size: 12px;
+  margin-top: 10px;
+  line-height: 1.4;
+  flex: 1;
+}
+
+/* 卡牌类型专属颜色 */
+.battle-card[data-type="attack"] { border-color: #e74c3c; }
+.battle-card[data-type="attack"] .card-type { color: #e74c3c; }
+.battle-card[data-type="skill"] { border-color: #2ecc71; }
+.battle-card[data-type="skill"] .card-type { color: #2ecc71; }
+.battle-card[data-type="power"] { border-color: #9b59b6; }
+.battle-card[data-type="power"] .card-type { color: #9b59b6; }
+
+/* 动画：屏幕震动 */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.shake {
+  animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* 动画：伤害跳字 */
+@keyframes float-up {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-50px) scale(1.2); opacity: 0; }
+}
+.floating-text {
+  position: absolute;
+  font-weight: bold;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  pointer-events: none;
+  z-index: 1000;
+  animation: float-up 1s ease-out forwards;
+}
+
+/* 打出卡牌飞行动画 (在 JS 中注入位置) */
+.battle-card.playing {
+  position: fixed;
+  z-index: 1000 !important;
+  transition: all 0.3s ease-in-out;
+  transform: translate(-50%, -50%) scale(1.2) !important;
+  opacity: 0;
+}

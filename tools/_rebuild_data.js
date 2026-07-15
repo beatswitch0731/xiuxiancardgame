@@ -10,7 +10,7 @@ const moduleMap = {
   'config:realms': 'data/config/realms.json',
   'config:paths': 'data/config/paths.json',
   'config:path_skills': 'data/config/path_skills.json',
-  'cards:qi': 'data/cards/qi_condensation.json',
+  'cards:qi': 'data/cards/qi.json',
   'cards:foundation': 'data/cards/foundation.json',
   'cards:golden': 'data/cards/golden.json',
   'cards:nascent': 'data/cards/nascent.json',
@@ -31,6 +31,7 @@ const moduleMap = {
   'quests:pill_master': 'data/quests/pill_master.json',
   'shops:treasures': 'data/shops/treasures.json',
   'shops:shop_items': 'data/shops/shop_items.json',
+  'threads:qi_threads': 'data/threads/qi_threads.json',
 };
 
 // Read all modules

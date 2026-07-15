@@ -6,11 +6,17 @@
  * 抽卡通过 CardSystem，因果通过 KarmaSystem。
  */
 class GameLogic {
-  constructor() {
+  constructor(deps = {}) {
+    // 依赖注入（核心状态/事件仍保留全局回退，服务与协调器必须注入）
+    this.gameState = deps.gameState || gameState;
+    this.eventBus = deps.eventBus || eventBus;
+    this.effectService = deps.effectService || null;
+    this.combatCoordinator = deps.combatCoordinator || null;
+    this.debug = deps.debug !== false;
+
     this.onLog = null;
     this.onUpdate = null;
     this.currentCard = null;
-    this._inCombat = false;
     // 暂存支线推进后的下一张卡ID（由 QuestSystem 通过 quest:advanced 事件注入）
     this._questNextCardId = null;
     // ── v2.0 上瘾引擎暂存 ──
@@ -27,6 +33,10 @@ class GameLogic {
     this._narrativeQueue = [];
     // ── 境界章节主线里程碑 ──
     this._chapterMilestoneCard = null;
+    // ── 新手引导教程队列 ──
+    this._tutorialCardIds = ['tutorial_1', 'tutorial_2', 'tutorial_3', 'tutorial_4'];
+
+    if (this.debug) console.log('[GameLogic] constructed with deps:', Object.keys(deps));
   }
 
   /** 世界事件触发间隔（回合） */
@@ -133,8 +143,8 @@ class GameLogic {
     this._prevAttrSnap = {
       cultivation: gameState.attributes.cultivation,
       daoHeart: gameState.attributes.daoHeart,
-      karmaGood: gameState.resources.karmaGood,
-      karmaBad: gameState.resources.karmaBad,
+      karmaGood: gameState.attributes.karmaGood,
+      karmaBad: gameState.attributes.karmaBad,
       health: gameState.attributes.health
     };
   }
@@ -147,8 +157,8 @@ class GameLogic {
     const curr = {
       cultivation: gameState.attributes.cultivation,
       daoHeart: gameState.attributes.daoHeart,
-      karmaGood: gameState.resources.karmaGood,
-      karmaBad: gameState.resources.karmaBad,
+      karmaGood: gameState.attributes.karmaGood,
+      karmaBad: gameState.attributes.karmaBad,
       health: gameState.attributes.health
     };
 
@@ -184,7 +194,9 @@ class GameLogic {
     pathSkillSystem.init();
 
     // 初始化战斗系统
-    combatSystem.init();
+    if (typeof deckCombatSystem !== 'undefined') {
+        deckCombatSystem.init();
+    }
 
     // 初始化商店系统
     if (typeof shopSystem !== 'undefined' && shopSystem) {
@@ -276,22 +288,39 @@ class GameLogic {
     }
 
     // 监听事件
-    eventBus.on('state:death', (data) => this._onDeath(data));
-    eventBus.on('quest:triggered', (data) => this._onQuestTriggered(data));
-    eventBus.on('quest:completed', (data) => this._onQuestCompleted(data));
+    this.eventBus.on('state:death', (data) => this._onDeath(data));
+    this.eventBus.on('game:restart', () => {
+      this.start(gameState.path || 'sword');
+    });
+    // 终极结局事件：EffectService 触发后，切换到对应结局卡
+    this.eventBus.on('game:ending', (data) => {
+      const endingCardId = 'ending_' + (data.endingType || 'ascension');
+      const endingCard = cardSystem.getCard(endingCardId);
+      if (endingCard) {
+        this.currentCard = endingCard;
+        this._log(`【仙途终局】进入结局：${endingCard.title}`);
+      } else {
+        // 安全兜底：找不到卡直接用飞升结局
+        this.currentCard = cardSystem.getCard('ending_ascension');
+        this._log('【仙途终局】结局卡未找到，回退至飞升结局');
+      }
+      this._triggerUpdate();
+    });
+    this.eventBus.on('quest:triggered', (data) => this._onQuestTriggered(data));
+    this.eventBus.on('quest:completed', (data) => this._onQuestCompleted(data));
     // 支线推进事件：暂存下一张卡ID，避免依赖 choice.nextCard 的数据污染
-    eventBus.on('quest:advanced', (data) => {
+    this.eventBus.on('quest:advanced', (data) => {
       this._questNextCardId = data.nextCardId || null;
     });
-    eventBus.on('karma:seedPlanted', (data) => this._onKarmaSeedPlanted(data));
-    eventBus.on('combat:victory', (data) => this._onCombatVictory(data));
-    eventBus.on('combat:defeat', (data) => this._onCombatDefeat(data));
-    eventBus.on('combat:fled', (data) => this._onCombatFled(data));
+    this.eventBus.on('karma:seedPlanted', (data) => this._onKarmaSeedPlanted(data));
+    this.eventBus.on('combat:victory', (data) => this.combatCoordinator.onVictory(data));
+    this.eventBus.on('combat:defeat', (data) => this.combatCoordinator.onDefeat(data));
+    this.eventBus.on('combat:fled', (data) => this.combatCoordinator.onFled(data));
     // 【故事线程】引擎日志 → 游戏日志区
-    eventBus.on('game:log', (msg) => this._log(msg));
+    this.eventBus.on('game:log', (msg) => this._log(msg));
 
     // 【商店系统】商店关闭后继续卡牌流
-    eventBus.on('shop:closed', () => {
+    this.eventBus.on('shop:closed', () => {
       this.currentCard = null;
       this._triggerUpdate();
     });
@@ -343,9 +372,21 @@ class GameLogic {
   start(path) {
     gameState.reset(true);
     gameState.path = path;
-    this.currentCard = null;
     this._innerVoiceCooldown = 0;
     this._chapterMilestoneCard = null;
+
+    // ── 新手引导：首次游玩注入教程卡 ──
+    if (this.isFirstPlay()) {
+      const tutorialCard = cardSystem.getCard('tutorial_1');
+      if (tutorialCard) {
+        this.currentCard = tutorialCard;
+        this._log('【引导】初入仙途，请跟随指引了解修仙法则。');
+      } else {
+        this.currentCard = null;
+      }
+    } else {
+      this.currentCard = null;
+    }
 
     // ── 重置章节系统 ──
     if (typeof chapterSystem !== 'undefined' && chapterSystem) {
@@ -367,7 +408,15 @@ class GameLogic {
         for (const [key, value] of Object.entries(bonuses)) {
           if (key === 'spiritStone') {
             gameState.addResource('spiritStone', null, value);
-          } else if (['cultivation', 'daoHeart', 'health', 'fortune'].includes(key)) {
+          } else if (key === 'health') {
+            // 微数值模型：如果功法增减血量，同时对应调整上限 maxHealth，防止溢出或降为0
+            gameState.maxHealth = Math.max(1, gameState.maxHealth + value);
+            gameState.setAttribute('health', gameState.attributes.health + value);
+          } else if (key === 'daoHeart') {
+            // 微数值模型：如果功法增减道心，同时对应调整上限 maxDaoHeart
+            gameState.maxDaoHeart = Math.max(1, gameState.maxDaoHeart + value);
+            gameState.setAttribute('daoHeart', gameState.attributes.daoHeart + value);
+          } else if (['cultivation', 'fortune'].includes(key)) {
             gameState.addAttribute(key, value);
           }
         }
@@ -377,6 +426,22 @@ class GameLogic {
     this._triggerUpdate();
   }
 
+  /**
+   * 检测是否为首次游玩（新手引导判断）
+   * 兼容旧存档：已转世或有解锁记录的玩家视为已完成引导
+   */
+  isFirstPlay() {
+    if (gameState.unlocks.tutorialCompleted === true) return false;
+    if (gameState.unlocks.tutorialCompleted === false) return true;
+    // 旧存档兼容：有转世记录或已解锁卡牌 → 已完成引导
+    if ((gameState.unlocks.lifeCount || 0) > 0 || (gameState.unlocks.cards || []).length > 0) {
+      gameState.unlocks.tutorialCompleted = true;
+      gameState._saveUnlocks();
+      return false;
+    }
+    return true;
+  }
+
   // ============ 抽卡与选择 ============
 
   /**
@@ -384,8 +449,8 @@ class GameLogic {
    * @returns {Object}
    */
   getCurrentCard() {
-    if (this._inCombat) {
-      return { type: 'COMBAT_UI', combatState: combatSystem.getState() };
+    if (this.combatCoordinator && this.combatCoordinator.isInCombat()) {
+      return this.combatCoordinator.getCombatCard();
     }
 
     // ── v2.0 心魔反噬卡 ──
@@ -404,6 +469,29 @@ class GameLogic {
     }
 
     if (!this.currentCard) {
+      // ── 天机追踪 (Tianji Pursuit) ──
+      if (gameState.getAttribute('tianji') >= 100) {
+          gameState.setAttribute('tianji', 0); // 重置
+          this._log('【警告】天机泄露，跨界大能锁定了你的气息！');
+          this.currentCard = {
+              id: 'heaven_pursuit',
+              title: '跨界追杀',
+              description: '你使用逆天遗物的气息被上界大能察觉。一只遮天蔽日的巨手撕裂虚空，向你抓来！',
+              type: 'COMBAT',
+              tags: ['combat'],
+              enemy: {
+                  name: '跨界神念化身',
+                  tier: 3,
+                  id: 'enemy_sword' // 可以复用高难度 AI
+              },
+              choices: {
+                  left: { text: '迎战', effects: {} },
+                  right: { text: '逃遁(无效)', effects: {} }
+              }
+          };
+          return this.currentCard;
+      }
+      
       // ===== FlowDirector 核心调度 =====
       if (typeof flowDirector !== 'undefined' && flowDirector) {
         this.currentCard = flowDirector.getNextCard();
@@ -438,30 +526,18 @@ class GameLogic {
       // 战斗卡检测：抽到 combat 标签的卡 → 先展示预警卡，再进入战斗
       if (this.currentCard && (this.currentCard.type === 'COMBAT' || (this.currentCard.tags && this.currentCard.tags.includes('combat')))) {
         // FIX-3: 战斗预警机制 — 先展示预警卡，给玩家准备时间
-        if (!this._combatWarningShown) {
-          this._combatWarningShown = true;
-          this._pendingCombatCard = this.currentCard; // 暂存真正的战斗卡
-          var warningCard = this._buildCombatWarning(this.currentCard);
+        if (!this.combatCoordinator.hasWarningShown()) {
+          const warningCard = this.combatCoordinator.buildCombatWarning(this.currentCard);
           this.currentCard = warningCard;
           return warningCard;
         }
-        // 预警卡已展示过，清除标志，正式进入战斗
-        this._combatWarningShown = false;
-        this._pendingCombatCard = null;
-
-        const entered = this._enterCombat(this.currentCard);
-        if (!entered) {
-          // 卡牌有combat标签但缺少enemy数据 — 直接当普通事件卡处理，不进入战斗模式
+        // 预警卡已展示过，正式进入战斗
+        if (!this.currentCard.enemy) {
           this._log('[系统] 战斗状态异常，已自动恢复。');
           return this.currentCard;
         }
-        const state = combatSystem.getState();
-        if (!state) {
-          this._log('[系统] 战斗初始化失败，已自动恢复。');
-          this._inCombat = false;
-          return this.currentCard;
-        }
-        return { type: 'COMBAT_UI', combatState: state };
+        this.combatCoordinator.enterCombat(this.currentCard);
+        return this.combatCoordinator.getCombatCard();
       }
     }
 
@@ -494,7 +570,7 @@ class GameLogic {
    * @returns {boolean} 选择是否有效
    */
   makeChoice(direction) {
-    if (gameState.dead) return false;
+    if (gameState.dead && this.currentCard && !this.currentCard.id.startsWith('death_') && !this.currentCard.id.startsWith('ending_')) return false;
 
     const card = this.getCurrentCard();
 
@@ -514,20 +590,8 @@ class GameLogic {
       return true;
     }
 
-    // ── v2.0 因果涟漪选择处理 ──
-    if (card.type === 'KARMA_RIPPLE') {
-      return this._applyChoice(direction, card);
-    }
 
-    // ── v2.0 天机一闪选择处理 ──
-    if (card.type === 'HEAVENS_HINT') {
-      return this._applyChoice(direction, card);
-    }
 
-    // ── v2.0 集市偶遇选择处理 ──
-    if (card.type === 'MARKET') {
-      return this._applyChoice(direction, card);
-    }
 
     // ── FIX-3: 战斗预警卡选择处理 ──
     if (card.type === 'COMBAT_WARNING') {
@@ -541,26 +605,15 @@ class GameLogic {
       }
       // 应用准备效果（道心加成/丹药回血等）
       if (warningChoice.effects) this._applyEffects(warningChoice.effects);
-      if (warningChoice.costCheck && warningChoice.costCheck.pill) {
-        gameState.addResource('pill', null, -warningChoice.costCheck.pill);
+      if (warningChoice.costCheck && warningChoice.costCheck.spiritStone) {
+        gameState.addResource('spiritStone', null, -warningChoice.costCheck.spiritStone);
       }
       // 恢复待战斗的卡牌并进入战斗
-      if (this._pendingCombatCard) {
-        this.currentCard = this._pendingCombatCard;
-        this._pendingCombatCard = null;
-        this._combatWarningShown = false;
-        // 正式进入战斗
-        const entered = this._enterCombat(this.currentCard);
-        if (entered) {
-          const combatState = combatSystem.getState();
-          if (combatState) {
-            this._triggerUpdate();
-            return true;
-          }
-        }
-        // 战斗初始化失败，当作普通卡处理
-        this._log('[系统] 战斗初始化异常，已自动恢复。');
-        this._inCombat = false;
+      const pendingCombatCard = this.combatCoordinator.getPendingCombatCard();
+      if (pendingCombatCard) {
+        this.currentCard = pendingCombatCard;
+        // 正式进入战斗（fire-and-forget，战斗系统会通过事件通知 UI）
+        this.combatCoordinator.enterCombatFromWarning();
         this._triggerUpdate();
         return true;
       }
@@ -585,16 +638,27 @@ class GameLogic {
 
     const choice = card.choices[direction];
     if (!choice) return false;
+    let pauseCardFlow = false;
 
     // 【沉浸 v2.0】拍快照（在应用效果前）
     this._snapshotAttrs();
 
-    // 商店卡 costCheck: 检查是否付得起
+    // 商店/营地卡 costCheck: 检查是否付得起
     if (choice.costCheck) {
       if (!this._checkCost(choice.costCheck)) {
-        this._log('灵石不足，无法购买。');
+        this._log('资源不足，无法进行此操作。');
         this._triggerUpdate();
         return false;
+      }
+      // 自动扣除 costCheck 中的资源
+      if (choice.costCheck.spiritStone) {
+        gameState.addResource('spiritStone', null, -choice.costCheck.spiritStone);
+      }
+      if (choice.costCheck.health) {
+        gameState.addAttribute('health', -choice.costCheck.health);
+      }
+      if (choice.costCheck.karmaGood) {
+        gameState.addAttribute('karmaGood', -choice.costCheck.karmaGood);
       }
     }
 
@@ -607,6 +671,14 @@ class GameLogic {
 
     // 应用效果
     this._applyEffects(choice.effects);
+
+    // ── 去全局化：选项驱动战斗触发 ──
+    if (choice.triggerCombat || (choice.effects && choice.effects.triggerCombat)) {
+      const warningCard = this.combatCoordinator.buildCombatWarning(card);
+      this.currentCard = warningCard;
+      this._triggerUpdate();
+      return true;
+    }
 
     // ════════════════════════════════════════
     //  境界章节里程碑检测
@@ -633,20 +705,15 @@ class GameLogic {
 
     // 【商店卡】打开商店 UI，暂停卡牌流
     if (choice.openShop) {
-      gameState.cardsPlayed.push(card.id);
-      gameState.turn++;
       eventBus.emit('shop:open', {
         items: shopSystem ? shopSystem.getAvailableItems(gameState.realm) : []
       });
       // 暂停卡牌流，不推进到下一卡
-      this._triggerUpdate();
-      return true;
+      pauseCardFlow = true;
     }
 
     // 【v2.0 集市】打开集市 UI（使用 MarketSystem 预刷商品）
     if (choice.openMarket) {
-      gameState.cardsPlayed.push(card.id);
-      gameState.turn++;
       if (typeof marketSystem !== 'undefined' && marketSystem) {
         marketSystem._totalVisits++;
         const marketItems = marketSystem.getCurrentMarketItems();
@@ -662,8 +729,7 @@ class GameLogic {
       } else {
         eventBus.emit('shop:open', { items: [] });
       }
-      this._triggerUpdate();
-      return true;
+      pauseCardFlow = true;
     }
 
     // 种因果种子（支持单个对象、数组、或字符串快捷格式）
@@ -767,7 +833,7 @@ class GameLogic {
       }
     }
     // 命盘轮转触发检测
-    if (typeof destinyWheelSystem !== 'undefined' && destinyWheelSystem && !this._inCombat) {
+    if (typeof destinyWheelSystem !== 'undefined' && destinyWheelSystem && !this.combatCoordinator.isInCombat()) {
       if (destinyWheelSystem.tick(gameState.turn)) {
         eventBus.emit('destiny:triggered', destinyWheelSystem.getState());
         this._triggerUpdate();
@@ -775,7 +841,7 @@ class GameLogic {
       }
     }
     // 因果涟漪触发检测
-    if (typeof karmaRippleSystem !== 'undefined' && karmaRippleSystem && !this._inCombat) {
+    if (typeof karmaRippleSystem !== 'undefined' && karmaRippleSystem && !this.combatCoordinator.isInCombat()) {
       const ripple = karmaRippleSystem.tick(gameState.turn);
       if (ripple) {
         if (typeof flowDirector !== 'undefined' && flowDirector) flowDirector.setPending('ripple', ripple);
@@ -785,7 +851,7 @@ class GameLogic {
       }
     }
     // 天机一闪触发检测
-    if (typeof heavensHintSystem !== 'undefined' && heavensHintSystem && !this._inCombat) {
+    if (typeof heavensHintSystem !== 'undefined' && heavensHintSystem && !this.combatCoordinator.isInCombat()) {
       const hint = heavensHintSystem.tick(gameState.turn);
       if (hint) {
         if (typeof flowDirector !== 'undefined' && flowDirector) flowDirector.setPending('hint', hint);
@@ -795,7 +861,7 @@ class GameLogic {
       }
     }
     // 集市偶遇触发检测
-    if (typeof marketSystem !== 'undefined' && marketSystem && !this._inCombat) {
+    if (typeof marketSystem !== 'undefined' && marketSystem && !this.combatCoordinator.isInCombat()) {
       const mkt = marketSystem.tick(gameState.turn);
       if (mkt) {
         if (typeof flowDirector !== 'undefined' && flowDirector) flowDirector.setPending('market', mkt);
@@ -805,13 +871,13 @@ class GameLogic {
       }
     }
     // 世界事件公告（沉浸 v2.0 P2）
-    if (!this._inCombat) {
+    if (!this.combatCoordinator.isInCombat()) {
       this._tickWorldEvents();
     }
 
     // 寿元消耗
     if (this._shouldConsumeLifespan(card, choice)) {
-      gameState.resources.lifespan -= 1;
+      gameState.addResource('lifespan', null, -1);
     }
 
     // 【因果种子】lifespanWaste：寿元 <= 20 时种下危机种子
@@ -901,6 +967,21 @@ class GameLogic {
       this.currentCard = null;
     }
 
+    // ── 新手引导：教程完成处理 ──
+    if (card.id && card.id.startsWith('tutorial_') && !choice.nextCard && !this._questNextCardId) {
+      gameState.unlocks.tutorialCompleted = true;
+      gameState._saveUnlocks();
+      const pathStarterMap = {
+        sword: 'q_start_sword',
+        spell: 'q_start_spell',
+        body: 'q_start_body',
+        pill: 'q_start_pill'
+      };
+      const starterId = pathStarterMap[gameState.path] || 'q_meditation';
+      this.currentCard = cardSystem.getCard(starterId);
+      this._log('【引导】教程完成，仙途正式开启。');
+    }
+
     // ── 叙事连贯性层：构建卡牌间过渡文字（方案B）──
     const nextCard = this.currentCard;
     if (typeof coherenceLayer !== 'undefined' && coherenceLayer && nextCard) {
@@ -913,6 +994,11 @@ class GameLogic {
       coherenceLayer.setPendingTransition(transition);
     }
 
+    if (pauseCardFlow) {
+      this._triggerUpdate();
+      return true;
+    }
+
     this._triggerUpdate();
     return true;
   }
@@ -921,78 +1007,19 @@ class GameLogic {
 
   _applyEffects(effects) {
     if (!effects) return;
-
-    for (const [key, value] of Object.entries(effects)) {
-      if (key === 'path') {
-        gameState.path = value;
-      } else if (key === 'reincarnate') {
-        // 在 makeChoice 中处理
-      } else if (key === 'reincarnation_bonus') {
-        // 死亡卡选择的转世加成 — 存储到 gameState 待 _reincarnate() 使用
-        if (!gameState._pendingReincBonus) gameState._pendingReincBonus = {};
-        gameState._pendingReincBonus = value;
-        this._log(`转世加成已记录：${value}`);
-      } else if (key === 'pill') {
-        gameState.addResource('pills', value, 1);
-        this._log(`获得丹药：${value}`);
-      } else if (key === 'treasure') {
-        gameState.addResource('treasures', value, 1);
-        treasureSystem.acquire(value);
-        this._log(`获得法宝：${value}`);
-      } else if (key === 'companion') {
-        gameState.addResource('companions', value, 1);
-        this._log(`获得道侣：${value}`);
-        // 注册道侣到 CompanionSystem（初始化好感/羁绊/信任状态）
-        if (typeof companionSystem !== 'undefined' && companionSystem) {
-          companionSystem.register(value);
-        }
-        // ── 道侣沉浸 v2.5：激活到 HUD ──
-        this._activateCompanionToHUD();
-      } else if (['cultivation', 'fortune', 'health'].includes(key)) {
-        gameState.addAttribute(key, value);
-      } else if (key === 'daoHeart') {
-        // 【功法被动】道心伤害减免（daoResist）
-        let modifiedValue = value;
-        if (value < 0) {
-          let daoResist = 0;
-          if (typeof pathSkillSystem !== 'undefined' && pathSkillSystem && gameState.path) {
-            const skillBonuses = pathSkillSystem.getPassiveBonuses(gameState.path);
-            daoResist = skillBonuses.daoResist || 0;
-          }
-          if (daoResist > 0) {
-            const reduction = Math.floor(Math.abs(value) * daoResist);
-            modifiedValue = value + reduction;
-            if (reduction > 0) {
-              this._log(`道心通透，减轻了 ${reduction} 点道心损伤！`);
-            }
-          }
-        }
-        gameState.addAttribute('daoHeart', modifiedValue);
-      } else if (key === 'spiritStone') {
-        // 【功法被动】灵石奖励加成（spiritStoneBonus）
-        let modifiedValue = value;
-        if (value > 0) {
-          let spiritStoneBonus = 0;
-          if (typeof pathSkillSystem !== 'undefined' && pathSkillSystem && gameState.path) {
-            const skillBonuses = pathSkillSystem.getPassiveBonuses(gameState.path);
-            spiritStoneBonus = skillBonuses.spiritStoneBonus || 0;
-          }
-          if (spiritStoneBonus > 0) {
-            const bonus = Math.floor(value * spiritStoneBonus / 100);
-            modifiedValue = value + bonus;
-            if (bonus > 0) {
-              this._log(`道法自然，额外获得 ${bonus} 灵石！`);
-            }
-          }
-        }
-        gameState.addResource('spiritStone', null, modifiedValue);
-      } else if (['karmaGood', 'karmaBad', 'lifespan'].includes(key)) {
-        gameState.addResource(key, null, value);
-      } else if (key.startsWith('npc_relation:')) {
-        // npc_relation:fromNpcId:toNpcId 格式 — NPC间关系调整
-        this._applyNpcRelationEffect(key, value);
-      }
+    if (!this.effectService) {
+      console.error('[GameLogic] EffectService 未注入');
+      return;
     }
+    this.effectService.apply(effects, this._effectContext());
+  }
+
+  _effectContext() {
+    return {
+      log: this._log.bind(this),
+      onNpcRelation: this._applyNpcRelationEffect.bind(this),
+      onCompanionActivated: this._activateCompanionToHUD.bind(this)
+    };
   }
 
   _shouldConsumeLifespan(card, choice) {
@@ -1003,53 +1030,15 @@ class GameLogic {
     return false;
   }
 
-  /**
-   * FIX-3: 构建战斗预警卡
-   * 在正式进入战斗前给玩家一个准备窗口
-   */
-  _buildCombatWarning(combatCard) {
-    var enemy = combatCard.enemy || {};
-    var enemyName = enemy.name || '未知敌人';
-    var battlefield = combatCard.battlefield || combatCard.location || 'default';
-
-    var warningTexts = {
-      cave: '洞壁上的青苔被踩碎的声音从前方传来。你闻到了血腥气——' + enemyName + '正在前方等候。',
-      sect: '一道剑气划破空气，对方已发现你的气息。' + enemyName + '挡在了去路上。',
-      wilderness: '荒野中突然安静下来。你感到一股强烈的杀意从四面涌来——是' + enemyName + '。',
-      default: '前方出现了强大的气息。' + enemyName + '挡住了你的去路，似乎已准备好战斗。'
-    };
-    var desc = warningTexts[battlefield] || warningTexts.default;
-
-    return {
-      id: '_warning_' + combatCard.id,
-      title: '危险预感',
-      description: desc,
-      type: 'COMBAT_WARNING',
-      _targetCombatCard: combatCard,
-      choices: {
-        left: {
-          text: '迎战',
-          desc: '正面应对，胜则有额外斗志加成。',
-          effects: { daoHeart: 2 },
-          _confirmCombat: true
-        },
-        right: {
-          text: '服丹备战',
-          desc: '消耗一颗丹药，为战斗做准备。',
-          effects: { health: 15 },
-          _confirmCombat: true,
-          costCheck: { pill: 1 }
-        }
-      }
-    };
-  }
-
   _checkCost(costCheck) {
     if (!costCheck) return true;
     if (costCheck.spiritStone && gameState.resources.spiritStone < costCheck.spiritStone) {
       return false;
     }
-    if (costCheck.pill && (!gameState.resources.pill || gameState.resources.pill < costCheck.pill)) {
+    if (costCheck.health && gameState.attributes.health <= costCheck.health) { // 不能自杀
+      return false;
+    }
+    if (costCheck.karmaGood && (gameState.attributes.karmaGood || 0) < costCheck.karmaGood) {
       return false;
     }
     return true;
@@ -1102,22 +1091,18 @@ class GameLogic {
    * @returns {{ text: string }|null}
    */
   _pickWorldEvent() {
-    const realmName = gameState.getRealmName(gameState.realm);
-    const realmIndex = GameStateManager.REALM_ORDER.indexOf(gameState.realm);
+    const realmOrder = gameState.config.realms?.order || ['qi', 'foundation', 'golden', 'nascent', 'deity', 'tribulation'];
+    const realmIndex = realmOrder.indexOf(gameState.realm);
     // 只筛选境界门禁 ≤ 当前境界的事件
     const pool = GameLogic.WORLD_EVENTS.filter(ev => {
       if (!ev.realmGate) return true;
-      const gateIndex = GameStateManager.REALM_ORDER.indexOf(
-        GameStateManager.REALM_ORDER.find(r => gameState.getRealmName(r) === ev.realmGate)
+      const gateIndex = realmOrder.indexOf(
+        realmOrder.find(r => gameState.getRealmName(r) === ev.realmGate)
       );
       return gateIndex >= 0 && realmIndex >= gateIndex;
     });
     if (pool.length === 0) return null;
-    // 去重：短时间内不重复同一事件
-    if (pool.length > 3) {
-      // 从池中随机选
-      return pool[Math.floor(Math.random() * pool.length)];
-    }
+    // 从池中随机选
     return pool[Math.floor(Math.random() * pool.length)];
   }
 
@@ -1146,9 +1131,9 @@ class GameLogic {
       fortuneBonus += skillBonuses.fortuneBonus || 0;
     }
 
-    // 应用回血（不超过 maxHealth=100）
-    if (hpRegen > 0 && gameState.attributes.health < 100) {
-      const healAmount = Math.min(hpRegen, 100 - gameState.attributes.health);
+    // 应用回血（不超过 maxHealth）
+    if (hpRegen > 0 && gameState.attributes.health < gameState.maxHealth) {
+      const healAmount = Math.min(hpRegen, gameState.maxHealth - gameState.attributes.health);
       gameState.addAttribute('health', healAmount);
     }
 
@@ -1271,7 +1256,7 @@ class GameLogic {
     } else {
       this._log('\u7a81\u7834\u5931\u8d25\uff0c\u9053\u5fc3\u53d7\u632b\u3002');
       this._triggerInnerVoice('breakthrough_fail', 1.0);
-      gameState.addAttribute('daoHeart', -15);
+      gameState.addAttribute('daoHeart', -1);
       gameState.addAttribute('cultivation', -30);
 
       // ── v2.0 心魔反噬 (GDD §3) ──
@@ -1481,10 +1466,12 @@ class GameLogic {
     gameState._saveUnlocks();
     gameState.reset(true);
 
-    this.currentCard = null;
     this._log(`转世重修——前世的道路如雾中残梦。`);
     this._log(`你感觉到体内有 ${gameState.getLegacyAffection ? '一股熟悉的气息' : '新的力量'}在涌动。`);
     this._log(`难度：${this._getDifficultyText()}`);
+
+    // 【天道恩赐】：抽第一张牌为轮回之选
+    this.currentCard = cardSystem.getCard('rebirth_boon');
 
     // 【环环相扣：转世→NPC】前世老友残留印象
     if (typeof npcSystem !== 'undefined' && npcSystem && gameState.unlocks.legacy) {
@@ -1510,112 +1497,16 @@ class GameLogic {
     this._triggerUpdate();
   }
 
-  // ============ 战斗系统 ============
-
-  _enterCombat(card) {
-    // 防御性检查：卡牌必须有 enemy 数据才能进入战斗
-    if (!card || !card.enemy) {
-      return false;
-    }
-    this._inCombat = true;
-    combatSystem._start({ card });
-    if (!combatSystem.active) {
-      this._inCombat = false;
-      return false;
-    }
-    // 将战斗日志同步到游戏日志
-    const combatLog = combatSystem.log || [];
-    for (const msg of combatLog) {
-      this._log(msg);
-    }
-    this._triggerUpdate();
-    return true;
-  }
+  // ============ 战斗协调器代理 ============
 
   /**
    * 战斗中选择动作（由 UI 调用）
+   * 注：新版 DeckCombatUI 已直接绑定点击事件，此方法保留兼容层
    */
   combatAction(action) {
-    if (!this._inCombat) return;
-    combatSystem._executeAction({ action });
-    // 同步日志
-    const combatLog = combatSystem.log || [];
-    for (const msg of combatLog) {
-      this._log(msg);
+    if (this.combatCoordinator) {
+      this.combatCoordinator.handleAction(action);
     }
-    combatSystem.log = []; // 清空已同步的日志
-    this._triggerUpdate();
-  }
-
-  _onCombatVictory(data) {
-    this._inCombat = false;
-    this._triggerInnerVoice('combat_victory', 0.5);
-    // 记录已玩卡牌
-    if (this.currentCard) {
-      gameState.cardsPlayed.push(this.currentCard.id);
-      gameState.turn++;
-    }
-    this.currentCard = null;
-
-    // 因果推进
-    karmaSystem.tick();
-
-    // 检查死亡
-    if (gameState.checkDeath()) {
-      const pn = gameState.playerName || '\u53f6\u51cc\u4e91';
-      this._log(`${pn}\uff0c\u9053\u6d88\u8eab\u9699\u3002${gameState.deadReason}`);
-      this.currentCard = cardSystem.draw();
-      this._triggerUpdate();
-      return;
-    }
-
-    this._triggerUpdate();
-  }
-
-  _onCombatDefeat(data) {
-    this._inCombat = false;
-    // 濒死心念
-    if (gameState.attributes.health < 20) {
-      this._triggerInnerVoice('near_death', 0.9);
-    }
-    if (this.currentCard) {
-      gameState.cardsPlayed.push(this.currentCard.id);
-      gameState.turn++;
-    }
-    this.currentCard = null;
-
-    karmaSystem.tick();
-
-    if (gameState.checkDeath()) {
-      const pn = gameState.playerName || '\u53f6\u51cc\u4e91';
-      this._log(`${pn}\uff0c\u9053\u6d88\u8eab\u9699\u3002${gameState.deadReason}`);
-      this.currentCard = cardSystem.draw();
-      this._triggerUpdate();
-      return;
-    }
-
-    this._triggerUpdate();
-  }
-
-  _onCombatFled(data) {
-    this._inCombat = false;
-    if (this.currentCard) {
-      gameState.cardsPlayed.push(this.currentCard.id);
-      gameState.turn++;
-    }
-    this.currentCard = null;
-
-    karmaSystem.tick();
-
-    if (gameState.checkDeath()) {
-      const pn = gameState.playerName || '\u53f6\u51cc\u4e91';
-      this._log(`${pn}\uff0c\u9053\u6d88\u8eab\u9699\u3002${gameState.deadReason}`);
-      this.currentCard = cardSystem.draw();
-      this._triggerUpdate();
-      return;
-    }
-
-    this._triggerUpdate();
   }
 
   // ============ 难度曲线系统 ============

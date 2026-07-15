@@ -537,7 +537,7 @@
     "_desc": "先知弧线 — 天机老人。基于天机揭示度(0-100)，通过探索秘密/破解预言/收集碎片推进。不是互动关系——是真相的渐进揭示。",
     "_mechanism": "天机揭示度(0-100)，通过访问天机阁、破解天道秘密、收集天机盘碎片提升。每20点推进一个阶段。",
 
-    "tian_ji": {
+    "tianji_laoren": {
       "name": "天机老人",
       "gender": "male",
       "relationshipType": "seer",
@@ -546,7 +546,7 @@
       "interactionType": "星盘预知 + 真相揭示",
 
       "bonuses": {
-        "id": "tian_ji_seer_bonus",
+        "id": "tianji_laoren_seer_bonus",
         "name": "天机推演",
         "icon": "🔮",
         "effects": { "fortune": 15, "probabilityEvents": 10, "karmaSeedEffects": 20, "divinationAccuracy": 30 },
@@ -630,7 +630,7 @@
     "_desc": "盟友弧线 — 血煞老祖。基于同盟度(0-100)，通过共同对抗天道/揭示真相推进。不是朋友——是目标一致的合作者。",
     "_mechanism": "同盟度(0-100)，通过对抗天界敌人、揭示天道秘密、保护苍茫界提升。每20点推进一个阶段。",
 
-    "xue_sha": {
+    "xuesha_laozu": {
       "name": "血煞老祖",
       "gender": "male",
       "relationshipType": "ally",
@@ -639,7 +639,7 @@
       "interactionType": "对抗天道 + 保护苍茫界",
 
       "bonuses": {
-        "id": "xue_sha_ally_bonus",
+        "id": "xuesha_laozu_ally_bonus",
         "name": "血煞霸气",
         "icon": "💀",
         "effects": { "intimidate": 30, "heavenEnemyDamage": 25, "rawPower": 20, "fearResist": 50 },

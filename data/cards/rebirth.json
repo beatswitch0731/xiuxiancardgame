@@ -26,6 +26,35 @@
   },
   "cards": [
     {
+      "id": "rebirth_boon",
+      "type": "DESTINY",
+      "title": "天道恩赐 (轮回之选)",
+      "description": "天道引擎轰鸣，重塑了你的肉身。你站在新的起点前，感受到上一世累积的因果在冥冥中注视着你。你可以消耗这些因果，带一些东西去新的世界。",
+      "realm": "qi",
+      "weight": 0,
+      "once": false,
+      "tags": ["rebirth", "boon"],
+      "choices": {
+        "left": {
+          "text": "前世的功法",
+          "desc": "带着前世的一本高级功法开始。消耗 10 善缘。",
+          "effects": { "deckCard": "sword_intent" },
+          "costCheck": { "karmaGood": 10 }
+        },
+        "right": {
+          "text": "本命法宝残片",
+          "desc": "带着一件法宝降生。消耗 20 灵石（前世遗产）。",
+          "effects": { "treasure": "避尘珠" },
+          "costCheck": { "spiritStone": 20 }
+        },
+        "down": {
+          "text": "忘却前尘，轻装上阵",
+          "desc": "遗忘两张基础防御牌。不消耗任何东西。",
+          "effects": { "removeCard": true, "health": 5 }
+        }
+      }
+    },
+    {
       "id": "rb_memory_sword",
       "type": "DESTINY",
       "title": "前世记忆·剑意",

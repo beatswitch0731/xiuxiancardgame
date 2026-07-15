@@ -12,6 +12,7 @@
  *   unlocks                  → GameStateManager (读写), localStorage
  */
 class GameStateManager {
+  static REALM_ORDER = ['qi', 'foundation', 'golden', 'nascent', 'deity', 'tribulation'];
   constructor() {
     this.config = {
       realms: null,
@@ -44,34 +45,38 @@ class GameStateManager {
       bonuses: { startCultivation: 0, startSpiritStone: 0, maxLifespan: 0 }
     };
 
-    // 核心属性 (0-100) — 包含跨世遗产加成
+    // 核心属性 (微数值模型)
+    this.maxHealth = 3 + (savedUnlocks.bonuses.maxHp || 0);
+    this.maxDaoHeart = 3 + (savedUnlocks.bonuses.daoHeart || 0);
+
     this.attributes = {
-      cultivation: 10 + (savedUnlocks.bonuses.startCultivation || 0),
-      daoHeart: 50 + (savedUnlocks.bonuses.daoHeart || 0),
+      cultivation: 0 + (savedUnlocks.bonuses.startCultivation || 0),
+      daoHeart: this.maxDaoHeart,
       karmaGood: 0 + (savedUnlocks.bonuses.karmaGood || 0),
       karmaBad: 0 + (savedUnlocks.bonuses.karmaBad || 0),
       fortune: 50 + (savedUnlocks.bonuses.fortune || 0),
-      health: 100 + (savedUnlocks.bonuses.maxHp || 0)
+      health: this.maxHealth,
+      tianji: 0 // 天机暴露值
     };
 
     // 资源
     this.resources = {
-      spiritStone: 100 + (savedUnlocks.bonuses.startSpiritStone || 0),
+      spiritStone: 10 + (savedUnlocks.bonuses.startSpiritStone || 0), // 压缩灵石数值
       lifespan: 80 + (savedUnlocks.bonuses.maxLifespan || 0),
       pills: {},
-      treasures: [],      // 拥有的所有法宝ID（兼容旧代码）
+      treasures: [],
       companions: []
     };
 
-    // === 新增：装备槽系统 (P0 法宝装备) ===
+    // ... (rest remains the same)
     this.equipment = {
-      weapon: null,    // 武器槽：法宝id
-      armor: null,     // 防具槽
-      accessory: null, // 饰品槽
-      artifact: null   // 秘宝槽（含复活法宝）
+      weapon: null,
+      armor: null,
+      accessory: null,
+      artifact: null
     };
-    this.treasureInventory = []; // 未装备的法宝id列表
-    this.treasureCooldowns = {}; // { 法宝id: 剩余冷却回合 }
+    this.treasureInventory = [];
+    this.treasureCooldowns = {};
 
     this.realm = 'qi';
     this.path = null;
@@ -82,32 +87,17 @@ class GameStateManager {
     this.karmaSeeds = [];
     this.dungeon = null;
     this.dungeonNodeIndex = 0;
-    // FIX-4: 秘境图结构支持
-    this.dungeonNodeId = null;    // 当前所在图节点 ID (graph 模式)
-    this.dungeonPath = [];         // 已走过的节点 ID 列表 (用于回溯/UI显示)
+    this.dungeonNodeId = null;
+    this.dungeonPath = [];
 
-    // === 新字段：位置/场景叙事 ===
     this.currentLocation = '宗门';
     this.visitedLocations = ['宗门'];
     this.locationStates = {};
 
-    // === 新字段：选择延迟回响 ===
     this.choiceEchoes = [];
-
-    // === 新字段：选择历史（供 StoryThreadEngine 触发检测）===
     this.choiceHistory = [];
-
-    // === 新字段：最近卡牌标签（供 tag_chain 触发检测）===
     this.recentCardTags = [];
-
-    // === 新字段：Game Flags ===
-    // flags 是跨轮次持久化的键值存储，用于追踪:
-    //   - 支线进度 (quest_whiteFox_step: 2)
-    //   - 一次性事件完成标记 (whiteFoxCompleted: true)
-    //   - NPC 认知标记 (met_bai_ren: true)
-    //   - 世界状态 (sect_war_triggered: true)
     this.flags = savedUnlocks.flags || {};
-
     this.unlocks = savedUnlocks;
 
     eventBus.emit('state:reset', {});
@@ -121,7 +111,15 @@ class GameStateManager {
 
   setAttribute(name, value) {
     const oldValue = this.attributes[name] || 0;
-    this.attributes[name] = Math.max(0, Math.min(100, value));
+    let maxVal = 100;
+    if (name === 'health') maxVal = this.maxHealth;
+    if (name === 'daoHeart') maxVal = this.maxDaoHeart;
+    if (name === 'cultivation') {
+      const realmConfig = this.config.realms?.realms?.[this.realm];
+      maxVal = realmConfig?.cultivationThreshold || 100;
+    }
+    
+    this.attributes[name] = Math.max(0, Math.min(maxVal, value));
     if (oldValue !== this.attributes[name]) {
       eventBus.emit('state:attributeChanged', {
         attribute: name,
@@ -208,7 +206,7 @@ class GameStateManager {
    * @returns {boolean}
    */
   hasFlag(key) {
-    return !!this.flags[key];
+    return this.flags.hasOwnProperty(key);
   }
 
   /**
@@ -235,24 +233,14 @@ class GameStateManager {
 
     const checks = [
       { name: 'daoHeart', min: 0, reason: '道心崩碎，走火入魔' },
-      { name: 'health', min: 0, reason: '气血耗尽，身死道消' },
-      { name: 'fortune', min: 0, reason: '厄运缠身，天诛地灭' },
-      { name: 'karmaGood', min: 100, reason: '善因过满，羽化登仙（天道淘汰）' },
-      { name: 'karmaBad', min: 100, reason: '恶贯满盈，天劫临身' }
+      { name: 'health', min: 0, reason: '气血耗尽，身死道消' }
     ];
 
     let deathReason = null;
     for (const c of checks) {
-      if (c.name === 'karmaGood' || c.name === 'karmaBad') {
-        if (this.attributes[c.name] >= 100) {
-          deathReason = c.reason;
-          break;
-        }
-      } else {
-        if (this.attributes[c.name] <= 0) {
-          deathReason = c.reason;
-          break;
-        }
+      if (this.attributes[c.name] <= 0) {
+        deathReason = c.reason;
+        break;
       }
     }
 

@@ -154,7 +154,7 @@ class StoryNetworkSystem {
     eventBus.on('state:attributeChanged', (data) => {
       if (data.attribute === 'daoHeart' && data.newValue > data.oldValue) {
         const delta = Math.max(1, Math.ceil((data.newValue - data.oldValue) * 0.2));
-        this.seerArcs.addRevelation('tian_ji', delta);
+        this.seerArcs.addRevelation('tianji_laoren', delta);
       }
     });
 
@@ -162,7 +162,7 @@ class StoryNetworkSystem {
     eventBus.on('state:attributeChanged', (data) => {
       if (data.attribute === 'karmaBad' && data.newValue > data.oldValue) {
         const delta = Math.max(1, Math.ceil((data.newValue - data.oldValue) * 0.5));
-        this.allyArcs.addAlignment('xue_sha', delta);
+        this.allyArcs.addAlignment('xuesha_laozu', delta);
       }
     });
 
@@ -180,12 +180,12 @@ class StoryNetworkSystem {
 
       // 秘密/预言/古史类卡牌 → 天机揭示度
       if (tags.some(t => ['secret', 'prophecy', 'lore', 'hidden', 'truth'].includes(t))) {
-        this.seerArcs.addRevelation('tian_ji', 3);
+        this.seerArcs.addRevelation('tianji_laoren', 3);
       }
 
       // 魔道/血煞/战斗类卡牌 → 血煞同盟度
       if (tags.some(t => ['demonic', 'blood', 'war', 'battle', 'slaughter'].includes(t))) {
-        this.allyArcs.addAlignment('xue_sha', 3);
+        this.allyArcs.addAlignment('xuesha_laozu', 3);
       }
     });
 
@@ -195,16 +195,16 @@ class StoryNetworkSystem {
       const bonus = realmBonus[data.to] || 5;
 
       this.mentorArcs.addProgression('bai_ren', bonus);
-      this.seerArcs.addRevelation('tian_ji', Math.ceil(bonus * 0.8));
+      this.seerArcs.addRevelation('tianji_laoren', Math.ceil(bonus * 0.8));
       // 血煞老祖更关注后期境界 —— 前期给得少，后期给得多
       if (['nascent', 'deity', 'tribulation'].includes(data.to)) {
-        this.allyArcs.addAlignment('xue_sha', Math.ceil(bonus * 1.2));
+        this.allyArcs.addAlignment('xuesha_laozu', Math.ceil(bonus * 1.2));
       }
     });
 
     // --- 战斗胜利 → 血煞同盟度（魔道老祖认可实力） ---
     eventBus.on('combat:victory', () => {
-      this.allyArcs.addAlignment('xue_sha', 4);
+      this.allyArcs.addAlignment('xuesha_laozu', 4);
     });
   }
 

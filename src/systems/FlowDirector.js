@@ -95,7 +95,7 @@ var FlowDirector = (function() {
     if (!state) return 'neutral';
     var health = state.attributes ? (state.attributes.health || 100) : 100;
     var daoHeart = state.attributes ? (state.attributes.daoHeart || 50) : 50;
-    var karmaBad = state.resources ? (state.resources.karmaBad || 0) : 0;
+    var karmaBad = state.attributes ? (state.attributes.karmaBad || 0) : 0;
     var fortune = state.attributes ? (state.attributes.fortune || 50) : 50;
 
     // 道心崩溃 → 绝望
@@ -427,13 +427,12 @@ var FlowDirector = (function() {
       var poolIds = new Set(pool.map(function(c) { return c.id; }));
       var extraCards = [];
       if (cardSystem.cardCache) {
-        for (var id in cardSystem.cardCache) {
-          var card = cardSystem.cardCache[id];
+        cardSystem.cardCache.forEach(function(card, id) {
           if (!poolIds.has(id) && card && card.realm && 
               card.type !== 'DESTINY' && card.type !== 'BOTTLENECK') {
             extraCards.push(card);
           }
-        }
+        });
       }
       var allPool = pool.concat(extraCards);
 

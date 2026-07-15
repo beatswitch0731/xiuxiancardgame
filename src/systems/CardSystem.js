@@ -334,6 +334,13 @@ class CardSystem {
       return shopCard;
     }
 
+    // 优先级 24: 洞府冥想遭遇卡
+    const campCard = this._checkCampEncounter();
+    if (campCard) {
+      this._lastDrawnPriority = 24;
+      return campCard;
+    }
+
     // 优先级 20: 集市偶遇卡（v2.0 — 由 MarketSystem.tick() 在 game.js 中注入，此处作为后备）
     if (typeof marketSystem !== 'undefined' && marketSystem && gameState._pendingMarket) {
       const marketCard = gameState._pendingMarket;
@@ -369,7 +376,7 @@ class CardSystem {
 
     const turn = gameState.turn;
     const realm = gameState.realm;
-    const realmOrder = ['qi', 'foundation', 'golden', 'nascent', 'formation', 'void', 'tribulation'];
+    const realmOrder = gameState.config.realms?.order || ['qi', 'foundation', 'golden', 'nascent', 'deity', 'tribulation'];
     const realmIdx = realmOrder.indexOf(realm);
 
     // 计算触发间隔和概率
@@ -420,6 +427,25 @@ class CardSystem {
         }
       }
     };
+  }
+
+  // ============ 洞府触发 ============
+
+  /**
+   * 检查是否触发洞府冥想遭遇
+   * 每 15 轮左右 30% 概率触发
+   */
+  _checkCampEncounter() {
+    const turn = gameState.turn;
+    if (turn % 15 !== 0) return null;
+    if (Math.random() >= 0.3) return null;
+    
+    // 获取缓存中的 camp_meditation
+    const campData = dataLoader.loadSync('cards:camp');
+    if (campData && campData.camp_meditation) {
+      return campData.camp_meditation;
+    }
+    return null;
   }
 
   // ============ 卡牌查找 ============
@@ -666,7 +692,7 @@ class CardSystem {
     if (seeds.length === 0) return null;
 
     const ready = seeds.filter(s =>
-      s.delay <= 0 && (!s.realm || s.realm === gameState.realm)
+      (s.delay === undefined || s.delay <= 0) && (!s.realm || s.realm === gameState.realm)
     );
 
     if (ready.length === 0) return null;
@@ -1139,7 +1165,7 @@ class CardSystem {
       choices: {
         left: {
           text: '专注修炼',
-          effects: { exp: 10 },
+          effects: { cultivation: 10 },
           desc: '稳定增长修为。'
         },
         right: {

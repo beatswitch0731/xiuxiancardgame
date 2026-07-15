@@ -25,6 +25,13 @@ class QuestSystem {
    * 加载支线数据
    */
   init() {
+    // 从 localStorage 恢复进行中的支线（持久化方案A）
+    this._loadActiveQuests();
+    // 如果没有任何进行中的支线，清理可能残留的 quest_*_active flag（孤立flag清理方案B）
+    if (this.activeQuests.length === 0) {
+      this._cleanupOrphanFlags();
+    }
+
     // 监听 CardSystem 的抽卡流程事件
     eventBus.on('quest:checkTrigger', () => this._onCheckTrigger());
     eventBus.on('quest:requestCurrentCard', () => this._onRequestCurrentCard());
@@ -119,6 +126,8 @@ class QuestSystem {
 
     gameState.setFlag('quest_' + quest.id + '_active', true);
     gameState.setFlag('quest_' + quest.id + '_step', 0);
+
+    this._saveActiveQuests();
 
     eventBus.emit('quest:triggered', {
       questId: quest.id,
@@ -217,6 +226,8 @@ class QuestSystem {
       nextCardId: nextCard ? nextCard.id : null,
       totalSteps: cards.length
     });
+
+    this._saveActiveQuests();
   }
 
   // ============ 结算 ============
@@ -244,6 +255,8 @@ class QuestSystem {
         }
       }
     }
+
+    this._saveActiveQuests();
 
     eventBus.emit('quest:completed', {
       questId,
@@ -295,6 +308,48 @@ class QuestSystem {
     this.activeQuests = [];
     this.completedQuests = new Set();
     this._pendingEntryCard = null;
+    this._cleanupOrphanFlags();
+    this._saveActiveQuests();
+  }
+
+  // ============ 持久化与清理 ============
+
+  _saveActiveQuests() {
+    try {
+      const data = {
+        activeQuests: this.activeQuests,
+        completedQuests: Array.from(this.completedQuests)
+      };
+      localStorage.setItem('xiuxian_active_quests', JSON.stringify(data));
+    } catch (e) {
+      // localStorage 不可用时静默失败
+    }
+  }
+
+  _loadActiveQuests() {
+    try {
+      const saved = localStorage.getItem('xiuxian_active_quests');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.activeQuests && Array.isArray(parsed.activeQuests)) {
+          this.activeQuests = parsed.activeQuests;
+        }
+        if (parsed.completedQuests && Array.isArray(parsed.completedQuests)) {
+          this.completedQuests = new Set(parsed.completedQuests);
+        }
+      }
+    } catch (e) {
+      // 解析失败时保持默认空状态
+    }
+  }
+
+  _cleanupOrphanFlags() {
+    const flags = gameState.flags || {};
+    for (const key of Object.keys(flags)) {
+      if (key.startsWith('quest_') && key.endsWith('_active') && flags[key]) {
+        gameState.setFlag(key, false);
+      }
+    }
   }
 
   // ============ 查询 ============

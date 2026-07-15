@@ -529,12 +529,21 @@
             "daoHeart": 10,
             "health": -10
           },
-          "karmaSeed": {
-            "id": "defiedDemon",
-            "seedType": "karma",
-            "delay": 8,
-            "priority": 3
-          }
+          "karmaSeed": [
+            {
+              "id": "defiedDemon",
+              "seedType": "karma",
+              "delay": 8,
+              "priority": 3
+            },
+            {
+              "id": "orthodoxSideChosen",
+              "seedType": "bloodline",
+              "delay": 6,
+              "priority": 5,
+              "cancelGroup": "demon_path_choice"
+            }
+          ]
         },
         "right": {
           "text": "'……正道为什么放弃这片区域？'",
@@ -670,6 +679,13 @@
             "daoHeart": 20,
             "karmaGood": 10,
             "fortune": 5
+          },
+          "karmaSeed": {
+            "id": "orthodoxSideChosen",
+            "seedType": "bloodline",
+            "delay": 2,
+            "priority": 5,
+            "cancelGroup": "demon_path_choice"
           }
         },
         "right": {
@@ -679,6 +695,13 @@
             "cultivation": 15,
             "karmaBad": 10,
             "fortune": -5
+          },
+          "karmaSeed": {
+            "id": "demonSideChosen",
+            "seedType": "bloodline",
+            "delay": 2,
+            "priority": 5,
+            "cancelGroup": "demon_path_choice"
           }
         }
       }
@@ -871,12 +894,21 @@
             "karmaBad": 15,
             "health": 10
           },
-          "karmaSeed": {
-            "id": "demonDeepBond",
-            "seedType": "bloodline",
-            "delay": 5,
-            "priority": 7
-          }
+          "karmaSeed": [
+            {
+              "id": "demonDeepBond",
+              "seedType": "bloodline",
+              "delay": 5,
+              "priority": 7
+            },
+            {
+              "id": "demonInternalConflict",
+              "seedType": "grudge",
+              "delay": 10,
+              "realm": "golden",
+              "priority": 1
+            }
+          ]
         },
         "right": {
           "text": "拒绝——'我不是殷血'",
@@ -919,12 +951,21 @@
             "karmaGood": 10,
             "treasure": "白刃剑谱"
           },
-          "karmaSeed": {
-            "id": "orthodoxDeepBond",
-            "seedType": "bloodline",
-            "delay": 5,
-            "priority": 7
-          }
+          "karmaSeed": [
+            {
+              "id": "orthodoxDeepBond",
+              "seedType": "bloodline",
+              "delay": 5,
+              "priority": 7
+            },
+            {
+              "id": "orthodoxInternalConflict",
+              "seedType": "grudge",
+              "delay": 10,
+              "realm": "golden",
+              "priority": 1
+            }
+          ]
         },
         "right": {
           "text": "'师父——你不会有事的'——去寻找灵药",
@@ -1208,7 +1249,8 @@
             "daoHeart": 30,
             "karmaGood": 30,
             "cultivation": 20,
-            "fortune": 20
+            "fortune": 20,
+            "ending": "chaos"
           },
           "desc": "你不会重蹈覆辙——新天道没有正道和魔道之分，只有'道'。殷血和白刃同时点了点头——这是他们三百年恩怨中唯一达成的一致。"
         },
@@ -1218,7 +1260,8 @@
             "daoHeart": 15,
             "karmaGood": 15,
             "fortune": 10,
-            "cultivation": 15
+            "cultivation": 15,
+            "ending": "ascension"
           },
           "desc": "不是所有错误都需要摧毁——有些需要修正。天道引擎继续运转，但不再收割——而是引导。"
         }

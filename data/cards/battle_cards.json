@@ -1,0 +1,134 @@
+{
+  "battle_cards": [
+    {
+      "id": "strike",
+      "name": "青元斩",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害。",
+      "flavor": "并指如剑，青气破空！",
+      "effects": [
+        { "type": "damage", "value": 1 }
+      ]
+    },
+    {
+      "id": "defend",
+      "name": "灵气盾",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 1 点【护盾】。",
+      "flavor": "结下阵印，真气化作六边晶壁。",
+      "effects": [
+        { "type": "block", "value": 1 }
+      ]
+    },
+    {
+      "id": "heavy_strike",
+      "name": "重剑无锋",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害。",
+      "flavor": "大巧不工，剑如山岳般砸下！",
+      "effects": [
+        { "type": "damage", "value": 3 }
+      ]
+    },
+    {
+      "id": "sword_intent",
+      "name": "凝剑诀",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 层【剑意】。(下次攻击附加等同层数的伤害)",
+      "flavor": "双眸微阖，体内剑鸣铮铮作响！",
+      "effects": [
+        { "type": "status", "statusId": "sword_intent", "value": 2 }
+      ]
+    },
+    {
+      "id": "mana_potion",
+      "name": "回气丹",
+      "type": "skill",
+      "cost": 0,
+      "exhaust": true,
+      "description": "恢复 2 点真元。消耗。",
+      "flavor": "吞下灵丹，暖流瞬间充盈四肢百骸。",
+      "effects": [
+        { "type": "gain_qi", "value": 2 }
+      ]
+    },
+    {
+      "id": "backlash_flame",
+      "name": "血魔火",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 3 点伤害。受到 1 点反噬伤害。",
+      "flavor": "指尖溢出腥红魔焰，焚敌亦伤己！",
+      "effects": [
+        { "type": "damage", "value": 3 },
+        { "type": "backlash", "value": 1 }
+      ]
+    },
+    {
+      "id": "qi_shield",
+      "name": "太乙玄黄罩",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 2 点【护盾】和 1 层【罡气】(保留护盾不过期)。",
+      "flavor": "玄黄之气透体而出，凝如金钟护持周身。",
+      "effects": [
+        { "type": "block", "value": 2 },
+        { "type": "status", "statusId": "aura", "value": 1 }
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "id": "enemy_normal",
+      "name": "普通散修",
+      "intents": [
+        { "type": "attack", "value": 1, "desc": "意图：攻击 (1点伤害)", "actionName": "捏出几张低阶符箓，朝你砸来" },
+        { "type": "defend", "value": 1, "desc": "意图：防御 (获得1点护盾)", "actionName": "祭出一面灵光黯淡的龟壳法器" }
+      ]
+    },
+    {
+      "id": "enemy_charging",
+      "name": "蓄力凶兽",
+      "intents": [
+        { "type": "buff", "desc": "意图：蓄力 (无动作)", "actionName": "喉咙深处发出沉闷的低吼，妖力涌动" },
+        { "type": "attack", "value": 2, "desc": "意图：猛扑 (2点伤害)", "actionName": "化作一道腥风，亮出利爪撕咬而来" }
+      ]
+    },
+    {
+      "id": "enemy_sword",
+      "name": "跨界神念化身",
+      "intents": [
+        { "type": "buff", "statusId": "sword_intent", "value": 1, "desc": "意图：凝剑 (获得1层剑意)", "actionName": "虚影并指成剑，恐怖的杀机锁定了你" },
+        { "type": "attack", "value": 2, "desc": "意图：连斩 (2点基础伤害)", "actionName": "漫天剑影如天河倾泻，镇杀而下" }
+      ]
+    },
+    {
+      "id": "seductress",
+      "name": "合欢宗妖女",
+      "intents": [
+        { "type": "debuff", "value": 1, "desc": "意图：魅惑 (施加虚弱)", "actionName": "妖女眼波流转，娇喘微微，粉色雾气蔓延" },
+        { "type": "attack", "value": 2, "desc": "意图：吸血 (2点伤害)", "actionName": "袖中飞出猩红长绫，缠住你汲取气血" }
+      ]
+    },
+    {
+      "id": "sword_elder",
+      "name": "剑修长者",
+      "intents": [
+        { "type": "buff", "statusId": "sword_intent", "value": 1, "desc": "意图：凝剑 (获得1层剑意)", "actionName": "老者闭目，身边古剑铮铮作响，剑气冲霄" },
+        { "type": "attack", "value": 2, "desc": "意图：破空斩 (2点基础伤害)", "actionName": "并指如剑，一道十丈剑芒凌空劈落！" }
+      ]
+    },
+    {
+      "id": "demon_beast",
+      "name": "狂暴妖兽",
+      "intents": [
+        { "type": "buff", "desc": "意图：咆哮 (无动作)", "actionName": "妖兽仰天怒吼，浑身肌肉虬结" },
+        { "type": "attack", "value": 3, "desc": "意图：撕咬 (3点重击)", "actionName": "化作腥风扑来，血盆大口猛然咬下！" }
+      ]
+    }
+  ]
+}

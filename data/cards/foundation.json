@@ -48,8 +48,9 @@
           "text": "挑战高阶妖兽",
           "effects": {
             "cultivation": 25,
-            "health": -20,
-            "karmaBad": 5
+            "health": -2,
+            "karmaBad": 5,
+            "triggerCombat": true
           }
         }
       },
@@ -251,7 +252,7 @@
           "karmaSeed": {
             "id": "swordHonor",
             "delay": 8,
-            "realm": "golden",
+            "realm": "nascent",
             "priority": 2
           }
         },
@@ -406,10 +407,7 @@
       "choices": {
         "left": {
           "text": "九死冲关",
-          "effects": {
-            "health": -40,
-            "daoHeart": -15
-          },
+          "effects": {},
           "breakSuccess": 0.45
         },
         "right": {
@@ -468,6 +466,22 @@
           },
           "costCheck": {
             "spiritStone": 50
+          }
+        },
+        "up": {
+          "text": "精简感悟 (25灵石)",
+          "effects": {
+            "spiritStone": -25,
+            "removeCard": true
+          },
+          "costCheck": {
+            "spiritStone": 25
+          }
+        },
+        "down": {
+          "text": "囊中羞涩，看看就走",
+          "effects": {
+            "daoHeart": 1
           }
         }
       },

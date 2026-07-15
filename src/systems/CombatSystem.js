@@ -81,6 +81,7 @@ class CombatSystem {
     if (!card || !card.enemy) return;
 
     this.cardId = card.id;
+    this.originalCard = card;
     this.rewards = card.combatRewards || null;
 
     // 构建玩家属性
@@ -770,14 +771,14 @@ class CombatSystem {
     const defaultCult = 5 + Math.floor(gameState.attributes.cultivation / 20);
     if (!this.rewards || !this.rewards.cultivation) {
       gameState.addAttribute('cultivation', defaultCult);
+      rewardText.push(`修为 +${defaultCult}`);
     }
-    rewardText.push(`修为 +${defaultCult}`);
 
     const defaultStone = Math.floor(this.enemy.atk * 1.5);
     if (!this.rewards || !this.rewards.spiritStone) {
       gameState.addResource('spiritStone', null, defaultStone);
+      rewardText.push(`灵石 +${defaultStone}`);
     }
-    rewardText.push(`灵石 +${defaultStone}`);
 
     // 消耗寿元（战斗有代价）
     gameState.resources.lifespan -= 1;
@@ -810,7 +811,8 @@ class CombatSystem {
     eventBus.emit('combat:victory', {
       cardId: this.cardId,
       rewards: this.rewards,
-      log: this.log
+      log: this.log,
+      originalCard: this.originalCard
     });
   }
 
@@ -834,7 +836,8 @@ class CombatSystem {
     eventBus.emit('combat:defeat', {
       cardId: this.cardId,
       hpLoss: hpLoss,
-      log: this.log
+      log: this.log,
+      originalCard: this.originalCard
     });
   }
 
