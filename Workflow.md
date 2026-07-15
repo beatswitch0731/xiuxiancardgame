@@ -139,3 +139,12 @@
 5. **各境界坊市删卡机制实装**
    - 在炼气期 `q_shop` (15灵石)、筑基期 `f_shop` (25灵石) 以及金丹期 `g_shop` (40灵石) 中新增了 `up` 选项（精简感悟），完美联动 `EffectService.js` 中的 `removeCard` 处理，让玩家可以在商店中精减并剔除卡组里的杂牌，增强构建乐趣。
 
+---
+
+## 2026-07-16：本地代码暂存、分支更名与远程仓库推送
+
+### 操作内容
+- 本地积累的全部修补与重构代码（包括 Three.js 画面整合、游戏数据模型微数值平衡调整、结局流程卡死修复、战斗全局拦截重构等）进行暂存并执行本地提交。
+- 本地分支由 `feature/threejs-integration` 重命名为 `main` 分支。
+- 关联远程 Git 仓库 `https://github.com/beatswitch0731/xiuxiancardgame.git`。
+- 首次推送到远程仓库的主分支 `main`（执行 `git push -u origin main`）。
