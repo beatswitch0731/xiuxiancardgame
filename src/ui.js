@@ -1466,7 +1466,13 @@ class GameUI {
     // Animate card away
     this._animateCardAway(dir, () => {
       try {
-        this.game.makeChoice(dir);
+        // 【P0 修复 #4】捕获 makeChoice 返回值，资源不足时抖动提示
+        const result = this.game.makeChoice(dir);
+        if (result === false) {
+          this._shakeCard();
+          this._showToast('资源不足');
+          return;
+        }
       } catch (e) {
         console.error('[UI] makeChoice failed:', e);
       }
@@ -1518,6 +1524,48 @@ class GameUI {
     setTimeout(() => {
       if (callback) callback();
     }, 300);
+  }
+
+  /**
+   * 【P0 修复 #4】卡牌抖动反馈（资源不足时触发）
+   */
+  _shakeCard() {
+    if (!this.cardEl) return;
+    this.cardEl.style.transition = 'transform 0.05s ease';
+    let shakes = 0;
+    const maxShakes = 4;
+    const doShake = () => {
+      if (shakes >= maxShakes) {
+        this.cardEl.style.transform = 'translate(0, 0) rotate(0)';
+        this.cardEl.style.transition = 'transform 0.1s ease';
+        return;
+      }
+      this.cardEl.style.transform = `translate(${shakes % 2 === 0 ? 8 : -8}px, 0) rotate(${shakes % 2 === 0 ? 2 : -2}deg)`;
+      shakes++;
+      setTimeout(doShake, 60);
+    };
+    doShake();
+  }
+
+  /**
+   * 【P0 修复 #4】Toast 提示（资源不足等场景）
+   * @param {string} msg - 提示消息
+   */
+  _showToast(msg) {
+    // 复用已有 toast 元素，避免重复创建
+    let toast = document.getElementById('ui-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'ui-toast';
+      toast.style.cssText = 'position:fixed;top:60%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#ff6b6b;padding:8px 20px;border-radius:6px;font-size:14px;z-index:9999;pointer-events:none;transition:opacity 0.3s ease;';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    clearTimeout(this._toastTimer);
+    this._toastTimer = setTimeout(() => {
+      toast.style.opacity = '0';
+    }, 1500);
   }
 
   // ============ 沉浸 v2.0：卡面涟漪反馈 ============

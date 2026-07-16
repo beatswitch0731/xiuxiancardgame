@@ -81,11 +81,24 @@ class DeckCombatSystem {
     }
 
     // 初始化玩家微数值
+    // 【P1 #5 修复】读取法宝战斗加成（atk/def/critRate）
+    let playerAtkMod = 0;
+    let playerDefMod = 0;
+    let playerCritRate = 0;
+    if (typeof treasureSystem !== 'undefined' && treasureSystem) {
+      const mods = treasureSystem.getCombatModifiers();
+      playerAtkMod = mods.atk || 0;
+      playerDefMod = mods.def || 0;
+      playerCritRate = mods.critRate || 0;
+    }
     this.player = {
       hp: gameState.attributes.health,
       maxHp: gameState.maxHealth || gameState.attributes.health || 10,
       daoHeart: gameState.attributes.daoHeart,
-      block: 0
+      block: 0,
+      atkMod: playerAtkMod,      // 法宝攻击加成
+      defMod: playerDefMod,      // 法宝防御加成
+      critRate: playerCritRate   // 法宝暴击率
     };
     
     // 初始化敌人微数值 (根据类型生成极小数值)
@@ -310,6 +323,11 @@ class DeckCombatSystem {
   _resolveEffect(effect, target, sourceCard) {
       if (effect.type === 'damage') {
           let dmg = effect.value;
+          // 【P1 #5 修复】法宝暴击
+          if (this.player.critRate > 0 && Math.random() * 100 < this.player.critRate) {
+            dmg = Math.floor(dmg * 1.5);
+            this._addLog(`暴击！伤害提升至 ${dmg}！`);
+          }
           // 剑意加成
           let swordIntent = this._getStatus('player', 'sword_intent');
           if (swordIntent > 0) {
@@ -345,6 +363,17 @@ class DeckCombatSystem {
   _dealDamage(targetObj, dmg) {
       let originalDmg = dmg;
       let shieldBroken = false;
+
+      // 【P1 #5 修复】玩家攻击时应用法宝 atk 加成
+      if (targetObj === this.enemy && this.player.atkMod > 0) {
+        dmg += this.player.atkMod;
+        this._addLog(`法宝共鸣，伤害 +${this.player.atkMod}！`);
+      }
+
+      // 【P1 #5 修复】玩家受击时应用法宝 def 减伤
+      if (targetObj === this.player && this.player.defMod > 0) {
+        dmg = Math.max(0, dmg - this.player.defMod);
+      }
       
       // 护盾抵消
       if (targetObj.block > 0) {

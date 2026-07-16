@@ -45,6 +45,19 @@ class GameStateManager {
       bonuses: { startCultivation: 0, startSpiritStone: 0, maxLifespan: 0 }
     };
 
+    // 【P1 #10 修复】跨世因果种子保留——bloodline/fate 类型不清空
+    const preservedSeeds = [];
+    if (keepUnlocks && this.karmaSeeds) {
+      for (const seed of this.karmaSeeds) {
+        if (seed && (seed.seedType === 'bloodline' || seed.seedType === 'fate')) {
+          // 施加延迟倍率，前世种子在新一世延迟更久才发芽
+          const adjustedSeed = Object.assign({}, seed);
+          adjustedSeed.delay = Math.round((seed.delay || 5) * 1.5) + 5;
+          preservedSeeds.push(adjustedSeed);
+        }
+      }
+    }
+
     // 核心属性 (微数值模型)
     this.maxHealth = 3 + (savedUnlocks.bonuses.maxHp || 0);
     this.maxDaoHeart = 3 + (savedUnlocks.bonuses.daoHeart || 0);
@@ -84,7 +97,7 @@ class GameStateManager {
     this.cardsPlayed = [];
     this.dead = false;
     this.deadReason = '';
-    this.karmaSeeds = [];
+    this.karmaSeeds = preservedSeeds;  // 【P1 #10 修复】替代原 this.karmaSeeds = []
     this.dungeon = null;
     this.dungeonNodeIndex = 0;
     this.dungeonNodeId = null;
@@ -249,14 +262,19 @@ class GameStateManager {
     }
 
     if (deathReason) {
+      // 【诊断日志】触发死亡判定
+      console.log(`[checkDeath] 触发死亡 reason=${deathReason} hp=${this.attributes.health} daoHeart=${this.attributes.daoHeart} lifespan=${this.resources.lifespan}`);
+
       // === 复活法宝拦截 (P0) ===
       const revived = this._tryReviveByArtifact(deathReason);
       if (revived) {
+        console.log(`[checkDeath] 复活成功，deathReason=${deathReason} 已拦截`);
         return false; // 复活成功，不死亡
       }
 
       this.dead = true;
       this.deadReason = deathReason;
+      console.log(`[checkDeath] 死亡确认 dead=true reason=${deathReason}，emit state:death`);
       eventBus.emit('state:death', { reason: deathReason });
       return true;
     }
@@ -271,23 +289,36 @@ class GameStateManager {
    */
   _tryReviveByArtifact(deathReason) {
     const artifactId = this.equipment.artifact;
-    if (!artifactId) return false;
+    if (!artifactId) {
+      console.log(`[revive] 无装备法宝，跳过复活判定`);
+      return false;
+    }
+
+    console.log(`[revive] 检查法宝 artifactId=${artifactId} 是否可复活 reason=${deathReason}`);
 
     // 检查秘宝槽中的法宝是否有复活效果
     if (typeof treasureSystem !== 'undefined' && treasureSystem) {
       const treasure = treasureSystem.getTreasureData(artifactId);
       if (treasure && treasure.revive) {
+        console.log(`[revive] 法宝 ${treasure.name} 有复活效果 type=${treasure.revive.type}，执行复活`);
         // 执行复活逻辑
         const result = treasureSystem.executeRevive(artifactId, this, deathReason);
         if (result.success) {
+          console.log(`[revive] 复活成功 effect=${result.effect} hpAfter=${this.attributes.health}`);
           eventBus.emit('treasure:revive', {
             treasureId: artifactId,
             treasureName: treasure.name,
             effect: result.effect
           });
           return true;
+        } else {
+          console.log(`[revive] ⚠️ 复活失败 result.success=false`);
         }
+      } else {
+        console.log(`[revive] 法宝 ${artifactId} 无 revive 字段或数据不存在`);
       }
+    } else {
+      console.log(`[revive] treasureSystem 未加载，跳过复活判定`);
     }
     return false;
   }

@@ -17,6 +17,8 @@ class CompanionSystem {
     this._pendingCrisis = null;
     /** @type {Object} 事件冷却计时器 */
     this._cooldowns = {};
+    /** @type {Array} 【P1 #9 修复】里程碑缓存队列——解决 emit 时序对撞丢失 */
+    this._pendingMilestones = [];
   }
 
   /**
@@ -149,6 +151,13 @@ class CompanionSystem {
   // ==========================================
 
   _onCheckEvent() {
+    // 【P1 #9 修复】最高优先：先消费里程碑队列（避免与 CardSystem 抽卡时序对撞丢失）
+    if (this._pendingMilestones && this._pendingMilestones.length > 0) {
+      const milestone = this._pendingMilestones.shift();
+      eventBus.emit('companion:eventCard', { card: milestone.card, priority: milestone.priority });
+      return;
+    }
+
     // 优先：危机事件（flag 驱动）
     if (this._pendingCrisis) {
       const crisis = this._pendingCrisis;
@@ -532,11 +541,11 @@ class CompanionSystem {
 
         gameState.setFlag(flagKey, gameState.turn);
 
-        // 注入里程碑事件卡给 CardSystem
-        eventBus.emit('companion:eventCard', {
-          card: this._buildMilestoneCard(compId, name, ms, state),
-          priority: 52  // 略高于普通道侣事件的50
-        });
+        // 【P1 #9 修复】入队而非直接 emit，等 CardSystem 抽卡时再取（避免时序对撞丢失）
+        const card = this._buildMilestoneCard(compId, name, ms, state);
+        if (card) {
+          this._pendingMilestones.push({ card, priority: 52 });
+        }
 
         // 种下因果种子
         if (typeof karmaSystem !== 'undefined' && karmaSystem) {

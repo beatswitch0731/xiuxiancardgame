@@ -375,6 +375,11 @@ class GameLogic {
     this._innerVoiceCooldown = 0;
     this._chapterMilestoneCard = null;
 
+    // 【P0 修复 #2】清除结局标志，新一周目可正常转世
+    if (gameState.hasFlag('game_ended')) {
+      delete gameState.flags.game_ended;
+    }
+
     // ── 新手引导：首次游玩注入教程卡 ──
     if (this.isFirstPlay()) {
       const tutorialCard = cardSystem.getCard('tutorial_1');
@@ -570,7 +575,14 @@ class GameLogic {
    * @returns {boolean} 选择是否有效
    */
   makeChoice(direction) {
-    if (gameState.dead && this.currentCard && !this.currentCard.id.startsWith('death_') && !this.currentCard.id.startsWith('ending_')) return false;
+    // 【诊断日志】makeChoice 入口：记录决策上下文
+    const entryCardId = this.currentCard ? this.currentCard.id : 'null';
+    if (this.debug) this._log(`[makeChoice] 入口 dir=${direction} card=${entryCardId} dead=${gameState.dead} inCombat=${this.combatCoordinator ? this.combatCoordinator.isInCombat() : 'N/A'} turn=${gameState.turn}`);
+
+    if (gameState.dead && this.currentCard && !this.currentCard.id.startsWith('death_') && !this.currentCard.id.startsWith('ending_')) {
+      if (this.debug) this._log(`[makeChoice] ⚠️ 死亡状态但卡牌非 death_*/ending_*，拒绝操作`);
+      return false;
+    }
 
     const card = this.getCurrentCard();
 
@@ -636,7 +648,7 @@ class GameLogic {
       return true;
     }
 
-    const choice = card.choices[direction];
+    let choice = card.choices[direction];
     if (!choice) return false;
     let pauseCardFlow = false;
 
@@ -659,6 +671,20 @@ class GameLogic {
       }
       if (choice.costCheck.karmaGood) {
         gameState.addAttribute('karmaGood', -choice.costCheck.karmaGood);
+      }
+      // 【P0 修复 #4】从 effects 中剥离与 costCheck 同名的负值字段，防止双重扣费
+      if (choice.effects) {
+        const filteredEffects = Object.assign({}, choice.effects);
+        if (choice.costCheck.spiritStone && filteredEffects.spiritStone < 0) {
+          delete filteredEffects.spiritStone;
+        }
+        if (choice.costCheck.health && filteredEffects.health < 0) {
+          delete filteredEffects.health;
+        }
+        if (choice.costCheck.karmaGood && filteredEffects.karmaGood < 0) {
+          delete filteredEffects.karmaGood;
+        }
+        choice = Object.assign({}, choice, { effects: filteredEffects });
       }
     }
 
@@ -806,7 +832,18 @@ class GameLogic {
     }
 
     // 转世重修（死亡卡选择 或 手动转世效果）
+    // 【P0 修复 #2】结局卡不得触发转世——检查 game_ended flag
     if (gameState.dead || (choice.effects && choice.effects.reincarnate)) {
+      // 【诊断日志】转世判断入口
+      const endingFlag = gameState.hasFlag('game_ended');
+      const hasReincarnateEffect = !!(choice.effects && choice.effects.reincarnate);
+      this._log(`[转世判断] dead=${gameState.dead} hasReincarnateEffect=${hasReincarnateEffect} game_ended=${endingFlag} cardId=${card.id}`);
+      if (endingFlag) {
+        // 结局已触发，不转世，直接返回（保留结局卡展示）
+        this._log(`[转世判断] game_ended=true，阻止转世，保留结局卡展示`);
+        return true;
+      }
+      this._log(`[转世判断] game_ended=false，调用 _reincarnate()`);
       this._reincarnate();
       return true;
     }
@@ -1249,7 +1286,17 @@ class GameLogic {
     }
 
     const roll = Math.random();
-    if (roll < successRate) {
+    // 【P1 #7 修复】天机值影响雷劫：天机越高，雷劫越猛，突破成功率越低
+    let adjustedSuccessRate = successRate;
+    const tianji = gameState.getAttribute('tianji') || 0;
+    if (tianji > 30) {
+      const penalty = Math.min(0.3, (tianji - 30) / 200);  // 最多 -30% 成功率
+      adjustedSuccessRate = Math.max(0.1, successRate - penalty);
+      if (penalty > 0.05) {
+        this._log(`【天机警告】天机值 ${tianji}，雷劫威力增强，突破成功率 -${Math.round(penalty * 100)}%`);
+      }
+    }
+    if (roll < adjustedSuccessRate) {
       this._log('\u7a81\u7834\u6210\u529f\uff01\u5883\u754c\u63d0\u5347\uff01');
       this._triggerInnerVoice('breakthrough_success', 1.0);
       this._advanceRealm();
@@ -1364,6 +1411,16 @@ class GameLogic {
       gameState.setAttribute('cultivation', 10);
       eventBus.emit('state:realmChanged', { from: oldRealm, to: gameState.realm });
 
+      // 【P1 #8 修复】突破后增加寿元（读取 realms.json 的 lifespanBonus）
+      const newRealmConfig = gameState.config.realms
+        && gameState.config.realms.realms
+        ? gameState.config.realms.realms[gameState.realm]
+        : null;
+      if (newRealmConfig && newRealmConfig.lifespanBonus && newRealmConfig.lifespanBonus > 0) {
+        gameState.addResource('lifespan', null, newRealmConfig.lifespanBonus);
+        this._log(`境界突破，寿元 +${newRealmConfig.lifespanBonus} 年。`);
+      }
+
       // 位置切换：境界突破 → 返回宗门（最安全的默认位置）
       if (typeof sceneLayerSystem !== 'undefined' && sceneLayerSystem) {
         sceneLayerSystem.transition('宗门', 'realm_breakthrough');
@@ -1416,8 +1473,12 @@ class GameLogic {
     const lastRealm = gameState.realm;
     const lastPath = gameState.path;
 
+    // 【诊断日志】_reincarnate 入口
+    this._log(`[转世] 入口 turn=${lastTurn} realm=${lastRealm} path=${lastPath} dead=${gameState.dead} deadReason=${gameState.deadReason}`);
+
     // 【环环相扣：转世连锁】记录跨世遗产
     gameState.recordLegacy();
+    this._log(`[转世] recordLegacy 已记录跨世遗产`);
 
     // 转世次数+1
     gameState.incrementLife();
@@ -1472,27 +1533,37 @@ class GameLogic {
 
     // 【天道恩赐】：抽第一张牌为轮回之选
     this.currentCard = cardSystem.getCard('rebirth_boon');
+    this._log(`[转世] 新一世首张卡 id=${this.currentCard ? this.currentCard.id : 'null'}（应为 rebirth_boon）`);
 
     // 【环环相扣：转世→NPC】前世老友残留印象
     if (typeof npcSystem !== 'undefined' && npcSystem && gameState.unlocks.legacy) {
       const legacyAffections = gameState.unlocks.legacy.npcAffections || {};
+      let npcRestored = 0;
       for (const [npcId, affection] of Object.entries(legacyAffections)) {
         if (affection > 0 && npcSystem.affections) {
           npcSystem.affections[npcId] = Math.round(affection);
+          npcRestored++;
         }
       }
+      if (npcRestored > 0) this._log(`[转世] NPC 跨世好感继承 count=${npcRestored}`);
     }
 
     // 【环环相扣：转世→Faction】前世势力的暗流依旧
     if (typeof factionSystem !== 'undefined' && factionSystem && gameState.unlocks.legacy) {
       const legacyReps = gameState.unlocks.legacy.factionReputations || {};
+      let factionRestored = 0;
       for (const [factionId, rep] of Object.entries(legacyReps)) {
         if (rep !== 0) {
           const currentRep = factionSystem.reputations?.[factionId] || 0;
           factionSystem.reputations[factionId] = currentRep + Math.round(rep * 0.3);
+          factionRestored++;
         }
       }
+      if (factionRestored > 0) this._log(`[转世] 势力跨世声望继承 count=${factionRestored}`);
     }
+
+    // 【诊断日志】_reincarnate 出口
+    this._log(`[转世] 出口 lifeCount=${gameState.getLifeCount()} realm=${gameState.realm} hp=${gameState.attributes.health} turn=${gameState.turn} dead=${gameState.dead}`);
 
     this._triggerUpdate();
   }

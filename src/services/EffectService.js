@@ -178,6 +178,12 @@ class EffectService {
     // 寿元
     this.handlers.set('lifespan', (value) => this.gameState.addResource('lifespan', null, value));
 
+    // 【P1 #7 修复】天机值（卡牌 effects.tianji 不再被静默忽略）
+    this.handlers.set('tianji', (value, context) => {
+      this.gameState.addAttribute('tianji', value);
+      this._log(`天机值变化 ${value > 0 ? '+' : ''}${value}`, context);
+    });
+
     // 拒绝天命 / 重新开局
     this.handlers.set('restart', (value, context) => {
       this._log('拒绝天命，重新开局', context);
@@ -195,6 +201,8 @@ class EffectService {
       this.gameState.dead = true;
       this.gameState.deadReason = endingDescriptions[value] || '仙途圆满';
       this.gameState.unlock('ending', value);
+      // 【P0 修复 #2】标记结局已触发，阻止 makeChoice 的转世逻辑吞噬结局卡
+      this.gameState.setFlag('game_ended', true);
       this._log(`【终局】${this.gameState.deadReason}`, context);
       // 通知 game.js 切换到对应的结局卡
       this.eventBus.emit('game:ending', { endingType: value });

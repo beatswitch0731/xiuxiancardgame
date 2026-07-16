@@ -119,6 +119,10 @@ class CombatCoordinator {
    */
   onVictory(data) {
     this._dbg('onVictory', data?.originalCard?.id);
+    // 【诊断日志】战斗胜利入口：记录战前状态
+    const hpBefore = this.gameState.attributes.health;
+    const cardId = data?.originalCard?.id || data?.cardId || 'unknown';
+    this._log(`[战斗结算·胜] card=${cardId} hpBefore=${hpBefore} inCombat=${this._inCombat}`);
     this._inCombat = false;
     this._combatWarningShown = false;
 
@@ -145,7 +149,11 @@ class CombatCoordinator {
     const factionResult = this._applyFactionReputation(true);
     if (factionResult) this._log(factionResult);
 
+    // 【诊断日志】战斗胜利出口：记录战后状态 + 死亡检查
+    const hpAfter = this.gameState.attributes.health;
+    this._log(`[战斗结算·胜] 出口 hpAfter=${hpAfter} dead=${this.gameState.dead} willCheckDeath=${!this.gameState.dead}`);
     if (this.gameState.checkDeath()) {
+      this._log(`[战斗结算·胜] checkDeath=true，触发 _handleDeath`);
       this._handleDeath();
       return;
     }
@@ -157,22 +165,32 @@ class CombatCoordinator {
    */
   onDefeat(data) {
     this._dbg('onDefeat', data?.originalCard?.id || data?.cardId);
+    // 【诊断日志】战败入口：记录战前状态
+    const hpBefore = this.gameState.attributes.health;
+    const cardId = data?.originalCard?.id || data?.cardId || 'unknown';
+    const isBreakthrough = !!(data?.originalCard?.combatRewards?.breakSuccess);
+    this._log(`[战斗结算·败] card=${cardId} hpBefore=${hpBefore} inCombat=${this._inCombat} isBreakthrough=${isBreakthrough}`);
     this._inCombat = false;
     this._combatWarningShown = false;
 
     // 兼容旧格式：旧系统 emit { cardId, hpLoss, log }，新系统 emit { originalCard, cardId, hpLoss, log }
     const originalCard = data?.originalCard || (data?.cardId ? { id: data.cardId } : null);
-    
+
     if (originalCard && originalCard.combatRewards && originalCard.combatRewards.breakSuccess) {
+      this._log(`[战斗结算·败] breakSuccess=true，走突破失败结算分支`);
       if (this.callbacks.onResolveBreakthrough) {
         this.callbacks.onResolveBreakthrough(0, originalCard);
       }
     } else {
-      this.gameState.addAttribute('health', -20);
+      // 【P0 修复 #3】微数值对齐：战败扣 1 点气血（而非 20），避免 maxHealth=3 时必死
+      this.gameState.addAttribute('health', -1);
+      this._log(`[战斗结算·败] 扣血 -1，hpNow=${this.gameState.attributes.health}（maxHealth=${this.gameState.maxHealth}）`);
       this._triggerUpdate();
     }
 
-    if (this.gameState.attributes.health < 20) {
+    // 【P0 修复 #3】near_death 阈值从 < 20 调整为 <= 1（微数值对齐）
+    if (this.gameState.attributes.health <= 1) {
+      this._log(`[战斗结算·败] hp<=1，触发 near_death 内心独白`);
       if (this.callbacks.onInnerVoice) {
         this.callbacks.onInnerVoice('near_death', 0.9);
       }
@@ -191,7 +209,11 @@ class CombatCoordinator {
     const factionResult = this._applyFactionReputation(false);
     if (factionResult) this._log(factionResult);
 
+    // 【诊断日志】战败出口：记录战后状态 + 死亡检查
+    const hpAfter = this.gameState.attributes.health;
+    this._log(`[战斗结算·败] 出口 hpAfter=${hpAfter} dead=${this.gameState.dead} willCheckDeath=${!this.gameState.dead}`);
     if (this.gameState.checkDeath()) {
+      this._log(`[战斗结算·败] checkDeath=true，触发 _handleDeath`);
       this._handleDeath();
       return;
     }
@@ -203,6 +225,9 @@ class CombatCoordinator {
    */
   onFled(data) {
     this._dbg('onFled', data?.originalCard?.id);
+    // 【诊断日志】逃跑入口
+    const cardId = data?.originalCard?.id || 'unknown';
+    this._log(`[战斗结算·逃] card=${cardId} hpBefore=${this.gameState.attributes.health} inCombat=${this._inCombat}`);
     this._inCombat = false;
     this._combatWarningShown = false;
 
@@ -215,7 +240,10 @@ class CombatCoordinator {
 
     if (this.karmaSystem) this.karmaSystem.tick();
 
+    // 【诊断日志】逃跑出口：记录死亡检查
+    this._log(`[战斗结算·逃] 出口 hp=${this.gameState.attributes.health} dead=${this.gameState.dead} willCheckDeath=${!this.gameState.dead}`);
     if (this.gameState.checkDeath()) {
+      this._log(`[战斗结算·逃] checkDeath=true，触发 _handleDeath`);
       this._handleDeath();
       return;
     }
@@ -330,9 +358,35 @@ class CombatCoordinator {
 
   _handleDeath() {
     const pn = this.gameState.playerName || '叶凌云';
+    // 【诊断日志】_handleDeath 入口：完整记录死亡状态
+    const deathState = {
+      hp: this.gameState.attributes.health,
+      daoHeart: this.gameState.attributes.daoHeart,
+      lifespan: this.gameState.resources.lifespan,
+      dead: this.gameState.dead,
+      deadReason: this.gameState.deadReason,
+      hasEndingFlag: this.gameState.hasFlag('game_ended'),
+      inCombatBefore: this._inCombat
+    };
+    this._log(`[死亡处理] 玩家=${pn} 状态=${JSON.stringify(deathState)}`);
+
     this._log(`${pn}，道消身陨。${this.gameState.deadReason}`);
+
+    // 【P0 修复 #1】强制解开主流程锁，否则 isInCombat() 持续 true 导致主循环僵死
+    const wasInCombat = this._inCombat;
+    this._inCombat = false;
+    this._combatWarningShown = false;
+    this._pendingCombatCard = null;
+    this._log(`[死亡处理] 战斗锁解开 wasInCombat=${wasInCombat} → inCombat=false`);
+
     if (this.callbacks.setCurrentCard) {
-      this.callbacks.setCurrentCard(this.cardSystem.draw());
+      // 【诊断日志】抽下一张卡（应为死亡卡或转世卡）
+      const nextCard = this.cardSystem.draw();
+      const nextCardId = nextCard ? nextCard.id : 'null';
+      this._log(`[死亡处理] 抽下一张卡 id=${nextCardId}（应为 death_* 或 rebirth_*）`);
+      this.callbacks.setCurrentCard(nextCard);
+    } else {
+      this._log(`[死亡处理] ⚠️ callbacks.setCurrentCard 未注册，下一张卡无法设置！`);
     }
     this._triggerUpdate();
   }

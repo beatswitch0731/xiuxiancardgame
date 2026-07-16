@@ -259,40 +259,37 @@ class TreasureSystem {
 
     const reviveConfig = treasure.revive;
     let effect = '';
+    // 【P1 #6 修复】对齐微数值模型（maxHealth=3）
+    const maxHp = state.maxHealth || 3;
 
     switch (reviveConfig.type) {
       case 'nirvana':
-        // 涅槃羽：HP回50%，道心-5
-        state.attributes.health = Math.max(state.attributes.health, Math.floor(state.attributes.health * 0.5 + 30));
-        state.attributes.daoHeart = Math.max(0, state.attributes.daoHeart - 5);
-        effect = '涅槃之火燃起，你从灰烬中重生！HP恢复至50%，但道心-5';
+        // 涅槃羽：HP 回满，道心 -1
+        state.attributes.health = maxHp;
+        state.attributes.daoHeart = Math.max(0, state.attributes.daoHeart - 1);
+        effect = '涅槃之火燃起，你从灰烬中重生！HP 回满，道心 -1';
         break;
 
       case 'substitute':
-        // 替身符：HP回30%，灵石-50%
-        state.attributes.health = Math.max(state.attributes.health, Math.floor(state.attributes.health * 0.3 + 20));
+        // 替身符：HP 回 2，灵石 -50%
+        state.attributes.health = Math.min(maxHp, 2);
         state.resources.spiritStone = Math.floor(state.resources.spiritStone * 0.5);
-        effect = '替身符化作灰烬，替你承受了死亡。HP恢复至30%，灵石减半';
+        effect = '替身符化作灰烬，替你承受了死亡。HP 回 2，灵石减半';
         break;
 
       case 'samsara':
-        // 轮回镜：回到10回合前（需要记录历史状态）
-        // 简化版：HP回50%，道心-20， cultivation-10
-        state.attributes.health = Math.floor(state.attributes.health * 0.5 + 25);
-        state.attributes.daoHeart = Math.max(0, state.attributes.daoHeart - 20);
-        state.attributes.cultivation = Math.max(0, state.attributes.cultivation - 10);
-        effect = '轮回镜照出前世之路。你回到10回合前的自己，但道心-20，修为-10';
+        // 轮回镜：HP 回 2，道心 -2，修为 -20%
+        state.attributes.health = Math.min(maxHp, 2);
+        state.attributes.daoHeart = Math.max(0, state.attributes.daoHeart - 2);
+        state.attributes.cultivation = Math.floor(state.attributes.cultivation * 0.8);
+        effect = '轮回镜照出前世之路。HP 回 2，道心 -2，修为降 20%';
         break;
 
       case 'chaos':
-        // 混沌茧：HP全满，所有属性初始化为50
-        state.attributes.health = 100;
-        state.attributes.cultivation = 50;
-        state.attributes.daoHeart = 50;
-        state.attributes.fortune = 50;
-        state.attributes.karmaGood = 50;
-        state.attributes.karmaBad = 50;
-        effect = '混沌茧破碎，你以混沌体重生。全属性重置为50，但获得了第二次机会';
+        // 混沌茧：HP 回满，修为 -20%（不再全属性重置为 50）
+        state.attributes.health = maxHp;
+        state.attributes.cultivation = Math.floor(state.attributes.cultivation * 0.8);
+        effect = '混沌茧破碎，你以混沌体重生。HP 回满，修为降 20%';
         break;
 
       default:
