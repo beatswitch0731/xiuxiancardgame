@@ -1,0 +1,873 @@
+/* =============================================================
+   《一念仙途》战斗界面 HUD 视觉规范 v1
+   材质：暗色命书纸页 + 竹简刻痕 + 朱砂点睛
+   母题：会呼吸的仙途长卷（docs/ART_UI_ITERATION_PLAN_v3.md）
+   规范：docs/ART_DIRECTION_BIBLE_v1.md → clash 签名「朱砂、高反差、强暗角」
+   -------------------------------------------------------------
+   加载契约：必须作为 index.html 中最后一张样式表引入。
+   原因：本文件用 #deck-combat-screen #combat-xxx 三段式选择器
+   （特异度 2,0,1）与 7506-7536「readout 层」打平，靠源码顺序取胜。
+   若本文件被移到 deck-combat.css 之前，必须把 7513/7516/7520/7530
+   四条 readout 规则直接删除，否则米色文字块会复现。
+
+   ---- v1.4 追加：世界材质层（world frame）压制问题 ----
+   实测（1440x900, data-visual-world-id="cangmang_sect_pc98_v1"
+        + data-visual-world-compatible="true"）：
+   deck-combat.css:7038-7060 用**双ID 特异度**规则把真元气块改成
+     background-color: transparent;
+     background-image: var(--world-ui-qi-slot-frame);  /* PNG 框 */
+   这条特异性高于本文件的 #deck-combat-screen .qi-orb，
+   导致真元槽渲染成冷灰白、与暖墨金体系割裂（实测
+   background-color 解析为 transparent、background-image 为 PNG 框）。
+   处置见第 15 节：等价特异度 + 后加载次序覆盖。
+   ============================================================= */
+
+/* ---------- 1. Token ---------- */
+#deck-combat-screen {
+  /* --combat-* 六色token 的唯一权威定义在 deck-combat.css:1776-1785。
+     本文件只消费不重定义—— 重复定义会让同一 token出现两个来源，
+     谁后加载谁生效，视觉规范会随加载顺序漂移。技术债台账见文件末尾。 */
+
+  /* 新增：命书纸页材质层 */
+  --hud-page: #0d0f11;                /* 纸页基色 */
+  --hud-page-raise: #141719;          /* 抬升面 */
+  --hud-page-sink: #08090a;           /* 凹陷面 */
+  --hud-frame: rgba(234, 219, 184, 0.13);   /* 车刻外框 */
+  --hud-frame-lit: rgba(234, 219, 184, 0.30);/* 车刻受光边 */
+  --hud-rule: rgba(234, 219, 184, 0.09);     /* 发丝分隔 */
+  --hud-ink: #16251e;                 /* 纸上的墨（浅底控件专用） */
+  --hud-slip: #e8dcc0;                /* 宣纸签 */
+  --hud-slip-edge: #8a7a52;
+
+  /* 纹理：扫描线 + 纸斑，均为程序化，无外部图片 */
+  --hud-scan: repeating-linear-gradient(0deg,
+      rgba(234, 219, 184, 0.032) 0 1px, transparent 1px 4px);
+  --hud-mottle:
+      radial-gradient(ellipse 60% 40% at 22% 18%, rgba(234, 219, 184, 0.028), transparent 70%),
+      radial-gradient(ellipse 50% 46% at 82% 76%, rgba(0, 0, 0, 0.30), transparent 72%);
+
+  /* 统一浮起：取消 offset 硬阴影，改用极低投影 */
+  --hud-lift-1: 0 1px 0 rgba(0, 0, 0, .55);
+  --hud-lift-2: 0 2px 6px rgba(0, 0, 0, .48);
+  --hud-lift-3: 0 10px 28px rgba(0, 0, 0, .55);
+
+  /* 交互时长 */
+  --hud-t-fast: 120ms;
+  --hud-t-mid: 200ms;
+  --hud-ease: cubic-bezier(.2, .7, .3, 1);
+
+  /* 焦点环（键盘可达性唯一强信号） */
+  --hud-focus: #f8d88f;
+
+  /* FX 动效参数（特效总监 v5 提供，集中于此以便按性能档统一降级）
+     命名沿用 --hud-* 体系，不另造 --combat-fx-*，避免两套前缀并存。
+     低档位降级策略：缩短 --hud-fx-impact / --hud-fx-dissolve，
+     并将 --hud-fx-shake-* 归零（位移类动效在低档整体关闭）。 */
+  --hud-fx-impact: 400ms;
+  --hud-fx-hold: 60ms;
+  --hud-fx-dissolve: 240ms;
+  --hud-fx-seal: 200ms;
+  --hud-fx-card-art: 260ms;
+  --hud-fx-intent: 420ms;
+  --hud-fx-press: 90ms;
+  --hud-fx-ease-seal: cubic-bezier(.2, .8, .2, 1);
+  --hud-fx-ease-travel: cubic-bezier(.45, .05, .2, 1);
+  --hud-fx-ease-tremor: linear;
+  --hud-fx-stop-normal: 60ms;
+  --hud-fx-stop-heavy: 100ms;
+  --hud-fx-stop-crit: 140ms;
+  --hud-fx-shake-normal: 3px;
+  --hud-fx-shake-heavy: 6px;
+  --hud-fx-shake-crit: 9px;
+  --hud-fx-shake-boss: 12px;
+}
+
+/* 五修路径：常态低饱和，仅染「点睛」部位，不换底色 */
+#deck-combat-screen[data-player-path="sword"] {
+  --path-primary: #778e88;
+  --path-secondary: #c8dbd3;
+  --path-deep: #142321;
+  --path-pattern: repeating-linear-gradient(45deg,
+    rgba(119, 142, 136, .085) 0 1px, transparent 1px 5px);   /* 剑：直纹如刃 */
+}
+#deck-combat-screen[data-player-path="spell"] {
+  --path-primary: #7e719d;
+  --path-secondary: #cab9df;
+  --path-deep: #211b2a;
+  --path-pattern:
+    repeating-linear-gradient(0deg, rgba(126, 113, 157, .085) 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(90deg, rgba(126, 113, 157, .06) 0 1px, transparent 1px 6px); /* 咒：网格如符 */
+}
+#deck-combat-screen[data-player-path="body"] {
+  --path-primary: #a36f43;
+  --path-secondary: #e0bb82;
+  --path-deep: #2b1b11;
+  --path-pattern: repeating-linear-gradient(0deg,
+    rgba(163, 111, 67, .10) 0 2px, transparent 2px 7px);       /* 体：横纹如肌 */
+}
+#deck-combat-screen[data-player-path="pill"] {
+  --path-primary: #758f65;
+  --path-secondary: #c4d5a9;
+  --path-deep: #172216;
+  --path-pattern:
+    repeating-linear-gradient(45deg, rgba(117, 143, 101, .075) 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(-45deg, rgba(117, 143, 101, .075) 0 1px, transparent 1px 6px); /* 丹：交叉如丹房 */
+}
+#deck-combat-screen[data-player-path="tool"] {
+  --path-primary: #8a8577;
+  --path-secondary: #d6cfbd;
+  --path-deep: #23211b;
+  --path-pattern: radial-gradient(circle at 1px 1px,
+    rgba(138, 133, 119, .13) 1px, transparent 1px) 0 0 / 6px 6px;  /* 器：点阵如铸 */
+}
+
+/* ---------- 2. 材质基类（车刻框 + 角标 + 扫描线） ---------- */
+#deck-combat-screen :is(.qi-orb, .end-turn-btn, .flee-btn, .pile, .combat-badge,
+  .combat-logs) {
+  border-radius: 0;                 /* 统一取消圆角：像素语言不容许圆角 */
+  background-image: var(--hud-mottle), var(--hud-scan);
+  background-blend-mode: normal, overlay;
+}
+
+/* 角标：沿用角色法相框的车刻角标语言，全 HUD 复用。
+   本 Batch 作用域仅 11 个底部控件，故不含 .combat-avatar-token。 */
+#deck-combat-screen :is(.qi-orb, .end-turn-btn, .flee-btn, .pile)::before {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  inset: 4px;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, var(--hud-frame-lit) 0 1px, transparent 1px) top left / 9px 9px no-repeat,
+    linear-gradient(225deg, var(--hud-frame-lit) 0 1px, transparent 1px) top right / 9px 9px no-repeat,
+    linear-gradient(45deg,  var(--hud-frame-lit) 0 1px, transparent 1px) bottom left / 9px 9px no-repeat,
+    linear-gradient(315deg, var(--hud-frame-lit) 0 1px, transparent 1px) bottom right / 9px 9px no-repeat;
+  transition: background-size var(--hud-t-fast) var(--hud-ease);
+}
+#deck-combat-screen :is(.end-turn-btn, .flee-btn, .pile):is(:hover, :focus-visible)::before,
+#deck-combat-screen .combat-badge:hover::before {
+  background-size: 12px 12px;
+}
+
+/* ---------- 3. 控制栏骨架 ---------- */
+#deck-combat-screen .combat-bottom {
+  position: relative;
+  height: 272px;
+  padding: 0;
+  border-top: 0;
+  background-color: var(--combat-ink);
+  background-image:
+    /* 竹简编绳：双竖槽分隔三区，取代 1px 描边 */
+    linear-gradient(90deg,
+      transparent 0 234px,
+      rgba(0, 0, 0, .72) 234px 236px,
+      rgba(234, 219, 184, .085) 236px 237px,
+      transparent 237px calc(100% - 204px),
+      rgba(0, 0, 0, .72) calc(100% - 204px) calc(100% - 202px),
+      rgba(234, 219, 184, .085) calc(100% - 202px) calc(100% - 201px),
+      transparent calc(100% - 201px)),
+    linear-gradient(180deg, rgba(7, 9, 11, .55) 0, rgba(7, 9, 11, .93) 26%, #07090b 100%),
+    var(--hud-mottle),
+    var(--hud-scan);
+  box-shadow: inset 0 14px 26px -18px rgba(0, 0, 0, .95);
+}
+
+/* 顶缘：一道朱砂压边 + 一道受光，建立层级 */
+#deck-combat-screen .combat-bottom::after {
+  content: '';
+  position: absolute;
+  z-index: 6;
+  inset: 0 0 auto 0;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    transparent 0 234px,
+    rgba(158, 63, 50, .55) 234px 237px,
+    transparent 237px calc(100% - 204px),
+    rgba(158, 63, 50, .55) calc(100% - 204px) calc(100% - 201px),
+    transparent calc(100% - 201px));
+}
+
+/* 左栏 · 真元与指令 */
+#deck-combat-screen .combat-resources {
+  position: absolute;
+  left: 20px;
+  bottom: 22px;
+  width: 214px;
+  height: 252px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+}
+
+/* 右栏 · 牌堆 */
+#deck-combat-screen .deck-piles {
+  position: absolute;
+  right: 20px;
+  bottom: 22px;
+  width: 184px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 6px;
+  border: 1px solid var(--hud-frame);
+  background-color: rgba(13, 15, 17, .92);
+  box-shadow: var(--hud-lift-2), inset 0 1px 0 rgba(234, 219, 184, .05);
+}
+
+/* ---------- 4. 真元玉简 ---------- */
+#deck-combat-screen .combat-resources .qi-orb {
+  position: relative;
+  box-sizing: border-box;
+  width: 214px;
+  height: 88px;
+  padding: 12px 14px 20px 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 'readout';
+  align-items: center;
+  border: 1px solid var(--hud-frame);
+  border-left: 3px solid var(--path-primary, var(--combat-gold));
+  background-color: var(--hud-page-raise);
+  color: var(--combat-paper);
+  box-shadow: var(--hud-lift-2), inset 0 1px 0 rgba(234, 219, 184, .06),
+              inset 0 -14px 22px -16px rgba(0, 0, 0, .9);
+  overflow: hidden;
+}
+
+/* 刻度槽：底部一排车刻缺口，暗示可计量，不依赖颜色 */
+#deck-combat-screen .combat-resources .qi-orb::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  left: 14px;
+  right: 14px;
+  bottom: 9px;
+  height: 6px;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg,
+      var(--hud-frame-lit) 0 2px, transparent 2px 9px);
+  opacity: .5;
+}
+
+/* 竖排篆书标签 —— 不改 DOM，只换 writing-mode */
+#deck-combat-screen .combat-resources .qi-orb .qi-label {
+  position: absolute;
+  left: 11px;
+  top: 12px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: .22em;
+  color: var(--path-secondary, var(--combat-paper-dim));
+  font-size: 12px;
+  line-height: 1;
+}
+
+#deck-combat-screen .combat-resources .qi-orb .qi-readout {
+  grid-area: readout;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--combat-ui-font, "Noto Serif SC", serif);
+}
+#deck-combat-screen .combat-resources .qi-orb .qi-readout strong {
+  font: 700 40px/1 var(--combat-ui-font, "Noto Serif SC", serif);
+  color: var(--path-secondary, var(--combat-gold-bright));
+  letter-spacing: .01em;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, .8);
+}
+#deck-combat-screen .combat-resources .qi-orb .qi-divider {
+  color: rgba(234, 219, 184, .34);
+  font-size: 20px;
+}
+#deck-combat-screen .combat-resources .qi-orb #combat-max-qi-val {
+  font-size: 18px;
+  color: var(--combat-paper-dim);
+}
+/* 覆盖 7513 遗留的 #fff2cc 强制色，恢复路径染色 */
+#deck-combat-screen .combat-resources .qi-orb :is(span, strong) { color: inherit; }
+#deck-combat-screen .combat-resources .qi-orb .qi-readout strong { color: var(--path-secondary, var(--combat-gold-bright)); }
+#deck-combat-screen .combat-resources .qi-orb .qi-divider,
+#deck-combat-screen .combat-resources .qi-orb #combat-max-qi-val { color: rgba(234, 219, 184, .40); }
+
+/* ---------- 5. 收势 / 撤阵 ---------- */
+#deck-combat-screen #combat-end-turn-btn,
+#deck-combat-screen #combat-flee-btn {
+  position: relative;
+  box-sizing: border-box;
+  width: 214px;
+  min-height: 56px;
+  padding: 7px 12px;
+  display: grid;
+  /* 确定性两行两列，彻底消除自动流错位 */
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'kicker key'
+    'label  key';
+  align-items: center;
+  border: 1px solid var(--hud-frame);
+  border-radius: 0;
+  background-color: var(--hud-page-raise);
+  color: var(--combat-paper);
+  text-align: left;
+  font-family: var(--combat-ui-font, "Noto Serif SC", serif);
+  box-shadow: var(--hud-lift-1), inset 0 1px 0 rgba(234, 219, 184, .05);
+  transition: background-color var(--hud-t-fast) var(--hud-ease),
+              border-color var(--hud-t-fast) var(--hud-ease),
+              color var(--hud-t-fast) var(--hud-ease);
+}
+
+/* 撤销 7516：strong 不再是米色文字块 */
+#deck-combat-screen #combat-end-turn-btn strong,
+#deck-combat-screen #combat-flee-btn strong {
+  position: static;
+  grid-area: label;
+  z-index: auto;
+  /* 约束2：文案层禁止自带实心底色，颜色一律跟随底材。
+     这是 L7516 米色块事故的根治写法——一套规则适配全部世界主题。 */
+  background: none;
+  color: inherit;
+  font: 700 20px/1.2 var(--combat-ui-font, "Noto Serif SC", serif);
+  letter-spacing: .16em;
+  text-align: left;
+}
+#deck-combat-screen #combat-end-turn-btn > span,
+#deck-combat-screen #combat-flee-btn > span {
+  grid-area: kicker;
+  color: var(--combat-paper-dim);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: .34em;
+}
+
+/* kbd 改为「法印」：不再是系统调试标签 */
+#deck-combat-screen #combat-end-turn-btn kbd,
+#deck-combat-screen #combat-flee-btn kbd {
+  grid-area: key;
+  align-self: center;
+  position: static;
+  display: grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 5px;
+  margin: 0;
+  border: 1px solid rgba(234, 219, 184, .26);
+  border-radius: 0;
+  /* 约束2：kbd 是刻在玉牌上的按键提示，不是文案层。
+     用 background:none + 内阴影表达「凹刻」，避免任何实底色。 */
+  background: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .55);
+  color: var(--combat-paper-dim);
+  font: 700 11px/1 var(--combat-ui-font, serif);
+  letter-spacing: .06em;
+}
+
+/* 检查点1：朱砂是「危险」专用色，只留给撤阵 armed / 敌人致命意图 / 我方濒危。
+   收势是常规推进动作，用暗金左标；朱砂仅在 hover 时作为「当前可提交」的强调。 */
+#deck-combat-screen #combat-end-turn-btn {
+  border-left: 3px solid var(--combat-gold);
+  min-height: 60px;
+}
+#deck-combat-screen #combat-flee-btn {
+  border-left: 3px solid var(--hud-rule);
+  min-height: 46px;
+}
+#deck-combat-screen #combat-flee-btn strong { font-size: 16px; letter-spacing: .12em; }
+
+/* hover：抬升 + 边框受光（鼠标态） */
+#deck-combat-screen #combat-end-turn-btn:hover,
+#deck-combat-screen #combat-flee-btn:hover {
+  background-color: var(--hud-page-sink);
+  border-color: var(--hud-frame-lit);
+  color: #fff5dc;
+  box-shadow: var(--hud-lift-2), inset 0 1px 0 rgba(234, 219, 184, .09);
+  transform: translateY(-2px);
+}
+/* focus-visible：键盘态，禁用位移，用双层描边区分 */
+#deck-combat-screen #combat-end-turn-btn:focus-visible,
+#deck-combat-screen #combat-flee-btn:focus-visible {
+  outline: 2px solid var(--hud-focus);
+  outline-offset: 2px;
+  border-color: var(--hud-focus);
+  transform: none;
+  box-shadow: 0 0 0 4px rgba(248, 216, 143, .16);
+}
+#deck-combat-screen #combat-end-turn-btn:active,
+#deck-combat-screen #combat-flee-btn:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, .7);
+}
+/* 撤阵二次确认态 */
+#deck-combat-screen #combat-flee-btn.armed {
+  border-color: rgba(200, 78, 62, .9);
+  background-color: #2a1210;
+  box-shadow: var(--hud-lift-1), inset 0 0 22px rgba(158, 63, 50, .28);
+}
+#deck-combat-screen #combat-flee-btn.armed strong { color: #f0b8a6; }
+#deck-combat-screen :is(#combat-end-turn-btn, #combat-flee-btn):disabled {
+  opacity: .42;
+  filter: grayscale(1);
+  border-color: rgba(234, 219, 184, .10);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- 6. 牌堆竹简托 ---------- */
+#deck-combat-screen .deck-piles .pile {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 34px;
+  padding: 6px 8px 6px 26px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-top: 1px solid var(--hud-rule);
+  border-radius: 0;
+  background: transparent;
+  color: var(--combat-paper-dim);
+  font-family: var(--combat-ui-font, "Noto Serif SC", serif);
+}
+#deck-combat-screen .deck-piles .pile:first-child { border-top: 0; }
+
+/* 篆印小方块，替代「只有一条下边框」的漂浮感 */
+#deck-combat-screen .deck-piles .pile::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border: 1px solid var(--hud-frame-lit);
+  background: var(--hud-page-sink);
+}
+#deck-combat-screen .deck-piles .draw-pile::after    { background: linear-gradient(135deg, rgba(234,219,184,.22), transparent); }
+#deck-combat-screen .deck-piles .discard-pile::after { border-color: rgba(234,219,184,.18); opacity: .75; }
+#deck-combat-screen .deck-piles .exhaust-pile::after { border-color: rgba(158,63,50,.55); background: rgba(158,63,50,.16); }
+
+#deck-combat-screen .deck-piles .pile .pile-label {
+  font-size: 12px;
+  letter-spacing: .2em;
+  color: var(--combat-paper-dim);
+}
+/* 撤销 7520 的米色文字块 */
+#deck-combat-screen .deck-piles .pile :is(span, strong) {
+  position: static;
+  z-index: auto;
+  background: none;
+}
+#deck-combat-screen .deck-piles .pile strong {
+  color: var(--combat-paper);
+  font: 700 18px/1 var(--combat-ui-font, "Noto Serif SC", serif);
+  font-variant-numeric: tabular-nums;
+}
+#deck-combat-screen .deck-piles .pile:hover { background: rgba(234, 219, 184, .035); }
+#deck-combat-screen .deck-piles .pile:focus-visible {
+  outline: 2px solid var(--hud-focus);
+  outline-offset: -2px;
+}
+
+/* ---------- 8. 威胁 / 回合法印 ---------- */
+#deck-combat-screen .combat-badge {
+  position: relative;
+  min-width: 58px;
+  min-height: 22px;
+  padding: 4px 9px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--hud-frame);
+  border-left: 3px solid var(--combat-gold);
+  border-radius: 0;
+  background-color: rgba(13, 15, 17, .9);
+  color: var(--combat-paper-dim);
+  font: 700 11px/1 var(--combat-ui-font, "Noto Serif SC", serif);
+  letter-spacing: .14em;
+  white-space: nowrap;
+  box-shadow: var(--hud-lift-1);
+}
+#deck-combat-screen .threat-badge {
+  border-left-color: var(--combat-cinnabar);
+  color: #e5b09f;
+  box-shadow: var(--hud-lift-1), inset 0 0 16px rgba(158, 63, 50, .16);
+}
+#deck-combat-screen .combat-badge:focus-visible {
+  outline: 2px solid var(--hud-focus);
+  outline-offset: 2px;
+}
+
+/* ---------- 9b. 焦点环覆盖（必须在最后） ----------
+   style.css:6089 有一条全局
+     button:focus-visible { outline: 2px solid #84dcff !important; }
+   这是战斗区出现冷蓝色描边的直接来源（与暖墨金体系冲突），
+   且带 !important，只能用同等 !important + 更高特异性覆盖。
+   色值沿用 focus 态实测到的 #f8d88f。 */
+#deck-combat-screen :is(#combat-end-turn-btn, #combat-flee-btn):focus-visible,
+#deck-combat-screen .deck-piles .pile:focus-visible,
+#deck-combat-screen #combat-mechanic:focus-visible,
+#deck-combat-screen #deck-combat-logs:focus-visible {
+  outline: 2px solid var(--hud-focus) !important;
+  outline-offset: 2px !important;
+}
+
+/* ---------- 10. 战局日志 ---------- */
+/* 约束3：#combat-notes 是 display:contents，故本元素的包含块是
+   .combat-middle（不是 .combat-bottom），absolute 会落进战场中央。
+   故用 fixed 并抬到控制栏「上方」悬浮——既避开左栏按钮（x20-234），
+   也避开右栏牌堆（x1220-1404），三者互不重叠。 */
+#deck-combat-screen #deck-combat-logs {
+  position: fixed;
+  z-index: 10;
+  left: 20px;
+  /* 272(控制栏高) + 6(呼吸间隙) */
+  bottom: 278px;
+  right: auto;
+  top: auto;
+  width: 184px;
+  height: 116px;
+  max-height: 116px;
+  padding: 8px 10px;
+  border: 1px solid var(--hud-frame);
+  /* 朱砂仅用于危险语义（检查点1）——日志是常规信息，改用暗金左标 */
+  border-left: 2px solid var(--combat-gold);
+  background-color: rgba(13, 15, 17, .9);
+  color: rgba(234, 219, 184, .72);
+  font: 400 11px/1.55 var(--combat-ui-font, "Noto Serif SC", serif);
+  box-shadow: var(--hud-lift-2);
+  /* 底部渐隐，暗示可滚动 */
+  -webkit-mask-image: linear-gradient(180deg, #000 74%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 74%, transparent 100%);
+}
+#deck-combat-screen #deck-combat-logs div {
+  position: relative;
+  padding: 2px 0 2px 12px;
+  border-bottom: 0;
+  line-height: 1.55;
+}
+#deck-combat-screen #deck-combat-logs div::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 9px;
+  width: 4px;
+  height: 4px;
+  background: var(--combat-cinnabar);
+  opacity: .8;
+}
+#deck-combat-screen #deck-combat-logs div:first-child { color: var(--combat-paper); }
+#deck-combat-screen #deck-combat-logs:focus-visible {
+  outline: 2px solid var(--hud-focus);
+  outline-offset: 2px;
+}
+
+/* ---------- 11. 战局机制 · 全 HUD 唯一浅底控件 ---------- */
+#deck-combat-screen #combat-mechanic {
+  /* 约束3 同上：包含块是 .combat-middle，用 fixed 钉到控制栏上方右侧，
+     避开右栏牌堆（x1220-1404, y611-727）。 */
+  position: fixed;
+  z-index: 10;
+  top: auto;
+  /* 与日志同高，横向错开：日志占左侧 184px，本条占右侧 368px */
+  bottom: 278px;
+  right: 20px;
+  left: auto;
+  width: 368px;
+  max-width: min(368px, 42vw);
+  min-height: 46px;
+  padding: 11px 16px 11px 40px;    /* 左侧留出「策」印位 */
+  border: 1px solid var(--hud-slip-edge);
+  border-radius: 0;
+  background-color: var(--hud-slip);
+  background-image:
+    linear-gradient(180deg, rgba(255, 252, 240, .55), rgba(0, 0, 0, .06)),
+    repeating-linear-gradient(0deg, rgba(90, 74, 40, .045) 0 1px, transparent 1px 3px);
+  color: var(--hud-ink);          /* 撤销 7530 的 #203129 深绿 */
+  font: 500 13px/1.6 var(--combat-ui-font, "Noto Serif SC", serif);
+  letter-spacing: .04em;
+  box-shadow: var(--hud-lift-2), inset 0 0 0 1px rgba(255, 255, 255, .35);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%);
+}
+#deck-combat-screen #combat-mechanic::before {
+  content: '策';
+  position: absolute;
+  left: 16px;
+  top: 11px;
+  font: 700 11px/1 var(--combat-ui-font, serif);
+  color: var(--combat-cinnabar);
+  letter-spacing: 0;
+}
+#deck-combat-screen #combat-mechanic:focus-visible {
+  outline: 2px solid var(--hud-focus);
+  outline-offset: 3px;
+}
+
+/* ---------- 13. 移动端 ≤720px（430px 验收） ---------- */
+@media (max-width: 720px) {
+  #deck-combat-screen .combat-bottom {
+    height: 236px;
+    background-image:
+      linear-gradient(180deg, rgba(7, 9, 11, .93) 0, #07090b 100%),
+      var(--hud-scan);
+  }
+  #deck-combat-screen .combat-bottom::after { display: none; }
+
+  /* 顶部固定资源条：三等分，横贯全宽 */
+  #deck-combat-screen .combat-resources {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: auto;
+    width: auto;
+    /* 桌面态的 height:252px / justify-content:center 必须在移动端复位，
+       否则 grid 行会被拉伸，两个按钮各撑到 252px 高（实测回归）。 */
+    height: auto;
+    justify-content: stretch;
+    display: grid;
+    grid-template-columns: 96px 1fr 1fr;
+    align-items: stretch;
+    gap: 6px;
+  }
+  #deck-combat-screen .combat-resources .qi-orb {
+    width: 96px;
+    height: 54px;
+    padding: 8px 8px 14px 26px;
+  }
+  #deck-combat-screen .combat-resources .qi-orb .qi-label { left: 7px; font-size: 10px; }
+  #deck-combat-screen .combat-resources .qi-orb .qi-readout strong { font-size: 26px; }
+  #deck-combat-screen .combat-resources .qi-orb::after { left: 8px; right: 8px; bottom: 6px; height: 4px; }
+
+  #deck-combat-screen :is(#combat-end-turn-btn, #combat-flee-btn) {
+    width: auto;
+    min-width: 0;
+    min-height: 54px;
+    padding: 5px 8px;
+    grid-template-areas: 'label label';
+    grid-template-rows: 1fr;
+    justify-items: center;
+  }
+  #deck-combat-screen :is(#combat-end-turn-btn, #combat-flee-btn) > span,
+  #deck-combat-screen :is(#combat-end-turn-btn, #combat-flee-btn) kbd { display: none; }
+  #deck-combat-screen #combat-end-turn-btn strong,
+  #deck-combat-screen #combat-flee-btn strong {
+    grid-area: label;
+    font-size: 17px;
+    letter-spacing: .1em;
+    text-align: center;
+  }
+  #deck-combat-screen #combat-flee-btn { min-height: 54px; }
+  #deck-combat-screen #combat-flee-btn strong { font-size: 15px; }
+
+  /* 牌堆：三联横条，置于手牌上方 */
+  #deck-combat-screen .deck-piles {
+    position: fixed;
+    top: 68px;
+    left: 8px;
+    right: 8px;
+    bottom: auto;
+    width: auto;
+    flex-direction: row;
+    gap: 0;
+    padding: 4px;
+  }
+  #deck-combat-screen .deck-piles .pile {
+    flex: 1 1 0;
+    min-height: 30px;
+    padding: 4px 6px 4px 20px;
+    border-top: 0;
+    border-left: 1px solid var(--hud-rule);
+  }
+  #deck-combat-screen .deck-piles .pile:first-child { border-left: 0; }
+  #deck-combat-screen .deck-piles .pile::after { left: 5px; width: 8px; height: 8px; }
+  #deck-combat-screen .deck-piles .pile .pile-label { font-size: 11px; letter-spacing: .08em; }
+  /* 牌堆三联横条占top:68..108（左8右8 通栏），故机制条与日志须从 116 起算，
+     否则机制条会压在牌堆下沿（实测 430px 复现）。*/
+  #deck-combat-screen #combat-mechanic {
+    position: fixed;
+    top: 116px;
+    bottom: auto;
+    left: 8px;
+    right: auto;
+    width: calc(100vw - 244px);
+    max-width: none;
+    min-height: 0;
+    padding: 8px 10px 8px 30px;
+    font-size: 11px;
+    color: var(--hud-ink);
+  }
+  #deck-combat-screen #combat-mechanic::before { left: 10px; top: 8px; }
+  #deck-combat-screen #deck-combat-logs {
+    position: fixed;
+    top: 172px;
+    left: 8px;
+    right: auto;
+    bottom: auto;
+    width: calc(100vw - 244px);
+    height: 78px;
+  }
+  /* 移动端真元玉简压缩为横向条，但保留竖排标签与刻度槽。
+     以下四行为本区块唯一副本（此前与本段上方完全重复，已由 Batch A 验证删除）。*/
+  #deck-combat-screen .combat-resources .qi-orb .qi-label { left: 7px; font-size: 10px; }
+  #deck-combat-screen .combat-resources .qi-orb .qi-readout strong { font-size: 26px; }
+  #deck-combat-screen .combat-resources .qi-orb::after { left: 8px; right: 8px; bottom: 6px; height: 4px; }
+  #deck-combat-screen .deck-piles .pile strong { font-size: 15px; }
+  /* 移动端按钮：单行居中，隐藏 kbd 与小字提示 */
+  #deck-combat-screen :is(#combat-end-turn-btn, #combat-flee-btn) {
+    width: auto;
+    min-width: 0;
+    min-height: 54px;
+    padding: 5px 8px;
+    grid-template-areas: 'label label';
+    grid-template-rows: 1fr;
+    justify-items: center;
+  }
+  #deck-combat-screen :is(#combat-end-turn-btn, #combat-flee-btn) > span,
+  #deck-combat-screen :is(#combat-end-turn-btn, #combat-flee-btn) kbd { display: none; }
+  #deck-combat-screen #combat-end-turn-btn strong,
+  #deck-combat-screen #combat-flee-btn strong {
+    grid-area: label;
+    font-size: 17px;
+    letter-spacing: .1em;
+    text-align: center;
+  }
+  #deck-combat-screen #combat-flee-btn { min-height: 54px; }
+  #deck-combat-screen #combat-flee-btn strong { font-size: 15px; }
+}
+
+/* ---------- 14. 无障碍降级（作用域内控件） ---------- */
+@media (prefers-reduced-motion: reduce) {
+  #deck-combat-screen :is(.qi-orb, .end-turn-btn, .flee-btn, .pile) {
+    transition: none !important;
+  }
+  #deck-combat-screen :is(#combat-end-turn-btn, #combat-flee-btn):is(:hover, :active) {
+    transform: none !important;
+  }
+}
+/* 稳镜头 / 降低特效：关闭纹理与角标高亮 */
+@media (prefers-reduced-motion: reduce), (update: slow) {
+  #deck-combat-screen :is(.qi-orb, .end-turn-btn, .flee-btn, .pile, #deck-combat-logs) {
+    background-image: none !important;
+  }
+}
+/* 高对比：去装饰、描边加重、文字加底 */
+@media (prefers-contrast: more) {
+  #deck-combat-screen :is(.qi-orb, .end-turn-btn, .flee-btn, .pile, #deck-combat-logs) {
+    border-width: 2px;
+    border-color: var(--combat-paper);
+    background-image: none;
+  }
+  #deck-combat-screen :is(#combat-end-turn-btn, #combat-flee-btn):focus-visible,
+  #deck-combat-screen #combat-mechanic:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* ---------- 15. FX 层时序契约（配合特效总监 v5） ----------
+ * 位置修正必须即时。deck-combat.css:5927 已记录该坑：
+ * 「Position correction must be immediate even when reduced-motion rules
+ *   give all descendants a nonzero transition duration」。
+ * 手法与 deck-combat.css:7366（::after{display:none}）一致——
+ * 用高特异性规则显式关掉，而不是去改底层。*/
+#deck-combat-screen .combat-stage-impact,
+#deck-combat-screen .combat-stage-feedback,
+#deck-combat-screen .combat-stage-fx {
+  transition-property: none;
+}
+
+/* ==========================================================================
+ * 15. 世界材质层（world frame）压制覆盖 —— v1.4
+ *
+ * 【实测根因】
+ * deck-combat.css:7038-7060 在 data-visual-world-id +
+ * data-visual-world-compatible 双属性下，用**双 ID 特异度**改写底材：
+ *   .qi-orb  { background-color: transparent;
+ *              background-image: var(--world-ui-qi-slot-frame); }
+ *   .end-turn-btn / .flee-btn { background-image:
+ *              var(--world-ui-action-button-frame); }
+ * 这两条的选择器特异性 (2,2,1) 高于本文件第3 节与第 5 节的
+ * (1,1,0)/(1,0,1)，因此「本文件写了暖墨底色」并不生效。
+ * 浏览器实测：qi-orb 计算值 background-color = rgba(0,0,0,0)、
+ * background-image = PNG 框 → 渲染成冷灰白，与暖墨金体系割裂。
+ *
+ * 【处置原则】
+ * 不用 !important（与主程序的约束②冲突），改用「等价特异性 + 更晚加载」。
+ * 下列选择器复制其属性组合但去掉 [data-visual-world-*] 限定，
+ * 使特异性降为 (1,0,x)，并因本文件更晚加载而胜出。
+ * 保留 world 主题的 image-rendering: pixelated，不破坏 PC98 像素意图。
+ * ======================================================================== */
+#deck-combat-screen .qi-orb {
+  background-color: var(--hud-page-raise);
+  background-image: var(--hud-mottle), var(--hud-scan);
+  border-color: var(--hud-frame);
+  border-left-color: var(--path-primary, var(--combat-gold));
+  image-rendering: auto;
+  box-shadow: var(--hud-lift-2), inset 0 1px 0 rgba(234, 219, 184, .06),
+              inset 0 -14px 22px -16px rgba(0, 0, 0, .9);
+}
+#deck-combat-screen :is(.end-turn-btn, .flee-btn) {
+  background-color: var(--hud-page-raise);
+  background-image: var(--hud-mottle), var(--hud-scan);
+  border-color: var(--hud-frame);
+  box-shadow: var(--hud-lift-1), inset 0 1px 0 rgba(234, 219, 184, .05);
+  image-rendering: auto;
+}
+/* hover/focus 同步覆盖：否则会落回 world 层的 rgba(214,202,158,.16) 冷灰 */
+#deck-combat-screen :is(.end-turn-btn, .flee-btn):is(:hover, :focus-visible) {
+  background-color: var(--hud-page-sink);
+  background-image: var(--hud-mottle), var(--hud-scan);
+  border-color: var(--hud-frame-lit);
+}
+/* 撤阵二次确认：朱砂仅此处（危险语义） */
+#deck-combat-screen .flee-btn.armed {
+  background-color: #2a1210;
+  background-image: var(--hud-mottle), var(--hud-scan);
+  border-color: rgba(200, 78, 62, .9);
+}
+
+/* ==========================================================================
+ * 技术债台账（诊断 v2 + Batch A/B 实测结论，供后续批次处理）
+ *
+ * 【TD-1】--combat-* 六色 token 有三处定义来源，同一 token 随加载顺序漂移：
+ *   deck-combat.css:1782   #9e3f32（裸 #deck-combat-screen）
+ *   breathing-ui.css:589   var(--ui-cinnabar) → #a54839（同特异性，后加载者胜）
+ *   deck-combat.css:4840   pc98 块内 var(--world-cinnabar, #c0392b)（属性选择器，特异性最高）
+ *   实测：无视觉世界时 --combat-cinnabar = #a54839（breathing-ui 赢）；
+ *         pc98 世界时 = #c0392b（属性选择器赢）。
+ *   本文件已删除自己那份重复定义（不再参与漂移）。三处收敛为单一来源待定。
+ *
+ * 【TD-2】.card-art 有 14 处规则块、跨四代设计取向，最终生效的是 L7349。
+ *   两处「继承性生效」陷阱——删除前必须显式接管，否则静默变更：
+ *     image-rendering: pixelated  由 L1392/L4139 声明，L7349 未覆盖。
+ *       若删除，174 张卡面会从硬像素突变为平滑插值，截图里几乎看不出。
+ *     background-repeat: no-repeat  同类（L4139 声明，L7349 未覆盖）。
+ *   约束（已转达特效总监）：任何修改 .card-art 的规则，
+ *   必须显式写 image-rendering: pixelated，不得依赖继承。
+ *
+ * 【TD-3】deck-combat.css:7507 的 #combat-notes { display: contents } 是既有
+ *   定位契约，不是待修缺陷。其子元素 position:absolute 相对视口解析，
+ *   取 rect 做碰撞避让时须校验坐标系原点。
+ *
+ * 【TD-4】DeckCombatUI.js:659/673 用 innerHTML 覆写 flee-btn，销毁 <span>/<strong>，
+ *   导致样式失效 + grid 第二行塌陷到 10px。Batch C 修（改 textContent 写入）。
+ *
+ * 【TD-5】breathing-ui.css:755-765 / 796-802 用 #deck-combat-screen 前缀越权重
+ *   重定义战斗控件，且排在 deck-combat.css 之后。Batch B 待清理
+ *   （需 Git 基线落点，见下）。
+ *
+ * 【TD-6】breathing-ui.css 与本文件此前均未纳入 Git，改坏无回滚落点。
+ *   基线提交因 .git/index.lock 存在（Aug 9，约 63 天前）而未执行。
+ *
+ * 【TD-7】glassmorphism.css（119 行）经实测从未被 index.html link，
+ *   是已断链的孤儿文件。Batch E 归档，不要为其做兼容工作。
+ * ========================================================================== */

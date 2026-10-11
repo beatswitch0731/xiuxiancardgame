@@ -1,0 +1,1443 @@
+/*
+ * Batch H1 · 山水息壤
+ * The final semantic layer for the ordinary choice loop and deck combat.
+ * Historical component styles stay intact; this file resolves their material,
+ * motion and accessibility language at the production entrypoint.
+ */
+
+:root {
+  --ui-lacquer: #080b0c;
+  --ui-lacquer-soft: #101516;
+  --ui-lacquer-raised: #171b19;
+  --ui-paper: #e6dcc3;
+  --ui-paper-muted: #a9a18d;
+  --ui-paper-faint: #716d62;
+  --ui-cinnabar: #a54839;
+  --ui-cinnabar-bright: #cf745d;
+  --ui-old-gold: #bd9a57;
+  --ui-old-gold-bright: #dec17b;
+  --ui-jade: #6f9b84;
+  --ui-verdigris: #496f65;
+  --ui-line: rgba(205, 176, 112, 0.25);
+  --ui-line-soft: rgba(229, 214, 178, 0.09);
+  --ui-shadow: rgba(0, 0, 0, 0.68);
+  --ui-focus-ring: rgba(229, 199, 128, 0.88);
+  --motion-spring: cubic-bezier(0.18, 0.88, 0.28, 1.18);
+  --motion-settle: cubic-bezier(0.2, 0.72, 0.22, 1);
+  --motion-breathe: cubic-bezier(0.37, 0, 0.63, 1);
+  --motion-fast: 120ms;
+  --motion-medium: 260ms;
+  --motion-slow: 560ms;
+  --surface-grain:
+    repeating-linear-gradient(102deg, transparent 0 9px, rgba(236, 218, 173, 0.016) 9px 10px),
+    repeating-linear-gradient(0deg, rgba(255, 248, 224, 0.018) 0 1px, transparent 1px 3px);
+}
+
+::selection {
+  color: #fff6dc;
+  background: rgba(165, 72, 57, 0.72);
+}
+
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 3px;
+}
+
+/* ────────────────────── Ordinary journey ────────────────────── */
+
+#game-screen {
+  color: var(--ui-paper);
+  background:
+    radial-gradient(ellipse 62% 54% at 50% 42%, rgba(var(--realm-rgb), 0.13), transparent 68%),
+    linear-gradient(145deg, #080d0d, var(--realm-ink) 45%, #07090a);
+}
+
+#game-screen::before {
+  opacity: 0.44;
+  filter: saturate(0.69) contrast(1.07) brightness(0.78) sepia(0.06);
+  transform: scale(1.012);
+  animation: ui-landscape-breathe 16s var(--motion-breathe) infinite;
+}
+
+#game-screen::after {
+  background:
+    linear-gradient(90deg, rgba(3, 6, 7, 0.62), transparent 23%, transparent 77%, rgba(3, 6, 7, 0.68)),
+    linear-gradient(180deg, rgba(3, 6, 7, 0.14), transparent 32%, rgba(3, 5, 6, 0.58)),
+    radial-gradient(ellipse 52% 48% at 50% 43%, transparent 25%, rgba(2, 4, 5, 0.34) 100%);
+}
+
+@keyframes ui-landscape-breathe {
+  0%, 100% {
+    opacity: 0.4;
+    filter: saturate(0.65) contrast(1.07) brightness(0.74) sepia(0.08);
+  }
+  50% {
+    opacity: 0.49;
+    filter: saturate(0.74) contrast(1.09) brightness(0.83) sepia(0.04);
+  }
+}
+
+#game-screen .top-bar {
+  min-height: 58px;
+  padding: 8px 18px;
+  background:
+    linear-gradient(90deg, rgba(7, 10, 10, 0.98), rgba(18, 23, 20, 0.94) 48%, rgba(7, 10, 10, 0.98)),
+    var(--surface-grain);
+  border-bottom: 1px solid rgba(190, 155, 87, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+}
+
+#game-screen .badge {
+  min-height: 28px;
+  padding: 5px 10px;
+  color: rgba(224, 217, 196, 0.72);
+  background: rgba(231, 218, 184, 0.025) !important;
+  border: 1px solid rgba(222, 194, 130, 0.09) !important;
+  border-radius: 2px 7px 2px 7px;
+  letter-spacing: 0.08em;
+}
+
+#game-screen .badge.realm {
+  color: rgb(var(--realm-rgb));
+  border-color: rgba(var(--realm-rgb), 0.38) !important;
+  box-shadow: inset 3px 0 rgba(var(--realm-rgb), 0.36) !important;
+}
+
+#game-screen .resource {
+  min-height: 28px;
+  padding: 4px 9px;
+  color: rgba(229, 221, 200, 0.76);
+  background: rgba(230, 216, 179, 0.025);
+  border-color: rgba(222, 194, 130, 0.1);
+}
+
+#game-screen .npc-list-btn {
+  width: 34px;
+  height: 34px;
+  color: rgba(225, 213, 184, 0.62);
+  background: linear-gradient(145deg, rgba(35, 37, 34, 0.96), rgba(12, 16, 17, 0.98));
+  border: 1px solid rgba(179, 145, 83, 0.26);
+  border-radius: 3px 8px 3px 8px;
+  overflow: hidden;
+  transition:
+    color var(--motion-fast) ease,
+    background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease,
+    transform var(--motion-fast) var(--motion-spring);
+}
+
+#game-screen .npc-list-btn:hover,
+#game-screen .npc-list-btn:focus-visible {
+  color: var(--ui-old-gold-bright);
+  background: rgba(189, 154, 87, 0.09);
+  border-color: rgba(222, 193, 123, 0.44);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.26);
+  transform: translateY(-1px);
+}
+
+#game-screen .npc-list-btn:active {
+  transform: translateY(1px) scale(0.96);
+}
+
+#game-screen .location-bar,
+#game-screen .breakthrough-bar {
+  background:
+    linear-gradient(90deg, rgba(7, 10, 10, 0.97), rgba(var(--realm-rgb), 0.065), rgba(7, 10, 10, 0.97)),
+    var(--surface-grain);
+  border-bottom-color: rgba(189, 154, 87, 0.12);
+}
+
+#game-screen .loc-icon {
+  color: var(--ui-cinnabar-bright);
+  filter: sepia(0.35) saturate(0.75);
+}
+
+#game-screen .game-layout {
+  gap: clamp(12px, 1.4vw, 22px);
+  padding: 14px clamp(12px, 1.5vw, 24px) 18px;
+}
+
+#game-screen .attribute-panel,
+#game-screen .log-sidebar {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  border: 1px solid rgba(189, 154, 87, 0.24);
+  border-radius: 4px 13px 4px 13px;
+  background:
+    linear-gradient(160deg, rgba(22, 25, 21, 0.97), rgba(8, 12, 12, 0.96) 68%),
+    var(--surface-grain);
+  color: var(--ui-paper);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.38),
+    inset 0 0 0 4px rgba(234, 216, 174, 0.018);
+  transition:
+    opacity var(--motion-medium) ease,
+    border-color var(--motion-medium) ease,
+    box-shadow var(--motion-medium) ease,
+    transform var(--motion-medium) var(--motion-settle);
+}
+
+#game-screen .attribute-panel:hover,
+#game-screen .attribute-panel:focus-within,
+#game-screen .log-sidebar:hover,
+#game-screen .log-sidebar:focus-within {
+  opacity: 1;
+  border-color: rgba(218, 183, 107, 0.4);
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.46),
+    inset 0 0 0 4px rgba(234, 216, 174, 0.025);
+}
+
+#game-screen .panel-header,
+#game-screen .log-sidebar-header {
+  border-bottom: 1px solid rgba(189, 154, 87, 0.19);
+  background:
+    linear-gradient(90deg, rgba(189, 154, 87, 0.07), transparent 82%),
+    rgba(8, 12, 12, 0.46);
+}
+
+#game-screen .panel-title,
+#game-screen .log-sidebar-title {
+  color: #d9c79d;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+}
+
+#game-screen .attr-item {
+  min-height: 38px;
+  padding: 4px 3px;
+  border-bottom: 1px solid rgba(229, 214, 178, 0.045);
+  transition:
+    background-color var(--motion-fast) ease,
+    transform var(--motion-fast) var(--motion-settle);
+}
+
+#game-screen .attr-item:hover {
+  background: linear-gradient(90deg, rgba(var(--realm-rgb), 0.07), transparent);
+  transform: translateX(2px);
+}
+
+#game-screen .attr-label {
+  color: rgba(224, 218, 199, 0.76);
+  letter-spacing: 0.04em;
+}
+
+#game-screen .attr-bar {
+  height: 4px;
+  overflow: visible;
+  background: rgba(228, 215, 183, 0.07);
+  border-radius: 0;
+}
+
+#game-screen .attr-fill {
+  border-radius: 0;
+  box-shadow: 0 0 8px currentColor;
+  transition: width var(--motion-slow) var(--motion-settle);
+}
+
+#game-screen .card-area {
+  gap: 12px;
+  padding-top: 2px;
+}
+
+#game-screen .card {
+  width: min(470px, 100%);
+  max-width: 470px;
+  padding: 27px;
+  border: 1px solid rgba(207, 176, 105, 0.48);
+  border-radius: 5px 16px 5px 16px;
+  background-color: #0b1010;
+  box-shadow:
+    0 34px 74px rgba(0, 0, 0, 0.56),
+    0 10px 26px rgba(0, 0, 0, 0.46),
+    inset 0 0 0 5px rgba(236, 218, 176, 0.022);
+  transition:
+    transform var(--motion-medium) var(--motion-settle),
+    box-shadow var(--motion-medium) ease,
+    border-color var(--motion-medium) ease;
+}
+
+#game-screen .card::before {
+  border-radius: 4px 14px 4px 14px;
+  background:
+    linear-gradient(to top, rgba(5, 8, 8, 0.94), rgba(7, 11, 11, 0.72) 34%, rgba(7, 10, 10, 0.16) 67%, transparent),
+    var(--surface-grain);
+}
+
+#game-screen .card::after {
+  inset: -2px;
+  border-radius: 6px 17px 6px 17px;
+  background:
+    linear-gradient(135deg, rgba(223, 194, 125, 0.64), transparent 31%, rgba(var(--realm-rgb), 0.22) 67%, rgba(165, 72, 57, 0.38));
+  opacity: 0.62;
+  transition: opacity var(--motion-medium) ease;
+}
+
+#game-screen .card:hover::after,
+#game-screen .card:focus-within::after {
+  opacity: 0.92;
+}
+
+#game-screen .card-title {
+  color: #f0e8d4;
+  text-wrap: balance;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+#game-screen .card-description {
+  color: rgba(242, 236, 218, 0.9);
+  line-height: 1.58;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.96);
+}
+
+/* AGC-J-FIRST-VISUAL-01 — a readable route is a quiet decision surface.
+   The state remains the normal card/choice flow; these selectors only compose
+   the existing route scene and its two existing choices. */
+body[data-visual-signature="route"] #game-screen .card.card-immersive {
+  border-color: rgba(178, 205, 197, .56);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, .46),
+    0 10px 22px rgba(13, 31, 34, .32),
+    inset 0 0 0 4px rgba(238, 229, 197, .035);
+}
+
+body[data-visual-signature="route"] #game-screen .card.card-immersive::before {
+  background:
+    linear-gradient(to top, rgba(5, 10, 13, .56), rgba(8, 17, 19, .31) 32%, rgba(10, 21, 24, .08) 62%, transparent 82%),
+    var(--surface-grain);
+}
+
+body[data-visual-signature="route"] #game-screen .card.card-immersive > .card-portrait {
+  filter: saturate(.86) contrast(1.02) brightness(1.04) sepia(.035) !important;
+}
+
+body[data-visual-signature="route"] #game-screen .card.card-immersive > .card-portrait::before {
+  background:
+    linear-gradient(to top, rgba(4, 10, 13, .48) 0%, rgba(4, 10, 13, .16) 36%, rgba(4, 10, 13, .025) 70%, rgba(4, 10, 13, .1) 100%) !important;
+}
+
+body[data-visual-signature="route"] #game-screen .choice-btn {
+  border-color: rgba(162, 200, 190, .42);
+  border-left-color: rgba(200, 177, 108, .78);
+  background:
+    linear-gradient(118deg, rgba(39, 61, 62, .80), rgba(12, 27, 31, .86)),
+    var(--surface-grain);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, .24), inset 0 0 0 1px rgba(236, 229, 198, .055);
+}
+
+body[data-visual-signature="route"] #game-screen .choice-btn:hover,
+body[data-visual-signature="route"] #game-screen .choice-btn.highlight {
+  border-color: rgba(231, 205, 132, .9);
+  background:
+    linear-gradient(118deg, rgba(70, 86, 74, .88), rgba(20, 42, 43, .9)),
+    var(--surface-grain);
+}
+
+/* The first regulated market is a lantern-lit ledger over a real interior,
+   not a second black card layered on a black page. */
+#shop-panel[data-market-presentation] {
+  background: rgba(2, 7, 8, .46);
+  backdrop-filter: blur(2px) saturate(.84);
+}
+
+#shop-panel[data-market-presentation] .shop-content {
+  max-width: 548px;
+  background-color: #2c2417;
+  background-image:
+    linear-gradient(136deg, rgba(71, 55, 29, .48), rgba(15, 29, 32, .62)),
+    var(--market-background-image),
+    var(--market-surface-fallback);
+  border-color: rgba(238, 196, 113, .56);
+  box-shadow:
+    0 26px 64px rgba(0, 0, 0, .52),
+    inset 0 0 0 1px rgba(255, 234, 178, .11),
+    inset 0 0 40px rgba(203, 153, 67, .075);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-content {
+  border-radius: 8px 3px 8px 3px;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(238, 196, 113, .34);
+  text-shadow: 0 1px 2px #160f06, 0 0 16px rgba(242, 193, 91, .18);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item {
+  border-color: rgba(230, 193, 116, .32);
+  border-left-color: rgba(242, 190, 77, .88);
+  background:
+    linear-gradient(102deg, rgba(86, 68, 39, .56), rgba(17, 29, 31, .58)),
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(245, 215, 144, .035) 28px);
+  box-shadow: inset 0 1px rgba(255, 229, 171, .11), 0 4px 11px rgba(0, 0, 0, .12);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item:hover {
+  border-color: rgba(255, 218, 132, .86);
+  background:
+    linear-gradient(102deg, rgba(111, 86, 43, .64), rgba(25, 47, 48, .64)),
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(255, 226, 156, .055) 28px);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item-desc { color: rgba(245, 236, 212, .88); }
+#shop-panel[data-market-layout="ledger"] .shop-item-type { color: #c7ded2; }
+#shop-panel[data-market-layout="ledger"] .shop-buy-btn,
+#shop-panel[data-market-layout="ledger"] .shop-leave-btn {
+  border-color: rgba(244, 202, 105, .76);
+  color: #fff0c4;
+  background: rgba(90, 64, 25, .42);
+}
+
+#game-screen .choice-buttons {
+  width: min(470px, 100%);
+  gap: 9px;
+}
+
+#game-screen .choice-btn:not(.visible) {
+  display: none !important;
+}
+
+#game-screen .choice-btn.visible {
+  display: grid !important;
+}
+
+#game-screen .choice-row {
+  gap: 10px;
+}
+
+#game-screen .choice-btn {
+  min-height: 68px;
+  padding: 11px 56px 11px 12px;
+  border: 1px solid rgba(203, 171, 103, 0.27);
+  border-left: 3px solid rgba(165, 72, 57, 0.62);
+  border-radius: 3px 10px 3px 10px;
+  background:
+    linear-gradient(120deg, rgba(27, 27, 22, 0.97), rgba(10, 14, 14, 0.98)),
+    var(--surface-grain);
+  color: var(--ui-paper);
+  box-shadow:
+    0 9px 22px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 3px rgba(234, 216, 174, 0.018);
+  transition:
+    opacity var(--motion-medium) ease,
+    transform var(--motion-medium) var(--motion-spring),
+    border-color var(--motion-fast) ease,
+    background-color var(--motion-fast) ease,
+    box-shadow var(--motion-medium) ease;
+}
+
+#game-screen .choice-btn::before {
+  border-color: rgba(229, 214, 178, 0.055);
+}
+
+#game-screen .choice-btn::after {
+  color: var(--ui-cinnabar-bright);
+  border-color: var(--ui-cinnabar);
+  background: rgba(165, 72, 57, 0.07);
+  box-shadow: none;
+}
+
+#game-screen .choice-btn .choice-arrow {
+  color: var(--ui-old-gold-bright);
+  border-color: rgba(218, 188, 118, 0.34);
+  background: rgba(189, 154, 87, 0.065);
+  box-shadow: none;
+}
+
+#game-screen .choice-btn .choice-text {
+  color: #eee5d0;
+  font-size: 0.92rem;
+}
+
+#game-screen .choice-btn .choice-desc {
+  display: -webkit-box;
+  max-height: none;
+  overflow: hidden;
+  color: rgba(235, 228, 207, 0.76);
+  opacity: 1;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+#game-screen .choice-btn:hover,
+#game-screen .choice-btn.highlight,
+#game-screen .choice-btn:focus-visible {
+  border-color: rgba(222, 188, 112, 0.68);
+  border-left-color: var(--ui-cinnabar-bright);
+  background:
+    linear-gradient(120deg, rgba(51, 39, 27, 0.98), rgba(13, 17, 16, 0.99)),
+    var(--surface-grain);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.4),
+    inset 0 0 22px rgba(210, 176, 105, 0.05);
+  transform: translateY(-3px);
+}
+
+#game-screen .choice-btn:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 3px;
+}
+
+#game-screen .choice-btn:active {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.36),
+    inset 0 3px 12px rgba(0, 0, 0, 0.36);
+  transform: translateY(1px) scale(0.985);
+  transition-duration: var(--motion-fast);
+}
+
+#game-screen .choice-btn[data-mood="blessing"] {
+  border-left-color: #b6964e;
+  background: linear-gradient(120deg, rgba(45, 40, 25, 0.97), rgba(11, 15, 14, 0.99));
+}
+
+#game-screen .choice-btn[data-mood="danger"] {
+  border-left-color: var(--ui-cinnabar-bright);
+  background: linear-gradient(120deg, rgba(49, 26, 23, 0.97), rgba(13, 13, 13, 0.99));
+}
+
+#game-screen .choice-btn[data-mood="tradeoff"] {
+  border-left-color: #8b739d;
+  background: linear-gradient(120deg, rgba(37, 31, 42, 0.97), rgba(12, 14, 14, 0.99));
+}
+
+#game-screen .log-sidebar {
+  width: clamp(238px, 19vw, 284px);
+  min-width: 232px;
+  max-width: 290px;
+}
+
+#game-screen .log-sidebar::after {
+  border-color: rgba(225, 205, 156, 0.055);
+}
+
+#game-screen .log-sidebar-header {
+  min-height: 62px;
+  color: var(--ui-paper);
+}
+
+#game-screen #view-deck-btn,
+#game-screen #view-treasure-btn {
+  min-height: 30px;
+  padding: 4px 8px !important;
+  color: #d7c8a5 !important;
+  background: rgba(189, 154, 87, 0.055) !important;
+  border: 1px solid rgba(205, 176, 112, 0.24) !important;
+  border-radius: 3px 7px 3px 7px !important;
+  transition:
+    color var(--motion-fast) ease,
+    background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease,
+    transform var(--motion-fast) var(--motion-spring);
+}
+
+#game-screen #view-deck-btn:hover,
+#game-screen #view-deck-btn:focus-visible,
+#game-screen #view-treasure-btn:hover,
+#game-screen #view-treasure-btn:focus-visible {
+  color: #f2e5c5 !important;
+  background: rgba(189, 154, 87, 0.12) !important;
+  border-color: rgba(222, 193, 123, 0.55) !important;
+  transform: translateY(-1px);
+}
+
+#game-screen .log-sidebar-body {
+  color: rgba(221, 215, 198, 0.76);
+  scrollbar-color: rgba(189, 154, 87, 0.32) transparent;
+}
+
+#game-screen .log-sidebar-body:empty::before {
+  content: '此卷尚空\A你的抉择将逐笔落墨';
+  display: grid;
+  min-height: 180px;
+  place-items: center;
+  color: rgba(218, 202, 165, 0.3);
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 0.75rem;
+  line-height: 2;
+  letter-spacing: 0.16em;
+  text-align: center;
+  white-space: pre;
+}
+
+#game-screen .log-item {
+  color: rgba(221, 215, 198, 0.72);
+  border-bottom-color: rgba(225, 205, 156, 0.055);
+}
+
+#game-screen .log-sidebar:not(:hover):not(:focus-within) .log-item:nth-child(n+4) {
+  display: grid;
+  opacity: 0.48;
+}
+
+/* ────────────────────── Battle ritual ────────────────────── */
+
+#deck-combat-screen {
+  --combat-ink: var(--ui-lacquer);
+  --combat-paper: var(--ui-paper);
+  --combat-paper-dim: var(--ui-paper-muted);
+  --combat-gold: var(--ui-old-gold);
+  --combat-gold-bright: var(--ui-old-gold-bright);
+  --combat-cinnabar: var(--ui-cinnabar);
+  --combat-line: var(--ui-line);
+  --combat-panel: rgba(8, 12, 12, 0.92);
+  /* The battlefield is the combat backdrop. An opaque themed root hides its
+     authored geography on narrow screens even when the image decoded. */
+  background: transparent;
+}
+
+#deck-combat-screen::before {
+  /* The battlefield is a playable spatial cue, not wallpaper behind a black
+     UI plate. Keep only enough grain to join it to the lacquer interface. */
+  opacity: 0.08;
+  background-image:
+    var(--surface-grain),
+    radial-gradient(ellipse 62% 52% at 50% 43%, transparent 34%, rgba(0, 0, 0, 0.34) 100%);
+  mix-blend-mode: soft-light;
+}
+
+#deck-combat-screen .combat-atmosphere {
+  /* Preserve the authored limited palette and airy midtones. Contrast lives
+     in the actor frames and hand rail, never in a global blackout filter. */
+  filter: saturate(0.92) sepia(0.035) contrast(1.04) brightness(0.96);
+  transform: scale(1.008);
+  animation: ui-battlefield-breathe 13s var(--motion-breathe) infinite;
+}
+
+#deck-combat-screen .combat-atmosphere::after {
+  background:
+    linear-gradient(180deg, rgba(4, 6, 6, 0.02), rgba(4, 6, 6, 0.08) 48%, rgba(4, 6, 6, 0.52) 94%),
+    linear-gradient(90deg, rgba(3, 5, 5, 0.20), transparent 25% 75%, rgba(3, 5, 5, 0.22));
+}
+
+@keyframes ui-battlefield-breathe {
+  0%, 100% {
+    filter: saturate(0.9) sepia(0.04) contrast(1.04) brightness(0.9);
+  }
+  50% {
+    filter: saturate(0.96) sepia(0.025) contrast(1.05) brightness(0.98);
+  }
+}
+
+#deck-combat-screen .combat-vignette {
+  box-shadow:
+    inset 0 0 82px 14px rgba(0, 0, 0, 0.38),
+    inset 0 -180px 140px -86px rgba(0, 0, 0, 0.46);
+}
+
+#deck-combat-screen[data-player-path="spell"] {
+  --path-primary: #7e719d;
+  --path-secondary: #cab9df;
+  --path-deep: #211b2a;
+}
+
+#deck-combat-screen[data-player-path="sword"] {
+  --path-primary: #778e88;
+  --path-secondary: #c8dbd3;
+  --path-deep: #142321;
+}
+
+#deck-combat-screen[data-player-path="body"] {
+  --path-primary: #a36f43;
+  --path-secondary: #e0bb82;
+  --path-deep: #2b1b11;
+}
+
+#deck-combat-screen[data-player-path="pill"] {
+  --path-primary: #758f65;
+  --path-secondary: #c4d5a9;
+  --path-deep: #172216;
+}
+
+#deck-combat-screen .enemy-intent {
+  border: 1px solid rgba(165, 72, 57, 0.64);
+  border-left: 3px solid var(--ui-cinnabar-bright);
+  border-radius: 2px 7px 2px 7px;
+  background:
+    linear-gradient(90deg, rgba(68, 26, 22, 0.94), rgba(15, 13, 12, 0.94)),
+    var(--surface-grain);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.34),
+    inset 0 0 18px rgba(165, 72, 57, 0.055);
+  animation: ui-intent-breathe 2.8s var(--motion-breathe) infinite;
+}
+
+@keyframes ui-intent-breathe {
+  0%, 100% {
+    border-color: rgba(165, 72, 57, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.34), inset 0 0 14px rgba(165, 72, 57, 0.035);
+  }
+  50% {
+    border-color: rgba(207, 116, 93, 0.82);
+    box-shadow: 0 9px 22px rgba(0, 0, 0, 0.38), inset 0 0 22px rgba(165, 72, 57, 0.09);
+  }
+}
+
+#deck-combat-screen .combat-mechanic {
+  color: rgba(218, 208, 184, 0.72);
+  border-left-color: rgba(189, 154, 87, 0.58);
+}
+
+#deck-combat-screen[data-player-path] .combat-actor-card,
+#deck-combat-screen[data-player-path] .player-token,
+#deck-combat-screen[data-player-path] .enemy-token {
+  border: 1px solid rgba(203, 171, 103, 0.58);
+  border-radius: 4px 12px 4px 12px;
+  background:
+    linear-gradient(145deg, rgba(189, 154, 87, 0.09), transparent 31%),
+    rgba(8, 12, 12, 0.88);
+  box-shadow:
+    10px 16px 34px rgba(0, 0, 0, 0.48),
+    0 0 0 4px rgba(5, 7, 7, 0.8),
+    0 0 0 5px rgba(203, 171, 103, 0.18);
+  transition:
+    border-color var(--motion-medium) ease,
+    box-shadow var(--motion-medium) ease,
+    transform var(--motion-medium) var(--motion-settle);
+}
+
+#deck-combat-screen[data-player-path] .player-token {
+  border-color: color-mix(in srgb, var(--path-primary) 72%, var(--ui-old-gold));
+  background:
+    var(--path-pattern),
+    linear-gradient(160deg, color-mix(in srgb, var(--path-deep) 62%, #171812), rgba(7, 10, 10, 0.94));
+  box-shadow:
+    10px 16px 34px rgba(0, 0, 0, 0.48),
+    0 0 0 4px rgba(5, 7, 7, 0.8),
+    0 0 0 5px color-mix(in srgb, var(--path-primary) 24%, transparent);
+}
+
+#deck-combat-screen[data-player-path] .enemy-token {
+  border-color: rgba(176, 78, 61, 0.75);
+  background:
+    linear-gradient(145deg, rgba(165, 72, 57, 0.16), transparent 34%),
+    rgba(13, 9, 9, 0.92);
+  box-shadow:
+    10px 16px 34px rgba(0, 0, 0, 0.5),
+    0 0 0 4px rgba(5, 7, 7, 0.8),
+    0 0 0 5px rgba(165, 72, 57, 0.22);
+}
+
+#deck-combat-screen .combat-actor-card::after {
+  inset: 7px;
+  border-color: rgba(226, 204, 151, 0.16);
+  border-radius: 2px 8px 2px 8px;
+}
+
+#deck-combat-screen .combat-actor-card .enemy-sprite,
+#deck-combat-screen .combat-actor-card .player-sprite {
+  border-radius: 2px 8px 2px 8px;
+  filter: saturate(0.9) contrast(1.04);
+}
+
+#deck-combat-screen .combat-bottom {
+  border-top: 1px solid rgba(189, 154, 87, 0.24);
+  background:
+    linear-gradient(180deg, rgba(7, 9, 9, 0.08), rgba(7, 10, 10, 0.92) 20%, #070909),
+    var(--surface-grain);
+  box-shadow: 0 -18px 42px rgba(0, 0, 0, 0.18);
+}
+
+#deck-combat-screen .qi-orb,
+#deck-combat-screen .end-turn-btn,
+#deck-combat-screen .flee-btn {
+  border-radius: 3px 9px 3px 9px;
+  background:
+    linear-gradient(100deg, rgba(189, 154, 87, 0.09), rgba(12, 15, 14, 0.96)),
+    var(--surface-grain);
+  box-shadow:
+    0 9px 20px rgba(0, 0, 0, 0.34),
+    inset 0 0 0 2px rgba(231, 213, 169, 0.018);
+}
+
+#deck-combat-screen .end-turn-btn,
+#deck-combat-screen .flee-btn {
+  transition:
+    color var(--motion-fast) ease,
+    background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease,
+    transform var(--motion-fast) var(--motion-spring),
+    box-shadow var(--motion-fast) ease;
+}
+
+#deck-combat-screen .end-turn-btn:hover,
+#deck-combat-screen .end-turn-btn:focus-visible,
+#deck-combat-screen .flee-btn:hover,
+#deck-combat-screen .flee-btn:focus-visible {
+  color: #fff0cf;
+  border-color: var(--ui-old-gold-bright);
+  background:
+    linear-gradient(100deg, rgba(100, 67, 31, 0.42), rgba(17, 19, 17, 0.98)),
+    var(--surface-grain);
+  box-shadow: 0 13px 28px rgba(0, 0, 0, 0.42);
+  transform: translateY(-2px);
+}
+
+#deck-combat-screen .end-turn-btn:active,
+#deck-combat-screen .flee-btn:active {
+  box-shadow: 0 4px 11px rgba(0, 0, 0, 0.4);
+  transform: translateY(1px) scale(0.98);
+}
+
+#deck-combat-screen .pile {
+  border-bottom-color: rgba(189, 154, 87, 0.32);
+  background: rgba(8, 11, 10, 0.78);
+  color: rgba(215, 203, 174, 0.7);
+}
+
+#deck-combat-screen .battle-card {
+  border: 1px solid rgba(203, 171, 103, 0.72);
+  border-left: 3px solid var(--path-primary, var(--ui-old-gold));
+  border-radius: 3px 10px 3px 10px;
+  background:
+    linear-gradient(145deg, rgba(189, 154, 87, 0.1), transparent 28%),
+    #101311;
+  color: var(--ui-paper);
+  box-shadow:
+    8px 12px 24px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 3px rgba(4, 6, 6, 0.74),
+    inset 0 0 0 4px rgba(203, 171, 103, 0.13);
+  transition:
+    transform var(--motion-medium) var(--motion-spring),
+    border-color var(--motion-fast) ease,
+    box-shadow var(--motion-medium) ease,
+    filter var(--motion-medium) ease;
+}
+
+#deck-combat-screen .battle-card::before {
+  border-left-color: rgba(230, 208, 157, 0.17);
+}
+
+#deck-combat-screen .battle-card:hover,
+#deck-combat-screen .battle-card:focus-visible {
+  z-index: 200;
+  border-color: var(--ui-old-gold-bright);
+  outline: 2px solid rgba(222, 193, 123, 0.54);
+  outline-offset: 3px;
+  box-shadow:
+    10px 18px 34px rgba(0, 0, 0, 0.52),
+    inset 0 0 0 3px rgba(4, 6, 6, 0.7),
+    inset 0 0 0 4px rgba(222, 193, 123, 0.2);
+  filter: saturate(1.04) brightness(1.04);
+  transform: translateY(-16px) scale(1.028) !important;
+}
+
+#deck-combat-screen[data-player-path] .battle-card:hover,
+#deck-combat-screen[data-player-path] .battle-card:focus-visible {
+  border-color: color-mix(in srgb, var(--path-secondary) 56%, var(--ui-old-gold-bright));
+  outline: 2px solid color-mix(in srgb, var(--path-secondary) 34%, var(--ui-old-gold-bright));
+  outline-offset: 3px;
+  box-shadow:
+    10px 18px 34px rgba(0, 0, 0, 0.52),
+    inset 0 0 0 3px rgba(4, 6, 6, 0.7),
+    inset 0 0 0 4px rgba(222, 193, 123, 0.2);
+}
+
+#deck-combat-screen .battle-card:active {
+  box-shadow:
+    3px 6px 14px rgba(0, 0, 0, 0.48),
+    inset 0 4px 15px rgba(0, 0, 0, 0.36);
+  filter: brightness(0.94);
+  transform: translateY(-7px) scale(0.985) !important;
+  transition-duration: var(--motion-fast);
+}
+
+#deck-combat-screen .battle-card.unaffordable {
+  filter: grayscale(0.56) sepia(0.18) brightness(0.66);
+}
+
+#deck-combat-screen .battle-card.unaffordable:hover,
+#deck-combat-screen .battle-card.unaffordable:focus-visible {
+  border-color: rgba(164, 152, 124, 0.44);
+  filter: grayscale(0.42) sepia(0.16) brightness(0.72);
+  transform: translateY(-7px) scale(1.01) !important;
+}
+
+#deck-combat-screen .card-cost {
+  border-color: rgba(222, 193, 123, 0.66);
+  border-radius: 2px 6px 2px 6px;
+  background: #19150e;
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+#deck-combat-screen .battle-card .card-art {
+  filter: saturate(0.9) contrast(1.06) sepia(0.03);
+}
+
+#deck-combat-screen .effect-chip {
+  border-left-color: var(--ui-cinnabar);
+  background: rgba(165, 72, 57, 0.105);
+  color: #d9cbae;
+}
+
+#deck-combat-screen .effect-block,
+#deck-combat-screen .effect-fortify,
+#deck-combat-screen .effect-aura {
+  border-left-color: var(--ui-old-gold);
+  background: rgba(189, 154, 87, 0.1);
+}
+
+#deck-combat-screen .effect-heal,
+#deck-combat-screen .effect-gain_qi {
+  border-left-color: var(--ui-jade);
+  background: rgba(111, 155, 132, 0.11);
+}
+
+#deck-combat-screen .combat-player-treasure {
+  color: var(--ui-paper);
+  border: 1px solid color-mix(in srgb, var(--path-primary, var(--ui-old-gold)) 62%, var(--ui-old-gold));
+  border-radius: 3px 9px 3px 9px;
+  background:
+    radial-gradient(circle at 25px 29px, color-mix(in srgb, var(--path-primary, var(--ui-jade)) 12%, transparent), transparent 36px),
+    linear-gradient(100deg, rgba(17, 20, 17, 0.97), rgba(8, 12, 12, 0.94)),
+    var(--surface-grain);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.42),
+    inset 0 0 0 2px rgba(229, 211, 166, 0.018);
+  transition:
+    transform var(--motion-fast) var(--motion-spring),
+    border-color var(--motion-fast) ease,
+    box-shadow var(--motion-medium) ease;
+}
+
+#deck-combat-screen .combat-player-treasure:hover,
+#deck-combat-screen .combat-player-treasure:focus-visible {
+  border-color: var(--ui-old-gold-bright);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.48),
+    inset 0 0 18px rgba(189, 154, 87, 0.055);
+  transform: translateY(-2px);
+}
+
+#deck-combat-screen .combat-player-treasure:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+#deck-combat-screen .combat-player-treasure img {
+  border-color: rgba(218, 190, 126, 0.38);
+  background: radial-gradient(circle, rgba(72, 63, 42, 0.7), rgba(8, 11, 10, 0.98));
+  box-shadow: inset 0 0 12px rgba(218, 190, 126, 0.09);
+}
+
+#deck-combat-screen .combat-dossier-group,
+#deck-combat-screen .combat-feedback-burst.floating-text {
+  border-color: rgba(203, 171, 103, 0.36);
+  background:
+    linear-gradient(145deg, rgba(22, 24, 20, 0.96), rgba(7, 11, 11, 0.96)),
+    var(--surface-grain);
+  box-shadow:
+    0 13px 30px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 2px rgba(229, 211, 166, 0.018);
+}
+
+/* The feedback type remains event-driven; color is semantic, not a global neon wash. */
+#deck-combat-screen .combat-feedback-burst.feedback-damage { --feedback-color: #d96f59; }
+#deck-combat-screen .combat-feedback-burst.feedback-shield { --feedback-color: #c4a862; }
+#deck-combat-screen .combat-feedback-burst.feedback-heal { --feedback-color: #7cab87; }
+#deck-combat-screen .combat-feedback-burst.feedback-status { --feedback-color: #9b7eaa; }
+#deck-combat-screen .combat-feedback-burst.feedback-focus { --feedback-color: #d1b36b; }
+
+/* ────────────────────── Responsive contracts ────────────────────── */
+
+@media (max-width: 900px) {
+  #game-screen .game-layout {
+    gap: 10px;
+    padding: 8px;
+  }
+
+  #game-screen .attribute-panel,
+  #game-screen .log-sidebar {
+    opacity: 1;
+    transform: none;
+  }
+
+  #game-screen .log-sidebar {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+@media (max-width: 720px) {
+  #deck-combat-screen .combat-atmosphere {
+    /* Mobile retains the same authored geography as desktop. The hand rail,
+       not a global dimmer, owns contrast and input priority. */
+    filter: saturate(0.9) sepia(0.04) contrast(1.04) brightness(0.9);
+    /* A tall phone using a centred 16:9 cover crop lands on an empty central
+       gate. Keep arena scale, but bias the view toward the readable approach
+       (stairs / terrain / approach architecture) so actors occupy a place. */
+    background-color: #090b0e;
+    background-position: 30% 38%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #deck-combat-screen[data-player-path] .combat-actor-card,
+  #deck-combat-screen[data-player-path] .player-token,
+  #deck-combat-screen[data-player-path] .enemy-token {
+    border-radius: 3px 9px 3px 9px;
+    box-shadow:
+      0 12px 26px rgba(0, 0, 0, 0.46),
+      0 0 0 3px rgba(5, 7, 7, 0.78),
+      0 0 0 4px rgba(203, 171, 103, 0.14);
+  }
+
+  #deck-combat-screen .battle-card {
+    border-radius: 3px 8px 3px 8px;
+  }
+
+  #deck-combat-screen .battle-card:hover,
+  #deck-combat-screen .battle-card:focus-visible {
+    transform: translateY(-10px) scale(1.018) !important;
+  }
+
+  #deck-combat-screen .combat-dossier-dock {
+    right: 8px;
+  }
+}
+
+@media (max-width: 520px) {
+  #game-screen .top-bar {
+    padding: 6px 8px;
+  }
+
+  #game-screen .game-layout {
+    padding: 5px 6px 12px;
+  }
+
+  #game-screen .card,
+  #game-screen .choice-buttons {
+    width: min(96vw, 460px);
+  }
+
+  #game-screen .card {
+    padding: 22px;
+    border-radius: 4px 12px 4px 12px;
+  }
+
+  #game-screen .choice-btn {
+    min-height: 68px;
+    padding: 11px 56px 11px 12px;
+  }
+
+  #game-screen .choice-btn .choice-desc {
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #game-screen::before,
+  #deck-combat-screen .combat-atmosphere,
+  #deck-combat-screen .enemy-intent,
+  #game-screen .card[data-keyframe-art="true"] .card-narrative-aura::after {
+    animation: none !important;
+  }
+
+  #game-screen *,
+  #game-screen *::before,
+  #game-screen *::after,
+  #deck-combat-screen *,
+  #deck-combat-screen *::before,
+  #deck-combat-screen *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  #game-screen .choice-btn:hover,
+  #game-screen .choice-btn:focus-visible,
+  #deck-combat-screen .battle-card:hover,
+  #deck-combat-screen .battle-card:focus-visible {
+    transform: none !important;
+  }
+}
+
+/* Mobile narrative copy must not be clipped by the fixed 92px immersive body.
+   Keep the card's bottom anchor, but give the paragraph enough room to show
+   the complete teaching/choice context at 390px instead of hiding its first
+   line behind the body's overflow edge. */
+@media (max-width: 520px) {
+  #game-screen .card.card-immersive > .card-body {
+    height: 136px;
+    overflow: visible;
+  }
+
+  #game-screen .card.card-immersive .card-title {
+    bottom: 148px;
+  }
+
+  #game-screen .card.card-immersive:not(.card-combat_warning) .card-description {
+    display: block !important;
+    height: auto !important;
+    max-height: 136px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: initial !important;
+    text-overflow: clip;
+  }
+}
+
+/* AGC-I2 market material pass: the authored market scene owns the whole
+   surface; the regulated inventory is one ruled counter ledger, not a stack
+   of translucent web cards. Gameplay remains ordinary DOM controls. */
+#shop-panel[data-market-presentation] {
+  background-color: #151713 !important;
+  background-image:
+    linear-gradient(180deg, rgba(12, 16, 15, .18), rgba(8, 11, 10, .46)),
+    var(--market-background-image, linear-gradient(#171914, #171914)),
+    var(--market-surface-fallback, linear-gradient(#171914, #171914)) !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-content {
+  width: min(92vw, 570px);
+  max-width: 570px;
+  max-height: calc(100dvh - 36px);
+  padding: 22px 18px 16px;
+  color: #28271e;
+  text-shadow: none;
+  border: 2px solid #423a27;
+  border-radius: 1px;
+  outline: 1px solid rgba(211, 193, 139, .72);
+  outline-offset: -5px;
+  background-color: #b7a879;
+  background-image:
+    linear-gradient(90deg, rgba(83, 66, 35, .08), transparent 16%, transparent 84%, rgba(83, 66, 35, .09)),
+    repeating-linear-gradient(0deg, rgba(49, 47, 35, .055) 0 1px, transparent 1px 7px),
+    linear-gradient(160deg, #c4b68a 0%, #b4a474 58%, #a99668 100%) !important;
+  box-shadow:
+    0 0 0 3px rgba(33, 29, 20, .64),
+    9px 11px 0 rgba(7, 9, 8, .48),
+    inset 0 0 28px rgba(70, 50, 23, .16);
+  scrollbar-color: #66563a #a59568;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-title {
+  margin: 0 24px 8px;
+  padding: 0 0 9px;
+  color: #24251d;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 1.14rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-shadow: none;
+  border-bottom: 3px double rgba(66, 56, 35, .72);
+}
+
+#shop-panel[data-market-layout="ledger"] .modal-close {
+  top: 12px;
+  right: 13px;
+  width: 30px;
+  height: 30px;
+  color: #4c3b2a;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+#shop-panel[data-market-layout="ledger"] .modal-close:hover,
+#shop-panel[data-market-layout="ledger"] .modal-close:focus-visible {
+  color: #782f25;
+  background: rgba(111, 47, 37, .10);
+  outline: 1px solid rgba(105, 48, 39, .58);
+  outline-offset: -3px;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-spirit-stone {
+  margin: 0 0 6px;
+  padding: 5px 0 7px;
+  color: #5e4626;
+  font-weight: 700;
+  border-top: 0;
+  border-bottom: 1px solid rgba(64, 55, 36, .46);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-arrival-anchor {
+  margin: 4px 0 7px;
+  padding: 7px 4px;
+  color: #3c3828;
+  font-size: .80rem;
+  line-height: 1.5;
+  letter-spacing: .08em;
+  text-shadow: none;
+  background: transparent;
+  border-top: 1px solid rgba(76, 62, 35, .44);
+  border-bottom: 1px solid rgba(76, 62, 35, .44);
+}
+
+#shop-panel[data-market-layout="ledger"] #shop-items-container {
+  gap: 0;
+  margin-bottom: 10px;
+  border-top: 1px solid rgba(64, 55, 36, .34);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item {
+  position: relative;
+  gap: 5px;
+  padding: 10px 8px 9px 22px;
+  color: #2d2d23;
+  border: 0;
+  border-left: 0;
+  border-bottom: 1px solid rgba(65, 55, 34, .48);
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none;
+  transition: background-color 90ms steps(2, end);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 15px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #6f4a32;
+  transform: rotate(45deg);
+  background: rgba(113, 70, 44, .12);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item:hover,
+#shop-panel[data-market-layout="ledger"] .shop-item:focus-within {
+  border-color: rgba(65, 55, 34, .62);
+  background-color: rgba(246, 232, 184, .28) !important;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item.disabled {
+  opacity: .52;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item-name {
+  color: #24251d;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: .98rem;
+  font-weight: 700;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item-price {
+  color: #693d25;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item-desc {
+  color: #39392c;
+  font-size: .79rem;
+  line-height: 1.55;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item-type {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 5px;
+  margin-top: 0;
+  color: #5c4d34;
+  font-size: .68rem;
+  letter-spacing: .12em;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item-type::before {
+  content: "";
+  width: 8px;
+  height: 2px;
+  background: #76543a;
+  box-shadow: 3px 3px 0 rgba(118, 84, 58, .55);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-buy-btn,
+#shop-panel[data-market-layout="ledger"] .shop-leave-btn {
+  border: 1px solid #6f3e30;
+  border-radius: 1px;
+  color: #eee0b3;
+  background: #704435;
+  box-shadow: 2px 2px 0 rgba(55, 39, 27, .40);
+  text-shadow: none;
+  transition: transform 80ms steps(1, end), background-color 80ms steps(1, end);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-buy-btn:hover:not(:disabled),
+#shop-panel[data-market-layout="ledger"] .shop-leave-btn:hover,
+#shop-panel[data-market-layout="ledger"] .shop-buy-btn:focus-visible,
+#shop-panel[data-market-layout="ledger"] .shop-leave-btn:focus-visible {
+  color: #fff0c2;
+  background: #843f32;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 rgba(55, 39, 27, .42);
+  outline: 2px solid rgba(54, 47, 31, .72);
+  outline-offset: 2px;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-buy-btn:disabled {
+  color: #6e6650;
+  border-color: rgba(74, 66, 47, .42);
+  background: rgba(91, 81, 59, .12);
+  box-shadow: none;
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-empty-state {
+  padding: 22px 8px;
+  color: #514a35;
+  text-align: center;
+  border-bottom: 1px solid rgba(65, 55, 34, .45);
+}
+
+@media (max-width: 520px) {
+  #shop-panel[data-market-layout="ledger"] .shop-content {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 24px);
+    padding: 20px 13px 13px;
+    box-shadow:
+      0 0 0 2px rgba(33, 29, 20, .64),
+      5px 7px 0 rgba(7, 9, 8, .46),
+      inset 0 0 22px rgba(70, 50, 23, .14);
+  }
+
+  #shop-panel[data-market-layout="ledger"] .shop-item {
+    padding: 9px 5px 8px 19px;
+  }
+
+  #shop-panel[data-market-layout="ledger"] .shop-item::before {
+    left: 5px;
+  }
+}
+
+/* AGC-J-FIRST-VISUAL-01 follow-through.  A route is one place and one
+   decision surface, not two black web buttons placed over an illustration. */
+body[data-visual-signature="route"] #game-screen .card.card-immersive::before {
+  background:
+    linear-gradient(to top, rgba(5, 10, 13, .34), rgba(8, 17, 19, .14) 32%, rgba(10, 21, 24, .025) 62%, transparent 82%),
+    var(--surface-grain);
+}
+
+body[data-visual-signature="route"] #game-screen .card.card-immersive > .card-portrait::before {
+  background:
+    linear-gradient(to top, rgba(4, 10, 13, .23) 0%, rgba(4, 10, 13, .055) 36%, rgba(4, 10, 13, .01) 70%, rgba(4, 10, 13, .035) 100%) !important;
+}
+
+body[data-visual-signature="route"] #game-screen .card.card-immersive > .card-portrait {
+  filter: saturate(.86) contrast(1.02) brightness(1.10) sepia(.035) !important;
+}
+
+body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentation="route"] {
+  gap: 0;
+  padding: 8px;
+  border: 1px solid rgba(181, 202, 177, .48);
+  border-left: 3px solid rgba(209, 180, 101, .82);
+  border-radius: 5px 12px 5px 12px;
+  background-color: rgba(28, 48, 46, .56);
+  background-image:
+    linear-gradient(112deg, rgba(67, 88, 78, .58), rgba(15, 31, 34, .48)),
+    var(--surface-grain);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .18), inset 0 0 0 1px rgba(241, 225, 178, .075);
+}
+
+body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentation="route"] .choice-row {
+  gap: 0;
+}
+
+body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentation="route"] .choice-btn.visible {
+  min-height: 78px !important;
+  padding: 12px 43px 12px 12px !important;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentation="route"] .choice-btn.left {
+  border-right: 1px solid rgba(213, 224, 197, .30) !important;
+}
+
+body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentation="route"] .choice-btn:hover,
+body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentation="route"] .choice-btn.highlight,
+body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentation="route"] .choice-btn:focus-visible {
+  border-color: transparent !important;
+  background: rgba(223, 205, 143, .12) !important;
+  box-shadow: inset 0 0 0 1px rgba(239, 220, 158, .32) !important;
+  transform: none;
+}
+
+body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentation="route"] .choice-btn:focus-visible {
+  outline-offset: -3px;
+}
+
+/* A regulated market is a ledger laid on the existing counter, not a dark
+   modal covering it. The route stamp is derived by GameUI from history/session
+   data and therefore carries no new gameplay state. */
+#shop-panel[data-market-presentation] {
+  background: rgba(2, 7, 8, .38);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-content {
+  background-image:
+    linear-gradient(136deg, rgba(71, 55, 29, .34), rgba(15, 29, 32, .46)),
+    var(--market-background-image),
+    var(--market-surface-fallback);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item {
+  background:
+    linear-gradient(102deg, rgba(86, 68, 39, .35), rgba(17, 29, 31, .42)),
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(245, 215, 144, .05) 28px);
+  box-shadow: inset 0 1px rgba(255, 229, 171, .13), 0 4px 11px rgba(0, 0, 0, .08);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-item:hover {
+  background:
+    linear-gradient(102deg, rgba(111, 86, 43, .44), rgba(25, 47, 48, .48)),
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(255, 226, 156, .075) 28px);
+}
+
+#shop-panel[data-market-layout="ledger"] .shop-arrival-anchor {
+  margin: 5px 0 10px;
+  padding: 7px 9px;
+  border-top: 1px solid rgba(242, 205, 125, .28);
+  border-bottom: 1px solid rgba(242, 205, 125, .28);
+  color: rgba(255, 234, 184, .92);
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: .82rem;
+  letter-spacing: .10em;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(18, 10, 4, .85);
+  background: rgba(75, 52, 21, .20);
+}
+
+@media (max-width: 520px) {
+  body[data-visual-signature="route"] #game-screen .card.card-immersive .card-description {
+    background: rgba(4, 9, 14, .34);
+  }
+
+  body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentation="route"] {
+    padding: 6px;
+  }
+
+  body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentation="route"] .choice-btn.visible {
+    min-height: 74px !important;
+    padding: 10px 32px 10px 9px !important;
+  }
+}
