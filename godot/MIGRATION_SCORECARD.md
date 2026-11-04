@@ -77,8 +77,8 @@
 | 阶段 | 进度 | 状态 | 证据 | 说明 |
 |---|---|---|---|---|
 | INF-1 战斗桩 | 1/1 | 功能性通过 | `battle_stub_contract`（`BATTLE_STUB_CONTRACT_PASS`） | 非战斗可脱离真实战斗验证「战斗后」流程 |
-| INF-2 桩接入开关 | 1/1 | 功能性通过 | `noncombat_opening_ui.BATTLE_STUB_MODE`（默认 false） | 生产行为不变 |
-| INF-3 3 条自然路线端到端 | 0/3 | 未开始 | — | 雷关 / 剑修试炼 / 势力遭遇 |
+| INF-2 桩接入开关 | 1/1 | 功能性通过 | `noncombat_opening_ui.battle_stub_mode`（默认 false） | 生产行为不变 |
+| INF-3 自然路线端到端 | 1/3 | 功能性通过 | `battle_stub_route`（`BATTLE_STUB_ROUTE_PASS`，雷关：`BATTLE_PENDING` → `BATTLE_RESULT_PENDING`，下一卡 `breakthrough_reward`，instance `enc:slot_2:life:0:30:ch_qi_100:1`） | 剑修试炼 / 势力遭遇未验 |
 | INF-4 资产缺失可见化 | 1/1 | 功能性通过 | `runtime_data_registry.missing_texture_report()` | `texture_for` 返回契约未变 |
 | INF-5 非战斗占位纹理 | 1/1 | 功能性通过 | `noncombat_opening_ui._art_texture()`（11 处接入） | 缺图显示洋红，不再静默空白 |
 | INF-6 逐帧容错 | 1/1 | 功能性通过 | `runtime_data_registry.sprite_frames_for()` | 缺帧跳过，全缺才返回 null |
@@ -99,11 +99,11 @@
 
 | 维度 | 数值 |
 |---|---|
-| 子项总数（已定义） | 14（N0 三项 + N1 八项 + INF 三项） |
-| 完全签收 | 3（N0-a/b/c） |
-| 功能性通过 | 4（N1-a、INF-1、INF-4、INF-5、INF-6 中已验部分） |
-| 未开始 | 7 |
-| **非战斗完成度（子项口径）** | **约 43%（6/14）** |
+| 子项总数（已定义） | **17**（N0 三项 + N1 八项 + INF 六项） |
+| 完全签收 | 3（N0-a / N0-b / N0-c） |
+| 功能性通过 | 7（N1-a、INF-1、INF-2、INF-3、INF-4、INF-5、INF-6） |
+| 未开始 | 7（N1-b ~ N1-h） |
+| **非战斗完成度（子项口径）** | **约 59%（10/17）** |
 
 > 对比：改造前 N 阶段口径为 **1/12（8.3%）**。数字上升不代表工作量增加，而是**通过开始被记账**——这是本次整改要解决的核心问题。
 
