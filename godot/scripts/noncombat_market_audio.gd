@@ -28,11 +28,11 @@ func _init(catalog: Dictionary) -> void:
 	_catalog = catalog
 	ambience_player = AudioStreamPlayer.new()
 	ambience_player.name = "MarketAmbience"
-	ambience_player.bus = "Master"
+	ambience_player.bus = "BGM"
 	add_child(ambience_player)
 	transaction_player = AudioStreamPlayer.new()
 	transaction_player.name = "MarketTransaction"
-	transaction_player.bus = "Master"
+	transaction_player.bus = "SFX"
 	add_child(transaction_player)
 
 

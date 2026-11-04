@@ -9,6 +9,12 @@ const MarketAudio = preload("res://scripts/noncombat_market_audio.gd")
 const AUDIO_ROOT := "res://content/assets/audio/"
 const BUS_GAINS := {"bgm": 0.45, "ambience": 0.22, "sfx": 0.5, "voice": 0.6}
 const MASTER_BUS := "Master"
+# 实际总线在 default_bus_layout.tres 定义（Master/BGM/SFX/Voice/UI）。
+# 各子总线保持 0dB，音量仍由 BUS_GAINS 做软件缩放，听感与拆总线前一致；
+# 拆开的目的是让 BGM/SFX/Voice 能独立调节，不必再改代码。
+const BGM_BUS := "BGM"
+const SFX_BUS := "SFX"
+const VOICE_BUS := "Voice"
 
 var bgm_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
@@ -44,23 +50,23 @@ func _init(_registry: RefCounted, content_repository: RefCounted = null,
 	add_child(market_audio)
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.name = "OpeningBgm"
-	bgm_player.bus = MASTER_BUS
+	bgm_player.bus = BGM_BUS
 	add_child(bgm_player)
 	sfx_player = AudioStreamPlayer.new()
 	sfx_player.name = "ChoiceSfx"
-	sfx_player.bus = MASTER_BUS
+	sfx_player.bus = SFX_BUS
 	add_child(sfx_player)
 	voice_player = AudioStreamPlayer.new()
 	voice_player.name = "PathOath"
-	voice_player.bus = MASTER_BUS
+	voice_player.bus = VOICE_BUS
 	add_child(voice_player)
 	ambience_player = AudioStreamPlayer.new()
 	ambience_player.name = "SceneAmbience"
-	ambience_player.bus = MASTER_BUS
+	ambience_player.bus = BGM_BUS
 	add_child(ambience_player)
 	ambience_tail_player = AudioStreamPlayer.new()
 	ambience_tail_player.name = "PreviousSceneAmbience"
-	ambience_tail_player.bus = MASTER_BUS
+	ambience_tail_player.bus = BGM_BUS
 	add_child(ambience_tail_player)
 	bgm_player.finished.connect(_on_bgm_finished)
 	voice_player.finished.connect(_on_voice_finished)
