@@ -8,7 +8,8 @@
       "bonuses": {
         "cultivation": 5,
         "daoHeart": 1,
-        "health": -1
+        "health": -1,
+        "combatOpeningBlock": 1
       }
     },
     "spell": {
@@ -41,7 +42,8 @@
       "bonuses": {
         "cultivation": 3,
         "spiritStone": 5,
-        "fortune": 15
+        "fortune": 15,
+        "combatOpeningBlock": 1
       }
     }
   }

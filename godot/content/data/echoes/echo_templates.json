@@ -1,0 +1,217 @@
+{
+  "description": "选择延迟回响模板 —— 玩家的早期选择在15+轮后产生叙事回响。每个NPC有2-3个模板，条件不同。",
+  "bai_ren": {
+    "echoTemplates": [
+      {
+        "id": "bai_ren_sword_trust",
+        "minTurnGap": 15,
+        "minAffection": 60,
+        "npcAlive": true,
+        "location": "宗门",
+        "minRealm": "foundation",
+        "echoText": "白刃真人在剑崖边转过身来，看着你的目光比初见时柔了太多。\n\n「当初你还只是个连剑气都凝不出来的小子，」他顿了顿，从袖中取出一把旧剑。「这把剑，是我师兄的。他死之前说，如果有一天我遇到一个值得托付的剑修——就给他。」\n\n他没有看你，只是把剑柄朝向了你。",
+        "echoChoices": {
+          "left": { "text": "双手接过，行弟子礼", "effects": { "daoHeart": 10, "bond_bai_ren": 10, "treasure": "fallen_sword_of_shixiong" } },
+          "right": { "text": "「我还不够格。」退回", "effects": { "daoHeart": 5, "bond_bai_ren": 5, "wisdom": 3 } }
+        }
+      },
+      {
+        "id": "bai_ren_war_flashback",
+        "minTurnGap": 20,
+        "minAffection": 40,
+        "npcAlive": true,
+        "location": null,
+        "minRealm": "golden",
+        "echoText": "白刃真人今天罕见地喝了一口酒。\n\n「百年前那场大战之后，我以为自己不会再信任何人了，」他放下酒杯，杯底在石桌上磕出闷响。「但你这小子让我想起了那个人——那个我欠了一条命却再也还不了的人。」\n\n他起身，背对着你。「如果有一天你也要去面对那种抉择——选你自己。这是我当年没教给师兄的话。」",
+        "echoChoices": {
+          "left": { "text": "「为什么不早告诉他？」", "effects": { "wisdom": 5, "bond_bai_ren": 5, "find_clue": "century_war_truth" } },
+          "right": { "text": "默默记下，敬他一杯酒", "effects": { "daoHeart": 8, "bond_bai_ren": 8 } }
+        }
+      },
+      {
+        "id": "bai_ren_last_lesson",
+        "minTurnGap": 25,
+        "minAffection": 80,
+        "npcAlive": false,
+        "location": "剑崖",
+        "minRealm": "nascent",
+        "echoText": "剑崖的风声里，隐约夹杂着一道熟悉的剑鸣。\n\n你停下脚步。那剑鸣不是来自现在的剑崖——是来自你心里。白刃真人走后，你以为他教给你的最后一式你已经学会了。但你错了。\n\n当风吹过崖壁，一道极细的剑气在你面前凭空划过，在地上刻出了三个字：「活下去」。\n\n那不是杀招。那是他用最后的剑意，在三年前就为今天的你留下的东西。",
+        "echoChoices": {
+          "left": { "text": "跪下，以剑拄地，久久不起", "effects": { "daoHeart": 20, "sword_insight": 10 } },
+          "right": { "text": "拔剑对天，用同样的剑式回应", "effects": { "cultivation": 20, "combat_skill": 1 } }
+        }
+      }
+    ]
+  },
+  "jian_linger": {
+    "echoTemplates": [
+      {
+        "id": "jian_linger_sword_dance",
+        "minTurnGap": 15,
+        "minAffection": 50,
+        "npcAlive": true,
+        "location": "宗门",
+        "minRealm": "foundation",
+        "echoText": "月光下，剑灵儿独自在宗门后山练剑。她的剑招比从前更凌厉，但收剑时那一下轻颤——你认出来了，那是你很久以前随口指点过的一式。\n\n她看到你，剑尖垂下。\n\n「这招我从那之后每天都在练，」她低头看着剑锋，声音轻得像是对剑说话，「想着如果哪天你看到了，不能让你觉得……白说了。」",
+        "echoChoices": {
+          "left": { "text": "「这招现在比我使得好」", "effects": { "bond_jian_linger": 8, "daoHeart": 3 } },
+          "right": { "text": "拔剑和她切磋一场", "effects": { "cultivation": 5, "bond_jian_linger": 5, "sword_insight": 2 } }
+        }
+      },
+      {
+        "id": "jian_linger_jealousy_echo",
+        "minTurnGap": 18,
+        "minAffection": 30,
+        "npcAlive": true,
+        "location": null,
+        "minRealm": "golden",
+        "echoText": "剑灵儿今天对你格外冷淡。旁人看不出，但你知道——她每说一个「嗯」、每避一次你的目光，都是在生你的闷气。\n\n终于，在练剑时她一剑劈断了木桩，转身瞪着你。\n\n「你说过修仙者不该有牵绊——那你为什么帮了她？」\n\n她没有说「她」是谁。但你知道。那可能是一个很久以前你无心帮过的人，而剑灵儿记到了现在。",
+        "echoChoices": {
+          "left": { "text": "「因为当时没得选」", "effects": { "bond_jian_linger": 3, "wisdom": 3 } },
+          "right": { "text": "沉默片刻：「你不一样」", "effects": { "bond_jian_linger": 12, "daoHeart": 5 } }
+        }
+      }
+    ]
+  },
+  "xuesha_laozu": {
+    "echoTemplates": [
+      {
+        "id": "xuesha_laozu_respect_echo",
+        "minTurnGap": 20,
+        "minAffection": 40,
+        "npcAlive": true,
+        "location": "魔域",
+        "minRealm": "golden",
+        "echoText": "血煞老祖在魔泉边静坐，注意到你来了，没有睁眼。\n\n「很久以前，有个人对我说过和你差不多的话，」他的声音在空旷的魔域里回荡。「那时候我以为他是天真。后来他死了，我才明白——他一直是对的。」\n\n他睁开眼，血色瞳孔里倒映着你的脸。\n\n「别死。这条路上不天真的人活不长——但太天真的人一样活不长。你要搞清楚自己是哪一种。」",
+        "echoChoices": {
+          "left": { "text": "「我会活到你后悔说了这些话」", "effects": { "daoHeart": 5, "bond_xuesha_laozu": 8, "karmaGood": 3 } },
+          "right": { "text": "「你的那个人……后来怎么样了？」", "effects": { "wisdom": 8, "bond_xuesha_laozu": 3, "find_clue": "xuesha_laozu_past_love" } }
+        }
+      },
+      {
+        "id": "xuesha_laozu_forgive_echo",
+        "minTurnGap": 25,
+        "minAffection": 60,
+        "npcAlive": true,
+        "location": null,
+        "minRealm": "nascent",
+        "echoText": "血煞老祖今天没有穿魔袍。他穿了一件旧得发黄的白衣——你从未见过他这个样子。\n\n「我杀了很多人，」他说，语气平淡得像在报菜名。「但真正让我后悔的，不是杀的那些人——是没有杀的那些。」\n\n他转向你，目光锋利。\n\n「如果你将来要恨我——至少搞清楚你恨的是什么。很多人恨了一辈子，恨的都是错的。」",
+        "echoChoices": {
+          "left": { "text": "「我没资格恨你」", "effects": { "bond_xuesha_laozu": 10, "daoHeart": 5 } },
+          "right": { "text": "「我不会恨你——但我也不会原谅」", "effects": { "bond_xuesha_laozu": 5, "daoHeart": 10 } }
+        }
+      }
+    ]
+  },
+  "yin_xue": {
+    "echoTemplates": [
+      {
+        "id": "yin_xue_mother_secret",
+        "minTurnGap": 20,
+        "minAffection": 50,
+        "npcAlive": true,
+        "location": null,
+        "minRealm": "golden",
+        "echoText": "殷血今天格外安静。他坐在魔泉边，手里捏着一枚褪色的玉佩——你很久以前见过这枚玉，那时你没多问。\n\n「你知道吗，」他忽然开口，「我和血煞老祖的关系，不止师徒。」\n\n玉佩在他掌心里翻转。\n\n「我母亲是他的……」他顿了顿，「算了。说不说都不重要了。只是——你当年没追问这件事。我一直记得。」",
+        "echoChoices": {
+          "left": { "text": "「不说有不说的理由」，坐在他旁边", "effects": { "bond_yin_xue": 10, "daoHeart": 3 } },
+          "right": { "text": "「你想说的时候，我在」", "effects": { "bond_yin_xue": 15, "wisdom": 2 } }
+        }
+      },
+      {
+        "id": "yin_xue_sword_collection",
+        "minTurnGap": 18,
+        "minAffection": 40,
+        "npcAlive": true,
+        "location": "魔域",
+        "minRealm": "foundation",
+        "echoText": "殷血的寝宫里，你无意中瞥见墙角立着一把剑。\n\n那把剑你认识——那是剑灵儿的佩剑「青鸾」，在某次正魔交锋中被击落过。\n\n「别看，」殷血快步挡在你面前，脸微红——他从不脸红。「这只是一把剑。」\n\n「魔修收藏正道剑？」\n\n「是——战利品。」他说得太快，快得不像是真话。",
+        "echoChoices": {
+          "left": { "text": "「战利品不需要擦这么亮」，微笑", "effects": { "bond_yin_xue": 8, "wisdom": 3 } },
+          "right": { "text": "假装没看见，转移话题", "effects": { "bond_yin_xue": 3, "daoHeart": 5 } }
+        }
+      }
+    ]
+  },
+  "tianji_laoren": {
+    "echoTemplates": [
+      {
+        "id": "tianji_laoren_prophecy_echo",
+        "minTurnGap": 22,
+        "minAffection": 30,
+        "npcAlive": true,
+        "location": "坊市",
+        "minRealm": "golden",
+        "echoText": "天机老人天机阁的角落里，翻出了一枚很旧的竹简。\n\n「这是我很久以前给人算过的一卦，」他将竹简推到你面前。竹简上写着——不是预言的文字，而是警告的红字。「那人没信我。他的全家都死了。」\n\n他盯着你，目光深得像一口枯井。\n\n「所以我学会了不试图让人相信。但我今天破例了——因为你的卦象和那个人很像。」",
+        "echoChoices": {
+          "left": { "text": "接过竹简，仔细阅读", "effects": { "wisdom": 10, "find_clue": "ancient_prophecy_warning" } },
+          "right": { "text": "「我不信命——但我信你」", "effects": { "daoHeart": 10, "bond_tianji_laoren": 8 } }
+        }
+      }
+    ]
+  },
+  "jiuwei_suyue": {
+    "echoTemplates": [
+      {
+        "id": "jiuwei_suyue_tribe_memory",
+        "minTurnGap": 20,
+        "minAffection": 40,
+        "npcAlive": true,
+        "location": null,
+        "minRealm": "nascent",
+        "echoText": "九尾溯月今晚现出了九条尾巴——她很少在任何人面前这样做。月光下，她的妖气与月华交缠，美得不像是人间之物。\n\n「以前，我的族人会在月圆之夜一起这样，」她看着月亮，声音里带着一种沉到底的平静。「现在只剩我一个了。」\n\n她转向你，眼中没有泪——妖不哭。\n\n「你不是妖。但你让我觉得——这条命，也许不只属于复仇。」",
+        "echoChoices": {
+          "left": { "text": "「你的族人会为你骄傲」", "effects": { "bond_jiuwei_suyue": 10, "daoHeart": 5 } },
+          "right": { "text": "默默陪她坐到月落", "effects": { "bond_jiuwei_suyue": 15, "wisdom": 3 } }
+        }
+      },
+      {
+        "id": "jiuwei_suyue_prophecy_acceptance",
+        "minTurnGap": 25,
+        "minAffection": 60,
+        "npcAlive": true,
+        "location": "天道虚空",
+        "minRealm": "deity",
+        "echoText": "在天道虚空中，九尾溯月停下脚步。她看着那些因果之线——其中一根，从她心口延伸到天机老人的心口，是暗红色的。\n\n「我恨了他一千年，」她轻声说，「恨他预言了我们一族的覆灭而什么都没做。」\n\n她伸出手，触碰那根暗红的线。\n\n「但现在我看到了——那根线不叫「仇恨」，叫「等待」。他在等我去恨他——因为他觉得那样我能活下去。」\n\n她收回手，眼中的妖气散了一半。\n\n「帮我谢谢他。我没法自己去。」",
+        "echoChoices": {
+          "left": { "text": "「我会告诉他」", "effects": { "daoHeart": 15, "bond_jiuwei_suyue": 10 } },
+          "right": { "text": "「有些话，你该自己去说」", "effects": { "wisdom": 8, "bond_jiuwei_suyue": 5, "bond_tianji_laoren": 5 } }
+        }
+      }
+    ]
+  },
+  "mu_qinglan": {
+    "echoTemplates": [
+      {
+        "id": "mu_qinglan_vengeance_doubt",
+        "minTurnGap": 20,
+        "minAffection": 45,
+        "npcAlive": true,
+        "location": null,
+        "minRealm": "golden",
+        "echoText": "慕青岚站在慕家废墟的残垣前，已经站了很久。\n\n「我以前以为，只要杀了血煞老祖，一切就都结束了，」她的声音很轻，轻到像是在对废墟说话。「但现在——我不知道。也许杀了他之后，我连自己是谁都不知道了。」\n\n她转头看你。\n\n「你帮过我那么多次。但你从来不替我做决定。为什么？」",
+        "echoChoices": {
+          "left": { "text": "「因为你的仇恨，只有你自己才能放下」", "effects": { "bond_mu_qinglan": 10, "wisdom": 5 } },
+          "right": { "text": "「我不想成为你恨的第二个人」", "effects": { "bond_mu_qinglan": 8, "daoHeart": 3 } }
+        }
+      }
+    ]
+  },
+  "bai_luoxuan": {
+    "echoTemplates": [
+      {
+        "id": "bai_luoxuan_half_blood",
+        "minTurnGap": 18,
+        "minAffection": 40,
+        "npcAlive": true,
+        "location": "洞府",
+        "minRealm": "foundation",
+        "echoText": "白落霜今天没有束发。白色的狐耳暴露在空气中——她平时总是藏起来的。\n\n「有时候我不知道自己到底是人还是妖，」她拨弄着手中的白狐毛团，那是她的本命法器。「正道觉得我是妖。妖族觉得我是人。两边都觉得我不够格。」\n\n她抬头看你，目光清澈。\n\n「但你从来没这样看过我。为什么？」",
+        "echoChoices": {
+          "left": { "text": "「你是白落霜——不是什么半人半妖」", "effects": { "bond_bai_luoxuan": 12, "daoHeart": 5 } },
+          "right": { "text": "「我没有资格评判你是人是妖」", "effects": { "bond_bai_luoxuan": 5, "wisdom": 5 } }
+        }
+      }
+    ]
+  }
+}

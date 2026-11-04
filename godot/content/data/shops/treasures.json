@@ -1,0 +1,1016 @@
+{
+  "_version": "2.0",
+  "_design": "三层模型：属性(passive) + 特性(trait) + 机制(CombatSystem钩子)。主动技能已移除——法宝改变战斗规则，不增加按钮。",
+  "treasures": [
+    {
+      "id": "青云剑匣",
+      "name": "青云剑匣",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "foundation",
+      "desc": "本命法宝。剑修梦寐以求的剑匣。每打出3张带剑标签的卡，自动发射一枚飞剑（穿透伤害5）。",
+      "price": 150,
+      "passives": [
+        {
+          "hook": "onCardPlay",
+          "cardTag": "sword",
+          "triggerCount": 3,
+          "effect": "dealDamage",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "神农鼎",
+      "name": "神农鼎",
+      "type": "artifact",
+      "rarity": 5,
+      "realm": "golden",
+      "desc": "本命法宝。相传是神农试百草所用之物。回合结束时若未造成伤害，恢复2点气血。",
+      "price": 200,
+      "passives": [
+        {
+          "hook": "onTurnEnd",
+          "condition": "noDamageDealt",
+          "effect": "heal",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "玄铁甲",
+      "name": "玄铁甲",
+      "type": "armor",
+      "rarity": 2,
+      "realm": "qi",
+      "trait": "坚盾",
+      "passive": {
+        "def": 1
+      },
+      "desc": "玄铁锻造的护甲。格挡窗口扩大30%——更容易把握防御时机。",
+      "price": 10
+    },
+    {
+      "id": "灵泉葫芦",
+      "name": "灵泉葫芦",
+      "type": "accessory",
+      "rarity": 2,
+      "realm": "qi",
+      "trait": "续命",
+      "passive": {
+        "hpRegen": 1
+      },
+      "desc": "永远温热的葫芦，装的是灵泉之水。装备后每回合回复少量体力。",
+      "price": 9
+    },
+    {
+      "id": "灵纹法袍",
+      "name": "灵纹法袍",
+      "type": "armor",
+      "rarity": 3,
+      "realm": "foundation",
+      "trait": "灵涌",
+      "passive": {
+        "def": 2,
+        "qiRegen": 1
+      },
+      "desc": "以灵纹编织的法袍。战斗每回合额外回复1点灵力——术修续航之选。",
+      "price": 15
+    },
+    {
+      "id": "剑心佩",
+      "name": "剑心佩",
+      "type": "weapon",
+      "rarity": 3,
+      "realm": "foundation",
+      "trait": "先手",
+      "passive": {
+        "atk": 2,
+        "critRate": 5
+      },
+      "combatPresentation": {
+        "id": "treasure_sword_heart_pendant_native_v1",
+        "tacticalCardId": "eq_weapon_strike",
+        "displayName": "剑心佩·青锋先鸣",
+        "trigger": "onCardPlay",
+        "triggerCardType": "attack",
+        "summary": "攻击 +2 · 暴击 +5",
+        "cardDescription": "玉佩引锋入剑：基础伤害4，装备攻击修正+2。",
+        "cardArt": {
+          "id": "combat_card_sword_heart_pendant_native_v1",
+          "image": "assets/combat/native_card_v2/sword_heart_pendant_card_native_v1.png"
+        },
+        "objectArt": {
+          "id": "combat_object_sword_heart_pendant_native_v2",
+          "image": "assets/combat/native_card_v2/sword_heart_pendant_object_native_v2.png",
+          "view": "front",
+          "anchor": "center",
+          "materialTone": "jade_brass_cinnabar"
+        },
+        "triggerFx": {
+          "id": "fx_sword_heart_resonance_native_v1",
+          "durationMs": 480,
+          "frames": [
+            "assets/combat/native_card_v2/fx_sword_heart_resonance/frame-1.png",
+            "assets/combat/native_card_v2/fx_sword_heart_resonance/frame-2.png",
+            "assets/combat/native_card_v2/fx_sword_heart_resonance/frame-3.png",
+            "assets/combat/native_card_v2/fx_sword_heart_resonance/frame-4.png"
+          ]
+        }
+      },
+      "desc": "青云剑宗内门弟子的信物。装备后攻击+2、暴击+5；出攻击式时剑心共鸣。",
+      "price": 16
+    },
+    {
+      "id": "剑心古剑",
+      "name": "剑心古剑",
+      "type": "weapon",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "问心",
+      "passive": {
+        "atk": 1,
+        "critRate": 3
+      },
+      "combatPresentation": {
+        "id": "treasure_sword_heart_ancient_sword_native_v1",
+        "tacticalCardId": "eq_weapon_strike",
+        "displayName": "剑心古剑·问心余锋",
+        "trigger": "onCardPlay",
+        "triggerCardType": "attack",
+        "summary": "攻击 +1 · 会心 +3",
+        "cardDescription": "古剑应念：基础伤害4，装备攻击修正+1；打出攻击式时剑铭亮起。",
+        "cardArt": {
+          "id": "combat_card_sword_heart_ancient_sword_native_v1",
+          "image": "assets/combat/sword_opportunity_v1/sword_heart_ancient_sword_object_native_v1.png"
+        },
+        "objectArt": {
+          "id": "combat_object_sword_heart_ancient_sword_native_v1",
+          "image": "assets/combat/sword_opportunity_v1/sword_heart_ancient_sword_object_native_v1.png",
+          "view": "front",
+          "anchor": "center",
+          "materialTone": "aged_iron_jade_cinnabar"
+        },
+        "triggerFx": {
+          "id": "fx_sword_heart_resonance_native_v1",
+          "durationMs": 480,
+          "frames": [
+            "assets/combat/native_card_v2/fx_sword_heart_resonance/frame-1.png",
+            "assets/combat/native_card_v2/fx_sword_heart_resonance/frame-2.png",
+            "assets/combat/native_card_v2/fx_sword_heart_resonance/frame-3.png",
+            "assets/combat/native_card_v2/fx_sword_heart_resonance/frame-4.png"
+          ]
+        }
+      },
+      "desc": "万剑问心后留下的古剑实体。装备后攻击+1、会心+3；它不是固定选项，而是剑道机遇混合池中的器物结果。",
+      "price": 32
+    },
+    {
+      "id": "万卷封魔残页",
+      "name": "万卷封魔残页",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "镇界",
+      "passive": {
+        "def": 1
+      },
+      "combatPresentation": {
+        "id": "treasure_codex_sealing_page_native_v1",
+        "tacticalCardId": "treasure_codex_sealing_page",
+        "displayName": "万卷封魔残页·一页镇界",
+        "trigger": "onTacticalCard",
+        "summary": "防御 +1 · 残页镇界",
+        "cardDescription": "残页悬空成禁：器契牌获得3点护盾与1层法印，本场消耗。",
+        "cardArt": {
+          "id": "combat_card_codex_sealing_page_native_v1",
+          "image": "assets/combat/spell_codex_opportunity_v1/codex_sealing_page_card_native_v1.png"
+        },
+        "objectArt": {
+          "id": "combat_object_codex_sealing_page_native_v1",
+          "image": "assets/combat/spell_codex_opportunity_v1/codex_sealing_page_object_native_v1.png",
+          "view": "front",
+          "anchor": "center",
+          "materialTone": "aged_paper_warm_brass_cinnabar_ink"
+        },
+        "triggerFx": {
+          "id": "fx_spell_seal_reversal_native_v1",
+          "durationMs": 520,
+          "frames": [
+            "assets/combat/spell_codex_opportunity_v1/fx_spell_seal_reversal_native_v1/frame-1.png",
+            "assets/combat/spell_codex_opportunity_v1/fx_spell_seal_reversal_native_v1/frame-2.png",
+            "assets/combat/spell_codex_opportunity_v1/fx_spell_seal_reversal_native_v1/frame-3.png",
+            "assets/combat/spell_codex_opportunity_v1/fx_spell_seal_reversal_native_v1/frame-4.png"
+          ]
+        }
+      },
+      "desc": "太古法修用来加固万卷楼封印的残页实体。装备后防御+1；器契牌能同时凝成护盾与法印。",
+      "price": 34
+    },
+    {
+      "id": "星轨法印盘",
+      "name": "星轨法印盘",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "回元",
+      "passive": {
+        "atk": 1,
+        "critRate": 2
+      },
+      "combatPresentation": {
+        "id": "treasure_star_orbit_seal_disk_native_v1",
+        "tacticalCardId": "treasure_star_orbit_seal_disk",
+        "displayName": "星轨法印盘·周天回元",
+        "trigger": "onTacticalCard",
+        "summary": "攻击 +1 · 会心 +2 · 周天回元",
+        "cardDescription": "星轨倒转：器契牌回复1点真元并凝聚1层法印，本场消耗。",
+        "cardArt": {
+          "id": "combat_card_star_orbit_seal_disk_native_v1",
+          "image": "assets/combat/spell_codex_opportunity_v1/star_orbit_seal_disk_card_native_v1.png"
+        },
+        "objectArt": {
+          "id": "combat_object_star_orbit_seal_disk_native_v1",
+          "image": "assets/combat/spell_codex_opportunity_v1/star_orbit_seal_disk_object_native_v1.png",
+          "view": "front_three_quarter",
+          "anchor": "center",
+          "materialTone": "dark_bronze_jade_ivory_cinnabar"
+        },
+        "triggerFx": {
+          "id": "fx_spell_void_thunder_native_v1",
+          "durationMs": 480,
+          "frames": [
+            "assets/combat/spell_codex_opportunity_v1/fx_spell_void_thunder_native_v1/frame-1.png",
+            "assets/combat/spell_codex_opportunity_v1/fx_spell_void_thunder_native_v1/frame-2.png",
+            "assets/combat/spell_codex_opportunity_v1/fx_spell_void_thunder_native_v1/frame-3.png",
+            "assets/combat/spell_codex_opportunity_v1/fx_spell_void_thunder_native_v1/frame-4.png"
+          ]
+        }
+      },
+      "desc": "万卷楼封印中枢的周天校准器。装备后攻击+1、会心+2；器契牌能让真元沿星轨回流。",
+      "price": 36
+    },
+    {
+      "id": "天瀑雷纹甲",
+      "name": "天瀑雷纹甲",
+      "type": "armor",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "承劫",
+      "passive": {
+        "def": 2
+      },
+      "combatPresentation": {
+        "id": "treasure_body_waterfall_thunder_armor_native_v1",
+        "tacticalCardId": "treasure_body_waterfall_thunder_armor",
+        "displayName": "天瀑雷纹甲·承劫成垒",
+        "trigger": "onTacticalCard",
+        "summary": "防御 +2 · 雷纹承劫",
+        "cardDescription": "甲片引雷成垒：器契牌获得3点护盾与1层金刚劲，本场消耗。",
+        "cardArt": {
+          "id": "combat_object_body_waterfall_thunder_armor_native_v1",
+          "image": "assets/combat/body_tribulation_opportunity_v1/body_waterfall_thunder_armor_object_native_v1.png"
+        },
+        "objectArt": {
+          "id": "combat_object_body_waterfall_thunder_armor_native_v1",
+          "image": "assets/combat/body_tribulation_opportunity_v1/body_waterfall_thunder_armor_object_native_v1.png",
+          "view": "front_three_quarter",
+          "anchor": "center",
+          "materialTone": "warm_iron_burnished_copper_cinnabar_ivory_lightning"
+        }
+      },
+      "desc": "天瀑劫台落雷后凝成的半身重甲。装备后防御+2；器契牌把承受的雷势化为护盾与金刚劲。",
+      "price": 34
+    },
+    {
+      "id": "锁脉玄铁环",
+      "name": "锁脉玄铁环",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "归脉",
+      "passive": {
+        "def": 1
+      },
+      "combatPresentation": {
+        "id": "treasure_body_meridian_lock_ring_native_v1",
+        "tacticalCardId": "treasure_body_meridian_lock_ring",
+        "displayName": "锁脉玄铁环·一息归周天",
+        "trigger": "onTacticalCard",
+        "summary": "防御 +1 · 锁脉归元",
+        "cardDescription": "玄铁环扣住散乱气机：器契牌回复1点真元并获得2点护盾，本场消耗。",
+        "cardArt": {
+          "id": "combat_object_body_meridian_lock_ring_native_v1",
+          "image": "assets/combat/body_tribulation_opportunity_v1/body_meridian_lock_ring_object_native_v1.png"
+        },
+        "objectArt": {
+          "id": "combat_object_body_meridian_lock_ring_native_v1",
+          "image": "assets/combat/body_tribulation_opportunity_v1/body_meridian_lock_ring_object_native_v1.png",
+          "view": "front_three_quarter",
+          "anchor": "center",
+          "materialTone": "blackened_iron_burnished_copper_cinnabar"
+        }
+      },
+      "desc": "武盟锁脉法留下的玄铁器环。装备后防御+1；器契牌让雷劫后散乱的真元重新归流。",
+      "price": 33
+    },
+    {
+      "id": "无相空瓶",
+      "name": "无相空瓶",
+      "type": "accessory",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "留白",
+      "passive": {
+        "hpRegen": 1
+      },
+      "combatPresentation": {
+        "id": "treasure_pill_formless_empty_bottle_native_v1",
+        "tacticalCardId": "treasure_pill_formless_empty_bottle",
+        "displayName": "无相空瓶·未炼之息",
+        "trigger": "onTacticalCard",
+        "summary": "回息 +1 · 空瓶留命",
+        "cardDescription": "空瓶收住未被因果染过的一息：器契牌回复1点真元与1点气血，本场消耗。",
+        "cardArt": {
+          "id": "combat_object_pill_formless_empty_bottle_native_v1",
+          "image": "assets/combat/pill_master_opportunity_v1/pill_formless_empty_bottle_object_native_v1.png"
+        },
+        "objectArt": {
+          "id": "combat_object_pill_formless_empty_bottle_native_v1",
+          "image": "assets/combat/pill_master_opportunity_v1/pill_formless_empty_bottle_object_native_v1.png",
+          "view": "front_three_quarter",
+          "anchor": "center",
+          "materialTone": "smoky_jade_warm_brass_parchment_ivory"
+        }
+      },
+      "desc": "药圣交出的空瓶，珍贵之处不在盛过什么，而在替丹修留下停手的余地。装备后缓慢回息；器契牌回复真元与气血。",
+      "price": 35
+    },
+    {
+      "id": "因果药王炉",
+      "name": "因果药王炉",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "烬火",
+      "passive": {
+        "atk": 1
+      },
+      "combatPresentation": {
+        "id": "treasure_pill_karma_medicine_furnace_native_v1",
+        "tacticalCardId": "treasure_pill_karma_medicine_furnace",
+        "displayName": "因果药王炉·余烬循业",
+        "trigger": "onTacticalCard",
+        "summary": "攻击 +1 · 因果烬火",
+        "cardDescription": "药炉循恶因送出一缕余烬：器契牌造成1点伤害并施加1层丹毒，本场消耗。",
+        "cardArt": {
+          "id": "combat_object_pill_karma_medicine_furnace_native_v1",
+          "image": "assets/combat/pill_master_opportunity_v1/pill_karma_medicine_furnace_object_native_v1.png"
+        },
+        "objectArt": {
+          "id": "combat_object_pill_karma_medicine_furnace_native_v1",
+          "image": "assets/combat/pill_master_opportunity_v1/pill_karma_medicine_furnace_object_native_v1.png",
+          "view": "front_three_quarter",
+          "anchor": "center",
+          "materialTone": "aged_bronze_muted_jade_amber_cinnabar"
+        }
+      },
+      "desc": "神农丹谷旧炉吸纳因果药火后留下的器物。装备后攻击+1；器契牌让余烬循着敌人的因果入脉。",
+      "price": 37
+    },
+    {
+      "id": "避尘珠",
+      "name": "避尘珠",
+      "type": "accessory",
+      "rarity": 3,
+      "realm": "foundation",
+      "trait": "避厄",
+      "passive": {
+        "fortuneBonus": 5
+      },
+      "active": {
+        "trigger": {
+          "cardType": "NORMAL"
+        },
+        "text": "催动避尘珠抵挡厄运",
+        "effects": {
+          "fortune": 3
+        }
+      },
+      "desc": "可将厄运隔绝三寸之外。厄运事件概率-15%。偶尔还可主动催动抵挡霉运。",
+      "price": 13
+    },
+    {
+      "id": "古修残卷",
+      "name": "古修残卷",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "foundation",
+      "passive": {},
+      "active": {
+        "trigger": {
+          "cardId": "break_golden"
+        },
+        "text": "研读古修心得",
+        "effects": {
+          "cultivation": 15
+        }
+      },
+      "desc": "一位古修士的修炼心得残卷——突破时可阅读，临时修为+15。（一次性秘宝）",
+      "use_count": 1,
+      "price": 80
+    },
+    {
+      "id": "冰魄镜甲",
+      "name": "冰魄镜甲",
+      "type": "armor",
+      "rarity": 4,
+      "realm": "golden",
+      "trait": "镜返",
+      "passive": {
+        "def": 12,
+        "blockWindow": 0.1
+      },
+      "desc": "千年冰魄炼成的护甲——如镜面般光滑。完美格挡时反射50%伤害给敌人。",
+      "price": 120
+    },
+    {
+      "id": "血玉扳指",
+      "name": "血玉扳指",
+      "type": "weapon",
+      "rarity": 4,
+      "realm": "golden",
+      "trait": "血战",
+      "passive": {
+        "atk": 12,
+        "def": -3
+      },
+      "desc": "以血养玉，以玉养战。当气血低于50%时，攻击力×1.5——越是濒死越凶猛。",
+      "price": 80
+    },
+    {
+      "id": "天枢罗盘",
+      "name": "天枢罗盘",
+      "type": "accessory",
+      "rarity": 4,
+      "realm": "golden",
+      "trait": "探秘",
+      "passive": {
+        "fortuneBonus": 10
+      },
+      "active": {
+        "trigger": {
+          "cardType": "DUNGEON"
+        },
+        "text": "用罗盘勘测秘境",
+        "effects": {
+          "fortune": 5,
+          "health": 5
+        }
+      },
+      "desc": "天枢道院的星象法器——福源+10，秘境隐藏路线发现率+30%。",
+      "price": 90
+    },
+    {
+      "id": "万年玄冰",
+      "name": "万年玄冰",
+      "type": "accessory",
+      "rarity": 3,
+      "realm": "golden",
+      "trait": "定心",
+      "passive": {
+        "daoResist": 3
+      },
+      "desc": "北极冰渊深处的冰晶。心魔事件降低道心时，最多只降3点——冰封心湖，波澜不惊。",
+      "price": 50
+    },
+    {
+      "id": "定魂玉",
+      "name": "定魂玉",
+      "type": "accessory",
+      "rarity": 4,
+      "realm": "golden",
+      "trait": "镇魂",
+      "passive": {
+        "mindResist": 0.3
+      },
+      "desc": "一位魂修大能留下的本命玉。战斗中心魔类伤害-30%，对恐惧/魅惑类效果免疫。",
+      "price": 100
+    },
+    {
+      "id": "青冥鼎",
+      "name": "青冥鼎",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "golden",
+      "passive": {
+        "pillBonus": 1
+      },
+      "desc": "上古丹师的法器——放置于秘宝槽后，所有丹药效果+50%。非战斗法宝。",
+      "price": 100
+    },
+    {
+      "id": "菩提子",
+      "name": "菩提子",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "golden",
+      "passive": {},
+      "active": {
+        "trigger": {
+          "cardType": "INNER_DEMON"
+        },
+        "text": "菩提顿悟 · 道心+10",
+        "effects": {
+          "daoHeart": 10
+        }
+      },
+      "desc": "千年菩提树结的种子——使用后立即恢复10点道心，清除所有心魔DEBUFF。仅一次。",
+      "use_count": 1,
+      "price": 120
+    },
+    {
+      "id": "替身符",
+      "name": "替身符",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "golden",
+      "passive": {},
+      "revive": {
+        "type": "substitute",
+        "description": "死亡时自动触发：消耗50%灵石，以灵石为代价复活至30% HP"
+      },
+      "desc": "用自身精血和灵石炼制的符箓——死时替身代死，但代价是灵石减半。一次性秘宝。",
+      "use_count": 1,
+      "price": 120
+    },
+    {
+      "id": "虚空袈裟",
+      "name": "虚空袈裟",
+      "type": "armor",
+      "rarity": 5,
+      "realm": "nascent",
+      "trait": "空蝉",
+      "passive": {
+        "def": 15,
+        "dodgeQiGain": 1
+      },
+      "desc": "据说来自一位佛修大能的遗物。当气血低于20%时，下一次敌人攻击自动闪避——空蝉脱壳。",
+      "price": 200
+    },
+    {
+      "id": "炼妖壶",
+      "name": "炼妖壶",
+      "type": "weapon",
+      "rarity": 5,
+      "realm": "nascent",
+      "trait": "妖噬",
+      "passive": {
+        "atk": 10,
+        "def": 5
+      },
+      "desc": "太古妖皇的法器。每次攻击造成伤害的30%转化为自身气血——打多少回多少。",
+      "price": 200
+    },
+    {
+      "id": "两仪环",
+      "name": "两仪环",
+      "type": "accessory",
+      "rarity": 5,
+      "realm": "nascent",
+      "trait": "平衡",
+      "passive": {
+        "karmaSlowDown": 0.2
+      },
+      "desc": "太极图中旋转的阴阳环。善恶两种能量的增长速度各降20%——戴着它，你更不容易走到极端。",
+      "price": 180
+    },
+    {
+      "id": "续命珠",
+      "name": "续命珠",
+      "type": "accessory",
+      "rarity": 4,
+      "realm": "nascent",
+      "trait": "续命",
+      "passive": {
+        "hpAutoRegen": 5,
+        "hpRegenInterval": 10
+      },
+      "desc": "一颗深红色的珠子，内部有血丝流转——每10回合自动回复5点气血。续航神器。",
+      "price": 150
+    },
+    {
+      "id": "驱魔符",
+      "name": "驱魔符",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "nascent",
+      "passive": {},
+      "active": {
+        "trigger": {
+          "cardType": "INNER_DEMON"
+        },
+        "text": "驱魔 · 抵消心魔反噬",
+        "effects": {
+          "innerDemonCancel": true
+        }
+      },
+      "desc": "一道朱砂符——遇到心魔反噬事件时自动燃烧，抵消这次心魔。仅一次。",
+      "use_count": 1,
+      "price": 130
+    },
+    {
+      "id": "涅槃羽",
+      "name": "涅槃羽",
+      "type": "artifact",
+      "rarity": 5,
+      "realm": "nascent",
+      "passive": {},
+      "active": {
+        "trigger": {
+          "cardType": "BREAKTHROUGH"
+        },
+        "text": "以涅槃之力护体",
+        "effects": {
+          "health": 30,
+          "daoHeart": 10
+        }
+      },
+      "revive": {
+        "type": "nirvana",
+        "description": "死亡时自动触发：HP 回满，道心 -1"
+      },
+      "desc": "凤凰浴火后留下的羽毛——死亡时可燃尽最后的力量让你重生。突破失败时也能保道心不碎。",
+      "use_count": 1,
+      "price": 150
+    },
+    {
+      "id": "因果镜",
+      "name": "因果镜",
+      "type": "accessory",
+      "rarity": 5,
+      "realm": "deity",
+      "trait": "窥因",
+      "passive": {
+        "hintRateBonus": 0.5
+      },
+      "desc": "一面古铜镜，镜面中隐约能看到「如果当初」——天机一闪事件触发率+50%。化神期修士才能驾驭。",
+      "price": 250
+    },
+    {
+      "id": "破魂锥",
+      "name": "破魂锥",
+      "type": "weapon",
+      "rarity": 6,
+      "realm": "deity",
+      "trait": "破甲",
+      "passive": {
+        "atk": 20,
+        "soulDmg": 0.3
+      },
+      "desc": "一把造型诡异的锥刺——无视敌人50%防御力，对魂魄类敌人额外+30%伤害。",
+      "price": 350
+    },
+    {
+      "id": "轮回镜",
+      "name": "轮回镜",
+      "type": "artifact",
+      "rarity": 5,
+      "realm": "deity",
+      "passive": {
+        "fortuneBonus": 15
+      },
+      "revive": {
+        "type": "samsara",
+        "description": "死亡时自动触发：HP 回 2，道心 -2，修为 -20%"
+      },
+      "desc": "能照见轮回的古镜——死亡时镜光会替你续接一线生机，使气血回到 2 点；代价是道心 -2、修为 -20%。",
+      "use_count": 1,
+      "price": 250
+    },
+    {
+      "id": "混沌茧",
+      "name": "混沌茧",
+      "type": "artifact",
+      "rarity": 6,
+      "realm": "tribulation",
+      "passive": {
+        "hpRegen": 5,
+        "daoResist": 10
+      },
+      "revive": {
+        "type": "chaos",
+        "description": "死亡时自动触发：HP 回满，修为 -20%"
+      },
+      "desc": "混沌初开时留下的茧壳——死亡时破茧重生并回满气血，但修为会损失 20%。",
+      "use_count": 1,
+      "price": 400
+    },
+    {
+      "id": "轮回印",
+      "name": "轮回印",
+      "type": "accessory",
+      "rarity": 6,
+      "realm": "tribulation",
+      "trait": "轮回",
+      "passive": {
+        "reincarnateKeep": 1
+      },
+      "desc": "只有渡过天劫的人才配拥有的印记——转世重修时，可保留一件法宝带到下一局。渡劫期的终极装备。",
+      "price": 500
+    },
+    {
+      "id": "白刃剑谱",
+      "name": "白刃剑谱",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "golden",
+      "passive": { "atk": 1, "critRate": 2 },
+      "desc": "白刃真人亲笔留下的剑路总纲。字迹从起手到收锋都极克制，装备后攻击+1、会心+2。",
+      "price": 90
+    },
+    {
+      "id": "问道剑",
+      "name": "问道剑",
+      "type": "weapon",
+      "rarity": 5,
+      "realm": "golden",
+      "trait": "问道",
+      "passive": { "atk": 3, "critRate": 5 },
+      "desc": "青云剑宗镇派古剑，剑鸣会回应持剑者真正追问的道路。装备后攻击+3、会心+5。",
+      "price": 180
+    },
+    {
+      "id": "demonTome",
+      "name": "魔道古卷",
+      "type": "artifact",
+      "rarity": 3,
+      "realm": "foundation",
+      "trait": "魔契",
+      "passive": { "atk": 1, "mindResist": 0.1 },
+      "desc": "魔修以血墨抄成的交易古卷。它能放大术式，也会提醒你每份力量都附有代价。装备后攻击+1、心魔抗性+10%。",
+      "price": 55
+    },
+    {
+      "id": "pathRelic",
+      "name": "随缘法器",
+      "type": "artifact",
+      "rarity": 3,
+      "realm": "foundation",
+      "trait": "应道",
+      "passive": { "atk": 1, "def": 1 },
+      "desc": "会随持有者功法改变灵纹的无名法器。装备后攻击+1、防御+1，为尚未定型的流派留出余地。",
+      "price": 60
+    },
+    {
+      "id": "realmCore",
+      "name": "秘境核心",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "阵心",
+      "passive": { "qiRegen": 1 },
+      "desc": "从秘境阵眼中剥离的稳定灵核，仍按旧阵法的节律吞吐灵气。装备后每回合额外回复1点灵力。",
+      "price": 85
+    },
+    {
+      "id": "ancientToken",
+      "name": "太古令牌",
+      "type": "accessory",
+      "rarity": 4,
+      "realm": "golden",
+      "trait": "古契",
+      "passive": { "fortuneBonus": 5 },
+      "desc": "故人从遗迹深处带回的太古令牌，表面残留着尚能辨认的通行铭文。装备后福缘+5。",
+      "price": 110
+    },
+    {
+      "id": "guardianCore",
+      "name": "机关兽灵核",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "golden",
+      "trait": "机关守御",
+      "passive": { "def": 2 },
+      "desc": "太古机关兽停止运转后留下的灵核，内部防御阵列仍在缓慢自检。装备后防御+2。",
+      "price": 120
+    },
+    {
+      "id": "ancientSword",
+      "name": "太古遗剑",
+      "type": "weapon",
+      "rarity": 4,
+      "realm": "golden",
+      "trait": "古锋",
+      "passive": { "atk": 2, "critRate": 3 },
+      "desc": "遗迹剑室中封存至今的古剑，刃口虽旧，剑意仍清晰。装备后攻击+2、会心+3。",
+      "price": 130
+    },
+    {
+      "id": "ancientJade",
+      "name": "太古玉简",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "golden",
+      "trait": "古法",
+      "passive": { "qiRegen": 1, "fortuneBonus": 2 },
+      "desc": "记载上古行气法的太古玉简，残缺处反而留下了自行推演的空间。装备后灵力回复+1、福缘+2。",
+      "price": 125
+    },
+    {
+      "id": "brokenSword",
+      "name": "剑冢残剑",
+      "type": "weapon",
+      "rarity": 2,
+      "realm": "qi",
+      "trait": "残锋",
+      "passive": { "atk": 1 },
+      "desc": "从剑冢共鸣中选中你的半截残剑。缺口让它不再完美，却保留了一线真切剑意。装备后攻击+1。",
+      "price": 28
+    },
+    {
+      "id": "licensed_rusted_sword",
+      "name": "坊市净炼残剑",
+      "type": "weapon",
+      "rarity": 3,
+      "realm": "qi",
+      "trait": "官印流转",
+      "storyOnly": true,
+      "passive": {
+        "atk": 1
+      },
+      "combatPassives": [
+        {
+          "passiveId": "licensed_rusted_sword_guard_counter",
+          "hook": "onGuardResolved",
+          "oncePerCombat": true,
+          "effect": "status",
+          "statusId": "counter_force",
+          "value": 1,
+          "logText": "【坊市净炼残剑】守后反击 +1。"
+        }
+      ],
+      "combatPresentation": {
+        "id": "licensed_rusted_sword_guard_presentation_v1",
+        "tacticalCardId": "licensed_rusted_sword_guard",
+        "displayName": "坊市净炼残剑·守后反击",
+        "summary": "攻击 +1 · 本场首次成功防御后，下一次攻击伤害 +1",
+        "cardDescription": "以官坊净炼的残锋卸开来势：获得1点护盾；本场首次成功防御后，下一次攻击额外造成1点伤害。"
+      },
+      "desc": "集市查得流转号、坊市登记并等候三次决断后才交付的净炼残剑。装备后攻击+1；本场首次成功防御后，下一次攻击伤害+1。",
+      "price": 0
+    },
+    {
+      "id": "traded_rusted_sword",
+      "name": "集市易手残剑",
+      "type": "weapon",
+      "rarity": 3,
+      "realm": "qi",
+      "trait": "旧式残谱",
+      "storyOnly": true,
+      "passive": {
+        "atk": 1
+      },
+      "combatPassives": [
+        {
+          "passiveId": "traded_rusted_sword_old_path",
+          "hook": "onCardPlay",
+          "oncePerCombat": true,
+          "distinctTagsThreshold": 3,
+          "temporaryTacticalCardId": "traded_rusted_sword_path",
+          "effect": "grantTemporaryCard",
+          "logText": "【集市易手残剑】三种异路相合，旧式剑路现于手中。"
+        }
+      ],
+      "combatPresentation": {
+        "id": "traded_rusted_sword_path_presentation_v1",
+        "distinctTagsThreshold": 3,
+        "temporaryTacticalCardId": "traded_rusted_sword_path",
+        "displayName": "集市易手残剑·旧式剑路",
+        "summary": "攻击 +1 · 本场以三种不同战斗标签出牌，获得一次消耗式【旧式剑路】",
+        "cardDescription": "这把残剑只认得杂驳的旧式章法：三种不同的战斗标签相合时，手中会多出一招仅本场可用的断式。"
+      },
+      "desc": "瘸脚许从散货里易出的残剑，鞘口夹着栖霞渡旧主的札记。装备后攻击+1；本场用三种不同战斗标签出牌，获得一次可自行打出的【旧式剑路】。",
+      "price": 0
+    },
+    {
+      "id": "ghost_oath_rusted_sword",
+      "name": "夜契残剑",
+      "type": "weapon",
+      "rarity": 4,
+      "realm": "qi",
+      "trait": "夜契索命",
+      "storyOnly": true,
+      "passive": {
+        "atk": 1
+      },
+      "combatPassives": [
+        {
+          "passiveId": "ghost_oath_rusted_sword_chime",
+          "hook": "onTurnStart",
+          "oncePerCombat": true,
+          "effect": "grantTemporaryCard",
+          "temporaryTacticalCardId": "ghost_oath_sword_chime",
+          "logText": "【夜契残剑】第一声剑鸣贴着你的寿元出鞘。"
+        }
+      ],
+      "combatPresentation": {
+        "id": "ghost_oath_rusted_sword_chime_presentation_v1",
+        "temporaryTacticalCardId": "ghost_oath_sword_chime",
+        "displayName": "夜契残剑·噬主剑鸣",
+        "summary": "攻击 +1 · 首回合获得一次耗竭式【噬主剑鸣】",
+        "cardDescription": "夜契在第一个回合就催你出剑：获得一张0费5伤、仅本场可用的噬主剑鸣。战后若仍穿戴，每次胜利都会以可见概率催近债期。"
+      },
+      "desc": "鬼市无面人以四灵石、三年寿元换来的残剑。装备后攻击+1；每场首回合获得一次可自行打出的【噬主剑鸣】。契约债不因卸装而消失。",
+      "price": 0
+    },
+    {
+      "id": "beastCore",
+      "name": "岩甲兽核",
+      "type": "accessory",
+      "rarity": 2,
+      "realm": "qi",
+      "trait": "岩甲",
+      "passive": { "def": 1 },
+      "desc": "守洞岩甲兽留下的妖核，外壳仍会在受击时自行收紧。装备后防御+1。",
+      "price": 30
+    },
+    {
+      "id": "前世佩剑",
+      "name": "前世佩剑",
+      "type": "weapon",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "前尘",
+      "passive": { "atk": 2, "critRate": 3 },
+      "desc": "你曾在上一世握过无数次的佩剑。今生再次出鞘时，手比记忆更早认出了它。装备后攻击+2、会心+3。",
+      "price": 115
+    },
+    {
+      "id": "禁术阵法残卷",
+      "name": "禁术阵法残卷",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "封禁",
+      "passive": { "def": 1, "qiRegen": 1 },
+      "desc": "前世未能补完的封禁阵法残卷。重新推演后，可让防御与真元循环彼此咬合。装备后防御+1、灵力回复+1。",
+      "price": 105
+    },
+    {
+      "id": "进化本命法器",
+      "name": "淬炼本命法器",
+      "type": "artifact",
+      "rarity": 4,
+      "realm": "golden",
+      "trait": "本命淬炼",
+      "passive": { "atk": 1, "def": 1 },
+      "desc": "从前世残片重新淬炼成形的本命法器，不绑定单一流派。装备后攻击+1、防御+1。",
+      "price": 135
+    },
+    {
+      "id": "fallen_sword_of_shixiong",
+      "name": "故人遗剑",
+      "type": "weapon",
+      "rarity": 4,
+      "realm": "foundation",
+      "trait": "师门旧誓",
+      "passive": { "atk": 1, "critRate": 3 },
+      "desc": "白刃真人故去师兄留下的旧剑。双手接过它，意味着接下尚未走完的师门之路。装备后攻击+1、会心+3。",
+      "price": 95
+    },
+    {
+      "id": "sword_cliff_rubbing",
+      "name": "剑崖拓本",
+      "type": "artifact",
+      "rarity": 3,
+      "realm": "foundation",
+      "trait": "观痕",
+      "passive": { "critRate": 2 },
+      "desc": "从剑崖深处逐笔抄下的剑痕拓本，既像剑谱，也像一封无人署名的情书。装备后会心+2。",
+      "price": 65
+    },
+    {
+      "id": "混元神石",
+      "name": "混元神石",
+      "type": "artifact",
+      "rarity": 6,
+      "realm": "tribulation",
+      "trait": "混元",
+      "passive": { "def": 2, "fortuneBonus": 10 },
+      "desc": "命盘最深处凝成的混元神石，诸气在石中相生而不相冲。装备后防御+2、福缘+10。",
+      "price": 420
+    },
+    {
+      "id": "白刃遗剑",
+      "name": "白刃遗剑",
+      "type": "weapon",
+      "rarity": 5,
+      "realm": "golden",
+      "trait": "白刃遗志",
+      "passive": { "atk": 2, "critRate": 5 },
+      "desc": "白刃真人最后一次舞剑后归于剑冢的佩剑。它选择再次出鞘，是把未竟的剑道交到你手中。装备后攻击+2、会心+5。",
+      "price": 170
+    }
+  ]
+}

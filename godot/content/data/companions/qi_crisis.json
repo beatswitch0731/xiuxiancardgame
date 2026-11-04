@@ -1,0 +1,34 @@
+{
+  "id": "qi_karma_crisis",
+  "realm": "qi",
+  "minAffection": 50,
+  "minKarmaDelta": 15,
+  "variants": {
+    "good": {
+      "id": "qi_karma_crisis_good",
+      "type": "crisis",
+      "realm": "qi",
+      "title": "道侣的担忧",
+      "desc": "{name}看见你为救人耗尽心力，拉住你的衣袖：‘我愿与你同行，但你也要让我知道，你会照顾自己。’",
+      "once": false,
+      "repeatPolicy": { "cooldownTurns": 12 },
+      "choices": {
+        "left": { "text": "答应量力而行", "effects": {}, "affection": 4, "trustDelta": 2 },
+        "right": { "text": "仍要独自担起风险", "effects": { "daoHeart": 2, "health": -1 }, "affection": -2, "trustDelta": -1 }
+      }
+    },
+    "bad": {
+      "id": "qi_karma_crisis_bad",
+      "type": "crisis",
+      "realm": "qi",
+      "title": "道侣的质问",
+      "desc": "{name}亲眼见到你伤人，挡在你面前：‘这一步已经走了。下一步，你打算怎么走？’",
+      "once": false,
+      "repeatPolicy": { "cooldownTurns": 12 },
+      "choices": {
+        "left": { "text": "承认过错并补偿伤者", "effects": { "karmaGood": 2 }, "affection": 3, "trustDelta": 2 },
+        "right": { "text": "拒绝解释，继续前行", "effects": { "karmaBad": 2 }, "affection": -5, "trustDelta": -3 }
+      }
+    }
+  }
+}

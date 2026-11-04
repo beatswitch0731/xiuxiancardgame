@@ -1,0 +1,2848 @@
+{
+  "version": "1.0.0",
+  "contractId": "combat_encounter_presentation_catalog_v1",
+  "description": "54 个目录遭遇的稳定战场、敌人意图帧与伤害/护盾/虚弱 FX 契约。",
+  "presentations": {
+    "enc_boss_qi_thunder_gate": {
+      "presentationId": "combat_enc_boss_qi_thunder_gate_native_v1",
+      "battlefieldId": "battlefield_enc_boss_qi_thunder_gate_native_v1",
+      "battlefield": "enc_boss_qi_thunder_gate",
+      "warningTitle": "炼气巡关·雷门碑兽 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_qi_thunder_gate_agc_v2.png",
+      "enemyType": "巡关首领 · 雷门碑兽",
+      "difficultyLabel": "炼气 · 首领",
+      "mechanic": "四足碑座以三段震击逐步升压；护盾必须留给第三击，倒伏时才暴露碑心。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_boss_qi_thunder_gate_stele_sentinel_agc_h1",
+          "name": "惊雷石傀",
+          "kicker": "炼气 · 雷门碑兽",
+          "portraitMode": "stage_full_body_transparent",
+          "image": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png",
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "qi_thunder_colossal_stele_quadruped",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png",
+            "defend": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png",
+            "buff": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png",
+            "debuff": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_damage_contact_agc_u1",
+          "durationMs": 420
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "durationMs": 480
+        }
+      },
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_boss_foundation_mirror": {
+      "presentationId": "combat_enc_boss_foundation_mirror_agc_k2",
+      "battlefieldId": "battlefield_enc_boss_foundation_mirror_agc_k2",
+      "battlefield": "enc_boss_foundation_mirror",
+      "warningTitle": "筑基巡关·镜湖心魔 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_foundation_mirror_agc_k2.png",
+      "enemyType": "巡关首领 · 镜湖心魔",
+      "difficultyLabel": "筑基 · 首领",
+      "mechanic": "攻击、心防、震爆循环；在心防回合积攒资源。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_boss_foundation_mirror_agc_k2",
+          "name": "镜中道敌",
+          "kicker": "筑基 · 问心镜劫",
+          "scaleProfileId": "foundation_mirror_hovering_ordeal",
+          "portraitMode": "stage_full_body_transparent",
+          "intentPosePolicy": "stable_identity",
+          "image": "assets/combat/enemy_identities/enc_boss_foundation_mirror_agc_k2/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_actions/enc_boss_foundation_mirror_agc_k2/attack/attack-3.png",
+            "defend": "assets/combat/enemy_actions/enc_boss_foundation_mirror_agc_k2/guard/guard-3.png",
+            "buff": "assets/combat/enemy_actions/enc_boss_foundation_mirror_agc_k2/guard/guard-1.png",
+            "debuff": "assets/combat/enemy_actions/enc_boss_foundation_mirror_agc_k2/hurt/hurt-3.png"
+          },
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "finalArtApproved": false
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_foundation_mirror_damage_agc_k2",
+          "frames": [
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/damage/damage-1.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/damage/damage-2.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/damage/damage-3.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/damage/damage-4.png"
+          ],
+          "durationMs": 420
+        },
+        "shield": {
+          "id": "fx_foundation_mirror_shield_agc_k2",
+          "frames": [
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/shield/shield-1.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/shield/shield-2.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/shield/shield-3.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/shield/shield-4.png"
+          ],
+          "durationMs": 460
+        },
+        "weak": {
+          "id": "fx_foundation_mirror_weak_agc_k2",
+          "frames": [
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/weak/weak-1.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/weak/weak-2.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/weak/weak-3.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/weak/weak-4.png"
+          ],
+          "durationMs": 460
+        }
+      },
+      "actionPresentationId": "enc_boss_foundation_mirror",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "finalArtApproved": false,
+      "replacementStillRequired": true
+    },
+    "enc_boss_golden_yinyang": {
+      "presentationId": "combat_enc_boss_golden_yinyang_agc_n1",
+      "actionPresentationId": "enc_boss_golden_yinyang",
+      "battlefieldId": "battlefield_enc_boss_golden_yinyang_agc_n1",
+      "encounterCompositionId": "enc_boss_golden_yinyang",
+      "battlefield": "enc_boss_golden_yinyang",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_golden_yinyang_agc_n1.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "金丹巡关·阴阳雷兽 · 战前推演",
+      "enemyType": "巡关首领 · 阴阳雷兽",
+      "difficultyLabel": "金丹 · 首领",
+      "mechanic": "阴阳状态按出牌节拍切换：阳雷重压、阴雷穿脉，保留真元可令两极错位。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_boss_golden_yinyang_agc_n1",
+          "name": "阴阳雷兽",
+          "kicker": "金丹 · 首领",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemies/golden_thunder_beast_n1/action/action-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "bottom_center",
+          "scaleProfileId": "golden_yinyang_twin_head_quadruped",
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemies/golden_thunder_beast_n1/action/action-3.png",
+            "defend": "assets/combat/enemies/golden_thunder_beast_n1/action/action-2.png",
+            "buff": "assets/combat/enemies/golden_thunder_beast_n1/action/action-1.png",
+            "debuff": "assets/combat/enemies/golden_thunder_beast_n1/action/action-2.png",
+            "hurt": "assets/combat/enemies/golden_thunder_beast_n1/action/action-1.png",
+            "defeat": "assets/combat/enemies/golden_furnace_flame_n1/defeat_n4/defeat-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_golden_yang_thunder_n1",
+          "frames": [
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-1.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-2.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-3.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-4.png"
+          ],
+          "durationMs": 360,
+          "placement": "travel",
+          "authoredFacing": "left"
+        },
+        "slash": {
+          "id": "fx_golden_yang_thunder_n1",
+          "frames": [
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-1.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-2.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-3.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-4.png"
+          ],
+          "durationMs": 360,
+          "placement": "travel",
+          "authoredFacing": "left"
+        },
+        "piercing": {
+          "id": "fx_golden_yin_thunder_n1",
+          "frames": [
+            "assets/combat/fx/golden_furnace_n4/yin_thunder_travel/yin_thunder_travel-1.png",
+            "assets/combat/fx/golden_furnace_n4/yin_thunder_travel/yin_thunder_travel-2.png",
+            "assets/combat/fx/golden_furnace_n4/yin_thunder_travel/yin_thunder_travel-3.png",
+            "assets/combat/fx/golden_furnace_n4/yin_thunder_travel/yin_thunder_travel-4.png"
+          ],
+          "durationMs": 330,
+          "placement": "travel",
+          "authoredFacing": "left"
+        }
+      }
+    },
+    "enc_boss_nascent_void": {
+      "presentationId": "combat_enc_boss_nascent_void_agc_n13",
+      "actionPresentationId": "enc_boss_nascent_void",
+      "battlefieldId": "battlefield_enc_boss_nascent_void_agc_n13",
+      "encounterCompositionId": "enc_boss_nascent_void",
+      "battlefield": "enc_boss_nascent_void",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_nascent_void_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "元婴巡关·虚空执法影 · 现象式路",
+      "enemyType": "nascent · 虚空执法影",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "聚雷后重击；攻击窗口短，过度防守会被持续压制。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_void_enforcer_shadow_agc_n13",
+          "name": "虚空执法影",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/void_enforcer_shadow_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "void_enforcer_shadow_hovering_n13",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/void_enforcer_shadow_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/void_enforcer_shadow_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/void_enforcer_shadow_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/void_enforcer_shadow_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_void_enforcer_shadow_skill_agc_n13",
+        "attack": "fx_void_enforcer_shadow_attack_agc_n13",
+        "hurt": "fx_void_enforcer_shadow_hurt_agc_n13",
+        "defeat": "fx_void_enforcer_shadow_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_boss_deity_karma_dragon": {
+      "presentationId": "combat_enc_boss_deity_karma_dragon_agc_n14",
+      "actionPresentationId": "enc_boss_deity_karma_dragon",
+      "battlefieldId": "battlefield_enc_boss_deity_karma_dragon_agc_n14",
+      "encounterCompositionId": "enc_boss_deity_karma_dragon",
+      "battlefield": "enc_boss_deity_karma_dragon",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_deity_karma_dragon_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "化神巡关·业火雷龙 · 现象式路",
+      "enemyType": "deity · 业火雷龙",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "屏障与因果重击交替；必须规划破盾后的爆发回合。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_karma_thunder_dragon_agc_n14",
+          "name": "业火雷龙",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/karma_thunder_dragon_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "karma_thunder_dragon_coiled_n14",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/karma_thunder_dragon_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/karma_thunder_dragon_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/karma_thunder_dragon_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/karma_thunder_dragon_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_karma_thunder_dragon_skill_agc_n14",
+        "attack": "fx_karma_thunder_dragon_attack_agc_n14",
+        "hurt": "fx_karma_thunder_dragon_hurt_agc_n14",
+        "defeat": "fx_karma_thunder_dragon_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    },
+    "enc_boss_tribulation_heaven_door": {
+      "presentationId": "combat_enc_boss_tribulation_heaven_door_agc_n14",
+      "actionPresentationId": "enc_boss_tribulation_heaven_door",
+      "battlefieldId": "battlefield_enc_boss_tribulation_heaven_door_agc_n14",
+      "encounterCompositionId": "enc_boss_tribulation_heaven_door",
+      "battlefield": "enc_boss_tribulation_heaven_door",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_tribulation_heaven_door_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "渡劫巡关·天门守序者 · 现象式路",
+      "enemyType": "tribulation · 天门守序者",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "法则蓄力后发动终极神雷；必须在第三行动前建立优势。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_heaven_door_arbiter_agc_n14",
+          "name": "天门守序者",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/heaven_door_arbiter_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "heaven_door_arbiter_tall_n14",
+          "feetAnchor": "rooted",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/heaven_door_arbiter_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/heaven_door_arbiter_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/heaven_door_arbiter_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/heaven_door_arbiter_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_heaven_door_arbiter_skill_agc_n14",
+        "attack": "fx_heaven_door_arbiter_attack_agc_n14",
+        "hurt": "fx_heaven_door_arbiter_hurt_agc_n14",
+        "defeat": "fx_heaven_door_arbiter_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    },
+    "enc_trial_sword_swift": {
+      "presentationId": "combat_enc_trial_sword_swift_native_v1",
+      "battlefieldId": "battlefield_enc_trial_sword_swift_native_v1",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "battlefield": "enc_trial_sword_swift",
+      "warningTitle": "剑修证明·一线快剑 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_sword_swift_agc_v2.png",
+      "enemyType": "流派试炼 · 快剑木人",
+      "difficultyLabel": "炼气 · 试炼",
+      "mechanic": "对手会连续抢攻，回气回合是唯一安全的反击窗口。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_trial_sword_swift_agc_m1",
+          "name": "快剑木人",
+          "kicker": "炼气 · 流派试炼",
+          "scaleProfileId": "quick_sword_dummy_humanoid",
+          "portraitMode": "stage_full_body_transparent",
+          "intentPosePolicy": "stable_identity",
+          "image": "assets/combat/enemy/enc_trial_sword_swift_agc_m2/identity/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy/enc_trial_sword_swift_agc_m2/identity/intent-2.png",
+            "defend": "assets/combat/enemy/enc_trial_sword_swift_agc_m2/identity/intent-3.png",
+            "buff": "assets/combat/enemy/enc_trial_sword_swift_agc_m2/identity/intent-1.png",
+            "debuff": "assets/combat/enemy/enc_trial_sword_swift_agc_m2/identity/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_quick_sword_wood_contact_agc_n5",
+          "frames": [
+            "assets/combat/vfx/quick_sword_wood_contact_agc_n5/contact-1.png",
+            "assets/combat/vfx/quick_sword_wood_contact_agc_n5/contact-2.png",
+            "assets/combat/vfx/quick_sword_wood_contact_agc_n5/contact-3.png",
+            "assets/combat/vfx/quick_sword_wood_contact_agc_n5/contact-4.png"
+          ],
+          "durationMs": 360,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-4.png"
+          ],
+          "durationMs": 420,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-4.png"
+          ],
+          "durationMs": 480,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        }
+      }
+    },
+    "enc_trial_sword_array": {
+      "presentationId": "combat_enc_trial_sword_array_native_v1",
+      "battlefieldId": "battlefield_enc_trial_sword_array_agc_g2",
+      "battlefield": "enc_trial_sword_array",
+      "warningTitle": "剑修证明·七星剑阵 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_sword_array_agc_g2.png",
+      "enemyType": "流派试炼 · 七星剑阵",
+      "difficultyLabel": "金丹 · 精英",
+      "mechanic": "蓄力重击明显；破盾后应集中输出。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_trial_sword_array_agc_g2",
+          "name": "七星剑阵",
+          "kicker": "金丹 · 精英阵灵",
+          "scaleProfileId": "floating_weapon_constellation",
+          "portraitMode": "stage_full_body_transparent",
+          "intentPosePolicy": "stable_identity",
+          "image": "assets/combat/enemy_identities/enc_trial_sword_array_agc_g2/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_actions/enc_trial_sword_array_agc_g2/attack/attack-3.png",
+            "defend": "assets/combat/enemy_actions/enc_trial_sword_array_agc_g2/guard/guard-3.png",
+            "buff": "assets/combat/enemy_identities/enc_trial_sword_array_agc_g2/intent-1.png",
+            "debuff": "assets/combat/enemy_actions/enc_trial_sword_array_agc_g2/guard/guard-2.png"
+          },
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "finalArtApproved": false
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_damage_contact_agc_u1"
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1"
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1"
+        },
+        "sword_array_core_burst": {
+          "id": "fx_sword_array_core_burst_agc_g2"
+        }
+      },
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "finalArtApproved": false,
+      "replacementStillRequired": true,
+      "actionPresentationId": "enc_trial_sword_array"
+    },
+    "enc_trial_sword_heaven": {
+      "presentationId": "combat_enc_trial_sword_heaven_agc_n14",
+      "actionPresentationId": "enc_trial_sword_heaven",
+      "battlefieldId": "battlefield_enc_trial_sword_heaven_agc_n14",
+      "encounterCompositionId": "enc_trial_sword_heaven",
+      "battlefield": "enc_trial_sword_heaven",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_sword_heaven_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "剑修证明·斩天投影 · 现象式路",
+      "enemyType": "deity · 斩天剑影",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "屏障、凝势、重击三拍循环；需要攻守换挡。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_heaven_cleaving_sword_shadow_agc_n14",
+          "name": "斩天剑影",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/heaven_cleaving_sword_shadow_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "heaven_cleaving_sword_shadow_diagonal_n14",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/heaven_cleaving_sword_shadow_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/heaven_cleaving_sword_shadow_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/heaven_cleaving_sword_shadow_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/heaven_cleaving_sword_shadow_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_heaven_cleaving_sword_shadow_skill_agc_n14",
+        "attack": "fx_heaven_cleaving_sword_shadow_attack_agc_n14",
+        "hurt": "fx_heaven_cleaving_sword_shadow_hurt_agc_n14",
+        "defeat": "fx_heaven_cleaving_sword_shadow_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    },
+    "enc_trial_spell_seal": {
+      "presentationId": "combat_enc_trial_spell_seal_native_v1",
+      "battlefieldId": "battlefield_enc_trial_spell_seal_native_v1",
+      "battlefield": "enc_trial_spell_seal",
+      "warningTitle": "法修证明·三印回廊 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_spell_seal_agc_v3.png",
+      "enemyType": "流派试炼 · 封符灵体",
+      "difficultyLabel": "炼气 · 试炼",
+      "mechanic": "封符灵体悬空展翼连续施压；观察符翼收拢，在回气窗口用法印反制。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_trial_spell_seal_agc_l1",
+          "name": "封符灵体",
+          "kicker": "炼气 · 流派试炼",
+          "portraitMode": "stage_full_body_transparent",
+          "image": "assets/combat/enemy_identities/enc_trial_spell_seal_agc_l1/idle-1.png",
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "corridor_seal_spirit_hovering_core",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/enc_trial_spell_seal_agc_l1/idle-1.png",
+            "defend": "assets/combat/enemy_identities/enc_trial_spell_seal_agc_l1/idle-1.png",
+            "buff": "assets/combat/enemy_identities/enc_trial_spell_seal_agc_l1/idle-1.png",
+            "debuff": "assets/combat/enemy_identities/enc_trial_spell_seal_agc_l1/idle-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_damage_contact_agc_u1",
+          "durationMs": 420
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "durationMs": 480
+        }
+      },
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_trial_spell_elements": {
+      "presentationId": "combat_enc_trial_spell_elements_agc_n13",
+      "actionPresentationId": "enc_trial_spell_elements",
+      "battlefieldId": "battlefield_enc_trial_spell_elements_agc_n13",
+      "encounterCompositionId": "enc_trial_spell_elements",
+      "battlefield": "enc_trial_spell_elements",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_spell_elements_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "法修证明·五行逆阵 · 现象式路",
+      "enemyType": "golden · 五行逆阵灵",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "攻击与防御轮换；在心防回合积攒法印。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_five_element_inverse_array_agc_n13",
+          "name": "五行逆阵灵",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/five_element_inverse_array_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "five_element_inverse_array_rooted_n13",
+          "feetAnchor": "rooted",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/five_element_inverse_array_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/five_element_inverse_array_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/five_element_inverse_array_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/five_element_inverse_array_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_five_element_inverse_array_skill_agc_n13",
+        "attack": "fx_five_element_inverse_array_attack_agc_n13",
+        "hurt": "fx_five_element_inverse_array_hurt_agc_n13",
+        "defeat": "fx_five_element_inverse_array_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_trial_spell_void": {
+      "presentationId": "combat_enc_trial_spell_void_agc_n13",
+      "actionPresentationId": "enc_trial_spell_void",
+      "battlefieldId": "battlefield_enc_trial_spell_void_agc_n13",
+      "encounterCompositionId": "enc_trial_spell_void",
+      "battlefield": "enc_trial_spell_void",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_spell_void_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "法修证明·虚空禁式 · 现象式路",
+      "enemyType": "deity · 虚空禁式",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "攻击会迎来蓄力反制；技能牌和护盾更稳定。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_void_forbidden_formula_agc_n13",
+          "name": "虚空禁式",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/void_forbidden_formula_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "void_forbidden_formula_rooted_n13",
+          "feetAnchor": "rooted",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/void_forbidden_formula_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/void_forbidden_formula_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/void_forbidden_formula_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/void_forbidden_formula_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_void_forbidden_formula_skill_agc_n13",
+        "attack": "fx_void_forbidden_formula_attack_agc_n13",
+        "hurt": "fx_void_forbidden_formula_hurt_agc_n13",
+        "defeat": "fx_void_forbidden_formula_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_trial_body_iron": {
+      "presentationId": "combat_enc_trial_body_iron_native_v1",
+      "battlefieldId": "battlefield_enc_trial_body_iron_native_v1",
+      "battlefield": "enc_trial_body_iron",
+      "warningTitle": "体修证明·铁骨机关兽 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_body_iron_agc_v2.png",
+      "enemyType": "流派试炼 · 铁骨机关兽",
+      "difficultyLabel": "炼气 · 试炼",
+      "mechanic": "机关兽以低伏四足占住地面，再用铁掌压肩；先立桩承势，在它前肢落地后的空隙回击。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_trial_body_iron_agc_j2",
+          "name": "铁骨机关兽",
+          "kicker": "炼气 · 低伏压阵",
+          "portraitMode": "stage_full_body_transparent",
+          "image": "assets/combat/enemy_identities/enc_trial_body_iron_agc_j2/idle-1.png",
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "iron_beast_low_quadruped_j2",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/enc_trial_body_iron_agc_j2/idle-1.png",
+            "defend": "assets/combat/enemy_identities/enc_trial_body_iron_agc_j2/idle-1.png",
+            "buff": "assets/combat/enemy_identities/enc_trial_body_iron_agc_j2/idle-1.png",
+            "debuff": "assets/combat/enemy_identities/enc_trial_body_iron_agc_j2/idle-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_damage_contact_agc_u1",
+          "durationMs": 420
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "durationMs": 480
+        }
+      },
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_trial_body_mountain": {
+      "presentationId": "combat_enc_trial_body_mountain_agc_n11",
+      "actionPresentationId": "enc_trial_body_mountain",
+      "battlefieldId": "battlefield_enc_trial_body_mountain_agc_n11",
+      "encounterCompositionId": "enc_trial_body_mountain",
+      "battlefield": "enc_trial_body_mountain",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_body_mountain_agc_n11.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "搬山铜人 · 独立式路",
+      "enemyType": "原生遭遇实体",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "搬山蓄臂 → 山势重落 → 铜轴偏架 → 收轴复位",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_mountain_bronze_man_agc_n11",
+          "name": "搬山铜人",
+          "kicker": "独立动作与决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/mountain_bronze_man_agc_n11/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "mountain_bronze_man_grounded_n11",
+          "feetAnchor": "feet",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/mountain_bronze_man_agc_n11/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/mountain_bronze_man_agc_n11/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/mountain_bronze_man_agc_n11/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/mountain_bronze_man_agc_n11/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "state": "fx_mountain_bronze_man_state_agc_n11",
+        "impact": "fx_mountain_bronze_man_impact_agc_n11"
+      },
+      "finalArtApproved": false
+    },
+    "enc_trial_body_immortal": {
+      "presentationId": "combat_enc_trial_body_immortal_agc_n11",
+      "actionPresentationId": "enc_trial_body_immortal",
+      "battlefieldId": "battlefield_enc_trial_body_immortal_agc_n11",
+      "encounterCompositionId": "enc_trial_body_immortal",
+      "battlefield": "enc_trial_body_immortal",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_body_immortal_agc_n11.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "不灭金身影 · 独立式路",
+      "enemyType": "原生遭遇实体",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "金身垂幕 → 空中贯拳 → 守息受制 → 透支反震",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_immortal_golden_shadow_agc_n11",
+          "name": "不灭金身影",
+          "kicker": "独立动作与决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/immortal_golden_shadow_agc_n11/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "immortal_golden_shadow_hovering_n11",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/immortal_golden_shadow_agc_n11/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/immortal_golden_shadow_agc_n11/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/immortal_golden_shadow_agc_n11/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/immortal_golden_shadow_agc_n11/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "state": "fx_immortal_golden_shadow_state_agc_n11",
+        "impact": "fx_immortal_golden_shadow_impact_agc_n11"
+      },
+      "finalArtApproved": false
+    },
+    "enc_trial_pill_poison": {
+      "presentationId": "combat_enc_trial_pill_poison_native_v1",
+      "battlefieldId": "battlefield_enc_trial_pill_poison_native_v1",
+      "battlefield": "enc_trial_pill_poison",
+      "warningTitle": "丹修证明·百毒炉灵 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_pill_poison_agc_v2.png",
+      "enemyType": "流派试炼 · 百毒炉灵",
+      "difficultyLabel": "炼气 · 试炼",
+      "mechanic": "矮炉先沉腹蓄压，再从高位喷口横送药烟；看见炉盖抬起便守势，烟尽后用丹火收束。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_trial_pill_poison_agc_j2",
+          "name": "百毒炉灵",
+          "kicker": "炼气 · 矮炉蓄压",
+          "portraitMode": "stage_full_body_transparent",
+          "image": "assets/combat/enemy_identities/enc_trial_pill_poison_agc_j2/idle-1.png",
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "pill_furnace_compact_low_construct_j2",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/enc_trial_pill_poison_agc_j2/idle-1.png",
+            "defend": "assets/combat/enemy_identities/enc_trial_pill_poison_agc_j2/idle-1.png",
+            "buff": "assets/combat/enemy_identities/enc_trial_pill_poison_agc_j2/idle-1.png",
+            "debuff": "assets/combat/enemy_identities/enc_trial_pill_poison_agc_j2/idle-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_damage_contact_agc_u1",
+          "durationMs": 420
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "durationMs": 480
+        }
+      },
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_trial_pill_spirit": {
+      "presentationId": "combat_enc_trial_pill_spirit_agc_n13",
+      "actionPresentationId": "enc_trial_pill_spirit",
+      "battlefieldId": "battlefield_enc_trial_pill_spirit_agc_n13",
+      "encounterCompositionId": "enc_trial_pill_spirit",
+      "battlefield": "enc_trial_pill_spirit",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_pill_spirit_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "丹修证明·丹灵问火 · 现象式路",
+      "enemyType": "nascent · 问火丹灵",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "攻击与防御轮换，适合用回气和治疗建立长线优势。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_asking_fire_elixir_spirit_agc_n13",
+          "name": "问火丹灵",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/asking_fire_elixir_spirit_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "asking_fire_elixir_spirit_hovering_n13",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/asking_fire_elixir_spirit_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/asking_fire_elixir_spirit_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/asking_fire_elixir_spirit_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/asking_fire_elixir_spirit_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_asking_fire_elixir_spirit_skill_agc_n13",
+        "attack": "fx_asking_fire_elixir_spirit_attack_agc_n13",
+        "hurt": "fx_asking_fire_elixir_spirit_hurt_agc_n13",
+        "defeat": "fx_asking_fire_elixir_spirit_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_trial_pill_chaos": {
+      "presentationId": "combat_enc_trial_pill_chaos_agc_n14",
+      "actionPresentationId": "enc_trial_pill_chaos",
+      "battlefieldId": "battlefield_enc_trial_pill_chaos_agc_n14",
+      "encounterCompositionId": "enc_trial_pill_chaos",
+      "battlefield": "enc_trial_pill_chaos",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_pill_chaos_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "丹修证明·混沌丹劫 · 现象式路",
+      "enemyType": "tribulation · 混沌丹劫",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "三拍法则攻击；治疗只能恢复局内护体值，不能抹去战败伤势。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_chaos_elixir_tribulation_core_agc_n14",
+          "name": "混沌丹劫",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/chaos_elixir_tribulation_core_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "chaos_elixir_tribulation_ding_n14",
+          "feetAnchor": "feet",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/chaos_elixir_tribulation_core_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/chaos_elixir_tribulation_core_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/chaos_elixir_tribulation_core_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/chaos_elixir_tribulation_core_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_chaos_elixir_tribulation_core_skill_agc_n14",
+        "attack": "fx_chaos_elixir_tribulation_core_attack_agc_n14",
+        "hurt": "fx_chaos_elixir_tribulation_core_hurt_agc_n14",
+        "defeat": "fx_chaos_elixir_tribulation_core_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    },
+    "enc_faction_qingyun_elite": {
+      "presentationId": "combat_enc_faction_qingyun_elite_agc_n12",
+      "battlefieldId": "battlefield_enc_faction_qingyun_elite_agc_n12",
+      "battlefield": "enc_faction_qingyun_elite",
+      "warningTitle": "势力精英·青云执剑使 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_qingyun_elite_agc_n12.png",
+      "enemyType": "势力精英 · 青云执剑使",
+      "difficultyLabel": "筑基 · 精英",
+      "mechanic": "凝剑后破空斩；胜败分别改变青云声望。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_qingyun_sword_envoy_agc_n12",
+          "name": "青云执剑使",
+          "kicker": "筑基 · 势力精英",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/qingyun_sword_envoy_agc_n12/idle/frame-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/qingyun_sword_envoy_agc_n12/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/qingyun_sword_envoy_agc_n12/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/qingyun_sword_envoy_agc_n12/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/qingyun_sword_envoy_agc_n12/idle/frame-1.png"
+          },
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "feet",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n12_humanoid_discipline_pursuit_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "finalArtApproved": false,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "qingyun_sword_envoy_grounded_n12"
+        }
+      },
+      "vfx": {
+        "state": "fx_qingyun_sword_envoy_state_agc_n12",
+        "impact": "fx_qingyun_sword_envoy_impact_agc_n12"
+      },
+      "actionPresentationId": "enc_faction_qingyun_elite",
+      "finalArtApproved": false,
+      "encounterCompositionId": "enc_faction_qingyun_elite",
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_faction_tianshu_elite": {
+      "presentationId": "combat_enc_faction_tianshu_elite_agc_n12",
+      "battlefieldId": "battlefield_enc_faction_tianshu_elite_agc_n12",
+      "battlefield": "enc_faction_tianshu_elite",
+      "warningTitle": "势力精英·天枢戒律官 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_tianshu_elite_agc_n12.png",
+      "enemyType": "势力精英 · 天枢戒律官",
+      "difficultyLabel": "金丹 · 精英",
+      "mechanic": "心防与精神重击循环。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_tianshu_discipline_officer_agc_n12",
+          "name": "天枢戒律官",
+          "kicker": "金丹 · 势力精英",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/tianshu_discipline_officer_agc_n12/idle/frame-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/tianshu_discipline_officer_agc_n12/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/tianshu_discipline_officer_agc_n12/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/tianshu_discipline_officer_agc_n12/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/tianshu_discipline_officer_agc_n12/idle/frame-1.png"
+          },
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "feet",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n12_humanoid_discipline_pursuit_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "finalArtApproved": false,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "tianshu_discipline_officer_tall_n12"
+        }
+      },
+      "vfx": {
+        "state": "fx_tianshu_discipline_officer_state_agc_n12",
+        "impact": "fx_tianshu_discipline_officer_impact_agc_n12"
+      },
+      "actionPresentationId": "enc_faction_tianshu_elite",
+      "finalArtApproved": false,
+      "encounterCompositionId": "enc_faction_tianshu_elite",
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_faction_dangu_elite": {
+      "presentationId": "combat_enc_faction_dangu_elite_agc_n12",
+      "battlefieldId": "battlefield_enc_faction_dangu_elite_agc_n12",
+      "battlefield": "enc_faction_dangu_elite",
+      "warningTitle": "势力精英·丹谷护炉人 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_dangu_elite_agc_n12.png",
+      "enemyType": "势力精英 · 丹谷护炉人",
+      "difficultyLabel": "金丹 · 精英",
+      "mechanic": "炉火蓄力后爆发，需提前建立护盾。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_dangu_furnace_keeper_agc_n12",
+          "name": "丹谷护炉人",
+          "kicker": "金丹 · 势力精英",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/dangu_furnace_keeper_agc_n12/idle/frame-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/dangu_furnace_keeper_agc_n12/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/dangu_furnace_keeper_agc_n12/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/dangu_furnace_keeper_agc_n12/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/dangu_furnace_keeper_agc_n12/idle/frame-1.png"
+          },
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "feet",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n12_humanoid_discipline_pursuit_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "finalArtApproved": false,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "dangu_furnace_keeper_sturdy_n12"
+        }
+      },
+      "vfx": {
+        "state": "fx_dangu_furnace_keeper_state_agc_n12",
+        "impact": "fx_dangu_furnace_keeper_impact_agc_n12"
+      },
+      "actionPresentationId": "enc_faction_dangu_elite",
+      "finalArtApproved": false,
+      "encounterCompositionId": "enc_faction_dangu_elite",
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_faction_tianji_elite": {
+      "presentationId": "combat_enc_faction_tianji_elite_agc_n12",
+      "battlefieldId": "battlefield_enc_faction_tianji_elite_agc_n12",
+      "battlefield": "enc_faction_tianji_elite",
+      "warningTitle": "势力精英·天机巡算师 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_tianji_elite_agc_n12.png",
+      "enemyType": "势力精英 · 天机巡算师",
+      "difficultyLabel": "元婴 · 精英",
+      "mechanic": "聚势后锁定重击，考验提前规划。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_tianji_diviner_agc_n12",
+          "name": "天机巡算师",
+          "kicker": "元婴 · 势力精英",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/tianji_diviner_agc_n12/idle/frame-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/tianji_diviner_agc_n12/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/tianji_diviner_agc_n12/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/tianji_diviner_agc_n12/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/tianji_diviner_agc_n12/idle/frame-1.png"
+          },
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "feet",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n12_humanoid_discipline_pursuit_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "finalArtApproved": false,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "tianji_diviner_lean_n12"
+        }
+      },
+      "vfx": {
+        "state": "fx_tianji_diviner_state_agc_n12",
+        "impact": "fx_tianji_diviner_impact_agc_n12"
+      },
+      "actionPresentationId": "enc_faction_tianji_elite",
+      "finalArtApproved": false,
+      "encounterCompositionId": "enc_faction_tianji_elite",
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_faction_wumeng_elite": {
+      "presentationId": "combat_enc_faction_wumeng_elite_agc_k2",
+      "battlefieldId": "battlefield_enc_faction_wumeng_elite_agc_k2",
+      "battlefield": "enc_faction_wumeng_elite",
+      "warningTitle": "势力精英·武盟镇关者 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_wumeng_elite_agc_k2.png",
+      "enemyType": "势力精英 · 武盟镇关者",
+      "difficultyLabel": "筑基 · 精英",
+      "mechanic": "观式会记住连续同类招式；真元只剩 2 点时，他会以重拳强压。偏架成功后，趁其失衡收架变招。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_faction_wumeng_elite_agc_k2",
+          "name": "武盟镇关者",
+          "kicker": "筑基 · 势力精英",
+          "scaleProfileId": "wumeng_stocky_gatekeeper",
+          "portraitMode": "stage_full_body_transparent",
+          "intentPosePolicy": "stable_identity",
+          "image": "assets/combat/enemy_identities/enc_faction_wumeng_elite_agc_k2/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_actions/enc_faction_wumeng_elite_agc_k2/attack/attack-3.png",
+            "defend": "assets/combat/enemy_actions/enc_faction_wumeng_elite_agc_k2/guard/guard-2.png",
+            "buff": "assets/combat/enemy_actions/enc_faction_wumeng_elite_agc_k2/guard/guard-1.png",
+            "debuff": "assets/combat/enemy_actions/enc_faction_wumeng_elite_agc_k2/hurt/hurt-3.png"
+          },
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "finalArtApproved": false
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_wumeng_damage_agc_k2",
+          "frames": [
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/damage/damage-1.png",
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/damage/damage-2.png",
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/damage/damage-3.png",
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/damage/damage-4.png"
+          ],
+          "durationMs": 360
+        },
+        "shield": {
+          "id": "fx_wumeng_shield_agc_k2",
+          "frames": [
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/shield/shield-1.png",
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/shield/shield-2.png",
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/shield/shield-3.png",
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/shield/shield-4.png"
+          ],
+          "durationMs": 420
+        },
+        "weak": {
+          "id": "fx_wumeng_weak_agc_k2",
+          "frames": [
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/weak/weak-1.png",
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/weak/weak-2.png",
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/weak/weak-3.png",
+            "assets/combat/vfx/enc_faction_wumeng_elite_agc_k2/weak/weak-4.png"
+          ],
+          "durationMs": 400
+        }
+      },
+      "actionPresentationId": "enc_faction_wumeng_elite",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "finalArtApproved": false,
+      "replacementStillRequired": true
+    },
+    "enc_faction_xuesha_elite": {
+      "presentationId": "combat_enc_faction_xuesha_elite_agc_n12",
+      "battlefieldId": "battlefield_enc_faction_xuesha_elite_agc_n12",
+      "battlefield": "enc_faction_xuesha_elite",
+      "warningTitle": "势力精英·血煞追魂使 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_xuesha_elite_agc_n12.png",
+      "enemyType": "势力精英 · 血煞追魂使",
+      "difficultyLabel": "元婴 · 精英",
+      "mechanic": "随机虚弱与吸血，要求保留应急手段。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_xuesha_soul_pursuer_agc_n12",
+          "name": "血煞追魂使",
+          "kicker": "元婴 · 势力精英",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/xuesha_soul_pursuer_agc_n12/idle/frame-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/xuesha_soul_pursuer_agc_n12/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/xuesha_soul_pursuer_agc_n12/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/xuesha_soul_pursuer_agc_n12/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/xuesha_soul_pursuer_agc_n12/idle/frame-1.png"
+          },
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "feet",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n12_humanoid_discipline_pursuit_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "finalArtApproved": false,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "xuesha_soul_pursuer_low_n12"
+        }
+      },
+      "vfx": {
+        "state": "fx_xuesha_soul_pursuer_state_agc_n12",
+        "impact": "fx_xuesha_soul_pursuer_impact_agc_n12"
+      },
+      "actionPresentationId": "enc_faction_xuesha_elite",
+      "finalArtApproved": false,
+      "encounterCompositionId": "enc_faction_xuesha_elite",
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_companion_bai_luoxuan_hunt": {
+      "presentationId": "combat_enc_companion_bai_luoxuan_hunt_agc_n11",
+      "actionPresentationId": "enc_companion_bai_luoxuan_hunt",
+      "battlefieldId": "battlefield_enc_companion_bai_luoxuan_hunt_agc_n11",
+      "encounterCompositionId": "enc_companion_bai_luoxuan_hunt",
+      "battlefield": "enc_companion_bai_luoxuan_hunt",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_bai_luoxuan_hunt_agc_n11.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "猎妖守阵兽 · 独立式路",
+      "enemyType": "原生遭遇实体",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "阵纹震慑 → 阔肩碾压 → 阵纹反冲 → 退爪重整",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_ward_beast_agc_n11",
+          "name": "猎妖守阵兽",
+          "kicker": "独立动作与决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/ward_beast_agc_n11/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "ward_beast_broad_n11",
+          "feetAnchor": "feet",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/ward_beast_agc_n11/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/ward_beast_agc_n11/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/ward_beast_agc_n11/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/ward_beast_agc_n11/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "state": "fx_ward_beast_state_agc_n11",
+        "impact": "fx_ward_beast_impact_agc_n11"
+      },
+      "finalArtApproved": false
+    },
+    "enc_companion_jian_linger_tomb": {
+      "presentationId": "combat_enc_companion_jian_linger_tomb_agc_n12",
+      "battlefieldId": "battlefield_enc_companion_jian_linger_tomb_agc_n12",
+      "battlefield": "enc_companion_jian_linger_tomb",
+      "warningTitle": "并肩战·剑灵儿的旧主 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_jian_linger_tomb_agc_n12.png",
+      "enemyType": "道侣因缘 · 旧主残念",
+      "difficultyLabel": "金丹 · 精英",
+      "mechanic": "旧主残念凝剑后爆发；能否共同撑过爆发回合将改变剑灵儿的羁绊。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_sword_tomb_old_master_agc_n12",
+          "name": "旧主残念",
+          "kicker": "金丹 · 道侣因缘",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/sword_tomb_old_master_agc_n12/idle/frame-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/sword_tomb_old_master_agc_n12/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/sword_tomb_old_master_agc_n12/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/sword_tomb_old_master_agc_n12/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/sword_tomb_old_master_agc_n12/idle/frame-1.png"
+          },
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n12_humanoid_discipline_pursuit_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "finalArtApproved": false,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "sword_tomb_old_master_hovering_n12"
+        }
+      },
+      "vfx": {
+        "state": "fx_sword_tomb_old_master_state_agc_n12",
+        "impact": "fx_sword_tomb_old_master_impact_agc_n12"
+      },
+      "actionPresentationId": "enc_companion_jian_linger_tomb",
+      "finalArtApproved": false,
+      "encounterCompositionId": "enc_companion_jian_linger_tomb",
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_companion_yin_xue_pursuit": {
+      "presentationId": "combat_enc_companion_yin_xue_pursuit_agc_n12",
+      "battlefieldId": "battlefield_enc_companion_yin_xue_pursuit_agc_n12",
+      "battlefield": "enc_companion_yin_xue_pursuit",
+      "warningTitle": "并肩战·殷血的追兵 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_yin_xue_pursuit_agc_n12.png",
+      "enemyType": "道侣因缘 · 血煞追兵",
+      "difficultyLabel": "元婴 · 精英",
+      "mechanic": "虚弱与吸血交替，拖延会让追兵恢复优势。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_yin_xue_pursuit_captain_agc_n12",
+          "name": "血煞追兵",
+          "kicker": "元婴 · 道侣因缘",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/yin_xue_pursuit_captain_agc_n12/idle/frame-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/yin_xue_pursuit_captain_agc_n12/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/yin_xue_pursuit_captain_agc_n12/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/yin_xue_pursuit_captain_agc_n12/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/yin_xue_pursuit_captain_agc_n12/idle/frame-1.png"
+          },
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "feet",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n12_humanoid_discipline_pursuit_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "finalArtApproved": false,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "yin_xue_pursuit_captain_grounded_n12"
+        }
+      },
+      "vfx": {
+        "state": "fx_yin_xue_pursuit_captain_state_agc_n12",
+        "impact": "fx_yin_xue_pursuit_captain_impact_agc_n12"
+      },
+      "actionPresentationId": "enc_companion_yin_xue_pursuit",
+      "finalArtApproved": false,
+      "encounterCompositionId": "enc_companion_yin_xue_pursuit",
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_companion_mu_qinglan_medicine": {
+      "presentationId": "combat_enc_companion_mu_qinglan_medicine_agc_n11",
+      "actionPresentationId": "enc_companion_mu_qinglan_medicine",
+      "battlefieldId": "battlefield_enc_companion_mu_qinglan_medicine_agc_n11",
+      "encounterCompositionId": "enc_companion_mu_qinglan_medicine",
+      "battlefield": "enc_companion_mu_qinglan_medicine",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_mu_qinglan_medicine_agc_n11.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "失控药灵 · 独立式路",
+      "enemyType": "原生遭遇实体",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "根须摄养 → 药枝横生 → 同性催狂 → 枝节受剪",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_medicine_spirit_agc_n11",
+          "name": "失控药灵",
+          "kicker": "独立动作与决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/medicine_spirit_agc_n11/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "medicine_spirit_rooted_n11",
+          "feetAnchor": "rooted",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/medicine_spirit_agc_n11/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/medicine_spirit_agc_n11/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/medicine_spirit_agc_n11/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/medicine_spirit_agc_n11/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "state": "fx_medicine_spirit_state_agc_n11",
+        "impact": "fx_medicine_spirit_impact_agc_n11"
+      },
+      "finalArtApproved": false
+    },
+    "enc_companion_jiuwei_memory": {
+      "presentationId": "combat_enc_companion_jiuwei_memory_agc_n14",
+      "actionPresentationId": "enc_companion_jiuwei_memory",
+      "battlefieldId": "battlefield_enc_companion_jiuwei_memory_agc_n14",
+      "encounterCompositionId": "enc_companion_jiuwei_memory",
+      "battlefield": "enc_companion_jiuwei_memory",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_jiuwei_memory_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "并肩战·九尾溯月的断忆 · 现象式路",
+      "enemyType": "deity · 断忆心魔",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "心防与震爆轮换；守住记忆回合比抢攻更重要。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_severed_memory_demon_agc_n14",
+          "name": "断忆心魔",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/severed_memory_demon_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "severed_memory_nuo_masks_n14",
+          "feetAnchor": "feet",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/severed_memory_demon_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/severed_memory_demon_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/severed_memory_demon_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/severed_memory_demon_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_severed_memory_demon_skill_agc_n14",
+        "attack": "fx_severed_memory_demon_attack_agc_n14",
+        "hurt": "fx_severed_memory_demon_hurt_agc_n14",
+        "defeat": "fx_severed_memory_demon_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    },
+    "enc_companion_tianji_future": {
+      "presentationId": "combat_enc_companion_tianji_future_agc_n14",
+      "actionPresentationId": "enc_companion_tianji_future",
+      "battlefieldId": "battlefield_enc_companion_tianji_future_agc_n14",
+      "encounterCompositionId": "enc_companion_tianji_future",
+      "battlefield": "enc_companion_tianji_future",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_tianji_future_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "并肩战·天机老人的死局 · 现象式路",
+      "enemyType": "tribulation · 必败未来",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "三段法则攻击，第三击前必须完成资源循环。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_doomed_future_echo_agc_n14",
+          "name": "必败未来",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/doomed_future_echo_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "doomed_future_hanfu_pair_n14",
+          "feetAnchor": "feet",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/doomed_future_echo_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/doomed_future_echo_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/doomed_future_echo_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/doomed_future_echo_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_doomed_future_echo_skill_agc_n14",
+        "attack": "fx_doomed_future_echo_attack_agc_n14",
+        "hurt": "fx_doomed_future_echo_hurt_agc_n14",
+        "defeat": "fx_doomed_future_echo_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    },
+    "enc_patrol_qi_mountain_shadow": {
+      "presentationId": "combat_enc_patrol_qi_mountain_shadow_native_v1",
+      "battlefieldId": "battlefield_enc_patrol_qi_mountain_shadow_native_v1",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "battlefield": "enc_patrol_qi_mountain_shadow",
+      "warningTitle": "炼气巡战·山影拦途 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_patrol_qi_mountain_shadow_agc_v2.png",
+      "enemyType": "境界巡战 · 巡山石影",
+      "difficultyLabel": "炼气 · 试炼",
+      "mechanic": "石影先压迫再短暂回气；在回气窗口反击，比连续抢攻更安全。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_patrol_qi_mountain_shadow_native_v1",
+          "name": "巡山石影",
+          "kicker": "炼气 · 境界巡战",
+          "scaleProfileId": "mountain_shadow_heavy_construct",
+          "portraitMode": "stage_full_body_transparent",
+          "intentPosePolicy": "stable_identity",
+          "image": "assets/combat/enemy_actions/enc_patrol_qi_mountain_shadow_idle_agc_v2/approved_v2/idle-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_actions/enc_patrol_qi_mountain_shadow_attack_agc_v2/approved_v2/attack-1.png",
+            "defend": "assets/combat/enemy_actions/enc_patrol_qi_mountain_shadow_idle_agc_v2/approved_v2/idle-2.png",
+            "buff": "assets/combat/enemy_actions/enc_patrol_qi_mountain_shadow_idle_agc_v2/approved_v2/idle-3.png",
+            "debuff": "assets/combat/enemy_actions/enc_patrol_qi_mountain_shadow_idle_agc_v2/approved_v2/idle-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_s2_body_stone_pulse_agc_k4",
+          "frames": [
+            "assets/combat/vfx/s2_path_attacks_agc_k4/body_stone_pulse/contact-1.png",
+            "assets/combat/vfx/s2_path_attacks_agc_k4/body_stone_pulse/contact-2.png",
+            "assets/combat/vfx/s2_path_attacks_agc_k4/body_stone_pulse/contact-3.png",
+            "assets/combat/vfx/s2_path_attacks_agc_k4/body_stone_pulse/contact-4.png"
+          ],
+          "durationMs": 250,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "bodySeparated": true,
+          "artApproval": "candidate_self_qc_pending_independent_review",
+          "finalArtApproved": false
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-4.png"
+          ],
+          "durationMs": 420,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-4.png"
+          ],
+          "durationMs": 480,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        }
+      }
+    },
+    "enc_patrol_deity_law_echo": {
+      "presentationId": "combat_enc_patrol_deity_law_echo_agc_n13",
+      "actionPresentationId": "enc_patrol_deity_law_echo",
+      "battlefieldId": "battlefield_enc_patrol_deity_law_echo_agc_n13",
+      "encounterCompositionId": "enc_patrol_deity_law_echo",
+      "battlefield": "enc_patrol_deity_law_echo",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_patrol_deity_law_echo_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "化神巡战·律令余响 · 现象式路",
+      "enemyType": "deity · 律令巡影",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "法影在施压与结界间轮换；先稳住护盾，再在结界收束前完成反击。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_law_edict_echo_agc_n13",
+          "name": "律令巡影",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/law_edict_echo_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "law_edict_echo_hovering_n13",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/law_edict_echo_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/law_edict_echo_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/law_edict_echo_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/law_edict_echo_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_law_edict_echo_skill_agc_n13",
+        "attack": "fx_law_edict_echo_attack_agc_n13",
+        "hurt": "fx_law_edict_echo_hurt_agc_n13",
+        "defeat": "fx_law_edict_echo_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_patrol_tribulation_storm_echo": {
+      "presentationId": "combat_enc_patrol_tribulation_storm_echo_agc_n14",
+      "actionPresentationId": "enc_patrol_tribulation_storm_echo",
+      "battlefieldId": "battlefield_enc_patrol_tribulation_storm_echo_agc_n14",
+      "encounterCompositionId": "enc_patrol_tribulation_storm_echo",
+      "battlefield": "enc_patrol_tribulation_storm_echo",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_patrol_tribulation_storm_echo_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "渡劫巡战·劫云残响 · 现象式路",
+      "enemyType": "tribulation · 劫云残响",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "雷意蓄势后连续落击；保留真元与护盾，才能在雷势回收时反制。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_tribulation_storm_echo_agc_n14",
+          "name": "劫云残响",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/tribulation_storm_echo_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "tribulation_thunder_drum_lowwide_n14",
+          "feetAnchor": "rooted",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/tribulation_storm_echo_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/tribulation_storm_echo_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/tribulation_storm_echo_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/tribulation_storm_echo_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_tribulation_storm_echo_skill_agc_n14",
+        "attack": "fx_tribulation_storm_echo_attack_agc_n14",
+        "hurt": "fx_tribulation_storm_echo_hurt_agc_n14",
+        "defeat": "fx_tribulation_storm_echo_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    },
+    "enc_quota_qi_outer_guard": {
+      "presentationId": "combat_enc_quota_qi_outer_guard_native_v1",
+      "battlefieldId": "battlefield_enc_quota_qi_outer_guard_agc_n8",
+      "battlefield": "enc_quota_qi_outer_guard",
+      "warningTitle": "炼气精英·外门巡律使 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_qi_outer_guard_agc_n8.png",
+      "enemyType": "境界精英 · 外门巡律使",
+      "difficultyLabel": "炼气 · 精英",
+      "mechanic": "短刀先试律；耗尽真元会被追身问责，保留资源或偏斩可迫使巡律使回息。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_quota_qi_outer_guard_agc_n8",
+          "name": "外门巡律使",
+          "kicker": "炼气 · 境界精英",
+          "portraitMode": "stage_full_body_transparent",
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "outer_guard_disciplined_humanoid_n8",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "image": "assets/combat/enemy_identities/outer_guard_disciplined_humanoid_agc_n8/idle-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/outer_guard_disciplined_humanoid_agc_n8/idle-1.png",
+            "defend": "assets/combat/enemy_identities/outer_guard_disciplined_humanoid_agc_n8/idle-1.png",
+            "buff": "assets/combat/enemy_identities/outer_guard_disciplined_humanoid_agc_n8/idle-1.png",
+            "debuff": "assets/combat/enemy_identities/outer_guard_disciplined_humanoid_agc_n8/idle-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_damage_contact_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-4.png"
+          ],
+          "durationMs": 340,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-4.png"
+          ],
+          "durationMs": 420,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-4.png"
+          ],
+          "durationMs": 480,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        }
+      },
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_quota_qi_missing_disciple": {
+      "presentationId": "combat_enc_quota_qi_missing_disciple_native_v1",
+      "battlefieldId": "battlefield_enc_quota_qi_missing_disciple_agc_n8",
+      "battlefield": "enc_quota_qi_missing_disciple",
+      "warningTitle": "炼气任务·废弃药圃救援 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_qi_missing_disciple_agc_n8.png",
+      "enemyType": "境界任务 · 噬灵藤心",
+      "difficultyLabel": "炼气 · 任务",
+      "mechanic": "藤心先聚灵再持续贴地缠身；在根节绷紧时偏斩，可迫使它重新蓄力。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_quota_qi_missing_disciple_agc_n8",
+          "name": "噬灵藤心",
+          "kicker": "炼气 · 境界任务",
+          "portraitMode": "stage_full_body_transparent",
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "spirit_devouring_vine_rooted_colony_n8",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "image": "assets/combat/enemy_identities/spirit_devouring_vine_rooted_colony_agc_n8/idle-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/spirit_devouring_vine_rooted_colony_agc_n8/idle-1.png",
+            "defend": "assets/combat/enemy_identities/spirit_devouring_vine_rooted_colony_agc_n8/idle-1.png",
+            "buff": "assets/combat/enemy_identities/spirit_devouring_vine_rooted_colony_agc_n8/idle-1.png",
+            "debuff": "assets/combat/enemy_identities/spirit_devouring_vine_rooted_colony_agc_n8/idle-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_damage_contact_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-4.png"
+          ],
+          "durationMs": 340,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-4.png"
+          ],
+          "durationMs": 420,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-4.png"
+          ],
+          "durationMs": 480,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        }
+      },
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_quota_foundation_vein_wolf": {
+      "presentationId": "combat_enc_quota_foundation_vein_wolf_agc_n11",
+      "actionPresentationId": "enc_quota_foundation_vein_wolf",
+      "battlefieldId": "battlefield_enc_quota_foundation_vein_wolf_agc_n11",
+      "encounterCompositionId": "enc_quota_foundation_vein_wolf",
+      "battlefield": "enc_quota_foundation_vein_wolf",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_foundation_vein_wolf_agc_n11.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "地脉岩狼 · 独立式路",
+      "enemyType": "原生遭遇实体",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "岩甲闭合 → 贴地扑杀 → 软节暴露 → 退步归甲",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_vein_wolf_agc_n11",
+          "name": "地脉岩狼",
+          "kicker": "独立动作与决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/vein_wolf_agc_n11/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "vein_wolf_low_n11",
+          "feetAnchor": "feet",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/vein_wolf_agc_n11/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/vein_wolf_agc_n11/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/vein_wolf_agc_n11/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/vein_wolf_agc_n11/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "state": "fx_vein_wolf_state_agc_n11",
+        "impact": "fx_vein_wolf_impact_agc_n11"
+      },
+      "finalArtApproved": false
+    },
+    "enc_quota_foundation_mirror_mist": {
+      "presentationId": "combat_enc_quota_foundation_mirror_mist_agc_n9",
+      "actionPresentationId": "enc_quota_foundation_mirror_mist",
+      "battlefieldId": "battlefield_enc_quota_foundation_mirror_mist_agc_n9",
+      "encounterCompositionId": "enc_quota_foundation_mirror_mist",
+      "battlefield": "enc_quota_foundation_mirror_mist",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_foundation_mirror_mist_agc_n9.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "筑基巡战·镜湖返照 · 首式记录",
+      "enemyType": "境界巡战 · 镜雾游魂",
+      "difficultyLabel": "筑基 · 试炼",
+      "mechanic": "镜雾记录第一张真正结算的牌，并用剑、法、体、丹四种独立轮廓返照；异路出牌可折断镜序。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_quota_foundation_mirror_mist_agc_n9",
+          "name": "镜雾游魂",
+          "kicker": "筑基 · 试炼",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/foundation_mirror_mist_agc_n9/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "foundation_mirror_mist_hovering_n9",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/foundation_mirror_mist_agc_n9/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/foundation_mirror_mist_agc_n9/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/foundation_mirror_mist_agc_n9/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/foundation_mirror_mist_agc_n9/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_damage_contact_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-4.png"
+          ],
+          "durationMs": 340,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-4.png"
+          ],
+          "durationMs": 420,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-4.png"
+          ],
+          "durationMs": 480,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        }
+      }
+    },
+    "enc_quota_foundation_broken_array": {
+      "presentationId": "combat_enc_quota_foundation_broken_array_agc_n9",
+      "actionPresentationId": "enc_quota_foundation_broken_array",
+      "battlefieldId": "battlefield_enc_quota_foundation_broken_array_agc_n9",
+      "encounterCompositionId": "enc_quota_foundation_broken_array",
+      "battlefield": "enc_quota_foundation_broken_array",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_foundation_broken_array_agc_n9.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "筑基任务·失控护山阵 · 阵眼压制",
+      "enemyType": "境界任务 · 错乱阵灵",
+      "difficultyLabel": "筑基 · 精英",
+      "mechanic": "旧护阵跨回合保留；真实打空屏障会提前暴露阵眼，未打空则经历闭合、蓄势、交斩后过载。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_quota_foundation_broken_array_agc_n9",
+          "name": "错乱阵灵",
+          "kicker": "筑基 · 精英",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/foundation_broken_array_agc_n9/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "foundation_broken_array_rooted_n9",
+          "feetAnchor": "rooted",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/foundation_broken_array_agc_n9/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/foundation_broken_array_agc_n9/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/foundation_broken_array_agc_n9/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/foundation_broken_array_agc_n9/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_damage_contact_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/damage_contact_agc_u1/contact-4.png"
+          ],
+          "durationMs": 340,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/shield_ward_agc_u1/shield-4.png"
+          ],
+          "durationMs": 420,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "frames": [
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-1.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-2.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-3.png",
+            "assets/combat/vfx/agc_world_cohesion_v1/weak_sag_agc_u1/weak-4.png"
+          ],
+          "durationMs": 480,
+          "artApproval": "candidate_self_qc_pending_actor_in_place_review",
+          "finalArtApproved": false
+        }
+      }
+    },
+    "enc_quota_golden_furnace_flame": {
+      "presentationId": "combat_enc_quota_golden_furnace_flame_agc_n1",
+      "actionPresentationId": "enc_quota_golden_furnace_flame",
+      "battlefieldId": "battlefield_enc_quota_golden_furnace_flame_agc_n1",
+      "encounterCompositionId": "enc_quota_golden_furnace_flame",
+      "battlefield": "enc_quota_golden_furnace_flame",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_golden_furnace_flame_agc_n1.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "金丹巡关·离炉真火 · 战前推演",
+      "enemyType": "境界巡战 · 离炉真火",
+      "difficultyLabel": "金丹 · 试炼",
+      "mechanic": "真火蓄热后爆发；暴露期结构小、速度快，宜在热量收束时压制。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_quota_golden_furnace_flame_agc_n1",
+          "name": "离炉真火",
+          "kicker": "金丹 · 试炼",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemies/golden_furnace_flame_n1/action/action-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "shadow_projection",
+          "scaleProfileId": "golden_furnace_flame_hovering_wisp",
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemies/golden_furnace_flame_n1/action/action-3.png",
+            "defend": "assets/combat/enemies/golden_furnace_flame_n1/action/action-2.png",
+            "buff": "assets/combat/enemies/golden_furnace_flame_n1/action/action-1.png",
+            "debuff": "assets/combat/enemies/golden_furnace_flame_n1/action/action-2.png",
+            "hurt": "assets/combat/enemies/golden_furnace_flame_n1/action/action-1.png",
+            "defeat": "assets/combat/enemies/golden_furnace_flame_n1/defeat_n4/defeat-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_golden_furnace_heat_n1",
+          "frames": [
+            "assets/combat/fx/golden_furnace_n4/furnace_heat_travel/furnace_heat_travel-1.png",
+            "assets/combat/fx/golden_furnace_n4/furnace_heat_travel/furnace_heat_travel-2.png",
+            "assets/combat/fx/golden_furnace_n4/furnace_heat_travel/furnace_heat_travel-3.png",
+            "assets/combat/fx/golden_furnace_n4/furnace_heat_travel/furnace_heat_travel-4.png"
+          ],
+          "durationMs": 300,
+          "placement": "travel",
+          "authoredFacing": "left"
+        },
+        "slash": {
+          "id": "fx_golden_furnace_heat_n1",
+          "frames": [
+            "assets/combat/fx/golden_furnace_n4/furnace_heat_travel/furnace_heat_travel-1.png",
+            "assets/combat/fx/golden_furnace_n4/furnace_heat_travel/furnace_heat_travel-2.png",
+            "assets/combat/fx/golden_furnace_n4/furnace_heat_travel/furnace_heat_travel-3.png",
+            "assets/combat/fx/golden_furnace_n4/furnace_heat_travel/furnace_heat_travel-4.png"
+          ],
+          "durationMs": 300,
+          "placement": "travel",
+          "authoredFacing": "left"
+        }
+      }
+    },
+    "enc_quota_golden_ore_spirit": {
+      "presentationId": "combat_enc_quota_golden_ore_spirit_agc_n11",
+      "actionPresentationId": "enc_quota_golden_ore_spirit",
+      "battlefieldId": "battlefield_enc_quota_golden_ore_spirit_agc_n11",
+      "encounterCompositionId": "enc_quota_golden_ore_spirit",
+      "battlefield": "enc_quota_golden_ore_spirit",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_golden_ore_spirit_agc_n11.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "吞金矿灵 · 独立式路",
+      "enemyType": "原生遭遇实体",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "矿壳结晶 → 矿脊冲撞 → 晶面断裂 → 沉渣冷却",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_ore_spirit_agc_n11",
+          "name": "吞金矿灵",
+          "kicker": "独立动作与决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/ore_spirit_agc_n11/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "ore_spirit_rooted_n11",
+          "feetAnchor": "rooted",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/ore_spirit_agc_n11/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/ore_spirit_agc_n11/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/ore_spirit_agc_n11/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/ore_spirit_agc_n11/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "state": "fx_ore_spirit_state_agc_n11",
+        "impact": "fx_ore_spirit_impact_agc_n11"
+      },
+      "finalArtApproved": false
+    },
+    "enc_quota_golden_lost_elixir": {
+      "presentationId": "combat_enc_quota_golden_lost_elixir_agc_n11",
+      "actionPresentationId": "enc_quota_golden_lost_elixir",
+      "battlefieldId": "battlefield_enc_quota_golden_lost_elixir_agc_n11",
+      "encounterCompositionId": "enc_quota_golden_lost_elixir",
+      "battlefield": "enc_quota_golden_lost_elixir",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_golden_lost_elixir_agc_n11.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "古炉守灵 · 独立式路",
+      "enemyType": "原生遭遇实体",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "炉压积聚 → 横口泄焰 → 火路受阻 → 炉壁回冷",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_ancient_furnace_guardian_agc_n11",
+          "name": "古炉守灵",
+          "kicker": "独立动作与决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/ancient_furnace_guardian_agc_n11/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "ancient_furnace_guardian_rooted_n11",
+          "feetAnchor": "rooted",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/ancient_furnace_guardian_agc_n11/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/ancient_furnace_guardian_agc_n11/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/ancient_furnace_guardian_agc_n11/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/ancient_furnace_guardian_agc_n11/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "state": "fx_ancient_furnace_guardian_state_agc_n11",
+        "impact": "fx_ancient_furnace_guardian_impact_agc_n11"
+      },
+      "finalArtApproved": false
+    },
+    "enc_quota_nascent_soul_echo": {
+      "presentationId": "combat_enc_quota_nascent_soul_echo_agc_n13",
+      "actionPresentationId": "enc_quota_nascent_soul_echo",
+      "battlefieldId": "battlefield_enc_quota_nascent_soul_echo_agc_n13",
+      "encounterCompositionId": "enc_quota_nascent_soul_echo",
+      "battlefield": "enc_quota_nascent_soul_echo",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_nascent_soul_echo_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "元婴巡战·离体魂响 · 现象式路",
+      "enemyType": "nascent · 离体魂响",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "魂响聚念后重击，防住聚念再反击可令其失去依附。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_disembodied_soul_echo_agc_n13",
+          "name": "离体魂响",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/disembodied_soul_echo_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "disembodied_soul_echo_hovering_n13",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/disembodied_soul_echo_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/disembodied_soul_echo_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/disembodied_soul_echo_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/disembodied_soul_echo_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_disembodied_soul_echo_skill_agc_n13",
+        "attack": "fx_disembodied_soul_echo_attack_agc_n13",
+        "hurt": "fx_disembodied_soul_echo_hurt_agc_n13",
+        "defeat": "fx_disembodied_soul_echo_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_quota_nascent_void_moth": {
+      "presentationId": "combat_enc_quota_nascent_void_moth_agc_n13",
+      "actionPresentationId": "enc_quota_nascent_void_moth",
+      "battlefieldId": "battlefield_enc_quota_nascent_void_moth_agc_n13",
+      "encounterCompositionId": "enc_quota_nascent_void_moth",
+      "battlefield": "enc_quota_nascent_void_moth",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_nascent_void_moth_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "元婴巡战·蚀界虚蛾 · 现象式路",
+      "enemyType": "nascent · 蚀界虚蛾",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "虚蛾在振翅前蓄势，施加虚弱可让它撞入自己撕开的裂隙。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_void_eating_moth_agc_n13",
+          "name": "蚀界虚蛾",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/void_eating_moth_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "void_eating_moth_broad_n13",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/void_eating_moth_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/void_eating_moth_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/void_eating_moth_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/void_eating_moth_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_void_eating_moth_skill_agc_n13",
+        "attack": "fx_void_eating_moth_attack_agc_n13",
+        "hurt": "fx_void_eating_moth_hurt_agc_n13",
+        "defeat": "fx_void_eating_moth_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_quota_nascent_rift_rescue": {
+      "presentationId": "combat_enc_quota_nascent_rift_rescue_agc_n13",
+      "actionPresentationId": "enc_quota_nascent_rift_rescue",
+      "battlefieldId": "battlefield_enc_quota_nascent_rift_rescue_agc_n13",
+      "encounterCompositionId": "enc_quota_nascent_rift_rescue",
+      "battlefield": "enc_quota_nascent_rift_rescue",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_nascent_rift_rescue_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "元婴任务·裂隙中的商旅 · 现象式路",
+      "enemyType": "nascent · 虚空猎影",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "猎影锁定灯火后蓄力，打断锁定可为商旅争取撤离时间。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_rift_hunter_shadow_agc_n13",
+          "name": "虚空猎影",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/rift_hunter_shadow_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "rift_hunter_shadow_hovering_n13",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/rift_hunter_shadow_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/rift_hunter_shadow_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/rift_hunter_shadow_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/rift_hunter_shadow_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_rift_hunter_shadow_skill_agc_n13",
+        "attack": "fx_rift_hunter_shadow_attack_agc_n13",
+        "hurt": "fx_rift_hunter_shadow_hurt_agc_n13",
+        "defeat": "fx_rift_hunter_shadow_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_quota_deity_law_beast": {
+      "presentationId": "combat_enc_quota_deity_law_beast_agc_n13",
+      "actionPresentationId": "enc_quota_deity_law_beast",
+      "battlefieldId": "battlefield_enc_quota_deity_law_beast_agc_n13",
+      "encounterCompositionId": "enc_quota_deity_law_beast",
+      "battlefield": "enc_quota_deity_law_beast",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_deity_law_beast_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "化神巡战·食律云兽 · 现象式路",
+      "enemyType": "deity · 食律云兽",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "云兽吞律后结界护体，结界破碎时会暴露被吞法则。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_law_eating_cloud_beast_agc_n13",
+          "name": "食律云兽",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/law_eating_cloud_beast_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "law_eating_cloud_beast_broad_n13",
+          "feetAnchor": "feet",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/law_eating_cloud_beast_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/law_eating_cloud_beast_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/law_eating_cloud_beast_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/law_eating_cloud_beast_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_law_eating_cloud_beast_skill_agc_n13",
+        "attack": "fx_law_eating_cloud_beast_attack_agc_n13",
+        "hurt": "fx_law_eating_cloud_beast_hurt_agc_n13",
+        "defeat": "fx_law_eating_cloud_beast_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_quota_deity_heaven_envoy": {
+      "presentationId": "combat_enc_quota_deity_heaven_envoy_agc_n12",
+      "battlefieldId": "battlefield_enc_quota_deity_heaven_envoy_agc_n12",
+      "battlefield": "enc_quota_deity_heaven_envoy",
+      "warningTitle": "化神精英·巡界敕令使 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_deity_heaven_envoy_agc_n12.png",
+      "enemyType": "境界精英 · 巡界敕令使",
+      "difficultyLabel": "化神 · 精英",
+      "mechanic": "敕令使在禁制与重击间换挡，连续进攻会触发更强反制。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_heaven_envoy_agc_n12",
+          "name": "巡界敕令使",
+          "kicker": "化神 · 境界精英",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/heaven_envoy_agc_n12/idle/frame-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/heaven_envoy_agc_n12/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/heaven_envoy_agc_n12/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/heaven_envoy_agc_n12/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/heaven_envoy_agc_n12/idle/frame-1.png"
+          },
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "feet",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n12_humanoid_discipline_pursuit_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "finalArtApproved": false,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "heaven_envoy_tall_n12"
+        }
+      },
+      "vfx": {
+        "state": "fx_heaven_envoy_state_agc_n12",
+        "impact": "fx_heaven_envoy_impact_agc_n12"
+      },
+      "actionPresentationId": "enc_quota_deity_heaven_envoy",
+      "finalArtApproved": false,
+      "encounterCompositionId": "enc_quota_deity_heaven_envoy",
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_quota_deity_mortal_prayer": {
+      "presentationId": "combat_enc_quota_deity_mortal_prayer_agc_n13",
+      "actionPresentationId": "enc_quota_deity_mortal_prayer",
+      "battlefieldId": "battlefield_enc_quota_deity_mortal_prayer_agc_n13",
+      "encounterCompositionId": "enc_quota_deity_mortal_prayer",
+      "battlefield": "enc_quota_deity_mortal_prayer",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_deity_mortal_prayer_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "化神任务·万民愿火失控 · 现象式路",
+      "enemyType": "deity · 失控愿火",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "愿火吸收重复招式，变换攻防节奏可让它吐回被吞的愿望。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_runaway_prayer_flame_agc_n13",
+          "name": "失控愿火",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/runaway_prayer_flame_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "runaway_prayer_flame_rooted_n13",
+          "feetAnchor": "rooted",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/runaway_prayer_flame_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/runaway_prayer_flame_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/runaway_prayer_flame_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/runaway_prayer_flame_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_runaway_prayer_flame_skill_agc_n13",
+        "attack": "fx_runaway_prayer_flame_attack_agc_n13",
+        "hurt": "fx_runaway_prayer_flame_hurt_agc_n13",
+        "defeat": "fx_runaway_prayer_flame_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_quota_tribulation_thunder_wraith": {
+      "presentationId": "combat_enc_quota_tribulation_thunder_wraith_agc_n13",
+      "actionPresentationId": "enc_quota_tribulation_thunder_wraith",
+      "battlefieldId": "battlefield_enc_quota_tribulation_thunder_wraith_agc_n13",
+      "encounterCompositionId": "enc_quota_tribulation_thunder_wraith",
+      "battlefield": "enc_quota_tribulation_thunder_wraith",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_tribulation_thunder_wraith_agc_n13.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "渡劫巡战·雷痕怨灵 · 现象式路",
+      "enemyType": "tribulation · 雷痕怨灵",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "怨灵复现旧劫三拍，第二拍后的空隙可斩断雷痕。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_thunder_scar_wraith_agc_n13",
+          "name": "雷痕怨灵",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/thunder_scar_wraith_agc_n13/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "thunder_scar_wraith_hovering_n13",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n13_phenomena_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/thunder_scar_wraith_agc_n13/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/thunder_scar_wraith_agc_n13/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/thunder_scar_wraith_agc_n13/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/thunder_scar_wraith_agc_n13/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_thunder_scar_wraith_skill_agc_n13",
+        "attack": "fx_thunder_scar_wraith_attack_agc_n13",
+        "hurt": "fx_thunder_scar_wraith_hurt_agc_n13",
+        "defeat": "fx_thunder_scar_wraith_defeat_agc_n13"
+      },
+      "finalArtApproved": false
+    },
+    "enc_quota_tribulation_gate_hunter": {
+      "presentationId": "combat_enc_quota_tribulation_gate_hunter_agc_n12",
+      "battlefieldId": "battlefield_enc_quota_tribulation_gate_hunter_agc_n12",
+      "battlefield": "enc_quota_tribulation_gate_hunter",
+      "warningTitle": "渡劫精英·天门猎道者 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_tribulation_gate_hunter_agc_n12.png",
+      "enemyType": "境界精英 · 天门猎道者",
+      "difficultyLabel": "渡劫 · 精英",
+      "mechanic": "猎道者会根据连续攻击或偏重防守切换封路法印。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_heaven_gate_hunter_agc_n12",
+          "name": "天门猎道者",
+          "kicker": "渡劫 · 境界精英",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/heaven_gate_hunter_agc_n12/idle/frame-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/heaven_gate_hunter_agc_n12/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/heaven_gate_hunter_agc_n12/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/heaven_gate_hunter_agc_n12/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/heaven_gate_hunter_agc_n12/idle/frame-1.png"
+          },
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "feet",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n12_humanoid_discipline_pursuit_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "finalArtApproved": false,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "heaven_gate_hunter_sturdy_n12"
+        }
+      },
+      "vfx": {
+        "state": "fx_heaven_gate_hunter_state_agc_n12",
+        "impact": "fx_heaven_gate_hunter_impact_agc_n12"
+      },
+      "actionPresentationId": "enc_quota_tribulation_gate_hunter",
+      "finalArtApproved": false,
+      "encounterCompositionId": "enc_quota_tribulation_gate_hunter",
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_quota_tribulation_fallen_ascender": {
+      "presentationId": "combat_enc_quota_tribulation_fallen_ascender_agc_n14",
+      "actionPresentationId": "enc_quota_tribulation_fallen_ascender",
+      "battlefieldId": "battlefield_enc_quota_tribulation_fallen_ascender_agc_n14",
+      "encounterCompositionId": "enc_quota_tribulation_fallen_ascender",
+      "battlefield": "enc_quota_tribulation_fallen_ascender",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_tribulation_fallen_ascender_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "渡劫任务·坠落飞升者 · 现象式路",
+      "enemyType": "tribulation · 噬主护道器",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "护道器在护主与噬主之间反复切换，破盾时可把控制权还给原主。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_fallen_ascender_guardian_relic_agc_n14",
+          "name": "噬主护道器",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/fallen_ascender_guardian_relic_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "fallen_ascender_guardian_seal_broad_n14",
+          "feetAnchor": "rooted",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/fallen_ascender_guardian_relic_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/fallen_ascender_guardian_relic_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/fallen_ascender_guardian_relic_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/fallen_ascender_guardian_relic_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_fallen_ascender_guardian_relic_skill_agc_n14",
+        "attack": "fx_fallen_ascender_guardian_relic_attack_agc_n14",
+        "hurt": "fx_fallen_ascender_guardian_relic_hurt_agc_n14",
+        "defeat": "fx_fallen_ascender_guardian_relic_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    },
+    "enc_hidden_heaven_censor": {
+      "presentationId": "combat_enc_hidden_heaven_censor_agc_n12",
+      "battlefieldId": "battlefield_enc_hidden_heaven_censor_agc_n12",
+      "battlefield": "enc_hidden_heaven_censor",
+      "warningTitle": "隐藏战·仙庭删史官 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_hidden_heaven_censor_agc_n12.png",
+      "enemyType": "天道秘战 · 仙庭删史官",
+      "difficultyLabel": "化神 · 首领",
+      "mechanic": "聚雷与删改交替，战斗会种下仙庭追索因果。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_heaven_censor_agc_n12",
+          "name": "仙庭删史官",
+          "kicker": "化神 · 天道秘战",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/heaven_censor_agc_n12/idle/frame-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/heaven_censor_agc_n12/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/heaven_censor_agc_n12/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/heaven_censor_agc_n12/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/heaven_censor_agc_n12/idle/frame-1.png"
+          },
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "feet",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n12_humanoid_discipline_pursuit_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "finalArtApproved": false,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "heaven_censor_very_tall_n12"
+        }
+      },
+      "vfx": {
+        "state": "fx_heaven_censor_state_agc_n12",
+        "impact": "fx_heaven_censor_impact_agc_n12"
+      },
+      "actionPresentationId": "enc_hidden_heaven_censor",
+      "finalArtApproved": false,
+      "encounterCompositionId": "enc_hidden_heaven_censor",
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "enc_hidden_heaven_chain": {
+      "presentationId": "combat_enc_hidden_heaven_chain_agc_n14",
+      "actionPresentationId": "enc_hidden_heaven_chain",
+      "battlefieldId": "battlefield_enc_hidden_heaven_chain_agc_n14",
+      "encounterCompositionId": "enc_hidden_heaven_chain",
+      "battlefield": "enc_hidden_heaven_chain",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_hidden_heaven_chain_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "隐藏战·飞升锁链 · 现象式路",
+      "enemyType": "tribulation · 飞升锁链",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "屏障和因果重击交替；破链会触发上界关注。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_ascension_heaven_chain_agc_n14",
+          "name": "飞升锁链",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/ascension_heaven_chain_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "ascension_decree_chain_bound_n14",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/ascension_heaven_chain_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/ascension_heaven_chain_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/ascension_heaven_chain_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/ascension_heaven_chain_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_ascension_heaven_chain_skill_agc_n14",
+        "attack": "fx_ascension_heaven_chain_attack_agc_n14",
+        "hurt": "fx_ascension_heaven_chain_hurt_agc_n14",
+        "defeat": "fx_ascension_heaven_chain_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    },
+    "enc_hidden_chaos_reversal": {
+      "presentationId": "combat_enc_hidden_chaos_reversal_agc_n14",
+      "actionPresentationId": "enc_hidden_chaos_reversal",
+      "battlefieldId": "battlefield_enc_hidden_chaos_reversal_agc_n14",
+      "encounterCompositionId": "enc_hidden_chaos_reversal",
+      "battlefield": "enc_hidden_chaos_reversal",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_hidden_chaos_reversal_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "隐藏战·混沌逆相 · 现象式路",
+      "enemyType": "deity · 混沌逆相",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "逆相先凝聚剑意再连续斩击；它只反转叙事立场，不暗改伤害规则。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_chaos_reversal_dual_agc_n14",
+          "name": "混沌逆相",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/chaos_reversal_dual_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "chaos_reversal_jian_pair_wide_n14",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/chaos_reversal_dual_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/chaos_reversal_dual_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/chaos_reversal_dual_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/chaos_reversal_dual_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_chaos_reversal_dual_skill_agc_n14",
+        "attack": "fx_chaos_reversal_dual_attack_agc_n14",
+        "hurt": "fx_chaos_reversal_dual_hurt_agc_n14",
+        "defeat": "fx_chaos_reversal_dual_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    },
+    "enc_hidden_chaos_nameless": {
+      "presentationId": "combat_enc_hidden_chaos_nameless_agc_n14",
+      "actionPresentationId": "enc_hidden_chaos_nameless",
+      "battlefieldId": "battlefield_enc_hidden_chaos_nameless_agc_n14",
+      "encounterCompositionId": "enc_hidden_chaos_nameless",
+      "battlefield": "enc_hidden_chaos_nameless",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_hidden_chaos_nameless_agc_n14.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "隐藏战·无名天道 · 现象式路",
+      "enemyType": "tribulation · 无名天道",
+      "difficultyLabel": "形态与机制独立",
+      "mechanic": "终局三拍攻击；失败结算固定伤势，而不是把局内护体直接写成死亡。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_nameless_heavenly_law_agc_n14",
+          "name": "无名天道",
+          "kicker": "现象实体 · 原生决策图",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemy_identities/nameless_heavenly_law_agc_n14/idle/frame-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "nameless_heavenly_law_hollow_n14",
+          "feetAnchor": "shadow_projection",
+          "intentPosePolicy": "authored_action_registry",
+          "motionApproved": true,
+          "mediaMountManifest": "assets/combat/provenance/agc_n14_tribulation_terminal_family/runtime-mount-manifest.json",
+          "profileMounted": true,
+          "registryMounted": true,
+          "runtimeMounted": true,
+          "runtimeBlocker": null,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/nameless_heavenly_law_agc_n14/idle/frame-1.png",
+            "defend": "assets/combat/enemy_identities/nameless_heavenly_law_agc_n14/idle/frame-1.png",
+            "buff": "assets/combat/enemy_identities/nameless_heavenly_law_agc_n14/idle/frame-1.png",
+            "debuff": "assets/combat/enemy_identities/nameless_heavenly_law_agc_n14/idle/frame-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "skill": "fx_nameless_heavenly_law_skill_agc_n14",
+        "attack": "fx_nameless_heavenly_law_attack_agc_n14",
+        "hurt": "fx_nameless_heavenly_law_hurt_agc_n14",
+        "defeat": "fx_nameless_heavenly_law_defeat_agc_n14"
+      },
+      "finalArtApproved": false
+    }
+  }
+}

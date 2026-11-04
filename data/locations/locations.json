@@ -5,8 +5,21 @@
       "name": "青云剑宗",
       "tier": 1,
       "atmosphere": { "bgClass": "loc-sect", "borderColor": "#c9a96e", "particleType": "cloud", "description": "云雾缭绕，剑鸣清越" },
-      "subLocations": ["宗门大殿", "藏经阁", "炼丹房", "后山竹林", "剑崖"],
+      "subLocations": ["宗门大殿", "藏经阁", "炼丹房", "后山竹林", "剑崖", "裂石山径"],
       "description": "青云剑宗——天下剑修的圣地。巍峨殿宇依山而建，灵气如瀑，从万仞绝壁上倾泻。空气中弥漫着剑气、丹香和千年古木的气息。",
+      "music": "serene"
+    },
+    "裂石山径": {
+      "name": "山门外·裂石山径",
+      "tier": 2,
+      "parent": "宗门",
+      "atmosphere": {
+        "bgClass": "loc-sect",
+        "borderColor": "#94a7ae",
+        "particleType": "mist",
+        "description": "雨后碎石间有极淡的灵压游移，山门已隐入远雾。"
+      },
+      "description": "宗门外的旧山路。路标裂开，湿石上留下两道未干的剑痕。",
       "music": "serene"
     },
     "坊市": {
@@ -49,6 +62,14 @@
       "description": "飞升的前一站——虚无中没有上下左右，只有星辰般的因果之线从你身上延伸出去，连接着每一个被你影响的人。天道的轰鸣在头颅内回响。",
       "music": "transcendent"
     },
+    "武盟雷峰": {
+      "name": "武盟雷峰",
+      "tier": 1,
+      "atmosphere": { "bgClass": "loc-wumeng", "borderColor": "#8096b5", "particleType": "mist", "description": "瀑雾压阶，雷峰在云后低鸣" },
+      "subLocations": ["淬体山道", "镇关石台", "万钧瀑布", "天雷峰"],
+      "description": "武盟雷峰的石阶贴着瀑壁向上，雨水沿每一道拳痕汇入台下。这里不把来者分成剑、法、体或丹，只看他在压力真正落下时怎样站住。",
+      "music": "thunder_pass"
+    },
     "剑崖": {
       "name": "剑崖",
       "tier": 2,
@@ -59,6 +80,38 @@
       "transitionFlags": {
         "bai_ren_departed": "剑气消散，崖壁开始风化。那只「白」字的情书，现在读来，字字如泪。白刃真人的剑意已经离开这片绝壁——就像他离开了这个人间。"
       }
+    },
+    "qingyun_sword_tomb": {
+      "name": "青云剑冢",
+      "tier": 2,
+      "parent": "宗门",
+      "atmosphere": { "bgClass": "loc-sect", "borderColor": "#8aa5b8", "particleType": "mist", "description": "残剑成林，暮雾压低每一道剑鸣" },
+      "description": "青云后山的旧剑冢。历代折损的剑被依序立入黑石，石缝间只有薄苔与未散的剑意；白刃把最后一课约在这里，不是为了怀旧，而是让后来者看见每一条未走完的剑路。",
+      "music": "sword_tomb_dusk"
+    },
+    "deity_market_stone_street": {
+      "name": "化神坊市 · 石街",
+      "tier": 2,
+      "parent": "坊市",
+      "atmosphere": { "bgClass": "loc-market", "borderColor": "#c18b52", "particleType": "spark", "description": "石灯低悬，旧器余灵在摊位间窃语" },
+      "description": "化神修士交易旧器的长街。铺面不吆喝，只在石灯下摆出仍有余灵的器物；每一道报价都同时衡量灵石、人情与因果。",
+      "music": "market_stone_street"
+    },
+    "qingyun_trial_sword_terrace": {
+      "name": "青云试剑台",
+      "tier": 2,
+      "parent": "宗门",
+      "atmosphere": { "bgClass": "loc-sect", "borderColor": "#9aa9bd", "particleType": "spark", "description": "封剑印环台而立，旧剑只认招式与承诺" },
+      "description": "宗门封存试锋剑的石台。三重封剑印沿台阶环绕，借出的每一柄旧剑都会记录来者如何出剑、为何出剑，以及是否按时归还。",
+      "music": "trial_sword_terrace"
+    },
+    "upper_realm_heaven_gate": {
+      "name": "天门前庭",
+      "tier": 3,
+      "parent": "天道虚空",
+      "atmosphere": { "bgClass": "loc-void", "borderColor": "#d8c9a6", "particleType": "star", "description": "雷云止于门槛，门后没有风声" },
+      "description": "上下两界交叠的一线门庭。门外仍有雷声、石屑与人的呼吸，门内却像把一切声响都抽走；飞升者踏过门槛后，肉身气息便不会再回到下界。",
+      "music": "heaven_gate_farewell"
     }
   },
 
@@ -110,8 +163,8 @@
       "sceneImage": "assets/cards/events/scene_fd_f_market.png",
       "tags": ["location", "first_visit"],
       "choices": {
-        "left": { "text": "逛一逛万宝楼", "effects": { "fortune": 3 }, "openShop": true },
-        "right": { "text": "先看看散修卖什么", "effects": { "wisdom": 2, "spiritStone": 10 } }
+        "left": { "text": "逛一逛万宝楼", "effects": {}, "vendorCloseEffects": { "fortune": 3 }, "action": { "type": "ENTER_VENDOR", "vendorId": "regulated_market", "resumePolicy": "ON_VENDOR_CLOSED", "settlePolicy": "AFTER_CLOSE_EXACTLY_ONCE" } },
+        "right": { "text": "记下商队旗号", "effects": {}, "desc": "散修的摊位随商队移动；下次到访才会真正开张。", "narrativeBlock": "你向守在街口的脚夫问清了旗号。集市不是固定货架，得等商队沿路归来。" }
       }
     },
     {

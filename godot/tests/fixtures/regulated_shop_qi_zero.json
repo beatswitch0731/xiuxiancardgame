@@ -1,0 +1,121 @@
+{
+  "sourceSha256": {
+    "src/systems/ShopSystem.js": "937c9db807692305a7c3c09798cd967241e2a87de506c65228aec83bc5b12a46",
+    "src/systems/SkillCardAcquisitionSystem.js": "2eff2c858d7ee9cd9065daff6bf309f08cd7ba12140a2f0d0ebdcb560e263098",
+    "data/shops/shop_items.json": "a69128ce7e7562c4a9934d9c9e0a0b8c4327b7df10b75e48da9e95c483825692",
+    "data/shops/treasures.json": "90b68fb927148a291586716e611e28f07939d2bb629b8e2d2cafbcd3a9f29689",
+    "data/combat/deck_progression.json": "c9d99d658b5a4c79efcbdd18d238f81aff084389794cc11c5304ffd7923d34fd",
+    "data/cards/battle_cards.json": "2d8e0898f898d70ca7184f67039e717fc9540225b08ce7a1f55d901c84af35a0",
+    "src/systems/TradeRouteSystem.js": "527aa8454e339fa0a67fe4f4f9d6030494616a8647943bd31defe7b39418bf3e",
+    "data/world/trade_routes.json": "20e43bc4749b87170550a476e4c00b81c426d8962256979ba2e35751f385d334"
+  },
+  "discarded": [
+    {
+      "id": "shop_pill_foundation",
+      "price": 6
+    },
+    {
+      "id": "shop_pill_healing",
+      "price": 3
+    },
+    {
+      "id": "shop_treasure_dyn_玄铁甲",
+      "price": 8
+    },
+    {
+      "id": "card_sword_sword_shop_qi_sheath",
+      "price": 18
+    },
+    {
+      "id": "shop_gift_spirit_tea",
+      "price": 3
+    },
+    {
+      "id": "shop_treasure_box",
+      "price": 21
+    }
+  ],
+  "frozen": [
+    {
+      "id": "shop_pill_foundation",
+      "price": 5
+    },
+    {
+      "id": "shop_pill_healing",
+      "price": 2
+    },
+    {
+      "id": "shop_treasure_dyn_玄铁甲",
+      "price": 8
+    },
+    {
+      "id": "card_sword_sword_shop_qi_sheath",
+      "price": 18
+    },
+    {
+      "id": "shop_gift_spirit_tea",
+      "price": 3
+    },
+    {
+      "id": "shop_treasure_box",
+      "price": 21
+    }
+  ],
+  "secondDiscarded": [
+    {
+      "id": "shop_pill_foundation",
+      "price": 4
+    },
+    {
+      "id": "shop_pill_healing",
+      "price": 1
+    },
+    {
+      "id": "shop_treasure_dyn_玄铁甲",
+      "price": 8
+    },
+    {
+      "id": "card_sword_sword_shop_qi_sheath",
+      "price": 18
+    },
+    {
+      "id": "shop_gift_spirit_tea",
+      "price": 3
+    },
+    {
+      "id": "shop_treasure_box",
+      "price": 21
+    }
+  ],
+  "secondFrozen": [
+    {
+      "id": "shop_pill_foundation",
+      "price": 3
+    },
+    {
+      "id": "shop_pill_healing",
+      "price": 1
+    },
+    {
+      "id": "shop_treasure_dyn_玄铁甲",
+      "price": 8
+    },
+    {
+      "id": "card_sword_sword_shop_qi_sheath",
+      "price": 18
+    },
+    {
+      "id": "shop_gift_spirit_tea",
+      "price": 3
+    },
+    {
+      "id": "shop_treasure_box",
+      "price": 21
+    }
+  ],
+  "discardedRolls": 6,
+  "entryRolls": 6,
+  "secondDiscardedRolls": 6,
+  "secondEntryRolls": 6,
+  "priceMultiplier": 0.852
+}

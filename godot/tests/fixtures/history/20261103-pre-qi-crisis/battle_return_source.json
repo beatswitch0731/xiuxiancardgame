@@ -1,0 +1,290 @@
+{
+  "pins": {
+    "src/game.js": "637d63a0e065729dc2743abf2da46264d8f90d430da1a04f74423e351733a881",
+    "src/coordinators/CombatCoordinator.js": "a834065e633d44a9ef6a3a117ad9aee3291b0daa8abad672c20f38b2b11993b0",
+    "src/core/GameStateManager.js": "75e60d10e3284f96715c1ce9229c211215190a39eb10f920e0bb10187b741080",
+    "src/systems/EncounterDirector.js": "ff77500fe64a052a6b6014cfa02ad46f5071b20de36ac81184c970aec0418496"
+  },
+  "rows": [
+    {
+      "path": "sword",
+      "outcome": "defeat",
+      "before": {
+        "turn": 3,
+        "health": 1,
+        "daoHeart": 4,
+        "maxHealth": 5,
+        "maxDaoHeart": 4,
+        "lifespan": 78,
+        "spiritStone": 10,
+        "cultivation": 43,
+        "seedDelay": 7
+      },
+      "after": {
+        "turn": 4,
+        "health": 1,
+        "daoHeart": 3,
+        "maxHealth": 4,
+        "maxDaoHeart": 3,
+        "lifespan": 78,
+        "spiritStone": 10,
+        "cultivation": 43,
+        "seedDelay": 6
+      },
+      "afterDown": {
+        "turn": 5,
+        "health": 1,
+        "daoHeart": 3,
+        "maxHealth": 4,
+        "maxDaoHeart": 3,
+        "lifespan": 78,
+        "spiritStone": 10,
+        "cultivation": 43,
+        "seedDelay": 5
+      },
+      "resultCard": {
+        "id": "combat_defeat_encounter_card_enc_trial_sword_swift",
+        "type": "NORMAL",
+        "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_sword_swift_agc_v2.png",
+        "combatPresentationId": "combat_enc_trial_sword_swift_native_v1",
+        "title": "重伤退却",
+        "description": "快剑木人压过了你的最后一轮攻势。局内护体值已经耗尽，离场伤势使真实气血减少 1 点；任务没有完成，胜利奖励也不会发放。",
+        "choices": {
+          "down": {
+            "text": "稳住伤势，记下此败",
+            "effects": {}
+          }
+        }
+      },
+      "director": {
+        "version": 2,
+        "lifeId": 0,
+        "firstTeachingStatus": "resolved",
+        "lastResolvedDecision": 3,
+        "lastPresentedDecision": 4,
+        "nextDueDecision": 12,
+        "cooldownUntilDecision": 6,
+        "pending": null,
+        "realmProgress": {
+          "qi": {
+            "presentedIds": [
+              "enc_trial_sword_swift"
+            ],
+            "resolvedIds": [
+              "enc_trial_sword_swift"
+            ],
+            "avoidedIds": [],
+            "counts": {
+              "ordinary": 1,
+              "elite": 0,
+              "relationship": 0,
+              "quest": 0,
+              "boss": 0
+            },
+            "seenCounts": {
+              "ordinary": 1,
+              "elite": 0,
+              "relationship": 0,
+              "quest": 0,
+              "boss": 0
+            }
+          }
+        },
+        "history": [
+          {
+            "event": "scheduled",
+            "decision": 3,
+            "realm": "qi",
+            "path": "sword",
+            "encounterId": "enc_trial_sword_swift",
+            "cardId": "encounter_card_enc_trial_sword_swift",
+            "encounterKind": "ordinary",
+            "role": "ordinary",
+            "reason": "teaching",
+            "scheduledDecision": 4,
+            "narrativeSource": "encounter_catalog:archetypeTrial:enc_trial_sword_swift"
+          },
+          {
+            "event": "presented",
+            "decision": 3,
+            "realm": "qi",
+            "path": "sword",
+            "encounterId": "enc_trial_sword_swift",
+            "cardId": "encounter_card_enc_trial_sword_swift",
+            "encounterKind": "ordinary",
+            "role": "ordinary",
+            "reason": "teaching",
+            "scheduledDecision": 4,
+            "narrativeSource": "encounter_catalog:archetypeTrial:enc_trial_sword_swift"
+          },
+          {
+            "event": "accepted",
+            "decision": 3,
+            "realm": "qi",
+            "path": "sword",
+            "encounterId": "enc_trial_sword_swift",
+            "cardId": "encounter_card_enc_trial_sword_swift",
+            "encounterKind": "ordinary",
+            "role": "ordinary",
+            "direction": "left",
+            "narrativeSource": "encounter_catalog:archetypeTrial:enc_trial_sword_swift"
+          },
+          {
+            "event": "resolved",
+            "decision": 3,
+            "realm": "qi",
+            "path": "sword",
+            "encounterId": "enc_trial_sword_swift",
+            "cardId": "encounter_card_enc_trial_sword_swift",
+            "encounterKind": "ordinary",
+            "role": "ordinary",
+            "outcome": "defeat",
+            "nextInterval": 8,
+            "narrativeSource": "encounter_catalog:archetypeTrial:enc_trial_sword_swift"
+          }
+        ]
+      },
+      "nextCardId": "ch_qi_20"
+    },
+    {
+      "path": "body",
+      "outcome": "flee",
+      "before": {
+        "turn": 3,
+        "health": 4,
+        "daoHeart": 4,
+        "maxHealth": 8,
+        "maxDaoHeart": 4,
+        "lifespan": 78,
+        "spiritStone": 10,
+        "cultivation": 38,
+        "seedDelay": 7
+      },
+      "after": {
+        "turn": 4,
+        "health": 4,
+        "daoHeart": 4,
+        "maxHealth": 8,
+        "maxDaoHeart": 4,
+        "lifespan": 77,
+        "spiritStone": 10,
+        "cultivation": 38,
+        "seedDelay": 6
+      },
+      "afterDown": {
+        "turn": 5,
+        "health": 4,
+        "daoHeart": 4,
+        "maxHealth": 8,
+        "maxDaoHeart": 4,
+        "lifespan": 77,
+        "spiritStone": 10,
+        "cultivation": 38,
+        "seedDelay": 5
+      },
+      "resultCard": {
+        "id": "combat_fled_encounter_card_enc_trial_body_iron",
+        "type": "NORMAL",
+        "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_body_iron_agc_v2.png",
+        "combatPresentationId": "combat_enc_trial_body_iron_native_v1",
+        "title": "脱离战场",
+        "description": "你抓住铁骨机关兽攻势转换的间隙退出战局。道路暂时保住了，但这场未完的冲突会留下后果。",
+        "choices": {
+          "down": {
+            "text": "收敛气息，继续前行",
+            "effects": {}
+          }
+        }
+      },
+      "director": {
+        "version": 2,
+        "lifeId": 0,
+        "firstTeachingStatus": "resolved",
+        "lastResolvedDecision": 3,
+        "lastPresentedDecision": 4,
+        "nextDueDecision": 11,
+        "cooldownUntilDecision": 6,
+        "pending": null,
+        "realmProgress": {
+          "qi": {
+            "presentedIds": [
+              "enc_trial_body_iron"
+            ],
+            "resolvedIds": [
+              "enc_trial_body_iron"
+            ],
+            "avoidedIds": [],
+            "counts": {
+              "ordinary": 1,
+              "elite": 0,
+              "relationship": 0,
+              "quest": 0,
+              "boss": 0
+            },
+            "seenCounts": {
+              "ordinary": 1,
+              "elite": 0,
+              "relationship": 0,
+              "quest": 0,
+              "boss": 0
+            }
+          }
+        },
+        "history": [
+          {
+            "event": "scheduled",
+            "decision": 3,
+            "realm": "qi",
+            "path": "body",
+            "encounterId": "enc_trial_body_iron",
+            "cardId": "encounter_card_enc_trial_body_iron",
+            "encounterKind": "ordinary",
+            "role": "ordinary",
+            "reason": "teaching",
+            "scheduledDecision": 4,
+            "narrativeSource": "encounter_catalog:archetypeTrial:enc_trial_body_iron"
+          },
+          {
+            "event": "presented",
+            "decision": 3,
+            "realm": "qi",
+            "path": "body",
+            "encounterId": "enc_trial_body_iron",
+            "cardId": "encounter_card_enc_trial_body_iron",
+            "encounterKind": "ordinary",
+            "role": "ordinary",
+            "reason": "teaching",
+            "scheduledDecision": 4,
+            "narrativeSource": "encounter_catalog:archetypeTrial:enc_trial_body_iron"
+          },
+          {
+            "event": "accepted",
+            "decision": 3,
+            "realm": "qi",
+            "path": "body",
+            "encounterId": "enc_trial_body_iron",
+            "cardId": "encounter_card_enc_trial_body_iron",
+            "encounterKind": "ordinary",
+            "role": "ordinary",
+            "direction": "left",
+            "narrativeSource": "encounter_catalog:archetypeTrial:enc_trial_body_iron"
+          },
+          {
+            "event": "resolved",
+            "decision": 3,
+            "realm": "qi",
+            "path": "body",
+            "encounterId": "enc_trial_body_iron",
+            "cardId": "encounter_card_enc_trial_body_iron",
+            "encounterKind": "ordinary",
+            "role": "ordinary",
+            "outcome": "flee",
+            "nextInterval": 7,
+            "narrativeSource": "encounter_catalog:archetypeTrial:enc_trial_body_iron"
+          }
+        ]
+      },
+      "nextCardId": "ch_qi_20"
+    }
+  ]
+}

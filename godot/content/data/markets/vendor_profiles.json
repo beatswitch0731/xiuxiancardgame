@@ -1,0 +1,234 @@
+{
+  "version": 1,
+  "legacyAliases": {
+    "standard_shop": "regulated_market"
+  },
+  "vendors": [
+    {
+      "id": "regulated_market",
+      "marketType": "regulated",
+      "entryRules": { "fixedSettlement": true },
+      "interactionBudget": 0,
+      "acceptedCosts": ["spiritStone"],
+      "presentationProfile": {
+        "id": "regulated-ledger",
+        "layout": "ledger",
+        "backgroundId": "bg_market_regulated_pc98",
+        "backgroundPath": "../assets/markets/regulated/bg_market_regulated_pc98.webp",
+        "fallbackClass": "market-regulated-fallback",
+        "ambienceId": "amb_market_regulated",
+        "transactionSfxId": "sfx_market_regulated",
+        "exitLabel": "收起凭据"
+      },
+      "services": [
+        {
+          "id": "regulated_buyback",
+          "kind": "buyback",
+          "label": "合规回购台",
+          "acceptedKinds": ["gift", "material"],
+          "payout": 2,
+          "description": "仅回购礼物与材料；法宝不在本项服务范围。"
+        }
+      ],
+      "exitContract": "收据已盖印；未售之物仍可留待集市换物。"
+    },
+    {
+      "id": "public_bazaar",
+      "marketType": "public_bazaar",
+      "entryRules": { "requiresEncounterCard": true, "requiresPopulationLocation": true },
+      "cadence": { "minDecisions": 6, "maxDecisions": 10 },
+      "interactionBudget": 2,
+      "acceptedCosts": ["spiritStone", "item"],
+      "presentationProfile": {
+        "id": "public-bazaar-stalls",
+        "layout": "stalls",
+        "backgroundId": "bg_market_bazaar_pc98",
+        "backgroundPath": "../assets/markets/bazaar/bg_market_bazaar_pc98.webp",
+        "fallbackClass": "market-bazaar-fallback",
+        "ambienceId": "amb_market_bazaar",
+        "transactionSfxId": "sfx_market_bazaar",
+        "exitLabel": "循人流离去"
+      },
+      "stalls": [
+        {
+          "id": "han_peddler",
+          "name": "韩摊主",
+          "role": "药材与行脚补给",
+          "relationship": {
+            "threshold": 1,
+            "priceMultiplier": 0.8,
+            "hint": "韩摊主记得你替他搬过货，愿意按熟客价留一份药。",
+            "specialOffer": { "id": "bazaar_han_favored_salves", "name": "熟客止血散", "type": "pill", "price": 3, "desc": "韩摊主从箱底留出的熟客药包。", "effect": { "healHp": 3 } }
+          },
+          "action": { "id": "assist_han", "label": "帮摊搬货", "relationDelta": 1, "receiptText": "韩摊主记住了你肯搭把手。" },
+          "offers": [{ "id": "bazaar_han_healing", "name": "行脚回春散", "type": "pill", "price": 4, "desc": "韩摊主从商队余货里留出的疗伤散。", "effect": { "healHp": 2 } }]
+        },
+        {
+          "id": "luo_trader",
+          "name": "瘸脚许",
+          "role": "二手货与商路线索",
+          "relationship": {
+            "threshold": 1,
+            "priceMultiplier": 0.9,
+            "hint": "瘸脚许把货源和封路处一并写在札记背面；这次的来路不再含混。"
+          },
+          "actions": [
+            {
+              "id": "ask_luo",
+              "label": "花一灵石问锈铁来路",
+              "relationDelta": 1,
+              "costSpec": [{ "kind": "resource", "key": "spiritStone", "amount": 1 }],
+              "causalFact": {
+                "factTypeId": "rumor_rusted_sword_origin",
+                "producerId": "bazaar_xu_rusted_origin",
+                "payload": { "ledgerNo": "许摊·锈铁流转抄本", "source": "public_bazaar" }
+              },
+              "receiptText": "瘸脚许从垫板下抽出官印抄本：锈铁有一条可核的流转号，坊市或许肯认。"
+            },
+            {
+              "id": "assist_luo",
+              "label": "替许爷收拢散货",
+              "relationDelta": 1,
+              "receiptText": "你替瘸脚许压好散货，他把一页写着旧主去向的札记夹进锈剑鞘口。"
+            }
+          ],
+          "action": {
+            "id": "ask_luo",
+            "label": "花一灵石问锈铁来路",
+            "relationDelta": 1,
+            "costSpec": [{ "kind": "resource", "key": "spiritStone", "amount": 1 }],
+            "causalFact": {
+              "factTypeId": "rumor_rusted_sword_origin",
+              "producerId": "bazaar_xu_rusted_origin",
+              "payload": { "ledgerNo": "许摊·锈铁流转抄本", "source": "public_bazaar" }
+            },
+            "receiptText": "瘸脚许从垫板下抽出官印抄本：锈铁有一条可核的流转号，坊市或许肯认。"
+          },
+          "offers": [
+            { "id": "bazaar_luo_route_note", "name": "旧商路札记", "type": "story_item", "price": 5, "desc": "标有一条尚未封闭的山道。", "effect": { "itemId": "商路线索", "quantity": 1 } },
+            {
+              "id": "bazaar_luo_traded_rusted_sword",
+              "name": "集市易手残剑",
+              "type": "treasure",
+              "price": 6,
+              "desc": "许爷说此剑不走官册：剑脊里夹着旧主留下的渡口札记。以灵茶换剑，是在拿一份人情替自己担保；若先帮过他的摊，便由熟客人情作保。",
+              "effect": { "treasureId": "traded_rusted_sword" },
+              "costModes": [
+                {
+                  "id": "gift",
+                  "label": "以灵茶易剑（6 灵石 + 灵茶×1）",
+                  "costSpec": [
+                    { "kind": "resource", "key": "spiritStone", "amount": 6 },
+                    { "kind": "item", "key": "灵茶", "amount": 1 }
+                  ],
+                  "provenanceLabel": "以灵茶换得"
+                },
+                {
+                  "id": "favor",
+                  "label": "以熟客人情易剑（6 灵石）",
+                  "requiresVendorRelation": { "stallId": "luo_trader", "minimum": 1 },
+                  "costSpec": [{ "kind": "resource", "key": "spiritStone", "amount": 6 }],
+                  "provenanceLabel": "以熟客人情换得"
+                }
+              ],
+              "narrativeProvenance": {
+                "factTypeId": "sword_origin_traded",
+                "producerId": "bazaar_luo_traded_sword",
+                "payload": {
+                  "sellerLeadId": "luo_old_owner_note_qixia_ferry",
+                  "stallId": "luo_trader",
+                  "oldOwnerClue": "剑脊第三道折痕指向栖霞渡；旧主在札记上留了一个未写完的姓。"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "su_appraiser",
+          "name": "苏鉴师",
+          "role": "旧物与人情换物",
+          "relationship": {
+            "threshold": 1,
+            "hint": "苏鉴师认得你上次带来的旧物，愿意直说这件物的缺口。"
+          },
+          "action": { "id": "barter_su", "label": "请她看货", "relationDelta": 1, "receiptText": "苏鉴师认可了你带来的旧物。" },
+          "offers": [{ "id": "bazaar_su_barter", "name": "散修手札", "type": "story_item", "desc": "以一份灵茶换来的散修行旅手札。", "effect": { "itemId": "散修手札", "quantity": 1 }, "costSpec": [{ "kind": "item", "key": "灵茶", "amount": 1 }] }]
+        }
+      ],
+      "exitContract": "你记下了摊主和错过的线索；下次相逢，他们会记得。"
+    },
+    {
+      "id": "ghost_market",
+      "marketType": "ghost",
+      "entryRules": {
+        "requiresEncounterCard": true,
+        "requiresNightWindow": true,
+        "requiresPopulationLocation": true,
+        "signalAny": ["fortune>=40", "karmaBad>=10", "ghost_market_lead"]
+      },
+      "cadence": { "minDecisions": 14, "maxDecisions": 20 },
+      "interactionBudget": 1,
+      "acceptedCosts": ["spiritStone", "lifespan"],
+      "presentationProfile": {
+        "id": "ghost-contract-plinth",
+        "layout": "contract",
+        "backgroundId": "bg_market_ghost_pc98",
+        "backgroundPath": "../assets/markets/ghost/bg_market_ghost_pc98.webp",
+        "fallbackClass": "market-ghost-fallback",
+        "ambienceId": "amb_market_ghost",
+        "transactionSfxId": "sfx_market_ghost",
+        "exitLabel": "不签，熄灯离去"
+      },
+      "contractOffers": [
+        {
+          "id": "ghost_oath_rusted_sword",
+          "name": "夜契残剑",
+          "type": "treasure",
+          "effect": { "treasureId": "ghost_oath_rusted_sword" },
+          "costSpec": [
+            { "kind": "resource", "key": "spiritStone", "amount": 4 },
+            { "kind": "resource", "key": "lifespan", "amount": 3 }
+          ],
+          "desc": "无面人把半截残剑立在黑漆契台上：四枚灵石、三年寿元，当场出鞘；三次决断后，祂会带着回执来取余账。",
+          "ghostOathContract": {
+            "kind": "ghost_oath_sword",
+            "label": "夜契残剑",
+            "dueDecisionOffset": 3,
+            "settlementCostSpec": [
+              { "kind": "resource", "key": "spiritStone", "amount": 2 }
+            ],
+            "pressure": { "chance": 0.3333333333333333, "pityLimit": 3 },
+            "provenanceLabel": "夜契签下 · 四灵石三寿元",
+            "factTypeId": "sword_origin_ghost_oath"
+          },
+          "narrativeProvenance": {
+            "factTypeId": "sword_origin_ghost_oath",
+            "producerId": "ghost_oath_rusted_sword",
+            "payload": { "creditorId": "faceless_broker", "contractLabel": "夜契残剑" }
+          }
+        }
+      ],
+      "services": [
+        {
+          "id": "ghost_inspect_seal",
+          "kind": "inspect_hidden_trait",
+          "label": "交出商路线索验看封签",
+          "costSpec": [{ "kind": "item", "key": "商路线索", "amount": 1 }],
+          "description": "只能验看一件仍有封签的禁物；商路线索会被无面人收走。"
+        }
+      ],
+      "riskRules": {
+        "lifespanCost": 3,
+        "hiddenTraitRate": 0.3,
+        "entryRule": "不问真名、不退禁物、债到必偿"
+      },
+      "debt": {
+        "creditorId": "faceless_broker",
+        "minDueOffset": 3,
+        "maxDueOffset": 8,
+        "defaultConsequence": "ghost_market_access_revoked"
+      },
+      "exitContract": "不问真名、不退禁物、债到必偿。"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "realm": "golden",
+  "version": 1,
+  "threads": [
+    {
+      "threadId": "core_heaven_tax",
+      "title": "丹纹税契",
+      "description": "金丹上的第二道脉动并非异象，而是一份刻进修士体内的无形税契。",
+      "realm": "golden",
+      "trigger": { "type": "realm_enter", "realm": "golden", "minTurn": 1 },
+      "nodes": [
+        {
+          "id": "ct_second_pulse",
+          "phase": "beginning",
+          "card": {
+            "id": "thread_core_tax_1",
+            "semanticKey": "thread:core_heaven_tax:ct_second_pulse",
+            "sceneImage": "assets/cards/keyframes/scene_key_core_tax_second_pulse_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "丹纹税契", "alt": "金丹第二道异脉在夜间回应天穹，主角尚未决定内视追踪或剑意封印。" },
+            "once": true,
+            "title": "金丹的第二次心跳",
+            "description": "金丹稳固后的第七夜，你听见体内多出一道不属于自己的脉动。它每隔九息回应一次天穹，像有一根看不见的线在丈量你的神魂。古籍把这称为“受箓”，却没有解释谁在登记。",
+            "type": "STORY",
+            "realm": "golden",
+            "eligibleRealms": ["golden"],
+            "threadTags": ["金丹之谜", "天道印记", "beginning"],
+            "choices": {
+              "left": { "text": "以内视追踪脉动", "desc": "沿着那根线反看天穹。", "effects": { "knowledge": 10, "health": -2 }, "threadDirection": "trace" },
+              "right": { "text": "以剑意暂时封住丹纹", "desc": "先切断回应，再寻找安全的查证方式。", "effects": { "daoHeart": 8, "cultivation": 5 }, "threadDirection": "seal" }
+            }
+          }
+        },
+        {
+          "id": "ct_secret_audit",
+          "phase": "climax",
+          "card": {
+            "id": "thread_core_tax_2",
+            "semanticKey": "thread:core_heaven_tax:ct_secret_audit",
+            "sceneImage": "assets/cards/keyframes/scene_key_core_heaven_tax_ledger_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "金丹天税", "alt": "观星台残盘把丹纹映成可收取的刻度账。" },
+            "once": true,
+            "title": "观星台的收魂刻度",
+            "description": "天机阁残盘把你的丹纹映成一串刻度。每一道刻度都对应一次突破，尽头却不是飞升，而是“可收取”。旁边还留着数百名已经消失的金丹修士编号。你第一次看见所谓天命背后的账本。",
+            "type": "STORY",
+            "realm": "golden",
+            "eligibleRealms": ["golden"],
+            "threadTags": ["金丹之谜", "收魂刻度", "climax"],
+            "choices": {
+              "left": { "text": "复制全部刻度", "desc": "让这份账本不再只有天机阁知道。", "effects": { "knowledge": 15, "fortune": -2 }, "threadDirection": "copy" },
+              "right": { "text": "只记下自己的编号", "desc": "先确认自身处境，避免惊动观测者。", "effects": { "daoHeart": 10, "fortune": 6 }, "threadDirection": "conceal" }
+            }
+          }
+        },
+        {
+          "id": "ct_verdict",
+          "phase": "resolution",
+          "card": {
+            "id": "thread_core_tax_3",
+            "semanticKey": "thread:core_heaven_tax:ct_verdict",
+            "once": true,
+            "title": "不向天穹报数",
+            "description": "你无法立刻毁去丹纹，却能让它失真。下一次天穹索取刻度时，你可以送去一段伪造的平静；也可以故意留下异常，让未知的观测者知道有人已经醒来。",
+            "sceneImage": "assets/cards/keyframes/scene_key_core_heaven_tax_ledger_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "丹纹税契", "alt": "天机阁观星台的残盘仍显示丹纹刻度，主角尚未伪造回传或留下示警异常。" },
+            "type": "STORY",
+            "realm": "golden",
+            "eligibleRealms": ["golden"],
+            "threadTags": ["金丹之谜", "resolution"],
+            "choices": {
+              "left": { "text": "伪造刻度，隐去锋芒", "desc": "活着走得更远，才有机会拆掉整本账。", "effects": { "fortune": 12, "cultivation": 8 }, "threadDirection": "mask" },
+              "right": { "text": "留下异常，向天示警", "desc": "让收割者知道，下界并非无人知晓。", "effects": { "daoHeart": 15, "karmaGood": 6 }, "threadDirection": "defy" }
+            }
+          },
+          "consequences": { "onComplete": { "note": "你确认金丹丹纹是一道上界刻度，并学会让自己的记录不再完全可信。", "worldFlags": ["golden_core_tax_exposed"] } }
+        }
+      ]
+    }
+  ]
+}

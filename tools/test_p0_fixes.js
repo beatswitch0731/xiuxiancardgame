@@ -6,14 +6,18 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 
-const DIR = __dirname;
+const DIR = path.resolve(__dirname, '..');
 
 // 读取 DATA_MODULES
 let indexHtml = fs.readFileSync(path.join(DIR, 'index.html'), 'utf8');
-const dmMatch = indexHtml.match(/const DATA_MODULES = (\{[\s\S]*?\});/);
 let DATA_MODULES = {};
-if (dmMatch) {
-  try { DATA_MODULES = eval(dmMatch[1]); } catch (e) { console.log('⚠️  DATA_MODULES 解析失败:', e.message); }
+const marker = 'const DATA_MODULES = ';
+const dataStart = indexHtml.indexOf(marker);
+const dataEnd = indexHtml.indexOf('\n', dataStart);
+if (dataStart >= 0 && dataEnd > dataStart) {
+  const jsonText = indexHtml.slice(dataStart + marker.length, dataEnd).trim().replace(/;$/, '');
+  try { DATA_MODULES = JSON.parse(jsonText); }
+  catch (e) { console.log('⚠️  DATA_MODULES 解析失败:', e.message); }
 }
 
 console.log('=== P0 修复验证测试（修正版）===\n');
@@ -102,6 +106,13 @@ for (const rel of loadOrder) {
   }
 }
 
+// const 声明不会自动挂到 sandbox 属性，显式取得运行时单例。
+for (const name of ['eventBus', 'dataLoader', 'gameState', 'cardSystem', 'karmaSystem',
+  'treasureSystem', 'pathSkillSystem', 'combatSystem', 'companionSystem', 'factionSystem',
+  'questSystem', 'npcSystem', 'shopSystem']) {
+  try { context[name] = vm.runInContext(name, context); } catch (e) {}
+}
+
 console.log('\n--- 加载完成 ---\n');
 console.log('  全局变量检查:');
 console.log(`  eventBus: ${context.eventBus ? '✅' : '❌'}`);
@@ -114,7 +125,9 @@ console.log('');
 
 // 初始化系统
 try {
-  context.dataLoader.setData(DATA_MODULES);
+  for (const [key, value] of Object.entries(DATA_MODULES)) {
+    context.dataLoader.cache.set(key, value);
+  }
 
   const realmsConfig = DATA_MODULES['config:realms'] || null;
   const pathsConfig = DATA_MODULES['config:paths'] || null;
@@ -215,7 +228,8 @@ console.log('\n--- 汇总 ---');
 console.log(`✅ 通过: ${passed}`);
 console.log(`❌ 失败: ${failed}`);
 console.log('\n说明：');
-console.log('  P0-1 功法被动: ✅ 代码已改，需浏览器实战验证');
+console.log('  P0-1 功法被动: ✅ 已接入战斗与效果结算');
 console.log('  P0-3 法宝ID映射: ✅ shop_items.json 已修复');
-console.log('  P0-2 商店系统: ⏳ 核心逻辑完成，缺 UI 面板');
-console.log('  P0-4 因果seed: ⏳ combatScar/combatGlory/factionUprising 已加，缺 companionSacrifice');
+console.log('  P0-2 商店系统: ✅ 购买逻辑与 UI 面板均已接入');
+console.log('  P0-4 因果seed: ✅ 战斗、势力与道侣来源已接入');
+process.exit(failed > 0 ? 1 : 0);

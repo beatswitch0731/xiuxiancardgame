@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "description": "天道证据星图：线索、互相竞争的假说与结局可达性解释。",
+  "clues": [
+    {
+      "id": "century_war_truth",
+      "name": "百年旧战真相",
+      "category": "history",
+      "reliability": 3,
+      "description": "正魔大战的起因被人为改写，战争更像一次针对修士的筛选。"
+    },
+    {
+      "id": "xuesha_laozu_past_love",
+      "name": "血煞旧情",
+      "category": "witness",
+      "reliability": 2,
+      "description": "所谓绝情魔祖也曾为一人背叛天命，证明天道无法完全抹去羁绊。"
+    },
+    {
+      "id": "ancient_prophecy_warning",
+      "name": "古预言警告",
+      "category": "prophecy",
+      "reliability": 2,
+      "description": "一则古预言提出飞升去向的疑点；仙界是否如公开所称，仍须其他证据核对。"
+    },
+    {
+      "id": "sect_alchemy_secret",
+      "name": "宗门丹印密录",
+      "category": "material",
+      "reliability": 3,
+      "description": "丹方上的隐秘印记连接宗门、禁药与被封锁的灵脉流向。"
+    },
+    {
+      "id": "ancient_sword_manual",
+      "name": "古剑诀残痕",
+      "category": "artifact",
+      "reliability": 3,
+      "description": "剑痕并非功法，而是前世留下的破界坐标；它认得你的神魂。"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "heaven_harvest",
+      "title": "天劫并非考验，而是收割",
+      "summary": "飞升体系在筛选和回收高阶神魂，而非帮助修士超脱。",
+      "supports": ["century_war_truth", "ancient_prophecy_warning"],
+      "contradicts": [],
+      "requiredEvidence": 2
+    },
+    {
+      "id": "reincarnation_anchor",
+      "title": "轮回者是天道漏洞的锚点",
+      "summary": "跨世记忆和重复出现的坐标说明，你并非普通转世者。",
+      "supports": ["ancient_sword_manual", "xuesha_laozu_past_love"],
+      "contradicts": [],
+      "requiredEvidence": 2
+    },
+    {
+      "id": "sect_complicity",
+      "title": "宗门秩序参与掩盖真相",
+      "summary": "至少部分正道宗门通过资源与知识封锁维持飞升叙事。",
+      "supports": ["sect_alchemy_secret", "century_war_truth"],
+      "contradicts": [],
+      "requiredEvidence": 2
+    },
+    {
+      "id": "bond_exception",
+      "title": "羁绊可以抵抗天道抹除",
+      "summary": "被天命判定为无用的情感，反而能够跨越死亡与轮回。",
+      "supports": ["xuesha_laozu_past_love", "ancient_sword_manual"],
+      "contradicts": [],
+      "requiredEvidence": 2
+    }
+  ],
+  "endings": [
+    {
+      "id": "ascension",
+      "name": "循天飞升",
+      "stance": "接受现有秩序，以实力穿过天门。",
+      "terminalGate": {
+        "id": "tribulation_finale",
+        "requiredOutcome": "victory",
+        "encounterIds": ["ch_tribulation_100"]
+      },
+      "requirements": { "minRealm": "tribulation" }
+    },
+    {
+      "id": "red_dust",
+      "name": "红尘兵解",
+      "stance": "拒绝孤独的永生，让羁绊成为最终答案。",
+      "terminalGate": {
+        "id": "tribulation_finale",
+        "requiredOutcome": "victory",
+        "encounterIds": ["ch_tribulation_100"]
+      },
+      "requirements": { "minRealm": "deity", "minBond": 60, "hypotheses": ["bond_exception"] }
+    },
+    {
+      "id": "chaos",
+      "name": "混沌真解",
+      "stance": "以跨世证据证明天道有缺，并亲手改写规则。",
+      "terminalGate": {
+        "id": "tribulation_finale",
+        "requiredOutcome": "victory",
+        "encounterIds": ["ch_tribulation_100"]
+      },
+      "requirements": {
+        "minRealm": "tribulation",
+        "hypotheses": ["heaven_harvest", "reincarnation_anchor"],
+        "clues": ["ancient_prophecy_warning"]
+      }
+    }
+  ]
+}

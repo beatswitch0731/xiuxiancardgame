@@ -1,0 +1,267 @@
+{
+  "version": 1,
+  "contractId": "path_deck_progression_v1",
+  "description": "四流派本世牌组的统一契约：起始牌、战斗奖励、商店稳定槽、升级与斩除价格。",
+  "realmOrder": [
+    "qi",
+    "foundation",
+    "golden",
+    "nascent",
+    "deity",
+    "tribulation"
+  ],
+  "legacyGenericStarter": [
+    "strike",
+    "strike",
+    "strike",
+    "defend",
+    "defend",
+    "defend"
+  ],
+  "economy": {
+    "upgradeCost": 8,
+    "removeCost": 6,
+    "minimumDeckSize": 4,
+    "shopBasePrice": 18,
+    "shopCostMultiplier": 4,
+    "shopRealmStep": 4
+  },
+  "upgradeRules": {
+    "effectPriority": [
+      "damage",
+      "block",
+      "heal",
+      "status",
+      "gain_qi"
+    ],
+    "effectDelta": {
+      "damage": 1,
+      "block": 1,
+      "heal": 1,
+      "status": 1,
+      "gain_qi": 1
+    }
+  },
+  "paths": {
+    "sword": {
+      "starterDeck": [
+        "sword_edge",
+        "sword_probe",
+        "sword_guard",
+        "sword_sheath_guard",
+        "sword_followthrough",
+        "sword_followthrough"
+      ],
+      "rewardPool": [
+        "sword_intent",
+        "draw_sword",
+        "sword_array",
+        "sword_qi_riposte",
+        "sword_foundation_cloudstep",
+        "sword_foundation_guard",
+        "sword_foundation_sequence",
+        "sword_golden_heartforge",
+        "sword_golden_dance",
+        "sword_golden_guard",
+        "sword_nascent_echo",
+        "sword_nascent_projection",
+        "sword_nascent_guard",
+        "sword_deity_lawcut",
+        "sword_deity_domain",
+        "sword_deity_guard",
+        "sword_tribulation_return",
+        "sword_tribulation_thunder",
+        "sword_tribulation_shelter"
+      ],
+      "rewardPoolByRealm": {
+        "qi": ["sword_intent", "draw_sword", "sword_array", "sword_qi_riposte"],
+        "foundation": ["sword_foundation_cloudstep", "sword_foundation_guard", "sword_foundation_sequence"],
+        "golden": ["sword_golden_heartforge", "sword_golden_dance", "sword_golden_guard"],
+        "nascent": ["sword_nascent_echo", "sword_nascent_projection", "sword_nascent_guard"],
+        "deity": ["sword_deity_lawcut", "sword_deity_domain", "sword_deity_guard"],
+        "tribulation": ["sword_tribulation_return", "sword_tribulation_thunder", "sword_tribulation_shelter"]
+      },
+      "shopPool": [
+        "sword_shop_qi_sheath",
+        "sword_shop_foundation_line",
+        "sword_shop_golden_rain",
+        "sword_shop_nascent_spirit",
+        "sword_shop_deity_void",
+        "sword_shop_tribulation_oath"
+      ],
+      "shopPoolByRealm": {
+        "qi": ["sword_shop_qi_sheath"],
+        "foundation": ["sword_shop_foundation_line"],
+        "golden": ["sword_shop_golden_rain"],
+        "nascent": ["sword_shop_nascent_spirit"],
+        "deity": ["sword_shop_deity_void"],
+        "tribulation": ["sword_shop_tribulation_oath"]
+      }
+    },
+    "spell": {
+      "starterDeck": [
+        "spell_spark",
+        "spell_spark",
+        "spell_ward",
+        "spell_ward",
+        "spell_cycle",
+        "spell_cycle"
+      ],
+      "rewardPool": [
+        "spell_gather",
+        "spell_tide",
+        "spell_nuke",
+        "spell_qi_retrace",
+        "spell_foundation_chain",
+        "spell_foundation_ward",
+        "spell_foundation_reorder",
+        "spell_golden_mirror",
+        "spell_golden_burst",
+        "spell_golden_cycle",
+        "spell_nascent_orbit",
+        "spell_nascent_ward",
+        "spell_nascent_formula",
+        "spell_deity_edict",
+        "spell_deity_thunder",
+        "spell_deity_rewrite",
+        "spell_tribulation_void",
+        "spell_tribulation_ward",
+        "spell_tribulation_recall"
+      ],
+      "rewardPoolByRealm": {
+        "qi": ["spell_gather", "spell_tide", "spell_nuke", "spell_qi_retrace"],
+        "foundation": ["spell_foundation_chain", "spell_foundation_ward", "spell_foundation_reorder"],
+        "golden": ["spell_golden_mirror", "spell_golden_burst", "spell_golden_cycle"],
+        "nascent": ["spell_nascent_orbit", "spell_nascent_ward", "spell_nascent_formula"],
+        "deity": ["spell_deity_edict", "spell_deity_thunder", "spell_deity_rewrite"],
+        "tribulation": ["spell_tribulation_void", "spell_tribulation_ward", "spell_tribulation_recall"]
+      },
+      "shopPool": [
+        "spell_shop_qi_inkshield",
+        "spell_shop_foundation_loop",
+        "spell_shop_golden_compass",
+        "spell_shop_nascent_script",
+        "spell_shop_deity_lawnet",
+        "spell_shop_tribulation_seal"
+      ],
+      "shopPoolByRealm": {
+        "qi": ["spell_shop_qi_inkshield"],
+        "foundation": ["spell_shop_foundation_loop"],
+        "golden": ["spell_shop_golden_compass"],
+        "nascent": ["spell_shop_nascent_script"],
+        "deity": ["spell_shop_deity_lawnet"],
+        "tribulation": ["spell_shop_tribulation_seal"]
+      }
+    },
+    "body": {
+      "starterDeck": [
+        "body_fist",
+        "body_fist",
+        "body_stance",
+        "body_stance",
+        "body_counter",
+        "body_counter"
+      ],
+      "rewardPool": [
+        "body_guard",
+        "heavy_strike",
+        "qi_shield",
+        "body_qi_breath",
+        "body_foundation_ironbridge",
+        "body_foundation_shoulder",
+        "body_foundation_recover",
+        "body_golden_blood",
+        "body_golden_guard",
+        "body_golden_counter",
+        "body_nascent_echo",
+        "body_nascent_frame",
+        "body_nascent_breath",
+        "body_deity_anchor",
+        "body_deity_strike",
+        "body_deity_rebound",
+        "body_tribulation_rebound",
+        "body_tribulation_guard",
+        "body_tribulation_recover"
+      ],
+      "rewardPoolByRealm": {
+        "qi": ["body_guard", "heavy_strike", "qi_shield", "body_qi_breath"],
+        "foundation": ["body_foundation_ironbridge", "body_foundation_shoulder", "body_foundation_recover"],
+        "golden": ["body_golden_blood", "body_golden_guard", "body_golden_counter"],
+        "nascent": ["body_nascent_echo", "body_nascent_frame", "body_nascent_breath"],
+        "deity": ["body_deity_anchor", "body_deity_strike", "body_deity_rebound"],
+        "tribulation": ["body_tribulation_rebound", "body_tribulation_guard", "body_tribulation_recover"]
+      },
+      "shopPool": [
+        "body_shop_qi_footwork",
+        "body_shop_foundation_boneguard",
+        "body_shop_golden_marrowburst",
+        "body_shop_nascent_soulframe",
+        "body_shop_deity_domainbrace",
+        "body_shop_tribulation_heavenbody"
+      ],
+      "shopPoolByRealm": {
+        "qi": ["body_shop_qi_footwork"],
+        "foundation": ["body_shop_foundation_boneguard"],
+        "golden": ["body_shop_golden_marrowburst"],
+        "nascent": ["body_shop_nascent_soulframe"],
+        "deity": ["body_shop_deity_domainbrace"],
+        "tribulation": ["body_shop_tribulation_heavenbody"]
+      }
+    },
+    "pill": {
+      "starterDeck": [
+        "pill_ember",
+        "pill_ember",
+        "pill_ember",
+        "pill_guard",
+        "pill_catalyst",
+        "pill_recycle"
+      ],
+      "rewardPool": [
+        "pill_mending",
+        "pill_poison",
+        "mana_potion",
+        "pill_qi_residue",
+        "pill_foundation_twinfire",
+        "pill_foundation_guard",
+        "pill_foundation_recycle",
+        "pill_golden_mist",
+        "pill_golden_poison",
+        "pill_golden_recover",
+        "pill_nascent_return",
+        "pill_nascent_guard",
+        "pill_nascent_catalyst",
+        "pill_deity_transmute",
+        "pill_deity_elixir",
+        "pill_deity_poison",
+        "pill_tribulation_elixir",
+        "pill_tribulation_rebirth",
+        "pill_tribulation_ash"
+      ],
+      "rewardPoolByRealm": {
+        "qi": ["pill_mending", "pill_poison", "mana_potion", "pill_qi_residue"],
+        "foundation": ["pill_foundation_twinfire", "pill_foundation_guard", "pill_foundation_recycle"],
+        "golden": ["pill_golden_mist", "pill_golden_poison", "pill_golden_recover"],
+        "nascent": ["pill_nascent_return", "pill_nascent_guard", "pill_nascent_catalyst"],
+        "deity": ["pill_deity_transmute", "pill_deity_elixir", "pill_deity_poison"],
+        "tribulation": ["pill_tribulation_elixir", "pill_tribulation_rebirth", "pill_tribulation_ash"]
+      },
+      "shopPool": [
+        "pill_shop_qi_herb",
+        "pill_shop_foundation_cauldron",
+        "pill_shop_golden_dose",
+        "pill_shop_nascent_soulpill",
+        "pill_shop_deity_lawmedicine",
+        "pill_shop_tribulation_seed"
+      ],
+      "shopPoolByRealm": {
+        "qi": ["pill_shop_qi_herb"],
+        "foundation": ["pill_shop_foundation_cauldron"],
+        "golden": ["pill_shop_golden_dose"],
+        "nascent": ["pill_shop_nascent_soulpill"],
+        "deity": ["pill_shop_deity_lawmedicine"],
+        "tribulation": ["pill_shop_tribulation_seed"]
+      }
+    }
+  }
+}

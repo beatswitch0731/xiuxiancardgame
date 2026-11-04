@@ -1,0 +1,697 @@
+{
+  "realm": "tribulation",
+  "realmName": "渡劫期",
+  "cards": [
+    {
+      "id": "t_first_strike",
+      "title": "第一道天雷",
+      "description": "你站在无人的荒原上——头顶的雷云聚了三日三夜。第一道天雷落下时，你的皮肤燃烧了。不是痛——是一种宿命感。天道在问你：你凭什么飞升？",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "以剑指天——'凭我的道'",
+          "effects": {
+            "cultivation": 15,
+            "health": -2,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "默然承受——让天雷说话",
+          "effects": {
+            "daoHeart": 2,
+            "health": -2,
+            "cultivation": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_first_strike.png"
+    },
+    {
+      "id": "t_nine_nine",
+      "title": "九九雷劫",
+      "description": "八十一道天雷一道比一道重。第四十九道的时候你跪下了。第八十道的时候你躺下了。九九之后呢？你还站得起来吗？",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "硬抗——以肉身证道",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 10,
+            "maxHealth": -1
+          }
+        },
+        "right": {
+          "text": "以法宝化解——借外物渡劫",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": -2,
+            "spiritStone": -50
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_nine_nine.png"
+    },
+    {
+      "id": "t_heart_demon_final",
+      "title": "心魔决战",
+      "description": "最后一劫不是天雷——是你的心魔。它已经成长为与你同阶的渡劫修士。它站在雷云上俯视你——'你杀不死我，因为我就是你。你没有飞升的资格——因为你不配。'",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "'你说得对——但我不需要配，我需要变强'",
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 15,
+            "maxHealth": -1
+          }
+        },
+        "right": {
+          "text": "沉默——不与心魔纠缠",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 10,
+            "health": -2
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_heart_demon_final.png"
+    },
+    {
+      "id": "t_dust_sever",
+      "title": "了断尘缘",
+      "description": "你回到人世间——最后见一次那些与你有因果的人。你的徒弟已经白发苍苍，你的宗门已经传了三代。你曾经的宿敌——他死了，留了一封信给你。",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "读信——了结因果",
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 10,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "不读——尘缘已断",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": -3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_dust_sever.png"
+    },
+    {
+      "id": "t_teacher",
+      "title": "恩师再见",
+      "description": "你的师父已经不在人世——但他的残念还留在他闭关的洞府里。你跪在洞府前，三叩首。洞里传来一声叹息：'站起来。我没有跪着飞升的徒弟。'",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 6,
+      "prerequisites": {
+        "flags": {
+          "karmaGood": 30
+        }
+      },
+      "choices": {
+        "left": {
+          "text": "站起来——不负师恩",
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 15,
+            "karmaGood": 5
+          }
+        },
+        "right": {
+          "text": "再跪一柱香——感恩师父",
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_teacher.png"
+    },
+    {
+      "id": "t_rival_farewell",
+      "title": "宿敌的遗言",
+      "description": "你找到了宿敌的墓——荒草丛生，无人祭扫。墓碑上刻着他自己写的八个字：'此生未能赢你，来生再战。'你站了很久。",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 6,
+      "prerequisites": {
+        "flags": {
+          "karmaBad": 20
+        }
+      },
+      "choices": {
+        "left": {
+          "text": "祭扫墓地——恩怨已了",
+          "effects": {
+            "karmaGood": 10,
+            "daoHeart": 2,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "洒酒致意——来生见",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_rival_farewell.png"
+    },
+    {
+      "id": "t_mortal_world",
+      "title": "凡尘回首",
+      "description": "你以渡劫修士的神念扫过人间——你看到了自己出生的地方，看到了你少年时爬过的树，看到了你第一次修炼的那块石头。一切都没变——除了你。",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "为故土布下千年禁制——守护一方",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 10,
+            "cultivation": -5
+          }
+        },
+        "right": {
+          "text": "凡人自有人间道——不干预",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_mortal_world.png"
+    },
+    {
+      "id": "t_lone_peak",
+      "title": "孤峰",
+      "description": "渡劫修士在修真界是孤独的——你的交往圈缩小到了屈指可数的几个人。有一个渡劫期的散修向你发出了论道邀请。他说自己三千年没和人说过话了。",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "赴约论道——共鸣同阶",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 10,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "独修到底——不与外人论",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 3
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_lone_peak.png"
+    },
+    {
+      "id": "t_heaven_gate",
+      "title": "天门初现",
+      "description": "最后一劫通过后——天空裂开了。你看到了传说中的天门。不是一扇门——是一道光。光里面有一个声音说：'进来——或者永远不要来。'这道光只开一炷香的时间。",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "迈步走进天门",
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "先回去——我还有未了之事",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5,
+            "fortune": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_heaven_gate.png"
+    },
+    {
+      "id": "t_sword_heart",
+      "title": "剑心问道",
+      "description": "你的剑意已经淬炼到了极致——一剑落下可以开山裂海。但在天门之前，你犹豫了：飞升之后，还拿剑吗？剑是修真者的武器，还是修真者的灵魂？",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 6,
+      "paths": [
+        "sword"
+      ],
+      "choices": {
+        "left": {
+          "text": "折剑飞升——仙界不问剑",
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 10,
+            "karmaGood": 10
+          }
+        },
+        "right": {
+          "text": "带剑飞升——剑是道，不是器",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 20
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_sword_heart.png"
+    },
+    {
+      "id": "t_spell_truth",
+      "title": "法术终章",
+      "description": "你掌握了所有法术的终极形态。你用一根手指画出了整个修真界的法术谱系——从最底层的引气术到最高阶的禁咒。在谱系的尽头——你看到了自己的名字。",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 6,
+      "paths": [
+        "spell"
+      ],
+      "choices": {
+        "left": {
+          "text": "在法术史上留下自己的名字",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "抹去名字——法术不应有名",
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_spell_truth.png"
+    },
+    {
+      "id": "t_body_immortal",
+      "title": "不死之身",
+      "description": "天雷把你的肉身炸碎了七次，你重组了七次。第八次的时候你不再重塑肉身了——你发现自己的身体已经是不死之身。砍头、穿心、焚烧——都不再致命。",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 6,
+      "paths": [
+        "body"
+      ],
+      "choices": {
+        "left": {
+          "text": "以不死之身接引天雷的最后洗礼",
+          "effects": {
+            "cultivation": 30,
+            "daoHeart": 10,
+            "health": 2
+          }
+        },
+        "right": {
+          "text": "低调行事——不死之身不轻易示人",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 10,
+            "fortune": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_body_immortal.png"
+    },
+    {
+      "id": "t_pill_immortal",
+      "title": "不死仙丹",
+      "description": "你把炼丹术推到了极致——你炼出了一颗传说中的不死仙丹。丹方上说：服之可长生——但代价是永远无法飞升。你会吃吗？",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 6,
+      "paths": [
+        "pill"
+      ],
+      "choices": {
+        "left": {
+          "text": "不吃——留着万一飞升失败",
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "封存为镇派之宝——留待后人",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_pill_immortal.png"
+    },
+    {
+      "id": "t_dao_debate",
+      "title": "天下论道",
+      "description": "渡劫修士之间有一场传说中的论道大会——只有渡劫以上才能参加。天下仅存的十二位渡劫修士聚在一起，论道一百天。不是分高下——是道心的最后一轮淬炼。",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "参加论道——百家争鸣",
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 15,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "旁观而不言——听道胜于论道",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_dao_debate.png"
+    },
+    {
+      "id": "t_world_end",
+      "title": "末日预言",
+      "description": "你用天眼看到了未来——修真界在一万年后会崩溃。灵气会枯竭，修士会灭绝。你是少数知道这个真相的人。你要不要告诉其他修士？",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 5,
+      "choices": {
+        "left": {
+          "text": "公之于众——集结所有修士应对",
+          "effects": {
+            "karmaGood": 20,
+            "daoHeart": 10,
+            "cultivation": -10
+          }
+        },
+        "right": {
+          "text": "独自寻找灵气枯竭的根源",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 2,
+            "fortune": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_world_end.png"
+    },
+    {
+      "id": "t_ascend_choice",
+      "title": "飞升抉择",
+      "description": "天门在你面前大开。但你的天眼看到了门后面的东西——不是极乐之境。仙界也是一片战场，仙人也在争渡。你还想上去吗？或者放弃飞升——留在这里做一个逍遥散仙？",
+      "type": "NORMAL",
+      "realm": "tribulation",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "飞升——仙界战场也是道",
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 30
+          }
+        },
+        "right": {
+          "text": "留在这里——逍遥天地间",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": -10,
+            "fortune": 20
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_ascend_choice.png"
+    },
+    {
+      "id": "t_last_auction",
+      "title": "最后的拍卖",
+      "description": "你参加了修真界最后一次——也是最大规模的拍卖会。拍品中有一件传说中的'飞升令'——持此令者可减免一道天雷。起拍价 500 灵石。",
+      "type": "SHOP",
+      "realm": "tribulation",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "竞拍飞升令 (500灵石)",
+          "effects": {
+            "spiritStone": -100,
+            "daoHeart": 10,
+            "fortune": 10
+          },
+          "karmaSeed": {
+            "id": "lifespanWaste",
+            "delay": 3,
+            "realm": "tribulation",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "竞拍渡劫丹 (300灵石)",
+          "effects": {
+            "spiritStone": -60,
+            "pill": "渡劫丹",
+            "cultivation": 10
+          }
+        },
+        "down": {
+          "text": "放弃竞拍",
+          "effects": {},
+          "desc": "囊中羞涩，只能放弃"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_last_auction.png"
+    },
+    {
+      "id": "t_immortal_test",
+      "title": "仙人试炼场",
+      "description": "你发现了一个陨落的仙人留下的试炼场——专门为即将飞升的渡劫修士准备。进入者需战胜仙人留下的残影——史上只有三人成功通过。",
+      "type": "DUNGEON",
+      "realm": "tribulation",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "挑战仙人残影",
+          "dungeon": "immortal_trial"
+        },
+        "right": {
+          "text": "不挑战——留待机缘",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_tb_t_immortal_test.png"
+    },
+    {
+      "id": "break_tribulation",
+      "title": "天门已开·飞升仙界",
+      "description": "九九八十一道天雷通过——心魔消散——天门大开。你站在天门前，身后是千年修行，身前是无尽仙界。迈出这一步，你将不再是修真者——你是仙人。要飞升吗？",
+      "type": "BREAKTHROUGH",
+      "realm": "tribulation",
+      "weight": 0,
+      "tags": [
+        "breakthrough",
+        "ending"
+      ],
+      "choices": {
+        "left": {
+          "text": "飞升仙界——成仙",
+          "breakSuccess": 0.25,
+          "effects": {}
+        },
+        "right": {
+          "text": "暂缓飞升——重整道基",
+          "effects": {
+            "cultivation": -30,
+            "daoHeart": 3
+          }
+        }
+      },
+      "successText": "你们修炼千年，终于站在了天门前。身后是修真界的风风雨雨，身前是仙界的彼岸。你迈出一步——凡间的一切都已远去。恭喜飞升——一念仙途，至此圆满。",
+      "failText": "最后一步——肉身飞升失败。天雷余威将你打落凡尘，修为退转至渡劫初期。但你没有灰心——天道的路还长，你的道心还在。来日方长。",
+      "sceneImage": "assets/cards/events/scene_tb_break_tribulation.png"
+    }
+  ],
+  "dungeons": {
+    "immortal_trial": {
+      "id": "immortal_trial",
+      "name": "仙人试炼场",
+      "description": "陨落仙人留下的终极试炼，只有渡劫修士才有资格挑战",
+      "nodeCount": 4,
+      "nodes": [
+        {
+          "card": "it_entrance"
+        },
+        {
+          "card": "it_combat"
+        },
+        {
+          "card": "it_reward"
+        },
+        {
+          "card": "it_blessing"
+        }
+      ]
+    }
+  },
+  "dungeonCards": {
+    "it_entrance": {
+      "id": "it_entrance",
+      "title": "试炼起点",
+      "description": "试炼场的入口刻着三行字：'第一关——放下你的骄傲。第二关——放下你的恐惧。第三关——放下你的执念。'",
+      "dungeon": "immortal_trial",
+      "nodeIndex": 0,
+      "choices": {
+        "left": {
+          "text": "坦然踏入——我已无惧",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "先感受试炼气息",
+          "effects": {
+            "fortune": 10,
+            "daoHeart": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_quest_board.png"
+    },
+    "it_combat": {
+      "id": "it_combat",
+      "title": "仙人残影",
+      "description": "试炼场中央——仙人残影手持仙器，周身金光。它不说废话，直接出招。它的剑意里藏着仙界的法则之力——和你上界见到的所有对手都不同。",
+      "dungeon": "immortal_trial",
+      "nodeIndex": 1,
+      "tags": [
+        "combat",
+        "boss"
+      ],
+      "choices": {
+          "left": {
+            "text": "全力以赴——以凡人之躯战仙影",
+            "triggerCombat": true,
+            "victoryEffects": {
+              "cultivation": 25,
+              "daoHeart": 15
+            },
+            "defeatEffects": {
+              "daoHeart": -2
+            },
+            "fleeEffects": {
+              "lifespan": -1
+            },
+            "combatPresentation": {
+              "warningTitle": "仙人试炼 · 法则残影",
+              "mechanic": "仙影会交替展开法则屏障与秩序剑光，第三式为高伤害终结技。",
+              "worldStory": "残影不是完整仙人，而是陨落者留下的一段筛选法则。"
+            }
+        },
+        "right": {
+          "text": "以道心化解——仙影亦有因果",
+          "effects": {
+            "daoHeart": 20,
+            "cultivation": 10
+          }
+        }
+      },
+        "enemy": {
+          "templateId": "immortal_shadow_tribulation",
+          "name": "仙人残影",
+          "hp": 20,
+          "atk": 3,
+          "def": 2,
+          "tier": 3,
+          "critRate": 15,
+        "special": "仙界法则",
+        "specialChance": 0.4,
+        "specialDmg": 20
+      },
+      "combatRewards": {
+        "cultivation": 35,
+        "spiritStone": 50,
+        "pill": "渡劫丹"
+      },
+      "type": "COMBAT",
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
+    },
+    "it_reward": {
+      "id": "it_reward",
+      "title": "陨仙宝藏",
+      "description": "你战胜了仙人残影——它消散前留下了三件遗物。仙界灵石、一件残破仙器、一枚飞升秘符——秘符上说可以增加一成飞升成功率。",
+      "dungeon": "immortal_trial",
+      "nodeIndex": 2,
+      "choices": {
+        "left": {
+          "text": "取飞升秘符",
+          "effects": {
+            "fortune": 15,
+            "daoHeart": 10,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "取仙界灵石 (300灵石)",
+          "effects": {
+            "spiritStone": 300,
+            "cultivation": 15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
+    },
+    "it_blessing": {
+      "id": "it_blessing",
+      "title": "仙人的祝福",
+      "description": "试炼场最深处——仙人留下的最后一句话不是法术、不是功法——是一句祝福：'愿你在仙界——也像在这凡间一样，活得坦荡。'",
+      "dungeon": "immortal_trial",
+      "nodeIndex": 3,
+      "choices": {
+        "left": {
+          "text": "铭记仙人之言",
+          "effects": {
+            "daoHeart": 20,
+            "karmaGood": 15,
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "以道心回应仙人",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_quest_board.png"
+    }
+  }
+}

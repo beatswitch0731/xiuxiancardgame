@@ -1,0 +1,259 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://shaders/cangmang_projected_court.gdshader" id="1_jqtm5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n1v3t"]
+render_priority = 0
+shader = ExtResource("1_jqtm5")
+shader_parameter/painting_plane = null
+shader_parameter/painting_center_y = null
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8s6ic"]
+top_radius = 0.43
+bottom_radius = 0.43
+height = 0.32
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ibwcr"]
+top_radius = 0.32
+bottom_radius = 0.32
+height = 0.08
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_b3c1b"]
+top_radius = 0.18
+bottom_radius = 0.18
+height = 1.88
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0vxby"]
+top_radius = 0.22
+bottom_radius = 0.22
+height = 0.13
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e2c0d"]
+top_radius = 0.09
+bottom_radius = 0.09
+height = 0.92
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qctyq"]
+top_radius = 0.09
+bottom_radius = 0.09
+height = 0.92
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6tcpx"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.075
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a7qec"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.075
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ml14h"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.025
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e0530"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.025
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j2txm"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.025
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wl5qe"]
+top_radius = 0.43
+bottom_radius = 0.43
+height = 0.32
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t1c4t"]
+top_radius = 0.32
+bottom_radius = 0.32
+height = 0.08
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ja2nn"]
+top_radius = 0.18
+bottom_radius = 0.18
+height = 1.88
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hooq7"]
+top_radius = 0.22
+bottom_radius = 0.22
+height = 0.13
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p0q7t"]
+top_radius = 0.09
+bottom_radius = 0.09
+height = 0.92
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wlejw"]
+top_radius = 0.09
+bottom_radius = 0.09
+height = 0.92
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1dej4"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.075
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_om5jc"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.075
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kwskl"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.025
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fsnqu"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.025
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4kscc"]
+top_radius = 0.205
+bottom_radius = 0.205
+height = 0.025
+radial_segments = 10
+
+[node name="CangmangTrialArchitecture" type="Node3D" unique_id=1494976387]
+
+[node name="LeftTrialPost" type="Node3D" parent="." unique_id=1943744447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 0, -0.6)
+
+[node name="StoneFoot" type="MeshInstance3D" parent="LeftTrialPost" unique_id=1453676964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_8s6ic")
+
+[node name="StoneInset" type="MeshInstance3D" parent="LeftTrialPost" unique_id=922338158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_ibwcr")
+
+[node name="MainTimber" type="MeshInstance3D" parent="LeftTrialPost" unique_id=608240476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_b3c1b")
+
+[node name="CappedHead" type="MeshInstance3D" parent="LeftTrialPost" unique_id=2033805403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_0vxby")
+
+[node name="LeftPracticeArm" type="MeshInstance3D" parent="LeftTrialPost" unique_id=2024940965]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.46, 1.63, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_e2c0d")
+
+[node name="RightPracticeArm" type="MeshInstance3D" parent="LeftTrialPost" unique_id=1041859111]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.46, 1.63, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_qctyq")
+
+[node name="LowIronCollar" type="MeshInstance3D" parent="LeftTrialPost" unique_id=1970990124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_6tcpx")
+
+[node name="UpperIronCollar" type="MeshInstance3D" parent="LeftTrialPost" unique_id=2034119112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_a7qec")
+
+[node name="RopeWrap_0" type="MeshInstance3D" parent="LeftTrialPost" unique_id=2099497573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_ml14h")
+
+[node name="RopeWrap_1" type="MeshInstance3D" parent="LeftTrialPost" unique_id=39134699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.407, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_e0530")
+
+[node name="RopeWrap_2" type="MeshInstance3D" parent="LeftTrialPost" unique_id=1135949992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.464, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_j2txm")
+
+[node name="RightTrialPost" type="Node3D" parent="." unique_id=1095257901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25, 0, -0.6)
+
+[node name="StoneFoot" type="MeshInstance3D" parent="RightTrialPost" unique_id=1171729932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_wl5qe")
+
+[node name="StoneInset" type="MeshInstance3D" parent="RightTrialPost" unique_id=1807281145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_t1c4t")
+
+[node name="MainTimber" type="MeshInstance3D" parent="RightTrialPost" unique_id=251717266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_ja2nn")
+
+[node name="CappedHead" type="MeshInstance3D" parent="RightTrialPost" unique_id=301148333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_hooq7")
+
+[node name="LeftPracticeArm" type="MeshInstance3D" parent="RightTrialPost" unique_id=541702730]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.46, 1.63, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_p0q7t")
+
+[node name="RightPracticeArm" type="MeshInstance3D" parent="RightTrialPost" unique_id=878741518]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.46, 1.63, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_wlejw")
+
+[node name="LowIronCollar" type="MeshInstance3D" parent="RightTrialPost" unique_id=1657751133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_1dej4")
+
+[node name="UpperIronCollar" type="MeshInstance3D" parent="RightTrialPost" unique_id=678961829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_om5jc")
+
+[node name="RopeWrap_0" type="MeshInstance3D" parent="RightTrialPost" unique_id=1373816948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_kwskl")
+
+[node name="RopeWrap_1" type="MeshInstance3D" parent="RightTrialPost" unique_id=55525024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.407, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_fsnqu")
+
+[node name="RopeWrap_2" type="MeshInstance3D" parent="RightTrialPost" unique_id=707134663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.464, 0)
+material_override = SubResource("ShaderMaterial_n1v3t")
+mesh = SubResource("CylinderMesh_4kscc")

@@ -1,0 +1,1220 @@
+{
+  "realm": "golden",
+  "realmName": "金丹期",
+  "cards": [
+    {
+      "id": "g_coreFormed",
+      "title": "金丹初成",
+      "description": "丹田中一枚金丹缓缓旋转，灵气如潮水般涌入。你终于踏入了真正的修仙者行列。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "温养金丹",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 10,
+            "health": 5
+          }
+        },
+        "right": {
+          "text": "趁势修炼",
+          "effects": {
+            "cultivation": 25,
+            "health": -2,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_gd_g_coreFormed.png"
+    },
+    {
+      "id": "g_swordIntent",
+      "title": "剑意化形",
+      "description": "你的剑意已能化形——一剑斩出，虚空生莲。青云剑宗几位长老都在暗中关注你。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 6,
+      "path": "sword",
+      "choices": {
+        "left": {
+          "text": "藏锋于鞘",
+          "effects": {
+            "daoHeart": 2,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "剑意展露",
+          "effects": {
+            "cultivation": 20,
+            "karmaBad": 5,
+            "fortune": -5
+          }
+        }
+      },
+      "tags": [
+        "path_specific",
+        "sword",
+        "cultivation"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_swordIntent.png"
+    },
+    {
+      "id": "g_spellGreat",
+      "title": "术法大成",
+      "description": "你对五行术法的理解进入新境界。玄机真人亲自邀你入五行流内堂参悟。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 6,
+      "path": "spell",
+      "choices": {
+        "left": {
+          "text": "专注五行",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "兼修雷法",
+          "effects": {
+            "cultivation": 18,
+            "fortune": 15,
+            "karmaBad": 5
+          }
+        }
+      },
+      "tags": [
+        "path_specific",
+        "spell",
+        "cultivation"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_spellGreat.png"
+    },
+    {
+      "id": "g_bodyGold",
+      "title": "金身初显",
+      "description": "你的肉身开始泛起淡淡的金光——这是金身将成的征兆。武盟那边似乎也注意到了你的变化。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 6,
+      "path": "body",
+      "choices": {
+        "left": {
+          "text": "闭关淬炼",
+          "effects": {
+            "health": 2,
+            "cultivation": 10,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "找人切磋",
+          "effects": {
+            "cultivation": 18,
+            "fortune": 10,
+            "maxHealth": -1
+          }
+        }
+      },
+      "tags": [
+        "path_specific",
+        "body",
+        "cultivation"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_bodyGold.png"
+    },
+    {
+      "id": "g_pillSecret",
+      "title": "古丹方重现",
+      "description": "你在一次探险中发现了一卷太古丹方——上面记载的炼丹术远超当世。药王谷的人闻讯而来。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 6,
+      "path": "pill",
+      "choices": {
+        "left": {
+          "text": "献给药王谷",
+          "effects": {
+            "daoHeart": 10,
+            "pill": "nascent",
+            "fortune": 15
+          }
+        },
+        "right": {
+          "text": "私藏研习",
+          "effects": {
+            "cultivation": 22,
+            "karmaBad": 10,
+            "pill": "golden"
+          }
+        }
+      },
+      "tags": [
+        "path_specific",
+        "pill",
+        "treasure"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_pillSecret.png"
+    },
+    {
+      "id": "g_ruins",
+      "title": "上古遗迹",
+      "description": "南疆深处发现了一座太古遗迹，各大势力都在派人前往。去晚了连汤都喝不到。",
+      "type": "DUNGEON",
+      "realm": "golden",
+      "weight": 5,
+      "choices": {
+        "left": {
+          "text": "放弃名额",
+          "effects": {
+            "spiritStone": 30,
+            "daoHeart": -2
+          }
+        },
+        "right": {
+          "text": "深入遗迹",
+          "effects": {
+            "cultivation": 35,
+            "maxHealth": -1
+          },
+          "dungeon": "ancientRuins"
+        }
+      },
+      "tags": [
+        "dungeon",
+        "exploration"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_ruins.png"
+    },
+    {
+      "id": "g_veinFight",
+      "title": "灵脉之争",
+      "description": "一条新发现的中品灵脉引发了三个宗门的争夺。你在其中扮演什么角色？",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "从中斡旋",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 15,
+            "fortune": 5
+          },
+          "karmaSeed": {
+            "id": "factionPeace",
+            "delay": 8,
+            "realm": "nascent",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "乘乱夺利",
+          "effects": {
+            "spiritStone": 50,
+            "karmaBad": 20,
+            "fortune": -10
+          },
+          "karmaSeed": {
+            "id": "factionUprising",
+            "delay": 8,
+            "realm": "golden",
+            "priority": 2
+          }
+        },
+        "up": {
+          "text": "力争夺取",
+          "effects": {
+            "spiritStone": 80,
+            "karmaBad": 10,
+            "maxHealth": -1
+          }
+        }
+      },
+      "tags": [
+        "conflict",
+        "resource"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_veinFight.png"
+    },
+    {
+      "id": "g_tribulationOmen",
+      "title": "天劫预兆",
+      "description": "你感到冥冥中一股威压若隐若现——那是天劫的气息。它在提醒你：金丹之后，每一步都在天道注视之下。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 7,
+      "choices": {
+        "left": {
+          "text": "积累功德",
+          "effects": {
+            "karmaGood": 10,
+            "fortune": 15,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "以力抗天",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 10,
+            "karmaBad": 10
+          }
+        }
+      },
+      "tags": [
+        "tribulation",
+        "mental"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_tribulationOmen.png"
+    },
+    {
+      "id": "g_demonSeed",
+      "title": "魔种暗生",
+      "description": "你发现体内不知何时多了一缕诡异的黑色灵气——它不影响修炼，反而让你的灵力运转更顺畅了。这是……魔种？",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 6,
+      "choices": {
+        "left": {
+          "text": "立即清除",
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 10,
+            "maxHealth": -1
+          }
+        },
+        "right": {
+          "text": "留下观察",
+          "effects": {
+            "cultivation": 25,
+            "karmaBad": 20,
+            "daoHeart": -2
+          }
+        }
+      },
+      "tags": [
+        "demon",
+        "temptation"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_demonSeed.png"
+    },
+    {
+      "id": "g_elderMystery",
+      "title": "长老的秘密",
+      "description": "深夜，你无意中撞见一位德高望重的长老在山门外交接一个黑色储物袋。他看到你了。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 5,
+      "choices": {
+        "left": {
+          "text": "装作没看见",
+          "effects": {
+            "fortune": 10,
+            "karmaBad": 5
+          }
+        },
+        "right": {
+          "text": "当面质问",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 10,
+            "health": -2
+          }
+        }
+      },
+      "tags": [
+        "social",
+        "mystery"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_elderMystery.png"
+    },
+    {
+      "id": "g_daoConference",
+      "title": "论道大会",
+      "description": "正道六宗联合举办论道大会，金丹修士齐聚一堂。你的表现将直接影响宗门声誉。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "稳健论证",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 10,
+            "fortune": 5
+          },
+          "karmaSeed": {
+            "id": "swordBetrayed",
+            "delay": 6,
+            "realm": "golden",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "锋芒毕露",
+          "effects": {
+            "cultivation": 25,
+            "karmaBad": 5,
+            "daoHeart": -2
+          }
+        }
+      },
+      "tags": [
+        "social",
+        "cultivation"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_daoConference.png"
+    },
+    {
+      "id": "g_oldFriend",
+      "title": "故人来访",
+      "description": "一位多年前离开宗门的师兄忽然回来，说要与你做一笔交易。他身上的气息……有些不对劲。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 6,
+      "evergreen": true,
+      "choices": {
+        "left": {
+          "text": "婉拒交易",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 5
+          },
+          "karmaSeed": {
+            "id": "betrayedNpc",
+            "delay": 8,
+            "realm": "nascent",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "听他说完",
+          "effects": {
+            "cultivation": 18,
+            "karmaBad": 10,
+            "treasure": "ancientToken"
+          }
+        }
+      },
+      "tags": [
+        "social",
+        "mystery"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_oldFriend.png"
+    },
+    {
+      "id": "g_forbiddenTome",
+      "title": "禁术诱惑",
+      "description": "血煞宗派人送来一本黑色封皮的功法——扉页上写着：\"此术大成，金丹可越级战元婴。\"代价是被正道所不容。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 4,
+      "requiresFlags": {
+        "hasDemonContact": true
+      },
+      "choices": {
+        "left": {
+          "text": "焚毁功法",
+          "effects": {
+            "karmaGood": 15,
+            "daoHeart": 10,
+            "health": -2
+          },
+          "karmaSeed": {
+            "id": "spellHidden",
+            "delay": 8,
+            "realm": "nascent",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "偷学禁术",
+          "effects": {
+            "cultivation": 35,
+            "karmaBad": 30,
+            "maxDaoHeart": -1
+          }
+        }
+      },
+      "tags": [
+        "demon",
+        "temptation",
+        "high_risk"
+      ],
+      "sceneImage": "assets/cards/events/scene_gd_g_forbiddenTome.png"
+    },
+    {
+      "id": "g_fateChoice",
+      "title": "命运歧路",
+      "description": "一位看不清面容的白衣人站在你面前：\"你已到金丹，该做选择了——顺天，还是逆天？\"",
+      "type": "NORMAL",
+      "realm": "golden",
+      "weight": 5,
+      "choices": {
+        "left": {
+          "text": "顺天而为",
+          "effects": {
+            "fortune": 20,
+            "daoHeart": 5,
+            "karmaGood": 10
+          }
+        },
+        "right": {
+          "text": "逆天而行",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 2,
+            "karmaBad": 15
+          },
+          "karmaSeed": {
+            "id": "fortuneWheel",
+            "delay": 6,
+            "realm": "golden",
+            "priority": 1
+          }
+        }
+      },
+      "tags": [
+        "destiny",
+        "mental"
+      ],
+      "once": true,
+      "sceneImage": "assets/cards/events/scene_gd_g_fateChoice.png"
+    },
+    {
+      "id": "break_golden",
+      "title": "金丹圆满",
+      "description": "金丹表面布满裂纹，元婴之形在其中若隐若现。碎丹成婴，九死一生。",
+      "type": "BOTTLENECK",
+      "realm": "golden",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "碎丹冲婴",
+          "effects": {},
+          "breakSuccess": 0.4
+        },
+        "right": {
+          "text": "温丹待时",
+          "effects": {
+            "daoHeart": 10
+          },
+          "breakSuccess": 0.7
+        },
+      "up": {
+        "text": "服用凝婴丹",
+        "requiredPill": "nascent",
+          "effects": {
+            "daoHeart": 5
+          },
+          "breakSuccess": 1
+        },
+        "down": {
+          "text": "暂缓突破",
+          "effects": {
+            "cultivation": -45,
+            "daoHeart": -2,
+            "_setFlag": "breakthrough_paused_cooldown"
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_gd_break_golden.png"
+    },
+    {
+      "id": "g_shop",
+      "title": "金丹拍卖会",
+      "description": "金丹期修士的专属拍卖会。台上在拍血玉扳指(80灵石)、天枢罗盘(90灵石)和一瓶凝婴丹(120灵石)。",
+      "type": "SHOP",
+      "realm": "golden",
+      "weight": 10,
+      "choices": {
+        "left": {
+          "text": "拍凝婴丹 (120灵石)",
+          "effects": {
+            "spiritStone": -24,
+            "pill": "凝婴丹"
+          },
+          "costCheck": {
+            "spiritStone": 120
+          }
+        },
+        "right": {
+          "text": "拍天枢罗盘 (90灵石)",
+          "effects": {
+            "spiritStone": -90,
+            "treasure": "天枢罗盘"
+          },
+          "costCheck": {
+            "spiritStone": 90
+          }
+        },
+        "up": {
+          "text": "精简感悟 (40灵石)",
+          "effects": {
+            "spiritStone": -40,
+            "removeCard": true
+          },
+          "costCheck": {
+            "spiritStone": 40
+          }
+        },
+        "down": {
+          "text": "囊中羞涩，看看就走",
+          "effects": {
+            "daoHeart": 1
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_gd_g_shop.png"
+    },
+    {
+      "id": "g_bribe",
+      "title": "宗门博弈",
+      "description": "宗门内部暗流涌动。有人暗示你——花50灵石打点长老，就能在下次宗门大比中获得关照。",
+      "type": "SHOP",
+      "realm": "golden",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "花钱买平安 (50灵石)",
+          "effects": {
+            "spiritStone": -50,
+            "fortune": 10,
+            "cultivation": 10,
+            "karmaBad": 5
+          },
+          "costCheck": {
+            "spiritStone": 50
+          }
+        },
+        "right": {
+          "text": "不屑于这等手段",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_gd_g_bribe.png"
+    },
+    {
+      "id": "g_secret_sword",
+      "title": "剑意共鸣",
+      "description": "你走在山中，忽然感应到一股前所未有的剑意。它从地底深处传来——不是威胁，是召唤。你的配剑在鞘中轻鸣：'主人——下面有东西。不是武器——是道。'",
+      "type": "NORMAL",
+      "realm": "golden",
+      "path": "sword",
+      "weight": 5,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "追随剑意——进入剑意秘境",
+          "effects": {
+            "daoHeart": 5
+          },
+          "dungeon": "swordSanctum"
+        },
+        "right": {
+          "text": "时机未到——暂缓",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_gd_g_secret_sword.png"
+    },
+    {
+      "id": "g_secret_spell",
+      "title": "法则裂隙",
+      "description": "你在冥想时，神识穿透了天地法则的表层——你看到了裂缝。那里有力量在流动——纯粹、原始、不属于这个纪元。一个苍老的声音在裂隙中低语：'法修的归宿——不只是五行。'",
+      "type": "NORMAL",
+      "realm": "golden",
+      "path": "spell",
+      "weight": 5,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "踏入法则裂隙",
+          "effects": {
+            "cultivation": 5
+          },
+          "dungeon": "spellSanctum"
+        },
+        "right": {
+          "text": "标记位置，日后再来",
+          "effects": {
+            "cultivation": 3,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_gd_g_secret_spell.png"
+    },
+    {
+      "id": "g_secret_body",
+      "title": "肉身共鸣",
+      "description": "你路过万钧瀑布——但这次不同。你的骨骼在回应瀑布的咆哮——不是恐惧，是同频共振。瀑布深处传来一个低沉的声音：'三千年了——终于等到了一个配得上不灭深渊的体修。'",
+      "type": "NORMAL",
+      "realm": "golden",
+      "path": "body",
+      "weight": 5,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "跃入不灭深渊",
+          "effects": {
+            "health": 5
+          },
+          "dungeon": "bodySanctum"
+        },
+        "right": {
+          "text": "先回武盟报备",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_gd_g_secret_body.png"
+    },
+    {
+      "id": "g_secret_pill",
+      "title": "灵草异香",
+      "description": "你在炼丹时，一味寻常草药绽放出前所未有的光芒。光芒中——你看到了一条通往天地初开的路径。那里长着一朵典籍中从未见过的花——它开花的一瞬间，你的每一粒丹药都在丹炉中鸣响。",
+      "type": "NORMAL",
+      "realm": "golden",
+      "path": "pill",
+      "weight": 5,
+      "once": true,
+      "choices": {
+        "left": {
+          "text": "追寻光芒——进入丹道源流",
+          "effects": {
+            "cultivation": 5
+          },
+          "dungeon": "pillSanctum"
+        },
+        "right": {
+          "text": "记录下来——先研究",
+          "effects": {
+            "cultivation": 3,
+            "fortune": 8
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_gd_g_secret_pill.png"
+    }
+  ],
+  "dungeons": {
+    "ancientRuins": {
+      "name": "太古遗迹",
+      "nodes": [
+        {
+          "type": "event",
+          "card": "ruins_ancient"
+        },
+        {
+          "type": "battle",
+          "card": "ruins_guardian"
+        },
+        {
+          "type": "choice",
+          "card": "ruins_fork"
+        },
+        {
+          "type": "reward",
+          "card": "ruins_reward"
+        }
+      ]
+    },
+    "swordSanctum": {
+      "id": "swordSanctum",
+      "name": "剑意秘境",
+      "description": "只有剑修才能感知到的秘境——千万道剑意在此汇聚",
+      "pathRestriction": "sword",
+      "nodes": [
+        {
+          "type": "event",
+          "card": "secret_sword_1"
+        },
+        {
+          "type": "choice",
+          "card": "secret_sword_2"
+        },
+        {
+          "type": "reward",
+          "card": "secret_sword_3"
+        }
+      ]
+    },
+    "spellSanctum": {
+      "id": "spellSanctum",
+      "name": "法则裂隙",
+      "description": "天地法则在此处出现了裂隙——法修的天堂",
+      "pathRestriction": "spell",
+      "nodes": [
+        {
+          "type": "event",
+          "card": "secret_spell_1"
+        },
+        {
+          "type": "choice",
+          "card": "secret_spell_2"
+        },
+        {
+          "type": "reward",
+          "card": "secret_spell_3"
+        }
+      ]
+    },
+    "bodySanctum": {
+      "id": "bodySanctum",
+      "name": "不灭深渊",
+      "description": "万钧瀑布的根源——体修的朝圣之地",
+      "pathRestriction": "body",
+      "nodes": [
+        {
+          "type": "event",
+          "card": "secret_body_1"
+        },
+        {
+          "type": "battle",
+          "card": "secret_body_2"
+        },
+        {
+          "type": "reward",
+          "card": "secret_body_3"
+        }
+      ]
+    },
+    "pillSanctum": {
+      "id": "pillSanctum",
+      "name": "丹道源流",
+      "description": "天地初开的第一朵灵花——丹修的终极梦想",
+      "pathRestriction": "pill",
+      "nodes": [
+        {
+          "type": "event",
+          "card": "secret_pill_1"
+        },
+        {
+          "type": "choice",
+          "card": "secret_pill_2"
+        },
+        {
+          "type": "reward",
+          "card": "secret_pill_3"
+        }
+      ]
+    }
+  },
+  "dungeonCards": {
+    "ruins_ancient": {
+      "id": "ruins_ancient",
+      "title": "遗迹回声",
+      "description": "太古遗迹的墙壁上刻满了古老的文字。你依稀辨认出几个字——\"天道\"、\"囚笼\"、\"混沌\"。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "拓印文字",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 15,
+            "fortune": 10
+          }
+        },
+        "right": {
+          "text": "忽略深入",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
+    },
+    "ruins_guardian": {
+      "id": "ruins_guardian",
+      "title": "遗迹守护兽",
+      "description": "一头太古机关兽苏醒过来，眼中红光闪烁——它把你当成了入侵者。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "巧破机关",
+          "effects": {
+            "cultivation": 15,
+            "fortune": 15
+          }
+        },
+        "right": {
+          "text": "正面迎战",
+          "effects": {
+            "health": -3,
+            "cultivation": 30,
+            "treasure": "guardianCore"
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
+    },
+    "ruins_fork": {
+      "id": "ruins_fork",
+      "title": "遗迹岔路",
+      "description": "前方出现三条通道：左边有丹香飘出，右边剑气逼人，中间一片漆黑但灵气最浓郁。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "踏入丹室",
+          "effects": {
+            "pill": "nascent",
+            "cultivation": 10
+          }
+        },
+        "right": {
+          "text": "走向剑气",
+          "effects": {
+            "treasure": "ancientSword",
+            "cultivation": 15
+          }
+        },
+        "up": {
+          "text": "深入黑暗",
+          "effects": {
+            "cultivation": 30,
+            "health": -2,
+            "fortune": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
+    },
+    "ruins_reward": {
+      "id": "ruins_reward",
+      "title": "遗迹核心",
+      "description": "你在遗迹核心发现了一枚太古玉简，上面记载着上古功法。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "收为己用",
+          "effects": {
+            "cultivation": 40,
+            "treasure": "ancientJade"
+          }
+        },
+        "right": {
+          "text": "贡献宗门",
+          "effects": {
+            "spiritStone": 100,
+            "daoHeart": 15,
+            "karmaGood": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
+    },
+    "secret_sword_1": {
+      "id": "secret_sword_1",
+      "title": "剑意海洋",
+      "description": "你踏入剑意秘境——眼前是一片由剑光构成的海洋。每一道剑光都是一位上古剑修的毕生感悟。它们围绕着你旋转，像在审视——你是否有资格接受传承。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "展开道心，迎接万剑洗礼",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 20,
+            "health": -1
+          }
+        },
+        "right": {
+          "text": "谨慎出剑——一剑一剑地回应",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 10,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
+    },
+    "secret_sword_2": {
+      "id": "secret_sword_2",
+      "title": "剑心之问",
+      "description": "一道苍老的剑意在你面前凝结成人形。他握着一柄无形之剑，问道：'你为何执剑？'这不是武斗——是道心之斗。你的回答将决定你能从这片剑海中带走什么。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "护我所爱",
+          "effects": {
+            "daoHeart": 25,
+            "karmaGood": 10,
+            "cultivation": 5
+          }
+        },
+        "right": {
+          "text": "证我之道",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 10,
+            "karmaBad": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_meditation.png"
+    },
+    "secret_sword_3": {
+      "id": "secret_sword_3",
+      "title": "剑道真意",
+      "description": "剑意海洋退去，你发现自己站在一把剑上——不，那是一座山，山就是一把剑。你终于理解了——剑不是武器，是道。执剑者，即是道的一部分。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "悟了——剑即是我",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 30,
+            "karmaGood": 5
+          }
+        },
+        "right": {
+          "text": "还不够——剑道无止境",
+          "effects": {
+            "cultivation": 30,
+            "daoHeart": 15,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
+    },
+    "secret_spell_1": {
+      "id": "secret_spell_1",
+      "title": "法则之眼",
+      "description": "天地法则在此处裂开了一道缝隙。你看到缝隙对面的东西——不是虚无，是法则本身流动的形态。它们像溪流，像血脉，每一道都承载着世界的运行法则。你的法力不由自主地顺着法则流动起来。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "融入法则之流",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 5,
+            "health": -1
+          }
+        },
+        "right": {
+          "text": "在边缘观察——记录规律",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 15,
+            "fortune": 5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
+    },
+    "secret_spell_2": {
+      "id": "secret_spell_2",
+      "title": "禁术之门",
+      "description": "在法则裂隙深处——一道被九重封印锁住的石门。门上的符文在闪烁——每一个符文都是一道禁术。一个声音说：'解开三重封印——就能看到真相。再多——就不能回头了。'",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "解开三重——只求真相",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 20,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "解开五重——渴望力量",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": -10,
+            "karmaBad": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
+    },
+    "secret_spell_3": {
+      "id": "secret_spell_3",
+      "title": "法则之名",
+      "description": "最深处的秘密——天地法则不是自然形成的。它们是上一个纪元的大修士联手布置的——天道，是这个布置的管理者，不是创造者。这个真相——你可能永远无法告诉任何人。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "沉默接受——这是力量也是负担",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 25,
+            "karmaGood": 10
+          }
+        },
+        "right": {
+          "text": "决心——总有一天要改变这一切",
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 30,
+            "fortune": -5
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
+    },
+    "secret_body_1": {
+      "id": "secret_body_1",
+      "title": "不灭深渊",
+      "description": "万钧瀑布的源头——没人告诉你会这么痛。水压让你无法呼吸，但你的肉身在撕裂中唱着歌——每一寸肌肉都在贪婪地吸收瀑布中的天地之力。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "下潜更深",
+          "effects": {
+            "health": 30,
+            "cultivation": 10,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "在可以承受的深度停下",
+          "effects": {
+            "health": 15,
+            "cultivation": 5,
+            "fortune": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
+    },
+    "secret_body_2": {
+      "id": "secret_body_2",
+      "title": "深渊石像",
+      "description": "深渊底部——一座巨大的石像。它在动——不是守卫，是远古的体修大能留下的一缕意志。它举起双拳——你要么接，要么退。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "以拳对拳——硬撼",
+          "effects": {
+            "health": -2,
+            "cultivation": 25,
+            "daoHeart": 20
+          }
+        },
+        "right": {
+          "text": "以柔克刚——闪避",
+          "effects": {
+            "health": 10,
+            "cultivation": 10,
+            "fortune": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
+    },
+    "secret_body_3": {
+      "id": "secret_body_3",
+      "title": "金身初成",
+      "description": "石像碎裂——其中飞出一道金光撞入你的体内。你的骨骼发出金属般的共鸣声，皮肤泛起淡淡的金色光泽。这不只是炼体——是法则级的不灭金身。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "吸收所有金光",
+          "effects": {
+            "health": 35,
+            "cultivation": 20,
+            "daoHeart": 10
+          }
+        },
+        "right": {
+          "text": "分一缕金光给武盟",
+          "effects": {
+            "health": 20,
+            "cultivation": 10,
+            "karmaGood": 15
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
+    },
+    "secret_pill_1": {
+      "id": "secret_pill_1",
+      "title": "天地第一花",
+      "description": "丹道源流的入口——一朵你从未见过的花。它不是长在土里的，是开在灵气中的。花蕊中凝结的露珠——是天地初开的'太初之水'。一滴，可以让枯木逢春。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "收集太初之水",
+          "effects": {
+            "cultivation": 10,
+            "fortune": 15,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "留下——不可贪婪",
+          "effects": {
+            "daoHeart": 15,
+            "karmaGood": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_herb_gathering.png"
+    },
+    "secret_pill_2": {
+      "id": "secret_pill_2",
+      "title": "丹道的代价",
+      "description": "源流深处——一位看不清面容的老者坐在丹炉前。炉中燃烧的——不是火焰，是'时间'。他说：'我从没炼过一粒丹。我炼的是时间的起点和终点。你想学吗——代价是你从此闻不到药香。'",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "接受——牺牲嗅觉换取丹道至高",
+          "effects": {
+            "cultivation": 30,
+            "daoHeart": 5,
+            "health": -1
+          }
+        },
+        "right": {
+          "text": "婉拒——丹道不在极致在仁心",
+          "effects": {
+            "daoHeart": 20,
+            "karmaGood": 10,
+            "fortune": 10
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_herb_gathering.png"
+    },
+    "secret_pill_3": {
+      "id": "secret_pill_3",
+      "title": "丹心不灭",
+      "description": "老者在消散前说了一句话：'你是对的——丹道不在极致。那些追求时间长度的……都失败了。丹道真正的力量——是让一颗丹能改变一个选择。'他的手指轻轻点在你的眉心——你感觉自己的识海中多了一个丹炉。",
+      "type": "NORMAL",
+      "choices": {
+        "left": {
+          "text": "开启识海丹炉",
+          "effects": {
+            "cultivation": 25,
+            "daoHeart": 20,
+            "karmaGood": 5
+          }
+        },
+        "right": {
+          "text": "将丹炉交给神农丹谷",
+          "effects": {
+            "cultivation": 15,
+            "karmaGood": 20
+          }
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_herb_gathering.png"
+    }
+  }
+}

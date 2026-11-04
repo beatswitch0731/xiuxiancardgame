@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/hd2d_sprite_fighter.gd" id="1"]
+[ext_resource type="SpriteFrames" path="res://assets/source_first_fight/quick_sword_dummy.tres" id="2"]
+
+[node name="QuickSwordDummyHD2D" type="Node3D"]
+script = ExtResource("1")
+fighter_kind = "dummy"
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.009
+billboard = 1
+texture_filter = 0
+shaded = true
+alpha_cut = 2
+sprite_frames = ExtResource("2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="SwordTip" type="Marker3D" parent="."]
+position = Vector3(1.64, 1.52, 0)
+
+[node name="ChestHit" type="Marker3D" parent="."]
+position = Vector3(0, 1.49, 0)

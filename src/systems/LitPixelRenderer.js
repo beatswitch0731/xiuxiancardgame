@@ -101,6 +101,7 @@ class LitPixelRenderer {
 
     // ── 渲染缓存: `${charId}::${w}x${h}::${lightHash}` → dataURL ──
     this.renderCache = new Map();
+    this._buffers = [];
 
     // ── 初始化状态 ──
     this.ready = false;
@@ -119,6 +120,7 @@ class LitPixelRenderer {
 
     // ── 光照动画 ──
     this._animFrame = null;
+    this._animUnsubscribe = null;
     this._animAngle = 0;
 
     // ── Asset base path ──
@@ -132,6 +134,7 @@ class LitPixelRenderer {
    * @returns {Promise<boolean>} 是否初始化成功
    */
   async init() {
+    if (this.ready) return true;
     this.canvas = document.createElement('canvas');
     this.canvas.width  = 512;
     this.canvas.height = 768;
@@ -162,6 +165,8 @@ class LitPixelRenderer {
       console.error('[LitPixel] Shader link error:', gl.getProgramInfoLog(program));
       return false;
     }
+    gl.deleteShader?.(vs);
+    gl.deleteShader?.(fs);
     this.program = program;
     gl.useProgram(program);
 
@@ -242,9 +247,13 @@ class LitPixelRenderer {
    */
   async renderToCanvas(targetCanvas, charId, lightOverride) {
     const gl = this.gl;
-    const textures = this.textureCache.get(charId);
+    let textures = this.textureCache.get(charId);
     if (!textures) {
-      throw new Error(`[LitPixel] Character "${charId}" not preloaded. Call preloadCharacter() first.`);
+      await this.preloadCharacter(charId);
+      textures = this.textureCache.get(charId);
+    }
+    if (!textures) {
+      throw new Error(`[LitPixel] Character "${charId}" could not be loaded.`);
     }
 
     // 设置光照
@@ -343,26 +352,70 @@ class LitPixelRenderer {
    */
   startLightAnimation(canvas, charId) {
     this.stopLightAnimation();
-
-    const animate = () => {
+    const coordinator = typeof window !== 'undefined' ? window.renderLoopCoordinator : null;
+    if (!coordinator || typeof coordinator.register !== 'function') {
+      console.warn('[LitPixel] RenderLoopCoordinator unavailable; light animation skipped.');
+      return;
+    }
+    this._animFrame = true;
+    this._animUnsubscribe = coordinator.register(
+      'litpixel-light',
+      () => {
       this._animAngle += 0.008;
       const dir = [
         Math.cos(this._animAngle) * 0.8,
         -0.6,
         Math.sin(this._animAngle) * 0.5 + 0.2
       ];
-      this.renderToCanvas(canvas, charId, { dir });
-      this._animFrame = requestAnimationFrame(animate);
-    };
-    this._animFrame = requestAnimationFrame(animate);
+      void this.renderToCanvas(canvas, charId, { dir });
+      },
+      {
+        fps: this._animationFps(),
+        isActive: () => {
+          if (!canvas || !canvas.isConnected || canvas.getBoundingClientRect().width <= 0) return false;
+          const panel = canvas.closest?.('#npc-panel, #companion-panel');
+          return !panel || getComputedStyle(panel).display !== 'none';
+        }
+      }
+    );
+  }
+
+  _animationFps() {
+    const quality = typeof document !== 'undefined'
+      ? document.documentElement.dataset.effectQuality || 'balanced'
+      : 'balanced';
+    return { low: 8, balanced: 15, high: 20 }[quality] || 15;
   }
 
   /** 停止光照动画 */
   stopLightAnimation() {
-    if (this._animFrame) {
-      cancelAnimationFrame(this._animFrame);
+    if (this._animUnsubscribe) {
+      this._animUnsubscribe();
+      this._animUnsubscribe = null;
       this._animFrame = null;
     }
+    this._animFrame = null;
+  }
+
+  /** Release the WebGL context and all cached GPU resources. */
+  dispose() {
+    this.stopLightAnimation();
+    const gl = this.gl;
+    if (gl) {
+      for (const textures of this.textureCache.values()) {
+        Object.values(textures || {}).forEach(texture => texture && gl.deleteTexture?.(texture));
+      }
+      this._buffers.forEach(buffer => gl.deleteBuffer?.(buffer));
+      if (this.program) gl.deleteProgram?.(this.program);
+    }
+    this.textureCache.clear();
+    this.renderCache.clear();
+    this._buffers = [];
+    this.program = null;
+    this.gl = null;
+    this.ready = false;
+    if (this.canvas?.parentNode) this.canvas.parentNode.removeChild(this.canvas);
+    this.canvas = null;
   }
 
   // ========== Private Helpers ==========
@@ -387,6 +440,7 @@ class LitPixelRenderer {
     const gl = this.gl;
     const loc = gl.getAttribLocation(this.program, attribName);
     const buf = gl.createBuffer();
+    this._buffers.push(buf);
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
     gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
     gl.enableVertexAttribArray(loc);

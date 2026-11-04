@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/hd2d/village_shrine_left_v1/well_chamber_left_v1.glb" id="1_village"]
+
+[node name="VillageWellChamberLeftCandidate" type="Node3D"]
+
+[node name="WellChamberGeometry" parent="." instance=ExtResource("1_village")]
+
+[node name="WellShaftColdMoon" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.842, -0.430, -0.105)
+light_color = Color(0.45, 0.63, 0.68, 1)
+light_energy = 0.48
+shadow_enabled = true
+directional_shadow_max_distance = 50.0
+
+[node name="WellOpeningPool" type="SpotLight3D" parent="."]
+position = Vector3(-7.85, 7.2, -4.72)
+rotation = Vector3(-1.57, 0, 0)
+light_color = Color(0.57, 0.78, 0.83, 1)
+light_energy = 2.2
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 34.0
+
+[node name="WellShaftVaultBounce" type="OmniLight3D" parent="."]
+position = Vector3(-7.85, 7.0, -4.72)
+light_color = Color(0.53, 0.67, 0.70, 1)
+light_energy = 1.16
+omni_range = 13.0
+
+[node name="WellPassageDaylightBounce" type="OmniLight3D" parent="."]
+position = Vector3(-7.87, 3.56, -11.28)
+light_color = Color(0.51, 0.68, 0.72, 1)
+light_energy = 1.45
+omni_range = 6.4
+
+[node name="RuneWallCyanBounce" type="OmniLight3D" parent="."]
+position = Vector3(5.46, 3.7, -6.6)
+light_color = Color(0.21, 0.75, 0.73, 1)
+light_energy = 0.32
+shadow_enabled = true
+omni_range = 6.2
+
+[node name="ArchLanternWarmBounce" type="OmniLight3D" parent="."]
+position = Vector3(-10.5, 3.43, -7.42)
+light_color = Color(1, 0.56, 0.26, 1)
+light_energy = 1.43
+omni_range = 5.2
+
+[node name="EvidenceTableOilBowl" type="OmniLight3D" parent="."]
+position = Vector3(-8.6, 1.52, 2.03)
+light_color = Color(1, 0.48, 0.18, 1)
+light_energy = 1.08
+omni_range = 4.3
+
+[node name="HeroFootTarget" type="Marker3D" parent="."]
+position = Vector3(-3, 0.06, 0)
+
+[node name="EnemyFootTarget" type="Marker3D" parent="."]
+position = Vector3(3, 0.06, 0)

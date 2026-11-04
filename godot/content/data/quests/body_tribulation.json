@@ -1,0 +1,194 @@
+{
+  "quest": {
+    "id": "body_tribulation",
+    "name": "肉身渡劫",
+    "type": "QUEST",
+    "startRealm": "foundation",
+    "pathRestriction": "body",
+    "trigger": {
+      "minTurn": 10,
+      "requiredFlags": null,
+      "forbiddenFlags": ["bodyTribulationCompleted"],
+      "requiredAttributes": null,
+      "priority": 7
+    },
+    "entryCardId": "q_body_1",
+    "chainLength": 4,
+    "factionRewards": {
+      "wumeng_alliance": 20,
+      "qingyun_sword": 5,
+      "xuesha_sect": -10
+    },
+    "rewardOnComplete": {
+      "attributes": { "health": 2, "daoHeart": 1, "cultivation": 8 },
+      "flags": ["bodyTribulationCompleted"]
+    }
+  },
+  "cards": [
+    {
+      "id": "q_body_1",
+      "title": "钢骨试炼",
+      "sceneImage": "assets/cards/keyframes/scene_key_body_iron_staff_trial_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "肉身渡劫", "alt": "武盟长老以玄铁棍试探叶凌云，尚未接棍或拒绝。" },
+      "description": "武盟长老看到你的潜力——他说你的骨骼是天生的炼体之材。他拿出一根玄铁棍，让你用肉身硬接。'不敢，就走吧。'",
+      "type": "QUEST",
+      "questId": "body_tribulation",
+      "questStep": 1,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "以肉身硬接玄铁棍",
+          "effects": { "health": -1, "daoHeart": 1, "cultivation": 4 },
+          "questNext": "q_body_2"
+        },
+        "right": {
+          "text": "婉拒——太危险",
+          "effects": { "daoHeart": -1 },
+          "questEnd": true,
+          "questOutcome": "abandoned"
+        }
+      }
+    },
+    {
+      "id": "q_body_2",
+      "title": "地火淬体",
+      "sceneImage": "assets/cards/keyframes/scene_key_body_earthfire_walk_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "肉身渡劫", "alt": "叶凌云在地火石道上行走，香尚未燃尽，仍可继续或退回。" },
+      "description": "下一关——地火深渊。你必须在地火中行走一炷香。你的皮肤在冒烟，但你的骨骼唱起了歌。",
+      "type": "QUEST",
+      "questId": "body_tribulation",
+      "questStep": 2,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "继续走完全程",
+          "effects": { "health": -1, "daoHeart": 1, "cultivation": 6, "body_insight": 1 },
+          "questNext": "q_body_3"
+        },
+        "right": {
+          "text": "在边缘停下",
+          "effects": { "health": 1, "daoHeart": 1, "cultivation": 3, "body_insight": 1 },
+          "questNext": "q_body_3"
+        }
+      }
+    },
+    {
+      "id": "q_body_3",
+      "title": "万钧瀑布",
+      "description": "最后的试炼——万钧瀑布。你必须站在瀑布下，用肉身抵抗一炷香。水打在你身上，每一滴都是一道剑意。",
+      "type": "QUEST",
+      "questId": "body_tribulation",
+      "questStep": 3,
+      "realm": "foundation",
+      "weight": 0,
+      "sceneImage": "assets/cards/keyframes/scene_key_body_waterfall_choice_v1.png",
+      "artDirection": {
+        "presentation": "scene",
+        "keyframe": true,
+        "chapter": "万钧瀑布",
+        "alt": "瀑布正冲击劫台，香才燃至半截；试炼者尚可坚持或退下，天雷还未到来。"
+      },
+      "choices": {
+        "left": {
+          "text": "坚持到香尽",
+          "effects": { "health": -2, "daoHeart": 1, "cultivation": 8, "body_insight": 1, "_setFlag": "bodyWaterfallPersevered" },
+          "questNext": "q_body_4",
+          "karmaSeed": { "id": "bodyTrialStarted", "delay": 6, "realm": "golden", "priority": 2 }
+        },
+        "right": {
+          "text": "提前退出",
+          "effects": { "health": 1, "cultivation": 3, "body_insight": 1, "_setFlag": "bodyWaterfallWithdrew" },
+          "questNext": "q_body_4"
+        }
+      }
+    },
+    {
+      "id": "q_body_4",
+      "title": "肉身天劫",
+      "description": "你的肉身已经达到了凡人极限——天道注意到了。天空裂开一道口子，紫色的雷电劈了下来。这是天劫——但你不用任何法力护体。用肉身。",
+      "stateVariants": [
+        {
+          "whenFlag": "bodyWaterfallWithdrew",
+          "title": "未成之身应劫",
+          "description": "你在万钧瀑布下提前退了出来，肉身还未达极限。武盟长老正要扶你离开，劫台上空却裂开一道口子，紫雷直落。考验不会等你准备好：此刻以未成之身迎雷，还是运起真气护住经脉，由你决定。",
+          "choices": {
+            "left": {
+              "text": "以未成之身硬抗紫雷",
+              "desc": "以两段炼体见闻参悟天雷。道心与因果足够时可触发特殊传承，否则从技能与器契混合池中结算。",
+              "effects": {
+                "health": -3,
+                "daoHeart": 1,
+                "cultivation": 12,
+                "opportunityReward": {
+                  "opportunityId": "body_tribulation_completion_v1",
+                  "profile": "bare_flesh"
+                }
+              },
+              "questEnd": true,
+              "questOutcome": "completed"
+            },
+            "right": {
+              "text": "运起真气护住经脉",
+              "desc": "以真气梳理被雷劫锁住的经脉。体魄与福缘足够时可触发特殊传承，否则从技能与器契混合池中结算。",
+              "effects": {
+                "health": 1,
+                "daoHeart": -1,
+                "cultivation": 8,
+                "opportunityReward": {
+                  "opportunityId": "body_tribulation_completion_v1",
+                  "profile": "qi_guarded"
+                }
+              },
+              "questEnd": true,
+              "questOutcome": "completed"
+            }
+          }
+        }
+      ],
+      "type": "QUEST",
+      "questId": "body_tribulation",
+      "questStep": 4,
+      "realm": "foundation",
+      "weight": 0,
+      "sceneImage": "assets/combat/body_tribulation_opportunity_v1/body_tribulation_climax_native_v1.png",
+      "artSignature": "scene_body_tribulation_climax_native_v1",
+      "artFocus": "天瀑劫台中央的赤铜雷纹与轰落紫雷；下方留出机缘卡预览安全区",
+      "isKeyframe": true,
+      "choices": {
+        "left": {
+          "text": "以肉身硬抗天劫",
+          "desc": "以两段炼体见闻参悟天雷。道心与因果足够时可触发特殊传承，否则从技能与器契混合池中结算。",
+          "effects": {
+            "health": -3,
+            "daoHeart": 1,
+            "cultivation": 12,
+            "opportunityReward": {
+              "opportunityId": "body_tribulation_completion_v1",
+              "profile": "bare_flesh"
+            }
+          },
+          "questEnd": true,
+          "questOutcome": "completed",
+          "karmaSeed": { "id": "bodyTrialDeep", "delay": 8, "realm": "nascent", "priority": 2 }
+        },
+        "right": {
+          "text": "最后关头运起法力护体",
+          "desc": "以真气梳理被雷劫锁住的经脉。体魄与福缘足够时可触发特殊传承，否则从技能与器契混合池中结算。",
+          "effects": {
+            "health": 1,
+            "daoHeart": -1,
+            "cultivation": 8,
+            "opportunityReward": {
+              "opportunityId": "body_tribulation_completion_v1",
+              "profile": "qi_guarded"
+            }
+          },
+          "questEnd": true,
+          "questOutcome": "completed"
+        }
+      }
+    }
+  ]
+}

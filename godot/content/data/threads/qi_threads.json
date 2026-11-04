@@ -1,0 +1,713 @@
+{
+  "realm": "qi",
+  "threads": [
+    {
+      "threadId": "abandoned_village",
+      "title": "荒村妖道",
+      "description": "你从老乞丐手中接过的古书散发着若有若无的药味——书页间夹着一片枯叶，上面用血写了一个模糊的方位。荒村，在北边。",
+      "realm": "qi",
+      "trigger": {
+        "type": "choice_match",
+        "cardId": "q_beggar",
+        "direction": "right",
+        "delay": 3,
+        "cooldown": 15
+      },
+      "nodes": [
+        {
+          "id": "ab_village_clue",
+          "phase": "beginning",
+          "card": {
+            "id": "thread_ab_village_1",
+            "semanticKey": "thread:abandoned_village:ab_village_clue",
+            "once": true,
+            "title": "荒村的线索",
+            "description": "你按照枯叶上的方位找到了北边的一座废弃村庄。村口石碑上的刻字已被苔藓覆盖，但空气中弥漫着一股刺鼻的药味——和古书上的味道一模一样。村子里静得可怕，只有一口古井在黄昏中泛着微光。",
+            "sceneImage": "assets/cards/keyframes/scene_key_ab_village_dusk_well_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "荒村妖道", "alt": "黄昏的荒村入口，主角停在苔石碑旁，村中古井微亮，尚未决定下井或搜屋。" },
+            "type": "NORMAL",
+            "realm": "qi",
+            "threadTags": ["荒村妖道", "mystery"],
+            "choices": {
+              "left": {
+                "text": "立即下井查探",
+                "desc": "事不宜迟。",
+                "effects": { "cultivation": 8, "daoHeart": 8 },
+                "threadDirection": "brave"
+              },
+              "right": {
+                "text": "先搜索村中房屋",
+                "desc": "谨慎行事，搜集更多线索。",
+                "effects": { "knowledge": 10, "fortune": 5 },
+                "threadDirection": "cautious"
+              }
+            }
+          }
+        },
+        {
+          "id": "ab_well_secret",
+          "phase": "middle",
+          "card": {
+            "id": "thread_ab_village_2",
+            "semanticKey": "thread:abandoned_village:ab_well_secret",
+            "once": true,
+            "title": "井下密室",
+            "description": "古井底部不是水，而是一条暗道。你沿着暗道走了约莫一盏茶的工夫，眼前豁然开朗——这是一间石室，墙壁上刻满了密密麻麻的符文。正中央的石台上，放着一本翻开的册子和一柄断了半截的剑。册子最后一页写着：「青云剑宗外门弟子周元通，因偷学禁术被逐。三十年后，以此法复仇。」",
+            "sceneImage": "assets/cards/keyframes/scene_key_ab_village_hidden_chamber_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "井下密室", "alt": "井下石室的石台上仍摆着翻开的册子和半截断剑，主角尚未决定带走证据或研读符文。" },
+            "type": "NORMAL",
+            "realm": "qi",
+            "threadTags": ["荒村妖道", "revelation"],
+            "choices": {
+              "left": {
+                "text": "带走册子和断剑",
+                "desc": "这些是证据，也许该还给青云剑宗。",
+                "effects": { "daoHeart": 12, "karmaGood": 8 },
+                "threadDirection": "justice"
+              },
+              "right": {
+                "text": "研读禁术符文",
+                "desc": "禁术……也许有用。",
+                "effects": { "cultivation": 15, "karmaBad": 12 },
+                "threadDirection": "power"
+              }
+            }
+          }
+        },
+        {
+          "id": "ab_confrontation",
+          "phase": "climax",
+          "card": {
+            "id": "thread_ab_village_3",
+            "semanticKey": "thread:abandoned_village:ab_confrontation",
+            "once": true,
+            "title": "怨念成形",
+            "description": "你正要离开石室，身后的符文突然亮起——一道由黑雾凝成的人形从墙壁中渗出。那是周元通的怨念——被逐出师门的愤怒、三十年的孤独、以及禁术反噬的痛苦，凝成了一团扭曲的执念。它没有理智，只有恨。它朝你扑来。",
+            "sceneImage": "assets/cards/keyframes/scene_key_ab_village_resentment_before_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "怨念成形", "alt": "井下石室的黑雾怨念刚从石壁显形，主角尚未决定破怨或超度，战斗尚未结算。" },
+            "type": "COMBAT",
+            "realm": "qi",
+            "threadTags": ["荒村妖道", "boss"],
+            "enemy": {
+              "templateId": "resentment_shadow_qi",
+              "name": "怨念之影",
+              "hp": 9,
+              "atk": 2,
+              "def": 1,
+              "tier": 2,
+              "expReward": 25
+            },
+            "choices": {
+              "left": {
+                "text": "以剑破怨——正面迎战",
+                "desc": "剑心澄明，斩断执念。",
+                "triggerCombat": true,
+                "victoryEffects": { "cultivation": 15, "daoHeart": 10 },
+                "defeatEffects": { "daoHeart": -1 },
+                "fleeEffects": { "lifespan": -1 },
+                "combatPresentation": {
+                  "warningTitle": "荒村旧怨 · 以剑破执",
+                  "mechanic": "怨念会先用旧日低语削弱剑心，再凝成黑雾扑杀。",
+                  "worldStory": "你要斩断的不是一个人，而是被禁术和孤独放大的执念。"
+                },
+                "threadDirection": "purify"
+              },
+              "right": {
+                "text": "诵念清心咒——超度怨念",
+                "desc": "以道心化解怨念。",
+                "triggerCombat": true,
+                "victoryEffects": { "daoHeart": 20, "karmaGood": 15 },
+                "defeatEffects": { "daoHeart": -1 },
+                "fleeEffects": { "lifespan": -1 },
+                "combatPresentation": {
+                  "warningTitle": "荒村旧怨 · 清心超度",
+                  "mechanic": "清心咒仍需在怨念攻势中维持；防守和净化比抢攻更重要。",
+                  "worldStory": "若能承受它的愤怒而不还以杀意，周元通最后的人性也许会回应。"
+                },
+                "threadDirection": "redeem"
+              }
+            }
+          }
+        },
+        {
+          "id": "ab_resolve",
+          "phase": "resolution",
+          "card": {
+            "id": "thread_ab_village_4",
+            "semanticKey": "thread:abandoned_village:ab_resolve",
+            "once": true,
+            "title": "怨念散尽",
+            "description": "怨念散去，石室恢复了寂静。册子上的文字开始褪色——禁术的秘密正在自行销毁。但最后一行字还没来得及消失：「若有人能看到这段——师门……从未真的放弃我。」断剑剑身上，刻着四个字：剑心不改。你默默收起断剑，走出石室。古井的水重新涌了上来，淹没了一切。但你知道你带走的不只是线索。",
+            "sceneImage": "assets/cards/keyframes/scene_key_ab_village_broken_sword_after_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "怨念散尽", "alt": "怨念散后，主角手持半截断剑，册子正化为尘，井水将复，尚未决定断剑去向。" },
+            "type": "STORY",
+            "realm": "qi",
+            "threadTags": ["荒村妖道", "resolution"],
+            "choices": {
+              "left": {
+                "text": "将断剑送往青云剑宗",
+                "desc": "让他的师门知道——他至死不改剑心。",
+                "effects": { "daoHeart": 15, "karmaGood": 12, "cultivation": 5 }
+              },
+              "right": {
+                "text": "将断剑埋在你修行之处",
+                "desc": "让这柄剑的剑意融入你的修行。",
+                "effects": { "cultivation": 15, "daoHeart": 8 }
+              }
+            }
+          },
+          "variants": [
+            {
+              "id": "defeat",
+              "when": { "combatOutcomes": { "ab_confrontation": "defeat" } },
+              "card": {
+                "title": "败于荒村旧怨",
+                "description": "你没能斩散周元通的怨念。黑雾退回石壁，井下药味仍在，古井也没有复涌。你记得册子上写下的姓名与旧案；知道真相只是第一步，这场旧怨仍需有人处理。",
+                "sceneImage": "assets/cards/keyframes/scene_key_ab_village_resentment_before_v1.png",
+                "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "败于荒村旧怨", "alt": "井下石室的黑雾仍盘踞墙边，古井未复涌，荒村旧怨尚待处理。" },
+                "choices": {
+                  "left": {
+                    "text": "向青云剑宗报告井下旧案",
+                    "desc": "把周元通的身份与尚未平息的怨念交给知晓旧案的人。",
+                    "effects": { "daoHeart": 1, "karmaGood": 1, "cultivation": 0 }
+                  },
+                  "right": {
+                    "text": "记下败处，暂守荒村入口",
+                    "desc": "先拦住误入古井的人，待有把握再回来。",
+                    "effects": { "cultivation": 1, "daoHeart": 1 }
+                  }
+                }
+              }
+            },
+            {
+              "id": "flee",
+              "when": { "combatOutcomes": { "ab_confrontation": "flee" } },
+              "card": {
+                "title": "旧怨仍在井下",
+                "description": "你从井口撤出，保住了此刻还能走的路；身后的黑雾并未消散。你已从册子读到周元通之名与复仇字句，却尚未解开困在井下的怨念。村口仍有药味，不能把这次撤离写成平息。",
+                "sceneImage": "assets/cards/keyframes/scene_key_ab_village_dusk_well_v1.png",
+                "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "旧怨仍在井下", "alt": "主角退到黄昏荒村的古井外，井口仍有微光，井下黑雾尚未平息。" },
+                "choices": {
+                  "left": {
+                    "text": "将危险告知青云剑宗",
+                    "desc": "请他们先封住荒井，再核对周元通的旧案。",
+                    "effects": { "daoHeart": 1, "karmaGood": 1, "cultivation": 0 }
+                  },
+                  "right": {
+                    "text": "标出井口，退回安全处筹备",
+                    "desc": "让路过的人避开黑雾，待来日再查。",
+                    "effects": { "cultivation": 1, "daoHeart": 1 }
+                  }
+                }
+              }
+            }
+          ],
+          "consequences": {
+            "onComplete": {
+              "note": "你揭开了荒村的秘密——一个被宗门抛弃的弟子，用禁术走火入魔，化为怨念。他的故事让你思考：修行路上，宗门与个人，哪个更重？",
+              "worldFlags": ["village_mystery_solved"],
+              "karmaSeedWhen": { "combatOutcomes": { "ab_confrontation": "victory" } },
+              "karmaSeed": {
+                "id": "exiled_disciple_echo",
+                "desc": "被逐出师门的怨念虽散，但类似的故事在修仙界并不罕见。",
+                "magnitude": 6
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threadId": "spirit_mine",
+      "title": "灵石风波",
+      "description": "你发现的那条灵石矿脉消息传出去了——散修们蜂拥而至，而宗门也派了人来。",
+      "realm": "qi",
+      "trigger": {
+        "type": "choice_match",
+        "cardId": "q_spiritStone",
+        "direction": "right",
+        "delay": 2,
+        "cooldown": 10
+      },
+      "nodes": [
+        {
+          "id": "sm_arrival",
+          "phase": "beginning",
+          "card": {
+            "id": "thread_spirit_mine_1",
+            "semanticKey": "thread:spirit_mine:sm_arrival",
+            "once": true,
+            "title": "矿脉来客",
+            "description": "你上报矿脉的消息传得比你预想的快。今天后山来了许多人——有附近洞府的散修，有宗门巡查的执事，还有几个看起来不太对劲的陌生面孔。执事对你说：「矿脉是宗门属地，散修不得染指。但——你既然最先发现，宗门可以给你一份。」他的语气像是在赏赐，也像是在试探。",
+            "sceneImage": "assets/cards/keyframes/scene_key_spirit_mine_arrival_v2.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "矿脉来客", "alt": "后山灵石矿脉入口，宗门执事与散修隔着未开采矿石对峙，主角尚未选择接受份额或为散修争取公平。" },
+            "type": "NORMAL",
+            "realm": "qi",
+            "threadTags": ["灵石风波", "conflict"],
+            "choices": {
+              "left": {
+                "text": "领取宗门核定的后续份额",
+                "desc": "先前上交矿脉已有酬谢，如今按新矿账领取这一轮分红。",
+                "effects": { "spiritStone": 30, "daoHeart": 5 },
+                "threadDirection": "diplomatic"
+              },
+              "right": {
+                "text": "替散修们说话——要求公平分配",
+                "desc": "散修也是修仙者，不该被驱逐。",
+                "effects": { "daoHeart": 10, "karmaGood": 10, "cultivation": 5 },
+                "threadDirection": "righteous"
+              }
+            }
+          }
+        },
+        {
+          "id": "sm_consequence",
+          "phase": "resolution",
+          "card": {
+            "id": "thread_spirit_mine_2",
+            "semanticKey": "thread:spirit_mine:sm_consequence",
+            "once": true,
+            "title": "矿脉之后",
+            "description": "后山的矿账已落笔。丹师正请人验看矿脉灵气，也可用一枚聚灵丹作酬谢；你还可决定是否从手头灵石中接济散修。",
+            "sceneImage": "assets/cards/keyframes/scene_key_spirit_mine_ledger_choice_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "矿脉之后", "alt": "矿账已落笔，丹师验看矿石，散修仍等候，主角尚未决定劳务换丹或散财。" },
+            "type": "NORMAL",
+            "realm": "qi",
+            "threadTags": ["灵石风波", "resolution"],
+            "choices": {
+              "left": {
+                "text": "替丹师验矿脉灵气，换一枚聚灵丹",
+                "desc": "帮丹师辨认矿石的灵气波动，以劳务换丹，并记下一点修行体会。",
+                "effects": { "pills": "聚灵丹", "cultivation": 8 }
+              },
+              "right": {
+                "text": "散财结缘",
+                "desc": "把一部分灵石分给需要的人。",
+                "effects": { "fortune": 10, "karmaGood": 8, "spiritStone": -10 },
+                "karmaSeed": {
+                  "id": "hermit_acquaintance",
+                  "description": "你拿出十枚灵石分给散修，其中一位老者记下了这份人情。",
+                  "originThread": "spirit_mine",
+                  "realm": "foundation",
+                  "magnitude": 4
+                }
+              }
+            }
+          },
+          "variants": [
+            {
+              "id": "received_sect_share",
+              "when": { "choiceDirections": { "sm_arrival": "left" } },
+              "card": {
+                "description": "你领取了宗门核定的后续份额。执事把你的名字记入矿账分红一栏，定案由宗门开采，散修不在分配名单上。丹师想请人验看矿脉灵气，愿以聚灵丹相酬；你也可另从手头灵石中分出十枚接济散修。"
+              }
+            },
+            {
+              "id": "requested_fair_share",
+              "when": { "choiceDirections": { "sm_arrival": "right" } },
+              "card": {
+                "description": "你替散修要求公平分配。执事复核出力名册后，同意宗门保留矿权，却将部分采矿收益划给参与的散修。你没有领取这一轮宗门核定的后续份额；先前上交矿脉的酬谢已另行结算。丹师另请人验看矿脉灵气，以聚灵丹相酬；你也可再从手头拿出十枚灵石相助。"
+              }
+            }
+          ],
+          "consequences": {
+            "onComplete": {
+              "note": "你上交的矿脉已按当时的选择定案；是否与散修结下人情，取决于你是否真的拿出了十枚灵石。",
+              "worldFlags": ["mine_dispute_resolved"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threadId": "sword_tomb_trial",
+      "title": "剑冢试炼",
+      "description": "先前你从剑冢取走一柄残剑。如今残剑在鞘中再度鸣响，牵引你循旧路重返剑冢深处。",
+      "realm": "qi",
+      "trigger": {
+        "type": "choice_match",
+        "cardId": "q_swordTomb",
+        "direction": "left",
+        "delay": 3,
+        "cooldown": 12
+      },
+      "nodes": [
+        {
+          "id": "st_sword_spirit",
+          "phase": "beginning",
+          "card": {
+            "id": "thread_sword_tomb_1",
+            "semanticKey": "thread:sword_tomb_trial:st_sword_spirit",
+            "once": true,
+            "title": "剑灵低语",
+            "description": "你循着先前带走的残剑传来的鸣响重返剑冢，在深处停下脚步。周围数百柄断剑不再鸣响——取而代之的是一股压迫感，像是有什么东西正在注视着你。一道由剑意凝成的人影从最深处的石壁中走出——他没有面容，只有轮廓，但他手里的剑是完整的。一道声音在你脑海中响起：「你带走的残剑终于引你回来。年轻人，你有资格接受试炼——但如果你失败了，你的剑也会留在这里。」",
+            "sceneImage": "assets/cards/keyframes/scene_key_sword_tomb_spirit_invite_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "剑灵低语", "alt": "主角携残剑重返剑冢，无面剑灵在深处现身邀试，尚未决定接受或婉拒。" },
+            "type": "NORMAL",
+            "realm": "qi",
+            "threadTags": ["剑冢试炼", "challenge"],
+            "choices": {
+              "left": {
+                "text": "接受试炼——拔一柄古剑",
+                "desc": "剑修不退。",
+                "effects": { "daoHeart": 10, "cultivation": 5 },
+                "threadDirection": "accept"
+              },
+              "right": {
+                "text": "婉拒本世试炼——收剑离开",
+                "desc": "此行不试剑，先以自己的路磨砺剑心。",
+                "effects": { "daoHeart": 8, "fortune": 5 },
+                "threadDirection": "defer"
+              }
+            }
+          },
+          "exits": {
+            "right": {
+              "status": "declined",
+              "note": "你向剑灵谢过此世的邀请，收剑离开剑冢。试炼未曾开始，剑灵也没有许下再次邀约。"
+            }
+          }
+        },
+        {
+          "id": "st_sword_fight",
+          "phase": "climax",
+          "card": {
+            "id": "thread_sword_tomb_2",
+            "semanticKey": "thread:sword_tomb_trial:st_sword_fight",
+            "once": true,
+            "title": "剑意对决",
+            "description": "你走向石壁——壁上插着七柄古剑，每一柄都散发着不同的剑意。有的炽烈如火，有的冷冽如冰，有的锐利如针。剑灵的声音再次响起：「选一柄。然后——用你的剑意击败它的剑意。这不是比剑招，是比剑心。你为何持剑？」",
+            "sceneImage": "assets/cards/keyframes/scene_key_sword_tomb_seven_blades_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "剑意对决", "alt": "剑冢石壁上的七柄古剑仍未取下，剑意化身对面而立，问心战尚未结算。" },
+            "type": "COMBAT",
+            "realm": "qi",
+            "threadTags": ["剑冢试炼", "boss"],
+            "enemy": {
+              "templateId": "sword_intent_avatar_qi",
+              "name": "剑意化身",
+              "hp": 10,
+              "atk": 2,
+              "def": 1,
+              "tier": 2,
+              "expReward": 30
+            },
+            "choices": {
+              "left": {
+                "text": "为守护——持剑护道",
+                "desc": "剑不是杀器，是守护的誓约。",
+                "triggerCombat": true,
+                "victoryEffects": { "daoHeart": 15, "cultivation": 10, "karmaGood": 8, "_setFlag": "sword_trial_passed" },
+                "defeatEffects": { "daoHeart": -1 },
+                "fleeEffects": { "lifespan": -1 },
+                "combatPresentation": {
+                  "warningTitle": "剑冢问心 · 守护之剑",
+                  "mechanic": "剑意化身会凝势后斩击；以护盾承压可以保住问心节奏。",
+                  "worldStory": "古剑要看的不是胜负，而是你是否愿意为别人承受锋芒。"
+                },
+                "threadDirection": "guardian"
+              },
+              "right": {
+                "text": "为超越——持剑问天",
+                "desc": "剑是问道之路，以剑证道。",
+                "triggerCombat": true,
+                "victoryEffects": { "cultivation": 18, "daoHeart": 8, "_setFlag": "sword_trial_passed" },
+                "defeatEffects": { "daoHeart": -1 },
+                "fleeEffects": { "lifespan": -1 },
+                "combatPresentation": {
+                  "warningTitle": "剑冢问心 · 问天之剑",
+                  "mechanic": "对手会凝聚剑意并在下一击释放，需把握其蓄势窗口主动破招。",
+                  "worldStory": "问天不是狂妄，而是以每一次出剑证明自己仍能向更高处走。"
+                },
+                "threadDirection": "transcendent"
+              }
+            }
+          }
+        },
+        {
+          "id": "st_sword_final",
+          "phase": "resolution",
+          "card": {
+            "id": "thread_sword_tomb_3",
+            "semanticKey": "thread:sword_tomb_trial:st_sword_final",
+            "once": true,
+            "title": "剑冢余响",
+            "description": "剑意交锋暂告一段落。剑冢里的七柄古剑仍在石壁上，剑灵记下了你如何面对这一试；你也带着这一式的得失，准备走出剑冢。",
+            "sceneImage": "assets/cards/keyframes/scene_key_sword_tomb_seven_blades_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "剑冢余响", "alt": "剑冢七柄古剑仍在石壁上，试炼已告段落，尚未由本节点确定是否传承。" },
+            "type": "STORY",
+            "realm": "qi",
+            "threadTags": ["剑冢试炼", "resolution"],
+            "choices": {
+              "left": {
+                "text": "记下剑式——回去磨练",
+                "desc": "把这次交锋的得失化为日后的练习。",
+                "effects": { "cultivation": 12, "daoHeart": 5 }
+              },
+              "right": {
+                "text": "守住本心——走自己的路",
+                "desc": "先不执着于古剑，以此行所得校正自己的剑路。",
+                "effects": { "cultivation": 10, "daoHeart": 12 }
+              }
+            }
+          },
+          "variants": [
+            {
+              "id": "victory",
+              "when": { "combatOutcomes": { "st_sword_fight": "victory" } },
+              "card": {
+                "title": "剑心初成",
+                "description": "你在剑意对决中取胜。剑灵收起锋芒，从石壁唤出一柄古剑：「剑心已立。这柄剑曾属于一个和你很像的人；要接过他的路，还是只带走这一式，由你决定。」古剑仍悬在你面前，等待你的回答。",
+                "sceneImage": "assets/cards/keyframes/scene_key_sword_tomb_offered_blade_v1.png",
+                "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "剑心初成", "alt": "问心战取胜后，剑灵将一柄古剑悬在主角面前，主角尚未决定接受或谢绝。" },
+                "choices": {
+                  "left": {
+                    "text": "继承剑意——收下古剑",
+                    "desc": "接过古剑，也记下剑灵临别留下的姓名。",
+                    "effects": { "treasure": "剑心古剑" },
+                    "karmaSeed": {
+                      "id": "sword_spirit_memory",
+                      "description": "你接过古剑，剑灵将旧主的姓名印入识海。",
+                      "originThread": "sword_tomb_trial",
+                      "realm": "foundation",
+                      "path": "sword",
+                      "magnitude": 5
+                    }
+                  },
+                  "right": {
+                    "text": "独立剑道——谢绝古剑",
+                    "desc": "只取这一式的启发，不接受旧主的剑。"
+                  }
+                }
+              }
+            },
+            {
+              "id": "defeat",
+              "when": { "combatOutcomes": { "st_sword_fight": "defeat" } },
+              "card": {
+                "title": "败于剑意",
+                "description": "你没能接住剑意化身的最后一式。剑灵没有取笑你，只指向石壁上尚未拔出的古剑：「剑心未定，先记下败处。」古剑仍留在剑冢，这一试未得传承。"
+              }
+            },
+            {
+              "id": "flee",
+              "when": { "combatOutcomes": { "st_sword_fight": "flee" } },
+              "card": {
+                "title": "收锋离开",
+                "description": "你在剑意压境时选择撤离，护住了此刻尚能走的路。剑灵目送你越过石门，没有追来；古剑仍留在剑冢，这一试未得传承。",
+                "sceneImage": "assets/cards/keyframes/scene_key_sword_tomb_spirit_invite_v1.png",
+                "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "收锋离开", "alt": "主角退向剑冢石门，无面剑灵仍在深处，古剑未曾交付。" }
+              }
+            }
+          ],
+          "consequences": {
+            "onComplete": {
+              "note": "剑冢试炼已留下这一世的结果；古剑只交给真正取胜并选择收下它的人。"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threadId": "herb_refugee",
+      "title": "药谷叛逃",
+      "description": "你在坊市遇到了一个行色匆匆的人。他自称来自药王谷——但他的眼神不像一个炼丹师，更像一个逃命的人。",
+      "realm": "qi",
+      "trigger": {
+        "type": "choice_match",
+        "cardId": "q_pillRecipe",
+        "direction": "left",
+        "delay": 2,
+        "cooldown": 10
+      },
+      "nodes": [
+        {
+          "id": "hr_fugitive",
+          "phase": "beginning",
+          "card": {
+            "id": "thread_herb_refugee_1",
+            "semanticKey": "thread:herb_refugee:hr_fugitive",
+            "once": true,
+            "title": "药谷叛逃者",
+            "description": "那个人在坊市角落拦住了你。他压低声音：「就是你——你之前得到的那张丹方是假的。」他递给你一张皱巴巴的纸，「这张才是真的——但它的丹方里有一种药材是禁药。药王谷不想让人知道他们在用禁药炼丹，所以派人在追杀所有知道这件事的人。我知道你懂一点炼丹——拿着这张丹方快走，别让药王谷的人找到你。」他的手指在发抖。",
+            "sceneImage": "assets/cards/keyframes/scene_key_herb_refugee_market_paper_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "药谷叛逃者", "alt": "坊市角落的叛逃者递出皱纸丹方，主角尚未决定收下帮他躲藏或拒绝。" },
+            "type": "NORMAL",
+            "realm": "qi",
+            "threadTags": ["药谷叛逃", "danger"],
+            "choices": {
+              "left": {
+                "text": "收下真丹方——帮他躲藏",
+                "desc": "知道真相的人不该被灭口。",
+                "effects": { "knowledge": 8, "karmaGood": 8, "fortune": 5 },
+                "threadDirection": "protect"
+              },
+              "right": {
+                "text": "拒绝——不想惹麻烦",
+                "desc": "药王谷的势力太大，卷入此事不明智。",
+                "effects": { "cultivation": 5, "fortune": 3 },
+                "threadDirection": "avoid"
+              }
+            }
+          }
+        },
+        {
+          "id": "hr_pursuit",
+          "phase": "resolution",
+          "card": {
+            "id": "thread_herb_refugee_2",
+            "semanticKey": "thread:herb_refugee:hr_pursuit",
+            "once": true,
+            "title": "药王谷追兵",
+            "description": "几天后，两个身着药王谷服饰的人在坊市药铺找到了你。药铺伙计听见了他们的盘问。他们不像普通的炼丹师——腰间挂的不是丹炉，是剑。「有人说，你和一个药王谷的叛逃者接触过。交出丹方——我们不会为难你。」他们的语气客气，但眼神不善。",
+            "sceneImage": "assets/cards/keyframes/scene_key_herb_refugee_shop_pursuit_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "药王谷追兵", "alt": "药铺里两名佩剑的药王谷来人盘问主角，伙计在旁听见，丹方尚未交出。" },
+            "type": "NORMAL",
+            "realm": "qi",
+            "threadTags": ["药谷叛逃", "confrontation"],
+            "choices": {
+              "left": {
+                "text": "矢口否认——「我没见过什么叛逃者」",
+                "desc": "保护那个人的下落。",
+                "effects": { "daoHeart": 10, "karmaGood": 8 },
+                "threadDirection": "defend"
+              },
+              "right": {
+                "text": "交出丹方——但要求他们保证不再追杀",
+                "desc": "以丹方换人命。",
+                "effects": { "cultivation": 5, "daoHeart": 5, "karmaGood": 5 },
+                "threadDirection": "negotiate"
+              }
+            }
+          },
+          "variants": [
+            {
+              "id": "refused_true_recipe",
+              "when": { "choiceDirections": { "hr_fugitive": "right" } },
+              "card": {
+                "description": "几天后，药王谷追兵在坊市药铺找到你，药铺伙计听见了他们的盘问。他们听说你曾与叛逃者说话，便要求交出禁药丹方；但你当时拒绝收下真方，手里只有从旧书摊买来的残页。你可以隐瞒他的去向，也可以说清自己并未收下那张真方。",
+                "choices": {
+                  "right": {
+                    "text": "交出旧残页——说明真方不在手中",
+                    "desc": "用手中已有的残页作证，不替叛逃者指路。"
+                  }
+                }
+              }
+            }
+          ],
+          "consequences": {
+            "onComplete": {
+              "note": "你与药王谷追兵的遭遇已结束；他们为何追索真方、禁药究竟用于何处，仍待更多证据。",
+              "worldFlags": ["herb_valley_encounter"],
+              "karmaSeed": {
+                "id": "forbidden_pill_secret",
+                "description": "追兵在药铺盘问你的消息传开；一封关于禁药货账的无署名来信尚待查验。",
+                "magnitude": 7
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threadId": "mist_valley",
+      "title": "雾隐秘府",
+      "description": "古洞深处的异响不是妖兽——是一扇被雾气和禁制掩藏的石门。门后是一座前人留下的洞府。",
+      "realm": "qi",
+      "trigger": {
+        "type": "choice_match",
+        "cardId": "q_cave",
+        "direction": "right",
+        "requiredDungeonOutcome": { "dungeonId": "ancientCave", "outcome": "success" },
+        "delay": 4,
+        "cooldown": 10
+      },
+      "nodes": [
+        {
+          "id": "mv_discovery",
+          "phase": "beginning",
+          "card": {
+            "id": "thread_mist_valley_1",
+            "semanticKey": "thread:mist_valley:mv_discovery",
+            "once": true,
+            "title": "前人洞府",
+            "description": "古洞深处，石门在你面前缓缓打开。门后的空间出乎意料地宽敞——这是一座完整的修行洞府，石壁上嵌着夜明珠，灵气浓郁得几乎可以用手触摸。但最引人注目的，是正中央石台上的一枚玉简和一个紫檀木盒。玉简上刻着两个字：「元明」。这是三百年前一位散修元明真人的洞府。他在玉简中写道：「我无门无派，无师无徒。修行百年，这些东西带不走。有缘者得之——但请记住：修行路上，最难的不是破境，是守住本心。」",
+            "type": "NORMAL",
+            "realm": "qi",
+            "sceneImage": "assets/cards/keyframes/scene_key_mist_valley_two_relics_v2.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "雾隐秘府", "alt": "前人洞府的石台上，未动的玉简与闭合的紫檀木盒并列，尚未作出取舍。" },
+            "threadTags": ["雾隐秘府", "discovery"],
+            "choices": {
+              "left": {
+                "text": "取走玉简——研读散修心得",
+                "desc": "元明真人的修行感悟是无价之宝。",
+                "effects": { "knowledge": 15, "cultivation": 10, "daoHeart": 5 },
+                "threadDirection": "knowledge"
+              },
+              "right": {
+                "text": "打开紫檀木盒——看看实物",
+                "desc": "也许盒子里藏着他的法宝或丹药。",
+                "effects": { "fortune": 10, "cultivation": 10, "spiritStone": 20 },
+                "threadDirection": "material"
+              }
+            }
+          }
+        },
+        {
+          "id": "mv_hidden_message",
+          "phase": "resolution",
+          "card": {
+            "id": "thread_mist_valley_2",
+            "semanticKey": "thread:mist_valley:mv_hidden_message",
+            "sceneImage": "assets/cards/keyframes/scene_key_mist_valley_wall_testament_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "雾隐秘府", "alt": "取走玉简或打开木盒后，元明真人的石壁遗言显现，尚未向洞府行礼或离开。" },
+            "once": true,
+            "title": "元明的遗愿",
+            "description": "无论你选择了玉简还是木盒——洞府的石壁上突然浮现出一段隐藏的文字。那是元明真人临终前用最后一缕神识刻下的：「如果你是本心纯净之人——无论你拿走的是修行之法还是丹药法宝，我都祝你走得更远。但如果你心中藏了恶念——我在玉简和木盒上各下了一道因果阵。它将记住你的选择。百年后，当有人再次打开洞府，他们会知道——上一个进来的人，是什么样的人。」你没有感到任何不适。那是因为你做得对——还是因为因果阵还没有到发作的时候？你无从得知。",
+            "type": "STORY",
+            "realm": "qi",
+            "threadTags": ["雾隐秘府", "resolution"],
+            "choices": {
+              "left": {
+                "text": "对着洞府行一礼——「前辈安心」",
+                "desc": "尊重前人是修仙者的基本素养。",
+                "effects": { "daoHeart": 15, "fortune": 8, "karmaGood": 10 }
+              },
+              "right": {
+                "text": "默默离开——不打扰此地的宁静",
+                "desc": "有些事不需要仪式。",
+                "effects": { "daoHeart": 10, "cultivation": 8 }
+              }
+            }
+          },
+          "variants": [
+            {
+              "id": "yuanming_knowledge",
+              "when": { "choiceDirections": { "mv_discovery": "left" } },
+              "card": {
+                "description": "你带走的玉简仍留着洞府的灵气。石壁浮现元明真人临终刻下的文字：散修所学无人代传，若只把心得藏作私物，下一位进洞的人仍得从头摸索。因果阵记下你拿走的是修行之法，也会让后来者看见这次取舍。"
+              }
+            },
+            {
+              "id": "yuanming_material",
+              "when": { "choiceDirections": { "mv_discovery": "right" } },
+              "card": {
+                "description": "你打开的紫檀木盒仍留着洞府的灵气。石壁浮现元明真人临终刻下的文字：财物终有用尽之时，愿取物者记得后来人也会需要一口气。因果阵记下你拿走的是实物，也会让后来者看见这次取舍。"
+              }
+            }
+          ],
+          "consequences": {
+            "onComplete": {
+              "note": "元明真人的洞府让你明白了散修的不易——也让你明白，因果不是虚无缥缈的东西，它会记录每一个选择。",
+              "worldFlags": ["yuanming_legacy_found"],
+              "karmaSeed": {
+                "id": "yuanming_karma_mark",
+                "description": "元明真人的因果阵已记下了你的选择。百年后会如何？你不知道。",
+                "magnitude": 8
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

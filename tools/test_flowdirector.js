@@ -151,6 +151,22 @@ if (info.mood !== 'neutral') throw new Error('Expected neutral mood, got ' + inf
 console.log('PASS\n');
 
 // ════════════════════════════════════════
+// 回归: 同一里程碑在等待出队期间只能入队一次
+// ════════════════════════════════════════
+console.log('--- Regression: Milestone Queue Exactly Once ---');
+fd.init();
+var golden45 = { id: 'ch_golden_40', title: '秘境探索', type: 'MILESTONE', threshold: 45, realm: 'golden' };
+var golden60 = { id: 'ch_golden_60', title: '丹成雷动', type: 'MILESTONE', threshold: 60, realm: 'golden' };
+if (fd.setMilestone(golden45) !== true) throw new Error('First milestone enqueue must be accepted');
+if (fd.setMilestone(Object.assign({}, golden45)) !== false) throw new Error('Duplicate pending milestone must be rejected');
+if (fd.setMilestone(golden60) !== false) throw new Error('A pending milestone must not be overwritten by a later threshold');
+var pendingMilestone = fd.exportState().milestonePending;
+if (!pendingMilestone || pendingMilestone.id !== golden45.id) {
+  throw new Error('Duplicate/later enqueue replaced the authoritative pending milestone');
+}
+console.log('PASS\n');
+
+// ════════════════════════════════════════
 // 测试 2: 优先级排序 — 中断 > 里程碑 > 叙事 > 普通
 // ════════════════════════════════════════
 console.log('--- Test 2: Priority Ordering ---');

@@ -1,0 +1,197 @@
+{
+  "source": "src/systems/StoryNetworkSystem.js",
+  "sourceSha256": "08cd0d1ac24caeae35629210a0f2de0a24a563c7e3c4ea2da3ffe346f8f0a1e4",
+  "realm": "qi",
+  "cards": {
+    "em_dual_path": {
+      "id": "em_dual_path",
+      "title": "双脉齐震",
+      "description": "你感到丹田中两股力量在同时震动——善因化作暖流，恶因化作寒潮。它们在经脉中对撞，但你没有死——它们在融合。你的左眼映着金光，右眼浮着血影。道与魔，在你的体内达成了某种脆弱的平衡。",
+      "type": "EMERGENT",
+      "realm": "qi",
+      "tags": [
+        "emergent",
+        "dual_path",
+        "mystical"
+      ],
+      "choices": {
+        "left": {
+          "text": "主动调和——寻找平衡之道",
+          "effects": {
+            "daoHeart": 15,
+            "cultivation": 10,
+            "karmaGood": 5,
+            "karmaBad": 5
+          }
+        },
+        "right": {
+          "text": "压制其中一种——选一条路",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 15
+          }
+        }
+      }
+    },
+    "em_loner": {
+      "id": "em_loner",
+      "title": "孤峰之上",
+      "description": "你站在峰顶，看着山下坊市的灯火。别人的热闹是别人的——你的道，只有你自己走。但今晚的风特别冷——不是天气，是你心里的温度。你忽然想起一个人——也许不是道侣，只是一个能听懂剑气低吟的人。",
+      "type": "EMERGENT",
+      "realm": "qi",
+      "tags": [
+        "emergent",
+        "loner",
+        "reflective"
+      ],
+      "choices": {
+        "left": {
+          "text": "下山走走——去坊市看看",
+          "effects": {
+            "fortune": 10,
+            "daoHeart": 5,
+            "cultivation": -3
+          },
+          "karmaSeed": {
+            "id": "lonerGoesDown",
+            "seedType": "karma",
+            "delay": 5,
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "继续修炼——孤独是修行的代价",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 5
+          }
+        }
+      }
+    },
+    "em_karma_density": {
+      "id": "em_karma_density",
+      "title": "因果之网",
+      "description": "你忽然感到胸口一阵闷——不是受伤，是因果。你种下的种子太多了——善的、恶的、不解的、未了的——它们在你四周织成了一张看不见的网。你每走一步都在牵动网线，每一条线的尽头都是一张你没有兑现的脸。",
+      "type": "EMERGENT",
+      "realm": "qi",
+      "tags": [
+        "emergent",
+        "karma",
+        "mystical"
+      ],
+      "choices": {
+        "left": {
+          "text": "梳理因果——明确每一份欠与还",
+          "effects": {
+            "daoHeart": 20,
+            "karmaGood": 10,
+            "fortune": 5
+          }
+        },
+        "right": {
+          "text": "无视——因果自会清算",
+          "effects": {
+            "daoHeart": -5,
+            "karmaBad": 10,
+            "fortune": -5
+          }
+        }
+      }
+    },
+    "em_nemesis": {
+      "id": "em_nemesis",
+      "title": "宿敌的觉醒",
+      "description": "远方——很远很远的某个洞府里——一个人忽然睁开了眼睛。你不知道ta是谁，但你知道ta醒了。一种跨越轮回的敌意穿过云层、穿过因果、穿过你的护体灵气——刺进了你的识海。你的宿敌，这一世，也开始了修行。",
+      "type": "EMERGENT",
+      "realm": "qi",
+      "tags": [
+        "emergent",
+        "nemesis",
+        "tension"
+      ],
+      "requirements": {
+        "minLifeCount": 2
+      },
+      "choices": {
+        "left": {
+          "text": "准备——这一世我不会输",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 15,
+            "health": 5
+          }
+        },
+        "right": {
+          "text": "不理会——前世的账不该今生算",
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 10
+          }
+        }
+      }
+    },
+    "em_dao_crisis": {
+      "id": "em_dao_crisis",
+      "title": "道心裂隙",
+      "description": "你坐在蒲团上——但你感觉不到蒲团。你的灵识在飘散，道心像一块被敲碎的玉石——裂缝在蔓延。一切你曾经坚信的东西都变得不确定。什么是道？什么是魔？你是谁？\\n\\n你想起了某个人的脸——不是师父，不是道侣——是你自己。第一世的你。他在裂缝的另一端看着你，什么都没说。",
+      "type": "EMERGENT",
+      "realm": "qi",
+      "tags": [
+        "emergent",
+        "crisis",
+        "dao_heart",
+        "introspective"
+      ],
+      "choices": {
+        "left": {
+          "text": "接受裂隙——破碎之后才是真正的道",
+          "effects": {
+            "daoHeart": 3,
+            "cultivation": 5,
+            "health": -2
+          }
+        },
+        "right": {
+          "text": "修补裂隙——回到从前",
+          "effects": {
+            "daoHeart": 1,
+            "cultivation": 3,
+            "health": 1
+          }
+        }
+      }
+    },
+    "em_heaven_gaze": {
+      "id": "em_heaven_gaze",
+      "title": "天道注视",
+      "description": "你感到有人在看你——不是任何人，是天道本身。这种感觉非常明确：你不再是芸芸众生中的一粒沙——你变成了天道算法里的一个异常值。它注意到了你的修为增速、你的福缘厚度、你的转世次数。它在权衡：留着你还是收割你。",
+      "type": "EMERGENT",
+      "realm": "qi",
+      "tags": [
+        "emergent",
+        "heaven",
+        "tension",
+        "mystical"
+      ],
+      "choices": {
+        "left": {
+          "text": "收敛——暂时蛰伏",
+          "effects": {
+            "cultivation": -5,
+            "fortune": 15,
+            "daoHeart": 5
+          }
+        },
+        "right": {
+          "text": "挑衅——让天道来找我",
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 10,
+            "fortune": -20,
+            "karmaBad": 10
+          }
+        }
+      }
+    }
+  }
+}

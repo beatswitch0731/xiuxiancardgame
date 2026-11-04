@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/duel_stage_real_3d.gd" id="1"]
+
+[node name="DuelStageReal3D" type="SubViewportContainer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 1
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Viewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1280, 800)
+render_target_update_mode = 4
+
+[node name="World" type="Node3D" parent="Viewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Viewport/World"]
+
+[node name="CameraRig" type="Node3D" parent="Viewport/World"]
+
+[node name="Camera" type="Camera3D" parent="Viewport/World/CameraRig"]
+current = true
+fov = 43.0
+near = 0.05
+far = 90.0
+
+[node name="PlayerAnchor" type="Node3D" parent="Viewport/World"]
+position = Vector3(-2.3, 0, 0.15)
+
+[node name="EnemyAnchor" type="Node3D" parent="Viewport/World"]
+position = Vector3(2.3, 0, -0.25)
+
+[node name="ImpactLight" type="OmniLight3D" parent="Viewport/World"]
+position = Vector3(1.1, 1.45, 0)
+light_color = Color(0.98, 0.72, 0.39, 1)
+light_energy = 0.0
+omni_range = 4.8
+
+[node name="HeroFill" type="OmniLight3D" parent="Viewport/World"]
+position = Vector3(-3.5, 3.8, 2.8)
+light_color = Color(0.76, 0.86, 0.88, 1)
+light_energy = 1.15
+omni_range = 8.5
+shadow_enabled = true
+
+[node name="DummyRim" type="OmniLight3D" parent="Viewport/World"]
+position = Vector3(3.8, 3.1, -0.8)
+light_color = Color(1.0, 0.78, 0.51, 1)
+light_energy = 0.7
+omni_range = 7.0

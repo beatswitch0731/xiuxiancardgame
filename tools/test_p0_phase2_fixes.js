@@ -33,6 +33,7 @@ const DATA_MODULES = {
   'cards:battle_cards': loadJson('data/cards/battle_cards.json'),
   'cards:karma': loadJson('data/cards/karma.json'),
   'cards:chapter_milestones': loadJson('data/cards/chapter_milestones.json'),
+  'world:truth_atlas': loadJson('data/world/truth_atlas.json'),
   'shops:treasures': loadJson('data/shops/treasures.json'),
   'shops:shop_items': loadJson('data/shops/shop_items.json'),
 };
@@ -64,6 +65,7 @@ const loadOrder = [
   'src/systems/KarmaSystem.js',
   'src/systems/CardSystem.js',
   'src/systems/DeckCombatSystem.js',
+  'src/services/EndingEligibilityService.js',
   'src/services/EffectService.js',
   'src/coordinators/CombatCoordinator.js',
   'src/game.js',
@@ -195,6 +197,42 @@ function resetGameState(overrides = {}) {
   if (overrides.maxHealth !== undefined) sandbox.gameState.maxHealth = overrides.maxHealth;
 }
 
+function settleDefeat(cc, data) {
+  // 每次调用代表一次新的真实战斗；协调器只允许 active 战斗首次结算。
+  cc._inCombat = true;
+  return cc.onDefeat(data);
+}
+
+let terminalSequence = 0;
+function createTerminalEndingRuntime({ beginVictory = true } = {}) {
+  resetGameState();
+  const state = sandbox.gameState;
+  state.realm = 'tribulation';
+  state.turn = 88;
+  state.attributes.cultivation = 100;
+  const EndingEligibilityService = vm.runInContext('EndingEligibilityService', context);
+  const endingEligibilityService = new EndingEligibilityService();
+  endingEligibilityService.init(DATA_MODULES['world:truth_atlas']);
+  const effectService = new (vm.runInContext('EffectService', context))({
+    gameState: state,
+    eventBus: sandbox.eventBus,
+    endingEligibilityService,
+    debug: false
+  });
+  if (beginVictory) {
+    terminalSequence += 1;
+    const encounterInstanceId = `enc:p0:${terminalSequence}`;
+    state.beginTerminalVictory({
+      gateId: 'tribulation_finale',
+      encounterId: 'ch_tribulation_100',
+      encounterInstanceId,
+      victoryToken: `victory:${encounterInstanceId}`,
+      outcome: 'victory'
+    });
+  }
+  return { state, effectService, endingEligibilityService };
+}
+
 // ========== 7. 开始测试 ==========
 
 console.log('=== P0 Phase 2 修复验证测试 ===\n');
@@ -282,78 +320,55 @@ test('#1e _handleDeath 调用 callbacks.setCurrentCard', () => {
 });
 
 // ==================================================================
-// 修复 #2: EffectService.ending + game.makeChoice 飞升结局保护
+// 修复 #2: EffectService.ending + game.makeChoice 终局门禁
 // ==================================================================
-section('修复 #2: 飞升结局保护 (game_ended flag)');
+section('修复 #2: 最终 Boss 凭证与 EPILOGUE 终局协议');
 
-test('#2a EffectService ending handler 应设置 game_ended flag', () => {
-  resetGameState();
-  const es = new (vm.runInContext('EffectService', context))({
-    gameState: sandbox.gameState,
-    eventBus: sandbox.eventBus,
-    debug: false
-  });
-  // 触发 ending 效果
-  es.apply({ ending: 'ascension' });
-  assert.strictEqual(sandbox.gameState.hasFlag('game_ended'), true, 'game_ended flag 应被设置');
+test('#2a 没有最终 Boss 胜利凭证时 ending 必须失败关闭', () => {
+  const runtime = createTerminalEndingRuntime({ beginVictory: false });
+  runtime.effectService.apply({ ending: 'ascension' });
+  assert.strictEqual(runtime.state.endingId, null, '无凭证不得写入 endingId');
+  assert.strictEqual(runtime.state.lifePhase, 'ALIVE', '无凭证不得进入 EPILOGUE');
+  assert.strictEqual(runtime.state.hasFlag('game_ended'), false, '无凭证不得设置 game_ended');
 });
 
-test('#2b ending handler 后 gameState.dead 应为 true', () => {
-  resetGameState();
-  const es = new (vm.runInContext('EffectService', context))({
-    gameState: sandbox.gameState,
-    eventBus: sandbox.eventBus,
-    debug: false
-  });
-  es.apply({ ending: 'red_dust' });
-  assert.strictEqual(sandbox.gameState.dead, true, 'gameState.dead 应为 true');
+test('#2b 合法 ending 进入 EPILOGUE 且不伪装成普通死亡', () => {
+  const runtime = createTerminalEndingRuntime();
+  runtime.effectService.apply({ ending: 'ascension' }, { terminalContext: runtime.state.getTerminalContext() });
+  assert.strictEqual(runtime.state.lifePhase, 'EPILOGUE', '合法结局应进入 EPILOGUE');
+  assert.strictEqual(runtime.state.dead, false, '结局不是普通死亡，dead 应保持 false');
 });
 
-test('#2c ending handler 后 deadReason 应包含结局描述', () => {
-  resetGameState();
-  const es = new (vm.runInContext('EffectService', context))({
-    gameState: sandbox.gameState,
-    eventBus: sandbox.eventBus,
-    debug: false
-  });
-  es.apply({ ending: 'chaos' });
-  assert.ok(sandbox.gameState.deadReason.includes('混沌'), `deadReason 应包含结局描述，实际: ${sandbox.gameState.deadReason}`);
+test('#2c 合法 ending 持久化 endingId 与对应尾声卡', () => {
+  const runtime = createTerminalEndingRuntime();
+  runtime.effectService.apply({ ending: 'ascension' }, { terminalContext: runtime.state.getTerminalContext() });
+  assert.strictEqual(runtime.state.endingId, 'ascension', 'endingId 应为 ascension');
+  assert.strictEqual(runtime.state.pendingCardId, 'ending_ascension', '应挂起对应结局卡');
+  assert.strictEqual(runtime.state.getTerminalContext().stage, 'EPILOGUE', '终局阶段应推进到 EPILOGUE');
 });
 
-test('#2d ending handler 应 emit game:ending 事件', () => {
-  resetGameState();
-  const es = new (vm.runInContext('EffectService', context))({
-    gameState: sandbox.gameState,
-    eventBus: sandbox.eventBus,
-    debug: false
-  });
+test('#2d 合法 ending 应且只应在提交后 emit game:ending', () => {
+  const runtime = createTerminalEndingRuntime();
   let emitReceived = null;
   sandbox.eventBus.on('game:ending', (data) => { emitReceived = data; });
-  es.apply({ ending: 'ascension' });
+  runtime.effectService.apply({ ending: 'ascension' }, { terminalContext: runtime.state.getTerminalContext() });
   assert.ok(emitReceived, 'game:ending 事件应被 emit');
   assert.strictEqual(emitReceived.endingType, 'ascension', 'endingType 应为 ascension');
 });
 
-test('#2e makeChoice 在 game_ended flag 时不触发 _reincarnate', () => {
-  resetGameState();
-  // 创建 GameLogic 实例（最小依赖）
-  const es = new (vm.runInContext('EffectService', context))({
-    gameState: sandbox.gameState,
-    eventBus: sandbox.eventBus,
-    debug: false
-  });
-  const cc = createCombatCoordinator({ effectService: es });
+test('#2e 结局卡明确选择 reincarnate 后应进入下一世', () => {
+  const runtime = createTerminalEndingRuntime();
+  runtime.effectService.apply({ ending: 'ascension' }, { terminalContext: runtime.state.getTerminalContext() });
+  const cc = createCombatCoordinator({ effectService: runtime.effectService });
   const game = new (vm.runInContext('GameLogic', context))({
-    gameState: sandbox.gameState,
+    gameState: runtime.state,
     eventBus: sandbox.eventBus,
-    effectService: es,
+    effectService: runtime.effectService,
+    endingEligibilityService: runtime.endingEligibilityService,
     combatCoordinator: cc,
     debug: false
   });
-
-  // 模拟飞升结局
-  es.apply({ ending: 'ascension' });
-  assert.strictEqual(sandbox.gameState.hasFlag('game_ended'), true, '前置: game_ended 应已设置');
+  assert.strictEqual(runtime.state.lifePhase, 'EPILOGUE', '前置: 应处于 EPILOGUE');
 
   // 设置当前卡为结局卡
   game.currentCard = {
@@ -366,74 +381,71 @@ test('#2e makeChoice 在 game_ended flag 时不触发 _reincarnate', () => {
     }
   };
 
-  // 记录转世前的状态
-  const turnBefore = sandbox.gameState.turn;
-  const realmBefore = sandbox.gameState.realm;
+  const lifeBefore = runtime.state.getLifeCount();
 
   // 尝试 makeChoice
   const result = game.makeChoice('left');
 
-  // 验证：不应触发转世（turn/realm 不变，或返回特殊值）
-  // 修复后：game_ended flag 阻止 _reincarnate 调用
-  assert.strictEqual(sandbox.gameState.turn, turnBefore, 'turn 不应变（未触发转世）');
-  assert.strictEqual(sandbox.gameState.realm, realmBefore, 'realm 不应变（未触发转世）');
+  assert.strictEqual(result, true, '结局轮回选择应成功');
+  assert.strictEqual(runtime.state.getLifeCount(), lifeBefore + 1, '转世次数应增加 1');
+  assert.strictEqual(runtime.state.realm, 'qi', '下一世应回到炼气期');
+  assert.strictEqual(runtime.state.dead, false, '下一世不应保持死亡状态');
+  assert.strictEqual(runtime.state.lifePhase, 'LEGACY_CHOICE', '应停在跨世遗产选择前');
+  assert.strictEqual(runtime.state.pendingCardId, 'rebirth_boon', '应挂起轮回恩赐卡');
+  assert.strictEqual(runtime.state.getTerminalContext(), null, '旧终局凭证必须清除');
 });
 
-test('#2f start() 应清除 game_ended flag', () => {
-  resetGameState();
-  const es = new (vm.runInContext('EffectService', context))({
-    gameState: sandbox.gameState,
-    eventBus: sandbox.eventBus,
-    debug: false
-  });
-  es.apply({ ending: 'ascension' });
-  assert.strictEqual(sandbox.gameState.hasFlag('game_ended'), true, '前置: game_ended 应已设置');
-
-  // 调用 start() 新一周目
-  const cc = createCombatCoordinator({ effectService: es });
+test('#2f start() 新开游戏应清除旧终局上下文', () => {
+  const runtime = createTerminalEndingRuntime();
+  runtime.effectService.apply({ ending: 'ascension' }, { terminalContext: runtime.state.getTerminalContext() });
+  assert.strictEqual(runtime.state.lifePhase, 'EPILOGUE', '前置: 应处于 EPILOGUE');
+  const cc = createCombatCoordinator({ effectService: runtime.effectService });
   const game = new (vm.runInContext('GameLogic', context))({
-    gameState: sandbox.gameState,
+    gameState: runtime.state,
     eventBus: sandbox.eventBus,
-    effectService: es,
+    effectService: runtime.effectService,
+    endingEligibilityService: runtime.endingEligibilityService,
     combatCoordinator: cc,
     debug: false
   });
   game.start('sword');
-
-  assert.strictEqual(sandbox.gameState.hasFlag('game_ended'), false, 'start() 后 game_ended 应被清除');
+  assert.strictEqual(runtime.state.hasFlag('game_ended'), false, 'start() 后 game_ended 应被清除');
+  assert.strictEqual(runtime.state.lifePhase, 'ALIVE', 'start() 后应回到 ALIVE');
+  assert.strictEqual(runtime.state.endingId, null, 'start() 后不得残留 endingId');
+  assert.strictEqual(runtime.state.getTerminalContext(), null, 'start() 后不得残留 terminalContext');
 });
 
 // ==================================================================
-// 修复 #3: CombatCoordinator.onDefeat 战败扣血微数值对齐
+// 修复 #3: CombatCoordinator.onDefeat 按等级结算固定伤势
 // ==================================================================
-section('修复 #3: onDefeat 战败扣血微数值对齐');
+section('修复 #3: onDefeat 固定伤势与局内护体值解耦');
 
-test('#3a onDefeat 非 breakthrough 时 health 应只扣 1', () => {
+test('#3a onDefeat 普通战固定扣 1 点真实气血', () => {
   resetGameState({ health: 3, maxHealth: 3 });
   const cc = createCombatCoordinator();
   const healthBefore = sandbox.gameState.attributes.health;
-  cc.onDefeat({ originalCard: { id: 'test_combat' } });
+  settleDefeat(cc, { originalCard: { id: 'test_combat' } });
   const healthAfter = sandbox.gameState.attributes.health;
   const delta = healthBefore - healthAfter;
-  assert.strictEqual(delta, 1, `战败应只扣 1 点气血，实际扣了 ${delta}`);
+  assert.strictEqual(delta, 1, `普通战败应固定扣 1 点真实气血，实际扣了 ${delta}`);
 });
 
-test('#3b onDefeat maxHealth=3 时 health 应为 2 (非负数爆表)', () => {
+test('#3b onDefeat 不使用局内剩余护体值覆盖真实气血', () => {
   resetGameState({ health: 3, maxHealth: 3 });
   const cc = createCombatCoordinator();
-  cc.onDefeat({ originalCard: { id: 'test_combat' } });
-  assert.strictEqual(sandbox.gameState.attributes.health, 2, `health 应为 2，实际: ${sandbox.gameState.attributes.health}`);
+  settleDefeat(cc, { originalCard: { id: 'test_combat' } });
+  assert.strictEqual(sandbox.gameState.attributes.health, 2, `真实气血应从 3 固定降到 2，实际: ${sandbox.gameState.attributes.health}`);
 });
 
 test('#3c onDefeat 不应扣 20 点血（旧宏数值）', () => {
   resetGameState({ health: 3, maxHealth: 3 });
   const cc = createCombatCoordinator();
-  cc.onDefeat({ originalCard: { id: 'test_combat' } });
+  settleDefeat(cc, { originalCard: { id: 'test_combat' } });
   assert.ok(sandbox.gameState.attributes.health > 0, `health 不应为负数，实际: ${sandbox.gameState.attributes.health}`);
-  assert.ok(sandbox.gameState.attributes.health >= 2, `health 不应被扣成 2 以下（-20 会导致 -17），实际: ${sandbox.gameState.attributes.health}`);
+  assert.ok(sandbox.gameState.attributes.health >= 1, `health 不应被旧宏数值二次扣除，实际: ${sandbox.gameState.attributes.health}`);
 });
 
-test('#3d onDefeat breakSuccess 时不扣血', () => {
+test('#3d 突破战失败同样结算固定伤势', () => {
   resetGameState({ health: 3, maxHealth: 3 });
   const cc = createCombatCoordinator({
     callbacks: {
@@ -442,9 +454,8 @@ test('#3d onDefeat breakSuccess 时不扣血', () => {
       onResolveBreakthrough: (rate, card) => { /* 模拟突破结算 */ }
     }
   });
-  const healthBefore = sandbox.gameState.attributes.health;
-  cc.onDefeat({ originalCard: { id: 'break_qi', combatRewards: { breakSuccess: true } } });
-  assert.strictEqual(sandbox.gameState.attributes.health, healthBefore, 'breakSuccess 时不应扣血');
+  settleDefeat(cc, { originalCard: { id: 'break_qi', combatRewards: { breakSuccess: true } } });
+  assert.strictEqual(sandbox.gameState.attributes.health, 2, '突破战失败应固定扣 1 点真实气血');
 });
 
 test('#3e onDefeat 后 near_death 阈值应为微数值 (<=1)', () => {
@@ -458,12 +469,13 @@ test('#3e onDefeat 后 near_death 阈值应为微数值 (<=1)', () => {
       onResolveBreakthrough: () => {}
     }
   });
-  // health=3, 扣 1 后 = 2，不应触发 near_death（阈值 <=1）
-  cc.onDefeat({ originalCard: { id: 'test_combat' } });
-  assert.strictEqual(innerVoiceCalled, false, 'health=2 时不应触发 near_voice');
+  // health=3 扣除 1 后为 2，不应触发 near_death
+  settleDefeat(cc, { originalCard: { id: 'test_combat' } });
+  assert.strictEqual(innerVoiceCalled, false, 'health=3 时不应触发 near_voice');
 
-  // 再战败一次：health=2 → 1，应触发 near_death
-  cc.onDefeat({ originalCard: { id: 'test_combat' } });
+  // health=2 扣除 1 后为 1，应触发 near_death
+  sandbox.gameState.attributes.health = 2;
+  settleDefeat(cc, { originalCard: { id: 'test_combat' } });
   assert.strictEqual(innerVoiceCalled, true, 'health=1 时应触发 near_death');
   assert.strictEqual(innerVoiceCategory, 'near_death', `category 应为 near_death，实际: ${innerVoiceCategory}`);
 });

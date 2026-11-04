@@ -1,0 +1,188 @@
+{
+  "quest": {
+    "id": "spell_codex",
+    "name": "禁术之书",
+    "type": "QUEST",
+    "startRealm": "foundation",
+    "pathRestriction": "spell",
+    "trigger": {
+      "minTurn": 10,
+      "requiredFlags": null,
+      "forbiddenFlags": ["spellCodexCompleted"],
+      "requiredAttributes": { "cultivation": 25 },
+      "priority": 7
+    },
+    "entryCardId": "q_spell_1",
+    "chainLength": 4,
+    "factionRewards": {
+      "tianshu_academy": 15,
+      "tianji_pavilion": 10
+    },
+    "rewardOnComplete": {
+      "attributes": { "cultivation": 20, "daoHeart": 1, "fortune": 5 },
+      "flags": ["spellCodexCompleted"],
+      "karmaSeeds": [
+        { "id": "spellCodexEcho", "delay": 10, "realm": "golden", "priority": 3 }
+      ]
+    }
+  },
+  "cards": [
+    {
+      "id": "q_spell_1",
+      "title": "万卷楼深处",
+      "sceneImage": "assets/cards/keyframes/scene_key_spell_ten_seals_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "禁术之书", "alt": "慕青岚在万卷楼深处捧出无名封印书，十重禁制尚未被主动解开。" },
+      "description": "慕青岚在天枢道院的万卷楼最深处找到了一本书——没有名字，封面上只有一个封印。她说：'这本书被下了十重禁制。玄机真人说，只有法修能解开前三重——然后立刻停下。'\n\n你翻开第一页——不是文字，是一种你从未见过的符文。它在发光。",
+      "type": "QUEST",
+      "questId": "spell_codex",
+      "questStep": 1,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "解开前三重禁制",
+          "effects": { "cultivation": 5, "daoHeart": 1 },
+          "questNext": "q_spell_2"
+        },
+        "right": {
+          "text": "合上书——太危险",
+          "effects": { "daoHeart": 1, "fortune": 5 },
+          "questEnd": true,
+          "questOutcome": "abandoned"
+        }
+      }
+    },
+    {
+      "id": "q_spell_2",
+      "title": "封印中的声音",
+      "sceneImage": "assets/cards/keyframes/scene_key_spell_third_seal_voice_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "禁术之书", "alt": "第三重封印裂开，远古法修的面容仍困在书页内部，主角尚未接受禁术。" },
+      "description": "解开第三重禁制的那一刻——你听到了一个声音。它说：'终于有人来了。三千年了——你是第一个听到我说话的法修。'\n\n你环顾四周——没有人。声音来自书页——不，来自封印的内部。一个远古法修的残魂被封印在这本书里。\n\n他说：'你想学真正的禁术吗——还是回去继续念那些安全的五行咒？'",
+      "type": "QUEST",
+      "questId": "spell_codex",
+      "questStep": 2,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "学习禁术基础",
+          "effects": { "cultivation": 10, "daoHeart": -1, "karmaBad": 1, "spell_insight": 1, "_setFlag": "spell_codex_studied" },
+          "questNext": "q_spell_3",
+          "karmaSeed": { "id": "spellCodexStarted", "delay": 5, "realm": "golden", "priority": 2 }
+        },
+        "right": {
+          "text": "只问不学——了解远古法修的历史",
+          "effects": { "cultivation": 5, "daoHeart": 1, "fortune": 5, "spell_insight": 1, "_setFlag": "spell_codex_asked_history" },
+          "questNext": "q_spell_3"
+        }
+      }
+    },
+    {
+      "id": "q_spell_3",
+      "title": "禁术反噬",
+      "description": "你继续研读禁术。残魂引你在指尖描出一道虚空裂隙，裂隙对面却有另一双眼睛望来。那不是书中的残魂，而是更古老的东西。它说：'契约。给我一道道心，我给你看封印背后的力量。'",
+      "type": "QUEST",
+      "questId": "spell_codex",
+      "questStep": 3,
+      "realm": "foundation",
+      "weight": 0,
+      "sceneImage": "assets/cards/keyframes/scene_key_spell_codex_contract_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "禁术契约", "alt": "万卷楼书页上的封纹裂开一道细缝，未知的眼睛在彼端注视。" },
+      "stateVariants": [
+        {
+          "whenFlag": "spell_codex_asked_history",
+          "description": "你只问不学。残魂讲述当年法修如何以第三重禁制看守虚空，却刻意避开阵眼的去向。你循着他的旧事辨认书页上的封纹，封印边缘自行裂开一道细缝；对面有一双不属于残魂的眼睛望来。它说：'契约。给我一道道心，我给你看封印背后的力量。'你并未施展禁术，仍须决定是否让这道缝继续存在。"
+        }
+      ],
+      "choices": {
+        "left": {
+          "text": "拒绝契约，封印裂隙",
+          "effects": { "daoHeart": 1, "cultivation": 5, "health": -1, "spell_insight": 1, "_setFlag": "spell_codex_contract_refused" },
+          "questNext": "q_spell_4",
+          "karmaSeed": [
+            { "id": "spellCodexRefused", "delay": 8, "realm": "nascent", "priority": 3 }
+          ]
+        },
+        "right": {
+          "text": "接受契约",
+          "effects": { "cultivation": 15, "daoHeart": -1, "karmaBad": 2, "spell_insight": 1, "_setFlag": "spell_codex_contract_accepted" },
+          "questNext": "q_spell_4",
+          "karmaSeed": [
+            { "id": "spellCodexContract", "delay": 6, "realm": "nascent", "priority": 3 }
+          ]
+        }
+      }
+    },
+    {
+      "id": "q_spell_4",
+      "title": "万卷楼的真相",
+      "description": "你拒绝契约，以前三重禁制合拢裂隙。禁术之书的最后一页终于露出一行字：'这本书是用来看守的，不是用来阅读的。'残魂借你的法力加固旧封印，并未教你开启它。慕青岚承认自己早知封印用途，却怕点破阵眼会让窥伺者循声而至。现在封印尚稳，院内是否得知真相，由你决定。",
+      "type": "QUEST",
+      "questId": "spell_codex",
+      "questStep": 4,
+      "realm": "foundation",
+      "weight": 0,
+      "sceneImage": "assets/combat/spell_codex_opportunity_v1/spell_codex_archive_climax_native_v1.png",
+      "artSignature": "spell_codex_archive",
+      "artFocus": "sealed_codex",
+      "isKeyframe": true,
+      "stateVariants": [
+        {
+          "whenFlag": "spell_codex_contract_accepted",
+          "description": "你接受契约后，最后一页的封纹烙出契约印。书页写着：'这本书是用来看守的，不是用来阅读的。'残魂一直借你的法力加固旧封印；你与裂隙中的存在签约，却在封印旁打开了另一条细缝。慕青岚认出你手上的印记：若焚去契约印，细缝还能被封回；若带印离开，万卷楼的这道裂隙便无人看守。",
+          "choices": {
+            "left": {
+              "text": "焚去契约印，反转封印",
+              "effects": {
+                "opportunityReward": {
+                  "opportunityId": "spell_codex_completion_v1",
+                  "profile": "seal_keeper"
+                },
+                "cultivation": 5,
+                "karmaGood": 2
+              },
+              "questEnd": true,
+              "questOutcome": "completed"
+            },
+            "right": {
+              "text": "带着契约离开万卷楼",
+              "effects": { "cultivation": 5, "karmaBad": 1 },
+              "questEnd": true,
+              "questOutcome": "failed"
+            }
+          }
+        }
+      ],
+      "choices": {
+        "left": {
+          "text": "稳住封印，公开阵眼记录",
+          "effects": {
+            "opportunityReward": {
+              "opportunityId": "spell_codex_completion_v1",
+              "profile": "seal_keeper"
+            },
+            "cultivation": 10,
+            "daoHeart": 1,
+            "karmaGood": 2
+          },
+          "questEnd": true,
+          "questOutcome": "completed",
+          "karmaSeed": { "id": "spellCodexDisclosure", "delay": 10, "realm": "nascent", "priority": 2 }
+        },
+        "right": {
+          "text": "留守封印，暂存证词",
+          "effects": {
+            "opportunityReward": {
+              "opportunityId": "spell_codex_completion_v1",
+              "profile": "rift_witness"
+            },
+            "cultivation": 15,
+            "karmaBad": 1
+          },
+          "questEnd": true,
+          "questOutcome": "completed"
+        }
+      }
+    }
+  ]
+}

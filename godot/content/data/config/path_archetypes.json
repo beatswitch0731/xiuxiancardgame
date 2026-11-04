@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "description": "四功法十二流派。规则直接由打牌战斗消费，奖励均遵循微数值。",
+  "paths": {
+    "sword": {
+      "name": "剑修",
+      "archetypes": [
+        {
+          "id": "sword_flow",
+          "name": "流风剑",
+          "feedback": { "cueId": "path_synergy_sword_flow", "shape": "blade", "conditionText": "持盾·技后接攻" },
+          "realm": "qi",
+          "style": "同回合先以技能守住中线，再接攻击临场变招",
+          "rules": [{ "id": "flow_alternate", "condition": "previous_type", "previousType": "skill", "cardType": "attack", "damageBonus": 1, "oncePerTurn": true, "sameTurn": true, "requiredBlock": 1, "text": "流风出锋" }]
+        },
+        {
+          "id": "sword_intent_master",
+          "name": "养剑一脉",
+          "realm": "foundation",
+          "style": "蓄积剑意后以一剑定胜负",
+          "rules": [{ "id": "intent_release", "condition": "status_min", "status": "sword_intent", "value": 2, "damageBonus": 1, "text": "养剑出鞘" }]
+        },
+        {
+          "id": "sword_bloodedge",
+          "name": "血锋道",
+          "realm": "nascent",
+          "style": "伤势越重，剑越快",
+          "rules": [{ "id": "blood_edge", "condition": "low_hp", "ratio": 0.5, "damageBonus": 1, "gainQi": 1, "oncePerTurn": true, "text": "血锋共鸣" }]
+        }
+      ]
+    },
+    "spell": {
+      "name": "法修",
+      "archetypes": [
+        {
+          "id": "spell_cycle",
+          "name": "五行轮转",
+          "feedback": { "cueId": "path_synergy_spell_cycle", "shape": "cycle", "conditionText": "三张不同牌成环" },
+          "realm": "qi",
+          "style": "连续使用不同牌型形成法术循环",
+          "rules": [{ "id": "cycle_three", "condition": "distinct_cards", "count": 3, "damageBonus": 1, "gainQi": 1, "text": "五行成环" }]
+        },
+        {
+          "id": "spell_seal",
+          "name": "禁制师",
+          "realm": "foundation",
+          "style": "每回合第一张技能牌封住敌方攻势",
+          "rules": [{ "id": "first_seal", "condition": "first_type_turn", "cardType": "skill", "blockBonus": 1, "enemyStatus": { "id": "weak", "value": 1 }, "text": "禁制落印" }]
+        },
+        {
+          "id": "spell_thunder",
+          "name": "惊雷法",
+          "realm": "golden",
+          "style": "技能引雷，下一击爆发",
+          "rules": [{ "id": "thunder_follow", "condition": "previous_type", "previousType": "skill", "cardType": "attack", "damageBonus": 2, "text": "雷法贯体" }]
+        }
+      ]
+    },
+    "body": {
+      "name": "体修",
+      "archetypes": [
+        {
+          "id": "body_fortress",
+          "name": "不动金刚",
+          "feedback": { "cueId": "path_synergy_body_fortress", "shape": "fortress" },
+          "realm": "qi",
+          "style": "先以沉桩承势，再借护体罡气把来力送回",
+          "rules": [
+            { "id": "brace_counter", "condition": "block_min", "value": 1, "cardType": "attack", "damageBonus": 1, "text": "借势回击", "conditionText": "有盾出拳" },
+            { "id": "fortress_chain", "condition": "repeat_type", "cardType": "skill", "count": 2, "blockBonus": 1, "oncePerTurn": true, "text": "金刚叠甲", "conditionText": "本回合第2张技能" }
+          ]
+        },
+        {
+          "id": "body_counter",
+          "name": "震岳劲",
+          "realm": "foundation",
+          "style": "有护盾时出拳，把守势转为攻势",
+          "rules": [{ "id": "shield_counter", "condition": "block_min", "value": 1, "cardType": "attack", "damageBonus": 1, "text": "震岳反击" }]
+        },
+        {
+          "id": "body_bloodfurnace",
+          "name": "气血洪炉",
+          "realm": "nascent",
+          "style": "低气血时攻守同时提升",
+          "rules": [{ "id": "blood_furnace", "condition": "low_hp", "ratio": 0.5, "damageBonus": 1, "blockBonus": 1, "text": "气血燃炉" }]
+        }
+      ]
+    },
+    "pill": {
+      "name": "丹修",
+      "archetypes": [
+        {
+          "id": "pill_elixirfire",
+          "name": "丹火流",
+          "feedback": { "cueId": "path_synergy_pill_elixirfire", "shape": "cauldron", "conditionText": "技能后接攻击·每回合1次" },
+          "realm": "qi",
+          "style": "先炼后发；技能温炉后，下一次攻击引出丹火",
+          "rules": [{ "id": "elixir_fire", "condition": "previous_type", "previousType": "skill", "cardType": "attack", "damageBonus": 1, "oncePerTurn": true, "text": "丹火出炉" }]
+        },
+        {
+          "id": "pill_poisoncanon",
+          "name": "万毒经",
+          "realm": "foundation",
+          "style": "先炼后攻，以技能铺药、攻击送毒",
+          "rules": [{ "id": "poison_touch", "condition": "previous_type", "previousType": "skill", "cardType": "attack", "enemyStatus": { "id": "poison", "value": 1 }, "oncePerTurn": true, "text": "丹毒入脉" }]
+        },
+        {
+          "id": "pill_creation",
+          "name": "造化炉",
+          "realm": "golden",
+          "style": "满真元施法时将余力炼成护身药气",
+          "rules": [{ "id": "creation_full", "condition": "full_qi", "cardType": "skill", "blockBonus": 1, "oncePerTurn": true, "text": "造化护炉" }]
+        }
+      ]
+    }
+  }
+}

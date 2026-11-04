@@ -192,6 +192,20 @@ class SceneLayerSystem {
     return defaults[location] || { bgClass: 'loc-default', borderColor: '#555', particleType: null, description: '' };
   }
 
+  /** 返回位置栏与动态背景共同使用的当前位置快照。 */
+  getCurrentLocation() {
+    const id = (typeof gameState !== 'undefined' && gameState.currentLocation) || '宗门';
+    const data = this.locations[id] || this.locations['宗门'] || {};
+    const atmosphere = this.getLocationAtmosphere(id);
+    return {
+      id,
+      name: data.name || id,
+      sublocation: (typeof gameState !== 'undefined' && gameState.currentSubLocation) || '',
+      atmosphere: atmosphere.description || data.description || '',
+      music: data.music || 'serene'
+    };
+  }
+
   /**
    * 获取所有已发现的位置列表
    * @returns {string[]}

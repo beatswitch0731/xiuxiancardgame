@@ -30,6 +30,10 @@ class NpcSystem {
     this.trusts = {};
     /** @type {string[]} 已解锁情报 */
     this.unlockedGossip = [];
+    /** @type {Object<string, Object[]>} NPC跨境界成长配置 */
+    this.growthData = {};
+    /** @type {Object<string, Object>} NPC当前成长阶段 */
+    this.growthStages = {};
 
     // === NPC 交叉互动（CrossInteraction） ===
     /** @type {Map<string, Object>} npcIdA_npcIdB → relationData */
@@ -38,6 +42,8 @@ class NpcSystem {
     this._lastCrossTurn = {};
     /** @type {Object[]} 待处理的交叉互动卡牌队列 */
     this._pendingCrossCards = [];
+    /** @type {Object[]} 手写的一次性交叉剧情 */
+    this._presetCrossCards = [];
   }
 
   /**
@@ -48,6 +54,73 @@ class NpcSystem {
     eventBus.on('npc:interact', (data) => this._onInteract(data));
     eventBus.on('npc:tick', () => this._tick());
     eventBus.on('npc:getEncounterCard', (data) => this._onGetEncounterCard(data));
+    eventBus.on('state:realmChanged', (data) => this._updateGrowthForRealm(data?.to || gameState.realm));
+    eventBus.on('state:reset', () => {
+      this._updateGrowthForRealm(gameState.realm, true);
+      for (const [, npc] of this.npcs) {
+        this._continuity()?.registerNpc(npc, {
+          locationId: npc.defaultLocation || '宗门',
+          factionId: npc.factionId || null
+        });
+      }
+    });
+    eventBus.on('npc:lifecycleChanged', (data) => this._onLifecycleChanged(data));
+  }
+
+  _continuity() {
+    return typeof worldContinuityStore !== 'undefined' ? worldContinuityStore : null;
+  }
+
+  _canPhysicallyAppear(npcId) {
+    const continuity = this._continuity();
+    return continuity ? continuity.canPhysicallyAppear(npcId) : true;
+  }
+
+  _ledger() {
+    return typeof narrativeLedger !== 'undefined' ? narrativeLedger : null;
+  }
+
+  _isNarrativeEligible(card) {
+    const ledger = this._ledger();
+    return Boolean(card) && (!ledger || typeof ledger.canPresent !== 'function'
+      || ledger.canPresent(card, { state: gameState }));
+  }
+
+  _locationsCompatible(playerLocation, eventLocation) {
+    const ledger = this._ledger();
+    if (ledger && typeof ledger.areLocationsCompatible === 'function') {
+      return ledger.areLocationsCompatible(playerLocation, eventLocation);
+    }
+    const player = String(playerLocation || '').trim();
+    const event = String(eventLocation || '').trim();
+    if (!player || !event) return false;
+    if (player === event) return true;
+    const regions = [
+      /\u5b97\u95e8|\u9752\u4e91\u5251\u5b97|\u5251\u5d16|\u5251\u51a2|\u5c71\u95e8|\u6f14\u6b66\u573a|\u95ed\u5173\u5ba4/,
+      /\u574a\u5e02|\u4e07\u5b9d\u697c|\u7075\u8349\u8857|\u94c1\u5320\u94fa/,
+      /\u79d8\u5883|\u9057\u8ff9|\u8bd5\u70bc\u901a\u9053|\u7075\u8109\u77ff\u6d1e|\u53e4\u4fee\u6d1e\u5e9c/,
+      /\u9b54\u57df|\u8840\u715e|\u897f\u57df|\u8840\u7802|\u767d\u9aa8\u8352\u91ce/
+    ];
+    return regions.some(pattern => pattern.test(player) && pattern.test(event));
+  }
+
+  _isNpcRealmEligible(npcId) {
+    const npc = this.npcs.get(npcId);
+    return Boolean(npc && (!Array.isArray(npc.appearRealms) || npc.appearRealms.includes(gameState.realm)));
+  }
+
+  _canNpcJoinPhysicalScene(npcId, location) {
+    return this._canPhysicallyAppear(npcId)
+      && this._isNpcRealmEligible(npcId)
+      && this._locationsCompatible(gameState.currentLocation, location);
+  }
+
+  _onLifecycleChanged(data) {
+    const npcId = data?.npcId;
+    if (!npcId || data?.current?.manifestation === 'PHYSICAL') return;
+    this._pendingCrossCards = this._pendingCrossCards.filter(card => (
+      !Array.isArray(card?.npcIds) || !card.npcIds.includes(npcId)
+    ));
   }
 
   /**
@@ -59,17 +132,133 @@ class NpcSystem {
 
     for (const npc of npcData.npcs) {
       this.npcs.set(npc.id, npc);
+      this._continuity()?.registerNpc(npc, {
+        locationId: npc.defaultLocation || '宗门',
+        factionId: npc.factionId || null
+      });
       // 初始化情绪/心境
       this.emotions[npc.id] = npc.defaultEmotion || '平静';
       this.mindsets[npc.id] = npc.defaultMindset || '通明';
       this.locations[npc.id] = npc.defaultLocation || '宗门';
-      this.affections[npc.id] = npc.startAffection || 0;
+      const savedAffection = gameState.unlocks?.causalSessionState?.npcAffections?.[npc.id];
+      this.affections[npc.id] = Number.isFinite(Number(savedAffection))
+        ? Math.max(-50, Math.min(100, Number(savedAffection)))
+        : (npc.startAffection || 0);
       this.bonds[npc.id] = 0;
       this.trusts[npc.id] = npc.startTrust || 0;
       this.unlockedSecrets[npc.id] = [];
       this.memories[npc.id] = [];
       this._emotionTimers[npc.id] = 0;
     }
+  }
+
+  loadCrossCards(data) {
+    this._presetCrossCards = Array.isArray(data?.presetCards)
+      ? data.presetCards.filter(card => card && typeof card.id === 'string').map(card => ({ ...card }))
+      : [];
+    return this._presetCrossCards.length;
+  }
+
+  captureRollbackState() {
+    const clone = value => JSON.parse(JSON.stringify(value));
+    return Object.fromEntries([
+      'emotions', 'mindsets', 'locations', 'memories', 'unlockedSecrets',
+      '_emotionTimers', 'affections', 'bonds', 'trusts', 'unlockedGossip',
+      'growthStages', '_lastCrossTurn', '_pendingCrossCards'
+    ].map(key => [key, clone(this[key])]));
+  }
+
+  restoreRollbackState(snapshot) {
+    if (!snapshot || typeof snapshot !== 'object') return false;
+    const clone = value => JSON.parse(JSON.stringify(value));
+    for (const key of [
+      'emotions', 'mindsets', 'locations', 'memories', 'unlockedSecrets',
+      '_emotionTimers', 'affections', 'bonds', 'trusts', 'unlockedGossip',
+      'growthStages', '_lastCrossTurn', '_pendingCrossCards'
+    ]) {
+      if (snapshot[key] !== undefined) this[key] = clone(snapshot[key]);
+    }
+    return true;
+  }
+
+  resetForNewLife() {
+    const inherited = gameState.unlocks?.legacy?.npcAffections || {};
+    let restored = 0;
+    for (const [npcId, npc] of this.npcs) {
+      this._continuity()?.registerNpc(npc, {
+        locationId: npc.defaultLocation || '宗门',
+        factionId: npc.factionId || null
+      });
+      const legacyAffection = Number(inherited[npcId]);
+      this.affections[npcId] = Number.isFinite(legacyAffection) && legacyAffection > 0
+        ? Math.max(-50, Math.min(100, Math.round(legacyAffection)))
+        : (Number(npc.startAffection) || 0);
+      if (Number.isFinite(legacyAffection) && legacyAffection > 0) restored++;
+      this.bonds[npcId] = 0;
+      this.trusts[npcId] = Number(npc.startTrust) || 0;
+      this.memories[npcId] = [];
+      this.unlockedSecrets[npcId] = [];
+    }
+    this._lastCrossTurn = {};
+    this._pendingCrossCards = [];
+    return restored;
+  }
+
+  loadGrowthData(data) {
+    this.growthData = data?.npcs || {};
+    this._updateGrowthForRealm(gameState.realm, true);
+  }
+
+  _realmIndex(realm) {
+    const order = gameState.config.realms?.order || ['qi', 'foundation', 'golden', 'nascent', 'deity', 'tribulation', 'ascension'];
+    return order.indexOf(realm);
+  }
+
+  _updateGrowthForRealm(realm, silent = false) {
+    const currentIndex = this._realmIndex(realm);
+    if (silent) {
+      this.growthStages = {};
+      for (const [npcId, npc] of this.npcs) {
+        this.locations[npcId] = npc.defaultLocation || '宗门';
+        this.mindsets[npcId] = npc.defaultMindset || '通明';
+      }
+    }
+    for (const [npcId, stages] of Object.entries(this.growthData)) {
+      const eligible = stages.filter(stage => this._realmIndex(stage.realm) <= currentIndex);
+      const next = eligible.length ? eligible[eligible.length - 1] : null;
+      const previous = this.growthStages[npcId];
+      if (!next) {
+        delete this.growthStages[npcId];
+        continue;
+      }
+      if (previous?.id === next.id) continue;
+      this.growthStages[npcId] = next;
+      if (next.location) this.locations[npcId] = next.location;
+      if (next.mindset) this.mindsets[npcId] = next.mindset;
+      if (!silent && previous) {
+        this.recordInteraction(npcId, '破境', `${this.getNpcName(npcId)}成长为【${next.title}】`, 0);
+        eventBus.emit('npc:growthStageChanged', { npcId, previous, stage: next });
+      }
+    }
+  }
+
+  getGrowthStage(npcId) {
+    return this.growthStages[npcId] || null;
+  }
+
+  getCombatAssist() {
+    const candidates = [];
+    for (const [npcId, stage] of Object.entries(this.growthStages)) {
+      if (!this._canPhysicallyAppear(npcId)) continue;
+      if (!stage.assist) continue;
+      const affection = this.affections[npcId] || 0;
+      if (affection < (stage.minAffection || 0)) continue;
+      candidates.push({ npcId, stage, affection });
+    }
+    candidates.sort((a, b) => b.affection - a.affection || this._realmIndex(b.stage.npcRealm) - this._realmIndex(a.stage.npcRealm));
+    if (!candidates.length) return null;
+    const best = candidates[0];
+    return { npcId: best.npcId, npcName: this.getNpcName(best.npcId), ...best.stage.assist };
   }
 
   // ==========================================
@@ -185,7 +374,16 @@ class NpcSystem {
    * @returns {string}
    */
   getCurrentSchedule(npcId) {
+    const continuity = this._continuity();
+    if (continuity && !continuity.canPhysicallyAppear(npcId)) {
+      return continuity.getNpcState(npcId)?.locationId || '因果之外';
+    }
     const npc = this.npcs.get(npcId);
+    const growth = this.getGrowthStage(npcId);
+    if (growth?.location) {
+      continuity?.setLocation(npcId, growth.location, { changedByNode: 'npc_growth_schedule' });
+      return growth.location;
+    }
     if (!npc || !npc.schedule) return this.getLocation(npcId);
 
     // 简单轮次映射：每6轮为1个"时辰"
@@ -193,6 +391,7 @@ class NpcSystem {
     const periods = ['子时', '寅时', '辰时', '午时', '申时', '戌时'];
     const loc = npc.schedule[periods[period]] || npc.defaultLocation;
     this.locations[npcId] = loc;
+    continuity?.setLocation(npcId, loc, { changedByNode: 'npc_schedule' });
     return loc;
   }
 
@@ -210,6 +409,9 @@ class NpcSystem {
   getDialogue(npcId, scene, affection) {
     const npc = this.npcs.get(npcId);
     if (!npc || !npc.dialogues) return null;
+
+    const growth = this.getGrowthStage(npcId);
+    if (scene === '闲聊' && growth?.dialogue) return growth.dialogue;
 
     const aff = affection !== undefined ? affection : (this.affections[npcId] || 0);
     const mood = this.getMindset(npcId);
@@ -292,6 +494,15 @@ class NpcSystem {
   // ==========================================
   // 好感度操作
   // ==========================================
+
+  /**
+   * 获取NPC好感度权威值
+   * @param {string} npcId
+   * @returns {number}
+   */
+  getAffection(npcId) {
+    return this.affections[npcId] || 0;
+  }
 
   /**
    * 调整好感度
@@ -430,11 +641,15 @@ class NpcSystem {
     const availableNpcs = [];
 
     for (const [npcId, npc] of this.npcs) {
+      if (!this._canPhysicallyAppear(npcId)) continue;
       // 境界要求：NPC 在此境界或更低境界可出现
       if (!npc.appearRealms || !npc.appearRealms.includes(realm)) continue;
 
       // 功法限制
       if (npc.pathRestriction && npc.pathRestriction !== gameState.path) continue;
+
+      const location = this.getCurrentSchedule(npcId);
+      if (!this._locationsCompatible(gameState.currentLocation, location)) continue;
 
       // 冷却检查：每两次遭遇至少间隔 15 轮（原8轮太短，导致重复感）
       const mem = this.memories[npcId] || [];
@@ -463,8 +678,11 @@ class NpcSystem {
    * 生成 NPC 遭遇卡牌
    */
   _generateEncounterCard(npcId, npc) {
+    if (!this._canPhysicallyAppear(npcId)) return null;
+    if (!npc || !this._isNpcRealmEligible(npcId)) return null;
     const emotion = this.getEmotion(npcId);
     const location = this.getCurrentSchedule(npcId);
+    if (!this._locationsCompatible(gameState.currentLocation, location)) return null;
     const impression = this.getImpression(npcId);
 
     // 根据好感度不同，生成不同场景的遭遇卡
@@ -475,6 +693,61 @@ class NpcSystem {
     else if (aff < 0) scene = '对峙';
     else if (impression.interactionCount === 0) scene = '初见';
 
+    return this._buildEncounterCard(npcId, npc, { scene, location, emotion });
+  }
+
+  /**
+   * Rebuild an already presented decision, not a new encounter roll. The
+   * checkpoint carries only display selectors; effects still have one author
+   * in _buildEncounterCard. Never call the schedule writer on a read path.
+   */
+  restoreEncounterCheckpoint(checkpoint) {
+    const match = /^npc_encounter_(.+)_(初见|偶遇|重逢|对峙)$/.exec(checkpoint?.cardId || '');
+    if (!match || !Number.isSafeInteger(checkpoint.turn)
+      || checkpoint.turn !== gameState.turn
+      || (checkpoint.decisionIndex !== undefined
+        && checkpoint.decisionIndex !== gameState.runClock?.decisionIndex)) return null;
+    const [, npcId, scene] = match;
+    const npc = this.npcs.get(npcId);
+    if (!npc || !this._canPhysicallyAppear(npcId) || !this._isNpcRealmEligible(npcId)
+      || (npc.pathRestriction && npc.pathRestriction !== gameState.path)
+      || gameState.cardsPlayed.includes(checkpoint.cardId)) return null;
+
+    const hasSelector = Object.prototype.hasOwnProperty.call(checkpoint, 'npcEncounter');
+    if ((hasSelector || Object.prototype.hasOwnProperty.call(checkpoint, 'lifeId'))
+      && checkpoint.lifeId !== gameState.runClock?.lifeId) return null;
+    let selector;
+    if (hasSelector) {
+      const raw = checkpoint.npcEncounter;
+      if (!raw || typeof raw !== 'object' || Array.isArray(raw) || raw.version !== 1
+        || raw.npcId !== npcId || raw.scene !== scene
+        || !['平静', '忧心', '欣喜'].includes(raw.emotion)
+        || typeof raw.location !== 'string' || !raw.location) return null;
+      selector = { scene, location: raw.location, emotion: raw.emotion };
+    } else {
+      // Older saves did not retain the original mood. They can recover the
+      // encoded NPC/scene and authored choices, not claim exact old dialogue.
+      selector = {
+        scene,
+        location: this._continuity()?.getNpcState(npcId)?.locationId
+          || this.getLocation(npcId),
+        emotion: '平静'
+      };
+    }
+    const authoredLocations = new Set([
+      npc.defaultLocation,
+      ...Object.values(npc.schedule || {}),
+      this.getGrowthStage(npcId)?.location,
+      this._continuity()?.getNpcState(npcId)?.locationId
+    ].filter(value => typeof value === 'string' && value));
+    if (!authoredLocations.has(selector.location)
+      || !this._locationsCompatible(gameState.currentLocation, selector.location)) return null;
+    const card = this._buildEncounterCard(npcId, npc, selector);
+    return this._isNarrativeEligible(card) ? card : null;
+  }
+
+  /** Pure authored template shared by first presentation and cold restore. */
+  _buildEncounterCard(npcId, npc, { scene, location, emotion }) {
     // 【环环相扣：NPC→Path】获取功法感知描述
     const pathFlavor = this._getPathFlavor(gameState.path);
     const pathComment = this._getPathComment(npcId, gameState.path);
@@ -518,13 +791,22 @@ class NpcSystem {
 
     return {
       id: `npc_encounter_${npcId}_${scene}`,
+      semanticKey: `npc-encounter:${npcId}:${scene}`,
       title: template.title,
       description: template.description,
       type: 'NPC_ENCOUNTER',
       realm: gameState.realm,
       npcId: npcId,
+      manifestation: 'PHYSICAL',
+      location,
+      requiresPlayerPresence: true,
+      eligibleRealms: Array.isArray(npc.appearRealms) ? [...npc.appearRealms] : [gameState.realm],
       weight: 0,
       once: true,
+      npcEncounter: {
+        version: 1, npcId, scene, location,
+        emotion: ['忧心', '欣喜'].includes(emotion) ? emotion : '平静'
+      },
       choices: template.choices
     };
   }
@@ -584,7 +866,11 @@ class NpcSystem {
     const emotion = this.getEmotion(npcId);
     const mindset = this.getMindset(npcId);
     const impression = this.getImpression(npcId);
-    const location = this.getCurrentSchedule(npcId);
+    const lifecycleState = this._continuity()?.getNpcState(npcId) || null;
+    const canInteract = this._canPhysicallyAppear(npcId);
+    const location = canInteract
+      ? this.getCurrentSchedule(npcId)
+      : (lifecycleState?.locationId || '因果之外');
 
     // 解锁的秘密
     const secrets = [];
@@ -625,6 +911,10 @@ class NpcSystem {
       bond: this.bonds[npcId] || 0,
       trust: this.trusts[npcId] || 0,
       giftPrefs: npc.giftPrefs || null,
+      growth: this.getGrowthStage(npcId),
+      lifecycle: lifecycleState?.lifecycle || 'ACTIVE',
+      manifestation: lifecycleState?.manifestation || 'PHYSICAL',
+      canInteract,
       availableActions: this._getAvailableActions(npcId, npc)
     });
   }
@@ -633,6 +923,7 @@ class NpcSystem {
    * 根据好感度和境界确定可用交互
    */
   _getAvailableActions(npcId, npc) {
+    if (!this._canPhysicallyAppear(npcId)) return ['告辞'];
     const aff = this.affections[npcId] || 0;
     const realm = gameState.realm;
     const actions = ['闲聊', '告辞'];
@@ -648,15 +939,92 @@ class NpcSystem {
   // 交互处理
   // ==========================================
 
+  interact(data) {
+    return this._onInteract(data);
+  }
+
   _onInteract(data) {
     const { npcId, action, itemId } = data;
     const npc = this.npcs.get(npcId);
-    if (!npc) return;
+    if (!npc) return null;
+    if (!this._canPhysicallyAppear(npcId) && action !== '告辞') {
+      const lifecycle = this._continuity()?.getNpcState(npcId)?.lifecycle || 'DISTANT';
+      const labels = {
+        ASCENDED: '已越过天门，此刻只能从上界回响中感知其剑意。',
+        DEAD: '已经身死，只余遗物与记忆可供追念。',
+        RETIRED: '已经退隐，不再接受当面拜访。',
+        DISTANT: '已经远行，当前无法当面交谈。',
+        UNMET: '与你尚未正式相识。'
+      };
+      const result = {
+        npcId,
+        action,
+        itemId: itemId || null,
+        success: false,
+        reason: 'physical_presence_unavailable',
+        reaction: `${npc.name}${labels[lifecycle] || '当前无法实体出现。'}`,
+        affDelta: 0,
+        newAffection: this.affections[npcId] || 0
+      };
+      if (data.emitResult !== false) eventBus.emit('npc:interactionResult', result);
+      return result;
+    }
 
     let reaction = '';
     let affDelta = 0;
+    let success = true;
+    let reason = null;
+    const limitedActions = ['赠礼', '请教', '论道'];
 
-    switch (action) {
+    if (limitedActions.includes(action)
+      && typeof gameState.hasInteractionBudget === 'function'
+      && gameState.hasInteractionBudget(npcId, gameState.turn)) {
+      success = false;
+      reason = 'interaction_budget_exhausted';
+      reaction = `${npc.name}今日已经与你深谈过了，改日再来吧。`;
+    }
+
+    // 先完成所有前置校验，再原子占用额度。额度必须早于物品/奖励事件，
+    // 防止同步 listener 重入第二次结算。
+    if (success && action === '赠礼') {
+      const effectiveItemId = typeof itemId === 'string' ? itemId : '';
+      if (!effectiveItemId || typeof gameState.getItemCount !== 'function'
+        || gameState.getItemCount(effectiveItemId) < 1) {
+        success = false;
+        reason = 'gift_unavailable';
+        reaction = '行囊中没有这件礼物。';
+      }
+    } else if (success && action === '请教') {
+      if (!npc.teachable) {
+        success = false;
+        reason = 'not_teachable';
+        reaction = `${npc.name}摆了摆手："我没什么可教你的。"`;
+      } else if (this.getAffection(npcId) < 15) {
+        success = false;
+        reason = 'affection_too_low';
+        reaction = `${npc.name}与你交情尚浅，不愿传授修行要诀。`;
+      }
+    } else if (success && action === '论道') {
+      if (gameState.realm === 'qi') {
+        success = false;
+        reason = 'realm_too_low';
+        reaction = '炼气期论道，尚早了些。';
+      } else if (this.getAffection(npcId) < 30) {
+        success = false;
+        reason = 'affection_too_low';
+        reaction = `${npc.name}与你交情尚浅，不愿与你论道。`;
+      }
+    }
+    if (success && limitedActions.includes(action)) {
+      success = typeof gameState.consumeInteractionBudget !== 'function'
+        || gameState.consumeInteractionBudget(npcId, action, gameState.turn);
+      if (!success) {
+        reason = 'interaction_budget_exhausted';
+        reaction = `${npc.name}今日已经与你深谈过了，改日再来吧。`;
+      }
+    }
+
+    switch (success ? action : '__blocked__') {
       case '闲聊':
         affDelta = Math.floor(Math.random() * 6) - 1; // -1 ~ +5
         reaction = this.getDialogue(npcId, '闲聊') ||
@@ -681,7 +1049,15 @@ class NpcSystem {
 
       case '请教':
         if (!npc.teachable) {
+          success = false;
+          reason = 'not_teachable';
           reaction = `${npc.name}摆了摆手："我没什么可教你的。"`;
+          break;
+        }
+        if (this.getAffection(npcId) < 15) {
+          success = false;
+          reason = 'affection_too_low';
+          reaction = `${npc.name}与你交情尚浅，不愿传授修行要诀。`;
           break;
         }
         affDelta = 5;
@@ -693,29 +1069,48 @@ class NpcSystem {
         eventBus.emit('npc:taught', { npcId, cultivationBonus: 8 });
         break;
 
-      case '赠礼':
-        if (!itemId) {
-          reaction = '你没有可赠之物。';
+      case '赠礼': {
+        const effectiveItemId = typeof itemId === 'string' ? itemId : '';
+        if (!effectiveItemId || typeof gameState.getItemCount !== 'function'
+          || gameState.getItemCount(effectiveItemId) < 1) {
+          success = false;
+          reason = 'gift_unavailable';
+          reaction = '行囊中没有这件礼物。';
           break;
         }
-        const giftResult = this.calculateGift(npcId, itemId);
+        if (!gameState.consumeItem(effectiveItemId, 1)) {
+          success = false;
+          reason = 'gift_consume_failed';
+          reaction = '礼物未能取出，本次赠礼没有结算。';
+          break;
+        }
+        const giftResult = this.calculateGift(npcId, effectiveItemId);
         affDelta = giftResult.delta;
         reaction = giftResult.reaction;
 
         // 送对挚爱物品可能解锁 Lv2 秘密
         const npcGift = this.npcs.get(npcId);
         if (npcGift && npcGift.giftPrefs && npcGift.giftPrefs.love &&
-            npcGift.giftPrefs.love.includes(itemId)) {
+            npcGift.giftPrefs.love.includes(effectiveItemId)) {
           if (this.bonds[npcId] >= 2) {
             this.unlockSecret(npcId, 2);
             reaction += '\n\nta看着礼物，沉默了许久，似乎在想什么往事...';
           }
         }
         break;
+      }
 
       case '论道':
         if (gameState.realm === 'qi') {
+          success = false;
+          reason = 'realm_too_low';
           reaction = '炼气期论道，尚早了些。';
+          break;
+        }
+        if (this.getAffection(npcId) < 30) {
+          success = false;
+          reason = 'affection_too_low';
+          reaction = `${npc.name}与你交情尚浅，不愿与你论道。`;
           break;
         }
         affDelta = Math.floor(Math.random() * 11); // 0 ~ 10
@@ -727,16 +1122,25 @@ class NpcSystem {
         break;
 
       default:
-        reaction = '告辞。';
+        if (!reaction) reaction = '告辞。';
     }
 
-    eventBus.emit('npc:interactionResult', {
+    if (success && limitedActions.includes(action) && typeof gameState.persistCausalSession === 'function') {
+      gameState.persistCausalSession();
+    }
+
+    const result = {
       npcId,
       action,
+      itemId: itemId || null,
+      success,
+      reason,
       reaction,
       affDelta,
       newAffection: this.affections[npcId] || 0
-    });
+    };
+    if (data.emitResult !== false) eventBus.emit('npc:interactionResult', result);
+    return result;
   }
 
   // ==========================================
@@ -759,11 +1163,14 @@ class NpcSystem {
   getVisibleNpcs() {
     const result = [];
     for (const [npcId, npc] of this.npcs) {
+      if (!this._canPhysicallyAppear(npcId)) continue;
       if (npc.appearRealms && npc.appearRealms.includes(gameState.realm)) {
+        const growth = this.getGrowthStage(npcId);
         result.push({
           id: npcId,
           name: npc.name,
-          title: npc.title || '',
+          title: growth?.title || npc.title || '',
+          npcRealm: growth?.npcRealm || null,
           emotion: this.getEmotion(npcId),
           affection: this.affections[npcId] || 0
         });
@@ -863,10 +1270,16 @@ class NpcSystem {
    * @private
    */
   _checkCrossInteractions() {
+    // Hand-authored cross scenes are authoritative when their actors, realm,
+    // and physical location all match the player's current scene.
+    if (this._tryTriggerPresetInteraction()) return;
+
     // 更新所有NPC的当前位置
     const locationMap = {};
     for (const [npcId] of this.npcs) {
+      if (!this._canPhysicallyAppear(npcId) || !this._isNpcRealmEligible(npcId)) continue;
       const loc = this.getCurrentSchedule(npcId);
+      if (!this._locationsCompatible(gameState.currentLocation, loc)) continue;
       if (!locationMap[loc]) locationMap[loc] = [];
       locationMap[loc].push(npcId);
     }
@@ -887,6 +1300,8 @@ class NpcSystem {
    * @private
    */
   _tryTriggerNpcInteraction(npcA, npcB, location) {
+    if (!this._canNpcJoinPhysicalScene(npcA, location)
+      || !this._canNpcJoinPhysicalScene(npcB, location)) return false;
     // 基础概率
     let chance = 0.15;
 
@@ -899,11 +1314,10 @@ class NpcSystem {
       if (relation.status === 'rival') chance *= 2.0;
     }
 
-    // 冷却：10轮内同一对不重复
+    // Hard cooldown: a new runtime id cannot bypass the same dramatic beat.
     const pairKey = this._relationKey(npcA, npcB);
-    if (this._lastCrossTurn[pairKey] && gameState.turn - this._lastCrossTurn[pairKey] < 10) {
-      chance *= 0.5;
-    }
+    if (this._lastCrossTurn[pairKey] !== undefined
+      && gameState.turn - this._lastCrossTurn[pairKey] < 12) return false;
 
     // 高密聚地点修正（宗门大殿/坊市中心）
     if (location === '宗门大殿' || location === '坊市中心') {
@@ -915,16 +1329,74 @@ class NpcSystem {
       chance *= 1.0 + (gameState.attributes.fortune || 50) / 500;
     }
 
-    if (Math.random() > chance) return;
+    if (Math.random() > chance) return false;
 
-    // 触发！
+    const card = this._emitCrossCard(npcA, npcB, location, relation);
+    if (!card) return false;
+
+    // Commit cooldown only after a card successfully enters the pending queue.
     this._lastCrossTurn[pairKey] = gameState.turn;
 
     if (relation) {
       relation.lastInteractionTurn = gameState.turn;
     }
 
-    this._emitCrossCard(npcA, npcB, location, relation);
+    return true;
+  }
+
+  /**
+   * Surface one loaded, hand-authored cross scene through the real NPC queue.
+   * @returns {Object|null}
+   */
+  _tryTriggerPresetInteraction() {
+    if (!Array.isArray(this._presetCrossCards) || this._presetCrossCards.length === 0) return null;
+
+    const candidates = this._presetCrossCards.map(raw => {
+      const npcIds = [...new Set((Array.isArray(raw.npcIds) ? raw.npcIds : []).filter(Boolean))];
+      const card = {
+        ...raw,
+        type: 'NPC_CROSS',
+        npcIds,
+        manifestation: 'PHYSICAL',
+        requiresPlayerPresence: true,
+        eligibleRealms: Array.isArray(raw.eligibleRealms) && raw.eligibleRealms.length > 0
+          ? [...raw.eligibleRealms]
+          : [raw.realm || gameState.realm],
+        relationStatus: raw.relationStatus || raw.status || 'neutral',
+        semanticKey: raw.semanticKey || `npc-cross-preset:${raw.id}`,
+        once: true
+      };
+      return card;
+    }).filter(card => {
+      if (!card.location || card.npcIds.length < 2) return false;
+      if (!this._locationsCompatible(gameState.currentLocation, card.location)) return false;
+      // A preset's authored location is the scene authority: actors may travel
+      // there for this deliberate beat. Ambient random encounters still obey
+      // their ordinary schedules in `_checkCrossInteractions()`.
+      if (!card.npcIds.every(npcId => this._canNpcJoinPhysicalScene(npcId, card.location))) return false;
+      if (typeof cardSystem !== 'undefined' && cardSystem
+        && typeof cardSystem.isCardAllowedForRealm === 'function'
+        && !cardSystem.isCardAllowedForRealm(card, gameState.realm)) return false;
+      if (!this._isNarrativeEligible(card)) return false;
+      const semanticKey = this._ledger()?.getSemanticKey?.(card) || card.semanticKey;
+      return !this._pendingCrossCards.some(queued => (
+        (this._ledger()?.getSemanticKey?.(queued) || queued?.semanticKey) === semanticKey
+      ));
+    });
+    if (candidates.length === 0 || Math.random() > 0.15) return null;
+
+    const totalWeight = candidates.reduce((sum, card) => sum + Math.max(1, Number(card.weight) || 1), 0);
+    let roll = Math.random() * totalWeight;
+    let selected = candidates[candidates.length - 1];
+    for (const candidate of candidates) {
+      roll -= Math.max(1, Number(candidate.weight) || 1);
+      if (roll <= 0) {
+        selected = candidate;
+        break;
+      }
+    }
+    this._pendingCrossCards.push(selected);
+    return selected;
   }
 
   /**
@@ -932,6 +1404,8 @@ class NpcSystem {
    * @private
    */
   _emitCrossCard(npcA, npcB, location, relation) {
+    if (!this._canNpcJoinPhysicalScene(npcA, location)
+      || !this._canNpcJoinPhysicalScene(npcB, location)) return null;
     const nameA = this.getNpcName(npcA);
     const nameB = this.getNpcName(npcB);
     const aff = relation ? relation.affinity : 0;
@@ -944,15 +1418,35 @@ class NpcSystem {
       title = `${nameA}与${nameB}·对峙`;
       description = `${nameA}与${nameB}在${location}不期而遇。空气骤然凝滞——${Math.abs(aff) >= 50 ? '浓烈的杀意' : '无声的较量'}在两人之间涌动。\n\n你被夹在中间。`;
       choices = {
-        left: { text: '挡在中间，以身为盾', effects: { heroism: 5, daoHeart: 3, [`npc_relation:${npcA}:${npcB}`]: 10 }, npcAffection: { [npcA]: 2, [npcB]: 2 } },
-        right: { text: '退后一步，让他们自己解决', effects: { wisdom: 5, [`npc_relation:${npcA}:${npcB}`]: -20 }, npcAffection: { [npcA]: -1, [npcB]: -1 } }
+        left: {
+          text: '挡在中间，以身为盾',
+          desc: `你横在两人之间。${nameA}先按下杀意，${nameB}也收住锋芒；这场冲突暂时止在你面前。`,
+          effects: { heroism: 5, daoHeart: 3, [`npc_relation:${npcA}:${npcB}`]: 10 },
+          npcAffection: { [npcA]: 2, [npcB]: 2 }
+        },
+        right: {
+          text: '退后一步，让他们自己解决',
+          desc: `你退出两人的锋芒。${nameA}与${nameB}再无顾忌，旧怨因此更深了一层。`,
+          effects: { wisdom: 5, [`npc_relation:${npcA}:${npcB}`]: -20 },
+          npcAffection: { [npcA]: -1, [npcB]: -1 }
+        }
       };
     } else if (status === 'ally' || status === 'master-disciple') {
       title = `${nameA}与${nameB}·叙旧`;
       description = `${nameA}和${nameB}在${location}相遇。${nameB}说了句什么，${nameA}罕见地笑了——你从未见过${nameA}这样的表情。`;
       choices = {
-        left: { text: '上前加入他们的谈话', effects: { daoHeart: 3, wisdom: 3 }, npcAffection: { [npcA]: 3, [npcB]: 3 } },
-        right: { text: '不打扰他们，远远观察', effects: { wisdom: 5 }, npcAffection: {} }
+        left: {
+          text: '上前加入他们的谈话',
+          desc: `${nameA}为你让出半步，${nameB}顺势把方才的话说完。你终于被纳入这段旧缘，而非只做路过的旁观者。`,
+          effects: { daoHeart: 3, wisdom: 3 },
+          npcAffection: { [npcA]: 3, [npcB]: 3 }
+        },
+        right: {
+          text: '不打扰他们，远远观察',
+          desc: `你没有惊动两人。${nameA}与${nameB}把旧事说到尽处，你也从他们的神色里看懂了几分前因。`,
+          effects: { wisdom: 5 },
+          npcAffection: {}
+        }
       };
     } else {
       // neutral / estranged — 微妙的对峙
@@ -964,8 +1458,16 @@ class NpcSystem {
       title = `问心有愧`;
       description = microTensions[Math.floor(Math.random() * microTensions.length)];
       choices = {
-        left: { text: '试着缓和气氛', effects: { daoHeart: 2, [`npc_relation:${npcA}:${npcB}`]: 5 } },
-        right: { text: '若无其事地走开', effects: {} }
+        left: {
+          text: '试着缓和气氛',
+          desc: `你递出一句不偏不倚的话。${nameA}与${nameB}虽未就此亲近，却都肯把僵局放下一步。`,
+          effects: { daoHeart: 2, [`npc_relation:${npcA}:${npcB}`]: 5 }
+        },
+        right: {
+          text: '若无其事地走开',
+          desc: `你没有介入。${nameA}与${nameB}各自离去，那点未说出口的芥蒂仍留在原处。`,
+          effects: {}
+        }
       };
     }
 
@@ -975,16 +1477,29 @@ class NpcSystem {
       title,
       description,
       npcIds: [npcA, npcB],
+      manifestation: 'PHYSICAL',
       location,
       realm: gameState.realm,
-      once: true,
+      requiresPlayerPresence: true,
+      eligibleRealms: [gameState.realm],
+      relationStatus: status,
+      semanticKey: `npc-cross:${[npcA, npcB].sort().join(':')}:${status}`,
+      once: false,
+      repeatPolicy: { mode: 'cooldown', cooldownTurns: 12 },
       weight: 0,
       tags: ['npc_cross', 'dramatic'],
       choices
     };
 
+    if (!this._isNarrativeEligible(card)) return null;
+    const semanticKey = this._ledger()?.getSemanticKey?.(card) || card.semanticKey;
+    if (this._pendingCrossCards.some(queued => (
+      (this._ledger()?.getSemanticKey?.(queued) || queued?.semanticKey) === semanticKey
+    ))) return null;
+
     // 推入待处理队列——等待 CardSystem.draw() 在优先级31获取
     this._pendingCrossCards.push(card);
+    return card;
   }
 
   /**
@@ -993,8 +1508,14 @@ class NpcSystem {
    * @returns {Object|null}
    */
   getPendingCrossCard() {
-    if (this._pendingCrossCards.length === 0) return null;
-    return this._pendingCrossCards.shift();
+    while (this._pendingCrossCards.length > 0) {
+      const card = this._pendingCrossCards.shift();
+      if (this._isNarrativeEligible(card)
+        && (card.npcIds || []).every(npcId => this._canNpcJoinPhysicalScene(npcId, card.location))) {
+        return card;
+      }
+    }
+    return null;
   }
 
   /**
@@ -1008,3 +1529,17 @@ class NpcSystem {
 
 // 全局单例
 const npcSystem = new NpcSystem();
+
+if (typeof window !== 'undefined') {
+  window.NpcSystem = NpcSystem;
+  window.npcSystem = npcSystem;
+}
+if (typeof global !== 'undefined') {
+  global.NpcSystem = NpcSystem;
+  global.npcSystem = npcSystem;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = NpcSystem;
+  module.exports.NpcSystem = NpcSystem;
+  module.exports.npcSystem = npcSystem;
+}

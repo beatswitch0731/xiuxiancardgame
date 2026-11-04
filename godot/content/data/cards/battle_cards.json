@@ -1,0 +1,5615 @@
+{
+  "battle_cards": [
+    {
+      "id": "strike",
+      "name": "青元斩",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害。",
+      "flavor": "并指如剑，青气破空！",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "basic"
+      ],
+      "cardArt": {
+        "id": "combat_card_strike_pc98_v1",
+        "image": "assets/combat/cards/card_strike_pc98.png"
+      }
+    },
+    {
+      "id": "defend",
+      "name": "灵气盾",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 1 点【护盾】。",
+      "flavor": "结下阵印，真气化作六边晶壁。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "basic"
+      ],
+      "cardArt": {
+        "id": "combat_card_defend_pc98_v1",
+        "image": "assets/combat/cards/card_defend_pc98.png"
+      }
+    },
+    {
+      "id": "sword_edge",
+      "name": "青锋点雪",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，获得 1 层【剑意】。",
+      "flavor": "剑尖只点一线寒芒，余势留给下一式。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "starter",
+        "sword_intent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_edge_pc98_v1",
+        "image": "assets/combat/cards/card_sword_edge_pc98.png",
+        "assetClass": "combat_card_scene"
+      }
+    },
+    {
+      "id": "sword_guard",
+      "name": "剑罡护脉",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 2 点【护盾】。",
+      "flavor": "剑不只向外，回锋半寸便可护住心脉。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "sword",
+        "starter",
+        "sword_intent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_guard_pc98_starter_v2",
+        "image": "assets/combat/cards/pc98_starter_v2/sword_guard_pc98.png",
+        "assetClass": "combat_card_scene"
+      }
+    },
+    {
+      "id": "sword_probe",
+      "name": "试锋一点",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，给予敌人 1 层【破绽】。本回合下一张攻击额外造成 1 点伤害并消耗破绽。",
+      "flavor": "只递出半寸锋芒，先看敌人如何接这一点。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "opening",
+          "value": 1,
+          "maxStacks": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "starter",
+        "sequence"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_probe_pc98_starter_v3",
+        "image": "assets/combat/cards/pc98_starter_v3/sword_probe_pc98.png",
+        "assetClass": "combat_card_scene"
+      }
+    },
+    {
+      "id": "sword_sheath_guard",
+      "name": "藏锋守中",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 1 点【护盾】。",
+      "flavor": "剑锋压回鞘口，不与来势硬碰，只守住下一次变招的中线。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "starter",
+        "sequence"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_sheath_guard_pc98_v1",
+        "image": "assets/combat/cards/card_sword_sheath_guard_pc98.png",
+        "assetClass": "combat_card_scene"
+      }
+    },
+    {
+      "id": "traded_rusted_sword_path",
+      "name": "旧式剑路",
+      "type": "attack",
+      "cost": 0,
+      "temporaryOnly": true,
+      "exhaust": true,
+      "description": "造成 3 点伤害。此牌由集市易手残剑在三种异路相合时临时悟得；用后本场消失。",
+      "flavor": "剑脊的第三道折痕忽然与先前的招式合在一起，旧人留下的断句终于成了剑路。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "old_sword_path",
+        "temporary",
+        "traded"
+      ],
+      "cardArt": {
+        "id": "combat_card_traded_rusted_sword_path_reuse_v1",
+        "image": "assets/combat/cards/card_sword_followthrough_agc_v3.png",
+        "assetClass": "combat_card_scene"
+      }
+    },
+    {
+      "id": "licensed_rusted_sword_guard",
+      "name": "官印卸锋",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得1点【护盾】。本场首次成功防御后，下一次攻击额外造成1点伤害。",
+      "flavor": "坊市的净火只磨去锈迹，留下的缺口恰好让剑势回转。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "equipment",
+        "regulated"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_sheath_guard_pc98_v1",
+        "image": "assets/combat/cards/card_sword_sheath_guard_pc98.png",
+        "assetClass": "combat_card_scene"
+      }
+    },
+    {
+      "id": "ghost_oath_sword_chime",
+      "name": "噬主剑鸣",
+      "type": "attack",
+      "cost": 0,
+      "temporaryOnly": true,
+      "exhaust": true,
+      "description": "造成 5 点伤害。此牌只在装备夜契残剑的首个玩家回合出现；用后本场消失。",
+      "flavor": "剑未出鞘，先在识海里叫了你一次名字；那名字比你少活的三年还冷。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 5
+        }
+      ],
+      "tags": [
+        "ghost_oath",
+        "temporary",
+        "sword"
+      ],
+      "cardArt": {
+        "id": "combat_card_ghost_oath_sword_chime_reuse_v1",
+        "image": "assets/combat/cards/card_sword_followthrough_agc_v3.png",
+        "assetClass": "combat_card_scene"
+      }
+    },
+    {
+      "id": "sword_followthrough",
+      "name": "追风连式",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害。与技能牌交替打出时可触发【流风变招】。",
+      "flavor": "前一式未尽，后一式已经沿风追上。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "starter",
+        "sequence"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_followthrough_agc_v3",
+        "image": "assets/combat/cards/card_sword_followthrough_agc_v3.png",
+        "assetClass": "combat_card_scene"
+      }
+    },
+    {
+      "id": "spell_spark",
+      "name": "朱砂雷符",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，凝聚 1 层【法印】。",
+      "flavor": "朱砂最后一笔落下，符纸先于雷声燃起。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1,
+          "maxStacks": 3
+        }
+      ],
+      "tags": [
+        "spell",
+        "starter",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_spark_agc_v2",
+        "image": "assets/combat/cards/card_spell_spark_agc_v2.png",
+        "assetClass": "combat_card_scene",
+        "semantic": {
+          "actor": "yelingyun",
+          "actionFamily": "talisman_strike",
+          "target": "stone_training_post",
+          "locationFamily": "sect_talisman_terrace",
+          "risk": "setup_then_release",
+          "result": [
+            "damage:1",
+            "spell_seal:+1"
+          ]
+        },
+        "composition": {
+          "foreground": "broken stones, blank talisman scraps and wet footprints",
+          "midground": "full-body apprentice pinning a geometric seal to a stone training post",
+          "background": "sect eaves, misty mountains and distant terrace architecture",
+          "titleSafeArea": "top_18_percent",
+          "rulesSafeArea": "bottom_22_percent"
+        },
+        "reviewStatus": "candidate_self_qc_pending_independent_review",
+        "provenanceId": "imagegen:spell_spark_agc_v2"
+      }
+    },
+    {
+      "id": "spell_ward",
+      "name": "玄门封界",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 1 点【护盾】，凝聚 1 层【法印】。",
+      "flavor": "一枚法印悬在身前，四方灵气自行归位。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1,
+          "maxStacks": 3
+        }
+      ],
+      "tags": [
+        "spell",
+        "starter",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_ward_starter_v1",
+        "image": "assets/combat/cards/pc98_starter_v2/spell_ward_pc98.png"
+      }
+    },
+    {
+      "id": "spell_cycle",
+      "name": "星轨换位",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，抽 1 张牌；若【法印】≥2，追加 1 点伤害并消耗 2 层法印。",
+      "flavor": "星轨错开半寸，下一道法诀便从空隙中浮现。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1,
+          "conditional_status": "spell_seal",
+          "conditional_value": 2,
+          "conditional_add": 1,
+          "consume_status": 2
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "starter",
+        "spell_seal",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_cycle_starter_v1",
+        "image": "assets/combat/cards/pc98_starter_v2/spell_cycle_pc98.png"
+      }
+    },
+    {
+      "id": "body_fist",
+      "name": "开碑短打",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害。",
+      "flavor": "不借兵刃，只用一寸筋骨把石碑打出裂纹。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "starter",
+        "counter"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_fist_agc_v2",
+        "image": "assets/combat/cards/card_body_fist_agc_v2.png",
+        "assetClass": "combat_card_scene",
+        "semantic": {
+          "actor": "yelingyun",
+          "actionFamily": "short_palm_strike",
+          "target": "cracked_practice_stela",
+          "locationFamily": "rainy_strength_court",
+          "risk": "close_contact",
+          "result": [
+            "damage:1"
+          ]
+        },
+        "composition": {
+          "foreground": "wet stone, wrapped forearm guard and large stone chips",
+          "midground": "full-body low stance delivering a palm strike into a splitting stela",
+          "background": "forge shed, sect court, cliff and misty pines",
+          "titleSafeArea": "top_18_percent",
+          "rulesSafeArea": "bottom_22_percent"
+        },
+        "reviewStatus": "candidate_self_qc_pending_independent_review",
+        "provenanceId": "imagegen:body_fist_agc_v2"
+      }
+    },
+    {
+      "id": "body_stance",
+      "name": "沉桩架势",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 1 点【护盾】与 1 层【金刚劲】。",
+      "flavor": "脚下生根，肩背一沉，来势便成了你的根基。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "statusId": "fortify",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "starter",
+        "fortify"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_stance_starter_v1",
+        "image": "assets/combat/cards/pc98_starter_v2/body_stance_pc98.png"
+      }
+    },
+    {
+      "id": "body_counter",
+      "name": "震岳回肘",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害；不动金刚在有护盾时攻击可触发【借势回击】。",
+      "flavor": "先承其势，再以肩肘把那股力量原路送回。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "starter",
+        "counter"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_counter_agc_v2",
+        "image": "assets/combat/cards/card_body_counter_agc_v2.png",
+        "assetClass": "combat_card_scene",
+        "semantic": {
+          "actor": "yelingyun",
+          "actionFamily": "return_elbow_counter",
+          "target": "suspended_log_and_training_post",
+          "location": "rainy_sect_strength_court",
+          "risk": "brace_then_counter",
+          "result": "damage:1, counter:conditional",
+          "composition": "foreground wet stone, wrapped bracer and grit; midground full-body hip-and-elbow counter into a leaning post; background snapped suspended log, timber awning and rain-muted mountains",
+          "reviewStatus": "candidate_self_qc_pending_independent_review",
+          "provenanceId": "imagegen:body_counter_agc_v2"
+        }
+      }
+    },
+    {
+      "id": "pill_ember",
+      "name": "赤砂丹火",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点【丹火】伤害；丹火流在技能后接攻击时可触发【丹火出炉】，可跨回合，每回合一次。",
+      "flavor": "炉中赤砂化作一线药火，沿敌人经脉逆烧。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "starter",
+        "poison"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_ember_agc_v2",
+        "image": "assets/combat/cards/card_pill_ember_agc_v2.png",
+        "assetClass": "combat_card_scene",
+        "semantic": {
+          "actor": "yelingyun",
+          "actionFamily": "ember_elixir_throw",
+          "target": "wooden_training_post",
+          "location": "rainy_sect_alchemy_court",
+          "risk": "setup_then_release",
+          "result": "damage:1, poison:conditional",
+          "composition": "foreground wet stone, mineral pellets and medicine scoop; midground full-body novice throwing an ember elixir; background kiln, sect gate and misty pine cliffs",
+          "reviewStatus": "candidate_self_qc_pending_independent_review",
+          "provenanceId": "imagegen:pill_ember_agc_v2"
+        }
+      }
+    },
+    {
+      "id": "pill_guard",
+      "name": "温炉养息",
+      "type": "skill",
+      "cost": 2,
+      "description": "恢复 1 点【气血】并获得 1 点【护盾】。",
+      "flavor": "丹火不急着伤敌，先把散乱的一口生气温回炉中。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 1
+        },
+        {
+          "type": "block",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "starter",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_guard_starter_v1",
+        "image": "assets/combat/cards/pc98_starter_v2/pill_guard_pc98.png"
+      }
+    },
+    {
+      "id": "pill_catalyst",
+      "name": "药雾催化",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 1 点【护盾】，对敌人施加 1 层【丹毒】。",
+      "flavor": "炉盖微启，青碧药雾既护炉心，也蚀敌脉。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "starter",
+        "poison",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_catalyst_starter_v1",
+        "image": "assets/combat/cards/pc98_starter_v2/pill_catalyst_pc98.png"
+      }
+    },
+    {
+      "id": "pill_recycle",
+      "name": "收火回元",
+      "type": "skill",
+      "cost": 0,
+      "exhaust": true,
+      "description": "回复 1 点【真元】。消耗。",
+      "flavor": "散去的丹火被重新拢回掌中，只够再催动一式。",
+      "effects": [
+        {
+          "type": "gain_qi",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "starter",
+        "recycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_recycle_starter_v1",
+        "image": "assets/combat/cards/pc98_starter_v2/pill_recycle_pc98.png"
+      }
+    },
+    {
+      "id": "comp_jian_linger_ice_resonance",
+      "name": "冰心共鸣",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 点【护盾】与 1 层【剑意】。",
+      "flavor": "她的冰心剑意贴近你的剑脊，先护住心脉，再把锋芒交给你。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "companion",
+        "jian_linger",
+        "bond_60"
+      ],
+      "cardArt": {
+        "id": "combat_card_comp_jian_linger_ice_resonance_pc98_v1",
+        "image": "assets/combat/cards/card_ice_resonance_pc98.png"
+      }
+    },
+    {
+      "id": "comp_jian_linger_sword_oath",
+      "name": "此生剑誓",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 2 点伤害，获得 2 层【剑意】。",
+      "flavor": "两道剑光不分先后——她把背后交给你，也把余生压在这一剑上。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "companion",
+        "jian_linger",
+        "bond_100"
+      ],
+      "cardArt": {
+        "id": "combat_card_comp_jian_linger_sword_oath_pc98_v1",
+        "image": "assets/combat/cards/card_sword_oath_pc98.png"
+      }
+    },
+    {
+      "id": "comp_jiuwei_moon_illusion",
+      "name": "溯月幻境",
+      "type": "skill",
+      "cost": 1,
+      "description": "给予敌人 1 层【虚弱】，回复 1 点真元。",
+      "flavor": "月影折进她的掌心，敌人以为自己仍站在原地。",
+      "effects": [
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "weak",
+          "value": 1
+        },
+        {
+          "type": "gain_qi",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "companion",
+        "jiuwei_suyue",
+        "bond_60"
+      ],
+      "cardArt": {
+        "id": "combat_card_comp_jiuwei_moon_illusion_pc98_v1",
+        "image": "assets/combat/cards/card_moon_illusion_pc98.png"
+      }
+    },
+    {
+      "id": "comp_jiuwei_nine_tail_domain",
+      "name": "九尾月域",
+      "type": "skill",
+      "cost": 2,
+      "description": "给予敌人 2 层【虚弱】，获得 2 点【护盾】。",
+      "flavor": "九尾合拢成月域；其中只有她允许的命运能够发生。",
+      "effects": [
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "weak",
+          "value": 2
+        },
+        {
+          "type": "block",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "companion",
+        "jiuwei_suyue",
+        "bond_100"
+      ],
+      "cardArt": {
+        "id": "combat_card_comp_jiuwei_nine_tail_domain_pc98_v1",
+        "image": "assets/combat/cards/card_nine_tail_pc98.png"
+      }
+    },
+    {
+      "id": "comp_bai_luoxuan_moon_mending",
+      "name": "月华报恩",
+      "type": "skill",
+      "cost": 1,
+      "description": "恢复 1 点【气血】并获得 1 点【护盾】。",
+      "flavor": "她把月光拢进掌心；三百年前未能说完的报恩，化作此刻的一息温暖。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 1
+        },
+        {
+          "type": "block",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "companion",
+        "bai_luoxuan",
+        "bond_60"
+      ],
+      "cardArt": {
+        "id": "combat_card_bai_luoxuan_bond_v1",
+        "image": "assets/cards/characters/card_character_bai_luoxuan.png"
+      }
+    },
+    {
+      "id": "comp_yin_xue_blood_duet",
+      "name": "血月并锋",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 2 点伤害，受到 1 点反噬伤害。",
+      "flavor": "两道血色剑光在月下交错；他从不说并肩，只会把最险的一侧留给自己。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "backlash",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "companion",
+        "yin_xue",
+        "bond_60"
+      ],
+      "cardArt": {
+        "id": "combat_card_yin_xue_bond_v1",
+        "image": "assets/cards/characters/card_character_yin_xue.png"
+      }
+    },
+    {
+      "id": "comp_bai_ren_sword_guidance",
+      "name": "白刃点锋",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，获得 1 层【剑意】。",
+      "flavor": "宗师不替你出剑，只在剑脊轻点一指——万千歧路便只剩正确的一线。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "companion",
+        "bai_ren",
+        "bond_60"
+      ],
+      "cardArt": {
+        "id": "combat_card_bai_ren_bond_v1",
+        "image": "assets/cards/characters/card_character_bai_ren.png"
+      }
+    },
+    {
+      "id": "comp_mu_qinglan_heavenly_annotation",
+      "name": "天书同参",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 1 点【护盾】，抽 1 张牌。",
+      "flavor": "她在空白天书上补下一笔，眼前错乱的因果便多出一条可以同行的注解。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 1
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "companion",
+        "mu_qinglan",
+        "bond_60"
+      ],
+      "cardArt": {
+        "id": "combat_card_mu_qinglan_bond_v1",
+        "image": "assets/cards/characters/card_character_mu_qinglan.png"
+      }
+    },
+    {
+      "id": "comp_tianji_shared_constellation",
+      "name": "命星同轨",
+      "type": "skill",
+      "cost": 1,
+      "description": "回复 1 点【真元】，抽 1 张牌。消耗。",
+      "flavor": "三百年的推演终于落笔；两颗命星在同一刻越过了天道划下的界线。",
+      "exhaust": true,
+      "effects": [
+        {
+          "type": "gain_qi",
+          "value": 1
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "companion",
+        "tianji_laoren",
+        "bond_60"
+      ],
+      "cardArt": {
+        "id": "combat_card_tianji_bond_v1",
+        "image": "assets/cards/characters/card_tianji_laoren_pc98.png"
+      }
+    },
+    {
+      "id": "comp_xuesha_blood_throne_guard",
+      "name": "血座共誓",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，并给予敌人 1 层【破绽】。",
+      "flavor": "血煞压境，却在触及你之前分向两侧；王座之主把杀意全部留给了敌人。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "vulnerable",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "companion",
+        "xuesha_laozu",
+        "bond_60"
+      ],
+      "cardArt": {
+        "id": "combat_card_xuesha_bond_v1",
+        "image": "assets/cards/characters/card_character_xuesha_laozu.png"
+      }
+    },
+    {
+      "id": "heavy_strike",
+      "name": "撼山靠",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害。",
+      "flavor": "沉肩贯脊，以血肉筋骨撞出山崩之势！",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "body",
+        "qi"
+      ],
+      "cardArt": {
+        "id": "combat_card_heavy_strike_pc98_v1",
+        "image": "assets/combat/cards/card_heavy_strike_pc98.png"
+      }
+    },
+    {
+      "id": "sword_intent",
+      "name": "凝剑诀",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 层【剑意】。(下次攻击附加等同层数的伤害)",
+      "flavor": "双眸微阖，体内剑鸣铮铮作响！",
+      "effects": [
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "sword",
+        "qi",
+        "sword_intent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_intent_pc98_v1",
+        "image": "assets/combat/cards/card_sword_intent_pc98.png"
+      }
+    },
+    {
+      "id": "mana_potion",
+      "name": "回气丹",
+      "type": "skill",
+      "cost": 0,
+      "exhaust": true,
+      "description": "恢复 2 点真元。消耗。",
+      "flavor": "吞下灵丹，暖流瞬间充盈四肢百骸。",
+      "effects": [
+        {
+          "type": "gain_qi",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "pill",
+        "qi"
+      ],
+      "cardArt": {
+        "id": "combat_card_mana_potion_pc98_v1",
+        "image": "assets/combat/cards/card_mana_potion_pc98.png"
+      }
+    },
+    {
+      "id": "backlash_flame",
+      "name": "血魔火",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 3 点伤害。受到 1 点反噬伤害。",
+      "flavor": "指尖溢出腥红魔焰，焚敌亦伤己！",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        },
+        {
+          "type": "backlash",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "backlash"
+      ],
+      "cardArt": {
+        "id": "combat_card_backlash_flame_pc98_v1",
+        "image": "assets/combat/cards/card_backlash_flame_pc98.png"
+      }
+    },
+    {
+      "id": "qi_shield",
+      "name": "太乙玄黄罩",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 2 点【护盾】和 1 层【罡气】(保留护盾不过期)。",
+      "flavor": "玄黄之气透体而出，凝如金钟护持周身。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "aura",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "qi"
+      ],
+      "cardArt": {
+        "id": "combat_card_qi_shield_pc98_v1",
+        "image": "assets/combat/cards/card_qi_shield_pc98.png"
+      }
+    },
+    {
+      "id": "spell_gather",
+      "name": "五气朝元",
+      "type": "skill",
+      "cost": 1,
+      "tags": [
+        "spell",
+        "qi",
+        "spell_seal"
+      ],
+      "description": "获得 2 点【护盾】，凝聚 1 层【法印】。",
+      "flavor": "五气流转，灵印自生。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        }
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_gather_pc98_v1",
+        "image": "assets/combat/cards/card_spell_gather_pc98.png"
+      }
+    },
+    {
+      "id": "spell_tide",
+      "name": "灵力潮汐",
+      "type": "skill",
+      "cost": 1,
+      "tags": [
+        "spell",
+        "qi",
+        "spell_seal"
+      ],
+      "description": "每有 1 层【法印】，抽 1 张牌。",
+      "flavor": "法力激荡如海潮。",
+      "effects": [
+        {
+          "type": "draw_per_status",
+          "statusId": "spell_seal"
+        }
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_tide_pc98_v1",
+        "image": "assets/combat/cards/card_spell_tide_pc98.png"
+      }
+    },
+    {
+      "id": "spell_nuke",
+      "name": "九天玄雷诀",
+      "type": "attack",
+      "cost": 3,
+      "tags": [
+        "spell",
+        "qi",
+        "spell_seal"
+      ],
+      "description": "消耗 3 气血。造成 5 点伤害。如果【法印】≥ 3，消耗所有法印，对所有敌人造成 3 倍真实伤害。",
+      "flavor": "雷劫洗地，寸草不生！",
+      "effects": [
+        {
+          "type": "backlash",
+          "value": 3
+        },
+        {
+          "type": "damage",
+          "value": 5,
+          "conditional_status": "spell_seal",
+          "conditional_value": 3,
+          "conditional_multiply": 3,
+          "consume_status": true,
+          "aoe": true
+        }
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_nuke_pc98_v1",
+        "image": "assets/combat/cards/card_spell_nuke_pc98.png"
+      }
+    },
+    {
+      "id": "draw_sword",
+      "name": "拔剑式",
+      "type": "attack",
+      "cost": 0,
+      "description": "造成 1 点伤害。获得 1 层【剑意】。",
+      "flavor": "锋芒初露，剑气含而未发。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "qi"
+      ],
+      "cardArt": {
+        "id": "combat_card_draw_sword_pc98_v1",
+        "image": "assets/combat/cards/card_draw_sword_pc98.png"
+      }
+    },
+    {
+      "id": "sword_array",
+      "name": "太虚剑阵",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 3 层【剑意】与 3 点【护盾】。",
+      "flavor": "无数气剑环绕周身，攻守兼备。",
+      "effects": [
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 3
+        },
+        {
+          "type": "block",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "sword",
+        "qi"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_array_pc98_v1",
+        "image": "assets/combat/cards/card_sword_array_pc98.png"
+      }
+    },
+    {
+      "id": "body_guard",
+      "name": "金刚架",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 点【护盾】与 1 层【金刚劲】。",
+      "flavor": "沉肩坠肘，筋骨如山，来势越重越显根基。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "fortify",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "qi"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_guard_pc98_v1",
+        "image": "assets/combat/cards/card_body_guard_pc98.png"
+      }
+    },
+    {
+      "id": "iron_skin",
+      "name": "淬血铁衣",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "获得 3 点【护盾】与 1 层【金刚劲】。消耗。",
+      "flavor": "血线穿过铁屑，空甲合拢成一层不借外物的护身筋骨。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "statusId": "fortify",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "qi",
+        "story_reward",
+        "guard"
+      ],
+      "cardArt": {
+        "id": "combat_card_iron_skin_pc98_v1",
+        "image": "assets/combat/cards/card_iron_skin_pc98.png"
+      }
+    },
+    {
+      "id": "pill_mending",
+      "name": "回春丹",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "恢复 1 点局内护体值。消耗。",
+      "flavor": "药力只续此战气机，离场伤势仍须另行调养。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "qi"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_mending_pc98_v1",
+        "image": "assets/combat/cards/card_pill_mending_pc98.png"
+      }
+    },
+    {
+      "id": "pill_poison",
+      "name": "丹毒飞丸",
+      "type": "attack",
+      "cost": 1,
+      "exhaust": true,
+      "description": "造成 1 点伤害并施加 1 层【丹毒】。消耗。",
+      "flavor": "药可救人，也可沿经脉寸寸蚀敌。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "qi",
+        "poison"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_poison_pc98_v1",
+        "image": "assets/combat/cards/card_pill_poison_pc98.png"
+      }
+    },
+    {
+      "id": "tiger_break_stance",
+      "name": "虎煞破势",
+      "type": "attack",
+      "cost": 1,
+      "exhaust": true,
+      "description": "造成 1 点伤害并施加 1 层【破绽】。消耗。",
+      "flavor": "虎娘不教你蛮力，只教你在敌人换气的一瞬踩进中门。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "vulnerable",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "opportunity",
+        "bandit",
+        "stance_break"
+      ],
+      "cardArt": {
+        "id": "combat_card_tiger_break_stance_pc98_v1",
+        "image": "assets/combat/cards/card_tiger_break_stance_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_sword_heart_art",
+      "name": "万剑归宗",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 5 点伤害，获得 2 层【剑意】。消耗。",
+      "flavor": "心中无剑，故万物皆应剑鸣。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 5
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "legacy",
+        "sword",
+        "opportunity"
+      ],
+      "legacySetId": "sword_heart",
+      "legacyPath": "sword",
+      "cardArt": {
+        "id": "combat_card_legacy_sword_heart_native_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_sword_heart_art_pc98.png"
+      }
+    },
+    {
+      "id": "spell_seal_reversal",
+      "name": "十方禁制回文",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "获得 2 点【护盾】与 1 层【法印】，令敌人获得 1 层【虚弱】。消耗。",
+      "flavor": "封印并非牢笼；倒读十方，禁制便成为护身的回文。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "weak",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "spell_seal",
+        "opportunity",
+        "legacy"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_seal_reversal_native_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/spell_seal_reversal_pc98.png"
+      }
+    },
+    {
+      "id": "spell_void_thunder",
+      "name": "虚隙雷引",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害；若【法印】≥2，追加 2 点伤害并消耗 2 层法印。",
+      "flavor": "裂隙只开一线，足够让彼端的雷落入此世。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3,
+          "conditional_status": "spell_seal",
+          "conditional_value": 2,
+          "conditional_add": 2,
+          "consume_status": 2
+        }
+      ],
+      "tags": [
+        "spell",
+        "spell_seal",
+        "opportunity",
+        "forbidden"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_void_thunder_native_v1",
+        "image": "assets/combat/spell_codex_opportunity_v1/spell_void_thunder_card_native_v1.png"
+      }
+    },
+    {
+      "id": "treasure_codex_sealing_page",
+      "name": "残页镇界",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "获得 3 点【护盾】与 1 层【法印】。消耗。",
+      "flavor": "旧纸悬空，残缺的一页仍能压住一角虚天。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "equipment",
+        "artifact",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_codex_sealing_page_native_v1",
+        "image": "assets/combat/spell_codex_opportunity_v1/codex_sealing_page_card_native_v1.png"
+      }
+    },
+    {
+      "id": "treasure_star_orbit_seal_disk",
+      "name": "星轨回元",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "回复 1 点【真元】，获得 1 层【法印】。消耗。",
+      "flavor": "铜盘转过一宿星轨，散去的法力沿旧路归来。",
+      "effects": [
+        {
+          "type": "gain_qi",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "equipment",
+        "artifact",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_star_orbit_seal_disk_native_v1",
+        "image": "assets/combat/spell_codex_opportunity_v1/star_orbit_seal_disk_card_native_v1.png"
+      }
+    },
+    {
+      "id": "body_thunder_temper",
+      "name": "天劫锻骨",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "获得 2 点【护盾】与 2 层【金刚劲】。消耗。",
+      "flavor": "紫雷不是落在皮肉上，而是沿骨节刻成一身不退的雷纹。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "fortify",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "body",
+        "opportunity",
+        "tribulation"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_thunder_temper_native_v1",
+        "image": "assets/combat/body_tribulation_opportunity_v1/body_thunder_temper_card_native_v1.png"
+      }
+    },
+    {
+      "id": "body_meridian_reversal",
+      "name": "锁脉崩山",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害；若【金刚劲】≥2，追加 2 点伤害并消耗 2 层金刚劲。",
+      "flavor": "锁住周身经脉一息，待雷势回流，再用肩肘把余劲尽数轰出。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3,
+          "conditional_status": "fortify",
+          "conditional_value": 2,
+          "conditional_add": 2,
+          "consume_status": 2
+        }
+      ],
+      "tags": [
+        "body",
+        "opportunity",
+        "meridian"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_meridian_reversal_native_v1",
+        "image": "assets/combat/body_tribulation_opportunity_v1/body_meridian_reversal_card_native_v1.png"
+      }
+    },
+    {
+      "id": "treasure_body_waterfall_thunder_armor",
+      "name": "雷纹甲契",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "获得 3 点【护盾】与 1 层【金刚劲】。消耗。",
+      "flavor": "甲片承下万钧瀑势，赤铜雷纹随呼吸一明一灭。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "statusId": "fortify",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "equipment",
+        "armor",
+        "fortify"
+      ],
+      "cardArt": {
+        "id": "combat_object_body_waterfall_thunder_armor_native_v1",
+        "image": "assets/combat/body_tribulation_opportunity_v1/body_waterfall_thunder_armor_object_native_v1.png"
+      }
+    },
+    {
+      "id": "treasure_body_meridian_lock_ring",
+      "name": "锁脉环契",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "回复 1 点【真元】并获得 2 点【护盾】。消耗。",
+      "flavor": "玄铁环扣住气机最险的一节，使散乱雷息重新归于周天。",
+      "effects": [
+        {
+          "type": "gain_qi",
+          "value": 1
+        },
+        {
+          "type": "block",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "body",
+        "equipment",
+        "artifact",
+        "meridian"
+      ],
+      "cardArt": {
+        "id": "combat_object_body_meridian_lock_ring_native_v1",
+        "image": "assets/combat/body_tribulation_opportunity_v1/body_meridian_lock_ring_object_native_v1.png"
+      }
+    },
+    {
+      "id": "pill_empty_cauldron_reversal",
+      "name": "空炉返命",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "恢复 2 点【气血】并获得 2 点【护盾】。消耗。",
+      "flavor": "不添药，不催火；空炉照见的那口生气，反而最接近本命。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 2
+        },
+        {
+          "type": "block",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "pill",
+        "opportunity",
+        "restraint"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_empty_cauldron_reversal_native_v1",
+        "image": "assets/combat/pill_master_opportunity_v1/pill_empty_cauldron_reversal_card_native_v1.png"
+      }
+    },
+    {
+      "id": "pill_karma_ember",
+      "name": "因果烬毒",
+      "type": "attack",
+      "cost": 1,
+      "exhaust": true,
+      "description": "造成 1 点伤害并施加 2 层【丹毒】。消耗。",
+      "flavor": "瓶底仅存一粒赤金余烬，落入敌脉便循着旧恶自行燃烧。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "pill",
+        "opportunity",
+        "poison",
+        "karma"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_karma_ember_native_v1",
+        "image": "assets/combat/pill_master_opportunity_v1/pill_karma_ember_card_native_v1.png"
+      }
+    },
+    {
+      "id": "treasure_pill_formless_empty_bottle",
+      "name": "无相瓶契",
+      "type": "skill",
+      "cost": 0,
+      "exhaust": true,
+      "description": "回复 1 点【真元】与 1 点【气血】。消耗。",
+      "flavor": "瓶中空无一物，正好容下这一息未曾被因果染过的生机。",
+      "effects": [
+        {
+          "type": "gain_qi",
+          "value": 1
+        },
+        {
+          "type": "heal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "equipment",
+        "accessory",
+        "restraint"
+      ],
+      "cardArt": {
+        "id": "combat_object_pill_formless_empty_bottle_native_v1",
+        "image": "assets/combat/pill_master_opportunity_v1/pill_formless_empty_bottle_object_native_v1.png"
+      }
+    },
+    {
+      "id": "treasure_pill_karma_medicine_furnace",
+      "name": "药王炉契",
+      "type": "attack",
+      "cost": 1,
+      "exhaust": true,
+      "description": "造成 1 点伤害并施加 1 层【丹毒】。消耗。",
+      "flavor": "炉门开合一瞬，赤金药火便循着因果最重的一线扑向敌身。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "equipment",
+        "artifact",
+        "poison",
+        "karma"
+      ],
+      "cardArt": {
+        "id": "combat_object_pill_karma_medicine_furnace_native_v1",
+        "image": "assets/combat/pill_master_opportunity_v1/pill_karma_medicine_furnace_object_native_v1.png"
+      }
+    },
+    {
+      "id": "legacy_pill_way_art",
+      "name": "九转玄丹",
+      "type": "skill",
+      "cost": 2,
+      "description": "恢复 5 点【气血】，获得 3 点【护盾】。",
+      "flavor": "集齐【丹道真解】残卷，九转炼丹天地开！",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 5
+        },
+        {
+          "type": "block",
+          "value": 3
+        }
+      ],
+      "exhaust": true,
+      "tags": [
+        "legacy",
+        "pill"
+      ],
+      "legacySetId": "pill_way",
+      "legacyPath": "pill",
+      "cardArt": {
+        "id": "combat_card_legacy_pill_way_pill_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_pill_way_art_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_array_way_art",
+      "name": "八卦锁天",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 6 点【护盾】，令敌人获得 1 层【虚弱】。消耗。",
+      "flavor": "集齐【阵法玄机】残卷，乾坤八卦封九天！",
+      "effects": [
+        {
+          "type": "block",
+          "value": 6
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "weak",
+          "value": 1
+        }
+      ],
+      "exhaust": true,
+      "tags": [
+        "legacy",
+        "spell",
+        "array"
+      ],
+      "legacySetId": "array_way",
+      "legacyPath": "spell",
+      "cardArt": {
+        "id": "combat_card_legacy_array_way_spell_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_array_way_art_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_heaven_book_art",
+      "name": "紫霄神雷",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 5 点【天雷伤势】，凝聚 2 层【法印】。消耗。",
+      "flavor": "集齐【天书残卷】，引九天紫霄雷霆轰灭大敌！",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 5
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 2
+        }
+      ],
+      "exhaust": true,
+      "tags": [
+        "legacy",
+        "spell"
+      ],
+      "legacySetId": "heaven_book",
+      "legacyPath": "spell",
+      "cardArt": {
+        "id": "combat_card_legacy_heaven_book_spell_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_heaven_book_art_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_demon_blood_art",
+      "name": "天魔解体",
+      "type": "attack",
+      "cost": 1,
+      "description": "受到 1 点反噬，造成 6 点【魔伤】。消耗。",
+      "flavor": "集齐【魔血传承】，燃我真血换盖世魔威！",
+      "effects": [
+        {
+          "type": "backlash",
+          "value": 1
+        },
+        {
+          "type": "damage",
+          "value": 6
+        }
+      ],
+      "exhaust": true,
+      "tags": [
+        "legacy",
+        "body",
+        "demon"
+      ],
+      "legacySetId": "demon_blood",
+      "legacyPath": "body",
+      "cardArt": {
+        "id": "combat_card_legacy_demon_blood_body_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_demon_blood_art_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_immortal_will_art",
+      "name": "不灭仙躯",
+      "type": "power",
+      "cost": 2,
+      "description": "获得 6 点【护盾】，抽取 1 张牌。消耗。",
+      "flavor": "集齐【仙人之志】，心向苍穹，飘飘乎如冯虚御风！",
+      "effects": [
+        {
+          "type": "block",
+          "value": 6
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "exhaust": true,
+      "tags": [
+        "legacy",
+        "body",
+        "immortal"
+      ],
+      "legacySetId": "immortal_will",
+      "legacyPath": "body",
+      "cardArt": {
+        "id": "combat_card_legacy_immortal_will_body_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_immortal_will_art_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_sword_heart_spell",
+      "name": "心剑御符",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "获得 3 点【护盾】与 1 层【法印】。消耗。",
+      "flavor": "剑意转入符胆，锋芒不在手中，仍可护住一息心神。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "spell",
+        "sword_heart"
+      ],
+      "legacySetId": "sword_heart",
+      "legacyPath": "spell",
+      "cardArt": {
+        "id": "combat_card_legacy_sword_heart_spell_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_sword_heart_spell_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_sword_heart_body",
+      "name": "剑骨铸心",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "获得 4 点【护盾】与 1 层【金刚劲】。消耗。",
+      "flavor": "每一道旧剑痕，都在骨中留下了不肯弯折的回响。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 4
+        },
+        {
+          "type": "status",
+          "statusId": "fortify",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "body",
+        "sword_heart"
+      ],
+      "legacySetId": "sword_heart",
+      "legacyPath": "body",
+      "cardArt": {
+        "id": "combat_card_legacy_sword_heart_body_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_sword_heart_body_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_sword_heart_pill",
+      "name": "剑意淬丹",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "恢复 2 点【气血】，回复 1 点【真元】。消耗。",
+      "flavor": "以剑意淬炼药性，锋锐散去后，余温恰可温养经脉。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 2
+        },
+        {
+          "type": "gain_qi",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "pill",
+        "sword_heart"
+      ],
+      "legacySetId": "sword_heart",
+      "legacyPath": "pill",
+      "cardArt": {
+        "id": "combat_card_legacy_sword_heart_pill_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_sword_heart_pill_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_pill_way_sword",
+      "name": "丹火淬锋",
+      "type": "attack",
+      "cost": 1,
+      "exhaust": true,
+      "description": "造成 3 点伤害，恢复 1 点【气血】。消耗。",
+      "flavor": "丹火舔过剑脊，留下的不是炽烈，而是一线回春。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        },
+        {
+          "type": "heal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "sword",
+        "pill_way"
+      ],
+      "legacySetId": "pill_way",
+      "legacyPath": "sword",
+      "cardArt": {
+        "id": "combat_card_legacy_pill_way_sword_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_pill_way_sword_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_pill_way_spell",
+      "name": "丹霞法印",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "获得 2 点【护盾】、1 层【法印】，恢复 1 点【气血】。消耗。",
+      "flavor": "药气升腾成霞，落在掌心，便是一枚温和却牢靠的法印。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        },
+        {
+          "type": "heal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "spell",
+        "pill_way"
+      ],
+      "legacySetId": "pill_way",
+      "legacyPath": "spell",
+      "cardArt": {
+        "id": "combat_card_legacy_pill_way_spell_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_pill_way_spell_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_pill_way_body",
+      "name": "金髓炼体",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "受到 1 点反噬，获得 5 点【护盾】并恢复 1 点【气血】。消耗。",
+      "flavor": "先以药性灼开旧伤，再让新生的金髓在其中封成一道甲。",
+      "effects": [
+        {
+          "type": "backlash",
+          "value": 1
+        },
+        {
+          "type": "block",
+          "value": 5
+        },
+        {
+          "type": "heal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "body",
+        "pill_way"
+      ],
+      "legacySetId": "pill_way",
+      "legacyPath": "body",
+      "cardArt": {
+        "id": "combat_card_legacy_pill_way_body_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_pill_way_body_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_array_way_sword",
+      "name": "剑阵封天",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 4 点伤害，获得 1 点【护盾】与 1 层【剑意】，令敌人获得 1 层【虚弱】。消耗。",
+      "flavor": "一剑只是阵眼，剑势合围时，天地也要慢半拍。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        },
+        {
+          "type": "block",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "weak",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "sword",
+        "array_way"
+      ],
+      "legacySetId": "array_way",
+      "legacyPath": "sword",
+      "cardArt": {
+        "id": "combat_card_legacy_array_way_sword_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_array_way_sword_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_array_way_body",
+      "name": "八门镇岳",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "获得 6 点【护盾】与 2 层【金刚劲】。消耗。",
+      "flavor": "八门一闭，山势便沿着脊骨落下，任外力如何冲撞也不移半分。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 6
+        },
+        {
+          "type": "status",
+          "statusId": "fortify",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "legacy",
+        "body",
+        "array_way"
+      ],
+      "legacySetId": "array_way",
+      "legacyPath": "body",
+      "cardArt": {
+        "id": "combat_card_legacy_array_way_body_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_array_way_body_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_array_way_pill",
+      "name": "丹阵回元",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "恢复 3 点【气血】，获得 4 点【护盾】。消耗。",
+      "flavor": "药炉被嵌进阵眼，吐纳之间，散乱药气也循着归路回流。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 3
+        },
+        {
+          "type": "block",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "legacy",
+        "pill",
+        "array_way"
+      ],
+      "legacySetId": "array_way",
+      "legacyPath": "pill",
+      "cardArt": {
+        "id": "combat_card_legacy_array_way_pill_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_array_way_pill_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_heaven_book_sword",
+      "name": "天书剑诏",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 5 点伤害，抽取 1 张牌。消耗。",
+      "flavor": "天书落下一字，剑便先替你读懂了它的杀意。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 5
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "sword",
+        "heaven_book"
+      ],
+      "legacySetId": "heaven_book",
+      "legacyPath": "sword",
+      "cardArt": {
+        "id": "combat_card_legacy_heaven_book_sword_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_heaven_book_sword_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_heaven_book_body",
+      "name": "雷纹淬体",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "受到 1 点反噬，获得 7 点【护盾】与 1 层【金刚劲】。消耗。",
+      "flavor": "雷纹沿骨节走完一圈，疼痛过后，肉身终于学会了如何承受天意。",
+      "effects": [
+        {
+          "type": "backlash",
+          "value": 1
+        },
+        {
+          "type": "block",
+          "value": 7
+        },
+        {
+          "type": "status",
+          "statusId": "fortify",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "body",
+        "heaven_book"
+      ],
+      "legacySetId": "heaven_book",
+      "legacyPath": "body",
+      "cardArt": {
+        "id": "combat_card_legacy_heaven_book_body_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_heaven_book_body_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_heaven_book_pill",
+      "name": "雷火炼丹",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 4 点伤害，施加 1 层【丹毒】，恢复 2 点气血。消耗。",
+      "flavor": "雷火不肯温顺，便把最烈的一息炼成了只认敌脉的毒。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 1
+        },
+        {
+          "type": "heal",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "legacy",
+        "pill",
+        "heaven_book"
+      ],
+      "legacySetId": "heaven_book",
+      "legacyPath": "pill",
+      "cardArt": {
+        "id": "combat_card_legacy_heaven_book_pill_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_heaven_book_pill_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_demon_blood_sword",
+      "name": "血剑燃魂",
+      "type": "attack",
+      "cost": 1,
+      "exhaust": true,
+      "description": "受到 1 点反噬，造成 5 点伤害，获得 1 层【剑意】。消耗。",
+      "flavor": "血一落上剑锋，便知道自己再也回不到从前的颜色。",
+      "effects": [
+        {
+          "type": "backlash",
+          "value": 1
+        },
+        {
+          "type": "damage",
+          "value": 5
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "sword",
+        "demon_blood"
+      ],
+      "legacySetId": "demon_blood",
+      "legacyPath": "sword",
+      "cardArt": {
+        "id": "combat_card_legacy_demon_blood_sword_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_demon_blood_sword_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_demon_blood_spell",
+      "name": "魔血禁咒",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "受到 1 点反噬，造成 5 点伤害，获得 2 层【法印】，令敌人获得 1 层【虚弱】。消耗。",
+      "flavor": "禁咒从血里长出来，先问你肯失去什么，再替你毁掉什么。",
+      "effects": [
+        {
+          "type": "backlash",
+          "value": 1
+        },
+        {
+          "type": "damage",
+          "value": 5
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "weak",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "spell",
+        "demon_blood"
+      ],
+      "legacySetId": "demon_blood",
+      "legacyPath": "spell",
+      "cardArt": {
+        "id": "combat_card_legacy_demon_blood_spell_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_demon_blood_spell_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_demon_blood_pill",
+      "name": "血丹噬命",
+      "type": "skill",
+      "cost": 1,
+      "exhaust": true,
+      "description": "受到 1 点反噬，恢复 3 点【气血】，施加 2 层【丹毒】。消耗。",
+      "flavor": "这颗丹先咬住你的命，再替你把余下的命炼成敌人不敢触碰的毒。",
+      "effects": [
+        {
+          "type": "backlash",
+          "value": 1
+        },
+        {
+          "type": "heal",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "legacy",
+        "pill",
+        "demon_blood"
+      ],
+      "legacySetId": "demon_blood",
+      "legacyPath": "pill",
+      "cardArt": {
+        "id": "combat_card_legacy_demon_blood_pill_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_demon_blood_pill_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_immortal_will_sword",
+      "name": "羽化剑心",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "获得 4 点【护盾】、1 层【剑意】，抽取 1 张牌。消耗。",
+      "flavor": "剑意不再只向前，连退路也被它照成了可以落脚的云阶。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 4
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "sword",
+        "immortal_will"
+      ],
+      "legacySetId": "immortal_will",
+      "legacyPath": "sword",
+      "cardArt": {
+        "id": "combat_card_legacy_immortal_will_sword_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_immortal_will_sword_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_immortal_will_spell",
+      "name": "太虚羽化",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "获得 4 点【护盾】与 1 层【法印】，抽取 1 张牌。消耗。",
+      "flavor": "符文轻得像一层羽，落下时却替你托住了整个呼吸。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 4
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "spell",
+        "immortal_will"
+      ],
+      "legacySetId": "immortal_will",
+      "legacyPath": "spell",
+      "cardArt": {
+        "id": "combat_card_legacy_immortal_will_spell_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_immortal_will_spell_pc98.png"
+      }
+    },
+    {
+      "id": "legacy_immortal_will_pill",
+      "name": "飞仙金丹",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "恢复 3 点【气血】，获得 2 点【护盾】，抽取 1 张牌。消耗。",
+      "flavor": "一粒金丹浮起时，炉中火、掌中脉与远处云海忽然同了一个吐纳。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 3
+        },
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "legacy",
+        "pill",
+        "immortal_will"
+      ],
+      "legacySetId": "immortal_will",
+      "legacyPath": "pill",
+      "cardArt": {
+        "id": "combat_card_legacy_immortal_will_pill_reuse_v1",
+        "image": "assets/combat/cards/pc98_legacy_v2/legacy_immortal_will_pill_pc98.png"
+      }
+    },
+    {
+      "id": "eq_weapon_strike",
+      "name": "灵器利刃",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 4 点【兵刃锋芒伤害】。",
+      "flavor": "手中灵剑震颤，寒芒吞吐破开强敌格挡！",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "equipment",
+        "weapon"
+      ],
+      "cardArt": {
+        "id": "combat_card_eq_weapon_strike_pc98_v1",
+        "image": "assets/combat/cards/card_weapon_strike_pc98.png"
+      }
+    },
+    {
+      "id": "eq_armor_shield",
+      "name": "宝甲御形",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 4 点【坚实护盾】。",
+      "flavor": "身着护体真气宝甲，安如泰山。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "equipment",
+        "armor"
+      ],
+      "cardArt": {
+        "id": "combat_card_eq_armor_shield_pc98_v1",
+        "image": "assets/combat/cards/card_armor_shield_pc98.png"
+      }
+    },
+    {
+      "id": "treasure_soul_banner",
+      "name": "炼魂煞雾",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 6 点【阴煞伤势】，施加 1 层【虚弱】。",
+      "flavor": "祭起万魂幡，万鬼呼啸侵蚀敌手经脉！",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 6
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "weak",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "treasure",
+        "artifact"
+      ],
+      "cardArt": {
+        "id": "combat_card_treasure_soul_banner_pc98_v1",
+        "image": "assets/combat/cards/card_soul_banner_pc98.png"
+      }
+    },
+    {
+      "id": "treasure_thunder_bead",
+      "name": "避雷金光",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 5 点【天雷护盾】。",
+      "flavor": "避雷宝珠祭出，雷霆绕体而过不伤毫发。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 5
+        }
+      ],
+      "tags": [
+        "treasure",
+        "artifact"
+      ],
+      "cardArt": {
+        "id": "combat_card_treasure_thunder_bead_pc98_v1",
+        "image": "assets/combat/cards/card_thunder_bead_pc98.png"
+      }
+    },
+    {
+      "id": "treasure_nine_cauldron",
+      "name": "九黎鼎威",
+      "type": "power",
+      "cost": 2,
+      "description": "每回合获得 2 点【护盾】，造成 5 点【神鼎压制】。",
+      "flavor": "九黎古鼎震荡，镇压方圆十里邪祟天地！",
+      "effects": [
+        {
+          "type": "block",
+          "value": 5
+        },
+        {
+          "type": "damage",
+          "value": 5
+        }
+      ],
+      "tags": [
+        "treasure",
+        "artifact"
+      ],
+      "cardArt": {
+        "id": "combat_card_treasure_nine_cauldron_pc98_v1",
+        "image": "assets/combat/cards/card_nine_cauldron_pc98.png"
+      }
+    },
+    {
+      "id": "sword_qi_riposte",
+      "name": "回风架剑",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 点【护盾】与 1 层【剑意】。",
+      "flavor": "回锋贴腕，守势里已藏好下一剑。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "qi",
+        "sword_intent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_qi_riposte_pc98_v1",
+        "image": "assets/combat/cards/card_sword_qi_riposte_pc98.png"
+      }
+    },
+    {
+      "id": "sword_foundation_cloudstep",
+      "name": "踏云穿锋",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 2 点伤害。",
+      "flavor": "筑基灵台一稳，剑锋便能借云再进半尺。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "foundation"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_foundation_cloudstep_pc98_v1",
+        "image": "assets/combat/cards/card_sword_foundation_cloudstep_pc98.png"
+      }
+    },
+    {
+      "id": "sword_golden_heartforge",
+      "name": "金丹淬锋",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，获得 1 层【剑意】。",
+      "flavor": "丹火不炼铁，只炼胸中那一道锋芒。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "golden",
+        "sword_intent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_golden_heartforge_pc98_v1",
+        "image": "assets/combat/cards/card_sword_golden_heartforge_pc98.png"
+      }
+    },
+    {
+      "id": "sword_nascent_echo",
+      "name": "元神剑鸣",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，抽 1 张牌。",
+      "flavor": "肉身未动，元神中的剑已先响一声。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "nascent",
+        "sequence"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_nascent_echo_pc98_v1",
+        "image": "assets/combat/cards/card_sword_nascent_echo_pc98.png"
+      }
+    },
+    {
+      "id": "sword_deity_lawcut",
+      "name": "法则断痕",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害，获得 1 点【护盾】。",
+      "flavor": "剑痕停在虚空中，连来势也被一并截断。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        },
+        {
+          "type": "block",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "deity"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_deity_lawcut_pc98_v1",
+        "image": "assets/combat/cards/card_sword_deity_lawcut_pc98.png"
+      }
+    },
+    {
+      "id": "sword_tribulation_return",
+      "name": "劫剑归墟",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 4 点伤害。消耗。",
+      "flavor": "借劫雷磨尽余势，只留一剑归于寂灭。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "tribulation"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_tribulation_return_pc98_v1",
+        "image": "assets/combat/cards/card_sword_tribulation_return_pc98.png"
+      }
+    },
+    {
+      "id": "sword_shop_qi_sheath",
+      "name": "藏锋试探",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，抽 1 张牌。",
+      "flavor": "市井剑谱只教半式，余下半式要从敌手身上找。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "shop",
+        "qi",
+        "sequence"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_shop_qi_sheath_pc98_v1",
+        "image": "assets/combat/cards/card_sword_shop_qi_sheath_pc98.png"
+      }
+    },
+    {
+      "id": "sword_shop_foundation_line",
+      "name": "一线剑幕",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 3 点【护盾】。",
+      "flavor": "一线寒光横在身前，便是一道过不去的山门。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "sword",
+        "shop",
+        "foundation"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_shop_foundation_line_pc98_v1",
+        "image": "assets/combat/cards/card_sword_shop_foundation_line_pc98.png"
+      }
+    },
+    {
+      "id": "sword_shop_golden_rain",
+      "name": "丹霞剑雨",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，获得 2 层【剑意】。",
+      "flavor": "金丹映出万点霞光，每一点都藏着剑锋。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "sword",
+        "shop",
+        "golden",
+        "sword_intent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_shop_golden_rain_pc98_v1",
+        "image": "assets/combat/cards/card_sword_shop_golden_rain_pc98.png"
+      }
+    },
+    {
+      "id": "sword_shop_nascent_spirit",
+      "name": "灵剑分光",
+      "type": "skill",
+      "cost": 1,
+      "description": "抽 2 张牌。",
+      "flavor": "元神分念御剑，两道剑路同时在识海展开。",
+      "effects": [
+        {
+          "type": "draw",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "sword",
+        "shop",
+        "nascent",
+        "sequence"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_shop_nascent_spirit_pc98_v1",
+        "image": "assets/combat/cards/card_sword_shop_nascent_spirit_pc98.png"
+      }
+    },
+    {
+      "id": "sword_shop_deity_void",
+      "name": "虚空留锋",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害，获得 1 层【剑意】。",
+      "flavor": "剑已收鞘，虚空中的锋芒却迟迟不散。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "shop",
+        "deity",
+        "sword_intent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_shop_deity_void_pc98_v1",
+        "image": "assets/combat/cards/card_sword_shop_deity_void_pc98.png"
+      }
+    },
+    {
+      "id": "sword_shop_tribulation_oath",
+      "name": "问天剑誓",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 4 点伤害，获得 2 点【护盾】。消耗。",
+      "flavor": "这一剑既问天，也替持剑者立下不退之誓。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        },
+        {
+          "type": "block",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "sword",
+        "shop",
+        "tribulation"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_shop_tribulation_oath_pc98_v1",
+        "image": "assets/combat/cards/card_sword_shop_tribulation_oath_pc98.png"
+      }
+    },
+    {
+      "id": "spell_qi_retrace",
+      "name": "回文引气",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 1 点【护盾】，抽 1 张牌。",
+      "flavor": "符尾倒写，散去的灵气又沿墨迹回流。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 1
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "qi",
+        "spell_seal",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_qi_retrace_pc98_v1",
+        "image": "assets/combat/cards/card_spell_qi_retrace_pc98.png"
+      }
+    },
+    {
+      "id": "spell_foundation_chain",
+      "name": "连环雷箓",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，凝聚 1 层【法印】。",
+      "flavor": "第一张符是引子，第二声雷才是正文。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "foundation",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_foundation_chain_pc98_v1",
+        "image": "assets/combat/cards/card_spell_foundation_chain_pc98.png"
+      }
+    },
+    {
+      "id": "spell_golden_mirror",
+      "name": "金丹照法镜",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 点【护盾】，抽 1 张牌。",
+      "flavor": "法镜照见来势，也照见下一道最合适的术式。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "golden",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_golden_mirror_pc98_v1",
+        "image": "assets/combat/cards/card_spell_golden_mirror_pc98.png"
+      }
+    },
+    {
+      "id": "spell_nascent_orbit",
+      "name": "元婴星轨",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，抽 2 张牌。",
+      "flavor": "元婴拨动星轨，术式前后次序随之重排。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "draw",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "nascent",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_nascent_orbit_pc98_v1",
+        "image": "assets/combat/cards/card_spell_nascent_orbit_pc98.png"
+      }
+    },
+    {
+      "id": "spell_deity_edict",
+      "name": "敕令封界",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 3 点【护盾】，凝聚 2 层【法印】。",
+      "flavor": "一纸敕令落下，四方灵机都须按章行事。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "deity",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_deity_edict_pc98_v1",
+        "image": "assets/combat/cards/card_spell_deity_edict_pc98.png"
+      }
+    },
+    {
+      "id": "spell_tribulation_void",
+      "name": "劫空雷文",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 4 点伤害，凝聚 1 层【法印】。消耗。",
+      "flavor": "劫云中的雷文被临摹下来，只能完整诵读一次。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "tribulation",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_tribulation_void_pc98_v1",
+        "image": "assets/combat/cards/card_spell_tribulation_void_pc98.png"
+      }
+    },
+    {
+      "id": "spell_shop_qi_inkshield",
+      "name": "墨盾符",
+      "type": "skill",
+      "cost": 1,
+      "description": "凝聚 2 层【法印】。",
+      "flavor": "最便宜的黄纸，也能承住两笔端正法印。",
+      "effects": [
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "spell",
+        "shop",
+        "qi",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_shop_qi_inkshield_pc98_v1",
+        "image": "assets/combat/cards/card_spell_shop_qi_inkshield_pc98.png"
+      }
+    },
+    {
+      "id": "spell_shop_foundation_loop",
+      "name": "双环火符",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，抽 1 张牌。",
+      "flavor": "火符首尾相衔，烧尽之后又显出下一道笔画。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "shop",
+        "foundation",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_shop_foundation_loop_pc98_v1",
+        "image": "assets/combat/cards/card_spell_shop_foundation_loop_pc98.png"
+      }
+    },
+    {
+      "id": "spell_shop_golden_compass",
+      "name": "金盘定序",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 点【护盾】，凝聚 1 层【法印】。",
+      "flavor": "金盘一转，杂乱术式各归其位。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "shop",
+        "golden",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_shop_golden_compass_pc98_v1",
+        "image": "assets/combat/cards/card_spell_shop_golden_compass_pc98.png"
+      }
+    },
+    {
+      "id": "spell_shop_nascent_script",
+      "name": "元神抄经",
+      "type": "skill",
+      "cost": 1,
+      "description": "抽 2 张牌。",
+      "flavor": "肉身只翻一页，元神已把后文抄完。",
+      "effects": [
+        {
+          "type": "draw",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "spell",
+        "shop",
+        "nascent",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_shop_nascent_script_pc98_v1",
+        "image": "assets/combat/cards/card_spell_shop_nascent_script_pc98.png"
+      }
+    },
+    {
+      "id": "spell_shop_deity_lawnet",
+      "name": "法网天雷",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害。",
+      "flavor": "雷光沿法网奔走，逃向哪一格都只是徒劳。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "spell",
+        "shop",
+        "deity"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_shop_deity_lawnet_pc98_v1",
+        "image": "assets/combat/cards/card_spell_shop_deity_lawnet_pc98.png"
+      }
+    },
+    {
+      "id": "spell_shop_tribulation_seal",
+      "name": "万劫封印",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 4 点伤害。消耗。",
+      "flavor": "以一枚封印记下整场天劫，启用时雷声尽数归还。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "spell",
+        "shop",
+        "tribulation"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_shop_tribulation_seal_pc98_v1",
+        "image": "assets/combat/cards/card_spell_shop_tribulation_seal_pc98.png"
+      }
+    },
+    {
+      "id": "body_qi_breath",
+      "name": "沉息护体",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 点【护盾】。",
+      "flavor": "一口气沉到丹田，皮肉便先硬三分。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "qi",
+        "fortify"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_qi_breath_pc98_v1",
+        "image": "assets/combat/cards/card_body_qi_breath_pc98.png"
+      }
+    },
+    {
+      "id": "body_foundation_ironbridge",
+      "name": "铁桥横身",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 3 点【护盾】。",
+      "flavor": "腰胯一沉，整副筋骨架成过不去的铁桥。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "foundation",
+        "fortify"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_foundation_ironbridge_pc98_v1",
+        "image": "assets/combat/cards/card_body_foundation_ironbridge_pc98.png"
+      }
+    },
+    {
+      "id": "body_golden_blood",
+      "name": "金血震掌",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，恢复 1 点气血。",
+      "flavor": "金丹催旺血气，一掌推出后旧伤也随吐息闭合。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "heal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "golden"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_golden_blood_pc98_v1",
+        "image": "assets/combat/cards/card_body_golden_blood_pc98.png"
+      }
+    },
+    {
+      "id": "body_nascent_echo",
+      "name": "元胎回震",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，获得 2 点【护盾】。",
+      "flavor": "敌劲入骨，元胎将它原样震回。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "block",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "nascent",
+        "counter"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_nascent_echo_pc98_v1",
+        "image": "assets/combat/cards/card_body_nascent_echo_pc98.png"
+      }
+    },
+    {
+      "id": "body_deity_anchor",
+      "name": "法身镇岳",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 4 点【护盾】。",
+      "flavor": "法身落地如神山，四方来势皆成微风。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "deity",
+        "fortify"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_deity_anchor_pc98_v1",
+        "image": "assets/combat/cards/card_body_deity_anchor_pc98.png"
+      }
+    },
+    {
+      "id": "body_tribulation_rebound",
+      "name": "劫骨反震",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 4 点伤害，获得 2 点【护盾】。消耗。",
+      "flavor": "劫雷淬过的骨头，只需一震便能把天威还回去。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        },
+        {
+          "type": "block",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "tribulation",
+        "counter"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_tribulation_rebound_pc98_v1",
+        "image": "assets/combat/cards/card_body_tribulation_rebound_pc98.png"
+      }
+    },
+    {
+      "id": "body_shop_qi_footwork",
+      "name": "贴山步",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，获得 1 点【护盾】。",
+      "flavor": "步子贴地抢进中门，肩背同时护住要害。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "block",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "shop",
+        "qi",
+        "counter"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_shop_qi_footwork_pc98_v1",
+        "image": "assets/combat/cards/card_body_shop_qi_footwork_pc98.png"
+      }
+    },
+    {
+      "id": "body_shop_foundation_boneguard",
+      "name": "锻骨架",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 3 点【护盾】。",
+      "flavor": "坊市锻骨图粗朴，却把每一处受力都画得明白。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "body",
+        "shop",
+        "foundation",
+        "fortify"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_shop_foundation_boneguard_pc98_v1",
+        "image": "assets/combat/cards/card_body_shop_foundation_boneguard_pc98.png"
+      }
+    },
+    {
+      "id": "body_shop_golden_marrowburst",
+      "name": "金髓崩拳",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害。",
+      "flavor": "劲从骨髓里炸开，拳面只是最后一寸路。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "body",
+        "shop",
+        "golden"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_shop_golden_marrowburst_pc98_v1",
+        "image": "assets/combat/cards/card_body_shop_golden_marrowburst_pc98.png"
+      }
+    },
+    {
+      "id": "body_shop_nascent_soulframe",
+      "name": "元胎铁架",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 3 点【护盾】与 1 层【金刚劲】。",
+      "flavor": "元胎与肉身同立一架，内外再无虚处。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "statusId": "fortify",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "shop",
+        "nascent",
+        "fortify"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_shop_nascent_soulframe_pc98_v1",
+        "image": "assets/combat/cards/card_body_shop_nascent_soulframe_pc98.png"
+      }
+    },
+    {
+      "id": "body_shop_deity_domainbrace",
+      "name": "撑界横肘",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，获得 3 点【护盾】。",
+      "flavor": "横肘一撑，连领域边界也向外退了半步。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "block",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "body",
+        "shop",
+        "deity",
+        "counter"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_shop_deity_domainbrace_pc98_v1",
+        "image": "assets/combat/cards/card_body_shop_deity_domainbrace_pc98.png"
+      }
+    },
+    {
+      "id": "body_shop_tribulation_heavenbody",
+      "name": "天刑炼身",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 4 点伤害，恢复 2 点气血。消耗。",
+      "flavor": "让天刑穿身而过，留下的每一道雷纹都化成新生血气。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        },
+        {
+          "type": "heal",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "body",
+        "shop",
+        "tribulation"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_shop_tribulation_heavenbody_pc98_v1",
+        "image": "assets/combat/cards/card_body_shop_tribulation_heavenbody_pc98.png"
+      }
+    },
+    {
+      "id": "pill_qi_residue",
+      "name": "药渣护炉",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 1 点【护盾】，施加 1 层【丹毒】。",
+      "flavor": "废药渣覆在炉外能隔火，撒向敌手也仍有三分药性。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "qi",
+        "poison"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_qi_residue_pc98_v1",
+        "image": "assets/combat/cards/card_pill_qi_residue_pc98.png"
+      }
+    },
+    {
+      "id": "pill_foundation_twinfire",
+      "name": "文武双火",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，施加 2 层【丹毒】。",
+      "flavor": "文火养药，武火逼毒，两股炉焰各司其职。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "foundation",
+        "poison"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_foundation_twinfire_pc98_v1",
+        "image": "assets/combat/cards/card_pill_foundation_twinfire_pc98.png"
+      }
+    },
+    {
+      "id": "pill_golden_mist",
+      "name": "金丹药雾",
+      "type": "skill",
+      "cost": 1,
+      "description": "恢复 2 点气血，获得 1 点【护盾】。",
+      "flavor": "金丹一转，温润药雾便先护住经脉与炉心。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 2
+        },
+        {
+          "type": "block",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "golden",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_golden_mist_pc98_v1",
+        "image": "assets/combat/cards/card_pill_golden_mist_pc98.png"
+      }
+    },
+    {
+      "id": "pill_nascent_return",
+      "name": "元婴返火",
+      "type": "skill",
+      "cost": 1,
+      "description": "恢复 1 点真元，抽 1 张牌。",
+      "flavor": "元婴替炉火回转一周，散药重新归入可用之列。",
+      "effects": [
+        {
+          "type": "gain_qi",
+          "value": 1
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "nascent",
+        "recycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_nascent_return_pc98_v1",
+        "image": "assets/combat/cards/card_pill_nascent_return_pc98.png"
+      }
+    },
+    {
+      "id": "pill_deity_transmute",
+      "name": "化神转药",
+      "type": "skill",
+      "cost": 2,
+      "description": "恢复 3 点气血，施加 1 层【丹毒】。",
+      "flavor": "同一缕药性，向内是生机，向外便是蚀骨之毒。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "deity",
+        "elixir",
+        "poison"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_deity_transmute_pc98_v1",
+        "image": "assets/combat/cards/card_pill_deity_transmute_pc98.png"
+      }
+    },
+    {
+      "id": "pill_tribulation_elixir",
+      "name": "劫火毒丹",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 3 点伤害，施加 2 层【丹毒】。消耗。",
+      "flavor": "以劫火封丹，入口者只会听见经脉里的一声雷。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "tribulation",
+        "poison"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_tribulation_elixir_pc98_v1",
+        "image": "assets/combat/cards/card_pill_tribulation_elixir_pc98.png"
+      }
+    },
+    {
+      "id": "pill_shop_qi_herb",
+      "name": "青芽散",
+      "type": "skill",
+      "cost": 1,
+      "description": "恢复 1 点气血。",
+      "flavor": "坊市最寻常的青芽，配得准便能止住一口逆血。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "shop",
+        "qi",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_shop_qi_herb_pc98_v1",
+        "image": "assets/combat/cards/card_pill_shop_qi_herb_pc98.png"
+      }
+    },
+    {
+      "id": "pill_shop_foundation_cauldron",
+      "name": "温炉诀",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 点【护盾】。",
+      "flavor": "先稳炉温再谈成丹，修士的经脉也是同理。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "pill",
+        "shop",
+        "foundation",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_shop_foundation_cauldron_pc98_v1",
+        "image": "assets/combat/cards/card_pill_shop_foundation_cauldron_pc98.png"
+      }
+    },
+    {
+      "id": "pill_shop_golden_dose",
+      "name": "金砂蚀丸",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 2 点伤害，施加 1 层【丹毒】。",
+      "flavor": "金砂裹住毒性，直到撞入经脉才一齐散开。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "shop",
+        "golden",
+        "poison"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_shop_golden_dose_pc98_v1",
+        "image": "assets/combat/cards/card_pill_shop_golden_dose_pc98.png"
+      }
+    },
+    {
+      "id": "pill_shop_nascent_soulpill",
+      "name": "元胎养神丹",
+      "type": "skill",
+      "cost": 2,
+      "description": "恢复 2 点气血与 1 点真元。",
+      "flavor": "丹气先养元胎，再由元胎反哺周身。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 2
+        },
+        {
+          "type": "gain_qi",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "shop",
+        "nascent",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_shop_nascent_soulpill_pc98_v1",
+        "image": "assets/combat/cards/card_pill_shop_nascent_soulpill_pc98.png"
+      }
+    },
+    {
+      "id": "pill_shop_deity_lawmedicine",
+      "name": "药律封脉",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 3 点【护盾】，施加 1 层【丹毒】。",
+      "flavor": "药性依律行走，护己的经脉与攻敌的毒路同时成形。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "shop",
+        "deity",
+        "poison"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_shop_deity_lawmedicine_pc98_v1",
+        "image": "assets/combat/cards/card_pill_shop_deity_lawmedicine_pc98.png"
+      }
+    },
+    {
+      "id": "pill_shop_tribulation_seed",
+      "name": "劫后生机丹",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "恢复 4 点气血。消耗。",
+      "flavor": "一粒丹中封着劫后第一缕草木生机。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "pill",
+        "shop",
+        "tribulation",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_shop_tribulation_seed_pc98_v1",
+        "image": "assets/combat/cards/card_pill_shop_tribulation_seed_pc98.png"
+      }
+    },
+    {
+      "id": "sword_foundation_guard",
+      "name": "筑基剑围",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 3 点【护盾】。",
+      "flavor": "剑气沿筑基灵台绕行一周，自成守势。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "foundation"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_foundation_guard_pc98_v1",
+        "image": "assets/combat/cards/card_sword_foundation_guard_pc98.png"
+      }
+    },
+    {
+      "id": "sword_foundation_sequence",
+      "name": "两仪递剑",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 1 点伤害，抽 1 张牌。",
+      "flavor": "阴阳两式互为起手，一剑自然引出下一剑。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 1
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "foundation",
+        "sequence"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_foundation_sequence_pc98_v1",
+        "image": "assets/combat/cards/card_sword_foundation_sequence_pc98.png"
+      }
+    },
+    {
+      "id": "sword_golden_dance",
+      "name": "丹光剑舞",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，抽 1 张牌。",
+      "flavor": "丹光随剑步流转，旧式落下便接出新式。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "golden",
+        "sequence"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_golden_dance_pc98_v1",
+        "image": "assets/combat/cards/card_sword_golden_dance_pc98.png",
+        "assetClass": "combat_card_scene",
+        "visualWorldId": "cangmang_sect_pc98_v1",
+        "semantic": {
+          "actor": "叶凌云·剑路",
+          "actionFamily": "attack_sequence",
+          "target": "阴阳雷兽",
+          "location": "宗门开阔石庭",
+          "risk": "近身踏入双首夹压",
+          "result": "斩开外肩后接出下一式",
+          "composition": "完整人物与大型雷兽同场，接触点在肩部",
+          "reviewStatus": "candidate_self_qc_pending_runtime_card_composite_and_independent_review",
+          "provenanceId": "agc_n1_sword_golden_dance"
+        },
+        "finalArtApproved": false
+      }
+    },
+    {
+      "id": "sword_golden_guard",
+      "name": "抱丹守锋",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 3 点【护盾】与 1 层【剑意】。",
+      "flavor": "剑锋内敛如抱丹，守成之后势更足。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "golden",
+        "sword_intent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_golden_guard_pc98_v1",
+        "image": "assets/combat/cards/card_sword_golden_guard_pc98.png"
+      }
+    },
+    {
+      "id": "sword_nascent_projection",
+      "name": "元剑离形",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害。",
+      "flavor": "元神御剑离形，锋芒不再受臂长所限。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "nascent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_nascent_projection_pc98_v1",
+        "image": "assets/combat/cards/card_sword_nascent_projection_pc98.png"
+      }
+    },
+    {
+      "id": "sword_nascent_guard",
+      "name": "神念巡剑",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 3 点【护盾】，抽 1 张牌。",
+      "flavor": "神念巡过周身剑路，同时看清下一处破绽。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "nascent",
+        "sequence"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_nascent_guard_pc98_v1",
+        "image": "assets/combat/cards/card_sword_nascent_guard_pc98.png"
+      }
+    },
+    {
+      "id": "sword_deity_domain",
+      "name": "剑域叠锋",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害，获得 2 层【剑意】。",
+      "flavor": "领域中每一道旧剑痕都叠回这一击。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "deity",
+        "sword_intent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_deity_domain_pc98_v1",
+        "image": "assets/combat/cards/card_sword_deity_domain_pc98.png"
+      }
+    },
+    {
+      "id": "sword_deity_guard",
+      "name": "万锋朝护",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 4 点【护盾】，抽 1 张牌。",
+      "flavor": "万锋不只朝敌，也可回首护道。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 4
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "deity",
+        "sequence"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_deity_guard_pc98_v1",
+        "image": "assets/combat/cards/card_sword_deity_guard_pc98.png"
+      }
+    },
+    {
+      "id": "sword_tribulation_thunder",
+      "name": "雷洗剑心",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 4 点伤害，获得 1 层【剑意】。消耗。",
+      "flavor": "借一道劫雷洗剑，也洗去心中迟疑。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        },
+        {
+          "type": "status",
+          "statusId": "sword_intent",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "tribulation",
+        "sword_intent"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_tribulation_thunder_pc98_v1",
+        "image": "assets/combat/cards/card_sword_tribulation_thunder_pc98.png"
+      }
+    },
+    {
+      "id": "sword_tribulation_shelter",
+      "name": "一剑蔽天",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "获得 5 点【护盾】。消耗。",
+      "flavor": "横剑向天，替自己挡下一瞬天威。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 5
+        }
+      ],
+      "tags": [
+        "sword",
+        "reward",
+        "tribulation"
+      ],
+      "cardArt": {
+        "id": "combat_card_sword_tribulation_shelter_pc98_v1",
+        "image": "assets/combat/cards/card_sword_tribulation_shelter_pc98.png"
+      }
+    },
+    {
+      "id": "spell_foundation_ward",
+      "name": "三才护符",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 点【护盾】，凝聚 1 层【法印】。",
+      "flavor": "天地人三才各守一角，符阵由此站稳。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "foundation",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_foundation_ward_pc98_v1",
+        "image": "assets/combat/cards/card_spell_foundation_ward_pc98.png"
+      }
+    },
+    {
+      "id": "spell_foundation_reorder",
+      "name": "倒转符序",
+      "type": "skill",
+      "cost": 1,
+      "description": "抽 2 张牌。",
+      "flavor": "倒转两枚符脚，术式次序便重新排列。",
+      "effects": [
+        {
+          "type": "draw",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "foundation",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_foundation_reorder_pc98_v1",
+        "image": "assets/combat/cards/card_spell_foundation_reorder_pc98.png"
+      }
+    },
+    {
+      "id": "spell_golden_burst",
+      "name": "丹雷骤发",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害。",
+      "flavor": "金丹一震，积蓄的雷意同时迸发。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "golden"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_golden_burst_pc98_v1",
+        "image": "assets/combat/cards/card_spell_golden_burst_pc98.png",
+        "assetClass": "combat_card_scene",
+        "visualWorldId": "cangmang_sect_pc98_v1",
+        "semantic": {
+          "actor": "叶凌云·符路",
+          "actionFamily": "single_seal_interrupt",
+          "target": "阴阳雷兽",
+          "location": "宗门开阔石庭",
+          "risk": "在两极雷息合拢前出符",
+          "result": "单枚纸符截断阴阳交汇",
+          "composition": "小尺度纸符对应大尺度敌人，强调时机而非特效面积",
+          "reviewStatus": "candidate_self_qc_pending_runtime_card_composite_and_independent_review",
+          "provenanceId": "agc_n1_spell_golden_burst"
+        },
+        "finalArtApproved": false
+      }
+    },
+    {
+      "id": "spell_golden_cycle",
+      "name": "周天法环",
+      "type": "skill",
+      "cost": 2,
+      "description": "抽 2 张牌，凝聚 1 层【法印】。",
+      "flavor": "法环转满一周，散乱术式重新归列。",
+      "effects": [
+        {
+          "type": "draw",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "golden",
+        "spell_seal",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_golden_cycle_pc98_v1",
+        "image": "assets/combat/cards/card_spell_golden_cycle_pc98.png"
+      }
+    },
+    {
+      "id": "spell_nascent_ward",
+      "name": "元神法壁",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 4 点【护盾】。",
+      "flavor": "元神念起，四壁法纹同时亮起。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "nascent"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_nascent_ward_pc98_v1",
+        "image": "assets/combat/cards/card_spell_nascent_ward_pc98.png"
+      }
+    },
+    {
+      "id": "spell_nascent_formula",
+      "name": "双印演式",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，凝聚 2 层【法印】。",
+      "flavor": "两枚法印互相演算，雷式从答案中诞生。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "statusId": "spell_seal",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "nascent",
+        "spell_seal"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_nascent_formula_pc98_v1",
+        "image": "assets/combat/cards/card_spell_nascent_formula_pc98.png"
+      }
+    },
+    {
+      "id": "spell_deity_thunder",
+      "name": "神念落雷",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 4 点伤害。",
+      "flavor": "念头落在哪里，雷便落在哪里。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "deity"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_deity_thunder_pc98_v1",
+        "image": "assets/combat/cards/card_spell_deity_thunder_pc98.png"
+      }
+    },
+    {
+      "id": "spell_deity_rewrite",
+      "name": "改律换章",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 2 点【护盾】，抽 2 张牌。",
+      "flavor": "改写一行法则，眼前术式便有了新的篇章。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "draw",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "deity",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_deity_rewrite_pc98_v1",
+        "image": "assets/combat/cards/card_spell_deity_rewrite_pc98.png"
+      }
+    },
+    {
+      "id": "spell_tribulation_ward",
+      "name": "雷狱护界",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "获得 5 点【护盾】。消耗。",
+      "flavor": "以雷为狱，外敌与天劫一并隔在界外。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 5
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "tribulation"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_tribulation_ward_pc98_v1",
+        "image": "assets/combat/cards/card_spell_tribulation_ward_pc98.png"
+      }
+    },
+    {
+      "id": "spell_tribulation_recall",
+      "name": "万符归卷",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "抽 3 张牌。消耗。",
+      "flavor": "散在劫云中的万符一齐归入卷中。",
+      "effects": [
+        {
+          "type": "draw",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "spell",
+        "reward",
+        "tribulation",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_spell_tribulation_recall_pc98_v1",
+        "image": "assets/combat/cards/card_spell_tribulation_recall_pc98.png"
+      }
+    },
+    {
+      "id": "body_foundation_shoulder",
+      "name": "靠山铁肩",
+      "type": "attack",
+      "cost": 1,
+      "description": "造成 2 点伤害，获得 1 点【护盾】。",
+      "flavor": "肩背如靠山，撞出去也不失自身架势。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "block",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "foundation",
+        "counter"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_foundation_shoulder_pc98_v1",
+        "image": "assets/combat/cards/card_body_foundation_shoulder_pc98.png"
+      }
+    },
+    {
+      "id": "body_foundation_recover",
+      "name": "换息归元",
+      "type": "skill",
+      "cost": 1,
+      "description": "恢复 2 点气血。",
+      "flavor": "换一口长息，筋骨里的淤伤随吐气散去。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "foundation"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_foundation_recover_pc98_v1",
+        "image": "assets/combat/cards/card_body_foundation_recover_pc98.png"
+      }
+    },
+    {
+      "id": "body_golden_guard",
+      "name": "金身闭架",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 4 点【护盾】。",
+      "flavor": "金丹气血闭成一架，针锋也难透入。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "golden",
+        "fortify"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_golden_guard_pc98_v1",
+        "image": "assets/combat/cards/card_body_golden_guard_pc98.png"
+      }
+    },
+    {
+      "id": "body_golden_counter",
+      "name": "丹劲回崩",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害，获得 1 点【护盾】。",
+      "flavor": "丹劲受压后骤然回崩，敌我之间再无空隙。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        },
+        {
+          "type": "block",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "golden",
+        "counter"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_golden_counter_pc98_v1",
+        "image": "assets/combat/cards/card_body_golden_counter_pc98.png",
+        "assetClass": "combat_card_scene",
+        "visualWorldId": "cangmang_sect_pc98_v1",
+        "semantic": {
+          "actor": "叶凌云·体路",
+          "actionFamily": "shoulder_force_redirect",
+          "target": "阴阳雷兽",
+          "location": "宗门开阔石庭",
+          "risk": "以低重心承接横向冲压",
+          "result": "借地面反力把对方肩线带偏",
+          "composition": "人体不放大，通过髋膝和地面支撑读出力量",
+          "reviewStatus": "candidate_self_qc_pending_runtime_card_composite_and_independent_review",
+          "provenanceId": "agc_n1_body_golden_counter"
+        },
+        "finalArtApproved": false
+      }
+    },
+    {
+      "id": "body_nascent_frame",
+      "name": "元胎金架",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 4 点【护盾】与 1 层【金刚劲】。",
+      "flavor": "元胎与骨架重合，守势再无薄处。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 4
+        },
+        {
+          "type": "status",
+          "statusId": "fortify",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "nascent",
+        "fortify"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_nascent_frame_pc98_v1",
+        "image": "assets/combat/cards/card_body_nascent_frame_pc98.png"
+      }
+    },
+    {
+      "id": "body_nascent_breath",
+      "name": "胎息复体",
+      "type": "skill",
+      "cost": 2,
+      "description": "恢复 3 点气血。",
+      "flavor": "元胎吐纳一次，肉身旧损便合上一层。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "nascent"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_nascent_breath_pc98_v1",
+        "image": "assets/combat/cards/card_body_nascent_breath_pc98.png"
+      }
+    },
+    {
+      "id": "body_deity_strike",
+      "name": "法身开碑",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 4 点伤害。",
+      "flavor": "法身抬掌，虚空也像石碑一样裂开。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "deity"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_deity_strike_pc98_v1",
+        "image": "assets/combat/cards/card_body_deity_strike_pc98.png"
+      }
+    },
+    {
+      "id": "body_deity_rebound",
+      "name": "领域回震",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害，获得 3 点【护盾】。",
+      "flavor": "领域吞下来势，再从四面八方同时震回。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        },
+        {
+          "type": "block",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "deity",
+        "counter"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_deity_rebound_pc98_v1",
+        "image": "assets/combat/cards/card_body_deity_rebound_pc98.png"
+      }
+    },
+    {
+      "id": "body_tribulation_guard",
+      "name": "劫雷锻甲",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "获得 5 点【护盾】。消耗。",
+      "flavor": "劫雷只落一次，留下的雷甲却足以挡住天威。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 5
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "tribulation",
+        "fortify"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_tribulation_guard_pc98_v1",
+        "image": "assets/combat/cards/card_body_tribulation_guard_pc98.png"
+      }
+    },
+    {
+      "id": "body_tribulation_recover",
+      "name": "破而后立",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "恢复 4 点气血，获得 2 点【护盾】。消耗。",
+      "flavor": "先让旧骨尽碎，再以劫后血气重立新身。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 4
+        },
+        {
+          "type": "block",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "body",
+        "reward",
+        "tribulation"
+      ],
+      "cardArt": {
+        "id": "combat_card_body_tribulation_recover_pc98_v1",
+        "image": "assets/combat/cards/card_body_tribulation_recover_pc98.png"
+      }
+    },
+    {
+      "id": "pill_foundation_guard",
+      "name": "药衣护脉",
+      "type": "skill",
+      "cost": 1,
+      "description": "获得 2 点【护盾】，恢复 1 点气血。",
+      "flavor": "药衣覆住经脉，既隔外力也润旧伤。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 2
+        },
+        {
+          "type": "heal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "foundation",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_foundation_guard_pc98_v1",
+        "image": "assets/combat/cards/card_pill_foundation_guard_pc98.png"
+      }
+    },
+    {
+      "id": "pill_foundation_recycle",
+      "name": "余火回炉",
+      "type": "skill",
+      "cost": 1,
+      "description": "恢复 1 点真元，抽 1 张牌。",
+      "flavor": "余火不弃，回炉后还能催开下一味药。",
+      "effects": [
+        {
+          "type": "gain_qi",
+          "value": 1
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "foundation",
+        "recycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_foundation_recycle_pc98_v1",
+        "image": "assets/combat/cards/card_pill_foundation_recycle_pc98.png"
+      }
+    },
+    {
+      "id": "pill_golden_poison",
+      "name": "金砂化毒",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 2 点伤害，施加 2 层【丹毒】。",
+      "flavor": "金砂封毒入体，待灵气运转时才骤然化开。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "golden",
+        "poison"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_golden_poison_pc98_v1",
+        "image": "assets/combat/cards/card_pill_golden_poison_pc98.png",
+        "assetClass": "combat_card_scene",
+        "visualWorldId": "cangmang_sect_pc98_v1",
+        "semantic": {
+          "actor": "叶凌云·丹路",
+          "actionFamily": "single_pellet_throw",
+          "target": "离炉真火",
+          "location": "炉边勤务台",
+          "risk": "迎着火尾横移轨迹投掷",
+          "result": "一颗金砂丸进入小型火核",
+          "composition": "人物明显高于小火灵，丸药路径连接两者",
+          "reviewStatus": "candidate_self_qc_pending_runtime_card_composite_and_independent_review",
+          "provenanceId": "agc_n1_pill_golden_poison"
+        },
+        "finalArtApproved": false
+      }
+    },
+    {
+      "id": "pill_golden_recover",
+      "name": "抱丹养息",
+      "type": "skill",
+      "cost": 2,
+      "description": "恢复 3 点气血。",
+      "flavor": "药气绕金丹一周，伤处便得一轮温养。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 3
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "golden",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_golden_recover_pc98_v1",
+        "image": "assets/combat/cards/card_pill_golden_recover_pc98.png"
+      }
+    },
+    {
+      "id": "pill_nascent_guard",
+      "name": "元胎药衣",
+      "type": "skill",
+      "cost": 2,
+      "description": "获得 3 点【护盾】，恢复 1 点气血。",
+      "flavor": "元胎吐出一层药衣，内养外护。",
+      "effects": [
+        {
+          "type": "block",
+          "value": 3
+        },
+        {
+          "type": "heal",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "nascent",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_nascent_guard_pc98_v1",
+        "image": "assets/combat/cards/card_pill_nascent_guard_pc98.png"
+      }
+    },
+    {
+      "id": "pill_nascent_catalyst",
+      "name": "神识催毒",
+      "type": "skill",
+      "cost": 2,
+      "description": "施加 2 层【丹毒】，抽 1 张牌。",
+      "flavor": "神识轻拨药性，毒发时机与下一炉同时到来。",
+      "effects": [
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 2
+        },
+        {
+          "type": "draw",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "nascent",
+        "poison",
+        "cycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_nascent_catalyst_pc98_v1",
+        "image": "assets/combat/cards/card_pill_nascent_catalyst_pc98.png"
+      }
+    },
+    {
+      "id": "pill_deity_elixir",
+      "name": "化神生息丹",
+      "type": "skill",
+      "cost": 2,
+      "description": "恢复 4 点气血。",
+      "flavor": "丹中生机自成周天，一息便能走遍法身。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 4
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "deity",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_deity_elixir_pc98_v1",
+        "image": "assets/combat/cards/card_pill_deity_elixir_pc98.png"
+      }
+    },
+    {
+      "id": "pill_deity_poison",
+      "name": "药域蚀骨",
+      "type": "attack",
+      "cost": 2,
+      "description": "造成 3 点伤害，施加 2 层【丹毒】。",
+      "flavor": "领域内每一缕灵气都被调成蚀骨药性。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 3
+        },
+        {
+          "type": "status",
+          "target": "enemy",
+          "statusId": "poison",
+          "value": 2
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "deity",
+        "poison"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_deity_poison_pc98_v1",
+        "image": "assets/combat/cards/card_pill_deity_poison_pc98.png"
+      }
+    },
+    {
+      "id": "pill_tribulation_rebirth",
+      "name": "劫尽回生丹",
+      "type": "skill",
+      "cost": 2,
+      "exhaust": true,
+      "description": "恢复 5 点气血。消耗。",
+      "flavor": "丹壳裂开时，劫后生机只够回生一次。",
+      "effects": [
+        {
+          "type": "heal",
+          "value": 5
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "tribulation",
+        "elixir"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_tribulation_rebirth_pc98_v1",
+        "image": "assets/combat/cards/card_pill_tribulation_rebirth_pc98.png"
+      }
+    },
+    {
+      "id": "pill_tribulation_ash",
+      "name": "天火药灰",
+      "type": "attack",
+      "cost": 2,
+      "exhaust": true,
+      "description": "造成 4 点伤害，恢复 1 点真元。消耗。",
+      "flavor": "天火烧尽药材，余灰仍能榨出最后一缕灵机。",
+      "effects": [
+        {
+          "type": "damage",
+          "value": 4
+        },
+        {
+          "type": "gain_qi",
+          "value": 1
+        }
+      ],
+      "tags": [
+        "pill",
+        "reward",
+        "tribulation",
+        "recycle"
+      ],
+      "cardArt": {
+        "id": "combat_card_pill_tribulation_ash_pc98_v1",
+        "image": "assets/combat/cards/card_pill_tribulation_ash_pc98.png"
+      }
+    }
+  ],
+  "enemies": [
+    {
+      "id": "enemy_normal",
+      "name": "普通散修",
+      "randomIntents": true,
+      "intents": [
+        {
+          "type": "attack",
+          "value": 1,
+          "desc": "意图：攻击 (1点伤害)",
+          "actionName": "捏出几张低阶符箓，朝你砸来"
+        },
+        {
+          "type": "defend",
+          "value": 1,
+          "desc": "意图：防御 (获得1点护盾)",
+          "actionName": "祭出一面灵光黯淡的龟壳法器"
+        }
+      ]
+    },
+    {
+      "id": "enemy_charging",
+      "name": "蓄力凶兽",
+      "intents": [
+        {
+          "type": "buff",
+          "desc": "意图：蓄力 (无动作)",
+          "actionName": "喉咙深处发出沉闷的低吼，妖力涌动"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "意图：猛扑 (2点伤害)",
+          "actionName": "化作一道腥风，亮出利爪撕咬而来"
+        }
+      ]
+    },
+    {
+      "id": "enemy_sword",
+      "name": "跨界神念化身",
+      "intents": [
+        {
+          "type": "buff",
+          "statusId": "sword_intent",
+          "value": 1,
+          "desc": "意图：凝剑 (获得1层剑意)",
+          "actionName": "虚影并指成剑，恐怖的杀机锁定了你"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "意图：连斩 (2点基础伤害)",
+          "actionName": "漫天剑影如天河倾泻，镇杀而下"
+        }
+      ]
+    },
+    {
+      "id": "seductress",
+      "name": "合欢宗妖女",
+      "randomIntents": true,
+      "intents": [
+        {
+          "type": "debuff",
+          "statusId": "weak",
+          "value": 1,
+          "desc": "意图：魅惑 (施加1层虚弱)",
+          "actionName": "妖女眼波流转，娇喘微微，粉色雾气蔓延"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "意图：吸血 (2点伤害)",
+          "actionName": "袖中飞出猩红长绫，缠住你汲取气血"
+        }
+      ]
+    },
+    {
+      "id": "sword_elder",
+      "name": "剑修长者",
+      "intents": [
+        {
+          "type": "buff",
+          "statusId": "sword_intent",
+          "value": 1,
+          "desc": "意图：凝剑 (获得1层剑意)",
+          "actionName": "老者闭目，身边古剑铮铮作响，剑气冲霄"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "意图：破空斩 (2点基础伤害)",
+          "actionName": "并指如剑，一道十丈剑芒凌空劈落！"
+        }
+      ]
+    },
+    {
+      "id": "demon_beast",
+      "name": "狂暴妖兽",
+      "intents": [
+        {
+          "condition": {
+            "type": "hp_below",
+            "value": 0.5
+          },
+          "type": "buff",
+          "statusId": "fortify",
+          "value": 2,
+          "desc": "意图：狂暴 (获得2层金刚劲)",
+          "actionName": "妖兽血流如注，彻底狂化，浑身肌肉硬如精铁！"
+        },
+        {
+          "type": "debuff",
+          "statusId": "vulnerable",
+          "value": 1,
+          "desc": "意图：震慑 (施加1层易伤)",
+          "actionName": "妖兽仰天怒吼，震耳欲聋，令你心神失守"
+        },
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "意图：撕咬 (3点重击)",
+          "actionName": "化作腥风扑来，血盆大口猛然咬下！"
+        }
+      ]
+    },
+    {
+      "id": "enemy_qi_tribulation",
+      "planGraph": {
+        "planId": "qi_thunder_gate_judgment_v1",
+        "initialState": "WARNING",
+        "states": {
+          "WARNING": {
+            "label": "雷纹警示",
+            "cue": "石傀正在衡量你还保留多少真元。",
+            "intent": {
+              "type": "attack",
+              "value": 1,
+              "desc": "试雷：造成1点伤害",
+              "actionName": "第一道雷纹落下，逼你决定是留力还是抢攻"
+            }
+          },
+          "JUDGMENT": {
+            "label": "留力审判",
+            "cue": "你保留的真元被雷纹锁定，下一击将检验防线。",
+            "intent": {
+              "type": "attack",
+              "value": 2,
+              "desc": "审雷：造成2点伤害",
+              "actionName": "石傀读出你蓄而未发的真元，以紫电逼迫你正面应对"
+            }
+          },
+          "TEMPEST": {
+            "label": "竭元雷暴",
+            "cue": "你本回合出牌过密，雷暴正追着空档压来。",
+            "intent": {
+              "type": "attack",
+              "value": 3,
+              "desc": "雷暴：造成3点伤害",
+              "actionName": "真元空档暴露，三道雷纹同时亮起并轰向你的退路"
+            }
+          },
+          "GROUNDED": {
+            "label": "雷势接地",
+            "cue": "偏斩改变了导雷方向，石傀必须重新聚势。",
+            "intent": {
+              "type": "defend",
+              "value": 1,
+              "desc": "接地回气：获得1点护盾",
+              "actionName": "失衡雷光被导入地面，石傀收束雷纹重整回路"
+            }
+          }
+        },
+        "transitions": [
+          {
+            "from": "WARNING",
+            "when": "player_reserved_resource",
+            "to": "JUDGMENT",
+            "maxCards": 1,
+            "minReservedQi": 2
+          },
+          {
+            "from": "WARNING",
+            "when": "player_overcommitted",
+            "to": "TEMPEST",
+            "minCards": 2,
+            "maxReservedQi": 1
+          },
+          {
+            "from": [
+              "WARNING",
+              "JUDGMENT",
+              "TEMPEST"
+            ],
+            "when": "deflected",
+            "to": "GROUNDED"
+          },
+          {
+            "from": "JUDGMENT",
+            "when": "action_resolved",
+            "to": "WARNING"
+          },
+          {
+            "from": "TEMPEST",
+            "when": "action_resolved",
+            "to": "WARNING"
+          },
+          {
+            "from": "GROUNDED",
+            "when": "action_resolved",
+            "to": "WARNING"
+          }
+        ]
+      },
+      "name": "筑基雷劫",
+      "intents": [
+        {
+          "type": "attack",
+          "value": 1,
+          "desc": "意图：天雷 (1点伤害)",
+          "actionName": "九天玄雷在虚空中轰鸣积聚，雷光当头劈下！"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "意图：紫电 (2点伤害)",
+          "actionName": "劫云翻滚，第二道紫电狂奔而来！"
+        },
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "意图：雷龙 (3点伤害)",
+          "actionName": "雷霆狂啸，第三道天雷化为龙形直扑天灵！"
+        }
+      ]
+    },
+    {
+      "id": "enemy_foundation_demon",
+      "name": "金丹心魔",
+      "intents": [
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "意图：低语 (2点精神伤害)",
+          "actionName": "心魔化作你的面容，低语心神杂念，令你识海剧痛！"
+        },
+        {
+          "type": "defend",
+          "value": 2,
+          "desc": "意图：心防 (获得2点护盾)",
+          "actionName": "心魔化作尘封的痛苦记忆，化为坚固的心盾。"
+        },
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "意图：震爆 (3点精神伤害)",
+          "actionName": "心魔狂笑：'你所坚信的正道，不过是欺骗！'，幻象震爆！"
+        }
+      ]
+    },
+    {
+      "id": "enemy_golden_tribulation",
+      "name": "元婴天劫",
+      "intents": [
+        {
+          "type": "attack",
+          "value": 2,
+          "multiplier": 2,
+          "desc": "意图：阳雷 (双倍伤害且被防)",
+          "actionName": "阴阳相生，九霄阳雷化作白光直坠！"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "piercing": true,
+          "desc": "意图：阴雷 (穿透护盾)",
+          "actionName": "五行逆转，九霄阴雷无形穿透，直击元神！"
+        }
+      ]
+    },
+    {
+      "id": "enemy_nascent_tribulation",
+      "name": "化神雷罚",
+      "intents": [
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "意图：劫光 (3点伤害)",
+          "actionName": "虚空开裂，天道劫光自裂缝中激射而出！"
+        },
+        {
+          "type": "buff",
+          "statusId": "sword_intent",
+          "value": 2,
+          "desc": "意图：聚雷 (蓄力积蓄)",
+          "actionName": "天道锁定你的气机，虚空雷云狂暴积蓄！"
+        }
+      ]
+    },
+    {
+      "id": "enemy_deity_tribulation",
+      "name": "九重天劫",
+      "intents": [
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "意图：紫金雷龙 (3点基础伤害)",
+          "actionName": "九重雷劫化作紫金雷龙，排山倒海般砸落！"
+        },
+        {
+          "type": "defend",
+          "value": 3,
+          "desc": "意图：屏障 (获得3点护盾)",
+          "actionName": "天威浩荡，劫气凝聚为无形的天道屏障。"
+        },
+        {
+          "type": "attack",
+          "value": 4,
+          "desc": "意图：因果反噬 (4点基础伤害)",
+          "actionName": "劫运清算，无穷因果反噬之雷横扫识海！"
+        }
+      ]
+    },
+    {
+      "id": "enemy_tribulation_finale",
+      "name": "飞升天劫",
+      "intents": [
+        {
+          "type": "attack",
+          "value": 4,
+          "desc": "意图：秩序劫雷 (4点伤害)",
+          "actionName": "天道秩序显化，九九归一之劫当空爆裂！"
+        },
+        {
+          "type": "buff",
+          "statusId": "sword_intent",
+          "value": 3,
+          "desc": "意图：法则天威 (蓄力积蓄)",
+          "actionName": "天门大开，秩序法则交织，天威暴涨！"
+        },
+        {
+          "type": "attack",
+          "value": 5,
+          "desc": "意图：终极神雷 (5点伤害)",
+          "actionName": "飞升或陨落，最后的天雷轰然降临，淹没一切！"
+        }
+      ]
+    },
+    {
+      "id": "hound_pack_qi",
+      "name": "猎狗群",
+      "intents": [
+        {
+          "type": "debuff",
+          "statusId": "weak",
+          "value": 1,
+          "desc": "狂吠：施加1层虚弱",
+          "actionName": "猎狗群绕着你狂吠，试图扰乱你的气息"
+        },
+        {
+          "type": "attack",
+          "value": 1,
+          "desc": "扑咬：造成1点伤害",
+          "actionName": "一条猎狗压低身形，突然扑向你的手臂"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "围猎：造成2点伤害",
+          "actionName": "猎狗从两侧同时夹击，封住你的退路"
+        }
+      ]
+    },
+    {
+      "id": "sect_sparring_qi",
+      "name": "同门师兄",
+      "intents": [
+        {
+          "type": "buff",
+          "statusId": "sword_intent",
+          "value": 1,
+          "desc": "凝势：获得1层剑意",
+          "actionName": "师兄横剑凝神，剑锋上的青光渐渐连成一线"
+        },
+        {
+          "type": "attack",
+          "value": 1,
+          "desc": "疾风剑：造成1点伤害",
+          "actionName": "剑影点到即止，却仍逼得你气血翻涌"
+        }
+      ]
+    },
+    {
+      "id": "blazing_tiger_foundation",
+      "name": "妖兽·烈焰虎",
+      "intents": [
+        {
+          "type": "debuff",
+          "statusId": "vulnerable",
+          "value": 1,
+          "desc": "焰吼：施加1层易伤",
+          "actionName": "烈焰虎的咆哮裹着灼热灵压，震散你的护体气机"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "火爪：造成2点伤害",
+          "actionName": "燃烧的前爪撕开夜色，向你的肩头猛拍而下"
+        },
+        {
+          "condition": {
+            "type": "hp_below",
+            "value": 0.5
+          },
+          "type": "buff",
+          "statusId": "fortify",
+          "value": 1,
+          "desc": "负伤狂怒：获得1层金刚劲",
+          "actionName": "鲜血滴在焦土上，烈焰虎伏低身形，皮毛间火光暴涨"
+        }
+      ]
+    },
+    {
+      "id": "nascent_soul_hunter",
+      "name": "邪修·噬婴道人",
+      "intents": [
+        {
+          "type": "debuff",
+          "statusId": "weak",
+          "value": 1,
+          "desc": "摄魂幡：施加1层虚弱",
+          "actionName": "黑幡展开，无数破碎神念缠向你丹田中的元婴"
+        },
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "夺魄：造成3点伤害",
+          "actionName": "邪修五指成爪，隔空抓向你的识海与元婴"
+        },
+        {
+          "type": "defend",
+          "value": 2,
+          "desc": "魂幕：获得2点护盾",
+          "actionName": "摄魂幡卷回身前，化作一层哀嚎不止的黑色魂幕"
+        }
+      ]
+    },
+    {
+      "id": "resentment_shadow_qi",
+      "name": "怨念之影",
+      "intents": [
+        {
+          "type": "debuff",
+          "statusId": "weak",
+          "value": 1,
+          "desc": "旧日低语：施加1层虚弱",
+          "actionName": "黑雾里反复响起被逐那日的斥责，扰乱你的呼吸与剑心"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "怨潮扑身：造成2点伤害",
+          "actionName": "三十年的怨恨凝成浪潮，从石壁四面向你压来"
+        },
+        {
+          "type": "defend",
+          "value": 1,
+          "desc": "执念回环：获得1点护盾",
+          "actionName": "怨念蜷回最后一段记忆，拒绝相信师门从未真正放弃他"
+        }
+      ]
+    },
+    {
+      "id": "sword_intent_avatar_qi",
+      "name": "剑意化身",
+      "intents": [
+        {
+          "type": "buff",
+          "statusId": "sword_intent",
+          "value": 1,
+          "desc": "古剑凝鸣：获得1层剑意",
+          "actionName": "七柄古剑同时震鸣，锋芒汇入化身掌中的无形之剑"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "问心一斩：造成2点伤害",
+          "actionName": "没有花巧的一剑迎面斩下，剑光里只剩你持剑的初衷"
+        }
+      ]
+    },
+    {
+      "id": "tomb_guardian_nascent",
+      "name": "守墓之灵",
+      "intents": [
+        {
+          "type": "buff",
+          "statusId": "sword_intent",
+          "value": 2,
+          "desc": "残剑蓄势：获得2层剑意",
+          "actionName": "残剑离鞘半寸，八千年未散的剑意重新汇聚"
+        },
+        {
+          "type": "defend",
+          "value": 2,
+          "desc": "古墓剑幕：获得2点护盾",
+          "actionName": "洞府残存的剑痕升起，在守墓神念前交织成幕"
+        },
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "万古剑意：造成3点伤害并释放剑意",
+          "actionName": "八千年的等待凝成一剑，沿着洞府中轴向你落下"
+        }
+      ]
+    },
+    {
+      "id": "immortal_shadow_tribulation",
+      "name": "仙人残影",
+      "intents": [
+        {
+          "type": "defend",
+          "value": 3,
+          "desc": "法则屏障：获得3点护盾",
+          "actionName": "仙界符文在残影周身排列，凡间灵力被无声排斥"
+        },
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "秩序剑光：造成3点伤害",
+          "actionName": "一道笔直剑光划开试炼场，像法则本身裁定你的去留"
+        },
+        {
+          "type": "attack",
+          "value": 5,
+          "desc": "仙陨余辉：造成5点伤害",
+          "actionName": "残影燃烧最后的仙灵之光，陨落前的一击跨越岁月重现"
+        }
+      ]
+    },
+    {
+      "id": "trial_aggressor_qi",
+      "planGraph": {
+        "planId": "swift_dummy_pressure_v2",
+        "initialState": "PROBE",
+        "states": {
+          "PROBE": {
+            "label": "试探",
+            "cue": "木人等你先暴露本回合的出牌节奏。",
+            "intent": {
+              "type": "attack",
+              "value": 4,
+              "desc": "试锋：造成4点伤害",
+              "actionName": "试锋灵抢先压近，以短促灵刃迫你立刻回应"
+            }
+          },
+          "PRESSURE": {
+            "label": "追身压迫",
+            "cue": "你连续耗费真元，木人已经抓住攻势后的空档。",
+            "intent": {
+              "type": "attack",
+              "value": 3,
+              "desc": "追身：造成3点伤害",
+              "actionName": "前一击尚未散去，第二道灵刃已经封住退路"
+            }
+          },
+          "RECOVER": {
+            "label": "回气观望",
+            "cue": "你没有贸然耗尽真元，木人暂时收势重整。",
+            "intent": {
+              "type": "defend",
+              "value": 1,
+              "desc": "回气：获得1点护盾",
+              "actionName": "试锋灵短暂收势，以薄盾重整下一轮节奏"
+            }
+          },
+          "BROKEN": {
+            "label": "破势失衡",
+            "cue": "偏斩打乱追身轨迹，这是明确的反攻窗口。",
+            "intent": {
+              "type": "defend",
+              "value": 1,
+              "desc": "破势回气：获得1点护盾",
+              "actionName": "灵刃被带离中线，试锋灵失衡后只能收锋回气"
+            }
+          }
+        },
+        "transitions": [
+          {
+            "from": "PROBE",
+            "when": "player_overcommitted",
+            "to": "PRESSURE",
+            "minCards": 2,
+            "maxReservedQi": 1
+          },
+          {
+            "from": "PROBE",
+            "when": "repeated_card_type",
+            "to": "PRESSURE",
+            "minConsecutive": 2
+          },
+          {
+            "from": "PROBE",
+            "when": "player_reserved_resource",
+            "to": "RECOVER",
+            "maxCards": 0,
+            "minReservedQi": 2
+          },
+          {
+            "from": [
+              "PROBE",
+              "PRESSURE"
+            ],
+            "when": "deflected",
+            "to": "BROKEN"
+          },
+          {
+            "from": "PRESSURE",
+            "when": "action_resolved",
+            "to": "RECOVER"
+          },
+          {
+            "from": "RECOVER",
+            "when": "action_resolved",
+            "to": "PROBE"
+          },
+          {
+            "from": "BROKEN",
+            "when": "action_resolved",
+            "to": "PROBE"
+          }
+        ]
+      },
+      "name": "炼气试锋灵",
+      "intents": [
+        {
+          "type": "attack",
+          "value": 4,
+          "desc": "试锋：造成4点伤害",
+          "actionName": "试锋灵抢先压近，以短促灵刃迫你立刻回应"
+        },
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "追身：造成3点伤害",
+          "actionName": "前一击尚未散去，第二道灵刃已经封住退路"
+        },
+        {
+          "type": "defend",
+          "value": 1,
+          "desc": "回气：获得1点护盾",
+          "actionName": "试锋灵短暂收势，以薄盾重整下一轮节奏"
+        }
+      ]
+    }
+  ]
+}

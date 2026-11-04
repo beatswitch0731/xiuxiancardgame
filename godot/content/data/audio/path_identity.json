@@ -1,0 +1,398 @@
+{
+  "contractId": "path_audio_identity_v1",
+  "version": 1,
+  "batch": {
+    "id": "AGC-GDD-AUDIO-B5A",
+    "paths": ["sword", "spell"],
+    "outOfScopePaths": ["body", "pill"],
+    "reviewStatus": "runtime_and_independent_audio_audit_verified"
+  },
+  "expansions": [
+    { "id": "H2-ISSUE-15", "paths": ["body", "pill"], "production": "six derivative semantic SFX and two KokoClone oath sources", "reviewStatus": "pending_independent_audit" }
+  ],
+  "currentCoverage": ["sword", "spell", "body", "pill"],
+  "assetRoot": "assets/audio/",
+  "provenanceManifest": "assets/audio/provenance/gdd_b5a_audio_identity/manifest.json",
+  "folderTaxonomy": {
+    "bgm": "bgm/{01-04}_{state_task_scene}/",
+    "sfx": "sfx/path/{path}/{01-03}_{semantic_phase}/",
+    "voice": "voice/path/{path}/01_path_oath/",
+    "raw": "provenance/gdd_b5a_audio_identity/raw/",
+    "numberingRule": "BGM-01..04 are global state layers; SFX-SW/SP-01..03 are path semantic phases; VO-SW/SP-01 is the same protagonist's path oath"
+  },
+  "generation": {
+    "music": {
+      "model": "ACE-Step-1.5/acestep-v15-turbo",
+      "license": "MIT",
+      "source": "https://github.com/ace-step/ACE-Step-1.5",
+      "modelRole": "historical creative brief and original candidates; these are not the four current runtime BGM files",
+      "currentRuntimeProvenance": "assets/audio/AUDIO_ATTRIBUTION.md",
+      "execution": "remote Kaggle Notebooks free Tesla T4 session only; no model inference on the player's workstation",
+      "remoteKernel": "rust11/xiuxian-b5a-free-audio",
+      "remoteHardware": "Tesla T4",
+      "providerCostUsd": 0,
+      "generationStatus": "original_candidates_superseded_by_cc_by_recordings_2026_10_11",
+      "disclosure": "AI-generated candidate audio; no named artist imitation and no third-party reference audio"
+    },
+    "voice": {
+      "model": "KokoClone with Kokoro-ONNX multilingual TTS and Kanade voice conversion",
+      "license": "Apache-2.0",
+      "source": "https://github.com/Ashish-Patnaik/kokoclone",
+      "remoteSpace": "PatnaikAshish/kokoclone@3831cc884a481f6e138797e039d60ecd1654c5ec",
+      "execution": "remote Hugging Face cpu-basic Space; no model inference on the player's workstation",
+      "speakerId": "synthetic_reference_zm_010",
+      "speakerReference": "https://huggingface.co/hexgrad/Kokoro-82M-v1.1-zh/resolve/main/samples/HEARME_zm_010.wav",
+      "speakerReferenceSha256": "ad91efa1ee712fa91e7577c9676114654fe22a8a5d93e0b254f79fe3b510a589",
+      "modelRole": "Mandarin protagonist candidate voice transferred from Kokoro's own synthetic zm_010 sample",
+      "disclosure": "AI-generated candidate voice; the reference is a model-provided synthetic sample, not a real person or actor"
+    },
+    "processing": {
+      "creativeBoundary": "models create audible content; deterministic tools only trim, crossfade, normalize, validate, hash and export",
+      "runtimeFormat": "PCM WAV, 16-bit, 24k-48kHz, mono for voice/SFX and stereo for BGM where the source supports it",
+      "loudnessTargets": {
+        "bgmPeakDbfs": -3,
+        "sfxPeakDbfs": -2,
+        "voicePeakDbfs": -3
+      }
+    }
+  },
+  "openingSoundscapes": {
+    "cardMap": {
+      "tutorial_1": "mountain_reading", "tutorial_2": "mountain_reading",
+      "tutorial_3": "mountain_reading", "tutorial_4": "mountain_reading",
+      "q_start_sword": "sword_pool", "q_start_spell": "heaven_observatory",
+      "q_start_body": "thunderfall", "q_start_pill": "alchemical_furnace"
+    },
+    "scenes": {
+      "mountain_reading": {
+        "place": "山门外·初入仙途", "musicId": "bgm_sect", "musicGain": 0.62,
+        "ambience": { "runtime": { "id": "amb_mountain_wind", "path": "ambience/opening/mountain_wind.ogg", "bus": "ambience", "loop": true, "volume": 0.35 } }
+      },
+      "sword_pool": {
+        "place": "浮云山·断剑池", "musicId": "bgm_sect", "musicGain": 0.36, "voicePath": "sword",
+        "ambience": { "runtime": { "id": "amb_sword_pool_wind", "path": "ambience/opening/mountain_wind.ogg", "bus": "ambience", "loop": true, "volume": 0.48 } }
+      },
+      "heaven_observatory": {
+        "place": "观天台·远雷", "musicId": "bgm_sect", "musicGain": 0.30, "voicePath": "spell",
+        "ambience": { "runtime": { "id": "amb_observatory_thunder", "path": "ambience/opening/distant_thunder.wav", "bus": "ambience", "loop": true, "volume": 0.23 } }
+      },
+      "thunderfall": {
+        "place": "雷音瀑布", "musicId": "bgm_sect", "musicGain": 0.30, "voicePath": "body",
+        "ambience": { "runtime": { "id": "amb_thunderfall_water", "path": "ambience/opening/waterfall_field.ogg", "bus": "ambience", "loop": true, "volume": 0.32 } }
+      },
+      "alchemical_furnace": {
+        "place": "丹房·起炉", "musicId": "bgm_sect", "musicGain": 0.36, "voicePath": "pill",
+        "ambience": { "runtime": { "id": "amb_alchemical_fire", "path": "ambience/opening/alchemical_fire.ogg", "bus": "ambience", "loop": true, "volume": 0.23 } }
+      }
+    }
+  },
+  "sharedAssets": {
+    "ui": {
+      "hover": { "runtime": { "id": "sfx_hover", "path": "sfx/ui/card_snap.mp3", "bus": "sfx", "loop": false, "volume": 0.2 } },
+      "drag": { "runtime": { "id": "sfx_drag", "path": "sfx/ui/card_snap.mp3", "bus": "sfx", "loop": false, "volume": 0.3 } },
+      "snap": { "runtime": { "id": "sfx_snap", "path": "sfx/ui/card_snap.mp3", "bus": "sfx", "loop": false, "volume": 0.5 } },
+      "equip": { "runtime": { "id": "sfx_equip", "path": "sfx/world/get_treasure.mp3", "bus": "sfx", "loop": false, "volume": 0.45 } }
+    },
+    "combatLegacyFallbacks": {
+      "sword": { "runtime": { "id": "sfx_sword", "path": "sfx/combat/sword_slash.mp3", "bus": "sfx", "loop": false, "volume": 0.8 } },
+      "spell": { "runtime": { "id": "sfx_spell", "path": "sfx/combat/spell_cast.mp3", "bus": "sfx", "loop": false, "volume": 0.6 } },
+      "block": { "runtime": { "id": "sfx_block", "path": "sfx/combat/block_perfect.mp3", "bus": "sfx", "loop": false, "volume": 0.7 } },
+      "hit": { "runtime": { "id": "sfx_hit", "path": "sfx/combat/damage_hit.mp3", "bus": "sfx", "loop": false, "volume": 1.0 } },
+      "heartbeat": { "runtime": { "id": "sfx_heartbeat", "path": "sfx/combat/heart_beat.mp3", "bus": "sfx", "loop": false, "volume": 1.2 } }
+    },
+    "world": {
+      "breakthrough": { "runtime": { "id": "sfx_breakthrough", "path": "sfx/world/karma_trigger.mp3", "bus": "sfx", "loop": false, "volume": 0.9 } },
+      "treasure": { "runtime": { "id": "sfx_treasure", "path": "sfx/world/get_treasure.mp3", "bus": "sfx", "loop": false, "volume": 0.6 } },
+      "karma": { "runtime": { "id": "sfx_karma", "path": "sfx/world/karma_trigger.mp3", "bus": "sfx", "loop": false, "volume": 0.8 } }
+    },
+    "market": {
+      "regulated": { "runtime": { "id": "sfx_market_regulated", "path": null, "bus": "sfx", "loop": false, "volume": 0.45, "procedural": { "frequency": 660, "duration": 0.12, "type": "sine", "gain": 0.13 } } },
+      "bazaar": { "runtime": { "id": "sfx_market_bazaar", "path": null, "bus": "sfx", "loop": false, "volume": 0.42, "procedural": { "frequency": 392, "duration": 0.16, "type": "triangle", "gain": 0.14 } } },
+      "ghost": { "runtime": { "id": "sfx_market_ghost", "path": null, "bus": "sfx", "loop": false, "volume": 0.35, "procedural": { "frequency": 146.83, "duration": 0.26, "type": "sine", "gain": 0.11 } } }
+    }
+  },
+  "bgmStates": {
+    "bgm_sect": {
+      "catalogNo": "BGM-01",
+      "name": "山门初光",
+      "timeOfDay": "破晓至清晨，日常选择之间的低压时段",
+      "task": "宗门停留、普通事件阅读、路线整理与下一张卡牌判断",
+      "scene": "青云山门、洞府、竹林与无明确危险的普通叙事场景",
+      "playerPurpose": "给玩家留出阅读和权衡空间，同时维持修仙世界仍在呼吸的感觉",
+      "durationSeconds": 36,
+      "bpm": 58,
+      "keyScale": "D minor pentatonic with an unresolved second",
+      "timeSignature": "4/4 with sparse free-time pickup",
+      "instrumentation": ["dry guqin-like plucked zither", "breathy xiao flute fragments", "soft wooden temple block", "distant bronze wind bell", "quiet mountain air"],
+      "structure": "4s air-and-bell pickup; 24s sparse two-phrase motif; 8s return to the opening air bed for looping",
+      "prompt": "Instrumental loop for a restrained early-morning xianxia sect in a 1990s PC-98-inspired card game. Sparse dry guqin-like plucks establish a two-note question, a breathy xiao answers only at phrase endings, a soft wooden temple block marks every second bar, and one distant bronze wind bell opens the horizon. 58 BPM, D minor pentatonic, intimate small ensemble, narrow but warm frequency range, clear space for Chinese narration and card UI, calm without becoming sleepy, loop ending must return to the same mountain-air texture as the opening. No vocals and no reference to any existing composition or artist.",
+      "negativePrompt": "No cinematic orchestra, no trailer riser, no pop drums, no choir, no EDM bass, no glossy new-age pad wall, no constant melody, no heroic climax, no thunder, no vinyl crackle, no spoken words, no abrupt ending.",
+      "seed": 150101,
+      "runtime": {
+        "id": "bgm_sect",
+        "path": "bgm/01_sect_dawn/bgm_01_sect_dawn.wav",
+        "bus": "bgm",
+        "loop": true,
+        "volume": 0.72
+      }
+    },
+    "bgm_combat": {
+      "catalogNo": "BGM-02",
+      "name": "灵息交锋",
+      "timeOfDay": "昼夜皆可，普通战斗进入可操作状态后的持续压力时段",
+      "task": "阅读敌方计划、安排手牌顺序、保留真元并完成普通战斗",
+      "scene": "山道、宗门演武场、秘境与普通遭遇的回合制牌组战斗",
+      "playerPurpose": "让回合节奏保持向前，但不掩盖出牌、命中、护盾和反应窗口短音效",
+      "durationSeconds": 32,
+      "bpm": 96,
+      "keyScale": "E minor pentatonic",
+      "timeSignature": "4/4",
+      "instrumentation": ["muted pipa-like plucks", "low Chinese frame drum", "bamboo clacks", "short bowed-string pulse", "subtle breath noise"],
+      "structure": "8-bar restrained pulse; second 8 bars add one bowed counterline; final 4 bars remove the counterline and close on the opening pulse",
+      "prompt": "Instrumental tactical combat loop for a turn-based xianxia deck battle in a 1990s PC-98-inspired game. A muted pipa-like two-note ostinato at 96 BPM, low Chinese frame drum on restrained downbeats, dry bamboo clacks that leave gaps for card SFX, and a short bowed-string pulse that appears only in the middle phrase. E minor pentatonic, tense and analytical rather than frantic, small ensemble, dry close sound, clear transient space, steady loop that supports repeated card decisions without fatigue. No vocals and no imitation of any existing game soundtrack or artist.",
+      "negativePrompt": "No modern drum kit, no taiko wall, no distorted guitar, no EDM arpeggiator, no brass fanfare, no choir, no cinematic impacts, no continuous cymbal wash, no melody covering combat SFX, no victory cadence, no abrupt fade.",
+      "seed": 150202,
+      "runtime": {
+        "id": "bgm_combat",
+        "path": "bgm/02_combat_pressure/bgm_02_combat_pressure.wav",
+        "bus": "bgm",
+        "loop": true,
+        "volume": 0.66
+      }
+    },
+    "bgm_boss": {
+      "catalogNo": "BGM-03",
+      "name": "劫脉压境",
+      "timeOfDay": "雷云遮光的暮夜，首领战与阶段变化的高压时段",
+      "task": "识别首领计划、承受阶段转位并保留资源完成终结回合",
+      "scene": "境界守门、雷劫、宗门强敌与带阶段机制的首领战场",
+      "playerPurpose": "建立重量和不可逆风险，同时保留敌方计划、反应提示与终结动作的可听空间",
+      "durationSeconds": 36,
+      "bpm": 72,
+      "keyScale": "C minor with open fifth drone",
+      "timeSignature": "6/8 perceived over a slow 3/4 ground pulse",
+      "instrumentation": ["deep Chinese war drum played sparsely", "low bowed strings", "single large bronze bell", "distant thunder-texture drone", "dry stone percussion"],
+      "structure": "6s low open-fifth warning; 20s three-pulse boss motif with one bell per cycle; 10s remove the top layer and return to the warning drone",
+      "prompt": "Instrumental boss loop for a severe xianxia realm gate under dark thunder clouds in a 1990s PC-98-inspired card game. Slow 72 BPM weight, sparse deep Chinese war drum in a three-pulse pattern, low bowed strings holding an open fifth, one large bronze bell at the end of each cycle, dry stone percussion for mechanism changes, and a distant controlled thunder-texture drone. C minor, grave and oppressive but never a modern trailer, clear gaps for enemy plans and reaction cues, no final resolution, ending returns to the opening low warning for a seamless loop. No vocals and no named-style imitation.",
+      "negativePrompt": "No Hollywood trailer boom, no massive orchestra, no choir, no fast double drums, no metal guitar, no EDM sub drop, no constant thunder crashes, no triumphant brass, no jump-scare sting, no clipping, no abrupt ending.",
+      "seed": 150303,
+      "runtime": {
+        "id": "bgm_boss",
+        "path": "bgm/03_boss_tribulation/bgm_03_boss_tribulation.wav",
+        "bus": "bgm",
+        "loop": true,
+        "volume": 0.74
+      }
+    },
+    "bgm_mystery": {
+      "catalogNo": "BGM-04",
+      "name": "因果回纹",
+      "timeOfDay": "无明确钟点的暮色夹层，因果、突破与真相显形时段",
+      "task": "阅读因果回执、判断突破风险、理解旧选择如何改变当前可能性",
+      "scene": "因果种子呈现、境界突破、碎玉共鸣、真相图谱与结局候选界面",
+      "playerPurpose": "让玩家感到过去正在返回，但不暗示某个选项一定正确或必然成功",
+      "durationSeconds": 32,
+      "bpm": 54,
+      "keyScale": "F-sharp minor pentatonic with suspended fourth",
+      "timeSignature": "free 3+2 pulse",
+      "instrumentation": ["soft stone chimes", "breathy low xiao", "bowed metal harmonic", "single reversed zither breath", "quiet water resonance"],
+      "structure": "5s isolated stone chimes; 19s suspended three-plus-two motif; 8s dissolve to the same water-and-metal bed as the opening",
+      "prompt": "Instrumental mystery and causality loop for a xianxia card game's breakthrough, karma and revealed-truth scenes, with restrained 1990s PC-98-inspired timbre. 54 BPM perceived as a free three-plus-two pulse, soft stone chimes separated by silence, breathy low xiao fragments, one bowed metal harmonic, a subtle reversed-zither breath used only as a transition, and quiet water resonance. F-sharp minor pentatonic with a suspended fourth, intimate and uncanny rather than frightening, ambiguous outcome, generous space for text and one-shot cues, ending dissolves back into the opening water-and-metal texture. No vocals and no existing-style imitation.",
+      "negativePrompt": "No horror drone, no whispering voices, no jump scare, no glittering fantasy arpeggio, no choir, no cinematic swell, no pop beat, no excessive reverb wash, no clear happy or tragic resolution, no abrupt fade.",
+      "seed": 150404,
+      "runtime": {
+        "id": "bgm_mystery",
+        "path": "bgm/04_mystery_causality/bgm_04_mystery_causality.wav",
+        "bus": "bgm",
+        "loop": true,
+        "volume": 0.62
+      }
+    }
+  },
+  "pathIdentities": {
+    "sword": {
+      "catalogNo": "PATH-01",
+      "name": "剑修·藏锋接式",
+      "playerFantasy": "不是每次都重砍，而是试锋、收锋、接住上一式留下的风线",
+      "timbre": ["dry narrow steel transient", "short sheath-and-wood stop", "thin cold air slice", "two-step metal harmonic only on state payoff"],
+      "rhythm": "short-long alternation; attack onset is immediate, payoff leaves a small breath for the next card",
+      "frequencyFocus": "1.8-6kHz transient with restrained low-mid body; no sub impact",
+      "avoid": ["generic heavy sword boom", "long fantasy shimmer on every hit", "wet cinematic reverb", "metallic cue that masks damage readability"],
+      "cues": {
+        "attackStart": {
+          "catalogNo": "SFX-SW-01",
+          "name": "试锋出鞘",
+          "trigger": "combat:actionStarted for sword attack/skill",
+          "durationSeconds": 0.72,
+          "prompt": "A single close dry Chinese straight-sword draw followed by a narrow controlled air slice, fast hand movement, small wooden scabbard stop, crisp steel transient, no impact and no musical tail; restrained xianxia game SFX with a readable start within 40 milliseconds.",
+          "negativePrompt": "No heavy greatsword, no explosion, no whoosh wall, no orchestra, no voice, no magic sparkle, no long reverb, no second strike.",
+          "seed": 151011,
+          "runtime": { "id": "sfx_path_sword_attack", "path": "sfx/path/sword/01_attack/sfx_sw_01_attack.wav", "bus": "sfx", "loop": false, "volume": 0.82 }
+        },
+        "impact": {
+          "catalogNo": "SFX-SW-02",
+          "name": "一点命中",
+          "trigger": "combat:impact for sword attack/followthrough",
+          "durationSeconds": 0.58,
+          "prompt": "One narrow straight-sword edge making precise contact against an armored wooden training post with a tiny stone chip, crisp medium-light metal contact, short dry body, controlled xianxia duel impact, clear single hit and immediate decay.",
+          "negativePrompt": "No giant clang, no anvil, no gore, no explosion, no multiple hits, no bass drop, no crowd, no long ringing tail, no musical phrase.",
+          "seed": 151022,
+          "runtime": { "id": "sfx_path_sword_impact", "path": "sfx/path/sword/02_impact/sfx_sw_02_impact.wav", "bus": "sfx", "loop": false, "volume": 0.9 }
+        },
+        "statePayoff": {
+          "catalogNo": "SFX-SW-03",
+          "name": "收锋留势",
+          "trigger": "combat:statusApplied for sword skill or intent payoff",
+          "durationSeconds": 1.12,
+          "prompt": "A short wooden scabbard catch, then two faint cold steel harmonics a perfect fourth apart, the second slightly quieter, suggesting sword intent stored for the next move; intimate dry xianxia status confirmation with a silent gap after the catch.",
+          "negativePrompt": "No full melody, no bell choir, no magical sparkle shower, no victory fanfare, no impact boom, no voice, no long ambient wash, no repeated loop.",
+          "seed": 151033,
+          "runtime": { "id": "sfx_path_sword_state", "path": "sfx/path/sword/03_state/sfx_sw_03_state.wav", "bus": "sfx", "loop": false, "volume": 0.68 }
+        }
+      },
+      "voice": {
+        "pathOath": {
+          "catalogNo": "VO-SW-01",
+          "trigger": "path:selected where path=sword and newSession=true",
+          "line": "剑锋只出一线，余势留给下一式。",
+          "subtitle": "剑锋只出一线，余势留给下一式。",
+          "speaker": { "identityId": "protagonist_yelingyun", "gender": "male", "age": 16, "continuity": "same speaker for every path" },
+          "performancePrompt": "Standard Mandarin; restrained sixteen-year-old male; low-mid register; quiet resolve rather than heroic shouting; one short breath after 一线; final 下一式 falls and stops cleanly.",
+          "negativePrompt": "No elderly timbre, no opera cadence, no announcer voice, no shouting, no whisper, no imitation of a real actor, no path-specific actor change.",
+          "runtime": { "id": "voice_path_sword_oath", "path": "voice/path/sword/01_path_oath/voice_sw_01_path_oath.wav", "bus": "voice", "loop": false, "volume": 0.86 }
+        }
+      }
+    },
+    "spell": {
+      "catalogNo": "PATH-02",
+      "name": "法修·布印引雷",
+      "playerFantasy": "先用纸、笔与法印建立秩序，再让离散的灵息在确定时刻落成雷火",
+      "timbre": ["dry talisman paper and brush texture", "three discrete pitched nodes", "compact electric snap", "wood-and-stone seal lock"],
+      "rhythm": "three-step setup then one compact release; state payoff is separated from damage impact",
+      "frequencyFocus": "700Hz-4.5kHz pitched information with one brief 6-8kHz spark; restrained sub content",
+      "avoid": ["continuous generic magic hum", "sci-fi laser", "sparkle wash shared with pill path", "thunder boom that hides the impact cue"],
+      "cues": {
+        "attackStart": {
+          "catalogNo": "SFX-SP-01",
+          "name": "朱砂布印",
+          "trigger": "combat:actionStarted for spell attack/skill",
+          "durationSeconds": 0.9,
+          "prompt": "A dry talisman paper flick close to the listener, one quick brush stroke on paper, then three tiny discrete energy tones rising in pitch as a geometric seal forms; compact xianxia spell setup, tactile paper first and magic second, clear onset within 50 milliseconds.",
+          "negativePrompt": "No laser beam, no continuous synth pad, no explosion, no choir, no voice, no potion bubbles, no glitter storm, no long reverb, no impact sound.",
+          "seed": 152011,
+          "runtime": { "id": "sfx_path_spell_attack", "path": "sfx/path/spell/01_attack/sfx_sp_01_attack.wav", "bus": "sfx", "loop": false, "volume": 0.76 }
+        },
+        "impact": {
+          "catalogNo": "SFX-SP-02",
+          "name": "符雷落点",
+          "trigger": "combat:impact for spell projectile",
+          "durationSeconds": 0.64,
+          "prompt": "One compact dry lightning snap landing on stone and paper ash, a tiny low thump followed by a short brittle electrical crack, controlled talisman magic impact for a tactical xianxia card battle, single event with immediate decay.",
+          "negativePrompt": "No giant thunderclap, no explosion, no sci-fi laser, no storm ambience, no repeated crackle, no bass drop, no voice, no long tail, no sword metal.",
+          "seed": 152022,
+          "runtime": { "id": "sfx_path_spell_impact", "path": "sfx/path/spell/02_impact/sfx_sp_02_impact.wav", "bus": "sfx", "loop": false, "volume": 0.84 }
+        },
+        "statePayoff": {
+          "catalogNo": "SFX-SP-03",
+          "name": "法印归位",
+          "trigger": "combat:statusApplied for spell seal or ward",
+          "durationSeconds": 1.16,
+          "prompt": "Three separated stone-and-glass seal notes rise in a precise triangle, then a dry wooden stamp locks the pattern; quiet xianxia spell-seal confirmation, measured and intellectual, each node audible as a separate step with no damage impact.",
+          "negativePrompt": "No sparkle wash, no potion bubbles, no harp glissando, no victory jingle, no choir, no voice, no continuous hum, no thunder, no long ambient reverb.",
+          "seed": 152033,
+          "runtime": { "id": "sfx_path_spell_state", "path": "sfx/path/spell/03_state/sfx_sp_03_state.wav", "bus": "sfx", "loop": false, "volume": 0.7 }
+        }
+      },
+      "voice": {
+        "pathOath": {
+          "catalogNo": "VO-SP-01",
+          "trigger": "path:selected where path=spell and newSession=true",
+          "line": "法印先成，雷落只在一念之间。",
+          "subtitle": "法印先成，雷落只在一念之间。",
+          "speaker": { "identityId": "protagonist_yelingyun", "gender": "male", "age": 16, "continuity": "same speaker for every path" },
+          "performancePrompt": "Standard Mandarin; same restrained sixteen-year-old male as the sword oath; low-mid register; deliberate consonants; a planning pause after 先成; 一念之间 is calm certainty, not a shouted spell name.",
+          "negativePrompt": "No elderly scholar, no villain voice, no announcer delivery, no chanting, no shouting, no imitation of a real actor, no path-specific actor change.",
+          "runtime": { "id": "voice_path_spell_oath", "path": "voice/path/spell/01_path_oath/voice_sp_01_path_oath.wav", "bus": "voice", "loop": false, "volume": 0.86 }
+        }
+      }
+    },
+    "body": {
+      "catalogNo": "PATH-03",
+      "name": "体修·负重守心",
+      "playerFantasy": "脚步先钉住地面，筋骨承受冲击，再将来势转回自身的拳锋",
+      "timbre": ["low dry body contact", "short doubled palm impact", "grounded low resonance"],
+      "rhythm": "one grounded preparation, one close contact, then a held defensive answer",
+      "frequencyFocus": "120Hz-2.4kHz with restrained high transients",
+      "avoid": ["sword-metal ring", "generic magic sparkle", "long cinematic boom"],
+      "cues": {
+        "attackStart": {
+          "catalogNo": "SFX-BD-01", "name": "沉步开拳", "trigger": "combat:actionStarted for body attack/skill", "durationSeconds": 0.78,
+          "prompt": "Grounded foot and close fist preparation, weight before contact, restrained body-cultivation combat cue; designed as a low-pitched derivative of the project's licensed source transients.",
+          "negativePrompt": "No sword ring, no explosion, no voice, no orchestra.",
+          "runtime": { "id": "sfx_path_body_attack", "path": "sfx/path/body/01_attack/sfx_bd_01_attack.wav", "bus": "sfx", "loop": false, "volume": 0.78 }
+        },
+        "impact": {
+          "catalogNo": "SFX-BD-02", "name": "寸劲落点", "trigger": "combat:impact for body attack", "durationSeconds": 0.66,
+          "prompt": "One heavy close-body contact with a brief second resonance, no blade or distant blast; derivative edit of the project's licensed impact source.",
+          "negativePrompt": "No blade, no gore, no repeated explosions, no voice.",
+          "runtime": { "id": "sfx_path_body_impact", "path": "sfx/path/body/02_impact/sfx_bd_02_impact.wav", "bus": "sfx", "loop": false, "volume": 0.84 }
+        },
+        "statePayoff": {
+          "catalogNo": "SFX-BD-03", "name": "气血归身", "trigger": "combat:stateResolved for body guard or combat:statusApplied for body stance", "durationSeconds": 1.12,
+          "prompt": "Low contained body resonance settling into a defensive stance; derivative edit of the project's licensed state sources, separate from the damage impact.",
+          "negativePrompt": "No shield clang, no victory fanfare, no voice.",
+          "runtime": { "id": "sfx_path_body_state", "path": "sfx/path/body/03_state/sfx_bd_03_state.wav", "bus": "sfx", "loop": false, "volume": 0.66 }
+        }
+      },
+      "voice": {
+        "pathOath": {
+          "catalogNo": "VO-BD-01", "trigger": "path:selected where path=body and newSession=true",
+          "line": "筋骨磨至极处，仍要护住这颗心。", "subtitle": "筋骨磨至极处，仍要护住这颗心。",
+          "speaker": { "identityId": "protagonist_yelingyun", "gender": "male", "age": 16, "continuity": "same synthetic speaker reference as sword and spell" },
+          "performancePrompt": "Standard Mandarin; the same restrained young male speaker reference as the sword oath; grounded and quiet, with a short breath after 极处.",
+          "negativePrompt": "No older martial master, no shouting, no announcer, no imitation of a real actor.",
+          "runtime": { "id": "voice_path_body_oath", "path": "voice/path/body/01_path_oath/voice_bd_01_path_oath.wav", "bus": "voice", "loop": false, "volume": 0.86 }
+        }
+      }
+    },
+    "pill": {
+      "catalogNo": "PATH-04",
+      "name": "丹修·一炉救人",
+      "playerFantasy": "丹火先聚起细碎药息，落点短促清楚，成丹时给出有别于伤害的回响",
+      "timbre": ["fine grain alchemical preparation", "compact heated contact", "soft separated state notes"],
+      "rhythm": "measured preparation, brief release, then an independent medicinal payoff",
+      "frequencyFocus": "350Hz-3.9kHz with no continuous low drone",
+      "avoid": ["generic spell laser", "indistinct shimmer wash", "overlong bubbling loop"],
+      "cues": {
+        "attackStart": {
+          "catalogNo": "SFX-PL-01", "name": "丹火起炉", "trigger": "combat:actionStarted for pill attack/skill", "durationSeconds": 0.90,
+          "prompt": "Fine alchemical preparation with three small separated nodes and no continuous wash; derivative edit of the project's licensed spell sources.",
+          "negativePrompt": "No laser, no explosion, no voice, no orchestra.",
+          "runtime": { "id": "sfx_path_pill_attack", "path": "sfx/path/pill/01_attack/sfx_pl_01_attack.wav", "bus": "sfx", "loop": false, "volume": 0.74 }
+        },
+        "impact": {
+          "catalogNo": "SFX-PL-02", "name": "药焰落点", "trigger": "combat:impact for pill attack", "durationSeconds": 0.70,
+          "prompt": "A compact heated contact with a short brittle edge, narrower than a thunder spell; derivative edit of the project's licensed impact source.",
+          "negativePrompt": "No giant thunder, no sword metal, no voice.",
+          "runtime": { "id": "sfx_path_pill_impact", "path": "sfx/path/pill/02_impact/sfx_pl_02_impact.wav", "bus": "sfx", "loop": false, "volume": 0.80 }
+        },
+        "statePayoff": {
+          "catalogNo": "SFX-PL-03", "name": "药息成环", "trigger": "combat:stateResolved for pill recovery/guard or combat:statusApplied for pill preparation", "durationSeconds": 1.18,
+          "prompt": "Soft separated alchemical state notes settling after preparation; derivative edit of the project's licensed state sources, distinct from attack impact.",
+          "negativePrompt": "No victory jingle, no endless bubbling, no voice.",
+          "runtime": { "id": "sfx_path_pill_state", "path": "sfx/path/pill/03_state/sfx_pl_03_state.wav", "bus": "sfx", "loop": false, "volume": 0.68 }
+        }
+      },
+      "voice": {
+        "pathOath": {
+          "catalogNo": "VO-PL-01", "trigger": "path:selected where path=pill and newSession=true",
+          "line": "一炉丹火，先救眼前人，再问长生。", "subtitle": "一炉丹火，先救眼前人，再问长生。",
+          "speaker": { "identityId": "protagonist_yelingyun", "gender": "male", "age": 16, "continuity": "same synthetic speaker reference as sword and spell" },
+          "performancePrompt": "Standard Mandarin; the same restrained young male speaker reference as the sword oath; calm concern rather than mystical chanting, a measured pause after 眼前人.",
+          "negativePrompt": "No older healer, no opera, no shouting, no imitation of a real actor.",
+          "runtime": { "id": "voice_path_pill_oath", "path": "voice/path/pill/01_path_oath/voice_pl_01_path_oath.wav", "bus": "voice", "loop": false, "volume": 0.86 }
+        }
+      }
+    }
+  }
+}

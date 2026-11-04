@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "sourceEntrypoint": "createProductionRuntime -> openWhiteFox -> DeckCombatSystem public endTurn/chooseReaction",
+  "publicInput": true,
+  "injectedState": false,
+  "pins": {
+    "src/systems/DeckCombatSystem.js": "25c214fbb599ac146b5d4424ce4272ba5fdb77c3a9342acd6e80caba77a01be0",
+    "src/systems/PathArchetypeSystem.js": "52a719665e723bf3ad7fbfd37c1a4cade7e1bd6e9ee2bdea979d52091a23c8ef",
+    "data/cards/battle_cards.json": "2d8e0898f898d70ca7184f67039e717fc9540225b08ce7a1f55d901c84af35a0",
+    "data/quests/white_fox.json": "fbda940c9ea7c9bb51d796b0be0c3177c32d87ce5f66d61bb30000b2309219b5",
+    "tools/capture_noncombat_whitefox_battle_source.js": "fb0086da330b365d9e9c27cabd5e5b5363cedd21cad3517a4f409ea32ef82932",
+    "tools/capture_noncombat_whitefox_hound_intents_source.js": "975f6582e2611efc5f337778a9af695334deb69bab0c665962af30d9c55ddc48"
+  },
+  "rows": [
+    {
+      "path": "sword",
+      "masterDeck": [
+        "sword_edge",
+        "sword_probe",
+        "sword_guard",
+        "sword_sheath_guard",
+        "sword_followthrough",
+        "sword_followthrough"
+      ],
+      "inputs": [
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 1
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 1,
+          "windowId": "q_whiteFox_3:turn:1:reaction:1",
+          "result": "resolved",
+          "randomCalls": [
+            0.6186463299673051,
+            0.7282359565142542,
+            0.3795857629738748,
+            0.23060493008233607
+          ],
+          "resistanceRoll": null
+        },
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 2
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 2,
+          "windowId": "q_whiteFox_3:turn:2:reaction:2",
+          "result": "resolved",
+          "randomCalls": [
+            0.31743730301968753,
+            0.3306806078180671,
+            0.08208463015034795,
+            0.0011230765376240015,
+            0.5415116196963936
+          ],
+          "resistanceRoll": 0.31743730301968753
+        },
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 3
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 3,
+          "windowId": "q_whiteFox_3:turn:3:reaction:3",
+          "result": "resolved",
+          "randomCalls": [
+            0.0027905800379812717,
+            0.04489356162957847,
+            0.4898616198915988,
+            0.156565107870847,
+            0.7588389720767736
+          ],
+          "resistanceRoll": 0.0027905800379812717
+        }
+      ],
+      "states": [
+        {
+          "turn": 1,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 3,
+          "playerBlock": 1,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 1,
+          "intent": {
+            "type": "debuff",
+            "statusId": "weak",
+            "value": 1,
+            "desc": "狂吠：施加1层虚弱",
+            "actionName": "猎狗群绕着你狂吠，试图扰乱你的气息"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 2,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 3,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 1,
+          "enemyHp": 6,
+          "intentIndex": 2,
+          "intent": {
+            "type": "attack",
+            "value": 1,
+            "desc": "扑咬：造成1点伤害",
+            "actionName": "一条猎狗压低身形，突然扑向你的手臂"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 3,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 2,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 3,
+          "intent": {
+            "type": "attack",
+            "value": 2,
+            "desc": "围猎：造成2点伤害",
+            "actionName": "猎狗从两侧同时夹击，封住你的退路"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 4,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 1,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 4,
+          "intent": {
+            "type": "debuff",
+            "statusId": "weak",
+            "value": 1,
+            "desc": "狂吠：施加1层虚弱",
+            "actionName": "猎狗群绕着你狂吠，试图扰乱你的气息"
+          },
+          "planRuntime": null
+        }
+      ]
+    },
+    {
+      "path": "spell",
+      "masterDeck": [
+        "spell_spark",
+        "spell_spark",
+        "spell_ward",
+        "spell_ward",
+        "spell_cycle",
+        "spell_cycle"
+      ],
+      "inputs": [
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 1
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 1,
+          "windowId": "q_whiteFox_3:turn:1:reaction:1",
+          "result": "resolved",
+          "randomCalls": [
+            0.6186463299673051,
+            0.7282359565142542,
+            0.3795857629738748,
+            0.23060493008233607
+          ],
+          "resistanceRoll": null
+        },
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 2
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 2,
+          "windowId": "q_whiteFox_3:turn:2:reaction:2",
+          "result": "resolved",
+          "randomCalls": [
+            0.31743730301968753,
+            0.3306806078180671,
+            0.08208463015034795,
+            0.0011230765376240015,
+            0.5415116196963936
+          ],
+          "resistanceRoll": 0.31743730301968753
+        },
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 3
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 3,
+          "windowId": "q_whiteFox_3:turn:3:reaction:3",
+          "result": "resolved",
+          "randomCalls": [
+            0.0027905800379812717,
+            0.04489356162957847,
+            0.4898616198915988,
+            0.156565107870847,
+            0.7588389720767736
+          ],
+          "resistanceRoll": 0.0027905800379812717
+        }
+      ],
+      "states": [
+        {
+          "turn": 1,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 4,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 1,
+          "intent": {
+            "type": "debuff",
+            "statusId": "weak",
+            "value": 1,
+            "desc": "狂吠：施加1层虚弱",
+            "actionName": "猎狗群绕着你狂吠，试图扰乱你的气息"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 2,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 4,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 1,
+          "enemyHp": 6,
+          "intentIndex": 2,
+          "intent": {
+            "type": "attack",
+            "value": 1,
+            "desc": "扑咬：造成1点伤害",
+            "actionName": "一条猎狗压低身形，突然扑向你的手臂"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 3,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 3,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 3,
+          "intent": {
+            "type": "attack",
+            "value": 2,
+            "desc": "围猎：造成2点伤害",
+            "actionName": "猎狗从两侧同时夹击，封住你的退路"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 4,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 2,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 4,
+          "intent": {
+            "type": "debuff",
+            "statusId": "weak",
+            "value": 1,
+            "desc": "狂吠：施加1层虚弱",
+            "actionName": "猎狗群绕着你狂吠，试图扰乱你的气息"
+          },
+          "planRuntime": null
+        }
+      ]
+    },
+    {
+      "path": "body",
+      "masterDeck": [
+        "body_fist",
+        "body_fist",
+        "body_stance",
+        "body_stance",
+        "body_counter",
+        "body_counter"
+      ],
+      "inputs": [
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 1
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 1,
+          "windowId": "q_whiteFox_3:turn:1:reaction:1",
+          "result": "resolved",
+          "randomCalls": [
+            0.7282359565142542,
+            0.3795857629738748,
+            0.23060493008233607,
+            0.31743730301968753
+          ],
+          "resistanceRoll": null
+        },
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 2
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 2,
+          "windowId": "q_whiteFox_3:turn:2:reaction:2",
+          "result": "resolved",
+          "randomCalls": [
+            0.3306806078180671,
+            0.08208463015034795,
+            0.0011230765376240015,
+            0.5415116196963936,
+            0.0027905800379812717
+          ],
+          "resistanceRoll": 0.3306806078180671
+        },
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 3
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 3,
+          "windowId": "q_whiteFox_3:turn:3:reaction:3",
+          "result": "resolved",
+          "randomCalls": [
+            0.04489356162957847,
+            0.4898616198915988,
+            0.156565107870847,
+            0.7588389720767736,
+            0.16587509564124048
+          ],
+          "resistanceRoll": 0.04489356162957847
+        }
+      ],
+      "states": [
+        {
+          "turn": 1,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 4,
+          "playerBlock": 1,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 1,
+          "intent": {
+            "type": "debuff",
+            "statusId": "weak",
+            "value": 1,
+            "desc": "狂吠：施加1层虚弱",
+            "actionName": "猎狗群绕着你狂吠，试图扰乱你的气息"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 2,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 4,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 1,
+          "enemyHp": 6,
+          "intentIndex": 2,
+          "intent": {
+            "type": "attack",
+            "value": 1,
+            "desc": "扑咬：造成1点伤害",
+            "actionName": "一条猎狗压低身形，突然扑向你的手臂"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 3,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 3,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 3,
+          "intent": {
+            "type": "attack",
+            "value": 2,
+            "desc": "围猎：造成2点伤害",
+            "actionName": "猎狗从两侧同时夹击，封住你的退路"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 4,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 2,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 4,
+          "intent": {
+            "type": "debuff",
+            "statusId": "weak",
+            "value": 1,
+            "desc": "狂吠：施加1层虚弱",
+            "actionName": "猎狗群绕着你狂吠，试图扰乱你的气息"
+          },
+          "planRuntime": null
+        }
+      ]
+    },
+    {
+      "path": "pill",
+      "masterDeck": [
+        "pill_ember",
+        "pill_ember",
+        "pill_ember",
+        "pill_guard",
+        "pill_catalyst",
+        "pill_recycle"
+      ],
+      "inputs": [
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 1
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 1,
+          "windowId": "q_whiteFox_3:turn:1:reaction:1",
+          "result": "resolved",
+          "randomCalls": [
+            0.7282359565142542,
+            0.3795857629738748,
+            0.23060493008233607,
+            0.31743730301968753
+          ],
+          "resistanceRoll": null
+        },
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 2
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 2,
+          "windowId": "q_whiteFox_3:turn:2:reaction:2",
+          "result": "resolved",
+          "randomCalls": [
+            0.3306806078180671,
+            0.08208463015034795,
+            0.0011230765376240015,
+            0.5415116196963936
+          ],
+          "resistanceRoll": null
+        },
+        {
+          "method": "endTurn",
+          "result": "opened",
+          "turn": 3
+        },
+        {
+          "method": "chooseReaction",
+          "id": "TAKE_HIT",
+          "turn": 3,
+          "windowId": "q_whiteFox_3:turn:3:reaction:3",
+          "result": "resolved",
+          "randomCalls": [
+            0.0027905800379812717,
+            0.04489356162957847,
+            0.4898616198915988,
+            0.156565107870847
+          ],
+          "resistanceRoll": null
+        }
+      ],
+      "states": [
+        {
+          "turn": 1,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 4,
+          "playerBlock": 1,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 1,
+          "intent": {
+            "type": "debuff",
+            "statusId": "weak",
+            "value": 1,
+            "desc": "狂吠：施加1层虚弱",
+            "actionName": "猎狗群绕着你狂吠，试图扰乱你的气息"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 2,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 4,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 1,
+          "enemyHp": 6,
+          "intentIndex": 2,
+          "intent": {
+            "type": "attack",
+            "value": 1,
+            "desc": "扑咬：造成1点伤害",
+            "actionName": "一条猎狗压低身形，突然扑向你的手臂"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 3,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 3,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 3,
+          "intent": {
+            "type": "attack",
+            "value": 2,
+            "desc": "围猎：造成2点伤害",
+            "actionName": "猎狗从两侧同时夹击，封住你的退路"
+          },
+          "planRuntime": null
+        },
+        {
+          "turn": 4,
+          "phase": "PLAYER_TURN",
+          "active": true,
+          "playerHp": 1,
+          "playerBlock": 0,
+          "qi": 3,
+          "playerWeak": 0,
+          "enemyHp": 6,
+          "intentIndex": 4,
+          "intent": {
+            "type": "debuff",
+            "statusId": "weak",
+            "value": 1,
+            "desc": "狂吠：施加1层虚弱",
+            "actionName": "猎狗群绕着你狂吠，试图扰乱你的气息"
+          },
+          "planRuntime": null
+        }
+      ]
+    }
+  ]
+}

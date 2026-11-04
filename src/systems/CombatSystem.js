@@ -761,9 +761,31 @@ class CombatSystem {
         rewardText.push(`获得丹药：${this.rewards.pill}`);
       }
       if (this.rewards.treasure) {
-        gameState.addResource('treasures', this.rewards.treasure, 1);
-        if (treasureSystem) treasureSystem.acquire(this.rewards.treasure);
-        rewardText.push(`获得法宝：${this.rewards.treasure}`);
+        const runClock = gameState.getRunClock?.() || null;
+        const life = runClock?.lifeId
+          || `legacy:${Number(gameState.getLifeCount?.() ?? gameState.unlocks?.lifeCount ?? 0) || 0}`;
+        const decision = Math.max(0, Number(
+          gameState.getNextDecisionIndex?.()
+          ?? gameState.getDecisionIndex?.()
+          ?? gameState.turn
+        ) || 0);
+        const encounterId = String(this.rewards.encounterId || this.cardId || this.enemy?.id || this.rewards.treasure);
+        const acquired = typeof treasureSystem !== 'undefined' && treasureSystem
+          && typeof treasureSystem.acquire === 'function'
+          ? treasureSystem.acquire(this.rewards.treasure, {
+            source: 'combat_reward',
+            sourceId: encounterId,
+            channel: 'combat',
+            // The encounter is settled before the source choice advances turn;
+            // this survives a reload/replay without collapsing later combats.
+            transactionId: `treasure:combat:life:${life}:decision:${decision}:encounter:${encounterId}:item:${this.rewards.treasure}`
+          })
+          : false;
+        if (acquired) {
+          rewardText.push(`获得法宝：${this.rewards.treasure}`);
+        } else {
+          rewardText.push(`法宝奖励未能写入：${this.rewards.treasure}`);
+        }
       }
     }
 

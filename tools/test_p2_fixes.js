@@ -332,10 +332,8 @@ test('#10f 多个保留种子都应存活', () => {
   sandbox.gameState.reset(true);
   const ids = sandbox.gameState.karmaSeeds.map(s => s.id).sort();
   const expected = ['bl_a', 'bl_d', 'fate_b'].sort();
-  console.log('  [debug #10f] actual ids:', JSON.stringify(ids));
-  console.log('  [debug #10f] expected:', JSON.stringify(expected));
-  console.log('  [debug #10f] equal?', JSON.stringify(ids) === JSON.stringify(expected));
-  assert.deepStrictEqual(ids, expected, '应保留 bl_a, bl_d, fate_b 三个');
+  // 使用 JSON.stringify 比较，避免 vm context Array 原型差异导致 deepStrictEqual 误报
+  assert.strictEqual(JSON.stringify(ids), JSON.stringify(expected), `应保留 bl_a, bl_d, fate_b 三个，实际: ${JSON.stringify(ids)}`);
 });
 
 // ==================================================================

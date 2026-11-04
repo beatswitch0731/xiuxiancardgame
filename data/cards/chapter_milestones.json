@@ -4,7 +4,14 @@
     "total": 30,
     "card_id_format": "ch_{realm}_{threshold}",
     "type": "MILESTONE",
-    "updated": "2026-06-30"
+    "updated": "2026-07-17",
+    "compressionHistory": [
+      {
+        "date": "2026-07-17",
+        "task": "P3 #12 章节里程碑数值压缩",
+        "rule": "依据 §6.1 四类数值预算与审计 #12 方案，全部 effects/enemy/combatRewards 压缩至微数值范围"
+      }
+    ]
   },
   "ch_qi_20": {
     "id": "ch_qi_20",
@@ -14,14 +21,32 @@
     "realm": "qi",
     "threshold": 20,
     "chapter": "凡尘初醒",
+    "narrativeSpine": {
+      "threadId": "qi_ask_sword",
+      "step": 1,
+      "totalSteps": 5,
+      "label": "主线·炼气问剑",
+      "consumes": [],
+      "produces": [
+        "qi_main_call"
+      ],
+      "choicePayload": {
+        "left": {
+          "call": "follow_edge"
+        },
+        "right": {
+          "call": "mend_root"
+        }
+      }
+    },
     "chapterNum": 1,
     "choices": {
       "left": {
         "text": "追寻剑脉",
         "desc": "顺着那道微弱的剑意感应，去找寻残剑碎片的源头。",
         "effects": {
-          "cultivation": 15,
-          "daoHeart": 10
+          "cultivation": 5,
+          "daoHeart": 1
         },
         "karmaSeed": "causal:sword_awakening"
       },
@@ -29,15 +54,282 @@
         "text": "修补灵根",
         "desc": "试图运转周天，强行唤醒其他残缺经脉。",
         "effects": {
-          "cultivation": 10,
-          "health": -5,
-          "fortune": 5
+          "cultivation": 3,
+          "health": -1,
+          "fortune": 2
         },
         "karmaSeed": "causal:root_repair_attempt"
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_start_sword.png",
-    "_originalSceneImage": "assets/cards/events/scene_ch_qi_20.png"
+    "sceneImage": "assets/cards/events/scene_ch_qi_20.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_qi_20.png",
+    "pathVariants": {
+      "sword": {
+        "realm": "qi",
+        "path": "sword",
+        "text": {
+          "title": "剑脉初鸣",
+          "description": "第一缕灵气沿指骨凝成锋芒。你尚无名器在手，却已听见经脉里的清越鸣响。",
+          "choices": {
+            "left": {
+              "text": "循锋入定",
+              "desc": "顺着锋芒校准吐纳，让心与气合一。"
+            },
+            "right": {
+              "text": "藏锋养气",
+              "desc": "暂不求快，先让微弱锋意稳住根基。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:sword",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:qi_sword_attune",
+            "realm": "qi",
+            "path": "sword",
+            "delay": 5,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:qi_sword_nurture",
+            "realm": "qi",
+            "path": "sword",
+            "delay": 5,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 5,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 4,
+              "fortune": 2
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_qi_q_start_sword.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "spell": {
+        "realm": "qi",
+        "path": "spell",
+        "text": {
+          "title": "符海初明",
+          "description": "灵气在识海中分作五色纹路，彼此生克又彼此照应。第一枚法印正等待你定形。",
+          "choices": {
+            "left": {
+              "text": "定五行印",
+              "desc": "先理清五行次序，再引灵入印。"
+            },
+            "right": {
+              "text": "观天借势",
+              "desc": "暂缓定式，从风雷流转中寻找变化。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:spell",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:qi_spell_seal",
+            "realm": "qi",
+            "path": "spell",
+            "delay": 5,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:qi_spell_flow",
+            "realm": "qi",
+            "path": "spell",
+            "delay": 5,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 5,
+              "fortune": 2
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 4,
+              "daoHeart": 1
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_qi_q_spellTome.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "body": {
+        "realm": "qi",
+        "path": "body",
+        "text": {
+          "title": "气血开关",
+          "description": "吐纳牵动筋骨，沉睡的气血在十二正经中轰然奔行。肉身第一次回应了你的修行意志。",
+          "choices": {
+            "left": {
+              "text": "立桩通脉",
+              "desc": "以稳固桩功承住第一轮气血冲刷。"
+            },
+            "right": {
+              "text": "负石炼骨",
+              "desc": "用短促重压逼迫筋骨更快适应。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:body",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:qi_body_stance",
+            "realm": "qi",
+            "path": "body",
+            "delay": 5,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:qi_body_burden",
+            "realm": "qi",
+            "path": "body",
+            "delay": 5,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": 2
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 5,
+              "health": -1
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_qi_q_bodyTrial.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "pill": {
+        "realm": "qi",
+        "path": "pill",
+        "text": {
+          "title": "丹心识草",
+          "description": "草木清苦与矿粉辛烈在鼻息间分出层次。你第一次明白，药性也是可被驾驭的灵气。",
+          "choices": {
+            "left": {
+              "text": "分拣药性",
+              "desc": "逐味记录寒热升降，建立自己的药谱。"
+            },
+            "right": {
+              "text": "温炉试火",
+              "desc": "以小炉验证药性，在火候中积累手感。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:pill",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:qi_pill_catalogue",
+            "realm": "qi",
+            "path": "pill",
+            "delay": 5,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:qi_pill_first_fire",
+            "realm": "qi",
+            "path": "pill",
+            "delay": 5,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "spiritStone": 5
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 3,
+              "fortune": 2,
+              "health": 1
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_qi_q_pillRecipe.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      }
+    }
   },
   "ch_qi_40": {
     "id": "ch_qi_40",
@@ -48,13 +340,36 @@
     "realm": "qi",
     "threshold": 40,
     "chapter": "凡尘初醒",
+    "narrativeSpine": {
+      "threadId": "qi_ask_sword",
+      "step": 2,
+      "totalSteps": 5,
+      "label": "主线·炼气问剑",
+      "consumes": [
+        "qi_main_call"
+      ],
+      "consumerIds": {
+        "qi_main_call": "qi_main_call_to_pressure"
+      },
+      "produces": [
+        "qi_main_pressure"
+      ],
+      "choicePayload": {
+        "left": {
+          "pressureResponse": "hold_close"
+        },
+        "right": {
+          "pressureResponse": "share_open"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "独吞功法",
         "desc": "迅速藏好半卷法门，假装若无其事。",
         "effects": {
-          "cultivation": 20,
-          "karmaBad": 3
+          "cultivation": 6,
+          "karmaBad": 1
         },
         "karmaSeed": "causal:hoarded_manual"
       },
@@ -62,14 +377,14 @@
         "text": "分享机缘",
         "desc": "招呼散修一同参悟，结下善缘。",
         "effects": {
-          "cultivation": 10,
-          "karmaGood": 5,
-          "fortune": 3
+          "cultivation": 3,
+          "karmaGood": 2,
+          "fortune": 1
         },
         "karmaSeed": "causal:shared_opportunity"
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_cave.png",
+    "sceneImage": "assets/cards/events/scene_ch_qi_40.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_qi_40.png"
   },
   "ch_qi_60": {
@@ -81,14 +396,47 @@
     "realm": "qi",
     "threshold": 60,
     "chapter": "凡尘初醒",
+    "narrativeSpine": {
+      "threadId": "qi_ask_sword",
+      "step": 3,
+      "totalSteps": 5,
+      "label": "主线·炼气问剑",
+      "consumes": [
+        "qi_main_pressure"
+      ],
+      "consumerIds": {
+        "qi_main_pressure": "qi_main_pressure_to_commitment"
+      },
+      "produces": [
+        "qi_main_commitment",
+        "qi_sword_master_stance"
+      ],
+      "factLanes": {
+        "qi_main_commitment": "MAIN_SPINE",
+        "qi_sword_master_stance": "PATH_ARC"
+      },
+      "observers": [
+        "qi_main_origin_observation"
+      ],
+      "choicePayload": {
+        "left": {
+          "commitment": "sword_sect",
+          "stance": "advance"
+        },
+        "right": {
+          "commitment": "danxia",
+          "stance": "guarded"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "拜入剑宗",
         "desc": "以杀证道，剑意即心意。",
         "effects": {
-          "cultivation": 20,
-          "daoHeart": 10,
-          "karmaBad": 2
+          "cultivation": 6,
+          "daoHeart": 1,
+          "karmaBad": 1
         },
         "karmaSeed": "causal:sword_sect_path"
       },
@@ -96,15 +444,15 @@
         "text": "随丹师修行",
         "desc": "济世为怀，炼丹悟道。",
         "effects": {
-          "cultivation": 12,
-          "daoHeart": 5,
-          "karmaGood": 3,
+          "cultivation": 4,
+          "daoHeart": 1,
+          "karmaGood": 1,
           "pill": 1
         },
         "karmaSeed": "causal:alchemy_path"
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_elder.png",
+    "sceneImage": "assets/cards/events/scene_ch_qi_60.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_qi_60.png"
   },
   "ch_qi_80": {
@@ -116,12 +464,35 @@
     "realm": "qi",
     "threshold": 80,
     "chapter": "凡尘初醒",
+    "narrativeSpine": {
+      "threadId": "qi_ask_sword",
+      "step": 4,
+      "totalSteps": 5,
+      "label": "主线·炼气问剑",
+      "consumes": [
+        "qi_main_commitment"
+      ],
+      "consumerIds": {
+        "qi_main_commitment": "qi_main_commitment_to_trial"
+      },
+      "produces": [
+        "qi_main_trial"
+      ],
+      "choicePayload": {
+        "left": {
+          "trialRoute": "face_trial"
+        },
+        "right": {
+          "trialRoute": "cautious_trial"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "正面迎战",
         "desc": "以剑开路，斩妖前行。",
         "effects": {
-          "cultivation": 15,
+          "cultivation": 5,
           "health": -1
         }
       },
@@ -129,41 +500,303 @@
         "text": "潜行绕路",
         "desc": "避其锋芒，绕道而行。",
         "effects": {
-          "cultivation": 8,
-          "fortune": 3
+          "cultivation": 3,
+          "fortune": 1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_bodyTrial.png",
+    "sceneImage": "assets/cards/events/scene_ch_qi_80.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_qi_80.png"
   },
   "ch_qi_100": {
     "id": "ch_qi_100",
     "title": "突破筑基",
     "chapterNum": 1,
-    "description": "灵气如潮水般涌入丹田。你盘膝而坐，运转心法，丹田内气旋初成。这是筑基的关键时刻——选择何种方式凝结道基，将决定你未来的修行之道。",
+    "description": "灵气如潮水般涌入丹田，古石台上的惊雷石傀也随之苏醒。它不替天劫降罚，只以导雷铜柱校验你能否在三息雷律中守住道基；你既可拆散它的雷纹，也可稳住周天撑过试炼。",
     "type": "COMBAT",
+    "encounterKind": "realm_boss",
+    "actionPresentationId": "enc_boss_qi_thunder_gate",
     "realm": "qi",
     "threshold": 100,
     "chapter": "凡尘初醒",
+    "narrativeSpine": {
+      "threadId": "qi_ask_sword",
+      "step": 5,
+      "totalSteps": 5,
+      "label": "主线·炼气问剑",
+      "consumes": [
+        "qi_main_trial"
+      ],
+      "produces": [
+        "qi_main_outcome"
+      ],
+      "combatSettlement": {
+        "requiredLanes": [
+          "MAIN_SPINE",
+          "PATH_ARC"
+        ],
+        "consumes": [
+          "qi_main_trial",
+          "qi_sword_master_stance"
+        ],
+        "consumerIds": {
+          "qi_main_trial": "qi_main_trial_resolution",
+          "qi_sword_master_stance": "qi_sword_master_stance_resolution"
+        },
+        "legacyMigration": {
+          "producerId": "qi_ask_sword_legacy_gate_migration",
+          "defaultPayloadByFactType": {
+            "qi_sword_master_stance": {
+              "stance": "unmarked"
+            }
+          },
+          "log": "【主线·炼气问剑】旧世记录抵达雷劫，已补写无额外收益的迁移回执。"
+        },
+        "outcomePayloadFields": [
+          {
+            "factTypeId": "qi_sword_master_stance",
+            "sourceKey": "stance",
+            "targetKey": "stance",
+            "fallback": "unmarked"
+          }
+        ],
+        "resultTextByOutcome": {
+          "victory": "雷劫认可了你这一世的问剑。",
+          "flee": "你暂退雷云，问剑仍留下一道未竟的裂隙。",
+          "defeat": "雷劫击碎了这次试炼，但你的选择已被如实记下。"
+        }
+      }
+    },
     "enemy": {
-      "name": "筑基雷劫",
-      "hp": 60,
-      "maxHp": 60,
-      "atk": 5,
+      "id": "enemy_qi_tribulation",
+      "name": "惊雷石傀",
+      "hp": 5,
+      "maxHp": 5,
+      "atk": 1,
       "def": 0,
       "critRate": 0,
       "special": "天威",
       "specialChance": 0.3,
-      "specialDmg": 10
+      "specialDmg": 2,
+      "intents": [
+        {
+          "type": "attack",
+          "value": 1,
+          "desc": "雷矛：造成1点伤害",
+          "actionName": "石傀以铜柱引雷，雷矛沿石台轰落"
+        },
+        {
+          "type": "debuff",
+          "statusId": "weak",
+          "value": 1,
+          "desc": "天威：施加1层虚弱",
+          "actionName": "石傀胸前雷纹共鸣，压住你的周天灵息"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "雷殛：造成2点伤害",
+          "actionName": "石傀将余雷导入铜柱，最后一道雷殛直落"
+        }
+      ],
+      "randomIntents": false,
+      "planGraph": {
+        "planId": "chapter_gate_qi_thunder_adaptation_v1",
+        "initialState": "READING",
+        "states": {
+          "READING": {
+            "label": "雷律观息",
+            "cue": "石傀将雷势压回胸前符槽，观察你是否会耗尽真元。",
+            "intent": {
+              "type": "defend",
+              "value": 1,
+              "desc": "敛雷：获得1点护盾",
+              "actionName": "惊雷石傀收束电光，等待你的周天出现空档"
+            }
+          },
+          "PRESSURE": {
+            "label": "空档雷矛",
+            "cue": "你出牌过深，雷矛已经锁住枯竭的经络。",
+            "intent": {
+              "type": "attack",
+              "value": 4,
+              "desc": "雷矛：造成4点伤害",
+              "actionName": "石傀抓住真元枯竭的瞬间，雷矛沿铜柱贯向丹田"
+            }
+          },
+          "PUNISH": {
+            "label": "同式雷殛",
+            "cue": "重复招式被天劫记住，这道雷会直接穿透护势。",
+            "intent": {
+              "type": "attack",
+              "value": 4,
+              "piercing": true,
+              "desc": "雷殛：穿透造成4点伤害",
+              "actionName": "同一招路引来石傀雷纹共鸣，雷殛越过护盾直落经脉"
+            }
+          },
+          "GAP": {
+            "label": "雷隙散势",
+            "cue": "你保住真元或带偏雷矛，石傀暂时失去导雷落点。",
+            "intent": {
+              "type": "defend",
+              "value": 0,
+              "desc": "散势：本轮不造成伤害",
+              "actionName": "雷矛失去气机落点，石傀的雷纹在石台上短暂熄灭"
+            }
+          }
+        },
+        "transitions": [
+          {
+            "from": "READING",
+            "when": "repeated_card_type",
+            "to": "PUNISH",
+            "minConsecutive": 2
+          },
+          {
+            "from": "READING",
+            "when": "player_overcommitted",
+            "to": "PRESSURE",
+            "minCards": 2,
+            "maxReservedQi": 1
+          },
+          {
+            "from": "READING",
+            "when": "player_reserved_resource",
+            "to": "GAP",
+            "maxCards": 1,
+            "minReservedQi": 2
+          },
+          {
+            "from": [
+              "READING",
+              "PRESSURE",
+              "PUNISH"
+            ],
+            "when": "deflected",
+            "to": "GAP"
+          },
+          {
+            "from": [
+              "PRESSURE",
+              "PUNISH",
+              "GAP"
+            ],
+            "when": "action_resolved",
+            "to": "READING"
+          }
+        ]
+      }
     },
     "combatRewards": {
       "breakSuccess": true,
-      "cultivation": 25,
-      "daoHeart": 10,
-      "health": 10
+      "cultivation": 5,
+      "daoHeart": 1,
+      "health": 1
     },
-    "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
+    "bossJourney": {
+      "id": "realm_boss_journey_qi_thunder_v1",
+      "bossName": "筑基雷关·惊雷石傀",
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "stages": {
+        "20": {
+          "phase": "omen",
+          "label": "经脉闻雷",
+          "interaction": "preview_only",
+          "cue": "【劫兆】吐纳时，骨缝里响起不属于山雨的闷雷。此刻追索雷源只会被天威碾碎，你只能记住雷息落下前的短促停顿。"
+        },
+        "40": {
+          "phase": "intel",
+          "label": "三息雷律",
+          "interaction": "mechanic_reveal",
+          "cue": "【劫情】残碑记载惊雷石傀只以三息雷律校验道基：守住三轮雷击即可通过雷关，无须毁掉石傀。护盾、虚弱与留牌比贪攻更重要。"
+        },
+        "60": {
+          "phase": "counter",
+          "label": "丹护经络",
+          "interaction": "counter_route",
+          "cue": "【对策】坊市丹师确认筑基丹可温养经络，使石傀导入的雷火伤害减半。集市在练气期为该突破丹保留一格确定性货位。",
+          "counterSource": {
+            "type": "shop_guarantee",
+            "systemId": "shop",
+            "itemId": "shop_pill_foundation",
+            "resourceType": "pill",
+            "resourceKey": "foundation"
+          }
+        },
+        "80": {
+          "phase": "readiness",
+          "label": "雷前整备",
+          "interaction": "readiness_check",
+          "cue": "【整备】石傀的铜柱已锁定你的气机。带丹可稳渡；无丹仍可用护盾循环、削弱和保留防牌硬撑三轮。",
+          "bareFightHint": "不服筑基丹也能通过雷关，但每一轮都必须为下一道雷保留防御资源。"
+        },
+        "100": {
+          "phase": "gate",
+          "label": "惊雷石傀",
+          "interaction": "fixed_boss_combat",
+          "cue": "【决战】惊雷石傀以固定雷律校验道基：撑过三回合即可筑基；若先击碎其雷纹，试炼同样结束。",
+          "combatCardId": "ch_qi_100"
+        }
+      }
+    },
+    "combatRules": {
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "victoryCondition": "survive_turns",
+      "surviveTurns": 3,
+      "counter": {
+        "flag": "used_foundation_pill",
+        "incomingDamageMultiplier": 0.5
+      }
+    },
+    "combatPresentation": {
+      "presentationId": "combat_enc_boss_qi_thunder_gate_native_v1",
+      "battlefieldId": "battlefield_enc_boss_qi_thunder_gate_native_v1",
+      "battlefield": "enc_boss_qi_thunder_gate",
+      "warningTitle": "炼气巡关·雷门碑兽 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_qi_thunder_gate_agc_v2.png",
+      "enemyType": "筑基雷关·惊雷石傀",
+      "difficultyLabel": "境界门槛·固定天威",
+      "mechanic": "守住三回合即可通过雷关；筑基丹令碑兽导雷伤害减半。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_boss_qi_thunder_gate_stele_sentinel_agc_h1",
+          "name": "惊雷石傀",
+          "kicker": "炼气 · 雷门碑兽",
+          "portraitMode": "stage_full_body_transparent",
+          "image": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png",
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "scaleProfileId": "qi_thunder_colossal_stele_quadruped",
+          "intentPosePolicy": "stable_identity",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png",
+            "defend": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png",
+            "buff": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png",
+            "debuff": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_damage_contact_agc_u1",
+          "durationMs": 420
+        },
+        "shield": {
+          "id": "fx_shield_ward_agc_u1",
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_weak_sag_agc_u1",
+          "durationMs": 480
+        }
+      },
+      "visualWorldId": "cangmang_sect_pc98_v1"
+    },
+    "sceneImage": "assets/cards/events/scene_ch_qi_100.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_qi_100.png"
   },
   "ch_foundation_20": {
@@ -174,15 +807,36 @@
     "realm": "foundation",
     "threshold": 20,
     "chapter": "宗门风云",
+    "narrativeSpine": {
+      "threadId": "foundation_register_mirror",
+      "step": 1,
+      "totalSteps": 5,
+      "label": "主线·筑基宗册照心",
+      "consumes": [],
+      "produces": [
+        "foundation_main_enrollment"
+      ],
+      "factLanes": {
+        "foundation_main_enrollment": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "enrollment": "oath"
+        },
+        "right": {
+          "enrollment": "independent"
+        }
+      }
+    },
     "chapterNum": 2,
     "choices": {
       "left": {
         "text": "效忠师门",
         "desc": "宣誓效忠，换取宗门资源与庇护。",
         "effects": {
-          "cultivation": 15,
-          "daoHeart": 5,
-          "fortune": 5
+          "cultivation": 5,
+          "daoHeart": 1,
+          "fortune": 2
         },
         "karmaSeed": "causal:loyal_to_sect"
       },
@@ -190,15 +844,286 @@
         "text": "保持距离",
         "desc": "接受宗门庇护但不立誓，保留自由之身。",
         "effects": {
-          "cultivation": 8,
-          "daoHeart": -3,
-          "fortune": 8
+          "cultivation": 3,
+          "daoHeart": -1,
+          "fortune": 3
         },
         "karmaSeed": "causal:free_agent"
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_elder.png",
-    "_originalSceneImage": "assets/cards/events/scene_ch_foundation_20.png"
+    "sceneImage": "assets/cards/events/scene_ch_foundation_20.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_foundation_20.png",
+    "pathVariants": {
+      "sword": {
+        "realm": "foundation",
+        "path": "sword",
+        "text": {
+          "title": "剑宗立誓",
+          "description": "筑基道台既成，宗门将你的名字写入内册。山门规矩与个人锋芒从此同时约束每次出手。",
+          "choices": {
+            "left": {
+              "text": "守山门戒",
+              "desc": "以宗门戒律磨炼出手的分寸。"
+            },
+            "right": {
+              "text": "独守本锋",
+              "desc": "接受传承，却保留独自行道的余地。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:sword",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:foundation_sword_oath",
+            "realm": "foundation",
+            "path": "sword",
+            "delay": 6,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:foundation_sword_independent",
+            "realm": "foundation",
+            "path": "sword",
+            "delay": 6,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 5,
+              "daoHeart": 1,
+              "fortune": 2
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 4,
+              "fortune": 3
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_foundation_20.png",
+          "location": "宗门"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "spell": {
+        "realm": "foundation",
+        "path": "spell",
+        "text": {
+          "title": "法脉登门",
+          "description": "筑基道台承住第一轮术式反冲，天机阁为你开放符室。规整法脉与自由演算必须择一为先。",
+          "choices": {
+            "left": {
+              "text": "录入法册",
+              "desc": "遵循阁中次序，换取稳定的术式根基。"
+            },
+            "right": {
+              "text": "自演法环",
+              "desc": "保留变化空间，以更多试错换取灵感。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:spell",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:foundation_spell_archive",
+            "realm": "foundation",
+            "path": "spell",
+            "delay": 6,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:foundation_spell_orbit",
+            "realm": "foundation",
+            "path": "spell",
+            "delay": 6,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 5,
+              "daoHeart": 1,
+              "fortune": 2
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 4,
+              "fortune": 3
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_foundation_20.png",
+          "location": "宗门"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "body": {
+        "realm": "foundation",
+        "path": "body",
+        "text": {
+          "title": "金身入门",
+          "description": "筑基灵台反照肉身，武盟长老为你开启淬体场。宗门护持与野外苦炼会塑成不同根骨。",
+          "choices": {
+            "left": {
+              "text": "入场受炼",
+              "desc": "按部就班承受药浴与重压，稳固筋骨。"
+            },
+            "right": {
+              "text": "荒谷负重",
+              "desc": "离开护阵，在真实风霜中逼出潜力。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:body",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:foundation_body_forge",
+            "realm": "foundation",
+            "path": "body",
+            "delay": 6,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:foundation_body_wild",
+            "realm": "foundation",
+            "path": "body",
+            "delay": 6,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": 2,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 5,
+              "health": -1,
+              "fortune": 2
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_foundation_20.png",
+          "location": "宗门"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "pill": {
+        "realm": "foundation",
+        "path": "pill",
+        "text": {
+          "title": "丹谷开炉",
+          "description": "筑基真火终于能够维持整炉药性。丹谷把一间偏炉交给你，也要求你选择供奉宗门或自立药谱。",
+          "choices": {
+            "left": {
+              "text": "为谷炼供",
+              "desc": "按丹方稳定交付，换取长期药材渠道。"
+            },
+            "right": {
+              "text": "自立药谱",
+              "desc": "承担损耗，记录只属于自己的配伍。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:pill",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:foundation_pill_supply",
+            "realm": "foundation",
+            "path": "pill",
+            "delay": 6,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:foundation_pill_codex",
+            "realm": "foundation",
+            "path": "pill",
+            "delay": 6,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "spiritStone": 8,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 5,
+              "fortune": 3
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_foundation_20.png",
+          "location": "宗门"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      }
+    }
   },
   "ch_foundation_40": {
     "id": "ch_foundation_40",
@@ -208,29 +1133,56 @@
     "realm": "foundation",
     "threshold": 40,
     "chapter": "宗门风云",
+    "narrativeSpine": {
+      "threadId": "foundation_register_mirror",
+      "step": 2,
+      "totalSteps": 5,
+      "label": "主线·筑基宗册照心",
+      "consumes": [
+        "foundation_main_enrollment"
+      ],
+      "consumerIds": {
+        "foundation_main_enrollment": "foundation_main_enrollment_to_witness"
+      },
+      "produces": [
+        "foundation_main_witness"
+      ],
+      "factLanes": {
+        "foundation_main_witness": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "witness": "investigate"
+        },
+        "right": {
+          "witness": "protect"
+        }
+      }
+    },
     "chapterNum": 2,
     "choices": {
       "left": {
         "text": "调查真相",
         "desc": "深入山林追踪黑影，查清幕后真凶。",
         "effects": {
-          "cultivation": 12,
-          "karmaGood": 3
+          "cultivation": 4,
+          "karmaGood": 1
         },
         "karmaSeed": "causal:village_mystery",
-        "combatChance": 0.3
+        "combatChance": 0.3,
+        "combatEncounterId": "enc_trial_body_iron"
       },
       "right": {
         "text": "先保村民",
         "desc": "布阵护村，优先确保凡人安全。",
         "effects": {
-          "cultivation": 6,
-          "daoHeart": 8,
-          "karmaGood": 5
+          "cultivation": 2,
+          "daoHeart": 2,
+          "karmaGood": 2
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "sceneImage": "assets/cards/events/scene_ch_foundation_40.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_foundation_40.png"
   },
   "ch_foundation_60": {
@@ -241,29 +1193,55 @@
     "realm": "foundation",
     "threshold": 60,
     "chapter": "宗门风云",
+    "narrativeSpine": {
+      "threadId": "foundation_register_mirror",
+      "step": 3,
+      "totalSteps": 5,
+      "label": "主线·筑基宗册照心",
+      "consumes": [
+        "foundation_main_witness"
+      ],
+      "consumerIds": {
+        "foundation_main_witness": "foundation_main_witness_to_register_stance"
+      },
+      "produces": [
+        "foundation_main_register_stance"
+      ],
+      "factLanes": {
+        "foundation_main_register_stance": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "registerStance": "faction"
+        },
+        "right": {
+          "registerStance": "mediate"
+        }
+      }
+    },
     "chapterNum": 2,
     "choices": {
       "left": {
         "text": "支持同门",
         "desc": "站在与你亲近的弟子一边，巩固人脉。",
         "effects": {
-          "cultivation": 10,
-          "karmaBad": 3,
-          "fortune": 5
+          "cultivation": 3,
+          "karmaBad": 1,
+          "fortune": 2
         }
       },
       "right": {
         "text": "试图调停",
         "desc": "从中斡旋，试图平息争端。",
         "effects": {
-          "cultivation": 5,
-          "daoHeart": 5,
-          "karmaGood": 5
+          "cultivation": 2,
+          "daoHeart": 1,
+          "karmaGood": 2
         },
         "karmaSeed": "causal:mediator"
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_fellow.png",
+    "sceneImage": "assets/cards/events/scene_ch_foundation_60.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_foundation_60.png"
   },
   "ch_foundation_80": {
@@ -274,26 +1252,89 @@
     "realm": "foundation",
     "threshold": 80,
     "chapter": "宗门风云",
+    "narrativeSpine": {
+      "threadId": "foundation_register_mirror",
+      "step": 4,
+      "totalSteps": 5,
+      "label": "主线·筑基宗册照心",
+      "consumes": [
+        "foundation_main_register_stance"
+      ],
+      "consumerIds": {
+        "foundation_main_register_stance": "foundation_main_register_stance_to_mirror_preparedness"
+      },
+      "produces": [
+        "foundation_main_mirror_preparedness"
+      ],
+      "factLanes": {
+        "foundation_main_mirror_preparedness": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "readiness": "heed_omen"
+        },
+        "right": {
+          "readiness": "shoulder_alone"
+        }
+      },
+      "presentation": {
+        "summaryMarkers": [
+          "【宗册回声】"
+        ],
+        "echo": {
+          "marker": "【宗册回声】",
+          "prefix": "因你曾",
+          "separator": "，又",
+          "suffix": "；算命人的劫语指向的，正是会照见这些取舍的心魔。",
+          "segments": [
+            {
+              "factTypeId": "foundation_main_enrollment",
+              "payloadKey": "enrollment",
+              "variants": {
+                "oath": "在宗册上立下誓约",
+                "independent": "入宗却保留独行之身"
+              }
+            },
+            {
+              "factTypeId": "foundation_main_witness",
+              "payloadKey": "witness",
+              "variants": {
+                "investigate": "把山村异象记为待查的证词",
+                "protect": "先替村民挡下了夜里的异象"
+              }
+            },
+            {
+              "factTypeId": "foundation_main_register_stance",
+              "payloadKey": "registerStance",
+              "variants": {
+                "faction": "在灵矿纷争中替同门站了队",
+                "mediate": "在灵矿纷争中替被抹去的名字留了余地"
+              }
+            }
+          ]
+        }
+      }
+    },
     "chapterNum": 2,
     "choices": {
       "left": {
         "text": "详细询问",
         "desc": "请算命先生细说端倪，付上一块灵石。",
         "effects": {
-          "fortune": 10,
-          "spiritStone": -1
+          "fortune": 3,
+          "spiritStone": -3
         }
       },
       "right": {
         "text": "一笑而过",
         "desc": "江湖术士之言，不足为信。",
         "effects": {
-          "cultivation": 10,
-          "daoHeart": 3
+          "cultivation": 3,
+          "daoHeart": 1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_fortune.png",
+    "sceneImage": "assets/cards/events/scene_ch_foundation_80.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_foundation_80.png"
   },
   "ch_foundation_100": {
@@ -301,28 +1342,352 @@
     "title": "突破金丹",
     "description": "丹田内液态真元开始旋转凝固。宗门长老齐聚护法——这是凝聚金丹的关键。你的每一个选择都将刻入金丹的道纹之中，不可更改。",
     "type": "COMBAT",
+    "encounterKind": "realm_boss",
+    "actionPresentationId": "enc_boss_foundation_mirror",
     "chapterNum": 2,
     "realm": "foundation",
     "threshold": 100,
     "chapter": "宗门风云",
+    "narrativeSpine": {
+      "threadId": "foundation_register_mirror",
+      "step": 5,
+      "totalSteps": 5,
+      "label": "主线·筑基宗册照心",
+      "consumes": [
+        "foundation_main_mirror_preparedness"
+      ],
+      "produces": [
+        "foundation_main_mirror_verdict"
+      ],
+      "combatSettlement": {
+        "requiredLanes": [
+          "MAIN_SPINE"
+        ],
+        "consumes": [
+          "foundation_main_mirror_preparedness"
+        ],
+        "consumerIds": {
+          "foundation_main_mirror_preparedness": "foundation_main_mirror_verdict"
+        },
+        "legacyMigration": {
+          "producerId": "foundation_register_mirror_legacy_gate_migration",
+          "log": "【主线·筑基宗册照心】旧世记录抵达心魔劫，已补写无额外收益的迁移回执。"
+        },
+        "outcomePayloadFields": [
+          {
+            "factTypeId": "foundation_main_mirror_preparedness",
+            "sourceKey": "readiness",
+            "targetKey": "readiness",
+            "fallback": "unprepared"
+          }
+        ],
+        "resultTextByOutcome": {
+          "victory": "心魔照见了你的取舍，而你没有把名字再交给阴影。",
+          "flee": "你暂退镜前，宗册上的空行仍等你回来作答。",
+          "defeat": "心魔击碎了这次凝丹，但宗册照见的取舍没有被抹去。"
+        }
+      },
+      "presentation": {
+        "summaryMarkers": [
+          "【照心清算】"
+        ],
+        "settlement": {
+          "marker": "【照心清算】",
+          "prefix": "因你曾",
+          "separator": "，又",
+          "suffix": "。心魔根基固定为 11；当前道心每点使其 -1、最低压至 6；结金丹开场 +2 护盾，并使心魔 -2 根基。",
+          "segments": [
+            {
+              "factTypeId": "foundation_main_enrollment",
+              "payloadKey": "enrollment",
+              "variants": {
+                "oath": "在宗册上立下誓约",
+                "independent": "入宗却保留独行之身"
+              }
+            },
+            {
+              "factTypeId": "foundation_main_witness",
+              "payloadKey": "witness",
+              "variants": {
+                "investigate": "把山村异象记为待查的证词",
+                "protect": "先替村民挡下了夜里的异象"
+              }
+            },
+            {
+              "factTypeId": "foundation_main_register_stance",
+              "payloadKey": "registerStance",
+              "variants": {
+                "faction": "在灵矿纷争中替同门站了队",
+                "mediate": "在灵矿纷争中替被抹去的名字留了余地"
+              }
+            },
+            {
+              "factTypeId": "foundation_main_mirror_preparedness",
+              "payloadKey": "readiness",
+              "variants": {
+                "heed_omen": "在红尘里正视了劫兆",
+                "shoulder_alone": "笑过劫语，却决定独自承担"
+              }
+            }
+          ]
+        }
+      }
+    },
     "enemy": {
       "name": "金丹心魔",
-      "hp": 150,
-      "maxHp": 150,
-      "atk": 8,
-      "def": 2,
+      "hp": 8,
+      "maxHp": 8,
+      "atk": 2,
+      "def": 1,
       "critRate": 10,
       "special": "心神震爆",
       "specialChance": 0.25,
-      "specialDmg": 15
+      "specialDmg": 2,
+      "intents": [
+        {
+          "type": "attack",
+          "value": 2,
+          "desc": "镜剑：造成2点伤害",
+          "actionName": "镜中道敌复刻你的剑势"
+        },
+        {
+          "type": "defend",
+          "value": 2,
+          "desc": "照心镜：获得2点护盾",
+          "actionName": "心魔以碎镜照见你的迟疑"
+        },
+        {
+          "type": "debuff",
+          "statusId": "weak",
+          "value": 1,
+          "desc": "问心：施加1层虚弱",
+          "actionName": "心魔叩问你最深处的执念"
+        }
+      ],
+      "randomIntents": false,
+      "planGraph": {
+        "planId": "chapter_gate_foundation_mirror_adaptation_v1",
+        "initialState": "READING",
+        "states": {
+          "READING": {
+            "label": "照心观式",
+            "cue": "镜中道敌举镜辨认你的出牌习惯。",
+            "intent": {
+              "type": "defend",
+              "value": 2,
+              "desc": "照心镜：获得2点护盾",
+              "actionName": "心魔以碎镜照见你的迟疑，护住自身命门"
+            }
+          },
+          "PRESSURE": {
+            "label": "镜剑追隙",
+            "cue": "真元已经见底，镜剑正复刻你最凶的一式。",
+            "intent": {
+              "type": "attack",
+              "value": 5,
+              "desc": "镜剑：造成5点伤害",
+              "actionName": "镜中道敌复刻你的爆发，在真元空档反刺心脉"
+            }
+          },
+          "PUNISH": {
+            "label": "同念破心",
+            "cue": "重复的执念被心魔看穿，镜剑将越过外层护势。",
+            "intent": {
+              "type": "attack",
+              "value": 5,
+              "piercing": true,
+              "desc": "破心：穿透造成5点伤害",
+              "actionName": "心魔沿重复招路切入识海，以镜剑直刺道心"
+            }
+          },
+          "GAP": {
+            "label": "镜相失焦",
+            "cue": "克制或偏斩让镜中道敌失去复刻目标。",
+            "intent": {
+              "type": "defend",
+              "value": 0,
+              "desc": "失焦：本轮不造成伤害",
+              "actionName": "碎镜映不出下一式，心魔的剑势在雾中散开"
+            }
+          }
+        },
+        "transitions": [
+          {
+            "from": "READING",
+            "when": "repeated_card_type",
+            "to": "PUNISH",
+            "minConsecutive": 2
+          },
+          {
+            "from": "READING",
+            "when": "player_overcommitted",
+            "to": "PRESSURE",
+            "minCards": 2,
+            "maxReservedQi": 1
+          },
+          {
+            "from": "READING",
+            "when": "player_reserved_resource",
+            "to": "GAP",
+            "maxCards": 1,
+            "minReservedQi": 2
+          },
+          {
+            "from": [
+              "READING",
+              "PRESSURE",
+              "PUNISH"
+            ],
+            "when": "deflected",
+            "to": "GAP"
+          },
+          {
+            "from": [
+              "PRESSURE",
+              "PUNISH",
+              "GAP"
+            ],
+            "when": "action_resolved",
+            "to": "READING"
+          }
+        ]
+      }
     },
     "combatRewards": {
       "breakSuccess": true,
-      "cultivation": 40,
-      "daoHeart": 15,
-      "spiritStone": 50
+      "cultivation": 8,
+      "daoHeart": 1,
+      "spiritStone": 8,
+      "maxHealth": 1,
+      "maxDaoHeart": 1
     },
-    "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
+    "bossJourney": {
+      "id": "realm_boss_journey_foundation_heart_mirror_v1",
+      "bossName": "金丹心魔·镜中道敌",
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "stages": {
+        "20": {
+          "phase": "omen",
+          "label": "镜中异影",
+          "interaction": "preview_only",
+          "cue": "【劫兆】宗门心镜映出一个比你更快、更狠的黑衣身影。现在入镜只会被它用你的招式击溃，只能先稳住道心。"
+        },
+        "40": {
+          "phase": "intel",
+          "label": "心魔照骨",
+          "interaction": "mechanic_reveal",
+          "cue": "【劫情】长老点破：心魔根基固定为 11；每点道心会令镜中道敌少 1 点根基，最低压至 6 点。它不会因你的境界成长而变强。"
+        },
+        "60": {
+          "phase": "counter",
+          "label": "丹定金性",
+          "interaction": "counter_route",
+          "cue": "【对策】结金丹可在入镜时获得开场 2 点护盾，并削去心魔投影 2 点根基。筑基期坊市会为它保留确定性货位。",
+          "counterSource": {
+            "type": "shop_guarantee",
+            "systemId": "shop",
+            "itemId": "shop_pill_golden",
+            "resourceType": "pill",
+            "resourceKey": "golden"
+          }
+        },
+        "80": {
+          "phase": "readiness",
+          "label": "问心整备",
+          "interaction": "readiness_check",
+          "cue": "【整备】百日大劫所指并非外敌，而是镜中的自己。带结金丹可获得开场 2 点护盾并削去 2 点根基；无丹则需用道心、爆发牌与法宝协同正面斩魔。",
+          "bareFightHint": "裸战仍然开放：心魔基础根基固定为 11，道心每点削去 1 点，最低仍会保留 6 点根基。"
+        },
+        "100": {
+          "phase": "gate",
+          "label": "金丹心魔劫",
+          "interaction": "fixed_boss_combat",
+          "cue": "【决战】镜中道敌以固定根基显化，道心与结金丹只改变压制幅度。",
+          "combatCardId": "ch_foundation_100"
+        }
+      }
+    },
+    "combatRules": {
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "victoryCondition": "defeat_enemy",
+      "baseHp": 11,
+      "minimumHp": 6,
+      "daoHeartHpReductionPerPoint": 1,
+      "counter": {
+        "flag": "used_golden_pill",
+        "openingBlock": 2,
+        "enemyHpReduction": 2
+      }
+    },
+    "combatPresentation": {
+      "presentationId": "combat_enc_boss_foundation_mirror_agc_k2",
+      "battlefieldId": "battlefield_enc_boss_foundation_mirror_agc_k2",
+      "battlefield": "enc_boss_foundation_mirror",
+      "warningTitle": "筑基巡关·镜湖心魔 · 战前推演",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_foundation_mirror_agc_k2.png",
+      "enemyType": "巡关首领 · 镜湖心魔",
+      "difficultyLabel": "筑基 · 首领",
+      "mechanic": "攻击、心防、震爆循环；在心防回合积攒资源。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_boss_foundation_mirror_agc_k2",
+          "name": "镜中道敌",
+          "kicker": "筑基 · 问心镜劫",
+          "scaleProfileId": "foundation_mirror_hovering_ordeal",
+          "portraitMode": "stage_full_body_transparent",
+          "intentPosePolicy": "stable_identity",
+          "image": "assets/combat/enemy_identities/enc_boss_foundation_mirror_agc_k2/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/enemy_actions/enc_boss_foundation_mirror_agc_k2/attack/attack-3.png",
+            "defend": "assets/combat/enemy_actions/enc_boss_foundation_mirror_agc_k2/guard/guard-3.png",
+            "buff": "assets/combat/enemy_actions/enc_boss_foundation_mirror_agc_k2/guard/guard-1.png",
+            "debuff": "assets/combat/enemy_actions/enc_boss_foundation_mirror_agc_k2/hurt/hurt-3.png"
+          },
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "finalArtApproved": false
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_foundation_mirror_damage_agc_k2",
+          "frames": [
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/damage/damage-1.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/damage/damage-2.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/damage/damage-3.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/damage/damage-4.png"
+          ],
+          "durationMs": 420
+        },
+        "shield": {
+          "id": "fx_foundation_mirror_shield_agc_k2",
+          "frames": [
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/shield/shield-1.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/shield/shield-2.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/shield/shield-3.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/shield/shield-4.png"
+          ],
+          "durationMs": 460
+        },
+        "weak": {
+          "id": "fx_foundation_mirror_weak_agc_k2",
+          "frames": [
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/weak/weak-1.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/weak/weak-2.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/weak/weak-3.png",
+            "assets/combat/vfx/enc_boss_foundation_mirror_agc_k2/weak/weak-4.png"
+          ],
+          "durationMs": 460
+        }
+      },
+      "actionPresentationId": "enc_boss_foundation_mirror",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "finalArtApproved": false,
+      "replacementStillRequired": true
+    },
+    "sceneImage": "assets/cards/events/scene_ch_foundation_100.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_foundation_100.png"
   },
   "ch_golden_20": {
@@ -333,29 +1698,345 @@
     "realm": "golden",
     "threshold": 20,
     "chapter": "丹心问道",
+    "narrativeSpine": {
+      "threadId": "golden_dan_heart",
+      "step": 1,
+      "totalSteps": 5,
+      "label": "主线·金丹丹心",
+      "consumes": [],
+      "produces": [
+        "golden_main_core_intent"
+      ],
+      "factLanes": {
+        "golden_main_core_intent": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "coreIntent": "nurture"
+        },
+        "right": {
+          "coreIntent": "venture"
+        }
+      },
+      "presentation": {
+        "summaryMarkers": [
+          "【照心回声】"
+        ],
+        "echo": {
+          "marker": "【照心回声】",
+          "prefix": "因你曾",
+          "separator": "，",
+          "suffix": "；今日金丹初成，你要决定把这份照见温养成丹，还是带入人间。",
+          "segments": [
+            {
+              "factTypeId": "foundation_main_mirror_verdict",
+              "payloadKey": "outcome",
+              "variants": {
+                "victory": "在心魔镜前承认过自己的取舍",
+                "flee": "曾暂退镜前、仍把空行留在心中",
+                "defeat": "曾被心魔击碎一次凝丹，却没有抹去选择"
+              }
+            }
+          ]
+        }
+      }
+    },
     "chapterNum": 3,
     "choices": {
       "left": {
         "text": "闭关巩固",
         "desc": "深居简出，稳固金丹根基。",
         "effects": {
-          "cultivation": 15,
-          "daoHeart": 5,
-          "health": 10
+          "cultivation": 5,
+          "daoHeart": 1,
+          "health": 1
         }
       },
       "right": {
         "text": "游历四方",
         "desc": "携金丹游历天下，增广见闻。",
         "effects": {
-          "cultivation": 10,
-          "fortune": 8,
-          "karmaGood": 2
+          "cultivation": 3,
+          "fortune": 3,
+          "karmaGood": 1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_cave.png",
-    "_originalSceneImage": "assets/cards/events/scene_ch_golden_20.png"
+    "sceneImage": "assets/cards/events/scene_ch_golden_20.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_golden_20.png",
+    "pathVariants": {
+      "sword": {
+        "realm": "golden",
+        "path": "sword",
+        "text": {
+          "title": "金丹藏锋",
+          "description": "金丹旋转时，一线锋光随呼吸收放。真正的难题不再是能否出手，而是何时让锋芒离鞘。",
+          "choices": {
+            "left": {
+              "text": "闭关养锋",
+              "desc": "收束外务，让金丹与剑意彼此磨合。"
+            },
+            "right": {
+              "text": "携锋远游",
+              "desc": "以真实遭遇校验新生金丹的极限。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:sword",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:golden_sword_temper",
+            "realm": "golden",
+            "path": "sword",
+            "delay": 7,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:golden_sword_roam",
+            "realm": "golden",
+            "path": "sword",
+            "delay": 7,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 5,
+              "daoHeart": 1,
+              "health": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 4,
+              "fortune": 3,
+              "karmaGood": 1
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_golden_20.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "spell": {
+        "realm": "golden",
+        "path": "spell",
+        "text": {
+          "title": "金丹结印",
+          "description": "金丹表面浮现层层法环，每一层都能承载一种术式。你必须决定先求稳定叠印，还是让法环接触更多天地变化。",
+          "choices": {
+            "left": {
+              "text": "闭关叠印",
+              "desc": "反复校准法环，降低术式彼此干扰。"
+            },
+            "right": {
+              "text": "游历采象",
+              "desc": "从山川气象中扩充可调用的变化。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:spell",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:golden_spell_layers",
+            "realm": "golden",
+            "path": "spell",
+            "delay": 7,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:golden_spell_omens",
+            "realm": "golden",
+            "path": "spell",
+            "delay": 7,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 5,
+              "daoHeart": 1,
+              "fortune": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 4,
+              "fortune": 3,
+              "karmaGood": 1
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_golden_20.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "body": {
+        "realm": "golden",
+        "path": "body",
+        "text": {
+          "title": "金丹淬骨",
+          "description": "金丹热流渗入骨髓，旧伤与暗结逐一显形。此刻可先修补根基，也可借痛楚推动一次彻底蜕变。",
+          "choices": {
+            "left": {
+              "text": "温养旧伤",
+              "desc": "让金丹热流缓慢修复筋骨缺口。"
+            },
+            "right": {
+              "text": "极限淬骨",
+              "desc": "承受短暂损伤，逼迫肉身完成重塑。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:body",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:golden_body_mend",
+            "realm": "golden",
+            "path": "body",
+            "delay": 7,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:golden_body_recast",
+            "realm": "golden",
+            "path": "body",
+            "delay": 7,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": 2,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 5,
+              "health": -1,
+              "fortune": 2
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_golden_20.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "pill": {
+        "realm": "golden",
+        "path": "pill",
+        "text": {
+          "title": "金丹化炉",
+          "description": "金丹与丹火彼此呼应，体内仿佛多出一座随身药炉。稳定转化与冒险试药将导向不同的丹道。",
+          "choices": {
+            "left": {
+              "text": "稳火温养",
+              "desc": "维持恒定火候，把每份药力都转化干净。"
+            },
+            "right": {
+              "text": "试炼新方",
+              "desc": "承担配伍波动，寻找突破旧谱的组合。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:pill",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:golden_pill_steady",
+            "realm": "golden",
+            "path": "pill",
+            "delay": 7,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:golden_pill_formula",
+            "realm": "golden",
+            "path": "pill",
+            "delay": 7,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": 1,
+              "spiritStone": 6
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 5,
+              "fortune": 3
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_golden_20.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      }
+    }
   },
   "ch_golden_40": {
     "id": "ch_golden_40",
@@ -366,29 +2047,56 @@
     "threshold": 40,
     "chapter": "丹心问道",
     "chapterNum": 3,
+    "narrativeSpine": {
+      "threadId": "golden_dan_heart",
+      "step": 2,
+      "totalSteps": 5,
+      "label": "主线·金丹丹心",
+      "consumes": [
+        "golden_main_core_intent"
+      ],
+      "consumerIds": {
+        "golden_main_core_intent": "golden_main_core_intent_to_relic_price"
+      },
+      "produces": [
+        "golden_main_relic_price"
+      ],
+      "factLanes": {
+        "golden_main_relic_price": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "relicPrice": "bear_risk"
+        },
+        "right": {
+          "relicPrice": "keep_boundary"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "深入秘境",
         "desc": "冒险潜入秘境深处，博取机缘。",
         "effects": {
-          "cultivation": 20,
-          "health": -15,
-          "fortune": 8
+          "cultivation": 6,
+          "health": -2,
+          "fortune": 3
         },
-        "combatChance": 0.5,
+        "combatChance": 1,
+        "combatEncounterId": "enc_trial_sword_array",
         "karmaSeed": "causal:ruins_explorer"
       },
       "right": {
         "text": "只在边缘修行",
         "desc": "在外围借助时间流速安全修炼。",
         "effects": {
-          "cultivation": 12,
-          "daoHeart": 3
+          "cultivation": 4,
+          "daoHeart": 1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_cave.png",
-    "_originalSceneImage": "assets/cards/events/scene_ch_golden_40.png"
+    "sceneImage": "assets/cards/events/scene_ch_golden_40_agc_g2.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_golden_40_agc_g2.png"
   },
   "ch_golden_60": {
     "id": "ch_golden_60",
@@ -399,14 +2107,40 @@
     "realm": "golden",
     "threshold": 60,
     "chapter": "丹心问道",
+    "narrativeSpine": {
+      "threadId": "golden_dan_heart",
+      "step": 3,
+      "totalSteps": 5,
+      "label": "主线·金丹丹心",
+      "consumes": [
+        "golden_main_relic_price"
+      ],
+      "consumerIds": {
+        "golden_main_relic_price": "golden_main_relic_price_to_creed"
+      },
+      "produces": [
+        "golden_main_creed"
+      ],
+      "factLanes": {
+        "golden_main_creed": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "creed": "reject"
+        },
+        "right": {
+          "creed": "waver_without_surrender"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "严词拒绝",
         "desc": "正道修仙，不堕魔渊。",
         "effects": {
-          "daoHeart": 10,
-          "karmaGood": 5,
-          "cultivation": 5
+          "daoHeart": 1,
+          "karmaGood": 2,
+          "cultivation": 2
         },
         "karmaSeed": "causal:rejected_demon_path"
       },
@@ -414,14 +2148,14 @@
         "text": "犹豫动摇",
         "desc": "她说得不无道理……",
         "effects": {
-          "karmaBad": 5,
-          "cultivation": 10,
-          "daoHeart": -5
+          "karmaBad": 2,
+          "cultivation": 3,
+          "daoHeart": -1
         },
         "karmaSeed": "causal:demon_temptation"
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "sceneImage": "assets/cards/events/scene_ch_golden_60.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_golden_60.png"
   },
   "ch_golden_80": {
@@ -433,14 +2167,77 @@
     "realm": "golden",
     "threshold": 80,
     "chapter": "丹心问道",
+    "narrativeSpine": {
+      "threadId": "golden_dan_heart",
+      "step": 4,
+      "totalSteps": 5,
+      "label": "主线·金丹丹心",
+      "consumes": [
+        "golden_main_creed"
+      ],
+      "consumerIds": {
+        "golden_main_creed": "golden_main_creed_to_anchor"
+      },
+      "produces": [
+        "golden_main_anchor"
+      ],
+      "factLanes": {
+        "golden_main_anchor": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "anchor": "companions_witness"
+        },
+        "right": {
+          "anchor": "solitary_witness"
+        }
+      },
+      "presentation": {
+        "summaryMarkers": [
+          "【丹心回声】"
+        ],
+        "echo": {
+          "marker": "【丹心回声】",
+          "prefix": "因你先",
+          "separator": "，又",
+          "suffix": "；此刻你要决定让谁、或让怎样的独行，替这颗丹心作证。",
+          "segments": [
+            {
+              "factTypeId": "golden_main_core_intent",
+              "payloadKey": "coreIntent",
+              "variants": {
+                "nurture": "温养了初成金丹",
+                "venture": "带着初成金丹走入人间"
+              }
+            },
+            {
+              "factTypeId": "golden_main_relic_price",
+              "payloadKey": "relicPrice",
+              "variants": {
+                "bear_risk": "在秘境深处承担代价",
+                "keep_boundary": "在秘境边缘守住边界"
+              }
+            },
+            {
+              "factTypeId": "golden_main_creed",
+              "payloadKey": "creed",
+              "variants": {
+                "reject": "拒绝将裁决交给魔引",
+                "waver_without_surrender": "承认过动摇、却没有交出裁决"
+              }
+            }
+          ]
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "主动交谈",
         "desc": "上前攀谈，借着修行话题拉近距离。",
         "effects": {
-          "cultivation": 8,
-          "karmaGood": 3,
-          "fortune": 5
+          "cultivation": 3,
+          "karmaGood": 1,
+          "fortune": 2
         },
         "karmaSeed": "causal:companion_meeting"
       },
@@ -448,12 +2245,12 @@
         "text": "保持距离",
         "desc": "修仙之人当断尘缘，默默离去。",
         "effects": {
-          "cultivation": 10,
-          "daoHeart": 5
+          "cultivation": 3,
+          "daoHeart": 1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_fortune.png",
+    "sceneImage": "assets/cards/events/scene_ch_golden_80.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_golden_80.png"
   },
   "ch_golden_100": {
@@ -461,28 +2258,394 @@
     "title": "突破元婴",
     "description": "金丹碎裂，元婴将出。这是修仙路上最惊险的一关——丹碎成婴，九死一生。金丹碎裂的剧痛犹如万箭穿心，但元婴化形之后的天地将截然不同。",
     "type": "COMBAT",
+    "encounterKind": "realm_boss",
+    "actionPresentationId": "enc_boss_golden_yinyang",
     "chapterNum": 3,
     "realm": "golden",
     "threshold": 100,
     "chapter": "丹心问道",
+    "narrativeSpine": {
+      "threadId": "golden_dan_heart",
+      "step": 5,
+      "totalSteps": 5,
+      "label": "主线·金丹丹心",
+      "consumes": [
+        "golden_main_anchor"
+      ],
+      "produces": [
+        "golden_main_yinyang_verdict"
+      ],
+      "combatSettlement": {
+        "requiredLanes": [
+          "MAIN_SPINE"
+        ],
+        "consumes": [
+          "golden_main_anchor"
+        ],
+        "consumerIds": {
+          "golden_main_anchor": "golden_main_anchor_to_yinyang_verdict"
+        },
+        "legacyMigration": {
+          "producerId": "golden_dan_heart_legacy_gate_migration",
+          "defaultPayloadByFactType": {
+            "golden_main_anchor": {
+              "anchor": "legacy_unwitnessed"
+            }
+          },
+          "log": "【主线·金丹丹心】旧世记录抵达阴阳雷劫，已补写无额外收益的迁移回执。"
+        },
+        "outcomePayloadFields": [
+          {
+            "factTypeId": "golden_main_anchor",
+            "sourceKey": "anchor",
+            "targetKey": "anchor",
+            "fallback": "legacy_unwitnessed"
+          }
+        ],
+        "resultTextByOutcome": {
+          "victory": "阴阳雷劫没有替你决定丹心；它只证明你已能为自己的锚点承担代价。",
+          "flee": "你暂退雷狱，丹心的锚点仍等你带着下一次整备回来兑现。",
+          "defeat": "阴阳雷劫击碎了这次化婴，但没有把你为丹心立下的锚点一并抹去。"
+        }
+      },
+      "presentation": {
+        "summaryMarkers": [
+          "【碎丹清算】"
+        ],
+        "settlement": {
+          "marker": "【碎丹清算】",
+          "prefix": "因你曾",
+          "separator": "，又",
+          "suffix": "；阴阳雷狱便按既有雷律裁定：奇数阳雷 ×2 且可格挡，偶数阴雷穿盾；凝婴丹可令阴雷改为护盾承伤，或花 25 灵石布阵获得 +8 开局护盾。",
+          "segments": [
+            {
+              "factTypeId": "golden_main_core_intent",
+              "payloadKey": "coreIntent",
+              "variants": {
+                "nurture": "把初成金丹温养成形",
+                "venture": "带着初成金丹走入人间"
+              }
+            },
+            {
+              "factTypeId": "golden_main_relic_price",
+              "payloadKey": "relicPrice",
+              "variants": {
+                "bear_risk": "在秘境深处承担了代价",
+                "keep_boundary": "在秘境边缘守住了边界"
+              }
+            },
+            {
+              "factTypeId": "golden_main_creed",
+              "payloadKey": "creed",
+              "variants": {
+                "reject": "拒绝把裁决交给魔引",
+                "waver_without_surrender": "承认过动摇、却没有交出裁决"
+              }
+            },
+            {
+              "factTypeId": "golden_main_anchor",
+              "payloadKey": "anchor",
+              "variants": {
+                "companions_witness": "选择让同道互证丹心",
+                "solitary_witness": "选择以独行自证丹心",
+                "legacy_unwitnessed": "带着旧世未言明的丹心锚点"
+              }
+            }
+          ]
+        }
+      }
+    },
     "enemy": {
-      "name": "元婴天劫",
-      "hp": 300,
-      "maxHp": 300,
-      "atk": 12,
-      "def": 5,
+      "name": "阴阳雷兽",
+      "hp": 10,
+      "maxHp": 10,
+      "atk": 2,
+      "def": 1,
       "critRate": 15,
       "special": "九霄神雷",
       "specialChance": 0.3,
-      "specialDmg": 25
+      "specialDmg": 3,
+      "intents": [
+        {
+          "type": "attack",
+          "value": 2,
+          "multiplier": 2,
+          "desc": "阳雷：双倍伤害，可被护盾抵挡",
+          "actionName": "阴阳相生，九霄阳雷化作白光直坠"
+        },
+        {
+          "type": "attack",
+          "value": 2,
+          "piercing": true,
+          "desc": "阴雷：穿透护盾，直击护体本源",
+          "actionName": "五行逆转，九霄阴雷无形穿透，直击元神"
+        }
+      ],
+      "randomIntents": false,
+      "planGraph": {
+        "planId": "chapter_gate_golden_yinyang_adaptation_v1",
+        "initialState": "READING",
+        "states": {
+          "READING": {
+            "label": "阴阳蓄雷",
+            "cue": "阴阳雷息交替游走，等待你先打乱自己的节拍。",
+            "intent": {
+              "type": "defend",
+              "value": 2,
+              "desc": "聚雷：获得2点护盾",
+              "actionName": "阴阳雷狱收束两极雷光，观察你的出牌节奏"
+            }
+          },
+          "PRESSURE": {
+            "label": "阳雷重坠",
+            "cue": "你耗尽真元，阳雷正以双重雷压砸向空档。",
+            "intent": {
+              "type": "attack",
+              "value": 5,
+              "desc": "阳雷：造成5点伤害",
+              "actionName": "九霄阳雷抓住真元空档，以白光重坠石台"
+            }
+          },
+          "PUNISH": {
+            "label": "阴雷穿脉",
+            "cue": "重复招路使阴雷锁定经脉，外层护盾无法阻挡。",
+            "intent": {
+              "type": "attack",
+              "value": 5,
+              "piercing": true,
+              "desc": "阴雷：穿透造成5点伤害",
+              "actionName": "无形阴雷沿同一气路反灌，越过护盾直击元神"
+            }
+          },
+          "GAP": {
+            "label": "两极错位",
+            "cue": "你保留真元或带偏雷锋，阴阳两极暂时失配。",
+            "intent": {
+              "type": "defend",
+              "value": 0,
+              "desc": "错位：本轮不造成伤害",
+              "actionName": "阴阳两道雷轨彼此错开，短暂暴露雷狱核心"
+            }
+          }
+        },
+        "transitions": [
+          {
+            "from": "READING",
+            "when": "repeated_card_type",
+            "to": "PUNISH",
+            "minConsecutive": 2
+          },
+          {
+            "from": "READING",
+            "when": "player_overcommitted",
+            "to": "PRESSURE",
+            "minCards": 2,
+            "maxReservedQi": 1
+          },
+          {
+            "from": "READING",
+            "when": "player_reserved_resource",
+            "to": "GAP",
+            "maxCards": 1,
+            "minReservedQi": 2
+          },
+          {
+            "from": [
+              "READING",
+              "PRESSURE",
+              "PUNISH"
+            ],
+            "when": "deflected",
+            "to": "GAP"
+          },
+          {
+            "from": [
+              "PRESSURE",
+              "PUNISH",
+              "GAP"
+            ],
+            "when": "action_resolved",
+            "to": "READING"
+          }
+        ]
+      }
+    },
+    "bossJourney": {
+      "id": "realm_boss_journey_golden_yinyang_v1",
+      "bossName": "元婴天劫·阴阳雷狱",
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "stages": {
+        "20": {
+          "phase": "omen",
+          "label": "丹中两声雷",
+          "interaction": "preview_only",
+          "cue": "【劫兆】金丹内一暖一寒两道雷息交替震鸣。此时引雷入体只会丹碎人亡，你只能记住它们一奇一偶的节拍。"
+        },
+        "40": {
+          "phase": "intel",
+          "label": "阴阳雷律",
+          "interaction": "mechanic_reveal",
+          "cue": "【劫情】阵师点破：奇数回合阳雷威力翻倍但可被盾挡；偶数回合阴雷穿盾。先挡阳、再护本源，才有碎丹成婴的窗口。"
+        },
+        "60": {
+          "phase": "counter",
+          "label": "丹阵双路",
+          "interaction": "counter_route",
+          "cue": "【对策】金丹期坊市保底供应凝婴丹，可取消阴雷穿透；没有丹药也可在战前花费 25 灵石布避雷阵，获得 8 点开局护盾。",
+          "counterSource": {
+            "type": "shop_guarantee",
+            "systemId": "shop",
+            "itemId": "shop_pill_nascent_pill",
+            "resourceType": "pill",
+            "resourceKey": "nascent"
+          },
+          "alternateSource": {
+            "type": "warning_cost",
+            "systemId": "combat_warning",
+            "resourceType": "spiritStone",
+            "cost": 25,
+            "effectKey": "_setFlag",
+            "flag": "used_lightning_array"
+          }
+        },
+        "80": {
+          "phase": "readiness",
+          "label": "读雷整备",
+          "interaction": "readiness_check",
+          "cue": "【整备】带丹可让阴雷转为普通伤害；布阵只给开局缓冲。裸战必须按奇偶回合保盾、治疗，并为偶数回合保留本源回复。",
+          "bareFightHint": "阳雷先挡、阴雷后补；不要在奇数回合耗尽防御牌。"
+        },
+        "100": {
+          "phase": "gate",
+          "label": "阴阳雷狱",
+          "interaction": "fixed_boss_combat",
+          "cue": "【决战】阴阳雷狱以固定强度降临，奇阳偶阴，击溃雷狱即可碎丹成婴。",
+          "combatCardId": "ch_golden_100"
+        }
+      }
+    },
+    "combatRules": {
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "victoryCondition": "defeat_enemy",
+      "turnCycle": {
+        "order": [
+          "yang",
+          "yin"
+        ],
+        "yang": {
+          "intentType": "attack",
+          "damageMultiplier": 2
+        },
+        "yin": {
+          "intentType": "attack",
+          "piercing": true
+        }
+      },
+      "counters": {
+        "nascentPill": {
+          "flag": "used_nascent_pill",
+          "resourceType": "pill",
+          "resourceKey": "nascent",
+          "cancelPiercing": true
+        },
+        "lightningArray": {
+          "flag": "used_lightning_array",
+          "cost": {
+            "spiritStone": 25
+          },
+          "openingBlock": 8
+        }
+      }
     },
     "combatRewards": {
       "breakSuccess": true,
-      "cultivation": 60,
-      "daoHeart": 20,
-      "spiritStone": 100
+      "cultivation": 10,
+      "daoHeart": 2,
+      "spiritStone": 12,
+      "maxHealth": 1,
+      "maxDaoHeart": 1
     },
-    "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
+    "combatPresentation": {
+      "presentationId": "combat_enc_boss_golden_yinyang_agc_n1",
+      "actionPresentationId": "enc_boss_golden_yinyang",
+      "battlefieldId": "battlefield_enc_boss_golden_yinyang_agc_n1",
+      "encounterCompositionId": "enc_boss_golden_yinyang",
+      "battlefield": "enc_boss_golden_yinyang",
+      "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_golden_yinyang_agc_n1.png",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "uiMaterialId": "sect_field_ledger_v1",
+      "warningTitle": "金丹巡关·阴阳雷兽 · 战前推演",
+      "enemyType": "巡关首领 · 阴阳雷兽",
+      "difficultyLabel": "金丹 · 首领",
+      "mechanic": "阴阳状态按出牌节拍切换：阳雷重压、阴雷穿脉，保留真元可令两极错位。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_enc_boss_golden_yinyang_agc_n1",
+          "name": "阴阳雷兽",
+          "kicker": "金丹 · 首领",
+          "portraitMode": "full_body",
+          "image": "assets/combat/enemies/golden_thunder_beast_n1/action/action-1.png",
+          "assetClass": "actor_identity",
+          "background": "transparent",
+          "embeddedBattlefieldAllowed": false,
+          "embeddedVfxAllowed": false,
+          "feetAnchor": "bottom_center",
+          "scaleProfileId": "golden_yinyang_twin_head_quadruped",
+          "visualWorldId": "cangmang_sect_pc98_v1",
+          "motionApproved": true,
+          "finalArtApproved": false,
+          "intentFrames": {
+            "attack": "assets/combat/enemies/golden_thunder_beast_n1/action/action-3.png",
+            "defend": "assets/combat/enemies/golden_thunder_beast_n1/action/action-2.png",
+            "buff": "assets/combat/enemies/golden_thunder_beast_n1/action/action-1.png",
+            "debuff": "assets/combat/enemies/golden_thunder_beast_n1/action/action-2.png",
+            "hurt": "assets/combat/enemies/golden_thunder_beast_n1/action/action-1.png",
+            "defeat": "assets/combat/enemies/golden_furnace_flame_n1/defeat_n4/defeat-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_golden_yang_thunder_n1",
+          "frames": [
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-1.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-2.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-3.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-4.png"
+          ],
+          "durationMs": 360,
+          "placement": "travel",
+          "authoredFacing": "left"
+        },
+        "slash": {
+          "id": "fx_golden_yang_thunder_n1",
+          "frames": [
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-1.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-2.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-3.png",
+            "assets/combat/fx/golden_furnace_n4/yang_thunder_travel/yang_thunder_travel-4.png"
+          ],
+          "durationMs": 360,
+          "placement": "travel",
+          "authoredFacing": "left"
+        },
+        "piercing": {
+          "id": "fx_golden_yin_thunder_n1",
+          "frames": [
+            "assets/combat/fx/golden_furnace_n4/yin_thunder_travel/yin_thunder_travel-1.png",
+            "assets/combat/fx/golden_furnace_n4/yin_thunder_travel/yin_thunder_travel-2.png",
+            "assets/combat/fx/golden_furnace_n4/yin_thunder_travel/yin_thunder_travel-3.png",
+            "assets/combat/fx/golden_furnace_n4/yin_thunder_travel/yin_thunder_travel-4.png"
+          ],
+          "durationMs": 330,
+          "placement": "travel",
+          "authoredFacing": "left"
+        }
+      }
+    },
+    "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_golden_yinyang_agc_n1.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_golden_100.png"
   },
   "ch_nascent_20": {
@@ -494,28 +2657,344 @@
     "threshold": 20,
     "chapter": "碎丹成婴",
     "chapterNum": 4,
+    "narrativeSpine": {
+      "threadId": "nascent_return",
+      "step": 1,
+      "totalSteps": 5,
+      "label": "主线·元婴回返",
+      "consumes": [],
+      "produces": [
+        "nascent_main_soul_posture"
+      ],
+      "factLanes": {
+        "nascent_main_soul_posture": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "soulPosture": "soul_roam"
+        },
+        "right": {
+          "soulPosture": "body_anchor"
+        }
+      },
+      "presentation": {
+        "summaryMarkers": [
+          "【丹心余响】"
+        ],
+        "echo": {
+          "marker": "【丹心余响】",
+          "prefix": "阴阳雷劫曾给出",
+          "separator": "",
+          "suffix": "；元婴初成后，这只是一段可回望的旧结论，不替你决定神魂该如何安放。",
+          "segments": [
+            {
+              "factTypeId": "golden_main_yinyang_verdict",
+              "payloadKey": "outcome",
+              "variants": {
+                "victory": "碎丹成婴的胜局",
+                "flee": "暂退雷狱的余波",
+                "defeat": "一次未能化婴的代价"
+              }
+            }
+          ]
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "元婴出游",
         "desc": "放任元婴离体游历，体悟天地法则。",
         "effects": {
-          "cultivation": 15,
-          "fortune": 8,
-          "health": -5
+          "cultivation": 5,
+          "fortune": 3,
+          "health": -1
         }
       },
       "right": {
         "text": "固守丹田",
         "desc": "稳固元婴根基，不急于求成。",
         "effects": {
-          "cultivation": 10,
-          "health": 10,
-          "daoHeart": 5
+          "cultivation": 3,
+          "health": 1,
+          "daoHeart": 1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_spellTome.png",
-    "_originalSceneImage": "assets/cards/events/scene_ch_nascent_20.png"
+    "sceneImage": "assets/cards/events/scene_ch_nascent_20.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_nascent_20.png",
+    "pathVariants": {
+      "sword": {
+        "realm": "nascent",
+        "path": "sword",
+        "text": {
+          "title": "元婴御剑",
+          "description": "元婴睁眼时，本命剑意也在识海中化出微缩锋影。神魂离体与本体守势需要新的平衡。",
+          "choices": {
+            "left": {
+              "text": "御锋神游",
+              "desc": "让元婴携锋远行，直接体悟天地脉络。"
+            },
+            "right": {
+              "text": "抱元守一",
+              "desc": "先让神魂与本体稳定同频，再谋远行。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:sword",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:nascent_sword_roam",
+            "realm": "nascent",
+            "path": "sword",
+            "delay": 8,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:nascent_sword_anchor",
+            "realm": "nascent",
+            "path": "sword",
+            "delay": 8,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 5,
+              "fortune": 3,
+              "health": -1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 4,
+              "health": 1,
+              "daoHeart": 1
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_nascent_20.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "spell": {
+        "realm": "nascent",
+        "path": "spell",
+        "text": {
+          "title": "元婴演法",
+          "description": "元婴能够从体外观察术式全貌，过去纠缠的法环如今像星轨般清晰。你可远游观天，也可留守重排术序。",
+          "choices": {
+            "left": {
+              "text": "神游观天",
+              "desc": "让元婴追随天象，收集更高层的变化规律。"
+            },
+            "right": {
+              "text": "重排术序",
+              "desc": "在丹田内逐层校准法环，减少失控。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:spell",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:nascent_spell_astral",
+            "realm": "nascent",
+            "path": "spell",
+            "delay": 8,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:nascent_spell_order",
+            "realm": "nascent",
+            "path": "spell",
+            "delay": 8,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 5,
+              "fortune": 3,
+              "health": -1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 4,
+              "health": 1,
+              "daoHeart": 1
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_nascent_20.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "body": {
+        "realm": "nascent",
+        "path": "body",
+        "text": {
+          "title": "元婴归身",
+          "description": "元婴不愿远离肉身，反而将神魂力量灌入每一寸筋骨。你可让神与身彻底合一，也可保留离体侦察的余地。",
+          "choices": {
+            "left": {
+              "text": "神身合炼",
+              "desc": "把元婴之力沉入筋骨，强化整体承载。"
+            },
+            "right": {
+              "text": "留一缕神游",
+              "desc": "保留外放感知，以小幅损耗换取先机。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:body",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:nascent_body_union",
+            "realm": "nascent",
+            "path": "body",
+            "delay": 8,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:nascent_body_scout",
+            "realm": "nascent",
+            "path": "body",
+            "delay": 8,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": 2,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 5,
+              "health": -1,
+              "fortune": 3
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_nascent_20.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "pill": {
+        "realm": "nascent",
+        "path": "pill",
+        "text": {
+          "title": "元婴温炉",
+          "description": "元婴能直接感知药力在体内的每次转折，许多旧丹方因此显出隐藏损耗。你可重修旧谱，或以神识试演新方。",
+          "choices": {
+            "left": {
+              "text": "重修旧谱",
+              "desc": "剔除累积丹毒，让常用配伍更加纯净。"
+            },
+            "right": {
+              "text": "神识试方",
+              "desc": "先在识海推演药性，再承担一次真实验证。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:pill",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:nascent_pill_purify",
+            "realm": "nascent",
+            "path": "pill",
+            "delay": 8,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:nascent_pill_simulate",
+            "realm": "nascent",
+            "path": "pill",
+            "delay": 8,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": 1,
+              "spiritStone": 8
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 5,
+              "fortune": 3
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_nascent_20.png",
+          "location": "洞府"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      }
+    }
   },
   "ch_nascent_40": {
     "id": "ch_nascent_40",
@@ -526,14 +3005,40 @@
     "realm": "nascent",
     "threshold": 40,
     "chapter": "碎丹成婴",
+    "narrativeSpine": {
+      "threadId": "nascent_return",
+      "step": 2,
+      "totalSteps": 5,
+      "label": "主线·元婴回返",
+      "consumes": [
+        "nascent_main_soul_posture"
+      ],
+      "consumerIds": {
+        "nascent_main_soul_posture": "nascent_main_soul_posture_to_tribulation_response"
+      },
+      "produces": [
+        "nascent_main_tribulation_response"
+      ],
+      "factLanes": {
+        "nascent_main_tribulation_response": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "tribulationResponse": "gather_strength"
+        },
+        "right": {
+          "tribulationResponse": "meet_tribulation"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "积蓄力量",
         "desc": "放缓修炼速度，全力准备渡劫资源。",
         "effects": {
-          "cultivation": 5,
-          "health": 10,
-          "daoHeart": 5
+          "cultivation": 2,
+          "health": 1,
+          "daoHeart": 1
         },
         "karmaSeed": "causal:prepared_for_tribulation"
       },
@@ -541,14 +3046,14 @@
         "text": "逆天而上",
         "desc": "既然天道注意到我，那就让它来吧。",
         "effects": {
-          "cultivation": 15,
-          "fortune": 8,
-          "daoHeart": -3
+          "cultivation": 5,
+          "fortune": 3,
+          "daoHeart": -1
         },
         "karmaSeed": "causal:defied_heavens"
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "sceneImage": "assets/cards/events/scene_ch_nascent_40.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_nascent_40.png"
   },
   "ch_nascent_60": {
@@ -560,14 +3065,40 @@
     "realm": "nascent",
     "threshold": 60,
     "chapter": "碎丹成婴",
+    "narrativeSpine": {
+      "threadId": "nascent_return",
+      "step": 3,
+      "totalSteps": 5,
+      "label": "主线·元婴回返",
+      "consumes": [
+        "nascent_main_tribulation_response"
+      ],
+      "consumerIds": {
+        "nascent_main_tribulation_response": "nascent_main_tribulation_response_to_karma_settlement"
+      },
+      "produces": [
+        "nascent_main_karma_settlement"
+      ],
+      "factLanes": {
+        "nascent_main_karma_settlement": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "karmaSettlement": "repay"
+        },
+        "right": {
+          "karmaSettlement": "self_settle"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "偿还因果",
         "desc": "主动寻找需要帮助的人，了结旧债。",
         "effects": {
-          "karmaGood": 8,
-          "daoHeart": 5,
-          "cultivation": 3
+          "karmaGood": 3,
+          "daoHeart": 1,
+          "cultivation": 1
         },
         "karmaSeed": "causal:debts_paid"
       },
@@ -575,13 +3106,13 @@
         "text": "快意恩仇",
         "desc": "有恩报恩有仇报仇，不欠心债。",
         "effects": {
-          "karmaBad": -5,
-          "cultivation": 10,
-          "karmaGood": 2
+          "karmaBad": -2,
+          "cultivation": 3,
+          "karmaGood": 1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_fortune.png",
+    "sceneImage": "assets/cards/events/scene_ch_nascent_60.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_nascent_60.png"
   },
   "ch_nascent_80": {
@@ -593,29 +3124,55 @@
     "realm": "nascent",
     "threshold": 80,
     "chapter": "碎丹成婴",
+    "narrativeSpine": {
+      "threadId": "nascent_return",
+      "step": 4,
+      "totalSteps": 5,
+      "label": "主线·元婴回返",
+      "consumes": [
+        "nascent_main_karma_settlement"
+      ],
+      "consumerIds": {
+        "nascent_main_karma_settlement": "nascent_main_karma_settlement_to_fate_claim"
+      },
+      "produces": [
+        "nascent_main_fate_claim"
+      ],
+      "factLanes": {
+        "nascent_main_fate_claim": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "fateClaim": "accept_binary"
+        },
+        "right": {
+          "fateClaim": "third_path"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "顺应天命",
         "desc": "接受混沌体质的宿命，坦然面对正魔之别。",
         "effects": {
-          "daoHeart": 10,
-          "cultivation": 12,
-          "fortune": -5
+          "daoHeart": 1,
+          "cultivation": 4,
+          "fortune": -2
         }
       },
       "right": {
         "text": "我命由我",
         "desc": "开辟第三条路——天道不容，我便逆天。",
         "effects": {
-          "cultivation": 18,
-          "daoHeart": -5,
-          "karmaBad": 3,
-          "fortune": 10
+          "cultivation": 6,
+          "daoHeart": -1,
+          "karmaBad": 1,
+          "fortune": 3
         },
         "karmaSeed": "causal:defy_fate"
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_fellow.png",
+    "sceneImage": "assets/cards/events/scene_ch_nascent_80.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_nascent_80.png"
   },
   "ch_nascent_100": {
@@ -624,27 +3181,317 @@
     "chapterNum": 4,
     "description": "元婴睁开双眼，周身金光大放。化神——元婴成长为元神，从此真正的分神化念，一念千里。但这最后的蜕变需要以自身精血为引。你割破手指，血滴落入丹田。",
     "type": "COMBAT",
+    "encounterKind": "realm_boss",
+    "actionPresentationId": "enc_boss_nascent_void",
     "realm": "nascent",
     "threshold": 100,
     "chapter": "碎丹成婴",
+    "narrativeSpine": {
+      "threadId": "nascent_return",
+      "step": 5,
+      "totalSteps": 5,
+      "label": "主线·元婴回返",
+      "consumes": [
+        "nascent_main_fate_claim"
+      ],
+      "produces": [
+        "nascent_main_void_verdict"
+      ],
+      "combatSettlement": {
+        "requiredLanes": [
+          "MAIN_SPINE"
+        ],
+        "consumes": [
+          "nascent_main_fate_claim"
+        ],
+        "consumerIds": {
+          "nascent_main_fate_claim": "nascent_main_fate_claim_to_void_verdict"
+        },
+        "legacyMigration": {
+          "producerId": "nascent_return_legacy_gate_migration",
+          "defaultPayloadByFactType": {
+            "nascent_main_fate_claim": {
+              "fateClaim": "legacy_unclaimed"
+            }
+          },
+          "log": "【主线·元婴回返】旧世记录抵达化神雷罚，已补写无额外收益的迁移回执。"
+        },
+        "outcomePayloadFields": [
+          {
+            "factTypeId": "nascent_main_fate_claim",
+            "sourceKey": "fateClaim",
+            "targetKey": "fateClaim",
+            "fallback": "legacy_unclaimed"
+          }
+        ],
+        "resultTextByOutcome": {
+          "victory": "化神雷罚只把你先前认领的道路照回本体；它不另行给出一条命运。",
+          "flee": "你暂退虚空，已认领的道路仍等你带着下一次整备回来兑现。",
+          "defeat": "雷罚击碎了这次化神尝试，却没有抹去你已认领的道路。"
+        }
+      },
+      "presentation": {
+        "summaryMarkers": [
+          "【元婴回返】"
+        ],
+        "settlement": {
+          "marker": "【元婴回返】",
+          "prefix": "你先",
+          "separator": "，再",
+          "suffix": "；因此雷罚只按既有攻击反噬规则回照你的出手，不增添隐藏数值。",
+          "segments": [
+            {
+              "factTypeId": "nascent_main_soul_posture",
+              "payloadKey": "soulPosture",
+              "variants": {
+                "soul_roam": "让神魂外放",
+                "body_anchor": "守住本体"
+              }
+            },
+            {
+              "factTypeId": "nascent_main_fate_claim",
+              "payloadKey": "fateClaim",
+              "variants": {
+                "accept_binary": "承认天命的二分",
+                "third_path": "认领第三条路",
+                "legacy_unclaimed": "带着旧世未言明的命数"
+              }
+            }
+          ]
+        }
+      }
+    },
     "enemy": {
       "name": "化神雷罚",
-      "hp": 500,
-      "maxHp": 500,
-      "atk": 20,
-      "def": 10,
+      "hp": 7,
+      "maxHp": 7,
+      "atk": 2,
+      "def": 1,
       "critRate": 20,
       "special": "虚空碎裂",
       "specialChance": 0.4,
-      "specialDmg": 40
+      "specialDmg": 3,
+      "intents": [
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "劫光：造成 3 点伤害",
+          "actionName": "虚空开裂，天道劫光自裂缝中激射而出"
+        },
+        {
+          "type": "buff",
+          "statusId": "sword_intent",
+          "value": 2,
+          "desc": "聚雷：积蓄 2 层天威",
+          "actionName": "天道锁定你的气机，虚空雷云狂暴积蓄"
+        }
+      ],
+      "randomIntents": false,
+      "planGraph": {
+        "planId": "chapter_gate_nascent_backlash_adaptation_v1",
+        "initialState": "READING",
+        "states": {
+          "READING": {
+            "label": "虚空锁机",
+            "cue": "雷罚正在追踪你的攻击气机，等待爆发过深。",
+            "intent": {
+              "type": "buff",
+              "statusId": "sword_intent",
+              "value": 2,
+              "desc": "聚雷：积蓄2层天威",
+              "actionName": "虚空裂缝锁定你的攻击气机，雷威在缝隙间积蓄"
+            }
+          },
+          "PRESSURE": {
+            "label": "裂隙反噬",
+            "cue": "真元耗尽后，虚空把你的杀意整股反压回来。",
+            "intent": {
+              "type": "attack",
+              "value": 5,
+              "desc": "反噬：造成5点伤害",
+              "actionName": "攻击气机被虚空翻转，劫光沿原路轰回元神"
+            }
+          },
+          "PUNISH": {
+            "label": "同式断界",
+            "cue": "重复攻击在裂隙中形成稳定回路，雷罚将穿透护势。",
+            "intent": {
+              "type": "attack",
+              "value": 5,
+              "piercing": true,
+              "desc": "断界：穿透造成5点伤害",
+              "actionName": "相同招路被裂隙闭合成环，断界雷光越过护盾"
+            }
+          },
+          "GAP": {
+            "label": "裂隙回缩",
+            "cue": "你改变节奏或保留真元，虚空锁定暂时失效。",
+            "intent": {
+              "type": "defend",
+              "value": 0,
+              "desc": "回缩：本轮不造成伤害",
+              "actionName": "找不到攻击气机，虚空裂缝向内回缩并露出核心"
+            }
+          }
+        },
+        "transitions": [
+          {
+            "from": "READING",
+            "when": "repeated_card_type",
+            "to": "PUNISH",
+            "minConsecutive": 2
+          },
+          {
+            "from": "READING",
+            "when": "player_overcommitted",
+            "to": "PRESSURE",
+            "minCards": 2,
+            "maxReservedQi": 1
+          },
+          {
+            "from": "READING",
+            "when": "player_reserved_resource",
+            "to": "GAP",
+            "maxCards": 1,
+            "minReservedQi": 2
+          },
+          {
+            "from": [
+              "READING",
+              "PRESSURE",
+              "PUNISH"
+            ],
+            "when": "deflected",
+            "to": "GAP"
+          },
+          {
+            "from": [
+              "PRESSURE",
+              "PUNISH",
+              "GAP"
+            ],
+            "when": "action_resolved",
+            "to": "READING"
+          }
+        ]
+      }
+    },
+    "bossJourney": {
+      "id": "realm_boss_journey_nascent_backlash_v1",
+      "bossName": "化神雷罚·虚空反噬",
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "stages": {
+        "20": {
+          "phase": "omen",
+          "label": "元神回响",
+          "interaction": "preview_only",
+          "cue": "【劫兆】元婴每次演练杀招，虚空都会把同样的痛楚弹回识海。此时强行追索只会令元神崩散。"
+        },
+        "40": {
+          "phase": "intel",
+          "label": "天机反噬",
+          "interaction": "mechanic_reveal",
+          "cue": "【劫情】化神雷罚会锁定攻击气机：每打出一张攻击牌便反噬 1 点真实气血；防御、法术、毒、法宝和道侣触发不算攻击。"
+        },
+        "60": {
+          "phase": "counter",
+          "label": "化神丹洗机",
+          "interaction": "counter_route",
+          "cue": "【对策】元婴期坊市保底供应化神丹。服用后免疫攻击反噬，并在开战时削去雷罚 3 点根基。",
+          "counterSource": {
+            "type": "shop_guarantee",
+            "systemId": "shop",
+            "itemId": "shop_pill_deity",
+            "resourceType": "pill",
+            "resourceKey": "deity"
+          }
+        },
+        "80": {
+          "phase": "readiness",
+          "label": "改构雷前牌组",
+          "interaction": "readiness_check",
+          "cue": "【整备】无丹仍可渡劫：减少攻击牌，用毒、法术、护盾、法宝和道侣触发造成间接伤害。",
+          "bareFightHint": "反噬只检查攻击牌类型；非攻击构筑不是取巧，而是另一条正式解法。"
+        },
+        "100": {
+          "phase": "gate",
+          "label": "虚空反噬",
+          "interaction": "fixed_boss_combat",
+          "cue": "【决战】化神雷罚以固定根基锁定攻击气机，击溃雷罚即可元神化神。",
+          "combatCardId": "ch_nascent_100"
+        }
+      }
+    },
+    "combatRules": {
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "victoryCondition": "defeat_enemy",
+      "attackBacklash": {
+        "triggerCardType": "attack",
+        "damage": 1,
+        "counter": {
+          "flag": "used_deity_pill",
+          "resourceType": "pill",
+          "resourceKey": "deity",
+          "enemyHpReduction": 3
+        }
+      }
     },
     "combatRewards": {
       "breakSuccess": true,
-      "cultivation": 100,
-      "daoHeart": 30,
-      "spiritStone": 200
+      "cultivation": 15,
+      "daoHeart": 2,
+      "spiritStone": 15,
+      "maxHealth": 1,
+      "maxDaoHeart": 2
     },
-    "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
+    "combatPresentation": {
+      "presentationId": "combat_break_nascent_void_backlash_v1",
+      "battlefieldId": "battlefield_break_nascent_void_womb_v1",
+      "battlefield": "nascent_void_womb",
+      "sceneImage": "assets/combat/realm_boss_r9bc/nascent/battlefield_break_nascent_void_womb_v1.png",
+      "enemyType": "天罚显化·虚空反噬",
+      "difficultyLabel": "境界门槛·攻击反噬",
+      "mechanic": "攻击牌造成反噬；化神丹免疫并削减根基，非攻击、毒、法术、法宝和道侣触发均可绕开。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_break_nascent_backlash_v1",
+          "name": "虚空反噬相",
+          "kicker": "天罚显化·因果回返",
+          "portraitMode": "bust",
+          "image": "assets/combat/realm_boss_r9bc/nascent/nascent_backlash_actions/nascent-backlash-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/realm_boss_r9bc/nascent/nascent_backlash_actions/nascent-backlash-2.png",
+            "buff": "assets/combat/realm_boss_r9bc/nascent/nascent_backlash_actions/nascent-backlash-3.png",
+            "defend": "assets/combat/realm_boss_r9bc/nascent/nascent_backlash_actions/nascent-backlash-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_break_nascent_soul_backlash_v1",
+          "frames": [
+            "assets/combat/realm_boss_r9bc/nascent/nascent_soul_backlash/nascent-soul-backlash-1.png",
+            "assets/combat/realm_boss_r9bc/nascent/nascent_soul_backlash/nascent-soul-backlash-2.png",
+            "assets/combat/realm_boss_r9bc/nascent/nascent_soul_backlash/nascent-soul-backlash-3.png",
+            "assets/combat/realm_boss_r9bc/nascent/nascent_soul_backlash/nascent-soul-backlash-4.png"
+          ],
+          "durationMs": 480
+        },
+        "slash": {
+          "id": "fx_break_nascent_soul_backlash_v1",
+          "frames": [
+            "assets/combat/realm_boss_r9bc/nascent/nascent_soul_backlash/nascent-soul-backlash-1.png",
+            "assets/combat/realm_boss_r9bc/nascent/nascent_soul_backlash/nascent-soul-backlash-2.png",
+            "assets/combat/realm_boss_r9bc/nascent/nascent_soul_backlash/nascent-soul-backlash-3.png",
+            "assets/combat/realm_boss_r9bc/nascent/nascent_soul_backlash/nascent-soul-backlash-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    },
+    "sceneImage": "assets/combat/realm_boss_r9bc/nascent/battlefield_break_nascent_void_womb_v1.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_nascent_100.png"
   },
   "ch_deity_20": {
@@ -656,28 +3503,345 @@
     "realm": "deity",
     "threshold": 20,
     "chapter": "神游太虚",
+    "narrativeSpine": {
+      "threadId": "deity_causal_burden",
+      "step": 1,
+      "totalSteps": 5,
+      "label": "主线·化神万因",
+      "consumes": [],
+      "produces": [
+        "deity_main_gaze"
+      ],
+      "factLanes": {
+        "deity_main_gaze": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "posture": "restrain"
+        },
+        "right": {
+          "posture": "dominate"
+        }
+      },
+      "presentation": {
+        "summaryMarkers": [
+          "【虚空余响】"
+        ],
+        "echo": {
+          "marker": "【虚空余响】",
+          "prefix": "化神之前，虚空雷罚曾留下",
+          "separator": "",
+          "suffix": "；如今它只让你看清因果，不替你决定如何介入众生。",
+          "segments": [
+            {
+              "factTypeId": "nascent_main_void_verdict",
+              "payloadKey": "outcome",
+              "variants": {
+                "victory": "一次回返的胜局",
+                "flee": "一次暂退的余波",
+                "defeat": "一次未竟的化神尝试"
+              }
+            }
+          ]
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "低调隐修",
         "desc": "收敛气息，不欲引人注目。",
         "effects": {
-          "cultivation": 10,
-          "health": 10,
-          "daoHeart": 5
+          "cultivation": 3,
+          "health": 1,
+          "daoHeart": 1
         }
       },
       "right": {
         "text": "威震群雄",
         "desc": "化神威压横扫四方，确立地位。",
         "effects": {
-          "cultivation": 18,
-          "karmaBad": 5,
-          "daoHeart": -3
+          "cultivation": 6,
+          "karmaBad": 2,
+          "daoHeart": -1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_cave.png",
-    "_originalSceneImage": "assets/cards/events/scene_ch_deity_20.png"
+    "sceneImage": "assets/cards/events/scene_ch_deity_20.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_deity_20.png",
+    "pathVariants": {
+      "sword": {
+        "realm": "deity",
+        "path": "sword",
+        "text": {
+          "title": "神念化剑",
+          "description": "化神之后，目光所及皆能成为剑意落点。越强的感知越需要克制，否则锋芒会先割裂自身因果。",
+          "choices": {
+            "left": {
+              "text": "敛神藏锋",
+              "desc": "收束神念，只在必要时显露杀机。"
+            },
+            "right": {
+              "text": "一念横空",
+              "desc": "以化神威势公开划定自己的领域。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:sword",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:deity_sword_veil",
+            "realm": "deity",
+            "path": "sword",
+            "delay": 9,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:deity_sword_domain",
+            "realm": "deity",
+            "path": "sword",
+            "delay": 9,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": 1,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 6,
+              "karmaBad": 2,
+              "daoHeart": -1
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_deity_20.png",
+          "location": "天道虚空"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "spell": {
+        "realm": "deity",
+        "path": "spell",
+        "text": {
+          "title": "神念布域",
+          "description": "化神感知将天地灵流展开为一张巨网，术式可在念起时落向任何节点。掌控范围与隐藏气机必须取舍。",
+          "choices": {
+            "left": {
+              "text": "收域观潮",
+              "desc": "缩小感知范围，细辨每条灵流的变化。"
+            },
+            "right": {
+              "text": "广布法域",
+              "desc": "公开扩张神念，以威势压住周遭异动。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:spell",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:deity_spell_observe",
+            "realm": "deity",
+            "path": "spell",
+            "delay": 9,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:deity_spell_domain",
+            "realm": "deity",
+            "path": "spell",
+            "delay": 9,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": 1,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 6,
+              "karmaBad": 2,
+              "daoHeart": -1
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_deity_20.png",
+          "location": "天道虚空"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "body": {
+        "realm": "deity",
+        "path": "body",
+        "text": {
+          "title": "神躯照世",
+          "description": "化神感知反照肉身，每处旧伤都连着一段因果。你可收敛神威修补本源，也可让威压成为护身壁垒。",
+          "choices": {
+            "left": {
+              "text": "内照本源",
+              "desc": "将神念沉入脏腑，修补难以察觉的损耗。"
+            },
+            "right": {
+              "text": "外放神威",
+              "desc": "以肉身威压震慑来敌，同时承担更多因果。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:body",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:deity_body_inward",
+            "realm": "deity",
+            "path": "body",
+            "delay": 9,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:deity_body_awe",
+            "realm": "deity",
+            "path": "body",
+            "delay": 9,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": 2,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 6,
+              "karmaBad": 2,
+              "health": -1
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_deity_20.png",
+          "location": "天道虚空"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "pill": {
+        "realm": "deity",
+        "path": "pill",
+        "text": {
+          "title": "神识辨药",
+          "description": "化神感知能看见药性背后的因果去向，同一味灵材会因采摘、保存与服用者而变化。你必须重定丹道尺度。",
+          "choices": {
+            "left": {
+              "text": "追溯药源",
+              "desc": "沿因果查明灵材来处，减少隐藏杂质。"
+            },
+            "right": {
+              "text": "广炼济世",
+              "desc": "公开炼制高阶丹药，以资源换取众生回响。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:pill",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:deity_pill_origin",
+            "realm": "deity",
+            "path": "pill",
+            "delay": 9,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:deity_pill_relief",
+            "realm": "deity",
+            "path": "pill",
+            "delay": 9,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "fortune": 3,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 5,
+              "spiritStone": 10,
+              "karmaGood": 2
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_deity_20.png",
+          "location": "天道虚空"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      }
+    }
   },
   "ch_deity_40": {
     "id": "ch_deity_40",
@@ -688,29 +3852,56 @@
     "realm": "deity",
     "threshold": 40,
     "chapter": "神游太虚",
+    "narrativeSpine": {
+      "threadId": "deity_causal_burden",
+      "step": 2,
+      "totalSteps": 5,
+      "label": "主线·化神万因",
+      "consumes": [
+        "deity_main_gaze"
+      ],
+      "consumerIds": {
+        "deity_main_gaze": "deity_main_gaze_to_truth_position"
+      },
+      "produces": [
+        "deity_main_truth_position"
+      ],
+      "factLanes": {
+        "deity_main_truth_position": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "truth": "pursue"
+        },
+        "right": {
+          "truth": "erase"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "追寻真相",
         "desc": "深入遗迹，寻找另一半石碑。",
         "effects": {
-          "cultivation": 15,
-          "fortune": 10,
-          "health": -10
+          "cultivation": 5,
+          "fortune": 3,
+          "health": -1
         },
         "karmaSeed": "causal:ancient_truth",
-        "combatChance": 0.4
+        "combatChance": 0.4,
+        "combatEncounterId": "enc_hidden_heaven_censor"
       },
       "right": {
         "text": "毁碑灭迹",
         "desc": "打破石碑，不让秘密被他人发现。",
         "effects": {
-          "cultivation": 10,
-          "daoHeart": -5,
-          "karmaBad": 5
+          "cultivation": 3,
+          "daoHeart": -1,
+          "karmaBad": 2
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_cave.png",
+    "sceneImage": "assets/cards/events/scene_ch_deity_40.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_deity_40.png"
   },
   "ch_deity_60": {
@@ -722,27 +3913,53 @@
     "realm": "deity",
     "threshold": 60,
     "chapter": "神游太虚",
+    "narrativeSpine": {
+      "threadId": "deity_causal_burden",
+      "step": 3,
+      "totalSteps": 5,
+      "label": "主线·化神万因",
+      "consumes": [
+        "deity_main_truth_position"
+      ],
+      "consumerIds": {
+        "deity_main_truth_position": "deity_main_truth_position_to_world_response"
+      },
+      "produces": [
+        "deity_main_world_response"
+      ],
+      "factLanes": {
+        "deity_main_world_response": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "world": "shelter"
+        },
+        "right": {
+          "world": "harvest"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "守护苍生",
         "desc": "以化神之力护住一方天地，庇佑凡人。",
         "effects": {
-          "karmaGood": 10,
-          "daoHeart": 8,
-          "health": -15
+          "karmaGood": 3,
+          "daoHeart": 2,
+          "health": -2
         }
       },
       "right": {
         "text": "抓住机遇",
         "desc": "天道崩塌必有异宝出世，趁机搜罗机缘。",
         "effects": {
-          "cultivation": 20,
-          "fortune": 10,
-          "karmaBad": 8
+          "cultivation": 6,
+          "fortune": 3,
+          "karmaBad": 3
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "sceneImage": "assets/cards/events/scene_ch_deity_60.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_deity_60.png"
   },
   "ch_deity_80": {
@@ -754,27 +3971,54 @@
     "realm": "deity",
     "threshold": 80,
     "chapter": "神游太虚",
+    "narrativeSpine": {
+      "threadId": "deity_causal_burden",
+      "step": 4,
+      "totalSteps": 5,
+      "label": "主线·化神万因",
+      "consumes": [
+        "deity_main_world_response"
+      ],
+      "consumerIds": {
+        "deity_main_world_response": "deity_main_world_response_to_debt_claim"
+      },
+      "produces": [
+        "deity_main_debt_claim"
+      ],
+      "factLanes": {
+        "deity_main_debt_claim": "MAIN_SPINE"
+      },
+      "choicePayload": {
+        "left": {
+          "debt": "sever"
+        },
+        "right": {
+          "debt": "shoulder"
+        }
+      }
+    },
     "choices": {
       "left": {
         "text": "斩断因果",
         "desc": "以化神之力斩断所有因果线，再无牵挂。",
         "effects": {
-          "cultivation": 25,
-          "karmaBad": 10,
-          "daoHeart": -10
+          "cultivation": 8,
+          "karmaBad": 3,
+          "daoHeart": -1
         }
       },
       "right": {
         "text": "承担因果",
-        "desc": "认领每一根因果线，承担所有后果。",
+        "desc": "认领每一根因果线，偿还旧债并清除 10 点恶业。",
         "effects": {
-          "karmaGood": 10,
-          "daoHeart": 15,
-          "health": -10
+          "karmaGood": 3,
+          "karmaBad": -10,
+          "daoHeart": 2,
+          "health": -1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_fellow.png",
+    "sceneImage": "assets/cards/events/scene_ch_deity_80.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_deity_80.png"
   },
   "ch_deity_100": {
@@ -782,36 +4026,344 @@
     "title": "突破渡劫",
     "chapterNum": 5,
     "description": "化神大圆满。天空乌云密布，雷龙在云层中游走。天道锁定了你——突破渡劫的不是实力，而是勇气。你深吸一口气，踏入虚空。九重雷劫，来吧。",
-    "type": "MILESTONE",
+    "type": "COMBAT",
+    "encounterKind": "realm_boss",
+    "actionPresentationId": "enc_boss_deity_karma_dragon",
     "realm": "deity",
     "threshold": 100,
     "chapter": "神游太虚",
     "isBreakthrough": true,
-    "choices": {
-      "left": {
-        "text": "以法宝渡劫",
-        "desc": "祭出所有法宝，以物抗雷。",
-        "effects": {
-          "cultivation": 18,
-          "health": -5
+    "narrativeSpine": {
+      "threadId": "deity_causal_burden",
+      "step": 5,
+      "totalSteps": 5,
+      "label": "主线·化神万因",
+      "consumes": [
+        "deity_main_debt_claim"
+      ],
+      "produces": [
+        "deity_main_karma_verdict"
+      ],
+      "combatSettlement": {
+        "requiredLanes": [
+          "MAIN_SPINE"
+        ],
+        "consumes": [
+          "deity_main_debt_claim"
+        ],
+        "consumerIds": {
+          "deity_main_debt_claim": "deity_main_debt_claim_to_karma_verdict"
         },
-        "breakSuccess": 0.85,
-        "requires": {
-          "treasure": 1
+        "legacyMigration": {
+          "producerId": "deity_causal_burden_legacy_gate_migration",
+          "defaultPayloadByFactType": {
+            "deity_main_debt_claim": {
+              "debt": "legacy_unclaimed"
+            }
+          },
+          "log": "【主线·化神万因】旧世记录抵达九重业锁，已补写无额外收益的迁移回执。"
+        },
+        "outcomePayloadFields": [
+          {
+            "factTypeId": "deity_main_debt_claim",
+            "sourceKey": "debt",
+            "targetKey": "debt",
+            "fallback": "legacy_unclaimed"
+          }
+        ],
+        "resultTextByOutcome": {
+          "victory": "九重业锁没有替你清除或制造业债；它只记下你选择如何承担。",
+          "flee": "你暂退天刑，已认领的因果仍等你带着真实业债回来兑现。",
+          "defeat": "九重业锁击碎了这次渡劫尝试，却没有替你抹去或改写既有因果。"
         }
       },
-      "right": {
-        "text": "以肉身硬扛",
-        "desc": "不借外物，以本命精元对抗雷劫。",
-        "effects": {
-          "cultivation": 28,
-          "health": -30,
-          "daoHeart": 15
-        },
-        "breakSuccess": 0.5
+      "presentation": {
+        "summaryMarkers": [
+          "【万因裁定】"
+        ],
+        "settlement": {
+          "marker": "【万因裁定】",
+          "prefix": "你先",
+          "separator": "，继而",
+          "suffix": "；九重业锁仍只按真实恶业计雷，法宝也只能由你实际拥有并献祭。",
+          "segments": [
+            {
+              "factTypeId": "deity_main_gaze",
+              "payloadKey": "posture",
+              "variants": {
+                "restrain": "收束神念看见众生",
+                "dominate": "以威势介入众生"
+              }
+            },
+            {
+              "factTypeId": "deity_main_truth_position",
+              "payloadKey": "truth",
+              "variants": {
+                "pursue": "追索世界漏洞的真相",
+                "erase": "选择毁碑灭迹"
+              }
+            },
+            {
+              "factTypeId": "deity_main_world_response",
+              "payloadKey": "world",
+              "variants": {
+                "shelter": "为天裂护住一方苍生",
+                "harvest": "借天裂取利"
+              }
+            },
+            {
+              "factTypeId": "deity_main_debt_claim",
+              "payloadKey": "debt",
+              "variants": {
+                "sever": "选择斩断因果",
+                "shoulder": "选择承担因果",
+                "legacy_unclaimed": "带着旧世未言明的因果"
+              }
+            }
+          ]
+        }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_break_qi.png",
+    "enemy": {
+      "name": "九重天劫",
+      "hp": 7,
+      "maxHp": 7,
+      "atk": 3,
+      "def": 1,
+      "critRate": 20,
+      "intents": [
+        {
+          "type": "attack",
+          "value": 3,
+          "desc": "紫金雷龙：3 点基础伤害",
+          "actionName": "九重雷劫化作紫金雷龙，排山倒海般砸落"
+        },
+        {
+          "type": "defend",
+          "value": 3,
+          "desc": "天道屏障：获得 3 点护盾",
+          "actionName": "天威浩荡，劫气凝聚为无形的天道屏障"
+        },
+        {
+          "type": "attack",
+          "value": 4,
+          "desc": "因果反噬：4 点基础伤害",
+          "actionName": "劫运清算，无穷因果反噬之雷横扫识海"
+        }
+      ],
+      "randomIntents": false,
+      "planGraph": {
+        "planId": "chapter_gate_deity_karma_adaptation_v1",
+        "initialState": "READING",
+        "states": {
+          "READING": {
+            "label": "业锁清算",
+            "cue": "九重业锁逐笔核对因果，尚未选定落雷之处。",
+            "intent": {
+              "type": "defend",
+              "value": 3,
+              "desc": "业障：获得3点护盾",
+              "actionName": "旧业凝成九重锁影，护住天刑核心并清点你的因果"
+            }
+          },
+          "PRESSURE": {
+            "label": "业雷追债",
+            "cue": "你耗尽真元，未偿之业沿空档同时落雷。",
+            "intent": {
+              "type": "attack",
+              "value": 6,
+              "desc": "业雷：造成6点伤害",
+              "actionName": "九重业锁同时收紧，天刑雷光压向枯竭的元神"
+            }
+          },
+          "PUNISH": {
+            "label": "同因贯魂",
+            "cue": "重复招路牵动同一笔旧债，业雷将越过法宝护势。",
+            "intent": {
+              "type": "attack",
+              "value": 6,
+              "piercing": true,
+              "desc": "贯魂：穿透造成6点伤害",
+              "actionName": "同一因果被连续触动，业雷沿锁痕直贯元神"
+            }
+          },
+          "GAP": {
+            "label": "因果断账",
+            "cue": "你克制出手或带偏雷锋，一笔业账暂时失去债主。",
+            "intent": {
+              "type": "defend",
+              "value": 0,
+              "desc": "断账：本轮不造成伤害",
+              "actionName": "业锁失去清算目标，天刑核心在锁链间短暂显露"
+            }
+          }
+        },
+        "transitions": [
+          {
+            "from": "READING",
+            "when": "repeated_card_type",
+            "to": "PUNISH",
+            "minConsecutive": 2
+          },
+          {
+            "from": "READING",
+            "when": "player_overcommitted",
+            "to": "PRESSURE",
+            "minCards": 2,
+            "maxReservedQi": 1
+          },
+          {
+            "from": "READING",
+            "when": "player_reserved_resource",
+            "to": "GAP",
+            "maxCards": 1,
+            "minReservedQi": 2
+          },
+          {
+            "from": [
+              "READING",
+              "PRESSURE",
+              "PUNISH"
+            ],
+            "when": "deflected",
+            "to": "GAP"
+          },
+          {
+            "from": [
+              "PRESSURE",
+              "PUNISH",
+              "GAP"
+            ],
+            "when": "action_resolved",
+            "to": "READING"
+          }
+        ]
+      }
+    },
+    "bossJourney": {
+      "id": "realm_boss_journey_deity_karma_v1",
+      "bossName": "渡劫天刑·九重业锁",
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "stages": {
+        "20": {
+          "phase": "omen",
+          "label": "业锁显痕",
+          "interaction": "preview_only",
+          "cue": "【劫兆】因果线在元神外凝成九道焦黑锁痕。此时触碰天刑，只会让每笔旧债同时化雷。"
+        },
+        "40": {
+          "phase": "intel",
+          "label": "十业一雷",
+          "interaction": "mechanic_reveal",
+          "cue": "【劫情】天刑按恶业计雷：每 10 点恶业令每次雷击额外增加 1 点伤害。清业比盲目堆血更直接。"
+        },
+        "60": {
+          "phase": "counter",
+          "label": "众生清业",
+          "interaction": "counter_route",
+          "cue": "【对策】在众生因果中选择承担因果，可偿还旧债并清除 10 点恶业，直接降低天刑增伤层数。",
+          "counterSource": {
+            "type": "story_choice",
+            "systemId": "realm_chapter",
+            "storyCardId": "ch_deity_80",
+            "choiceDirection": "right",
+            "effectKey": "karmaBad",
+            "effectValue": -10
+          }
+        },
+        "80": {
+          "phase": "readiness",
+          "label": "法宝代劫",
+          "interaction": "readiness_check",
+          "cue": "【整备】仍有重业时，可在战前牺牲一件真实拥有的法宝，获得 3 点护盾并使天刑攻击降低 1；也可保宝硬撼。",
+          "alternateSource": {
+            "type": "owned_treasure_sacrifice",
+            "systemId": "treasure",
+            "effectKey": "_consumeTreasure",
+            "flag": "used_relic_shield"
+          },
+          "bareFightHint": "保留高品质法宝、减攻与护盾循环，也能在高恶业下硬撼。"
+        },
+        "100": {
+          "phase": "gate",
+          "label": "九重业锁",
+          "interaction": "fixed_boss_combat",
+          "cue": "【决战】九重业锁以固定天威清算恶业，击溃天刑即可踏入渡劫。",
+          "combatCardId": "ch_deity_100"
+        }
+      }
+    },
+    "combatRules": {
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "victoryCondition": "defeat_enemy",
+      "karmaDamage": {
+        "attribute": "karmaBad",
+        "perPoints": 10,
+        "damagePerStep": 1
+      },
+      "counter": {
+        "flag": "used_relic_shield",
+        "openingBlock": 3,
+        "enemyAttackReduction": 1,
+        "consumeEffectKey": "_consumeTreasure"
+      }
+    },
+    "combatRewards": {
+      "breakSuccess": true,
+      "cultivation": 20,
+      "daoHeart": 2,
+      "spiritStone": 20,
+      "maxHealth": 1,
+      "maxDaoHeart": 1
+    },
+    "combatPresentation": {
+      "presentationId": "combat_break_deity_karma_tribunal_v1",
+      "battlefieldId": "battlefield_break_deity_karma_tribunal_v1",
+      "battlefield": "deity_karma_tribunal",
+      "sceneImage": "assets/combat/realm_boss_r9bc/deity/battlefield_break_deity_karma_tribunal_v1.png",
+      "enemyType": "天刑显化·九重业锁",
+      "difficultyLabel": "境界门槛·恶业清算",
+      "mechanic": "每 10 点恶业使雷伤 +1；清业剧情降低层数，牺牲法宝可获得护盾并降低 Boss 攻击。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_break_deity_karma_judge_v1",
+          "name": "九重业锁判官",
+          "kicker": "天刑显化·十业一雷",
+          "portraitMode": "bust",
+          "image": "assets/combat/realm_boss_r9bc/deity/deity_karma_judge_actions/deity-karma-judge-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/realm_boss_r9bc/deity/deity_karma_judge_actions/deity-karma-judge-2.png",
+            "defend": "assets/combat/realm_boss_r9bc/deity/deity_karma_judge_actions/deity-karma-judge-3.png",
+            "debuff": "assets/combat/realm_boss_r9bc/deity/deity_karma_judge_actions/deity-karma-judge-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_break_deity_karma_chain_v1",
+          "frames": [
+            "assets/combat/realm_boss_r9bc/deity/deity_karma_chain/deity-karma-chain-1.png",
+            "assets/combat/realm_boss_r9bc/deity/deity_karma_chain/deity-karma-chain-2.png",
+            "assets/combat/realm_boss_r9bc/deity/deity_karma_chain/deity-karma-chain-3.png",
+            "assets/combat/realm_boss_r9bc/deity/deity_karma_chain/deity-karma-chain-4.png"
+          ],
+          "durationMs": 500
+        },
+        "slash": {
+          "id": "fx_break_deity_karma_chain_v1",
+          "frames": [
+            "assets/combat/realm_boss_r9bc/deity/deity_karma_chain/deity-karma-chain-1.png",
+            "assets/combat/realm_boss_r9bc/deity/deity_karma_chain/deity-karma-chain-2.png",
+            "assets/combat/realm_boss_r9bc/deity/deity_karma_chain/deity-karma-chain-3.png",
+            "assets/combat/realm_boss_r9bc/deity/deity_karma_chain/deity-karma-chain-4.png"
+          ],
+          "durationMs": 500
+        }
+      }
+    },
+    "sceneImage": "assets/combat/realm_boss_r9bc/deity/battlefield_break_deity_karma_tribunal_v1.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_deity_100.png"
   },
   "ch_tribulation_20": {
@@ -828,23 +4380,297 @@
         "text": "全力防御",
         "desc": "将全部灵力凝为护体罡气，硬接劫雷。",
         "effects": {
-          "cultivation": 15,
-          "health": -10,
-          "daoHeart": 5
+          "cultivation": 5,
+          "health": -1,
+          "daoHeart": 1
         }
       },
       "right": {
         "text": "引导劫雷",
         "desc": "以阵道之法引导劫雷淬炼肉身。",
         "effects": {
-          "cultivation": 10,
-          "health": -5,
-          "fortune": 8
+          "cultivation": 3,
+          "health": -1,
+          "fortune": 3
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
-    "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_20.png"
+    "sceneImage": "assets/cards/events/scene_ch_tribulation_20.png",
+    "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_20.png",
+    "pathVariants": {
+      "sword": {
+        "realm": "tribulation",
+        "path": "sword",
+        "text": {
+          "title": "剑迎初雷",
+          "description": "第一道劫雷沿剑意直贯神魂。你可将锋芒收成护体一线，也可借雷势淬炼本命之锋。",
+          "choices": {
+            "left": {
+              "text": "聚锋守心",
+              "desc": "把全部剑意凝在身前，稳稳接住初雷。"
+            },
+            "right": {
+              "text": "引雷淬锋",
+              "desc": "让少量雷力穿过防线，磨去锋芒杂质。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:sword",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:tribulation_sword_guard",
+            "realm": "tribulation",
+            "path": "sword",
+            "delay": 4,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:tribulation_sword_thunder",
+            "realm": "tribulation",
+            "path": "sword",
+            "delay": 4,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 5,
+              "health": -1,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 4,
+              "health": -1,
+              "fortune": 3
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_tribulation_20.png",
+          "location": "天道虚空"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "spell": {
+        "realm": "tribulation",
+        "path": "spell",
+        "text": {
+          "title": "法域承雷",
+          "description": "第一道劫雷击中法域，万千术纹同时亮起。你可层层分流天威，也可反向解析雷中的天道次序。",
+          "choices": {
+            "left": {
+              "text": "万纹分流",
+              "desc": "让法域逐层消解雷力，优先稳住神魂。"
+            },
+            "right": {
+              "text": "逆演雷序",
+              "desc": "承受少量反冲，记录天威运转的节拍。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:spell",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:tribulation_spell_diffuse",
+            "realm": "tribulation",
+            "path": "spell",
+            "delay": 4,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:tribulation_spell_decode",
+            "realm": "tribulation",
+            "path": "spell",
+            "delay": 4,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 5,
+              "health": -1,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 4,
+              "health": -1,
+              "fortune": 3
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_tribulation_20.png",
+          "location": "天道虚空"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "body": {
+        "realm": "tribulation",
+        "path": "body",
+        "text": {
+          "title": "金身浴雷",
+          "description": "第一道劫雷贯入筋骨，肉身像巨钟般震鸣。你可收紧气血正面承受，也可引雷游走全身完成淬炼。",
+          "choices": {
+            "left": {
+              "text": "锁血硬抗",
+              "desc": "收束全部气血，避免天威伤及本源。"
+            },
+            "right": {
+              "text": "周身引雷",
+              "desc": "承担皮肉损耗，让雷力打磨每处薄弱。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:body",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:tribulation_body_lock",
+            "realm": "tribulation",
+            "path": "body",
+            "delay": 4,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:tribulation_body_bathe",
+            "realm": "tribulation",
+            "path": "body",
+            "delay": 4,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": -1,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 5,
+              "health": -1,
+              "fortune": 3
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_tribulation_20.png",
+          "location": "天道虚空"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      },
+      "pill": {
+        "realm": "tribulation",
+        "path": "pill",
+        "text": {
+          "title": "丹火引雷",
+          "description": "第一道劫雷落下时，随身丹火竟与天威共鸣。你可用药力护住经络，也可借雷火重炼积存灵材。",
+          "choices": {
+            "left": {
+              "text": "药气护脉",
+              "desc": "化开备用药力，优先保住周天运转。"
+            },
+            "right": {
+              "text": "雷火炼材",
+              "desc": "承担一次冲击，换取罕见的天雷火候。"
+            }
+          }
+        },
+        "rules": {
+          "identityTag": "path:pill",
+          "choiceDirections": [
+            "left",
+            "right"
+          ],
+          "locationContract": "world_map_alias"
+        },
+        "causal": {
+          "left": {
+            "id": "causal:tribulation_pill_guard",
+            "realm": "tribulation",
+            "path": "pill",
+            "delay": 4,
+            "priority": 1
+          },
+          "right": {
+            "id": "causal:tribulation_pill_thunderfire",
+            "realm": "tribulation",
+            "path": "pill",
+            "delay": 4,
+            "priority": 1
+          }
+        },
+        "rewards": {
+          "left": {
+            "effects": {
+              "cultivation": 4,
+              "health": -1,
+              "daoHeart": 1
+            }
+          },
+          "right": {
+            "effects": {
+              "cultivation": 5,
+              "health": -1,
+              "spiritStone": 8
+            }
+          }
+        },
+        "scene": {
+          "image": "assets/cards/events/scene_ch_tribulation_20.png",
+          "location": "天道虚空"
+        },
+        "consumers": [
+          "RealmChapterSystem",
+          "EffectService",
+          "KarmaSystem",
+          "WorldArtDirector"
+        ]
+      }
+    }
   },
   "ch_tribulation_40": {
     "id": "ch_tribulation_40",
@@ -860,22 +4686,22 @@
         "text": "炼化劫雷",
         "desc": "尝试将劫雷之力纳入己身。",
         "effects": {
-          "cultivation": 20,
-          "health": -15,
-          "fortune": 10
+          "cultivation": 6,
+          "health": -2,
+          "fortune": 3
         }
       },
       "right": {
         "text": "稳步渡过",
         "desc": "保持防守姿态，不贪不冒进。",
         "effects": {
-          "cultivation": 12,
-          "health": -5,
-          "daoHeart": 5
+          "cultivation": 4,
+          "health": -1,
+          "daoHeart": 1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_demon.png",
+    "sceneImage": "assets/cards/events/scene_ch_tribulation_40.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_40.png"
   },
   "ch_tribulation_60": {
@@ -892,22 +4718,22 @@
         "text": "直面心魔",
         "desc": "不躲不闪，与自己的心魔对话。",
         "effects": {
-          "daoHeart": 15,
-          "cultivation": 10,
-          "health": -5
+          "daoHeart": 2,
+          "cultivation": 3,
+          "health": -1
         }
       },
       "right": {
         "text": "斩杀心魔",
         "desc": "以剑斩之，不留余地。",
         "effects": {
-          "cultivation": 15,
-          "daoHeart": -5,
-          "karmaBad": 5
+          "cultivation": 5,
+          "daoHeart": -1,
+          "karmaBad": 2
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_fellow.png",
+    "sceneImage": "assets/cards/events/scene_ch_tribulation_60.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_60.png"
   },
   "ch_tribulation_80": {
@@ -924,22 +4750,22 @@
         "text": "了却凡尘",
         "desc": "以仙人之姿降下机缘，回报凡间恩人。",
         "effects": {
-          "karmaGood": 15,
-          "daoHeart": 10,
-          "cultivation": 5
+          "karmaGood": 5,
+          "daoHeart": 1,
+          "cultivation": 2
         }
       },
       "right": {
         "text": "斩断凡尘",
         "desc": "仙人不应留情，斩断一切尘缘。",
         "effects": {
-          "cultivation": 20,
-          "karmaBad": 10,
-          "daoHeart": -10
+          "cultivation": 6,
+          "karmaBad": 3,
+          "daoHeart": -1
         }
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_q_fortune.png",
+    "sceneImage": "assets/cards/events/scene_ch_tribulation_80.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_80.png"
   },
   "ch_tribulation_100": {
@@ -947,32 +4773,255 @@
     "title": "飞升陨落",
     "chapterNum": 6,
     "description": "最后一道劫雷——九九归一雷。这道雷决定了你的一切。你的师友、仇敌、爱人、过往——所有因果都化作这道雷中的一部分。接住它，你就是仙；接不住，就从头再来。",
-    "type": "MILESTONE",
+    "type": "COMBAT",
+    "encounterKind": "realm_boss",
+    "actionPresentationId": "enc_boss_tribulation_heaven_door",
     "realm": "tribulation",
     "threshold": 100,
     "chapter": "天劫飞升",
     "isBreakthrough": true,
     "isFinale": true,
-    "choices": {
-      "left": {
-        "text": "兵解重修",
-        "desc": "自知无法接住这一雷，主动散去修为重来。",
-        "effects": {
-          "daoHeart": 20
+    "terminalGateId": "tribulation_finale",
+    "enemy": {
+      "name": "飞升天劫意志",
+      "hp": 8,
+      "maxHp": 8,
+      "atk": 3,
+      "def": 1,
+      "critRate": 20,
+      "intents": [
+        {
+          "type": "attack",
+          "value": 4,
+          "desc": "秩序劫雷：4 点伤害",
+          "actionName": "天道秩序显化，九九归一之劫当空爆裂"
         },
-        "breakSuccess": 0,
-        "karmaSeed": "causal:reincarnation"
-      },
-      "right": {
-        "text": "拼死渡劫",
-        "desc": "集毕生修为于一点，硬抗这最后一道雷。",
-        "effects": {
-          "cultivation": 50
+        {
+          "type": "buff",
+          "statusId": "sword_intent",
+          "value": 2,
+          "desc": "法则天威：积蓄 2 层天威",
+          "actionName": "天门大开，秩序法则交织，天威暴涨"
         },
-        "breakSuccess": 0.4
+        {
+          "type": "attack",
+          "value": 5,
+          "desc": "终极神雷：5 点伤害",
+          "actionName": "飞升或陨落，最后的天雷轰然降临"
+        }
+      ],
+      "randomIntents": false,
+      "planGraph": {
+        "planId": "chapter_gate_tribulation_samsara_adaptation_v1",
+        "initialState": "READING",
+        "states": {
+          "READING": {
+            "label": "天门衡道",
+            "cue": "天门仍在衡量你的道途，法则尚未落下最终裁决。",
+            "intent": {
+              "type": "buff",
+              "statusId": "sword_intent",
+              "value": 2,
+              "desc": "天威：积蓄2层法则",
+              "actionName": "飞升天意展开法则天平，衡量你这一世的全部选择"
+            }
+          },
+          "PRESSURE": {
+            "label": "秩序神雷",
+            "cue": "你耗尽真元，天门把过度出手判为失序。",
+            "intent": {
+              "type": "attack",
+              "value": 6,
+              "desc": "神雷：造成6点伤害",
+              "actionName": "秩序法则锁住真元空档，终极神雷自天门正中轰落"
+            }
+          },
+          "PUNISH": {
+            "label": "轮回贯命",
+            "cue": "重复招路被判定为未能自证新道，轮回雷将直贯命数。",
+            "intent": {
+              "type": "attack",
+              "value": 6,
+              "piercing": true,
+              "desc": "贯命：穿透造成6点伤害",
+              "actionName": "轮回门映出重复的一生，贯命雷越过一切外护直落本源"
+            }
+          },
+          "GAP": {
+            "label": "法则留白",
+            "cue": "你保留余地或成功带偏神雷，天意无法完成判词。",
+            "intent": {
+              "type": "defend",
+              "value": 0,
+              "desc": "留白：本轮不造成伤害",
+              "actionName": "法则判词缺失最后一笔，天门核心在留白中显露"
+            }
+          }
+        },
+        "transitions": [
+          {
+            "from": "READING",
+            "when": "repeated_card_type",
+            "to": "PUNISH",
+            "minConsecutive": 2
+          },
+          {
+            "from": "READING",
+            "when": "player_overcommitted",
+            "to": "PRESSURE",
+            "minCards": 2,
+            "maxReservedQi": 1
+          },
+          {
+            "from": "READING",
+            "when": "player_reserved_resource",
+            "to": "GAP",
+            "maxCards": 1,
+            "minReservedQi": 2
+          },
+          {
+            "from": [
+              "READING",
+              "PRESSURE",
+              "PUNISH"
+            ],
+            "when": "deflected",
+            "to": "GAP"
+          },
+          {
+            "from": [
+              "PRESSURE",
+              "PUNISH",
+              "GAP"
+            ],
+            "when": "action_resolved",
+            "to": "READING"
+          }
+        ]
       }
     },
-    "sceneImage": "assets/cards/events/scene_qi_ending_ascension.png",
+    "bossJourney": {
+      "id": "realm_boss_journey_tribulation_samsara_v1",
+      "bossName": "飞升天意·轮回之门",
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "stages": {
+        "20": {
+          "phase": "omen",
+          "label": "天门双影",
+          "interaction": "preview_only",
+          "cue": "【劫兆】每道劫雷后，天门一侧照出飞升阶，另一侧映出下一世的少年。现在触门只会被因果撕碎。"
+        },
+        "40": {
+          "phase": "intel",
+          "label": "善恶审判",
+          "interaction": "mechanic_reveal",
+          "cue": "【劫情】天道在每回合抽牌后审判：善业高于恶业，额外抽 1 张；恶业高于善业，随机弃 1 张；相等则不改手牌。"
+        },
+        "60": {
+          "phase": "counter",
+          "label": "因果整备",
+          "interaction": "counter_route",
+          "cue": "【对策】最后抉择会直接改变善恶业，决定终局每回合是多一张选择，还是少一张选择。",
+          "counterSource": {
+            "type": "story_choice",
+            "systemId": "realm_chapter",
+            "storyCardId": "ch_tribulation_80",
+            "choiceDirections": [
+              "left",
+              "right"
+            ],
+            "effectKeys": [
+              "karmaGood",
+              "karmaBad"
+            ]
+          }
+        },
+        "80": {
+          "phase": "readiness",
+          "label": "硬撼或轮回",
+          "interaction": "readiness_check",
+          "cue": "【整备】100% 战前可选择完整构筑硬撼天意，或兵解进入轮回并带走道心与前世遗赠。",
+          "alternateSource": {
+            "type": "combat_warning_choice",
+            "systemId": "combat_warning",
+            "choiceDirection": "right",
+            "effectKey": "reincarnate"
+          },
+          "bareFightHint": "硬撼路线会总检牌组、法宝、道侣和因果；轮回路线不是战败，而是主动长期决策。"
+        },
+        "100": {
+          "phase": "gate",
+          "label": "轮回之门",
+          "interaction": "fixed_boss_combat",
+          "cue": "【决战】飞升天意以固定强度审判善恶，胜则飞升；也可在战前主动兵解轮回。",
+          "combatCardId": "ch_tribulation_100"
+        }
+      }
+    },
+    "combatRules": {
+      "strengthModel": "fixed_with_counters",
+      "scalesWithPlayerRealm": false,
+      "victoryCondition": "defeat_enemy",
+      "karmaJudgment": {
+        "goodAttribute": "karmaGood",
+        "badAttribute": "karmaBad",
+        "goodDraw": 1,
+        "badDiscard": 1,
+        "timing": "after_draw"
+      }
+    },
+    "combatRewards": {
+      "breakSuccess": true,
+      "cultivation": 30,
+      "daoHeart": 5
+    },
+    "combatPresentation": {
+      "presentationId": "combat_break_tribulation_samsara_gate_v1",
+      "battlefieldId": "battlefield_break_tribulation_samsara_gate_v1",
+      "battlefield": "tribulation_samsara_gate",
+      "sceneImage": "assets/combat/realm_boss_r9bc/tribulation/battlefield_break_tribulation_samsara_gate_v1.png",
+      "enemyType": "天意显化·轮回之门",
+      "difficultyLabel": "终局门槛·善恶审判",
+      "mechanic": "善业高则抽牌，恶业高则弃牌；完整构筑可硬撼，也可在战前主动兵解轮回。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_break_tribulation_heaven_will_v1",
+          "name": "飞升天道意志",
+          "kicker": "天意显化·善恶审判",
+          "portraitMode": "bust",
+          "image": "assets/combat/realm_boss_r9bc/tribulation/tribulation_heaven_will_actions/tribulation-heaven-will-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/realm_boss_r9bc/tribulation/tribulation_heaven_will_actions/tribulation-heaven-will-2.png",
+            "defend": "assets/combat/realm_boss_r9bc/tribulation/tribulation_heaven_will_actions/tribulation-heaven-will-3.png",
+            "buff": "assets/combat/realm_boss_r9bc/tribulation/tribulation_heaven_will_actions/tribulation-heaven-will-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_break_tribulation_samsara_rift_v1",
+          "frames": [
+            "assets/combat/realm_boss_r9bc/tribulation/tribulation_samsara_rift/tribulation-samsara-rift-1.png",
+            "assets/combat/realm_boss_r9bc/tribulation/tribulation_samsara_rift/tribulation-samsara-rift-2.png",
+            "assets/combat/realm_boss_r9bc/tribulation/tribulation_samsara_rift/tribulation-samsara-rift-3.png",
+            "assets/combat/realm_boss_r9bc/tribulation/tribulation_samsara_rift/tribulation-samsara-rift-4.png"
+          ],
+          "durationMs": 520
+        },
+        "slash": {
+          "id": "fx_break_tribulation_samsara_rift_v1",
+          "frames": [
+            "assets/combat/realm_boss_r9bc/tribulation/tribulation_samsara_rift/tribulation-samsara-rift-1.png",
+            "assets/combat/realm_boss_r9bc/tribulation/tribulation_samsara_rift/tribulation-samsara-rift-2.png",
+            "assets/combat/realm_boss_r9bc/tribulation/tribulation_samsara_rift/tribulation-samsara-rift-3.png",
+            "assets/combat/realm_boss_r9bc/tribulation/tribulation_samsara_rift/tribulation-samsara-rift-4.png"
+          ],
+          "durationMs": 520
+        }
+      }
+    },
+    "sceneImage": "assets/combat/realm_boss_r9bc/tribulation/battlefield_break_tribulation_samsara_gate_v1.png",
     "_originalSceneImage": "assets/cards/events/scene_ch_tribulation_100.png"
   }
 }

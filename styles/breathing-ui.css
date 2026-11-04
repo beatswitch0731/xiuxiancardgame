@@ -1441,3 +1441,107 @@ body[data-visual-signature="route"] #game-screen .choice-buttons[data-presentati
     padding: 10px 32px 10px 9px !important;
   }
 }
+
+/* 世界入口在命书第二行成组展示；灵石、寿元和回合数始终留在资源行。 */
+#game-screen .top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+#game-screen .top-info {
+  flex: 1 1 auto;
+}
+
+#game-screen .top-resources {
+  flex: 0 0 auto;
+}
+
+#game-screen .topbar-nav {
+  display: flex;
+  flex: 1 0 100%;
+  gap: 12px;
+  min-width: 0;
+  border-top: 1px solid rgba(222, 194, 130, .14);
+  padding-top: 5px;
+}
+
+#game-screen .topbar-nav-group {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 5px;
+  min-width: 0;
+}
+
+#game-screen .topbar-nav-settings {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-left: 12px;
+  border-left: 1px solid rgba(222, 194, 130, .18);
+}
+
+#game-screen .topbar-group-heading {
+  grid-column: 1 / -1;
+  color: #cbb98d;
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: .08em;
+}
+
+#game-screen .topbar-nav .npc-list-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 84px;
+  min-width: 44px;
+  height: 55px;
+  padding: 3px 5px;
+}
+
+#game-screen .topbar-nav .topbar-artifact-icon {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+}
+
+#game-screen .topbar-nav .topbar-control-label {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip: auto;
+  overflow: visible;
+  color: #e2d8bb;
+  font-size: 13px;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+#game-screen .topbar-nav .npc-list-btn:focus-visible {
+  outline: 2px solid #f0cf84;
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  #game-screen .top-bar { flex-direction: row; }
+  #game-screen .top-info { flex: 1 0 100%; }
+  #game-screen .top-resources { width: 100%; overflow: visible; flex-wrap: wrap; }
+  #game-screen .topbar-nav { width: 100%; }
+  #game-screen .topbar-nav-group { flex: 1 1 auto; }
+  #game-screen .topbar-nav-settings { flex: 0 0 24%; }
+  #game-screen .topbar-nav .npc-list-btn { width: 100%; }
+}
+
+@media (max-width: 520px) {
+  #game-screen .topbar-nav { gap: 5px; }
+  #game-screen .topbar-nav-group { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+  #game-screen .topbar-nav-settings {
+    grid-template-columns: minmax(0, 1fr);
+    flex-basis: 24%;
+    padding-left: 5px;
+  }
+  #game-screen .topbar-nav .npc-list-btn { height: 58px; padding: 2px; }
+  #game-screen .topbar-nav .topbar-control-label { font-size: 13px; }
+}

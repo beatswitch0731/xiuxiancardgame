@@ -27,7 +27,6 @@ class KarmaSystem {
    * 初始化：监听事件
    */
   init() {
-    eventBus.on('card:chosen', (data) => this._onCardChosen(data));
     eventBus.on('state:reset', () => this._onReset());
   }
 
@@ -55,6 +54,28 @@ class KarmaSystem {
         existing.delay = seed.delay;
         existing.priority = Math.max(existing.priority, seed.priority || 0);
       }
+      // 动态因果（例如道侣里程碑）必须携带产生时的角色上下文。
+      // 旧存档里同 ID 的种子可能没有 context，重复种植时允许补全而不覆盖已有快照。
+      if (!existing.context && seed.context && typeof seed.context === 'object') {
+        existing.context = { ...seed.context };
+      }
+      if (!existing.payoffEvent && seed.payoffEvent) {
+        existing.payoffEvent = seed.payoffEvent;
+      }
+      if (!existing.path && seed.path) {
+        existing.path = seed.path;
+      }
+      if (!existing.originThread && seed.originThread) {
+        existing.originThread = seed.originThread;
+      }
+      if (!existing.originQuest && seed.originQuest) {
+        existing.originQuest = seed.originQuest;
+      }
+      if (!existing.originOutcome && seed.originOutcome) {
+        existing.originOutcome = seed.originOutcome;
+      }
+      this._recordPromise(existing.id);
+      this._persistSeeds();
       return;
     }
 
@@ -67,18 +88,36 @@ class KarmaSystem {
       seedType: seed.seedType || 'karma',
       delay: adjustedDelay,
       realm: seed.realm || null,
+      path: seed.path || null,
       priority: seed.priority || 0,
-      originTurn: gameState.turn,
+      originTurn: gameState.getCausalDecisionIndex?.() ?? gameState.turn,
+      originLife: gameState.getLifeCount ? gameState.getLifeCount() : 0,
       originCard: seed.originCard || null,
       originChoice: seed.originChoice || null,
+      originThread: seed.originThread || null,
+      originQuest: seed.originQuest || null,
+      originOutcome: seed.originOutcome || null,
+      description: seed.description || null,
+      tags: Array.isArray(seed.tags) ? [...seed.tags] : [],
+      payoffEvent: seed.payoffEvent || null,
+      context: seed.context && typeof seed.context === 'object'
+        ? { ...seed.context }
+        : null,
+      consumed: false,
       mergeGroup: seed.mergeGroup || null,
       cancelGroup: seed.cancelGroup || null
     };
 
     // 种子抵消检查：同cancelGroup中低优先级种子被取消
-    this._checkCancel(karmaSeed);
+    if (!this._checkCancel(karmaSeed)) return;
 
     gameState.karmaSeeds.push(karmaSeed);
+
+    // seed ID 同时是现有剧情数据的选择承诺键。只有真正被接受的种子才登记，
+    // 让 requiresFlags 消费同一个权威选择结果；旧的 false 占位也必须提升为 true。
+    this._recordPromise(karmaSeed.id);
+    this._persistSeeds();
+
     eventBus.emit('karma:seedPlanted', { seed: karmaSeed });
 
     // 合并检查：同mergeGroup + 同seedType 达到阈值时合并
@@ -88,18 +127,23 @@ class KarmaSystem {
   /**
    * 每轮推进因果计时器
    */
-  tick() {
+  tick({ emitEvents = true, persist = true } = {}) {
+    const ripened = [];
     for (const seed of gameState.karmaSeeds) {
       seed.delay--;
 
       if (seed.delay === 0) {
-        eventBus.emit('karma:seedRipening', {
+        const notice = {
           seedId: seed.id,
           realm: seed.realm,
           originTurn: seed.originTurn
-        });
+        };
+        ripened.push(notice);
+        if (emitEvents) eventBus.emit('karma:seedRipening', notice);
       }
     }
+    if (persist) this._persistSeeds();
+    return ripened;
   }
 
   /**
@@ -107,10 +151,24 @@ class KarmaSystem {
    * @returns {Object[]}
    */
   getReadySeeds() {
-    const ready = gameState.karmaSeeds.filter(s =>
-      s.delay <= 0 && (!s.realm || s.realm === gameState.realm)
-    );
-    ready.sort((a, b) => b.priority - a.priority);
+    const realmOrder = gameState.config?.realms?.order || ['qi', 'foundation', 'golden', 'nascent', 'deity', 'tribulation'];
+    const currentRealmIndex = realmOrder.indexOf(gameState.realm);
+    const ready = gameState.karmaSeeds.filter(s => {
+      if (s.delay > 0) return false;
+      const pathReady = !s.path || s.path === gameState.path;
+      if (!pathReady) return false;
+      if (!s.realm) return true;
+      const seedRealmIndex = realmOrder.indexOf(s.realm);
+      const realmReady = seedRealmIndex < 0 || currentRealmIndex >= seedRealmIndex;
+      return realmReady;
+    });
+    const effectivePriority = (seed) => {
+      const basePriority = Number.isFinite(Number(seed.priority)) ? Number(seed.priority) : 0;
+      const seedRealmIndex = seed.realm ? realmOrder.indexOf(seed.realm) : -1;
+      const crossRealmBonus = seedRealmIndex >= 0 && currentRealmIndex > seedRealmIndex ? 3 : 0;
+      return basePriority + crossRealmBonus;
+    };
+    ready.sort((a, b) => effectivePriority(b) - effectivePriority(a));
     return ready;
   }
 
@@ -120,6 +178,7 @@ class KarmaSystem {
    */
   removeSeed(seed) {
     gameState.karmaSeeds = gameState.karmaSeeds.filter(s => s !== seed);
+    this._persistSeeds();
   }
 
   /**
@@ -149,6 +208,33 @@ class KarmaSystem {
     return [...gameState.karmaSeeds];
   }
 
+  /**
+   * 获取格式化的所有活动因果种子（供因果簿 UI / 日志展现）
+   * @returns {Object[]}
+   */
+  getPlantedSeeds() {
+    const typeNames = {
+      karma: '善因',
+      grudge: '恶因',
+      bloodline: '血脉因果',
+      fate: '宿命因果'
+    };
+    return gameState.karmaSeeds.map(seed => {
+      return {
+        id: seed.id,
+        seedType: seed.seedType || 'karma',
+        seedTypeName: typeNames[seed.seedType] || '善因',
+        delay: Math.max(0, seed.delay),
+        realm: seed.realm || '任意境界',
+        path: seed.path || null,
+        priority: seed.priority || 0,
+        originTurn: seed.originTurn || 0,
+        originCard: seed.originCard || '未知来源',
+        description: seed.description || `${seed.originTurn > 0 ? `在第 ${seed.originTurn} 次决断` : '在入世之初'}种下的${typeNames[seed.seedType] || '因果'}`
+      };
+    });
+  }
+
   // ============ 种子类型系统（v2.0） ============
 
   /**
@@ -173,7 +259,7 @@ class KarmaSystem {
    * 同cancelGroup中，低优先级种子被高优先级种子抵消
    */
   _checkCancel(newSeed) {
-    if (!newSeed.cancelGroup) return;
+    if (!newSeed.cancelGroup) return true;
 
     const conflicting = gameState.karmaSeeds.filter(s =>
       s.cancelGroup === newSeed.cancelGroup &&
@@ -197,7 +283,7 @@ class KarmaSystem {
           cancelledBy: seed,
           reason: 'priority_override'
         });
-        return; // 新种子不加入
+        return false; // 新种子不加入
       } else {
         // 同优先级——两者都保留（势均力敌的因果）
         eventBus.emit('karma:seedConflict', {
@@ -207,6 +293,7 @@ class KarmaSystem {
         });
       }
     }
+    return true;
   }
 
   /**
@@ -250,13 +337,15 @@ class KarmaSystem {
           seedType: result.seedType,
           delay: result.delay,
           priority: result.priority,
-          originTurn: gameState.turn,
+          originTurn: gameState.getCausalDecisionIndex?.() ?? gameState.turn,
           originCard: 'merged',
           originChoice: 'merged',
           mergeGroup: null,
           cancelGroup: null
         };
         gameState.karmaSeeds.push(mergedSeed);
+        this._recordPromise(mergedSeed.id);
+        this._persistSeeds();
 
         eventBus.emit('karma:seedsMerged', {
           mergedFrom: merged.map(s => s.id),
@@ -281,12 +370,31 @@ class KarmaSystem {
     return stats;
   }
 
-  // ============ 内部事件处理 ============
-
-  _onCardChosen(data) {
-    // 每做一次选择，因果计时器前进1步
-    this.tick();
+  /**
+   * 将已被接受的 seed 登记成后续剧情可消费的承诺。
+   * 取消发生在调用本方法之前，因此被拒绝的 seed 不会伪造 flag。
+   */
+  _recordPromise(seedId) {
+    if (!seedId || typeof gameState.setFlag !== 'function') return;
+    gameState.setFlag(seedId, true);
   }
+
+  /**
+   * pendingKarmaSeeds 是刷新恢复用的当前局快照；转世继承规则仍由
+   * GameStateManager.reset(true) 单独裁定。
+   */
+  _persistSeeds() {
+    if (!gameState.unlocks || !Array.isArray(gameState.karmaSeeds)) return;
+    gameState.unlocks.pendingKarmaSeeds = gameState.karmaSeeds
+      .map(seed => Object.assign({}, seed));
+    if (typeof gameState.persistCausalSession === 'function') {
+      gameState.persistCausalSession();
+    } else if (typeof gameState.persistUnlocks === 'function') {
+      gameState.persistUnlocks();
+    }
+  }
+
+  // ============ 内部事件处理 ============
 
   _onReset() {
     // 状态重置时不需要特殊处理
@@ -295,3 +403,10 @@ class KarmaSystem {
 
 // 全局单例
 const karmaSystem = new KarmaSystem();
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = KarmaSystem;
+} else if (typeof window !== 'undefined') {
+  window.KarmaSystem = KarmaSystem;
+  window.karmaSystem = karmaSystem;
+}

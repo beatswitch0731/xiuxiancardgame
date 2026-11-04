@@ -1,0 +1,79 @@
+{
+  "realm": "deity",
+  "version": 1,
+  "threads": [
+    {
+      "threadId": "deity_heaven_net",
+      "title": "天网收魂",
+      "description": "化神神游太虚，看见整个苍茫界都被一张只进不出的光网笼罩。",
+      "realm": "deity",
+      "trigger": { "type": "realm_enter", "realm": "deity", "minTurn": 1 },
+      "nodes": [
+        {
+          "id": "hn_first_sight",
+          "phase": "beginning",
+          "card": {
+            "id": "thread_heaven_net_1",
+            "semanticKey": "thread:deity_heaven_net:hn_first_sight",
+            "once": true,
+            "title": "世界之外的网",
+            "description": "神识越过云海后，你看见一张覆盖山河的光网。每当有人突破，便有一缕光沿网线升向天门；凡人的喜怒、妖族的月华、修士的道心都被换算成同一种冷白色刻度。",
+            "sceneImage": "assets/cards/keyframes/scene_key_heaven_net_world_lattice_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天网首见", "alt": "神识升至云海之上，看见冷白光网覆盖山河并汇向远处天门，尚未追主干或标记下界节点。" },
+            "type": "STORY",
+            "realm": "deity",
+            "eligibleRealms": ["deity"],
+            "threadTags": ["天道真相", "世界网", "beginning"],
+            "choices": {
+              "left": { "text": "沿主干追向天门", "desc": "直接寻找所有刻度的去处。", "effects": { "knowledge": 15, "health": -2 }, "threadDirection": "trace_source" },
+              "right": { "text": "先标记下界节点", "desc": "弄清哪些地方正在被抽取，才能保护活人。", "effects": { "fortune": 8, "karmaGood": 6 }, "threadDirection": "map_nodes" }
+            }
+          }
+        },
+        {
+          "id": "hn_city_drain",
+          "phase": "climax",
+          "card": {
+            "id": "thread_heaven_net_2",
+            "semanticKey": "thread:deity_heaven_net:hn_city_drain",
+            "sceneImage": "assets/cards/keyframes/scene_key_heaven_net_city_drain_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天网边城", "alt": "天网支线在无梦沉睡的边城上方亮起，主干通往远处天门。" },
+            "once": true,
+            "title": "被抽空的一夜",
+            "description": "一座边城的网线忽然亮到刺眼。城中没有雷劫，却有数千人在同一刻陷入无梦长眠。你只能先做一件事：斩断支线救下这座城，或忍住出手，追踪暴露的主干抵达幕后节点。",
+            "type": "STORY",
+            "realm": "deity",
+            "eligibleRealms": ["deity"],
+            "threadTags": ["天道真相", "众生因果", "climax"],
+            "choices": {
+              "left": { "text": "斩断支线，唤醒全城", "desc": "真相不能以眼前众生为代价。", "effects": { "karmaGood": 18, "daoHeart": 8, "cultivation": -2 }, "threadDirection": "save_city" },
+              "right": { "text": "追踪主干，记下幕后节点", "desc": "忍住这一刻，寻找能终止更多收割的证据。", "effects": { "knowledge": 20, "daoHeart": -1 }, "threadDirection": "trace_master" }
+            }
+          }
+        },
+        {
+          "id": "hn_countermark",
+          "phase": "resolution",
+          "card": {
+            "id": "thread_heaven_net_3",
+            "semanticKey": "thread:deity_heaven_net:hn_countermark",
+            "once": true,
+            "title": "在天网上留下反标",
+            "description": "你无法凭一己之力撕开整张网，却能把一枚反向印记送入主干。以后每次天网收取神魂，印记都会留下去向；代价是上界也可能循着它找到你。",
+            "sceneImage": "assets/cards/keyframes/scene_key_heaven_net_countermark_before_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天网反标", "alt": "天网主干通向远处天门，主角手持尚未激活的反向印记，种下或封存都未发生。" },
+            "type": "STORY",
+            "realm": "deity",
+            "eligibleRealms": ["deity"],
+            "threadTags": ["天道真相", "resolution"],
+            "choices": {
+              "left": { "text": "种下反标，接受暴露", "desc": "不知道去向，就永远只能被动挨打。", "effects": { "daoHeart": 16, "knowledge": 10 }, "threadDirection": "mark" },
+              "right": { "text": "封存印记，等待同道", "desc": "让反击成为众人的决定，而非一人的豪赌。", "effects": { "fortune": 12, "karmaGood": 8 }, "threadDirection": "wait_allies" }
+            }
+          },
+          "consequences": { "onComplete": { "note": "天网从抽象天命变成了可观测结构，你保存了一枚能追踪收魂去向的反向印记。", "worldFlags": ["deity_heaven_net_mapped"] } }
+        }
+      ]
+    }
+  ]
+}

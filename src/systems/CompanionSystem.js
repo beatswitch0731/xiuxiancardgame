@@ -11,7 +11,7 @@ class CompanionSystem {
     this.companions = new Map();
     /** @type {Map<string, Object[]>} companionId → 事件列表 */
     this.events = new Map();
-    /** @type {Object<string, Object>} 道侣状态（好感/羁绊/上次事件轮） */
+    /** @type {Object<string, Object>} 道侣状态（羁绊/信任/冷却；好感唯一归 NpcSystem） */
     this.states = {};
     /** @type {Object} 待触发的危机事件 */
     this._pendingCrisis = null;
@@ -19,6 +19,8 @@ class CompanionSystem {
     this._cooldowns = {};
     /** @type {Array} 【P1 #9 修复】里程碑缓存队列——解决 emit 时序对撞丢失 */
     this._pendingMilestones = [];
+    /** 好感立绘定义。选择状态仍由 GameStateManager.unlocks 持久化。 */
+    this.portraitStages = new Map();
   }
 
   /**
@@ -29,6 +31,31 @@ class CompanionSystem {
     eventBus.on('companion:getPanelData', (data) => this._onGetPanelData(data));
     eventBus.on('companion:gift', (data) => this._onGift(data));
     eventBus.on('companion:heartEvent', (data) => this._onHeartEvent(data));
+    eventBus.on('npc:lifecycleChanged', (data) => this._onNpcLifecycleChanged(data));
+  }
+
+  _canPhysicallyAppear(compId) {
+    return typeof worldContinuityStore === 'undefined' || !worldContinuityStore
+      || worldContinuityStore.canPhysicallyAppear(compId);
+  }
+
+  _isNarrativeEligible(card) {
+    return Boolean(card) && (
+      typeof narrativeLedger === 'undefined' || !narrativeLedger
+      || typeof narrativeLedger.canPresent !== 'function'
+      || narrativeLedger.canPresent(card, { state: gameState })
+    );
+  }
+
+  _onNpcLifecycleChanged(data) {
+    const npcId = data?.npcId;
+    if (!npcId || data?.current?.manifestation === 'PHYSICAL') return;
+    this._pendingMilestones = this._pendingMilestones.filter(item => {
+      const card = item?.card;
+      return card?.compId !== npcId && card?.npcId !== npcId
+        && !(Array.isArray(card?.npcIds) && card.npcIds.includes(npcId));
+    });
+    if (this._pendingCrisis?.compId === npcId) this._pendingCrisis = null;
   }
 
   /**
@@ -38,20 +65,175 @@ class CompanionSystem {
   loadData(data) {
     if (!data || !data.companions) return;
 
+    const restoredProgress = typeof gameState !== 'undefined'
+      && gameState.companionProgress
+      && typeof gameState.companionProgress === 'object'
+      ? gameState.companionProgress
+      : { states: {}, cooldowns: {} };
+
     for (const comp of data.companions) {
       this.companions.set(comp.id, comp);
       this.events.set(comp.id, comp.events || []);
-      // 初始化状态
+      const inheritedAffection = typeof gameState !== 'undefined'
+        ? Number(gameState.unlocks?.legacy?.npcAffections?.[comp.id]) || 0
+        : 0;
+      const npcAffection = typeof npcSystem !== 'undefined'
+        ? Number(npcSystem.affections?.[comp.id]) || 0
+        : 0;
+      const hasRestoredAffection = Object.prototype.hasOwnProperty.call(
+        gameState.unlocks?.causalSessionState?.npcAffections || {},
+        comp.id
+      );
+      if (typeof npcSystem !== 'undefined' && npcSystem.affections && !hasRestoredAffection) {
+        npcSystem.affections[comp.id] = Math.max(
+          Number(comp.startAffection) || 0,
+          inheritedAffection,
+          npcAffection
+        );
+      }
+      const restoredState = restoredProgress.states?.[comp.id];
+      // 初始化道侣自有状态；不得复制 NPC 好感。已恢复字段覆盖配置初值。
       this.states[comp.id] = {
-        affection: comp.startAffection || 0,
-        bond: comp.startBond || 0,
-        trust: comp.startTrust || 0,
-        lastEventTurn: 0,
-        totalEvents: 0,
+        bond: Math.max(0, Math.min(5, Number.isFinite(Number(restoredState?.bond))
+          ? Math.floor(Number(restoredState.bond))
+          : (Number(comp.startBond) || 0))),
+        trust: Math.max(0, Math.min(100, Number.isFinite(Number(restoredState?.trust))
+          ? Math.floor(Number(restoredState.trust))
+          : (Number(comp.startTrust) || 0))),
+        lastEventTurn: Math.max(0, Math.floor(Number(restoredState?.lastEventTurn) || 0)),
+        lastCooldownTurn: Math.max(0, Math.floor(Number.isFinite(Number(restoredState?.lastCooldownTurn))
+          ? Number(restoredState.lastCooldownTurn)
+          : (Number(gameState.turn) || 0))),
+        totalEvents: Math.max(0, Math.floor(Number(restoredState?.totalEvents) || 0)),
         personality: comp.personality || null
       };
-      this._cooldowns[comp.id] = 0;
+      this._cooldowns[comp.id] = Math.max(
+        0,
+        Math.floor(Number(restoredProgress.cooldowns?.[comp.id]) || 0)
+      );
     }
+  }
+
+  /**
+   * 导出道侣自有的最小当世进度；配置派生字段与 NPC 好感不进入第二账本。
+   */
+  exportProgress() {
+    const states = {};
+    const cooldowns = {};
+    for (const [compId, state] of Object.entries(this.states || {})) {
+      if (!state || typeof state !== 'object') continue;
+      states[compId] = {
+        bond: Math.max(0, Math.min(5, Math.floor(Number(state.bond) || 0))),
+        trust: Math.max(0, Math.min(100, Math.floor(Number(state.trust) || 0))),
+        lastEventTurn: Math.max(0, Math.floor(Number(state.lastEventTurn) || 0)),
+        lastCooldownTurn: Math.max(0, Math.floor(Number(state.lastCooldownTurn) || 0)),
+        totalEvents: Math.max(0, Math.floor(Number(state.totalEvents) || 0))
+      };
+    }
+    for (const [compId, cooldown] of Object.entries(this._cooldowns || {})) {
+      cooldowns[compId] = Math.max(0, Math.floor(Number(cooldown) || 0));
+    }
+    return { states, cooldowns };
+  }
+
+  _persistProgress() {
+    if (typeof gameState === 'undefined' || !gameState) return false;
+    gameState.companionProgress = this.exportProgress();
+    return typeof gameState.persistCausalSession === 'function'
+      ? gameState.persistCausalSession()
+      : false;
+  }
+
+  loadPortraitData(data) {
+    this.portraitStages.clear();
+    for (const [compId, definition] of Object.entries(data?.portraitStages || {})) {
+      if (!definition || !Array.isArray(definition.stages)) continue;
+      this.portraitStages.set(compId, {
+        ...definition,
+        stages: definition.stages
+          .filter(stage => stage && typeof stage.id === 'string' && typeof stage.asset === 'string')
+          .slice()
+          .sort((left, right) => (Number(left.affection) || 0) - (Number(right.affection) || 0))
+      });
+    }
+  }
+
+  _resolvePortraitCompanionId(compId) {
+    const aliases = { tian_ji: 'tianji_laoren', xue_sha: 'xuesha_laozu', jiuwei: 'jiuwei_suyue' };
+    return aliases[compId] || compId;
+  }
+
+  _ensureCosmeticStore() {
+    if (!gameState.unlocks) gameState.unlocks = {};
+    if (!gameState.unlocks.legacy || typeof gameState.unlocks.legacy !== 'object') {
+      gameState.unlocks.legacy = {};
+    }
+    const legacy = gameState.unlocks.legacy;
+    if (!legacy.companionCosmetics || typeof legacy.companionCosmetics !== 'object') {
+      legacy.companionCosmetics = {};
+    }
+    if (!legacy.companionCosmetics.selectedPortraitByNpc
+      || typeof legacy.companionCosmetics.selectedPortraitByNpc !== 'object') {
+      legacy.companionCosmetics.selectedPortraitByNpc = {};
+    }
+    return legacy.companionCosmetics.selectedPortraitByNpc;
+  }
+
+  _resolvePortraitAffection(compId, explicitAffection = null) {
+    const resolvedId = this._resolvePortraitCompanionId(compId);
+    if (typeof npcSystem !== 'undefined' && typeof npcSystem.getAffection === 'function') {
+      return npcSystem.getAffection(resolvedId);
+    }
+    const fallback = Number(explicitAffection ?? gameState.unlocks?.legacy?.npcAffections?.[resolvedId]);
+    return Number.isFinite(fallback) ? fallback : 0;
+  }
+
+  getUnlockedPortraitStages(compId, explicitAffection = null) {
+    const resolvedId = this._resolvePortraitCompanionId(compId);
+    const definition = this.portraitStages.get(resolvedId);
+    if (!definition) return [];
+    const affection = this._resolvePortraitAffection(resolvedId, explicitAffection);
+    return definition.stages.filter(stage => (Number(stage.affection) || 0) <= affection);
+  }
+
+  resolveSelectedPortrait(compId, { affection = null, allowIntimate = false } = {}) {
+    const resolvedId = this._resolvePortraitCompanionId(compId);
+    const unlocked = this.getUnlockedPortraitStages(resolvedId, affection);
+    if (!unlocked.length) return null;
+    // A skin explicitly equipped by the player is distinct from an automatic
+    // story-stage choice. Only unlocked, successfully persisted selections win.
+    const selectedId = this._ensureCosmeticStore()[resolvedId];
+    const selected = unlocked.find(stage => stage.id === selectedId);
+    if (selected) return selected;
+    const eligible = allowIntimate
+      ? unlocked
+      : unlocked.filter(stage => stage.sceneGate !== 'intimate_only');
+    const pool = eligible.length ? eligible : unlocked;
+    return pool[pool.length - 1] || null;
+  }
+
+  selectPortrait(compId, stageId) {
+    const resolvedId = this._resolvePortraitCompanionId(compId);
+    const stage = this.getUnlockedPortraitStages(resolvedId).find(item => item.id === stageId);
+    if (!stage) return { selected: false, reason: 'locked_or_unknown_stage' };
+    const store = this._ensureCosmeticStore();
+    const hadPrevious = Object.prototype.hasOwnProperty.call(store, resolvedId);
+    const previousStageId = store[resolvedId];
+    store[resolvedId] = stage.id;
+    const persisted = typeof gameState._saveUnlocks === 'function' ? gameState._saveUnlocks() : false;
+    if (!persisted) {
+      if (hadPrevious) store[resolvedId] = previousStageId;
+      else delete store[resolvedId];
+      return { selected: false, reason: 'persist_failed' };
+    }
+    if (typeof eventBus !== 'undefined') {
+      eventBus.emit('companion:portraitSelected', {
+        compId: resolvedId,
+        stageId: stage.id,
+        asset: stage.asset
+      });
+    }
+    return { selected: true, persisted, compId: resolvedId, stage };
   }
 
   /**
@@ -77,25 +259,28 @@ class CompanionSystem {
 
     if (!this.states[compId]) {
       this.states[compId] = {
-        affection: this.companions.get(compId).startAffection || 30,
         bond: 1,
         trust: 20,
         lastEventTurn: gameState.turn,
+        lastCooldownTurn: gameState.turn,
         totalEvents: 0
       };
     }
 
     this._cooldowns[compId] = 8; // 刚结成道侣有8轮好感冷却
+    this.states[compId].lastCooldownTurn = Math.max(0, Math.floor(Number(gameState.turn) || 0));
 
     // 【道侣加成】从 StoryNetworkSystem 获取并应用个性化加成
     this._applyBonuses(compId);
 
     // 【道侣弧线】注册到 StoryNetworkSystem 的 CompanionArcEngine
-    if (typeof storyNetworkSystem !== 'undefined' && storyNetworkSystem.companionArcs) {
+    if (typeof storyNetworkSystem !== 'undefined' && storyNetworkSystem.companionArcs
+      && !storyNetworkSystem.companionArcs.arcStates.has(compId)) {
       storyNetworkSystem.companionArcs.registerCompanion(compId);
     }
 
     eventBus.emit('companion:registered', { compId, name: this._getName(compId) });
+    this._persistProgress();
     return true;
   }
 
@@ -137,6 +322,7 @@ class CompanionSystem {
   getAllBonuses() {
     const merged = {};
     for (const compId of (gameState.resources.companions || [])) {
+      if (!this._canPhysicallyAppear(compId)) continue;
       const bonuses = this.getBonuses(compId);
       if (!bonuses || !bonuses.effects) continue;
       for (const [key, val] of Object.entries(bonuses.effects)) {
@@ -146,6 +332,50 @@ class CompanionSystem {
     return merged;
   }
 
+  /**
+   * 返回玩家当前已拥有道侣的最高阶战斗契约。
+   * 好感度只读取 NpcSystem；配置只声明阈值和卡牌，不保存第二份解锁状态。
+   */
+  getUnlockedCombatContracts() {
+    const owned = (typeof gameState !== 'undefined' && gameState?.resources?.companions) || [];
+    const unlocked = [];
+    for (const compId of owned) {
+      if (!this._canPhysicallyAppear(compId)) continue;
+      const companion = this.companions.get(compId);
+      const state = this.states[compId];
+      const affection = this._resolvePortraitAffection(compId);
+      const contract = companion?.combatContract;
+      if (!state || !contract || !Array.isArray(contract.tiers)) continue;
+      const tier = contract.tiers
+        .filter(item => affection >= (Number(item.minAffection) || 0))
+        .sort((a, b) => (Number(b.minAffection) || 0) - (Number(a.minAffection) || 0))[0];
+      if (!tier?.cardId) continue;
+      const selectedPortrait = this.resolveSelectedPortrait(compId, {
+        affection,
+        allowIntimate: false
+      });
+      unlocked.push({
+        compId,
+        companionName: companion.name || compId,
+        affection,
+        mechanismId: contract.mechanismId || null,
+        mechanism: contract.mechanism || '',
+        tierId: tier.id || null,
+        minAffection: Number(tier.minAffection) || 0,
+        unlockText: tier.unlockText || '',
+        cardId: tier.cardId,
+        cardArt: selectedPortrait?.asset
+          ? {
+              id: `companion_portrait_${compId}_${selectedPortrait.id}`,
+              image: selectedPortrait.asset,
+              portraitStageId: selectedPortrait.id
+            }
+          : tier.cardArt || null
+      });
+    }
+    return unlocked;
+  }
+
   // ==========================================
   // 事件调度（优先级50，由 CardSystem 调用）
   // ==========================================
@@ -153,27 +383,44 @@ class CompanionSystem {
   _onCheckEvent() {
     // 【P1 #9 修复】最高优先：先消费里程碑队列（避免与 CardSystem 抽卡时序对撞丢失）
     if (this._pendingMilestones && this._pendingMilestones.length > 0) {
-      const milestone = this._pendingMilestones.shift();
-      eventBus.emit('companion:eventCard', { card: milestone.card, priority: milestone.priority });
-      return;
+      while (this._pendingMilestones.length > 0) {
+        const milestone = this._pendingMilestones.shift();
+        const ownerId = milestone?.card?.compId || milestone?.card?.npcId;
+        if (ownerId && !this._canPhysicallyAppear(ownerId)) continue;
+        eventBus.emit('companion:eventCard', { card: milestone.card, priority: milestone.priority });
+        return;
+      }
     }
 
     // 优先：危机事件（flag 驱动）
     if (this._pendingCrisis) {
       const crisis = this._pendingCrisis;
       this._pendingCrisis = null;
+      if (!this._canPhysicallyAppear(crisis.compId)) {
+        eventBus.emit('companion:eventCard', { card: null, priority: 55 });
+        return;
+      }
       const card = this._buildEventCard(crisis.compId, crisis.event);
-      if (!gameState.cardsPlayed.includes(card.id)) {
+      if (this._isNarrativeEligible(card)) {
         eventBus.emit('companion:eventCard', { card, priority: 55 });
         return;
       }
     }
 
+    let progressChanged = false;
+
     // 检查所有道侣
     for (const compId of gameState.resources.companions) {
       if (!this.companions.has(compId)) continue;
+      if (!this._canPhysicallyAppear(compId)) continue;
       if (this._cooldowns[compId] > 0) {
-        this._cooldowns[compId]--;
+        const state = this.states[compId];
+        const currentTurn = Math.max(0, Math.floor(Number(gameState.turn) || 0));
+        if (state && Number(state.lastCooldownTurn) !== currentTurn) {
+          this._cooldowns[compId]--;
+          state.lastCooldownTurn = currentTurn;
+          progressChanged = true;
+        }
         continue;
       }
 
@@ -184,26 +431,24 @@ class CompanionSystem {
       const chance = this._calcEventChance(compId, state);
       if (Math.random() > chance) continue;
 
-      // 从事件池中选取，过滤已玩过的一次性事件
-      let event = this._pickEvent(compId, state);
-      let card = event ? this._buildEventCard(compId, event) : null;
-      let safety = 0;
-      while (card && gameState.cardsPlayed.includes(card.id) && safety < 5) {
-        event = this._pickEvent(compId, state);
-        card = event ? this._buildEventCard(compId, event) : null;
-        safety++;
-      }
-      if (!card) continue;
+      // 候选池先做语义准入，再进行一次选择；耗尽必须返回 null。
+      const event = this._pickEvent(compId, state);
+      const card = event ? this._buildEventCard(compId, event) : null;
+      if (!this._isNarrativeEligible(card)) continue;
 
       // 发送给 CardSystem
       this._cooldowns[compId] = 10;
       state.lastEventTurn = gameState.turn;
+      state.lastCooldownTurn = Math.max(0, Math.floor(Number(gameState.turn) || 0));
       state.totalEvents++;
+      progressChanged = true;
 
+      this._persistProgress();
       eventBus.emit('companion:eventCard', { card, priority: 50 });
       return;
     }
 
+    if (progressChanged) this._persistProgress();
     eventBus.emit('companion:eventCard', { card: null, priority: 50 });
   }
 
@@ -213,7 +458,7 @@ class CompanionSystem {
    */
   _calcEventChance(compId, state) {
     const baseChance = 0.15;
-    const affMod = (state.affection / 100) * 0.10;  // 好感修正
+    const affMod = (this._resolvePortraitAffection(compId) / 100) * 0.10;  // 好感修正
     const bondMod = state.bond * 0.03;                // 羁绊修正
     const multiPenalty = (gameState.resources.companions.length - 1) * (-0.05); // 多道侣惩罚
 
@@ -236,11 +481,12 @@ class CompanionSystem {
     const pool = this.events.get(compId) || [];
     if (pool.length === 0) {
       // 没有定义的事件，使用通用事件
-      return this._getGenericEvent(state);
+      return this._getGenericEvent(compId, state);
     }
 
+    const affection = this._resolvePortraitAffection(compId);
     const candidates = pool.filter(ev => {
-      if (ev.minAffection && state.affection < ev.minAffection) return false;
+      if (ev.minAffection && affection < ev.minAffection) return false;
       if (ev.minBond && state.bond < ev.minBond) return false;
       if (ev.realm && gameState.realm !== ev.realm) return false;
       if (ev.requiredFlag && !gameState.hasFlag(ev.requiredFlag)) return false;
@@ -250,10 +496,14 @@ class CompanionSystem {
         const triggered = gameState.getFlag('comp_' + compId + '_event_' + ev.id, false);
         if (triggered) return false;
       }
+      if (!this._isNarrativeEligible(this._buildEventCard(compId, ev))) return false;
       return true;
     });
 
-    if (candidates.length === 0) return this._getGenericEvent(state);
+    // A defined authored pool is authoritative. If every authored beat is
+    // resolved or condition-blocked, fail closed instead of masking exhaustion
+    // with an unrelated generic opener.
+    if (candidates.length === 0) return null;
 
     // 按类型权重排序
     const daily = candidates.filter(e => e.type === 'daily');
@@ -272,32 +522,35 @@ class CompanionSystem {
   /**
    * 通用道侣事件（没有定义事件池时）
    */
-  _getGenericEvent(state) {
-    const r = Math.random();
-    if (r < 0.4) return {
+  _getGenericEvent(compId, state) {
+    const pool = [{
       type: 'daily', id: 'generic_daily',
+      once: false, repeatPolicy: { mode: 'cooldown', cooldownTurns: 12 },
       title: '日常陪伴', desc: '道侣为你端来一杯热茶，轻声问起今日修行如何。',
       choices: {
         left: { text: '分享修行心得', affection: 5, effects: { cultivation: 3, daoHeart: 2 } },
         right: { text: '静静品茶', affection: 3, effects: { daoHeart: 5 } }
       }
-    };
-    if (r < 0.7) return {
+    }, {
       type: 'emotional', id: 'generic_emo',
+      once: false, repeatPolicy: { mode: 'cooldown', cooldownTurns: 12 },
       title: '月下谈心', desc: '月华如练，道侣与你并肩而坐。星河之下，人间万事都显得渺小。',
       choices: {
         left: { text: '倾诉心声', affection: 8, effects: { daoHeart: 5, fortune: 3 } },
         right: { text: '静默相伴', affection: 5, effects: { daoHeart: 8 } }
       }
-    };
-    return {
+    }, {
       type: 'daily', id: 'generic_help',
+      once: false, repeatPolicy: { mode: 'cooldown', cooldownTurns: 12 },
       title: '修行相助', desc: '道侣递来一枚丹药："这是我闭关三日炼成的，你试试。"',
       choices: {
         left: { text: '感激收下', affection: 6, effects: { cultivation: 10, health: 5 } },
         right: { text: '婉拒', affection: -2, effects: { daoHeart: 3 } }
       }
-    };
+    }];
+    const eligible = pool.filter(event => this._isNarrativeEligible(this._buildEventCard(compId, event)));
+    if (eligible.length === 0) return null;
+    return eligible[Math.floor(Math.random() * eligible.length)];
   }
 
   // ==========================================
@@ -310,14 +563,18 @@ class CompanionSystem {
 
     return {
       id: `comp_${compId}_${event.id || 'generic'}`,
+      semanticKey: event.semanticKey || `companion:${compId}:event:${event.id || 'generic'}`,
       title: event.title || '道侣',
       description: (event.desc || '').replace('{name}', name),
       type: 'COMPANION_EVENT',
       realm: gameState.realm,
       compId: compId,
       compEvent: event,
+      ...(event.sceneImage ? { sceneImage: event.sceneImage } : {}),
+      ...(event.artDirection ? { artDirection: { ...event.artDirection } } : {}),
       weight: 0,
       once: event.once !== false,
+      repeatPolicy: event.repeatPolicy || null,
       choices: this._fmtChoices(event.choices, compId)
     };
   }
@@ -325,6 +582,9 @@ class CompanionSystem {
   _fmtChoices(choices, compId) {
     const result = {};
     for (const [dir, ch] of Object.entries(choices)) {
+      const encounterChoice = ch.encounterId
+        ? this.resolveEncounterChoice(ch.encounterId)
+        : null;
       result[dir] = {
         text: ch.text || '...',
         effects: ch.effects || {},
@@ -333,10 +593,39 @@ class CompanionSystem {
           affectionDelta: ch.affection || 0,
           bondDelta: ch.bondDelta || 0,
           trustDelta: ch.trustDelta || 0
-        }
+        },
+        ...(encounterChoice || {})
       };
     }
     return result;
+  }
+
+  /**
+   * 把遭遇目录记录解析为 CardSystem 可消费的选项战斗契约。
+   * 遭遇目录是敌人、画面、奖励和结果联动的唯一来源。
+   */
+  resolveEncounterChoice(encounterId) {
+    if (typeof cardSystem !== 'undefined' && cardSystem &&
+        typeof cardSystem.resolveCombatEncounterChoice === 'function') {
+      return cardSystem.resolveCombatEncounterChoice(encounterId);
+    }
+    if (!encounterId || typeof dataLoader === 'undefined' || !dataLoader) return null;
+    const catalog = dataLoader.loadSync('combat:encounters');
+    const encounter = catalog?.encounters?.find(item => item.id === encounterId);
+    if (!encounter) return null;
+    const clone = value => value === undefined ? undefined : JSON.parse(JSON.stringify(value));
+    return {
+      encounterId: encounter.id,
+      triggerCombat: true,
+      enemy: clone(encounter.enemy),
+      battlefield: encounter.combatPresentation?.battlefield || encounter.battlefield || null,
+      combatPresentation: clone(encounter.combatPresentation || {}),
+      victoryEffects: clone(encounter.victoryEffects || {}),
+      combatRewards: clone(encounter.victoryEffects || {}),
+      combatOutcomeLinks: clone(encounter.outcomeLinks || {}),
+      karmaSeed: clone(encounter.karmaSeed),
+      karmaSeedOn: clone(encounter.karmaSeedOn)
+    };
   }
 
   // ==========================================
@@ -357,10 +646,7 @@ class CompanionSystem {
     if (!state) return;
 
     // 保存旧值用于阈值检测
-    const oldAffection = state.affection;
-
-    // 好感变化
-    state.affection = Math.max(-50, Math.min(100, state.affection + (ce.affectionDelta || 0)));
+    const oldAffection = npcSystem.getAffection(ce.compId);
 
     // 羁绊变化
     if (ce.bondDelta) {
@@ -376,6 +662,7 @@ class CompanionSystem {
     if (ce.affectionDelta) {
       npcSystem.addAffection(ce.compId, ce.affectionDelta);
     }
+    const newAffection = npcSystem.getAffection(ce.compId);
 
     // 【因果种子】companionSacrifice：道侣好感大幅下降（背叛/牺牲）→ 种下因果
     if (ce.affectionDelta && ce.affectionDelta <= -20) {
@@ -404,14 +691,15 @@ class CompanionSystem {
     }
 
     // 【P1-3】好感阈值跨越 → 触发里程碑事件卡
-    this._checkAffectionMilestones(ce.compId, state, oldAffection);
+    this._checkAffectionMilestones(ce.compId, state, oldAffection, newAffection);
 
     eventBus.emit('companion:stateChanged', {
       compId: ce.compId,
-      affection: state.affection,
+      affection: newAffection,
       bond: state.bond,
       trust: state.trust
     });
+    this._persistProgress();
   }
 
   // ==========================================
@@ -430,7 +718,13 @@ class CompanionSystem {
 
     // 从 npcSystem 获取当前情绪
     const emotion = npcSystem.getEmotion(compId);
-    const location = npcSystem.getCurrentSchedule(compId);
+    const lifecycleState = typeof worldContinuityStore !== 'undefined'
+      ? worldContinuityStore.getNpcState(compId)
+      : null;
+    const canInteract = this._canPhysicallyAppear(compId);
+    const location = canInteract
+      ? npcSystem.getCurrentSchedule(compId)
+      : (lifecycleState?.locationId || '因果之外');
 
     // 事件历史（最近5条）
     const npcMem = npcSystem.memories[compId] || [];
@@ -443,12 +737,15 @@ class CompanionSystem {
       personality: comp.personality || {},
       emotion,
       location,
-      affection: state.affection,
+      affection: npcSystem.getAffection(compId),
       bond: state.bond,
       trust: state.trust,
       totalEvents: state.totalEvents,
       recentEvents,
-      isCompanion: true
+      isCompanion: true,
+      lifecycle: lifecycleState?.lifecycle || 'ACTIVE',
+      manifestation: lifecycleState?.manifestation || 'PHYSICAL',
+      canInteract
     });
   }
 
@@ -460,15 +757,27 @@ class CompanionSystem {
     const { compId, itemId } = data;
     const state = this.states[compId];
     if (!state) return;
+    if (!this._canPhysicallyAppear(compId)) {
+      eventBus.emit('companion:giftResult', {
+        compId,
+        itemId,
+        success: false,
+        reason: 'physical_presence_unavailable',
+        delta: 0,
+        reaction: '此人当前不能以实体接受礼物。'
+      });
+      return;
+    }
 
-    const result = npcSystem.calculateGift(compId, itemId);
-    state.affection = npcSystem.affections[compId] || state.affection;
+    const result = npcSystem.interact({ npcId: compId, action: '赠礼', itemId, emitResult: false });
 
     eventBus.emit('companion:giftResult', {
       compId,
       itemId,
-      delta: result.delta,
-      reaction: result.reaction
+      success: Boolean(result?.success),
+      reason: result?.reason || null,
+      delta: result?.affDelta || 0,
+      reaction: result?.reaction || '本次赠礼没有结算。'
     });
   }
 
@@ -501,8 +810,8 @@ class CompanionSystem {
         title: '情劫降临',
         desc: `天道降下情劫——你与${comp ? comp.name : compId}的关系，必须接受天道考验。`,
         choices: {
-          left: { text: '携手渡劫', effects: { daoHeart: -20, health: -30 }, affection: 20, bondDelta: 1 },
-          right: { text: '独自面对', effects: { daoHeart: -10 }, affection: -30, bondDelta: -1 }
+          left: { text: '携手渡劫', effects: { daoHeart: -2, health: -2 }, affection: 20, bondDelta: 1 },
+          right: { text: '独自面对', effects: { daoHeart: -1 }, affection: -30, bondDelta: -1 }
         }
       };
     }
@@ -520,18 +829,21 @@ class CompanionSystem {
    *   100 — 至交/道侣 (终极羁绊)
    *  -20  — 厌恶 (关系破裂警告)
    */
-  _checkAffectionMilestones(compId, state, oldAffection) {
+  _checkAffectionMilestones(compId, state, oldAffection, newAffection = this._resolvePortraitAffection(compId)) {
     const milestones = [
-      { threshold: 100, milestoneId: 'bond_ultimate', seedType: 'bloodline' },
-      { threshold: 80,  milestoneId: 'bond_deep',     seedType: 'bloodline' },
-      { threshold: 50,  milestoneId: 'bond_trust',     seedType: 'karma' },
-      { threshold: 20,  milestoneId: 'bond_acquaint',  seedType: 'karma' },
-      { threshold: -20, milestoneId: 'bond_hostile',   seedType: 'grudge' }
+      { threshold: 100, milestoneId: 'bond_ultimate', seedType: 'bloodline', direction: 'up', payoffEvent: 'kx_companion_bond_ultimate' },
+      { threshold: 80,  milestoneId: 'bond_deep',     seedType: 'bloodline', direction: 'up', payoffEvent: 'kx_companion_bond_deep' },
+      { threshold: 50,  milestoneId: 'bond_trust',    seedType: 'karma',     direction: 'up', payoffEvent: 'kx_companion_bond_trust' },
+      { threshold: 20,  milestoneId: 'bond_acquaint', seedType: 'karma',     direction: 'up', payoffEvent: 'kx_companion_bond_acquaint' },
+      { threshold: -20, milestoneId: 'bond_hostile',  seedType: 'grudge',    direction: 'down', payoffEvent: 'kx_companion_bond_hostile' }
     ];
 
     for (const ms of milestones) {
-      // 检测是否跨过阈值（之前低于，现在达到或超过）
-      if (oldAffection < ms.threshold && state.affection >= ms.threshold) {
+      // 正向里程碑向上跨阈值；关系破裂必须向下跨过 -20，不能在和解时误触发。
+      const crossed = ms.direction === 'down'
+        ? oldAffection > ms.threshold && newAffection <= ms.threshold
+        : oldAffection < ms.threshold && newAffection >= ms.threshold;
+      if (crossed) {
         const comp = this.companions.get(compId);
         const name = comp ? comp.name : compId;
         const flagKey = `comp_milestone_${compId}_${ms.milestoneId}`;
@@ -542,7 +854,7 @@ class CompanionSystem {
         gameState.setFlag(flagKey, gameState.turn);
 
         // 【P1 #9 修复】入队而非直接 emit，等 CardSystem 抽卡时再取（避免时序对撞丢失）
-        const card = this._buildMilestoneCard(compId, name, ms, state);
+        const card = this._buildMilestoneCard(compId, name, ms, { ...state, affection: newAffection });
         if (card) {
           this._pendingMilestones.push({ card, priority: 52 });
         }
@@ -554,7 +866,13 @@ class CompanionSystem {
             seedType: ms.seedType,
             delay: ms.threshold >= 80 ? 3 : 8,
             priority: ms.threshold >= 80 ? 7 : 4,
-            originCard: `comp_${compId}_milestone`
+            originCard: `comp_${compId}_milestone`,
+            payoffEvent: ms.payoffEvent,
+            context: {
+              companionId: compId,
+              companionName: name,
+              milestoneId: ms.milestoneId
+            }
           });
         }
 
@@ -573,20 +891,20 @@ class CompanionSystem {
         title: `${name}·天命之约`,
         desc: `${name}站在你面前，眼中映着星河。\\n\\n"我活了很久——久到以为不会再有'舍不得'这种情绪。"\\n\\nta握住了你的手——那温度不像修士该有的冰冷，像凡人的、温热的、赤裸的。\\n\\n"直到你来了。"`,
         leftText: `"此生不负"`,
-        leftEffects: { daoHeart: 30, fortune: 15, cultivation: 10 },
+        leftEffects: { daoHeart: 3, fortune: 3, cultivation: 3 },
         leftAffection: 0,
         rightText: `沉默——但紧紧回握`,
-        rightEffects: { daoHeart: 25, fortune: 10 },
+        rightEffects: { daoHeart: 2, fortune: 2 },
         rightAffection: 5
       },
       bond_deep: {
         title: `${name}·深交`,
         desc: `${name}忽然问了一个ta从未问过的问题："如果有一天……你修成了大道，还会记得苍茫界的这些人吗？"\\n\\nta说这话时没有看你——而是看着很远的地方。`,
         leftText: `"大道若无人——不是我要的道"`,
-        leftEffects: { daoHeart: 20, karmaGood: 10, fortune: 5 },
+        leftEffects: { daoHeart: 2, karmaGood: 2, fortune: 1 },
         leftAffection: 10,
         rightText: `"我会记得你"`,
-        rightEffects: { daoHeart: 10, fortune: 5 },
+        rightEffects: { daoHeart: 1, fortune: 1 },
         rightAffection: 15
       },
       bond_trust: {
@@ -670,14 +988,15 @@ class CompanionSystem {
   }
 
   getState(compId) {
-    return this.states[compId] || null;
+    const state = this.states[compId];
+    return state ? { ...state, affection: this._resolvePortraitAffection(compId) } : null;
   }
 
   getAllCompanions() {
     return gameState.resources.companions.map(id => ({
       id,
       name: this._getName(id),
-      state: this.states[id],
+      state: this.getState(id),
       data: this.companions.get(id)
     }));
   }
@@ -693,3 +1012,7 @@ class CompanionSystem {
 
 // 全局单例
 const companionSystem = new CompanionSystem();
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = CompanionSystem;
+}

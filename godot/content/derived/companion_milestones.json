@@ -1,0 +1,256 @@
+{
+  "sourceSha": "bd6386d3fb6bae095ce312c5bac520129bbee18f692ba25cb6ccc7f13104adcb",
+  "milestones": [
+    {
+      "id": "bond_ultimate",
+      "threshold": 100,
+      "seedType": "bloodline",
+      "direction": "up",
+      "payoffEvent": "kx_companion_bond_ultimate",
+      "card": {
+        "id": "comp___COMP_ID___milestone_bond_ultimate",
+        "title": "__NAME__·天命之约",
+        "description": "__NAME__站在你面前，眼中映着星河。\\n\\n\"我活了很久——久到以为不会再有'舍不得'这种情绪。\"\\n\\nta握住了你的手——那温度不像修士该有的冰冷，像凡人的、温热的、赤裸的。\\n\\n\"直到你来了。\"",
+        "type": "COMPANION_MILESTONE",
+        "realm": "__REALM__",
+        "compId": "__COMP_ID__",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion",
+          "milestone",
+          "bond_ultimate"
+        ],
+        "choices": {
+          "left": {
+            "text": "\"此生不负\"",
+            "effects": {
+              "daoHeart": 3,
+              "fortune": 3,
+              "cultivation": 3
+            },
+            "companionEffects": {
+              "compId": "__COMP_ID__",
+              "affectionDelta": 0,
+              "bondDelta": 1,
+              "trustDelta": 10
+            }
+          },
+          "right": {
+            "text": "沉默——但紧紧回握",
+            "effects": {
+              "daoHeart": 2,
+              "fortune": 2
+            },
+            "companionEffects": {
+              "compId": "__COMP_ID__",
+              "affectionDelta": 5,
+              "bondDelta": 0,
+              "trustDelta": 5
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bond_deep",
+      "threshold": 80,
+      "seedType": "bloodline",
+      "direction": "up",
+      "payoffEvent": "kx_companion_bond_deep",
+      "card": {
+        "id": "comp___COMP_ID___milestone_bond_deep",
+        "title": "__NAME__·深交",
+        "description": "__NAME__忽然问了一个ta从未问过的问题：\"如果有一天……你修成了大道，还会记得苍茫界的这些人吗？\"\\n\\nta说这话时没有看你——而是看着很远的地方。",
+        "type": "COMPANION_MILESTONE",
+        "realm": "__REALM__",
+        "compId": "__COMP_ID__",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion",
+          "milestone",
+          "bond_deep"
+        ],
+        "choices": {
+          "left": {
+            "text": "\"大道若无人——不是我要的道\"",
+            "effects": {
+              "daoHeart": 2,
+              "karmaGood": 2,
+              "fortune": 1
+            },
+            "companionEffects": {
+              "compId": "__COMP_ID__",
+              "affectionDelta": 10,
+              "bondDelta": 1,
+              "trustDelta": 10
+            }
+          },
+          "right": {
+            "text": "\"我会记得你\"",
+            "effects": {
+              "daoHeart": 1,
+              "fortune": 1
+            },
+            "companionEffects": {
+              "compId": "__COMP_ID__",
+              "affectionDelta": 15,
+              "bondDelta": 0,
+              "trustDelta": 5
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bond_trust",
+      "threshold": 50,
+      "seedType": "karma",
+      "direction": "up",
+      "payoffEvent": "kx_companion_bond_trust",
+      "card": {
+        "id": "comp___COMP_ID___milestone_bond_trust",
+        "title": "__NAME__·推心置腹",
+        "description": "__NAME__犹豫了很久，终于对你说了一件事——一件ta从未对任何人说过的事。\\n\\n不是秘密，是伤疤。",
+        "type": "COMPANION_MILESTONE",
+        "realm": "__REALM__",
+        "compId": "__COMP_ID__",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion",
+          "milestone",
+          "bond_trust"
+        ],
+        "choices": {
+          "left": {
+            "text": "认真倾听——不打断",
+            "effects": {
+              "daoHeart": 15,
+              "fortune": 5,
+              "karmaGood": 5
+            },
+            "companionEffects": {
+              "compId": "__COMP_ID__",
+              "affectionDelta": 12,
+              "bondDelta": 0,
+              "trustDelta": 10
+            }
+          },
+          "right": {
+            "text": "也分享一件自己的心事",
+            "effects": {
+              "daoHeart": 10,
+              "cultivation": 5
+            },
+            "companionEffects": {
+              "compId": "__COMP_ID__",
+              "affectionDelta": 8,
+              "bondDelta": 0,
+              "trustDelta": 5
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bond_acquaint",
+      "threshold": 20,
+      "seedType": "karma",
+      "direction": "up",
+      "payoffEvent": "kx_companion_bond_acquaint",
+      "card": {
+        "id": "comp___COMP_ID___milestone_bond_acquaint",
+        "title": "__NAME__·初见",
+        "description": "__NAME__不再是'那个NPC'了——今天的交谈中，ta露出了一个你自己都没注意到的细节。\\n\\n你开始认真看这个人了。",
+        "type": "COMPANION_MILESTONE",
+        "realm": "__REALM__",
+        "compId": "__COMP_ID__",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion",
+          "milestone",
+          "bond_acquaint"
+        ],
+        "choices": {
+          "left": {
+            "text": "主动了解ta的过往",
+            "effects": {
+              "daoHeart": 5,
+              "fortune": 5
+            },
+            "companionEffects": {
+              "compId": "__COMP_ID__",
+              "affectionDelta": 10,
+              "bondDelta": 0,
+              "trustDelta": 5
+            }
+          },
+          "right": {
+            "text": "保持距离——慢慢来",
+            "effects": {
+              "daoHeart": 3
+            },
+            "companionEffects": {
+              "compId": "__COMP_ID__",
+              "affectionDelta": 5,
+              "bondDelta": 0,
+              "trustDelta": 5
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bond_hostile",
+      "threshold": -20,
+      "seedType": "grudge",
+      "direction": "down",
+      "payoffEvent": "kx_companion_bond_hostile",
+      "card": {
+        "id": "comp___COMP_ID___milestone_bond_hostile",
+        "title": "__NAME__·裂痕",
+        "description": "你感到__NAME__看你的眼神变了——多了一层疏离。\\n\\nta还站在你面前，但你们之间的空气已经不一样了。",
+        "type": "COMPANION_MILESTONE",
+        "realm": "__REALM__",
+        "compId": "__COMP_ID__",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion",
+          "milestone",
+          "bond_hostile"
+        ],
+        "choices": {
+          "left": {
+            "text": "问ta：\"怎么了？\"",
+            "effects": {
+              "daoHeart": 5,
+              "fortune": -5
+            },
+            "companionEffects": {
+              "compId": "__COMP_ID__",
+              "affectionDelta": 5,
+              "bondDelta": 0,
+              "trustDelta": 5
+            }
+          },
+          "right": {
+            "text": "给ta空间",
+            "effects": {
+              "daoHeart": 3
+            },
+            "companionEffects": {
+              "compId": "__COMP_ID__",
+              "affectionDelta": 3,
+              "bondDelta": 0,
+              "trustDelta": 5
+            }
+          }
+        }
+      }
+    }
+  ]
+}

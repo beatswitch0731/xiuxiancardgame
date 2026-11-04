@@ -22,7 +22,7 @@
           "text": "趁热打铁",
           "effects": {
             "cultivation": 15,
-            "health": -10
+            "health": -2
           }
         }
       },
@@ -46,11 +46,21 @@
         },
         "right": {
           "text": "挑战高阶妖兽",
-          "effects": {
+          "triggerCombat": true,
+          "victoryEffects": {
             "cultivation": 25,
-            "health": -2,
-            "karmaBad": 5,
-            "triggerCombat": true
+            "karmaBad": 5
+          },
+          "defeatEffects": {
+            "daoHeart": -1
+          },
+          "fleeEffects": {
+            "lifespan": -1
+          },
+          "combatPresentation": {
+            "warningTitle": "宗门清缴 · 烈焰虎",
+            "mechanic": "烈焰虎会先以咆哮震慑，再用火爪扑杀；负伤后会进入狂怒。",
+            "worldStory": "此兽占据灵脉并非单纯作恶，宗门要的是重新夺回山场。"
           }
         }
       },
@@ -59,10 +69,12 @@
         "mission"
       ],
       "enemy": {
+        "templateId": "blazing_tiger_foundation",
         "name": "妖兽·烈焰虎",
-        "hp": 40,
-        "atk": 10,
-        "def": 3,
+        "hp": 10,
+        "atk": 2,
+        "def": 1,
+        "tier": 2,
         "critRate": 8,
         "special": "烈焰吐息",
         "specialChance": 0.2,
@@ -154,6 +166,7 @@
       "type": "NORMAL",
       "realm": "foundation",
       "weight": 6,
+      "evergreen": true,
       "choices": {
         "left": {
           "text": "竞拍拿下",
@@ -204,6 +217,80 @@
         "cultivation"
       ],
       "sceneImage": "assets/cards/events/scene_fd_f_master.png"
+    },
+    {
+      "id": "f_ruins_explore",
+      "title": "上古洞府遗迹",
+      "description": "你在历练中偶然发现了一处上古洞府，禁制虽已残破，但仍散发着危险的气息。",
+      "type": "NORMAL",
+      "realm": "foundation",
+      "weight": 8,
+      "choices": {
+        "left": {
+          "text": "细心解阵 (需福缘)",
+          "effects": {
+            "daoHeart": 5,
+            "deckCard": "qi_shield"
+          },
+          "desc": "获得防御卡【太乙玄黄罩】"
+        },
+        "right": {
+          "text": "强行破禁",
+          "effects": {
+            "health": -2,
+            "deckCard": "heavy_strike"
+          },
+          "desc": "气血受损，获得刚猛卡【重剑无锋】"
+        }
+      },
+      "tags": [
+        "explore",
+        "treasure"
+      ],
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
+    },
+    {
+      "id": "f_black_market",
+      "title": "黑市功法贩子",
+      "description": "地下坊市里，一名罩着黑袍的神秘修士向你展示了两枚玉简。“不要问来路，只收灵石。”",
+      "type": "NORMAL",
+      "realm": "foundation",
+      "weight": 6,
+      "choices": {
+        "left": {
+          "text": "购买古剑谱 (需50灵石)",
+          "costCheck": {
+            "spiritStone": 50
+          },
+          "effects": {
+            "spiritStone": -50,
+            "deckCard": "sword_array"
+          },
+          "desc": "获得剑卡【太虚剑阵】"
+        },
+        "right": {
+          "text": "购买残缺雷法 (需50灵石)",
+          "costCheck": {
+            "spiritStone": 50
+          },
+          "effects": {
+            "spiritStone": -50,
+            "deckCard": "spell_nuke"
+          },
+          "desc": "获得法卡【九天玄雷诀】"
+        },
+        "down": {
+          "text": "离开",
+          "effects": {
+            "daoHeart": 5
+          }
+        }
+      },
+      "tags": [
+        "trade",
+        "market"
+      ],
+      "sceneImage": "assets/cards/events/scene_pool_market.png"
     },
     {
       "id": "f_love",
@@ -259,7 +346,7 @@
         "right": {
           "text": "进入探险",
           "effects": {
-            "health": -10,
+            "health": -2,
             "cultivation": 30
           },
           "dungeon": "mysteryRealm"
@@ -312,7 +399,7 @@
         "left": {
           "text": "斩断幻象",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaBad": 5
           }
         },
@@ -320,7 +407,7 @@
           "text": "直面心魔",
           "effects": {
             "cultivation": 20,
-            "daoHeart": -10
+            "daoHeart": -2
           }
         }
       },
@@ -417,8 +504,9 @@
           },
           "breakSuccess": 0.75
         },
-        "up": {
-          "text": "服用结金丹",
+      "up": {
+        "text": "服用结金丹",
+        "requiredPill": "golden",
           "effects": {
             "daoHeart": 5
           },
@@ -428,7 +516,8 @@
           "text": "暂缓突破",
           "effects": {
             "cultivation": -40,
-            "daoHeart": -5
+            "daoHeart": -2,
+            "_setFlag": "breakthrough_paused_cooldown"
           }
         }
       },
@@ -520,21 +609,57 @@
   ],
   "dungeons": {
     "mysteryRealm": {
-      "name": "神秘秘境",
-      "nodes": [
-        {
-          "type": "event",
-          "card": "realm_elder"
+      "name": "太虚三转境",
+      "startNode": "echo",
+      "graph": {
+        "echo": {
+          "type": "EVENT",
+          "card": "realm_elder",
+          "next": "fork"
         },
-        {
-          "type": "battle",
-          "card": "realm_guardian"
+        "fork": {
+          "type": "FORK",
+          "title": "阵门双途",
+          "description": "左门可借残魂推演阵理，右门则以气血撞开捷径。准备越充分，代价越低。",
+          "paths": {
+            "deduce": {
+              "text": "推演生门",
+              "desc": "多走一步，先理解Boss的三次阵变。",
+              "effects": {
+                "knowledge": 1
+              },
+              "next": "prepare"
+            },
+            "break": {
+              "text": "强闯死门",
+              "desc": "直接面对阵灵，换取少量先机。",
+              "effects": {
+                "health": -1,
+                "cultivation": 2
+              },
+              "next": "boss"
+            }
+          }
         },
-        {
-          "type": "reward",
-          "card": "realm_treasure"
+        "prepare": {
+          "type": "EVENT",
+          "card": "realm_prepare",
+          "next": "boss"
+        },
+        "boss": {
+          "type": "BOSS",
+          "card": "realm_guardian",
+          "next": "reward"
+        },
+        "reward": {
+          "type": "REWARD",
+          "card": "realm_treasure",
+          "next": "exit"
+        },
+        "exit": {
+          "type": "EXIT"
         }
-      ]
+      }
     }
   },
   "dungeonCards": {
@@ -558,29 +683,107 @@
             "karmaBad": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
     },
     "realm_guardian": {
       "id": "realm_guardian",
-      "title": "秘境守护者",
-      "description": "阵灵化身拦路，测试来者实力。",
+      "title": "太虚阵灵·三相",
+      "description": "阵灵并非一具敌躯：观门、逆转、阵心会依次接管战场，牌堆与伤势不会在换相时重置。",
+      "type": "BOSS_COMBAT",
+      "encounterKind": "boss",
+      "tags": [
+        "combat",
+        "boss",
+        "dungeon"
+      ],
+      "battlefield": "cave",
+      "enemy": {
+        "name": "太虚阵灵",
+        "tier": 3,
+        "factionId": "ancient_array",
+        "phases": [
+          {
+            "name": "第一相·观门",
+            "hp": 5,
+            "atk": 1,
+            "tier": 1,
+            "templateId": "enemy_normal"
+          },
+          {
+            "name": "第二相·逆转",
+            "hp": 7,
+            "atk": 2,
+            "tier": 2,
+            "templateId": "enemy_charging",
+            "entryEffect": {
+              "block": 2
+            }
+          },
+          {
+            "name": "第三相·太虚阵心",
+            "hp": 9,
+            "atk": 2,
+            "tier": 3,
+            "templateId": "enemy_sword"
+          }
+        ]
+      },
+      "combatRewards": {
+        "cultivation": 4,
+        "spiritStone": 3,
+        "knowledge": 1
+      },
+      "choices": {
+        "left": {
+          "text": "踏入阵心",
+          "effects": {}
+        },
+        "right": {
+          "text": "凝神观相",
+          "effects": {}
+        }
+      },
+      "sceneImage": "assets/combat/battlefields/battlefield_realm_guardian_array_agc_v1.png",
+      "combatPresentation": {
+        "id": "combat_realm_guardian_array_agc_v1",
+        "battlefieldId": "battlefield_realm_guardian_array_agc_v1",
+        "assetClass": "battlefield_scene",
+        "sceneId": "taixu_array_observatory",
+        "location": "foundation_dungeon_array_core",
+        "timeOfDay": "blue_hour",
+        "weather": "mountain_mist",
+        "safeZones": {
+          "player": "left",
+          "enemy": "right",
+          "feedback": "center",
+          "techniqueRail": "bottom"
+        },
+        "colorProfile": "slate_blue_jade_bronze",
+        "composition": "foreground broken stones and array marks; midground open octagonal arena; distant gate, pillars and mist. No baked card frame, text or HUD."
+      }
+    },
+    "realm_prepare": {
+      "id": "realm_prepare",
+      "title": "残魂授诀",
+      "description": "残魂指出三相规律：观门试探、逆转蓄力、阵心凝剑。你可以稳住道心，或炼一枚临阵回气丹。",
       "type": "NORMAL",
       "choices": {
         "left": {
-          "text": "以力破阵",
+          "text": "记住三相节拍",
           "effects": {
-            "health": -30,
-            "cultivation": 25
+            "daoHeart": 1
           }
         },
         "right": {
-          "text": "寻阵眼破之",
+          "text": "炼临阵丹",
           "effects": {
-            "cultivation": 20,
-            "fortune": 10
+            "fortune": 1,
+            "deckCard": "mana_potion"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_meditation.png"
     },
     "realm_treasure": {
       "id": "realm_treasure",
@@ -602,11 +805,9 @@
             "pill": "golden"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
     }
   },
-  "karmaCards": {
-    "whiteFox": "f_karma",
-    "foxGratitude": "f_foxGratitude"
-  }
+  "karmaCards": {}
 }

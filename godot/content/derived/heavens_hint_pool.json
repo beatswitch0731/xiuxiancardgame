@@ -1,0 +1,206 @@
+{
+  "source": "src/systems/HeavensHintSystem.js",
+  "sourceSha256": "67f2f543bbbc04f340cee18afb00d7f43cbae28dd9e65d3eb2a15cac31ef12c2",
+  "pool": [
+    {
+      "category": "吉兆",
+      "text": "青鸾衔书至，云外有仙音。",
+      "interpretation": "青鸾之象指向外界机缘；此刻只能辨出灵气回暖，未见具体来人或残卷。"
+    },
+    {
+      "category": "吉兆",
+      "text": "剑鸣三尺水，月照万年冰。",
+      "interpretation": "剑鸣像是心境回应；此兆没有预定的攻击加成。"
+    },
+    {
+      "category": "吉兆",
+      "text": "古潭深千尺，龙吟动九霄。",
+      "interpretation": "潭底有旧时回声；洞府与丹药仍待亲自查证。"
+    },
+    {
+      "category": "吉兆",
+      "text": "桃花落满肩，春风度玉门。",
+      "interpretation": "春意掠过旧缘；关系如何变化，仍取决于之后的相处。"
+    },
+    {
+      "category": "吉兆",
+      "text": "丹炉生紫烟，九转可通玄。",
+      "interpretation": "炉火映出一线紫光；炼丹成败仍由实际材料与选择决定。"
+    },
+    {
+      "category": "吉兆",
+      "text": "三尺青锋冷，一朝破长空。",
+      "interpretation": "剑意一瞬清明；下一场战斗的伤害仍由出牌与敌势决定。"
+    },
+    {
+      "category": "吉兆",
+      "text": "石中藏美玉，沙里有黄金。",
+      "interpretation": "土石之间似有灵光；下一次探索的收获尚无定数。"
+    },
+    {
+      "category": "吉兆",
+      "text": "星垂平野阔，月涌大江流。",
+      "interpretation": "星月相接，吐纳稍顺；此兆不改变后续修为增长倍率。"
+    },
+    {
+      "category": "吉兆",
+      "text": "灵根初醒时，正是飞升日。",
+      "interpretation": "经脉有片刻温热；真正的突破仍须满足境界条件。"
+    },
+    {
+      "category": "吉兆",
+      "text": "虎啸生风雷，龙腾起云烟。",
+      "interpretation": "雷声振耳，战意微动；此兆不会预置下一击的暴击。"
+    },
+    {
+      "category": "吉兆",
+      "text": "金鳞跃池中，一朝化龙去。",
+      "interpretation": "寻常之处也可留心；是否有机缘，仍看实际遭遇。"
+    },
+    {
+      "category": "吉兆",
+      "text": "白鹤衔芝至，紫气自东来。",
+      "interpretation": "白鹤掠过识海，气息略安；此兆不直接延长寿元。"
+    },
+    {
+      "category": "吉兆",
+      "text": "剑冢鸣金铁，古意入心怀。",
+      "interpretation": "剑冢影子一闪而逝；传承归属与暴击伤害尚无定论。"
+    },
+    {
+      "category": "吉兆",
+      "text": "玉笛飞声远，清风满楼台。",
+      "interpretation": "坊市灯火掠过识海；实际货品与价格仍以入市时为准。"
+    },
+    {
+      "category": "吉兆",
+      "text": "莲开九品台，佛光自西来。",
+      "interpretation": "莲影令心神暂定；此兆不附加持续的心魔抗性。"
+    },
+    {
+      "category": "吉兆",
+      "text": "枯木逢春雨，铁树绽银花。",
+      "interpretation": "枯木上有新芽之象；困境的解法仍需在当下寻找。"
+    },
+    {
+      "category": "吉兆",
+      "text": "银河落九天，疑是地上仙。",
+      "interpretation": "远处似有人声；此兆不能证明高人已经现身。"
+    },
+    {
+      "category": "吉兆",
+      "text": "凤栖梧桐树，百鸟自朝拜。",
+      "interpretation": "梧桐影动，众声杂然；势力声望仍以实际行动积累。"
+    },
+    {
+      "category": "吉兆",
+      "text": "珠藏深渊底，龙护万年安。",
+      "interpretation": "深渊有珠光一闪；尚无法确认法宝或主动技能。"
+    },
+    {
+      "category": "吉兆",
+      "text": "扶摇九万里，绝云气负青天。",
+      "interpretation": "风势高举，吐纳一畅；修为变化以此刻选择结算为准。"
+    },
+    {
+      "category": "吉兆",
+      "text": "丹心映日月，浩气贯长虹。",
+      "interpretation": "一缕念头引来温和回响；未来因果仍须由具体行动兑现。"
+    },
+    {
+      "category": "吉兆",
+      "text": "海底生明月，天涯共此时。",
+      "interpretation": "月色牵起一段旧念；羁绊是否推进仍看双方选择。"
+    },
+    {
+      "category": "吉兆",
+      "text": "神兵藏匣久，今朝试锋芒。",
+      "interpretation": "匣中似有金铁轻鸣；本命法宝尚无觉醒凭据。"
+    },
+    {
+      "category": "吉兆",
+      "text": "松风吹解带，山月照弹琴。",
+      "interpretation": "松风令心绪稍定；此刻可以静心修炼，后续收益仍看行动。"
+    },
+    {
+      "category": "凶兆",
+      "text": "黑云压城城欲摧。",
+      "interpretation": "乌云压近，宜审视当前准备；并无已锁定的强敌或伤害。"
+    },
+    {
+      "category": "凶兆",
+      "text": "血月照孤舟，江心鬼火流。",
+      "interpretation": "血月之影使心神微乱；是否遭遇心魔仍取决于后续事件。"
+    },
+    {
+      "category": "凶兆",
+      "text": "霜刃未曾试，今日把示君。",
+      "interpretation": "霜刃映出疑影；此兆不足以指认任何同伴背叛。"
+    },
+    {
+      "category": "凶兆",
+      "text": "螳螂捕蝉雀，黄雀伺其后。",
+      "interpretation": "局中似有旁观之眼；幕后之人和暗算尚无实证。"
+    },
+    {
+      "category": "凶兆",
+      "text": "风起青萍末，浪成微澜间。",
+      "interpretation": "微风拂动灵台，提醒留意资源与状态；灾祸尚未发生。"
+    },
+    {
+      "category": "凶兆",
+      "text": "镜花水月终成空。",
+      "interpretation": "镜中景象易失真；检视突破条件，比追逐幻象可靠。"
+    },
+    {
+      "category": "凶兆",
+      "text": "螣蛇乘雾，终为土灰。",
+      "interpretation": "雾中道路难辨；先衡量风险，再决定是否冒进。"
+    },
+    {
+      "category": "凶兆",
+      "text": "山雨欲来风满楼。",
+      "interpretation": "山雨未至，远处隐有杂音；势力冲突尚待证据。"
+    },
+    {
+      "category": "凶兆",
+      "text": "孤舟蓑笠翁，独钓寒江雪。",
+      "interpretation": "寒江之象令人想起旧缘；此兆不能预告道侣离去。"
+    },
+    {
+      "category": "凶兆",
+      "text": "天生一个仙人洞，无限风光在险峰。",
+      "interpretation": "险峰与劫云同时映现；实际渡劫条件和成功率并未改变。"
+    },
+    {
+      "category": "天机",
+      "text": "天道有缺，混沌为证。",
+      "interpretation": "天道有缺的说法浮现脑海；它是待查的线索，尚不足以判定你的本质。"
+    },
+    {
+      "category": "天机",
+      "text": "飞升非终，而是始。",
+      "interpretation": "飞升后的去向仍是疑案；记下这则警讯，留待其他证据印证。"
+    },
+    {
+      "category": "天机",
+      "text": "第七块碎片不在天外，在心中。",
+      "interpretation": "这句旧谶把碎片与道心并置；它自身不提供新的物证。"
+    },
+    {
+      "category": "天机",
+      "text": "天道在筛选，而非滋养。",
+      "interpretation": "天劫或许藏着另一种筛选机制；记下警讯，等待实证。"
+    },
+    {
+      "category": "天机",
+      "text": "你曾来过，也将再来。",
+      "interpretation": "旧生的回声与今世相叠；这则线索仍需别的证据串联。"
+    },
+    {
+      "category": "天机",
+      "text": "混沌非敌，乃剑。",
+      "interpretation": "混沌之力可以成为一种选择；它并非已证实的唯一答案。"
+    }
+  ]
+}

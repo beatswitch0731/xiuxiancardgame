@@ -6,9 +6,9 @@
         {
           "id": "sword_crit",
           "name": "剑气纵横",
-          "desc": "战斗时暴击率+15%",
+          "desc": "战斗时暴击率+1%",
           "unlockRealm": "foundation",
-          "passive": { "critRate": 15 },
+          "passive": { "critRate": 1 },
           "flavor": "一剑破万法——要么中了，要么死了。"
         },
         {
@@ -22,9 +22,9 @@
         {
           "id": "sword_blood",
           "name": "血剑共鸣",
-          "desc": "血量低于30%时，攻击翻倍",
+          "desc": "血量低于30%时，攻击+1",
           "unlockRealm": "nascent",
-          "passive": { "lowHpAtkBonus": 2.0 },
+          "passive": { "lowHpAtkBonus": 1 },
           "flavor": "越濒死，越危险——这就是剑修。"
         }
       ]
@@ -64,25 +64,25 @@
         {
           "id": "body_hp",
           "name": "金刚不坏",
-          "desc": "气血上限+30",
+          "desc": "气血上限+2",
           "unlockRealm": "foundation",
-          "passive": { "maxHp": 30 },
+          "passive": { "maxHp": 2 },
           "flavor": "万法不侵，只是皮厚。"
         },
         {
           "id": "body_regen",
           "name": "气血再生",
-          "desc": "每轮回血3",
+          "desc": "每轮回血1",
           "unlockRealm": "golden",
-          "passive": { "hpRegen": 3 },
+          "passive": { "hpRegen": 1 },
           "flavor": "伤口？什么伤口？"
         },
         {
           "id": "body_iron",
           "name": "肉身成圣",
-          "desc": "防御+20%",
+          "desc": "战斗防御+1",
           "unlockRealm": "nascent",
-          "passive": { "def": 20 },
+          "passive": { "def": 1 },
           "flavor": "凡人之躯，对抗天劫——已经赢了。"
         }
       ]
@@ -93,9 +93,9 @@
         {
           "id": "pill_effect",
           "name": "丹道真意",
-          "desc": "丹药效果+50%",
+          "desc": "服用破境丹后，新境界初始修为额外获得阈值的50%",
           "unlockRealm": "foundation",
-          "passive": { "pillBonus": 0.5 },
+          "passive": { "pillBreakthroughCultivationRatio": 0.5 },
           "flavor": "万物皆丹——包括你自己。"
         },
         {

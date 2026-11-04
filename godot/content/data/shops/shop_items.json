@@ -1,0 +1,214 @@
+{
+  "items": [
+    {
+      "id": "last_lesson_three_tone_sword",
+      "name": "三鸣旧剑",
+      "type": "story_item",
+      "price": 18,
+      "realm": "deity",
+      "desc": "剑脊内封着三道互不相让的旧剑意。它不是更强的装备，而是白刃最后一课所需的承剑之物。",
+      "effect": { "itemId": "last_lesson_three_tone_sword", "quantity": 1 },
+      "storyAlternatives": [
+        {
+          "id": "last_lesson_exchange_sword_tassel",
+          "type": "barter_item",
+          "label": "用亲手编的剑穗交换",
+          "description": "交出 1 件【剑穗】，不花灵石换得三鸣旧剑。",
+          "itemId": "剑穗",
+          "quantity": 1,
+          "resolution": "bartered",
+          "grantOfferedItem": true
+        },
+        {
+          "id": "last_lesson_insufficient_sect_loan",
+          "type": "insufficient_fallback",
+          "label": "灵石不足，请剑灵儿带路回宗门借剑",
+          "description": "仅在买不起三鸣旧剑时出现；结束本次坊市并转到宗门试剑台。",
+          "resolution": "sect_loan",
+          "playerLocation": "qingyun_trial_sword_terrace",
+          "grantOfferedItem": false
+        }
+      ]
+    },
+    {
+      "id": "shop_pill_foundation",
+      "name": "筑基丹",
+      "type": "pill",
+      "price": 8,
+      "realm": "qi",
+      "desc": "突破筑基期的必需品。不买的话就得靠运气。",
+      "effect": { "pillId": "foundation" }
+    },
+    {
+      "id": "shop_pill_healing",
+      "name": "回春丹",
+      "type": "pill",
+      "price": 4,
+      "realm": "qi",
+      "desc": "恢复 2 点气血，不超过当前气血上限。",
+      "effect": { "healHp": 2 }
+    },
+    {
+      "id": "shop_pill_mind",
+      "name": "清心丹",
+      "type": "pill",
+      "price": 5,
+      "realm": "foundation",
+      "desc": "恢复 2 点道心，不超过当前道心上限。",
+      "effect": { "healDaoHeart": 2 }
+    },
+    {
+      "id": "shop_pill_golden",
+      "name": "结金丹",
+      "type": "pill",
+      "price": 12,
+      "realm": "foundation",
+      "desc": "突破金丹期的必需品。",
+      "effect": { "pillId": "golden" }
+    },
+    {
+      "id": "shop_pill_burst",
+      "name": "爆灵丹",
+      "type": "pill",
+      "price": 7,
+      "realm": "golden",
+      "desc": "立即增加 5 点修为。",
+      "effect": { "tempCultivation": 5 }
+    },
+    {
+      "id": "shop_pill_nascent_pill",
+      "name": "凝婴丹",
+      "type": "pill",
+      "price": 18,
+      "realm": "golden",
+      "desc": "突破元婴期的必需品。极其昂贵。",
+      "effect": { "pillId": "nascent" }
+    },
+    {
+      "id": "shop_pill_deity",
+      "name": "化神丹",
+      "type": "pill",
+      "price": 24,
+      "realm": "nascent",
+      "desc": "洗练元神与天机因果的突破灵药。服用后可免除化神雷罚的攻击反噬，并削弱雷罚根基。",
+      "effect": { "pillId": "deity" }
+    },
+    {
+      "id": "shop_treasure_iron_armor",
+      "name": "玄铁甲",
+      "type": "treasure",
+      "price": 10,
+      "realm": "qi",
+      "desc": "防御法宝。战斗时提供 1 点防御。",
+      "effect": { "treasureId": "玄铁甲" }
+    },
+    {
+      "id": "shop_treasure_gourd",
+      "name": "灵泉葫芦",
+      "type": "treasure",
+      "price": 9,
+      "realm": "qi",
+      "desc": "回复法宝。每轮恢复 1 点气血。",
+      "effect": { "treasureId": "灵泉葫芦" }
+    },
+    {
+      "id": "shop_treasure_sword_token",
+      "name": "剑心佩",
+      "type": "treasure",
+      "price": 16,
+      "realm": "foundation",
+      "desc": "剑修法宝。+2 攻击、+5% 暴击。",
+      "effect": { "treasureId": "剑心佩" }
+    },
+    {
+      "id": "shop_treasure_dust_pearl",
+      "name": "避尘珠",
+      "type": "treasure",
+      "price": 13,
+      "realm": "foundation",
+      "desc": "福缘法宝。厄运来临时可催动。",
+      "effect": { "treasureId": "避尘珠" }
+    },
+    {
+      "id": "shop_npc_favor",
+      "name": "灵石打点",
+      "type": "npc_favor",
+      "price": 8,
+      "realm": "qi",
+      "desc": "花灵石疏通本地关系，提升当前地点人物好感；无人时转化为本地人脉。",
+      "effect": { "npcFavor": 2 }
+    },
+    {
+      "id": "shop_gift_spirit_tea",
+      "name": "灵茶",
+      "type": "gift",
+      "price": 4,
+      "realm": "qi",
+      "desc": "清香温润的灵茶，多位宗门故人都愿意收下。",
+      "effect": { "giftItemId": "灵茶", "quantity": 1 }
+    },
+    {
+      "id": "shop_gift_sword_tassel",
+      "name": "剑穗",
+      "type": "gift",
+      "price": 4,
+      "realm": "qi",
+      "desc": "亲手编成的护剑穗，适合赠予惜剑之人。",
+      "effect": { "giftItemId": "剑穗", "quantity": 1 }
+    },
+    {
+      "id": "shop_gift_spirit_medicine",
+      "name": "灵药",
+      "type": "gift",
+      "price": 5,
+      "realm": "qi",
+      "desc": "尚未入炉的温养灵药，可作人情，也可解旅途之困。",
+      "effect": { "giftItemId": "灵药", "quantity": 1 }
+    },
+    {
+      "id": "shop_gift_ancient_fragment",
+      "name": "古籍残卷",
+      "type": "gift",
+      "price": 6,
+      "realm": "foundation",
+      "desc": "字迹残缺的古卷，对博闻好古之人尤其珍贵。",
+      "effect": { "giftItemId": "古籍残卷", "quantity": 1 }
+    },
+    {
+      "id": "shop_gift_good_wine",
+      "name": "好酒",
+      "type": "gift",
+      "price": 5,
+      "realm": "qi",
+      "desc": "坊间难得的烈酒，适合赠予不拘正邪的豪客。",
+      "effect": { "giftItemId": "好酒", "quantity": 1 }
+    },
+    {
+      "id": "shop_gift_silk",
+      "name": "丝织品",
+      "type": "gift",
+      "price": 4,
+      "realm": "qi",
+      "desc": "柔韧轻暖的灵蚕丝织品，是一份体面的心意。",
+      "effect": { "giftItemId": "丝织品", "quantity": 1 }
+    },
+    {
+      "id": "shop_gift_array_material",
+      "name": "阵法材料",
+      "type": "material",
+      "price": 6,
+      "realm": "foundation",
+      "desc": "刻阵常用的星砂与灵木，天机修士会看出其中价值。",
+      "effect": { "giftItemId": "阵法材料", "quantity": 1 }
+    },
+    {
+      "id": "shop_gift_blood_material",
+      "name": "血属性材料",
+      "type": "material",
+      "price": 6,
+      "realm": "foundation",
+      "desc": "血煞之气尚存的稀有材料，不宜久藏。",
+      "effect": { "giftItemId": "血属性材料", "quantity": 1 }
+    }
+  ]
+}

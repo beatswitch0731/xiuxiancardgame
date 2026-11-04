@@ -29,7 +29,8 @@
           "narrativeBlock": "你走近她。她抬头看着你，血瞳中闪过一丝惊讶——然后是她先动了。她的手指冰凉，但唇是烫的。",
           "_adultThemes": true
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
     },
     {
       "id": "ds_moon_lake",
@@ -52,16 +53,19 @@
           "effects": {
             "cultivation": -10,
             "karmaBad": 10,
-            "daoHeart": -5
+            "daoHeart": -2
           },
-          "pillCost": {
+        "costCheck": {
+          "pills": {
             "foundation": 1
+          }
           },
           "npcAffection": 20,
           "narrativeBlock": "她接过丹药，然后慢慢从水中起身。水珠从她肩头滑下——月光替她穿了衣裳。'交易就是交易。这枚筑基丹——值这个价。'",
           "_adultThemes": true
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
     },
     {
       "id": "ds_spirit_vein",
@@ -73,14 +77,14 @@
       "npcName": "灵萝",
       "choices": {
         "left": {
-          "text": "用修为喂她（损失修为，突破金丹成功率+20%）",
-          "effects": {
-            "cultivation": -25,
-            "daoHeart": 10
-          },
-          "breakBoost": {
+        "text": "用修为喂她（损失修为，金丹境下一次破境成功率+20%）",
+        "effects": {
+          "cultivation": -25,
+          "daoHeart": 10,
+          "breakthroughBoost": {
             "realm": "golden",
             "amount": 0.2
+          }
           }
         },
         "right": {
@@ -88,12 +92,13 @@
           "effects": {
             "cultivation": 15,
             "karmaBad": 8,
-            "daoHeart": -5
+            "daoHeart": -2
           },
           "narrativeBlock": "你握住她的手。灵力通过掌心传递，藤蔓缓缓松开——她的手很软，像从未握过兵器。她靠在你的胸前喘息，灵光从她皮肤下透出，照亮了你的脸。",
           "_adultThemes": true
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_breakthrough.png"
     },
     {
       "id": "ds_demonic_auction",
@@ -105,12 +110,12 @@
         "left": {
           "text": "出价买下她（-100 灵石，获得道侣）",
           "effects": {
-            "spiritStone": -100,
-            "karmaGood": 5,
-            "karmaBad": 5
-          },
-          "companion": "ds_demoness",
-          "npcAffection": 20
+          "spiritStone": -100,
+          "karmaGood": 5,
+          "karmaBad": 5,
+          "companion": "ds_demoness"
+        },
+        "npcAffection": 20
         },
         "right": {
           "text": "不参与魔道交易",
@@ -119,7 +124,8 @@
             "karmaGood": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_auction.png"
     },
     {
       "id": "ds_demoness_serve",
@@ -128,13 +134,14 @@
       "description": "你买下的魔道女修——她在你洞府里住了三天。第四天晚上她推开你的门，身上只披着一件外袍。'你不像其他正道修士那样看轻我。让我报答你——用我的方式。'她的手指轻轻搭在你肩上，指尖冰凉但坚定。",
       "realm": "nascent",
       "npcId": "ds_demoness",
-      "requiresFlag": "companion_ds_demoness_acquired",
+  "requiredCompanion": "ds_demoness",
       "choices": {
         "left": {
           "text": "接受她——让她做道侣",
           "effects": {
-            "daoHeart": -10,
-            "karmaBad": 10
+            "daoHeart": -2,
+        "karmaBad": 10,
+        "_setFlag": "companion_ds_demoness_bonded"
           },
           "companionEffects": {
             "affection": 30,
@@ -150,7 +157,8 @@
             "karmaGood": 15
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
     },
     {
       "id": "ds_demoness_dual",
@@ -159,14 +167,18 @@
       "description": "她站在你的蒲团前，双手结印——正道的灵气和魔道的煞气在她掌心中融合。'我找到了方法。正道和魔道不用二选一——我们可以一起。过来——把你的手给我。'她的眼眸中跳动着两团火焰——一白一红。",
       "realm": "deity",
       "npcId": "ds_demoness",
-      "requiresFlag": "companion_ds_demoness_bonded",
+  "requiredCompanion": "ds_demoness",
+  "requiresFlags": {
+    "companion_ds_demoness_bonded": true
+  },
       "choices": {
         "left": {
           "text": "握住她的手——正魔双修",
           "effects": {
             "cultivation": 30,
             "daoHeart": 5,
-            "karmaBad": 5
+        "karmaBad": 5,
+        "_setFlag": "companion_ds_demoness_intimate"
           },
           "companionEffects": {
             "affection": 20
@@ -177,11 +189,12 @@
         "right": {
           "text": "拒绝——正魔不该同修",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "ds_demoness_night",
@@ -190,12 +203,15 @@
       "description": "魔纹在月光下会发光——这是你和她共同的秘密。她让你用指尖描摹她背上的魔纹——那是她被封印时留下的烙印。每描一条，她就轻轻颤一次。'再描一遍。'她趴在石床上，把脸埋在枕头上——声音闷闷的，但耳朵都红了。",
       "realm": "deity",
       "npcId": "ds_demoness",
-      "requiresFlag": "companion_ds_demoness_intimate",
+  "requiredCompanion": "ds_demoness",
+  "requiresFlags": {
+    "companion_ds_demoness_intimate": true
+  },
       "choices": {
         "left": {
           "text": "继续描下去——一夜缱绻",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaBad": 5
           },
           "companionEffects": {
@@ -214,7 +230,8 @@
             "affection": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
     },
     {
       "id": "ds_temptation_inn",
@@ -238,13 +255,14 @@
           "effects": {
             "cultivation": 5,
             "karmaBad": 10,
-            "daoHeart": -5
+            "daoHeart": -2
           },
           "npcAffection": 15,
           "narrativeBlock": "她进门时带进一阵混合着血和茉莉花香的风。翌日她走了——只在枕上留下一枚茉莉花钿。你的修为确实涨了一点。但丹田里似乎多了一缕不属于你的灵气。",
           "_adultThemes": true
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
     },
     {
       "id": "ds_pill_master_trade",
@@ -271,35 +289,164 @@
           "narrativeBlock": "她轻笑了一声——然后是一整夜的丹火明灭。炉中的九转还魂丹成了，而你丹田里也添了一股暖流。她塞给你一瓶金丹：'下次还来——我还有很多丹药要炼。'",
           "_adultThemes": true
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_herb_gathering.png"
     },
     {
       "id": "ds_female_bandit",
       "type": "DUNGEON",
       "title": "女匪寨",
-      "description": "你被一群女修匪徒劫上山寨。为首的坐在虎皮椅上，翘着二郎腿看你。'细皮嫩肉的公子哥——知道抢了你值多少灵石吗？不过……你倒是不怕。有意思。给老娘说说——你是来剿匪的，还是来……别的？'她笑了起来，笑声在山寨中回荡。",
+      "description": "武盟山道的商旅近来屡遭截掠。你循着断裂的车辙闯入女匪寨，虎娘披着虎裘立在火盆前，重刀只出鞘半寸。她没有叫手下围攻，只把两只酒盏推到桌边：'要么用本事拆我的寨门，要么坐下，让我看看你的道到底值不值得学。'",
       "realm": "golden",
+      "weight": 4,
+      "once": true,
+      "locationId": "wumeng_mountain_bandit_fort",
+      "locationName": "武盟山道·女匪寨",
+      "tags": ["combat", "opportunity", "wumeng", "bandit"],
       "npcId": "ds_bandit_queen",
       "npcName": "虎娘",
       "choices": {
         "left": {
-          "text": "亮剑——剿灭山寨",
-          "effects": {
-            "cultivation": 10,
-            "karmaGood": 10
+          "text": "踏进演武场——以胜负拆寨规",
+          "desc": "金丹精英战；胜利必得特殊技能【虎煞破势】，战败则留下真实伤势。",
+          "image": "assets/combat/tiger_queen_bandit_fort_v1/choice_challenge_tiger_queen_pc98_v1.png",
+          "triggerCombat": true,
+          "enemy": {
+            "id": "tiger_queen_golden",
+            "name": "虎娘",
+            "hp": 14,
+            "atk": 2,
+            "def": 0,
+            "tier": 2,
+            "realm": "golden",
+            "type": "武盟山匪·体修",
+            "battlefield": "bandit_fort",
+            "mechanic": "虎啸先压低你的气势，随后以破阵重斩进攻；守势会为她积累护盾。",
+            "intents": [
+              {
+                "type": "debuff",
+                "statusId": "weak",
+                "value": 1,
+                "desc": "虎啸：施加1层虚弱",
+                "actionName": "虎娘以刀背敲肩，笑意逼得你的气机迟滞"
+              },
+              {
+                "type": "attack",
+                "value": 2,
+                "desc": "破阵斩：造成2点伤害",
+                "actionName": "虎娘踏碎石屑，重刀沿你的中门斜斩而下"
+              },
+              {
+                "type": "defend",
+                "value": 2,
+                "desc": "伏虎架：获得2点护盾",
+                "actionName": "虎娘横刀沉肩，把所有空门藏进虎裘之后"
+              }
+            ]
+          },
+          "combatPresentation": {
+            "presentationId": "combat_tiger_queen_bandit_fort_v1",
+            "battlefieldId": "battlefield_bandit_fort_pc98_v1",
+            "warningTitle": "女匪寨·虎娘试刀",
+            "sceneImage": "assets/combat/tiger_queen_bandit_fort_v1/battlefield_bandit_fort_pc98_v1.png",
+            "enemyType": "成年女匪首·体修",
+            "difficultyLabel": "金丹·精英",
+            "mechanic": "虎啸施加虚弱，破阵斩造成2点伤害，伏虎架获得2点护盾。",
+            "actorCards": {
+          "enemy": {
+            "id": "actor_tiger_queen_fullbody_v3",
+            "name": "虎娘",
+            "kicker": "女匪首·体修",
+            "image": "assets/combat/tiger_queen_bandit_fort_v1/actor_fullbody_v3/idle.png",
+            "style": "transparent_fullbody_pc98_candidate_v3",
+            "portraitMode": "full_body_transparent",
+            "intentFrames": {
+              "debuff": "assets/combat/tiger_queen_bandit_fort_v1/actor_fullbody_v3/debuff.png",
+              "attack": "assets/combat/tiger_queen_bandit_fort_v1/actor_fullbody_v3/attack.png",
+              "defend": "assets/combat/tiger_queen_bandit_fort_v1/actor_fullbody_v3/defend.png",
+              "buff": "assets/combat/tiger_queen_bandit_fort_v1/actor_fullbody_v3/idle.png"
+            }
           }
+            },
+            "cardArt": {
+              "strike": {
+                "id": "combat_card_strike_pc98_v1",
+                "image": "assets/combat/beast_hound_pack_v1/combat_card_strike_pc98_v1.png"
+              },
+              "defend": {
+                "id": "combat_card_guard_pc98_v1",
+                "image": "assets/combat/beast_hound_pack_v1/combat_card_guard_pc98_v1.png"
+              },
+              "tiger_break_stance": {
+                "id": "combat_card_tiger_break_stance_pc98_v1",
+                "image": "assets/combat/tiger_queen_bandit_fort_v1/tiger_queen_attack_pc98_v1.png"
+              }
+            },
+            "vfx": {
+              "damage": {
+                "id": "fx_hound_damage_pc98_v1",
+                "durationMs": 360,
+                "frames": [
+                  "assets/combat/beast_hound_pack_v1/fx_damage/damage-1.png",
+                  "assets/combat/beast_hound_pack_v1/fx_damage/damage-2.png",
+                  "assets/combat/beast_hound_pack_v1/fx_damage/damage-3.png",
+                  "assets/combat/beast_hound_pack_v1/fx_damage/damage-4.png"
+                ]
+              },
+              "shield": {
+                "id": "fx_hound_shield_pc98_v1",
+                "durationMs": 440,
+                "frames": [
+                  "assets/combat/beast_hound_pack_v1/fx_shield/shield-1.png",
+                  "assets/combat/beast_hound_pack_v1/fx_shield/shield-2.png",
+                  "assets/combat/beast_hound_pack_v1/fx_shield/shield-3.png",
+                  "assets/combat/beast_hound_pack_v1/fx_shield/shield-4.png"
+                ]
+              },
+              "weak": {
+                "id": "fx_hound_weak_pc98_v1",
+                "durationMs": 440,
+                "frames": [
+                  "assets/combat/beast_hound_pack_v1/fx_weak/weak-1.png",
+                  "assets/combat/beast_hound_pack_v1/fx_weak/weak-2.png",
+                  "assets/combat/beast_hound_pack_v1/fx_weak/weak-3.png",
+                  "assets/combat/beast_hound_pack_v1/fx_weak/weak-4.png"
+                ]
+              }
+            }
+          },
+          "victoryEffects": {
+            "cultivation": 6,
+            "karmaGood": 5,
+            "skillAcquire": {
+              "offerId": "opportunity_tiger_queen_break_stance_v1"
+            }
+          },
+          "defeatEffects": {
+            "daoHeart": -1
+          },
+          "fleeEffects": {
+            "lifespan": -1
+          },
+          "defeatHealthLoss": 2
         },
         "right": {
-          "text": "坐下喝酒——看看她想干什么",
+          "text": "接过酒盏——听她讲换气破势",
+          "desc": "本世单次参悟判定；概率受境界、气运、道心、修为、流派与善恶因果共同影响。",
+          "image": "assets/combat/tiger_queen_bandit_fort_v1/choice_parley_tiger_queen_pc98_v1.png",
           "effects": {
-            "cultivation": 8,
-            "karmaBad": 5
+            "cultivation": 4,
+            "karmaBad": 2,
+            "skillOpportunity": {
+              "offerId": "opportunity_tiger_queen_break_stance_v1"
+            }
           },
-          "npcAffection": 12,
-          "narrativeBlock": "酒过三巡。虎皮从她肩上滑下，她索性不管了。'修了三十年仙，头一次遇到不怕我的正道。你比那些假正经的强——今晚别走了。'山寨里的篝火烧了一整夜。",
+          "npcAffection": 6,
+          "narrativeBlock": "虎娘没有把酒局变成投名状。她用指节沿刀脊敲出三声，讲的是敌人吐尽旧气、尚未吸入新气的那一线空门。讲到最后，她隔着火光看你一眼：'听懂了是你的机缘，听不懂——下次带伤来，我再教。'",
           "_adultThemes": true
         }
-      }
+      },
+      "sceneImage": "assets/combat/tiger_queen_bandit_fort_v1/battlefield_bandit_fort_pc98_v1.png"
     }
   ]
 }

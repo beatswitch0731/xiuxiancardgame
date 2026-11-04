@@ -175,14 +175,14 @@ async function run() {
   // =====================================================================
   section('修复 #5: 法宝战斗被动挂载');
 
-  await test('#5a 装备剑心佩后 player.atkMod 应为 8', async () => {
+  await test('#5a 装备剑心佩后 player.atkMod 应为 2', async () => {
     await startCombatWithTreasure('剑心佩', 'weapon');
-    assert.strictEqual(sandbox.deckCombatSystem.player.atkMod, 8, `atkMod 应为 8，实际: ${sandbox.deckCombatSystem.player.atkMod}`);
+    assert.strictEqual(sandbox.deckCombatSystem.player.atkMod, 2, `atkMod 应为 2，实际: ${sandbox.deckCombatSystem.player.atkMod}`);
   });
 
-  await test('#5b 装备玄铁甲后 player.defMod 应为 5', async () => {
+  await test('#5b 装备玄铁甲后 player.defMod 应为 1', async () => {
     await startCombatWithTreasure('玄铁甲', 'armor');
-    assert.strictEqual(sandbox.deckCombatSystem.player.defMod, 5, `defMod 应为 5，实际: ${sandbox.deckCombatSystem.player.defMod}`);
+    assert.strictEqual(sandbox.deckCombatSystem.player.defMod, 1, `defMod 应为 1，实际: ${sandbox.deckCombatSystem.player.defMod}`);
   });
 
   await test('#5c 装备剑心佩后 player.critRate 应为 5', async () => {
@@ -202,7 +202,7 @@ async function run() {
     const enemyHpBefore = sandbox.deckCombatSystem.enemy.hp;
     sandbox.deckCombatSystem._dealDamage(sandbox.deckCombatSystem.enemy, 1);
     const actualDmg = enemyHpBefore - sandbox.deckCombatSystem.enemy.hp;
-    assert.ok(actualDmg >= 9, `玩家攻击伤害应 >= 9（1+atkMod8），实际: ${actualDmg}`);
+    assert.ok(actualDmg >= 3, `玩家攻击伤害应 >= 3（1+atkMod2），实际: ${actualDmg}`);
   });
 
   await test('#5f 玩家受击时 dmg 应被 defMod 减伤', async () => {
@@ -210,7 +210,7 @@ async function run() {
     const playerHpBefore = sandbox.deckCombatSystem.player.hp;
     sandbox.deckCombatSystem._dealDamage(sandbox.deckCombatSystem.player, 3);
     const actualDmg = playerHpBefore - sandbox.deckCombatSystem.player.hp;
-    assert.strictEqual(actualDmg, 0, `受击 3 减伤 5 后应扣 0，实际扣: ${actualDmg}`);
+    assert.strictEqual(actualDmg, 2, `受击 3 减伤 1 后应扣 2，实际扣: ${actualDmg}`);
   });
 
   // =====================================================================

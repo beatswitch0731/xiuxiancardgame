@@ -327,6 +327,148 @@
         { "scene": "论道", "minAffection": 60, "text": "'你问我和白刃为什么反目？（长叹）不是因为我入了魔道——是因为他不敢做的事，我替他做了。'" },
         { "scene": "通用", "minAffection": 0, "text": "血煞老祖坐在大殿深处的血玉椅上，闭目养神。但你知道他没睡着——他手里握着剑。" }
       ]
+    },
+    {
+      "id": "ds_bloodrose",
+      "name": "血剑女修",
+      "title": "血煞宗负伤剑修",
+      "personality": { "benevolence": 25, "proud": 72, "persistence": 78, "affection": 20, "courage": 82 },
+      "appearRealms": ["foundation"],
+      "defaultEmotion": "戒备",
+      "defaultMindset": "执念",
+      "defaultLocation": "血煞魔域·荒废矿洞",
+      "startAffection": 0,
+      "startTrust": 0,
+      "teachable": false,
+      "firstMeeting": "血月下，她靠着矿洞石壁压住伤口，剑尖仍对着你。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'正道修士，别急着伸手。先说你要什么。'" }
+      ]
+    },
+    {
+      "id": "ds_moonmist",
+      "name": "月雾妖修",
+      "title": "南疆月湖散修",
+      "personality": { "benevolence": 35, "proud": 68, "persistence": 60, "affection": 28, "courage": 70 },
+      "appearRealms": ["golden"],
+      "defaultEmotion": "戏谑",
+      "defaultMindset": "通明",
+      "defaultLocation": "南疆·月湖",
+      "startAffection": 0,
+      "startTrust": 5,
+      "teachable": false,
+      "firstMeeting": "月雾散开时，她在湖中抬眼，先报出了丹药的价码。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'交易就是交易。你若舍不得，现在走还来得及。'" }
+      ]
+    },
+    {
+      "id": "ds_spiritvine",
+      "name": "藤灵阵修",
+      "title": "灵脉核心守阵人",
+      "personality": { "benevolence": 30, "proud": 76, "persistence": 88, "affection": 18, "courage": 74 },
+      "appearRealms": ["golden"],
+      "defaultEmotion": "冷静",
+      "defaultMindset": "执念",
+      "defaultLocation": "上古秘境·灵脉核心",
+      "startAffection": 0,
+      "startTrust": 0,
+      "teachable": false,
+      "firstMeeting": "灵藤与阵纹缠住她的四肢，她却像在审视误入阵心的你。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'阵不会无缘无故困人。你敢解，就要承担它松开之后的事。'" }
+      ]
+    },
+    {
+      "id": "ds_demoness",
+      "name": "绯夜",
+      "title": "魔纹魅修",
+      "personality": { "benevolence": 32, "proud": 75, "persistence": 85, "affection": 35, "courage": 80 },
+      "appearRealms": ["nascent", "deity", "tribulation"],
+      "defaultEmotion": "戒备",
+      "defaultMindset": "执念",
+      "defaultLocation": "魔域·地下拍卖场",
+      "startAffection": 10,
+      "startTrust": 10,
+      "teachable": false,
+      "firstMeeting": "她被封印在拍卖台上，没有求救，只在判断谁值得她把命压上去。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'我可以跟你走。但别把赎身当成买下一个人。'" }
+      ]
+    },
+    {
+      "id": "ds_traveler",
+      "name": "夜栈散修",
+      "title": "行走南疆的散修",
+      "personality": { "benevolence": 45, "proud": 55, "persistence": 58, "affection": 30, "courage": 62 },
+      "appearRealms": ["foundation"],
+      "defaultEmotion": "好奇",
+      "defaultMindset": "通明",
+      "defaultLocation": "南疆·驿道客栈",
+      "startAffection": 0,
+      "startTrust": 5,
+      "teachable": false,
+      "firstMeeting": "暴雨封住驿道，她推门进来时带着血与茉莉的气味。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'只借一夜避雨。天亮之前，你我都不问来处。'" }
+      ]
+    },
+    {
+      "id": "ds_alchemist",
+      "name": "丹火药师",
+      "title": "丹谷商路炼药师",
+      "personality": { "benevolence": 48, "proud": 64, "persistence": 92, "affection": 24, "courage": 58 },
+      "appearRealms": ["nascent"],
+      "defaultEmotion": "专注",
+      "defaultMindset": "通明",
+      "defaultLocation": "丹谷商路·坊市丹房",
+      "startAffection": 0,
+      "startTrust": 5,
+      "teachable": true,
+      "firstMeeting": "她守着丹炉整夜未眠，看见你时先问的是灵火稳不稳。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'炉温还差一线。要帮忙就看火，别挡着我取药。'" }
+      ]
+    },
+    {
+      "id": "ds_bandit_queen",
+      "name": "虎娘",
+      "title": "女匪寨首",
+      "personality": { "benevolence": 42, "proud": 82, "persistence": 80, "affection": 20, "courage": 96 },
+      "appearRealms": ["golden"],
+      "defaultEmotion": "挑衅",
+      "defaultMindset": "通明",
+      "defaultLocation": "武盟山道·女匪寨",
+      "startAffection": 0,
+      "startTrust": 0,
+      "teachable": true,
+      "firstMeeting": "虎娘把环首刀往寨门一横，请你先选：试刀，还是喝酒。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'进了寨门就别端着。能打的上场，能喝的坐下。'" }
+      ]
+    },
+    {
+      "id": "mortal",
+      "name": "村中女子",
+      "title": "凡尘道侣",
+      "personality": { "benevolence": 70, "proud": 20, "persistence": 65, "affection": 75, "courage": 55 },
+      "appearRealms": ["qi", "foundation"],
+      "defaultEmotion": "平静",
+      "defaultMindset": "通明",
+      "defaultLocation": "山下村镇",
+      "startAffection": 50,
+      "startTrust": 20,
+      "teachable": false,
+      "firstMeeting": "你在山下村镇遇见她。她认出了你，却仍像初见那样坦然地问：你愿意留下来吗？",
+      "schedule": {
+        "子时": "山下村镇", "寅时": "山下村镇", "辰时": "山下村镇",
+        "午时": "山下村镇", "申时": "山下村镇", "戌时": "山下村镇"
+      },
+      "dialogues": [
+        { "scene": "初见", "minAffection": 0, "text": "你若愿意，我就在这里等你。" },
+        { "scene": "闲聊", "minAffection": 0, "text": "山下的日子没有仙门那样长，可今日与你同在，便已经很好。" },
+        { "scene": "通用", "minAffection": 0, "text": "她在村口等你，见你回来，先问一路可曾平安。" }
+      ]
     }
   ]
 }

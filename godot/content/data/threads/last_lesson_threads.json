@@ -1,0 +1,510 @@
+{
+  "realm": "deity",
+  "version": 1,
+  "threads": [
+    {
+      "threadId": "bairen_last_lesson",
+      "title": "最后一课：天门之前",
+      "priority": 100,
+      "description": "白刃知道天门将开。他把主角与剑灵儿叫到剑冢，要把最后一课留在下界。",
+      "realm": "deity",
+      "eligibleRealms": ["deity", "tribulation"],
+      "timeoutTurns": 48,
+      "trigger": { "type": "turn_count", "minTurn": 12 },
+      "requirements": {
+        "npcManifestations": [
+          { "npcId": "bai_ren", "manifestation": "PHYSICAL" },
+          { "npcId": "jian_linger", "manifestation": "PHYSICAL" }
+        ]
+      },
+      "nodes": [
+        {
+          "id": "ll_sword_tomb_afterglow",
+          "phase": "beginning",
+          "card": {
+            "id": "thread_last_lesson_n0",
+            "semanticKey": "thread:bairen_last_lesson:ll_sword_tomb_afterglow",
+            "sceneImage": "assets/cards/keyframes/scene_key_last_lesson_summons_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "最后一课", "alt": "远处青云传来的白刃剑意叩响剑鞘，主角尚未赴剑冢之约。" },
+            "once": true,
+            "title": "剑冢余晖",
+            "description": "无论你身在何处，一缕熟悉的剑意都从青云方向叩响剑鞘。白刃借剑意传来一句话：天门会在下一场雷雨前开启，他在剑冢等你和剑灵儿。",
+            "type": "STORY",
+            "realm": "deity",
+            "eligibleRealms": ["deity", "tribulation"],
+            "npcIds": ["bai_ren", "jian_linger"],
+            "manifestation": "PHYSICAL",
+            "image": "assets/cards/events/scene_event_qi_swordtomb.png",
+            "presentationStatus": "PROVISIONAL_REPLACE_B13",
+            "threadTags": ["最后一课", "剑冢", "天门"],
+            "choices": {
+              "left": { "text": "循剑意赴约，再问天门之后", "desc": "前往青云剑冢，把离别说清。", "effects": { "daoHeart": 1, "playerLocation": "qingyun_sword_tomb" }, "threadDirection": "ask" },
+              "right": { "text": "循剑意赴约，只做完整见证", "desc": "前往青云剑冢，不抢走师徒最后一刻。", "effects": { "fortune": 1, "playerLocation": "qingyun_sword_tomb" }, "threadDirection": "witness" }
+            }
+          }
+        },
+        {
+          "id": "ll_last_lesson",
+          "phase": "development",
+          "eligibility": { "requiredNodes": ["ll_sword_tomb_afterglow"] },
+          "card": {
+            "id": "thread_last_lesson_n1",
+            "semanticKey": "thread:bairen_last_lesson:ll_last_lesson",
+            "sceneImage": "assets/cards/keyframes/scene_key_last_lesson_sword_sheath_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "最后一课", "alt": "剑冢夕光下白刃以剑鞘压住剑灵儿的锋线，主角尚未选择入局或旁观。" },
+            "once": true,
+            "title": "最后一课",
+            "description": "白刃让剑灵儿先出剑，自己只用剑鞘压住她的锋线。他没有教新招，只问你：若有一天传剑的人不在了，你要守住的是招式，还是出剑的理由？",
+            "type": "STORY",
+            "realm": "deity",
+            "eligibleRealms": ["deity", "tribulation"],
+            "npcIds": ["bai_ren", "jian_linger"],
+            "manifestation": "PHYSICAL",
+            "location": "qingyun_sword_tomb",
+            "requiresPlayerPresence": true,
+            "image": "assets/cards/companions/scene_comp_bai_ren_sworddebate.png",
+            "presentationStatus": "PROVISIONAL_REPLACE_B13",
+            "threadTags": ["最后一课", "承诺", "师徒"],
+            "choices": {
+              "left": { "text": "上前，接下最后一课", "desc": "亲自入局，以你的剑回应。", "effects": { "daoHeart": 1 }, "threadDirection": "joined" },
+              "right": { "text": "退在一旁，做完整的见证", "desc": "不抢走师徒最后一次对剑。", "effects": { "knowledge": 1 }, "threadDirection": "observed" }
+            }
+          },
+          "variants": [
+            {
+              "id": "asked_about_heaven_gate",
+              "when": { "choiceDirections": { "ll_sword_tomb_afterglow": "left" } },
+              "card": { "description": "你依约赶到剑冢，先问白刃天门之后还会怎样教剑。他没有许诺从上界传下新招，只让剑灵儿先出剑，用剑鞘压住她的锋线：若传剑的人不在了，你要守住的是招式，还是出剑的理由？" }
+            },
+            {
+              "id": "witnessed_last_lesson",
+              "when": { "choiceDirections": { "ll_sword_tomb_afterglow": "right" } },
+              "card": { "description": "你依约赶到剑冢，在石碑旁静静看完师徒起手，没有抢走他们最后一次对剑。白刃只用剑鞘压住剑灵儿的锋线，随后转向你：若传剑的人不在了，你要守住的是招式，还是出剑的理由？" }
+            }
+          ]
+        },
+        {
+          "id": "ll_market_sword",
+          "phase": "development",
+          "eligibility": { "requiredNodes": ["ll_last_lesson"] },
+          "card": {
+            "id": "thread_last_lesson_n2",
+            "semanticKey": "thread:bairen_last_lesson:ll_market_sword",
+            "sceneImage": "assets/cards/keyframes/scene_key_last_lesson_old_sword_choice_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "最后一课", "alt": "仍在剑冢的师徒望向远处坊市和宗门两条寻剑路，旧剑尚未取得。" },
+            "once": true,
+            "title": "同赴坊市",
+            "description": "这一课需要一柄能同时承受三道剑意的旧剑。剑灵儿记得坊市有柄三鸣旧剑；若灵石不够，也可回宗门借用封存的试锋剑。",
+            "type": "STORY",
+            "realm": "deity",
+            "eligibleRealms": ["deity", "tribulation"],
+            "npcIds": ["bai_ren", "jian_linger"],
+            "manifestation": "PHYSICAL",
+            "location": "qingyun_sword_tomb",
+            "requiresPlayerPresence": true,
+            "image": "assets/cards/events/scene_fd_f_market.png",
+            "presentationStatus": "PROVISIONAL_REPLACE_B13",
+            "threadTags": ["最后一课", "坊市", "旧剑"],
+            "choices": {
+              "left": {
+                "text": "和剑灵儿去坊市寻剑",
+                "desc": "进入真实坊市；可购买，也可看过报价后离开。",
+                "effects": {},
+                "vendorCloseEffects": { "playerLocation": "deity_market_stone_street" },
+                "threadDirection": "market",
+                "action": {
+                  "type": "ENTER_VENDOR",
+                  "vendorId": "regulated_market",
+                  "storyOfferIds": ["last_lesson_three_tone_sword"],
+                  "resumePolicy": "ON_VENDOR_CLOSED",
+                  "settlePolicy": "AFTER_CLOSE_EXACTLY_ONCE"
+                }
+              },
+              "right": {
+                "text": "回宗门借封存的试锋剑",
+                "desc": "不付灵石，但欠下归还旧剑的人情。",
+                "effects": { "daoHeart": 1, "playerLocation": "qingyun_trial_sword_terrace" },
+                "threadDirection": "sect_loan"
+              }
+            }
+          }
+        },
+        {
+          "id": "ll_sword_dispute",
+          "phase": "climax",
+          "eligibility": { "requiredNodes": ["ll_market_sword"] },
+          "card": {
+            "id": "thread_last_lesson_n3",
+            "semanticKey": "thread:bairen_last_lesson:ll_sword_dispute",
+            "once": true,
+            "title": "残剑争夺",
+            "description": "离开坊市时，旧剑里的三道残念同时苏醒。它把每一个靠近的人都当成夺剑者；若不把它的攻势带偏，整条石街都会被剑气掀开。",
+            "sceneImage": "assets/cards/keyframes/scene_key_last_lesson_market_sword_intents_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "石街试锋", "alt": "坊市石街封阵前，三道无主剑意浮现；主角与剑灵儿尚未迎战或谈判，旧剑归属未由画面确定。" },
+            "type": "STORY",
+            "realm": "deity",
+            "eligibleRealms": ["deity", "tribulation"],
+            "npcIds": ["jian_linger"],
+            "manifestation": "PHYSICAL",
+            "location": "deity_market_stone_street",
+            "requiresPlayerPresence": true,
+            "image": "assets/cards/events/scene_gd_g_swordIntent.png",
+            "presentationStatus": "KEYFRAME_CANDIDATE_PENDING_ART_REVIEW",
+            "threadTags": ["最后一课", "剧情战", "偏斩"],
+            "choices": {
+              "left": {
+                "text": "以偏斩带开三道残念",
+                "desc": "进入剧情战；胜、败、撤离都将改变之后的送别与余音。",
+                "effects": {},
+                "triggerCombat": true,
+                "threadDirection": "fought",
+                "victoryEffects": { "daoHeart": 2, "npc_relation:jian_linger": 2, "playerLocation": "upper_realm_heaven_gate" },
+                "defeatEffects": { "knowledge": 1, "npc_relation:jian_linger": 1, "playerLocation": "upper_realm_heaven_gate" },
+                "fleeEffects": { "fortune": -1, "npc_relation:jian_linger": -1, "playerLocation": "upper_realm_heaven_gate" },
+                "defeatHealthLoss": 3,
+                "defeatHealthFloor": 1,
+                "enemy": {
+                  "id": "last_lesson_three_intents",
+                  "templateId": "sword_intent_avatar_deity",
+                  "name": "三鸣旧剑·暴走剑灵",
+                  "hp": 16,
+                  "atk": 3,
+                  "def": 1,
+                  "tier": 2,
+                  "planGraph": {
+                    "planId": "last_lesson_three_intents_v1",
+                    "initialState": "TEST_EDGE",
+                    "states": {
+                      "TEST_EDGE": { "label": "三锋试探", "cue": "三道残念正寻找你直进后的空门。", "intent": { "type": "attack", "value": 3, "desc": "三锋齐出：造成3点伤害", "actionName": "三道旧剑残影沿石街错位逼近" } },
+                      "PRESS_LINE": { "label": "压住中线", "cue": "你耗尽真元后，旧剑准备强压中线。", "intent": { "type": "attack", "value": 5, "desc": "合锋压线：造成5点重击", "actionName": "三道剑影合为一线，直压你的回气空档" } },
+                      "BROKEN_RHYTHM": { "label": "节奏被带偏", "cue": "偏斩改变了旧剑的落点，剑灵正在重新找位。", "intent": { "type": "defend", "value": 1, "desc": "回锋定势：获得1点护盾", "actionName": "剑灵被偏斩牵开，只能回锋稳住残念" } }
+                    },
+                    "transitions": [
+                      { "from": "TEST_EDGE", "when": "player_overcommitted", "to": "PRESS_LINE", "minCards": 2, "maxReservedQi": 1 },
+                      { "from": ["TEST_EDGE", "PRESS_LINE"], "when": "deflected", "to": "BROKEN_RHYTHM" },
+                      { "from": "PRESS_LINE", "when": "action_resolved", "to": "TEST_EDGE" },
+                      { "from": "BROKEN_RHYTHM", "when": "action_resolved", "to": "TEST_EDGE" }
+                    ]
+                  },
+                  "intents": [
+                    { "type": "attack", "value": 3, "desc": "三锋齐出", "actionName": "三道旧剑残影沿石街错位逼近" },
+                    { "type": "defend", "value": 2, "desc": "残念护锋", "actionName": "旧剑用层叠残影遮住本体" }
+                  ]
+                },
+                "combatPresentation": {
+                  "warningTitle": "最后一课·三鸣试锋",
+                  "mechanic": "保留真元等待偏斩窗口；过度出牌会触发合锋压线。",
+                  "worldStory": "剑灵儿的【冰心共鸣】会进入首轮手牌；亲手打出这张羁绊牌，才能在战局中看见她完成封剑诀，而不是只读到一句旁白。",
+                  "storyAssist": {
+                    "id": "last_lesson_jian_linger_assist",
+                    "compId": "jian_linger",
+                    "companionName": "剑灵儿",
+                    "cardId": "comp_jian_linger_ice_resonance",
+                    "openingHand": true,
+                    "unlockText": "封剑诀·冰心共鸣",
+                    "mechanism": "首轮保证入手；打出后获得护盾与剑意，并触发剑灵儿可见援护动作。"
+                  }
+                }
+              },
+              "right": {
+                "text": "让剑灵儿以师门剑诀与它谈判",
+                "desc": "不进入战斗；用旧剑认得的剑诀换取片刻清明。",
+                "effects": { "knowledge": 2, "npc_relation:jian_linger": 1, "playerLocation": "upper_realm_heaven_gate" },
+                "threadDirection": "negotiated"
+              }
+            }
+          },
+          "variants": [
+            {
+              "id": "market_sword_purchased",
+              "when": { "vendorPurchasedItems": { "ll_market_sword": "last_lesson_three_tone_sword" } },
+              "card": {
+                "location": "deity_market_stone_street",
+                "description": "你们带着真正买下的三鸣旧剑离开坊市。灵石割舍让三道残念认定你是新主，试锋来得更凶；白刃留在剑柄上的定心印则让你先稳住一线心境。",
+                "choices": {
+                  "left": {
+                    "entryEffects": { "daoHeart": 1 },
+                    "enemy": {
+                      "id": "last_lesson_purchased_three_tone_sword",
+                      "templateId": "sword_intent_avatar_deity",
+                      "name": "三鸣旧剑·认主试锋",
+                      "hp": 16, "atk": 3, "def": 1, "tier": 2,
+                      "planGraph": {
+                        "planId": "last_lesson_purchased_sword_v1", "initialState": "TEST_EDGE",
+                        "states": {
+                          "TEST_EDGE": { "label": "新主三问", "cue": "三道残念依次叩问新主的握剑心意。", "intent": { "type": "attack", "value": 3, "desc": "认主试锋：造成3点伤害", "actionName": "三鸣旧剑绕新主错位试锋" } },
+                          "PRESS_LINE": { "label": "合鸣压线", "cue": "你耗尽真元，三道残念趁隙合鸣。", "intent": { "type": "attack", "value": 5, "desc": "合鸣压线：造成5点重击", "actionName": "三声剑鸣叠成一道直线压来" } },
+                          "BROKEN_RHYTHM": { "label": "认主迟疑", "cue": "偏斩让旧剑重新判断你的落点。", "intent": { "type": "defend", "value": 1, "desc": "回锋定主：获得1点护盾", "actionName": "旧剑回鞘半寸重新定主" } }
+                        },
+                        "transitions": [
+                          { "from": "TEST_EDGE", "when": "player_overcommitted", "to": "PRESS_LINE", "minCards": 2, "maxReservedQi": 1 },
+                          { "from": ["TEST_EDGE", "PRESS_LINE"], "when": "deflected", "to": "BROKEN_RHYTHM" },
+                          { "from": "PRESS_LINE", "when": "action_resolved", "to": "TEST_EDGE" },
+                          { "from": "BROKEN_RHYTHM", "when": "action_resolved", "to": "TEST_EDGE" }
+                        ]
+                      },
+                      "intents": [{ "type": "attack", "value": 3, "desc": "认主试锋", "actionName": "三鸣旧剑绕新主试锋" }]
+                    }
+                  },
+                  "right": { "effects": { "knowledge": 2, "npc_relation:jian_linger": 2 } }
+                }
+              }
+            },
+            {
+              "id": "market_sword_bartered",
+              "when": { "vendorResolutions": { "ll_market_sword": "bartered" } },
+              "card": {
+                "location": "deity_market_stone_street",
+                "description": "摊主收下你亲手编的剑穗，把三鸣旧剑连鞘推来。旧剑没有把这次交换当成买卖，而把剑穗上的手温当作新的认主凭证；它的第一问因此从锋利变成了审慎。",
+                "choices": {
+                  "left": {
+                    "entryEffects": { "fortune": 1, "daoHeart": 1 },
+                    "enemy": {
+                      "id": "last_lesson_bartered_three_tone_sword",
+                      "templateId": "sword_intent_avatar_deity",
+                      "name": "三鸣旧剑·剑穗问心",
+                      "hp": 15, "atk": 3, "def": 1, "tier": 2,
+                      "planGraph": {
+                        "planId": "last_lesson_bartered_sword_v1", "initialState": "TEST_EDGE",
+                        "states": {
+                          "TEST_EDGE": { "label": "剑穗问心", "cue": "三道残念沿剑穗旧结辨认你的用心。", "intent": { "type": "attack", "value": 3, "desc": "问心试锋：造成3点伤害", "actionName": "三鸣旧剑牵动剑穗回环试锋" } },
+                          "PRESS_LINE": { "label": "旧结收紧", "cue": "你耗尽真元，三道残念借旧结同时压来。", "intent": { "type": "attack", "value": 5, "desc": "旧结压锋：造成5点重击", "actionName": "剑穗旧结绷紧，三锋合压" } },
+                          "BROKEN_RHYTHM": { "label": "手温回响", "cue": "偏斩带开剑锋，剑穗残留的手温让旧剑迟疑。", "intent": { "type": "defend", "value": 1, "desc": "回响护锋：获得1点护盾", "actionName": "旧剑绕剑穗回环收锋" } }
+                        },
+                        "transitions": [
+                          { "from": "TEST_EDGE", "when": "player_overcommitted", "to": "PRESS_LINE", "minCards": 2, "maxReservedQi": 1 },
+                          { "from": ["TEST_EDGE", "PRESS_LINE"], "when": "deflected", "to": "BROKEN_RHYTHM" },
+                          { "from": "PRESS_LINE", "when": "action_resolved", "to": "TEST_EDGE" },
+                          { "from": "BROKEN_RHYTHM", "when": "action_resolved", "to": "TEST_EDGE" }
+                        ]
+                      },
+                      "intents": [{ "type": "attack", "value": 3, "desc": "剑穗问心", "actionName": "三鸣旧剑牵穗试锋" }]
+                    }
+                  },
+                  "right": { "effects": { "knowledge": 2, "npc_relation:jian_linger": 2 } }
+                }
+              }
+            },
+            {
+              "id": "market_without_sword_purchase",
+              "when": {
+                "choiceDirections": { "ll_market_sword": "left" },
+                "vendorResolutions": { "ll_market_sword": "left_empty" }
+              },
+              "card": {
+                "location": "deity_market_stone_street",
+                "description": "你们在坊市没有买下三鸣旧剑。摊主却指出石街封阵里正困着三道无主剑念；剑灵儿借来阵眼旧铁，让这场试锋仍能继续。",
+                "choices": {
+                  "left": {
+                    "entryEffects": { "fortune": 1 },
+                    "enemy": {
+                      "id": "last_lesson_market_ward_sword_intents",
+                      "templateId": "sword_intent_avatar_deity",
+                      "name": "石街封阵·三道无主剑念",
+                      "hp": 14, "atk": 3, "def": 0, "tier": 2,
+                      "planGraph": {
+                        "planId": "last_lesson_market_ward_v1", "initialState": "TEST_EDGE",
+                        "states": {
+                          "TEST_EDGE": { "label": "无主乱锋", "cue": "无主剑念沿石街封阵寻找出口。", "intent": { "type": "attack", "value": 3, "desc": "乱锋冲阵：造成3点伤害", "actionName": "三道无主剑念撞向阵眼旧铁" } },
+                          "PRESS_LINE": { "label": "破阵直冲", "cue": "你的真元见底，剑念转而冲击封阵中线。", "intent": { "type": "attack", "value": 5, "desc": "破阵冲线：造成5点重击", "actionName": "无主剑念合流冲击石街封阵" } },
+                          "BROKEN_RHYTHM": { "label": "阵眼回束", "cue": "偏斩把乱锋带回阵眼旧铁。", "intent": { "type": "defend", "value": 1, "desc": "阵眼收锋：获得1点护盾", "actionName": "剑念绕阵眼盘旋收束" } }
+                        },
+                        "transitions": [
+                          { "from": "TEST_EDGE", "when": "player_overcommitted", "to": "PRESS_LINE", "minCards": 2, "maxReservedQi": 1 },
+                          { "from": ["TEST_EDGE", "PRESS_LINE"], "when": "deflected", "to": "BROKEN_RHYTHM" },
+                          { "from": "PRESS_LINE", "when": "action_resolved", "to": "TEST_EDGE" },
+                          { "from": "BROKEN_RHYTHM", "when": "action_resolved", "to": "TEST_EDGE" }
+                        ]
+                      },
+                      "intents": [{ "type": "attack", "value": 3, "desc": "无主乱锋", "actionName": "无主剑念冲击封阵" }]
+                    }
+                  },
+                  "right": { "effects": { "knowledge": 3, "npc_relation:jian_linger": 1 } }
+                }
+              }
+            },
+            {
+              "id": "sect_trial_sword_loan",
+              "when": {
+                "anyOf": [
+                  { "choiceDirections": { "ll_market_sword": "right" } },
+                  { "choiceDirections": { "ll_market_sword": "left" }, "vendorResolutions": { "ll_market_sword": "sect_loan" } }
+                ]
+              },
+              "card": {
+                "location": "qingyun_trial_sword_terrace",
+                "description": "宗门借出的试锋剑在试剑台中央自行出鞘。白刃的封剑印压住一念，另外三道旧日剑意依次校验来者；这是宗门认可的试课，不再是假装去过坊市。",
+                "sceneImage": "assets/cards/keyframes/scene_key_last_lesson_sect_trial_sword_v1.png",
+                "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "宗门试锋", "alt": "青云宗试剑台中央的借用试锋剑与三道封剑印尚未交锋，主角和剑灵儿站在台前。" },
+                "choices": {
+                  "left": {
+                    "entryEffects": { "daoHeart": 2 },
+                    "enemy": {
+                      "id": "last_lesson_sect_trial_sword",
+                      "templateId": "sword_intent_avatar_deity",
+                      "name": "宗门试锋剑·三印试课",
+                      "hp": 17, "atk": 3, "def": 2, "tier": 2,
+                      "planGraph": {
+                        "planId": "last_lesson_sect_trial_v1", "initialState": "TEST_EDGE",
+                        "states": {
+                          "TEST_EDGE": { "label": "三印校剑", "cue": "宗门三道封剑印依次校验你的剑路。", "intent": { "type": "attack", "value": 3, "desc": "封印校剑：造成3点伤害", "actionName": "试锋剑引动三道宗门封印校剑" } },
+                          "PRESS_LINE": { "label": "戒律压锋", "cue": "你过度出牌，试锋剑按戒律压住中线。", "intent": { "type": "attack", "value": 5, "desc": "戒律压锋：造成5点重击", "actionName": "三印合拢压住试剑台中线" } },
+                          "BROKEN_RHYTHM": { "label": "封印复位", "cue": "偏斩通过校验，封剑印暂时复位。", "intent": { "type": "defend", "value": 2, "desc": "封印复位：获得2点护盾", "actionName": "试锋剑归回三印中央" } }
+                        },
+                        "transitions": [
+                          { "from": "TEST_EDGE", "when": "player_overcommitted", "to": "PRESS_LINE", "minCards": 2, "maxReservedQi": 1 },
+                          { "from": ["TEST_EDGE", "PRESS_LINE"], "when": "deflected", "to": "BROKEN_RHYTHM" },
+                          { "from": "PRESS_LINE", "when": "action_resolved", "to": "TEST_EDGE" },
+                          { "from": "BROKEN_RHYTHM", "when": "action_resolved", "to": "TEST_EDGE" }
+                        ]
+                      },
+                      "intents": [{ "type": "attack", "value": 3, "desc": "三印校剑", "actionName": "封剑印校验剑路" }]
+                    }
+                  },
+                  "right": { "effects": { "knowledge": 2, "npc_relation:jian_linger": 3 } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "ll_heaven_gate_farewell",
+          "phase": "falling_action",
+          "eligibility": { "requiredNodes": ["ll_sword_dispute"] },
+          "card": {
+            "id": "thread_last_lesson_n4",
+            "semanticKey": "thread:bairen_last_lesson:ll_heaven_gate_farewell",
+            "once": true,
+            "title": "天门送别",
+            "description": "雷云裂开时，白刃停在天门门槛，没有回头。他把最后一道剑意留在旧剑上，等你与剑灵儿作最后的送别；再向前一步，门就会合拢。",
+            "type": "STORY",
+            "realm": "deity",
+            "eligibleRealms": ["deity", "tribulation"],
+            "npcIds": ["bai_ren", "jian_linger"],
+            "manifestation": "PHYSICAL",
+            "location": "upper_realm_heaven_gate",
+            "requiresPlayerPresence": true,
+            "sceneImage": "assets/cards/keyframes/scene_key_last_lesson_heaven_farewell_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天门送别", "alt": "白刃在天门边留下最后的背影，剑灵儿站在石桥近处；剑与话尚未留下。" },
+            "audioCue": { "onCommittedChoice": { "left": "sfx_path_sword_state", "right": "sfx_path_sword_state" } },
+            "image": "assets/cards/events/scene_tb_t_heaven_gate.png",
+            "presentationStatus": "PROVISIONAL_REPLACE_B13",
+            "threadTags": ["最后一课", "飞升", "不可逆"],
+            "choices": {
+              "left": {
+                "text": "把旧剑留在天门之前",
+                "desc": "你留下旧剑；白刃随即跨门，下界只余剑意供后来者见证。",
+                "threadDirection": "leave_sword",
+                "effects": {
+                  "daoHeart": 2,
+                  "npcLifecycle": { "npcId": "bai_ren", "lifecycle": "ASCENDED", "manifestation": "ECHO_ONLY", "changedByNode": "ll_heaven_gate_farewell", "reason": "entered_heaven_gate" }
+                }
+              },
+              "right": {
+                "text": "在门合拢前说完那句话",
+                "desc": "你赶在白刃跨门前开口；门合拢后，不求回应。",
+                "threadDirection": "leave_words",
+                "effects": {
+                  "fortune": 2,
+                  "npcLifecycle": { "npcId": "bai_ren", "lifecycle": "ASCENDED", "manifestation": "ECHO_ONLY", "changedByNode": "ll_heaven_gate_farewell", "reason": "entered_heaven_gate" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "ll_sword_echo",
+          "phase": "falling_action",
+          "eligibility": { "requiredNodes": ["ll_heaven_gate_farewell"] },
+          "card": {
+            "id": "thread_last_lesson_n5",
+            "semanticKey": "thread:bairen_last_lesson:ll_sword_echo",
+            "once": true,
+            "title": "剑意余音",
+            "description": "白刃离开后，剑灵儿把旧剑横在膝上。她没有哭，只问你愿不愿意把最后一课再走一遍。",
+            "sceneImage": "assets/cards/keyframes/scene_key_last_lesson_jian_linger_echo_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "剑意余音", "alt": "白刃飞升后的天门前，剑灵儿独自把旧剑横在膝上，主角在旁等她开口；白刃没有实体出现。" },
+            "type": "STORY",
+            "realm": "deity",
+            "eligibleRealms": ["deity", "tribulation"],
+            "npcIds": ["jian_linger"],
+            "manifestation": "PHYSICAL",
+            "location": "upper_realm_heaven_gate",
+            "requiresPlayerPresence": true,
+            "image": "assets/cards/companions/scene_comp_jian_linger_dawn.png",
+            "presentationStatus": "KEYFRAME_CANDIDATE_PENDING_ART_REVIEW",
+            "threadTags": ["最后一课", "剑灵儿", "前因兑现"],
+            "choices": {
+              "left": { "text": "与她共修最后一课", "desc": "把师尊留下的剑理变成两个人仍能继续的道路。", "effects": { "npc_relation:jian_linger": 2 }, "threadDirection": "practice_together" },
+              "right": { "text": "替她守住一夜剑冢", "desc": "回到青云剑冢守夜，让她独自整理这场离别。", "effects": { "daoHeart": 1, "npc_relation:jian_linger": 1, "playerLocation": "qingyun_sword_tomb" }, "threadDirection": "keep_watch" }
+            }
+          },
+          "variants": [
+            { "id": "left_victory", "when": { "choiceDirections": { "ll_last_lesson": "left" }, "combatOutcomes": { "ll_sword_dispute": "victory" } }, "card": { "description": "你亲自接下最后一课，又在三锋齐出时替她带偏剑势。剑灵儿说，她第一次相信这门剑法不会随师尊离开。", "choices": { "left": { "effects": { "npc_relation:jian_linger": 4, "sword_insight": 2 } } } } },
+            { "id": "left_defeat", "when": { "choiceDirections": { "ll_last_lesson": "left" }, "combatOutcomes": { "ll_sword_dispute": "defeat" } }, "card": { "description": "你曾上前接课，却在三鸣旧剑前败下阵来。剑灵儿没有责怪，只把你漏掉的半式慢慢演给你看。", "choices": { "left": { "effects": { "npc_relation:jian_linger": 3, "daoHeart": 2 } } } } },
+            { "id": "left_flee", "when": { "choiceDirections": { "ll_last_lesson": "left" }, "combatOutcomes": { "ll_sword_dispute": "flee" } }, "card": { "description": "你接过最后一课，也曾在暴走剑灵前选择保住众人。剑灵儿说，退一步不等于背弃承诺，但下一剑必须回来。", "choices": { "left": { "effects": { "npc_relation:jian_linger": 2, "daoHeart": 1 } } } } },
+            { "id": "left_negotiated", "when": { "choiceDirections": { "ll_last_lesson": "left", "ll_sword_dispute": "right" } }, "card": { "description": "你亲自接课，却把残剑争夺交给剑灵儿的师门剑诀。她终于明白，最后一课也包括相信同伴能独自出剑。", "choices": { "left": { "effects": { "npc_relation:jian_linger": 4, "knowledge": 2 } } } } },
+            { "id": "right_victory", "when": { "choiceDirections": { "ll_last_lesson": "right" }, "combatOutcomes": { "ll_sword_dispute": "victory" } }, "card": { "description": "你曾退后见证师徒最后一剑，却在三鸣旧剑暴走时站到了最前。剑灵儿记住了你何时旁观，也记住了你何时出手。", "choices": { "left": { "effects": { "npc_relation:jian_linger": 4, "sword_insight": 1 } } } } },
+            { "id": "right_defeat", "when": { "choiceDirections": { "ll_last_lesson": "right" }, "combatOutcomes": { "ll_sword_dispute": "defeat" } }, "card": { "description": "你完整见证了最后一课，也在后来替她挡下旧剑重锋。即使败了，剑灵儿仍把那一剑称作并肩。", "choices": { "left": { "effects": { "npc_relation:jian_linger": 3, "daoHeart": 2 } } } } },
+            { "id": "right_flee", "when": { "choiceDirections": { "ll_last_lesson": "right" }, "combatOutcomes": { "ll_sword_dispute": "flee" } }, "card": { "description": "你选择做见证，也在试锋失控前带她撤开。剑灵儿沉默许久，只说师尊教的从来不是拿命证明勇敢。", "choices": { "left": { "effects": { "npc_relation:jian_linger": 2, "fortune": 1 } } } } },
+            { "id": "right_negotiated", "when": { "choiceDirections": { "ll_last_lesson": "right", "ll_sword_dispute": "right" } }, "card": { "description": "你没有闯入师徒的最后一课，也没有替剑灵儿处理旧剑。她用自己的剑诀让残念安静，如今愿意把那一式教给你。", "choices": { "left": { "effects": { "npc_relation:jian_linger": 4, "knowledge": 2 } } } } }
+          ],
+          "historyEchoes": [
+            {
+              "when": { "choiceDirections": { "ll_heaven_gate_farewell": "left" } },
+              "text": "你留在天门前的旧剑仍在剑灵儿身侧，白刃的余意没有随门合拢；她会把剑带回下界空剑堂，留给后来者见证。"
+            },
+            {
+              "when": { "choiceDirections": { "ll_heaven_gate_farewell": "right" } },
+              "text": "你赶在门合拢前说完那句话，白刃没有回头答复。你们带到门前的旧剑仍在，你把它递给剑灵儿；她接过剑横在膝上，也记得你没有把话留成沉默。"
+            }
+          ]
+        },
+        {
+          "id": "ll_upper_letter",
+          "phase": "resolution",
+          "minTurnsAfterPrevious": 8,
+          "card": {
+            "id": "thread_last_lesson_n6",
+            "semanticKey": "thread:bairen_last_lesson:ll_upper_letter",
+            "sceneImage": "assets/cards/keyframes/scene_key_last_lesson_upper_letter_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "上界来书", "alt": "空剑堂中的旧剑自行鸣响，跨界来书只留余意。" },
+            "once": true,
+            "title": "上界来书",
+            "description": "送别之后，剑灵儿把旧剑安置于青云空剑堂。八个回合后，一缕剑鸣从堂中传来；剑身映出一行并非声音的字：路比天门长，剑不要替人走。白刃没有现身，只有那道跨界余意停留片刻。",
+            "type": "STORY",
+            "realm": "deity",
+            "eligibleRealms": ["deity", "tribulation"],
+            "npcIds": ["bai_ren"],
+            "manifestation": "ECHO_ONLY",
+            "image": "assets/cards/events/scene_pool_karma_echo.png",
+            "presentationStatus": "PROVISIONAL_REPLACE_B13",
+            "threadTags": ["最后一课", "上界来书", "回响"],
+            "choices": {
+              "left": { "text": "读完后把字刻在剑鞘内侧", "desc": "让这封来书成为可被后人发现的证词。", "effects": { "daoHeart": 3, "knowledge": 2 }, "threadDirection": "read" },
+              "right": { "text": "封存剑鸣，不让天门循声而来", "desc": "保存来书，也保护下界不被上界追索。", "effects": { "fortune": 2, "daoHeart": 2 }, "threadDirection": "seal" }
+            }
+          },
+          "variants": [
+            {
+              "id": "practiced_together",
+              "when": { "choiceDirections": { "ll_sword_echo": "left" } },
+              "card": { "description": "你与剑灵儿在天门前共修最后一课，随后她把旧剑安置在青云空剑堂。八个回合后，一缕剑鸣从堂中传来；剑身映出一行并非声音的字：路比天门长，剑不要替人走。白刃没有现身，只有那道跨界余意停留片刻。" }
+            },
+            {
+              "id": "kept_watch",
+              "when": { "choiceDirections": { "ll_sword_echo": "right" } },
+              "card": { "description": "你回青云剑冢替剑灵儿守了一夜，让她独自整理离别；后来她把旧剑安置在青云空剑堂。八个回合后，一缕剑鸣从堂中传来；剑身映出一行并非声音的字：路比天门长，剑不要替人走。白刃没有现身，只有那道跨界余意停留片刻。" }
+            }
+          ],
+          "consequences": {
+            "onComplete": {
+              "note": "最后一课从师徒离别变成了仍能被继续实践的剑理；白刃只以跨界回响存在。",
+              "worldFlags": ["bairen_last_lesson_complete"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

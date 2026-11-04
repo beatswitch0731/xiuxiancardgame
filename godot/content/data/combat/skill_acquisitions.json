@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "contractId": "skill_card_acquisition_v1",
+  "description": "本世技能牌取得契约。空牌组只由战斗系统补入基础攻击/防御；技能牌必须从可追溯来源取得。",
+  "realmOrder": [
+    "qi",
+    "foundation",
+    "golden",
+    "nascent",
+    "deity",
+    "tribulation"
+  ],
+  "offers": {
+    "opportunity_tiger_queen_break_stance_v1": {
+      "cardId": "tiger_break_stance",
+      "cardName": "虎煞破势",
+      "sourceType": "story_opportunity",
+      "sourceCardId": "ds_female_bandit",
+      "locationId": "wumeng_mountain_bandit_fort",
+      "locationName": "武盟山道·女匪寨",
+      "minRealm": "golden",
+      "oncePerLife": true,
+      "formula": {
+        "baseChance": 35,
+        "realmStep": 4,
+        "fortuneCenter": 50,
+        "fortuneScale": 0.35,
+        "daoHeartCenter": 3,
+        "daoHeartScale": 3,
+        "cultivationScale": 0.08,
+        "karmaBadScale": 0.12,
+        "karmaGoodScale": -0.08,
+        "pathBonuses": {
+          "body": 8
+        },
+        "minChance": 12,
+        "maxChance": 82
+      }
+    }
+  }
+}

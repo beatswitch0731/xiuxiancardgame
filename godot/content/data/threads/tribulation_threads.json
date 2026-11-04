@@ -1,0 +1,126 @@
+{
+  "realm": "tribulation",
+  "version": 1,
+  "threads": [
+    {
+      "threadId": "tribulation_gate_testimony",
+      "title": "天门证词",
+      "description": "渡劫之前，历代飞升者留下的证据终于在同一夜指向天门。",
+      "realm": "tribulation",
+      "trigger": { "type": "realm_enter", "realm": "tribulation", "minTurn": 1 },
+      "nodes": [
+        {
+          "id": "gt_voices_return",
+          "phase": "beginning",
+          "receiptEchoes": [
+            {
+              "threadId": "tianshu_seal_echo",
+              "nodeId": "tse_commitment",
+              "directions": {
+                "preserve_evidence": "天枢暗门回执记下你留下可核验的抄本，后来者有据可追；这并不证明账目已公开或抄本已传到后来者手中。",
+                "guard_the_path": "天枢暗门回执记下你先封住门径、保留线索；后来者能否找到入口，仍无从确认。"
+              },
+              "missing": "石简上没有本世天枢暗门留证或封门的完成回执。"
+            },
+            {
+              "threadId": "sect_shadow_register",
+              "nodeId": "sr_verdict",
+              "directions": {
+                "public_truth": "宗册回执记下你要公开十七个失踪者的名字，并追问内务堂；坊市是否完成归档，须另核正式回执。",
+                "rescue_first": "宗册回执记下你选择先救矿洞里的人；营救结果须另查，坊市归档须另核正式回执。"
+              },
+              "missing": "石简上没有可核验的宗册裁决回执。"
+            },
+            {
+              "threadId": "core_heaven_tax",
+              "nodeId": "ct_secret_audit",
+              "directions": {
+                "copy": "你携来完整税契刻度的抄本，数百个消失编号仍可逐一复核。",
+                "conceal": "你只保留了自己的税契编号，没有完整账本可公开对照。"
+              },
+              "missing": "石简上没有可核验的税契账目回执。"
+            },
+            {
+              "threadId": "nascent_dream_witness",
+              "nodeId": "nd_testimony",
+              "directions": {
+                "publish": "元婴证词回执记下你选择公开三处飞升者坐标；后来者可以据此寻找证词，实际核访仍待完成。",
+                "entrust": "元婴证词回执记下你将三处坐标只交给可信同伴；证据已有托付，却未宣称世人皆已知晓。"
+              },
+              "missing": "石简上没有本世元婴证词去向的完成回执。"
+            },
+            {
+              "threadId": "deity_heaven_net",
+              "nodeId": "hn_city_drain",
+              "directions": {
+                "save_city": "边城回执记下你选择先救边城、斩断支线；沉睡者是否全部醒来与主干去向，仍需后续查证。",
+                "trace_master": "边城回执记下你忍住出手，追踪主干并记下幕后节点；城中沉睡者后来的处境仍未查明。"
+              },
+              "missing": "石简上没有本世边城救援或追踪的完成回执。"
+            }
+          ],
+          "card": {
+            "id": "thread_gate_testimony_1",
+            "semanticKey": "thread:tribulation_gate_testimony:gt_voices_return",
+            "sceneImage": "assets/cards/keyframes/scene_key_gate_evidence_layout_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天门证词", "alt": "劫云下石台上有线索卷物和若干空位，主角尚未决定逐条核验或召集同伴。" },
+            "once": true,
+            "title": "证词与空行",
+            "description": "第一道劫云聚拢时，你将此世留下的线索逐页摊开。每份可核验的回执，都能把天门后的收魂阵描得更清楚；没有抵达这里的记录，仍在石简上留下空位。",
+            "type": "STORY",
+            "realm": "tribulation",
+            "eligibleRealms": ["tribulation"],
+            "threadTags": ["天门证词", "因果汇流", "beginning"],
+            "choices": {
+              "left": { "text": "逐条校验证词", "desc": "在决战前排除最后的伪线索。", "effects": { "knowledge": 18, "daoHeart": 6 }, "threadDirection": "verify" },
+              "right": { "text": "召集仍在身边的人", "desc": "真相若只能由一人承担，便仍可能被抹去。", "effects": { "karmaGood": 12, "fortune": 8 }, "threadDirection": "gather" }
+            }
+          }
+        },
+        {
+          "id": "gt_missing_name",
+          "phase": "climax",
+          "card": {
+            "id": "thread_gate_testimony_2",
+            "semanticKey": "thread:tribulation_gate_testimony:gt_missing_name",
+            "sceneImage": "assets/cards/keyframes/scene_key_gate_missing_name_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天门缺名", "alt": "悬在云上方的天道名册留着空位，数道光脉垂向天门，桥上有人走近。" },
+            "once": true,
+            "title": "缺口需要一个名字",
+            "description": "收魂阵的缺口只在渡劫者主动拒绝“归档”时出现。古老证词提醒你：拒绝者会从天道名册中被抹去，世人可能再也记不起其姓名；但这也会给后来者留下一条真正通往门外的路。",
+            "type": "STORY",
+            "realm": "tribulation",
+            "eligibleRealms": ["tribulation"],
+            "threadTags": ["天门证词", "最终代价", "climax"],
+            "choices": {
+              "left": { "text": "把自己的名字写入缺口", "desc": "承担被抹去的风险，为后来者固定出口。", "effects": { "daoHeart": 20, "karmaGood": 10 }, "threadDirection": "offer_name" },
+              "right": { "text": "以众人记忆锚定姓名", "desc": "不接受孤独牺牲，让羁绊共同抵抗抹除。", "effects": { "fortune": 15, "karmaGood": 15 }, "threadDirection": "bond_anchor" }
+            }
+          }
+        },
+        {
+          "id": "gt_record",
+          "phase": "resolution",
+          "card": {
+            "id": "thread_gate_testimony_3",
+            "semanticKey": "thread:tribulation_gate_testimony:gt_record",
+            "sceneImage": "assets/cards/keyframes/scene_key_gate_stone_slip_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天门证词", "alt": "天门前的普通石简正刻下证词并留有空行，尚未决定留在下界或携带叩门。" },
+            "once": true,
+            "title": "天门之前的留证",
+            "description": "你把此世已经核验的证据刻在一枚普通石简上，也为尚未查清的旧事留出空行。石简没有仙力，因此不在天道的归档名单中。无论接下来胜负如何，你亲手留下的证词不会只存在于脑海。",
+            "type": "STORY",
+            "realm": "tribulation",
+            "eligibleRealms": ["tribulation"],
+            "threadTags": ["天门证词", "resolution"],
+            "choices": {
+              "left": { "text": "把石简留在下界", "desc": "让后来者从你抵达的地方继续。", "effects": { "karmaGood": 18, "daoHeart": 10 }, "threadDirection": "leave_below" },
+              "right": { "text": "带着石简叩问天门", "desc": "让收割者当面回答这份证词。", "effects": { "daoHeart": 22, "cultivation": 8 }, "threadDirection": "carry_up" }
+            }
+          },
+          "consequences": { "onComplete": { "note": "此世已核验的证据被写入不受天道归档控制的天门证词；尚未查清的旧事仍保留空行，最终抉择因此有了可追溯的来处。", "worldFlags": ["tribulation_gate_testimony_complete"] } }
+        }
+      ]
+    }
+  ]
+}

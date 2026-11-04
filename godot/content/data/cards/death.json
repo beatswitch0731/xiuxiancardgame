@@ -1,0 +1,132 @@
+{
+  "realm": "death",
+  "realmName": "道消身陨",
+  "deathCards": {
+    "death_dao_collapse": {
+      "id": "death_dao_collapse",
+      "title": "道心崩碎",
+      "reason": "道心崩碎，走火入魔",
+      "description": "最后一刻——你的元婴裂开了。道心像一面被重锤击碎的镜子，碎片扎进了神魂的每一个角落。你听到自己的声音在识海中说——'你修的是什么道？你从一开始就错了。'\n\n眼前一片血红。你感觉到自己的法力在失控——经脉逆行，真元倒灌。你的身体在燃烧，但不是火焰——是你的道在反噬你。\n\n在意识消散的最后一瞬，你看到了一个画面：十六岁那年，你在山门前第一次握剑的样子。那个少年还不知道什么叫'道心'——但他眼里有光。",
+      "choices": {
+        "left": {
+          "text": "守住最后的道念——来世重修",
+          "effects": {
+            "reincarnation_bonus": "daoHeart +1"
+          }
+        },
+        "right": {
+          "text": "放弃一切——道不同不相为谋",
+          "effects": {
+            "reincarnation_bonus": "cultivation +10"
+          }
+        }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
+    },
+    "death_blood_loss": {
+      "id": "death_blood_loss",
+      "title": "气血耗尽",
+      "reason": "气血耗尽，身死道消",
+      "description": "你的血已经流干了。肉身像一张被抽空了水分的枯叶，轻得像不存在。元婴从破碎的肉身中浮了出来——它在看着你，眼里没有悲伤。\n\n你听到了远处有人在叫你的名字。是敌人——还是朋友？你已经分不清了。你只想闭上眼睛。\n\n但你不能。你还要爬起来——因为山门外的那个少年还在等你。他等了那么久，你不能现在放弃。\n\n你的手指动了一下——然后整个世界安静了。",
+      "choices": {
+        "left": {
+          "text": "肉身虽死——神魂不灭",
+          "effects": {
+            "reincarnation_bonus": "maxHp +2"
+          }
+        },
+        "right": {
+          "text": "以血为鉴——来生走得更远",
+          "effects": {
+            "reincarnation_bonus": "fortune +8"
+          }
+        }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
+    },
+    "death_fortune_zero": {
+      "id": "death_fortune_zero",
+      "title": "厄运缠身",
+      "reason": "厄运缠身，天诛地灭",
+      "description": "你看着天眼——你的命星已经碎成了齑粉。运气不是消失了——是反噬了。你踩过的每一块石头都在你的脚下裂开，你喝过的每一口水都在你的喉咙里燃烧。\n\n凡人世界有句话：'命该如此。'但你是修士——你不该信命。\n\n你试着运转法力——丹田里空空如也。天雷没有征兆地落下，地火没有源头地喷涌。整个世界都在说同一句话：你不该存在。\n\n你仰天大笑——笑声被天雷吞没了。",
+      "choices": {
+        "left": {
+          "text": "认命——但不认输",
+          "effects": {
+            "reincarnation_bonus": "fortune +12"
+          }
+        },
+        "right": {
+          "text": "诅咒天道——下一世逆天而行",
+          "effects": {
+            "reincarnation_bonus": "karmaBad +15, cultivation +15"
+          }
+        }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
+    },
+    "death_karma_good": {
+      "id": "death_karma_good",
+      "title": "善因过满",
+      "reason": "善因过满，羽化登仙（意外）",
+      "description": "你修了太多善因——仁慈是你的道。但你没有算到——天道不喜太过仁慈的人。当你救下了第一百个不该救的人，天道终于插手了。\n\n一道金色的光从天而降——不是天劫，不是天赐。是一种'平衡'。天道说：'你的善乱了人间的秩序。'\n\n你笑了——救人是错？\n\n金光越来越亮，你感觉到自己的存在正在被'抹除'。不是惩罚——是天道在用最温柔的方式告诉你：你不适合留在这个世界里。\n\n你闭上眼睛，心里没有恨。",
+      "choices": {
+        "left": {
+          "text": "微笑着消散——善始善终",
+          "effects": {
+            "reincarnation_bonus": "karmaGood +20, daoHeart +1"
+          }
+        },
+        "right": {
+          "text": "反抗——凭什么善良是错？",
+          "effects": {
+            "reincarnation_bonus": "daoHeart +2"
+          }
+        }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
+    },
+    "death_karma_bad": {
+      "id": "death_karma_bad",
+      "title": "恶贯满盈",
+      "reason": "恶贯满盈，天劫临身",
+      "description": "你杀的人太多了——多到你记不清他们的脸。但天道替你记着。今天——所有被你杀过的人一起回来了。不是实体，是因果。\n\n他们的血从你的剑上倒流回你的手上——滚烫。他们的脸在你的周围旋转——沉默，不发一言。\n\n天道落下的不是天雷——是天罚。不是九九八十一道——是所有你欠下的每一条命，化为一道天劫。\n\n你数了数——三百七十二道。你只扛住了五道。\n\n倒下之前，你想起了第一个人。你杀他时他说的最后一句话是：'你也会有这一天。'",
+      "choices": {
+        "left": {
+          "text": "偿还——来世不再杀生",
+          "effects": {
+            "reincarnation_bonus": "karmaGood +15, cultivation -5"
+          }
+        },
+        "right": {
+          "text": "不悔——弱肉强食即是道",
+          "effects": {
+            "reincarnation_bonus": "karmaBad +10, cultivation +20"
+          }
+        }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
+    },
+    "death_lifespan": {
+      "id": "death_lifespan",
+      "title": "寿元耗尽",
+      "reason": "寿元耗尽，坐化而终",
+      "description": "你感觉到了——最后一炷香的时间。寿元的尽头不是痛，是一种前所未有的平静。你活了几百年，几千年的修真路上，第一次有时间停下来，好好看一看这个世界。\n\n你看到了日出——和你十六岁那年在山门看到的日出一模一样。你看到了雨——和你筑基成功那天的雨一模一样。你看到了自己——和多年前那个少年的背影一模一样。\n\n你的一生像走马灯一样在眼前闪过。有遗憾——太多了。有得意——也不少。但最多的，是一种说不清的'够了'。\n\n你闭上眼睛。阳光落在你的脸上，温暖得像娘亲的手。",
+      "choices": {
+        "left": {
+          "text": "带着遗憾和感恩——下一世更精彩",
+          "effects": {
+            "reincarnation_bonus": "cultivation +15, daoHeart +1"
+          }
+        },
+        "right": {
+          "text": "平静接受——此生无憾",
+          "effects": {
+            "reincarnation_bonus": "daoHeart +2"
+          }
+        }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
+    }
+  }
+}

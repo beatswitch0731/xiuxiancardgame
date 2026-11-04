@@ -233,17 +233,28 @@ class NarrativeCoherenceLayer {
    * 为玩家选择生成叙事日志文本
    * @returns {string|null} 叙事文本，null 表示无叙事
    */
-  narrateChoice(card, direction, choice, gameState) {
+  narrateChoice(card, direction, choice, gameState, settlement = null) {
     const effects = choice.effects || {};
+    const changes = Array.isArray(settlement?.changes) ? settlement.changes : null;
+    const actualByKey = changes
+      ? new Map(changes.map(change => [
+        change && change.key,
+        Number(change?.actualDelta ?? change?.delta)
+      ]))
+      : null;
     const lines = [];
     let hasNarrative = false;
 
-    for (const [key, value] of Object.entries(effects)) {
-      if (value === 0 || value === undefined || value === null) continue;
+    for (const [key, requestedValue] of Object.entries(effects)) {
+      // The choice definition is a preview. Once a settlement receipt exists,
+      // narration must consume the committed delta so capped/blocked effects
+      // cannot claim a reward the player did not actually receive.
+      const value = actualByKey ? actualByKey.get(key) : requestedValue;
+      if (!Number.isFinite(Number(value)) || Number(value) === 0) continue;
       const templates = this.effectNarratives[key] || this.effectNarratives._default;
       if (!templates) continue;
 
-      const absVal = Math.abs(value);
+      const absVal = Math.abs(Number(value));
       let template = templates[Math.floor(Math.random() * templates.length)];
       template = template.replace('{value}', absVal);
       lines.push(template);
@@ -413,8 +424,8 @@ class NarrativeCoherenceLayer {
 
     // 线程卡 × 已完成支线
     if (card._threadId && questSystem) {
-      const completed = questSystem.getCompletedQuests
-        ? questSystem.getCompletedQuests() : [];
+      const completed = questSystem.getAllCompletedQuests
+        ? questSystem.getAllCompletedQuests() : [];
       for (const qid of completed) {
         const key = `${card._threadId}×${qid}`;
         if (this.threadQuestRefs[key]) {
@@ -449,8 +460,8 @@ class NarrativeCoherenceLayer {
     if (isNpcCard && threadEngine) {
       const npcId = card.npcId || card.compId;
       if (questSystem) {
-        const completed = questSystem.getCompletedQuests
-          ? questSystem.getCompletedQuests() : [];
+        const completed = questSystem.getAllCompletedQuests
+          ? questSystem.getAllCompletedQuests() : [];
         for (const qid of completed) {
           const key = `${npcId}×${qid}`;
           if (this.threadQuestRefs[key]) {
@@ -499,10 +510,10 @@ class NarrativeCoherenceLayer {
   }
 
   _getQuestTitle(questSystem, questId) {
-    if (!questSystem || !questSystem.questData) return questId;
-    const qd = questSystem.questData instanceof Map
-      ? questSystem.questData.get(questId) : questSystem.questData[questId];
-    return (qd && (qd.title || qd.questTitle)) || questId;
+    if (!questSystem || !questSystem.quests) return questId;
+    const quest = questSystem.quests instanceof Map
+      ? questSystem.quests.get(questId) : questSystem.quests[questId];
+    return (quest && (quest.name || quest.title || quest.questTitle)) || questId;
   }
 
   _getRecentFlags(gameState) {

@@ -1,0 +1,213 @@
+{
+  "traceSha256": "84b10541c1b2a3768a7d7950a550f61cdeac2a6369f2f7c94d9fa30a93ff197c",
+  "state": {
+    "path": "sword",
+    "realm": "qi",
+    "attributes": {
+      "cultivation": 100,
+      "daoHeart": 4,
+      "karmaGood": 51,
+      "karmaBad": 6,
+      "fortune": 100,
+      "health": 1,
+      "aura": 0,
+      "tianji": 0
+    },
+    "resources": {
+      "spiritStone": 16,
+      "lifespan": 76,
+      "pills": {},
+      "treasures": [],
+      "companions": []
+    },
+    "cardsPlayed": [
+      "tutorial_1",
+      "tutorial_2",
+      "tutorial_3",
+      "tutorial_4",
+      "q_start_sword",
+      "promise_result_8f87a81d",
+      "ch_qi_20",
+      "ch_qi_40",
+      "q_whiteFox_quest",
+      "q_whiteFox_2",
+      "q_whiteFox_3",
+      "ch_qi_60",
+      "kx_path_sword_legacy",
+      "mentor_bai_ren_stage_INNER_DISCIPLE",
+      "promise_result_3b3a1690",
+      "ch_qi_80",
+      "k_chapter_sword_left",
+      "kx_ch_shared_opportunity",
+      "em_heaven_gaze",
+      "kx_ch_sword_sect_path",
+      "bazaar_encounter",
+      "vendor_result:1:bazaar_encounter",
+      "karma_ripple:slot_2:life:0:13:causal:qi_sword_attune",
+      "mentor_bai_ren_stage_TRUSTED",
+      "promise_result_c500a306",
+      "bazaar_encounter",
+      "heavens_hint:slot_2:life:0:16:0"
+    ],
+    "flags": {
+      "protagonist_loaded": true,
+      "causal:sword_legacy_start": true,
+      "causal:qi_sword_attune": true,
+      "choice:ch_qi_20:left": true,
+      "causal:shared_opportunity": true,
+      "choice:ch_qi_40:right": true,
+      "quest_white_fox_line_active": false,
+      "quest_white_fox_line_step": 2,
+      "bai_luoxuan_met": true,
+      "white_fox_lineCompleted": false,
+      "quest_white_fox_line_abandoned": true,
+      "causal:sword_sect_path": true,
+      "choice:ch_qi_60:left": true,
+      "karma_result_sword_legacy_claimed": true,
+      "choice:ch_qi_80:left": true,
+      "karma_result_shared_ally": true,
+      "karma_result_sword_oath_signed": true
+    },
+    "maxHealth": 5,
+    "maxDaoHeart": 4,
+    "turn": 27,
+    "lifeCount": 0
+  },
+  "expectedBuckets": {
+    "current": [
+      {
+        "id": "q_gathering",
+        "baseWeight": 10
+      },
+      {
+        "id": "q_meditation",
+        "baseWeight": 14
+      },
+      {
+        "id": "q_beggar",
+        "baseWeight": 10
+      },
+      {
+        "id": "q_fellow",
+        "baseWeight": 11
+      },
+      {
+        "id": "q_market",
+        "baseWeight": 10
+      },
+      {
+        "id": "q_demon",
+        "baseWeight": 8
+      },
+      {
+        "id": "q_elder",
+        "baseWeight": 11
+      },
+      {
+        "id": "q_cave",
+        "baseWeight": 7
+      },
+      {
+        "id": "q_love",
+        "baseWeight": 8
+      },
+      {
+        "id": "q_spiritStone",
+        "baseWeight": 9
+      },
+      {
+        "id": "q_swordTomb",
+        "baseWeight": 9.5
+      },
+      {
+        "id": "q_inherit",
+        "baseWeight": 6
+      },
+      {
+        "id": "q_fortune",
+        "baseWeight": 8
+      },
+      {
+        "id": "q_shop",
+        "baseWeight": 10
+      },
+      {
+        "id": "karma_spell_awakening",
+        "baseWeight": 5
+      },
+      {
+        "id": "karma_body_awakening",
+        "baseWeight": 5
+      },
+      {
+        "id": "karma_pill_awakening",
+        "baseWeight": 5
+      },
+      {
+        "id": "dp_demon_whisper",
+        "baseWeight": 10
+      },
+      {
+        "id": "dp_sect_elder_suspicion",
+        "baseWeight": 7
+      },
+      {
+        "id": "dp_end_of_qi",
+        "baseWeight": 9
+      },
+      {
+        "id": "sd_qi_bai_ren_first",
+        "baseWeight": 14
+      },
+      {
+        "id": "sd_qi_sword_tomb_whisper",
+        "baseWeight": 9
+      },
+      {
+        "id": "sd_qi_meditation_voice",
+        "baseWeight": 9
+      },
+      {
+        "id": "atm_qi_tea_rumor",
+        "baseWeight": 6
+      },
+      {
+        "id": "atm_qi_market_old_woman",
+        "baseWeight": 6
+      },
+      {
+        "id": "atm_qi_sect_gate_night",
+        "baseWeight": 5
+      }
+    ],
+    "previous": [],
+    "evergreen": []
+  },
+  "expectedPhase": {
+    "phase": "BUILDUP",
+    "phaseProgress": 30,
+    "cardCount": 18,
+    "lastDrawSource": "normal:BUILDUP"
+  },
+  "expectedGatheringAfter": {
+    "attributes": {
+      "cultivation": 100,
+      "daoHeart": 3,
+      "karmaGood": 51,
+      "karmaBad": 6,
+      "fortune": 100,
+      "health": 1,
+      "aura": 0,
+      "tianji": 0
+    },
+    "resources": {
+      "spiritStone": 16,
+      "lifespan": 75,
+      "pills": {},
+      "treasures": [],
+      "companions": []
+    },
+    "maxHealth": 4,
+    "maxDaoHeart": 3
+  }
+}

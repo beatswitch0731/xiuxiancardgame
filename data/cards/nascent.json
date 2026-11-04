@@ -14,7 +14,7 @@
         "left": {
           "text": "与元婴对视",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "cultivation": 10
           },
           "nextCard": "n_ego"
@@ -22,7 +22,7 @@
         "right": {
           "text": "强行压制元婴",
           "effects": {
-            "daoHeart": -5,
+            "daoHeart": -2,
             "cultivation": 20
           },
           "karmaSeed": {
@@ -57,7 +57,7 @@
           "effects": {
             "daoHeart": 5,
             "cultivation": 10,
-            "health": -15
+            "health": -2
           }
         }
       },
@@ -76,11 +76,21 @@
       "choices": {
         "left": {
           "text": "主动出击，先发制人",
-          "effects": {
+          "triggerCombat": true,
+          "victoryEffects": {
             "cultivation": 20,
-            "health": -2,
-            "karmaBad": 5,
-            "triggerCombat": true
+            "karmaBad": 5
+          },
+          "defeatEffects": {
+            "daoHeart": -1
+          },
+          "fleeEffects": {
+            "lifespan": -1
+          },
+          "combatPresentation": {
+            "warningTitle": "元婴猎杀 · 反伏击",
+            "mechanic": "噬婴道人先以摄魂幡削弱护体真元，再发动夺魄重击。",
+            "worldStory": "这不是偶遇，而是一条以新生元婴为丹材的黑色猎杀链。"
           }
         },
         "right": {
@@ -93,10 +103,12 @@
         }
       },
       "enemy": {
+        "templateId": "nascent_soul_hunter",
         "name": "邪修·噬婴道人",
-        "hp": 60,
-        "atk": 15,
-        "def": 5,
+        "hp": 15,
+        "atk": 3,
+        "def": 1,
+        "tier": 2,
         "critRate": 10,
         "special": "噬魂夺魄",
         "specialChance": 0.3,
@@ -123,17 +135,7 @@
             "spiritStone": 30,
             "treasure": "炼妖壶"
           },
-          "dungeon": {
-            "id": "nascent_cave",
-            "nodes": [
-              {
-                "card": "nc_trap"
-              },
-              {
-                "card": "nc_treasure"
-              }
-            ]
-          },
+          "dungeon": "nascent_cave",
           "karmaSeed": {
             "id": "fortuneWheel",
             "delay": 6,
@@ -164,7 +166,7 @@
           "effects": {
             "cultivation": 15,
             "daoHeart": 10,
-            "health": -15
+            "health": -2
           }
         },
         "right": {
@@ -217,7 +219,7 @@
           "effects": {
             "karmaGood": 15,
             "daoHeart": 5,
-            "health": -10
+            "health": -2
           }
         },
         "right": {
@@ -237,6 +239,7 @@
       "type": "NORMAL",
       "realm": "nascent",
       "weight": 15,
+      "evergreen": true,
       "choices": {
         "left": {
           "text": "追随因果丝线",
@@ -263,21 +266,23 @@
       "type": "NORMAL",
       "realm": "nascent",
       "weight": 6,
-      "pathRestriction": "sword",
+      "paths": [
+        "sword"
+      ],
       "choices": {
         "left": {
           "text": "与剑灵融合",
           "effects": {
             "cultivation": 25,
             "daoHeart": 10,
-            "health": -5
+            "health": -2
           }
         },
         "right": {
           "text": "让剑灵独立存在",
           "effects": {
             "cultivation": 10,
-            "daoHeart": 15,
+            "daoHeart": 2,
             "fortune": 10
           },
           "karmaSeed": {
@@ -297,13 +302,15 @@
       "type": "NORMAL",
       "realm": "nascent",
       "weight": 6,
-      "pathRestriction": "spell",
+      "paths": [
+        "spell"
+      ],
       "choices": {
         "left": {
           "text": "研读禁书",
           "effects": {
             "cultivation": 20,
-            "daoHeart": -10,
+            "daoHeart": -2,
             "fortune": 10
           }
         },
@@ -324,21 +331,23 @@
       "type": "NORMAL",
       "realm": "nascent",
       "weight": 6,
-      "pathRestriction": "body",
+      "paths": [
+        "body"
+      ],
       "choices": {
         "left": {
           "text": "以肉身硬抗天雷",
           "effects": {
             "cultivation": 30,
-            "health": -30,
-            "daoHeart": 10
+            "daoHeart": 10,
+            "maxHealth": -1
           }
         },
         "right": {
           "text": "用法力架盾",
           "effects": {
             "cultivation": 10,
-            "daoHeart": -5
+            "daoHeart": -2
           }
         }
       },
@@ -351,7 +360,9 @@
       "type": "NORMAL",
       "realm": "nascent",
       "weight": 6,
-      "pathRestriction": "pill",
+      "paths": [
+        "pill"
+      ],
       "choices": {
         "left": {
           "text": "分享发现",
@@ -383,7 +394,7 @@
         "left": {
           "text": "顺着自己的线看",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "cultivation": 10,
             "fortune": -5
           }
@@ -409,16 +420,21 @@
         "left": {
           "text": "购置涅槃羽 (150灵石)",
           "effects": {
-            "spiritStone": -150,
+            "spiritStone": -30,
             "treasure": "涅槃羽"
           }
         },
         "right": {
           "text": "购置凝婴丹 (120灵石)",
           "effects": {
-            "spiritStone": -120,
+            "spiritStone": -24,
             "pill": "凝婴丹"
           }
+        },
+        "down": {
+          "text": "离开",
+          "effects": {},
+          "desc": "囊中羞涩，只能离开"
         }
       },
       "sceneImage": "assets/cards/events/scene_ns_n_trade_city.png"
@@ -433,23 +449,7 @@
       "choices": {
         "left": {
           "text": "进入遗迹",
-          "dungeon": {
-            "id": "ancient_ruins",
-            "nodes": [
-              {
-                "card": "ar_entrance"
-              },
-              {
-                "card": "ar_hall"
-              },
-              {
-                "card": "ar_secret"
-              },
-              {
-                "card": "ar_boss"
-              }
-            ]
-          }
+          "dungeon": "ancient_ruins"
         },
         "right": {
           "text": "稳妥修炼，不入险地",
@@ -473,7 +473,7 @@
           "text": "竞拍 (80灵石)",
           "effects": {
             "spiritStone": -80,
-            "daoHeart": 15,
+            "daoHeart": 2,
             "cultivation": 10
           }
         },
@@ -517,7 +517,7 @@
           "text": "以实力让他闭嘴",
           "effects": {
             "karmaBad": 10,
-            "health": -20
+            "maxHealth": -1
           }
         }
       },
@@ -535,7 +535,7 @@
           "text": "站剑宗——武力夺矿",
           "effects": {
             "cultivation": 15,
-            "health": -10,
+            "health": -2,
             "karmaBad": 5
           }
         },
@@ -570,8 +570,8 @@
           "text": "强行贯通",
           "effects": {
             "cultivation": 25,
-            "health": -20,
-            "daoHeart": -5
+            "daoHeart": -2,
+            "maxHealth": -1
           }
         }
       },
@@ -593,11 +593,12 @@
           "breakSuccess": 0.45,
           "effects": {}
         },
-        "right": {
-          "text": "再修炼一段时间",
-          "effects": {
-            "cultivation": 10
-          }
+      "right": {
+        "text": "再修炼一段时间",
+        "effects": {
+          "cultivation": -30,
+          "daoHeart": 2
+        }
         }
       },
       "successText": "元婴与你合为一体——你不是变强了，你是变成了另一个人。一个更完整的你。",
@@ -610,7 +611,35 @@
       "id": "ancient_ruins",
       "name": "太古遗迹",
       "description": "化神期修士留下的洞府遗迹",
-      "nodeCount": 4
+      "nodeCount": 4,
+      "nodes": [
+        {
+          "card": "ar_entrance"
+        },
+        {
+          "card": "ar_hall"
+        },
+        {
+          "card": "ar_secret"
+        },
+        {
+          "card": "ar_boss"
+        }
+      ]
+    },
+    "nascent_cave": {
+      "id": "nascent_cave",
+      "name": "元婴洞天",
+      "description": "上古遗留洞天，仅限元婴探入",
+      "nodeCount": 2,
+      "nodes": [
+        {
+          "card": "nc_trap"
+        },
+        {
+          "card": "nc_treasure"
+        }
+      ]
     }
   },
   "dungeonCards": {
@@ -635,7 +664,8 @@
             "health": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
     },
     "ar_hall": {
       "id": "ar_hall",
@@ -658,7 +688,8 @@
             "cultivation": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
     },
     "ar_secret": {
       "id": "ar_secret",
@@ -681,12 +712,14 @@
             "cultivation": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
     },
     "ar_boss": {
       "id": "ar_boss",
       "title": "守墓之灵",
       "description": "洞府最深处——化神修士遗留的一道神念化形。它手持残剑，等待挑战者已经八千年。",
+      "encounterKind": "boss",
       "dungeon": "ancient_ruins",
       "nodeIndex": 3,
       "tags": [
@@ -694,14 +727,25 @@
         "boss"
       ],
       "choices": {
-        "left": {
-          "text": "全力一战",
-          "effects": {
-            "cultivation": 20,
-            "health": -25,
-            "daoHeart": 10,
-            "spiritStone": 30
-          }
+          "left": {
+            "text": "全力一战",
+            "triggerCombat": true,
+            "victoryEffects": {
+              "cultivation": 20,
+              "daoHeart": 10,
+              "spiritStone": 30
+            },
+            "defeatEffects": {
+              "daoHeart": -2
+            },
+            "fleeEffects": {
+              "lifespan": -1
+            },
+            "combatPresentation": {
+              "warningTitle": "太古遗迹 · 守墓神念",
+              "mechanic": "守墓之灵会以残剑蓄势、展开剑幕，再释放万古剑意；应在蓄势回合破防。",
+              "worldStory": "它守在这里八千年，不为杀戮，只为确认来者是否配得上传承。"
+            }
         },
         "right": {
           "text": "以元婴对话——说服它消散",
@@ -712,12 +756,14 @@
           }
         }
       },
-      "enemy": {
-        "name": "守墓之灵",
-        "hp": 80,
-        "atk": 18,
-        "def": 8,
-        "critRate": 12,
+        "enemy": {
+          "templateId": "tomb_guardian_nascent",
+          "name": "守墓之灵",
+          "hp": 18,
+          "atk": 3,
+          "def": 2,
+          "tier": 3,
+          "critRate": 12,
         "special": "万古剑意",
         "specialChance": 0.35,
         "specialDmg": 15
@@ -726,7 +772,8 @@
         "cultivation": 25,
         "spiritStone": 30
       },
-      "type": "COMBAT"
+      "type": "COMBAT",
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
     },
     "nc_trap": {
       "id": "nc_trap",
@@ -738,7 +785,7 @@
         "left": {
           "text": "硬闯",
           "effects": {
-            "health": -15,
+            "health": -2,
             "cultivation": 8
           }
         },
@@ -749,7 +796,8 @@
             "cultivation": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
     },
     "nc_treasure": {
       "id": "nc_treasure",
@@ -772,7 +820,8 @@
             "fortune": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
     }
   }
 }

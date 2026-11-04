@@ -1,0 +1,146 @@
+{
+  "contractId": "protagonist_yelingyun_visual_identity_v1",
+  "identity": {
+    "name": "叶凌云",
+    "age": 16,
+    "ageBand": "teen_16",
+    "gender": "male",
+    "origin": "柳河村铁匠家庭",
+    "narrativeRole": "三脉残根者",
+    "headRatioMin": 6.5,
+    "headRatioMax": 6.8,
+    "build": "少年期窄肩精瘦，随境界成长为稳定但不夸张的成年轮廓",
+    "temperament": ["沉默", "忍耐", "警觉", "重诺"]
+  },
+  "povertyEncoding": {
+    "meaning": "家境有限通过实用重制表达，不通过脏污、破烂或乞丐化表达",
+    "clothingCondition": "old_clean_fitted",
+    "required": [
+      "finished_seams",
+      "same_color_repairs_only_visible_up_close",
+      "washed_fabric",
+      "complete_footwear",
+      "workwear_recut_into_inner_layer"
+    ],
+    "forbidden": [
+      "rags",
+      "holes",
+      "frayed_edges",
+      "visible_patches",
+      "grime",
+      "beggar_styling"
+    ]
+  },
+  "anchors": {
+    "face": "窄方脸；左眉有小缺口；右眼略窄；薄唇常闭；少年期到成年期保持同一骨相",
+    "hair": "黑色参差发尾、低束、短颈后发结；成年期只增加长度与少量灰发",
+    "skin": "暖灰小麦色，鼻梁与耳缘受冷风轻微泛红",
+    "hands": "指节略粗，虎口与掌根有铁匠和握剑茧",
+    "scars": "右前臂旧热痕，成长阶段始终保留",
+    "token": "缺口碎玉在中前期隐藏，只在明确剧情节拍中出现",
+    "baseClothes": "炭灰内层、烟蓝非对称短衣、旧棕束带、完整实用鞋履；旧但整洁",
+    "baseWeapon": "无自发光的旧铁直剑，境界成长只改善锻造与修复质量"
+  },
+  "silhouetteContinuity": {
+    "requiredAcrossAllStages": [
+      "left_eyebrow_gap",
+      "right_eye_narrower",
+      "low_nape_tie",
+      "rolled_right_sleeve_or_exposed_brace",
+      "longer_left_sleeve",
+      "diagonal_front_hem",
+      "single_flat_iron_utility_ring"
+    ],
+    "forbiddenShortcuts": [
+      "unrelated_profession_face",
+      "gacha_hero_pose",
+      "glowing_weapon_identity",
+      "armor_as_growth",
+      "robe_volume_as_power"
+    ]
+  },
+  "carrier": {
+    "canvasWidth": 320,
+    "canvasHeight": 320,
+    "fullBodyHeightMin": 0.82,
+    "fullBodyHeightMax": 0.90,
+    "camera": "三分之二侧面平视，身份卡静态站姿",
+    "palette": "受限炭灰、旧棕、烟蓝；大块像素簇；两段阴影",
+    "background": "transparent",
+    "embeddedVfxAllowed": false,
+    "embeddedBattlefieldAllowed": false
+  },
+  "paths": {
+    "sword": {
+      "allowed": ["旧铁直剑", "收紧左袖", "护腕磨损", "窄站姿"],
+      "forbidden": ["白蓝贵公子", "发光神剑", "银甲", "高冠"]
+    },
+    "body": {
+      "allowed": ["加厚缝带", "旧皮护臂", "卷起右袖", "下盘更沉"],
+      "forbidden": ["中年壮汉", "赤膊战神", "金色拳焰"]
+    },
+    "spell": {
+      "allowed": ["旧纸符囊", "朱砂墨迹", "收束上身"],
+      "forbidden": ["深蓝法袍", "星空纹", "悬浮法环", "贵重法冠"]
+    },
+    "pill": {
+      "allowed": ["旧药囊", "小铜药盒", "草药与炭灰染色"],
+      "forbidden": ["绿袍药师模板", "商业笑脸", "漂浮丹炉", "装饰药瓶阵列"]
+    }
+  },
+  "growthStages": {
+    "S0_mortal_memory": {
+      "realms": ["mortal"],
+      "ageRange": [15, 15],
+      "silhouette": "偏瘦铁匠少年，整洁旧工衣，无宗门标识，无剑",
+      "jadeState": "hidden_dormant"
+    },
+    "S1_outer_novice": {
+      "realms": ["qi"],
+      "ageRange": [16, 17],
+      "silhouette": "窄肩外门弟子，合身烟蓝非对称短衣，旧铁练习直剑",
+      "jadeState": "hidden_story_pulse_only"
+    },
+    "S2_resonant_disciple": {
+      "realms": ["foundation"],
+      "ageRange": [18, 20],
+      "silhouette": "肩背展开的内门弟子，三铆护臂，衣构仍可追溯到铁匠工装",
+      "jadeState": "three_fragment_resonance_hidden"
+    },
+    "S3_marked_rebel": {
+      "realms": ["golden"],
+      "ageRange": [22, 26],
+      "silhouette": "精瘦成年修士，左肩短披覆盖宗门标识，旅尘衣构但保持完整",
+      "jadeState": "incomplete_key_visible_on_story_beats"
+    },
+    "S4_cycle_bearer": {
+      "realms": ["nascent"],
+      "ageRange": [28, 34],
+      "silhouette": "稳定成年轮廓，多来源实用层叠，暗缝循环痕与三片旧铁护臂",
+      "jadeState": "cycle_pattern_conditional"
+    },
+    "S5_way_definer": {
+      "realms": ["deity", "tribulation"],
+      "ageRange": [35, 40],
+      "silhouette": "成熟自定道衣，删去多余装饰，以完成度而非神装表达力量",
+      "jadeState": "ending_specific"
+    }
+  },
+  "stageSelection": {
+    "authority": "gameState.realm",
+    "fallback": "S1_outer_novice",
+    "b10VerticalSample": "S1_outer_novice",
+    "fullProductionBatch": "B13_COMPLETE"
+  },
+  "rejectedRuntimeAssets": [
+    "assets/combat/player_paths/v1/player_sword_young_pc98_v1.png",
+    "assets/combat/player_paths/v1/player_body_young_pc98_v1.png",
+    "assets/combat/player_paths/v1/player_spell_young_pc98_v1.png",
+    "assets/combat/player_paths/v1/player_pill_young_pc98_v1.png",
+    "assets/combat/native_card_v2/player_sword_young_bust_native_v2.png",
+    "assets/combat/spell_codex_opportunity_v1/player_spell_young_bust_native_v2.png",
+    "assets/combat/action_timeline_v1/provenance/player_sword_attack_raw.png",
+    "assets/combat/action_timeline_v1/provenance/player_sword_scene_keyframe_raw.png"
+  ],
+  "status": "growth_replacement_in_progress"
+}

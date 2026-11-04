@@ -37,9 +37,9 @@
         "left": {
           "text": "执行命令——清理门户",
           "effects": {
-            "daoHeart": -20,
             "karmaBad": 20,
-            "cultivation": 10
+            "cultivation": 10,
+            "maxDaoHeart": -1
           },
           "karmaSeed": {
             "id": "sectHuntDemon",
@@ -56,7 +56,8 @@
             "fortune": -10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_meditation.png"
     },
     {
       "id": "iw_sect_protect",
@@ -78,7 +79,7 @@
         "left": {
           "text": "'我不会让你的包庇白费的'",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 10,
             "fortune": 5
           }
@@ -90,7 +91,8 @@
             "fortune": -5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_quest_board.png"
     },
     {
       "id": "iw_sect_demon_ambush",
@@ -113,15 +115,15 @@
           "text": "战斗——过去的交情不算数",
           "effects": {
             "cultivation": 15,
-            "daoHeart": -10,
+            "daoHeart": -2,
             "karmaBad": 10,
-            "health": -15
+            "health": -2
           }
         },
         "right": {
           "text": "劝降——'你欠我一条命'",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 10,
             "fortune": 5
           },
@@ -132,7 +134,8 @@
             "priority": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
     },
     {
       "id": "iw_family_hostage",
@@ -156,7 +159,7 @@
           "effects": {
             "daoHeart": 10,
             "fortune": -20,
-            "health": -15
+            "health": -2
           },
           "nextCard": "iw_family_saved"
         },
@@ -167,7 +170,8 @@
             "fortune": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
     },
     {
       "id": "iw_family_saved",
@@ -186,7 +190,7 @@
         "left": {
           "text": "拉母亲起来——'娘——不值得'",
           "effects": {
-            "daoHeart": 25,
+            "daoHeart": 2,
             "karmaGood": 15,
             "cultivation": 5
           }
@@ -194,13 +198,14 @@
         "right": {
           "text": "对魔道长老说——'有本事冲我来'",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaBad": 10,
-            "health": -20,
-            "fortune": -10
+            "fortune": -10,
+            "maxHealth": -1
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
     },
     {
       "id": "iw_sect_family_clash",
@@ -219,7 +224,7 @@
         "left": {
           "text": "'我是修士——但也是儿子'",
           "effects": {
-            "daoHeart": 20,
+            "daoHeart": 2,
             "karmaGood": 10,
             "fortune": -5
           },
@@ -241,7 +246,7 @@
         "right": {
           "text": "断绝关系——'让他们走吧'",
           "effects": {
-            "daoHeart": -15,
+            "daoHeart": -2,
             "cultivation": 15,
             "karmaBad": 10
           },
@@ -252,7 +257,8 @@
             "priority": 3
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
     },
     {
       "id": "iw_sect_family_unity",
@@ -274,7 +280,7 @@
         "left": {
           "text": "常回家看看——陪母亲喝茶",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 10,
             "fortune": 10
           }
@@ -286,7 +292,8 @@
             "fortune": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
     },
     {
       "id": "iw_cut_ties_tribulation",
@@ -308,10 +315,10 @@
         "left": {
           "text": "'不能忘——那就让天劫来得更猛烈些'",
           "effects": {
-            "daoHeart": 25,
-            "health": -30,
+            "daoHeart": 2,
             "cultivation": 15,
-            "karmaGood": 15
+            "karmaGood": 15,
+            "maxHealth": -1
           },
           "desc": "天劫被你的道心震动了——它没见过一个修士敢这么对它说话。雷光中的脸消失了——不是因为天道放过了你，是因为你的记忆比天劫还坚硬。"
         },
@@ -319,12 +326,13 @@
           "text": "闭上眼睛——接受天劫的净化",
           "effects": {
             "cultivation": 20,
-            "daoHeart": -15,
-            "health": -15,
+            "daoHeart": -2,
+            "health": -2,
             "karmaBad": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
     },
     {
       "id": "iw_keep_ties_tribulation",
@@ -346,22 +354,23 @@
         "left": {
           "text": "让他们一起扛——'我不怕欠你们'",
           "effects": {
-            "daoHeart": 20,
-            "health": -20,
+            "daoHeart": 2,
             "karmaGood": 15,
-            "fortune": 5
+            "fortune": 5,
+            "maxHealth": -1
           },
           "desc": "羁绊不是负担——是你的第二重灵根。他们的影子替你挡下了最重的那几道雷。"
         },
         "right": {
           "text": "把所有人推开——'这是我的劫'",
           "effects": {
-            "daoHeart": 15,
-            "health": -35,
-            "cultivation": 10
+            "daoHeart": 2,
+            "cultivation": 10,
+            "maxHealth": -1
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
     },
     {
       "id": "iw_comp_demon_clash",
@@ -402,7 +411,7 @@
         "right": {
           "text": "'我不需要你的同意'——转身离开",
           "effects": {
-            "daoHeart": -10,
+            "daoHeart": -2,
             "karmaBad": 10
           },
           "companionEffects": {
@@ -418,7 +427,8 @@
             "priority": 3
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
     },
     {
       "id": "iw_comp_demon_reconcile",
@@ -440,7 +450,7 @@
         "left": {
           "text": "抱住ta——'别再做这种事了'",
           "effects": {
-            "daoHeart": 25,
+            "daoHeart": 2,
             "karmaGood": 15,
             "fortune": 10
           },
@@ -454,7 +464,7 @@
         "right": {
           "text": "'你不该去——但谢谢你'",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "fortune": 5
           },
           "companionEffects": {
@@ -463,7 +473,8 @@
             "trustDelta": 20
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
     },
     {
       "id": "iw_comp_sect_forbid",
@@ -482,7 +493,7 @@
         "left": {
           "text": "为ta辩护——'道侣之事我自己决定'",
           "effects": {
-            "daoHeart": 20,
+            "daoHeart": 2,
             "fortune": -15,
             "karmaGood": 10
           },
@@ -496,9 +507,9 @@
         "right": {
           "text": "放弃——'宗门规矩大过个人感情'",
           "effects": {
-            "daoHeart": -20,
             "karmaBad": 10,
-            "cultivation": 10
+            "cultivation": 10,
+            "maxDaoHeart": -1
           },
           "companionEffects": {
             "compId": null,
@@ -506,7 +517,8 @@
             "bondDelta": -2
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
     },
     {
       "id": "iw_comp_sect_approve",
@@ -528,7 +540,7 @@
         "left": {
           "text": "'能——我能'（ta抢在你之前开口）",
           "effects": {
-            "daoHeart": 25,
+            "daoHeart": 2,
             "karmaGood": 15,
             "fortune": 10
           },
@@ -541,7 +553,7 @@
         "right": {
           "text": "'我要自己渡劫——但我会活着回来见她'",
           "effects": {
-            "daoHeart": 20,
+            "daoHeart": 2,
             "cultivation": 10,
             "fortune": 5
           },
@@ -551,7 +563,8 @@
             "bondDelta": 1
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_breakthrough.png"
     },
     {
       "id": "iw_past_life_npc",
@@ -574,7 +587,7 @@
           "text": "帮助ta——不问道理",
           "effects": {
             "karmaGood": 20,
-            "daoHeart": 15,
+            "daoHeart": 2,
             "fortune": 10,
             "spiritStone": -20
           },
@@ -593,7 +606,8 @@
             "fortune": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
     },
     {
       "id": "iw_past_life_enemy",
@@ -615,7 +629,7 @@
         "left": {
           "text": "放过ta——'此生的我没有理由杀你'",
           "effects": {
-            "daoHeart": 30,
+            "daoHeart": 2,
             "karmaGood": 25,
             "cultivation": -5
           },
@@ -629,13 +643,14 @@
         "right": {
           "text": "杀——'血债血偿'",
           "effects": {
-            "daoHeart": -20,
             "karmaBad": 25,
             "cultivation": 15,
-            "fortune": -15
+            "fortune": -15,
+            "maxDaoHeart": -1
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
     },
     {
       "id": "iw_past_life_friend",
@@ -657,7 +672,7 @@
         "left": {
           "text": "'那个人——是我'",
           "effects": {
-            "daoHeart": 20,
+            "daoHeart": 2,
             "fortune": 10,
             "karmaGood": 15
           },
@@ -666,11 +681,12 @@
         "right": {
           "text": "沉默——'我不确定ta能不能承受这个真相'",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
     }
   ]
 }

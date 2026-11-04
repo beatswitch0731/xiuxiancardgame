@@ -1,0 +1,75 @@
+{
+  "source": "src/systems/KarmaRippleSystem.js",
+  "sourceSha256": "b4bb05e930b97e607059b7802b6f0feb0d3723a3ae87ae95310aa8072c065e4c",
+  "templates": {
+    "karma": [
+      {
+        "title": "因果微澜",
+        "description": "一枚尚未兑现的因果轻轻牵动气机。你记得先前的取舍，但此刻没有新的结果可供确认。先调息，还是把这份感应留待日后核证？",
+        "leftText": "顺着气机调息",
+        "rightText": "暂且敛息，守住本心",
+        "leftEffects": {
+          "cultivation": 8,
+          "fortune": 3
+        },
+        "rightEffects": {
+          "daoHeart": 8,
+          "cultivation": 4
+        }
+      }
+    ],
+    "grudge": [
+      {
+        "title": "心绪回潮",
+        "description": "一桩未了之因让心绪短暂翻涌。眼前没有仇家，也没有已经发生的报复；你只能先决定如何应对自己的动摇。",
+        "leftText": "强行压住杂念",
+        "rightText": "放慢修行，留心缘由",
+        "leftEffects": {
+          "cultivation": 8,
+          "daoHeart": -3,
+          "karmaBad": 3
+        },
+        "rightEffects": {
+          "daoHeart": 3,
+          "cultivation": -2,
+          "fortune": -1
+        }
+      }
+    ],
+    "bloodline": [
+      {
+        "title": "脉息一动",
+        "description": "血脉中的灵息忽然偏了一瞬，随即归于平稳。它还不足以证明远方有人召唤或遭劫，只提醒你留心自己的身体。",
+        "leftText": "循着脉息运功",
+        "rightText": "稳住气血再观察",
+        "leftEffects": {
+          "cultivation": 15,
+          "maxHealth": 1,
+          "daoHeart": -1
+        },
+        "rightEffects": {
+          "daoHeart": 1,
+          "cultivation": 3
+        }
+      }
+    ],
+    "fate": [
+      {
+        "title": "命途轻颤",
+        "description": "命数的感应微微偏转，尚看不出确定的吉凶，更不能据此认定天道或他人已经采取行动。你可以体察这丝变化，也可以先守住当下。",
+        "leftText": "体察变化，顺势行功",
+        "rightText": "记下异动，继续修行",
+        "leftEffects": {
+          "cultivation": 20,
+          "fortune": 10,
+          "daoHeart": -1
+        },
+        "rightEffects": {
+          "daoHeart": 2,
+          "fortune": -3,
+          "cultivation": 5
+        }
+      }
+    ]
+  }
+}

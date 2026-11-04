@@ -24,6 +24,7 @@
       "arcStages": {
         "ACQUAINTANCE": {
           "title": "白落霜·参汤",
+          "semanticKey": "arc:bai_luoxuan:ACQUAINTANCE",
           "desc": "白落霜站在你的洞府门口，白衣银发，傍晚的光从背后透过她的发丝。她端着一碗参汤——这是今天第三次热了。\\n\\n'恩公——参汤要趁热喝。'\\n\\n你接过碗。碗是温的——她的手是烫的。",
           "leftText": "'以后别叫我恩公了'",
           "leftEffects": { "daoHeart": 8, "fortune": 5 },
@@ -90,7 +91,7 @@
         "title": "白落霜·人妖殊途",
         "desc": "正道修士找上门来了。他们说你与妖物结为道侣——有辱仙门。\\n\\n白落霜站在你身后，她的手指在你背后写着什么——不是求救，是'别为我伤了自己'。\\n\\n他们的剑已经出鞘。他们的眼神告诉你——今天不是来讲道理的。\\n\\n白落霜的尾巴轻轻碰了碰你的手——这是她唯一的'求救'。",
         "leftText": "拔剑——'我的人，谁敢动'",
-        "leftEffects": { "daoHeart": 15, "karmaBad": 10, "health": -20, "cultivation": 10 },
+        "leftEffects": { "daoHeart": 15, "karmaBad": 10, "health": -2, "cultivation": 10 },
         "leftAffection": 30,
         "rightText": "护着她离开——不正面冲突",
         "rightEffects": { "daoHeart": 10, "karmaGood": 10, "fortune": 5 },
@@ -127,6 +128,7 @@
       "arcStages": {
         "ACQUAINTANCE": {
           "title": "剑灵儿·三招",
+          "semanticKey": "arc:jian_linger:ACQUAINTANCE",
           "desc": "剑灵儿抱着剑靠在剑冢石壁上，眼神从上扫到下把你打量了一遍。\\n\\n'你就是师尊新收的弟子？看起来——一般。'\\n\\n她把剑从怀里抽出来，剑尖指向你。\\n\\n'来。拔剑。三招之内你还能站着——就算我认你这个师弟。'\\n\\n她的眼神很冷——但她的剑尖比平时低了三分。",
           "leftText": "拔剑应战——'请师姐指教'",
           "leftEffects": { "cultivation": 10, "daoHeart": 5 },
@@ -189,7 +191,7 @@
         "title": "剑灵儿·冰心劫",
         "desc": "天劫不是雷——是心魔。剑灵儿的心魔劫比十年前更凶——不只是她自己的心魔，还有天道的加码。\\n\\n冰心剑意在崩塌——她的剑尖凝不出冰晶了。\\n\\n她单膝跪地，咬着牙——不让你看出来她在发抖。\\n\\n'别过来——'她的声音碎成了冰渣。'我不想让你看到——我这个样子。'",
         "leftText": "冲过去——用自己的灵气帮她稳住冰心",
-        "leftEffects": { "daoHeart": 20, "health": -25, "karmaGood": 15, "fortune": 10 },
+        "leftEffects": { "daoHeart": 20, "health": -3, "karmaGood": 15, "fortune": 10 },
         "leftAffection": 25
       },
 
@@ -220,6 +222,7 @@
       "arcStages": {
         "ACQUAINTANCE": {
           "title": "慕青岚·万卷楼",
+          "semanticKey": "arc:mu_qinglan:ACQUAINTANCE",
           "desc": "慕青岚从古籍后面探出头——鼻尖上沾了一点灰。\\n\\n'你要找什么书？等一下——万卷楼的书都是我管的。你先说你要找什么——我可以告诉你它在哪里，或者直接告诉你它里面写的是什么。'\\n\\n她说话的速度很快——不是不耐烦，是怕你嫌她啰嗦。\\n\\n'——我话是不是太多了。你直接说吧。'",
           "leftText": "'我需要《通玄真经》第七卷'",
           "leftEffects": { "cultivation": 8, "daoHeart": 3 },
@@ -233,28 +236,40 @@
           "desc": "慕青岚带你去看了万卷楼最深处的暗格。她从里面抽出一本没有名字的书——打开，全是空白。\\n\\n'不是没写——是被删掉了。'她翻着空白的页面，手指划过那些曾经有字的地方。\\n\\n'这本书的作者至少是三千年前的人。他写的东西——被人从因果层面抹去了。'\\n\\n她抬头看你——眼里有兴奋，也有恐惧。'什么人能从因果层面抹去一本书？我只想到一种——上界。'",
           "leftText": "'你觉得他在写什么？'",
           "leftEffects": { "daoHeart": 10, "fortune": 8, "cultivation": 5 },
-          "leftAffection": 10
+          "leftAffection": 10,
+          "rightText": "先封存无字书——'不要让它再被擦去一次'",
+          "rightEffects": { "daoHeart": 8, "fortune": 10 },
+          "rightAffection": 7
         },
         "DEEP_BOND": {
           "title": "慕青岚·天道书",
           "desc": "慕青岚犹豫了很久——最后还是把天道书摊开在你面前。\\n\\n'最后一页——你看。'她翻到最后一页。空白。\\n\\n'但这不是空白——是被隐藏了。隐藏手法来自上界。'她深吸一口气——然后拿出一张纸，上面密密麻麻写满了推演。\\n\\n'我破译了一部分。上面写的不是对天道的赞歌——是一份清单。一份飞升者的清单——哪些被'接收'了，哪些被'销毁'了。'\\n\\n她的手在发抖。'飞升——不是终点。是选拔。'",
           "leftText": "握住她的手——'我们继续查'",
           "leftEffects": { "daoHeart": 20, "karmaGood": 10, "fortune": 5 },
-          "leftAffection": 15
+          "leftAffection": 15,
+          "rightText": "抄下名单分别藏起——'先让证据活下来'",
+          "rightEffects": { "wisdom": 12, "fortune": 12, "daoHeart": 8 },
+          "rightAffection": 10
         },
         "SOUL_BOND": {
           "title": "慕青岚·上界真相",
           "desc": "慕青岚已经好几天没出万卷楼了。她的眼睛布满血丝——但她在笑。\\n\\n'我破译了。'她铺开一张巨大的纸——上面是一幅图。苍茫界在上，上界在下——用一条条线连着。每一条线都是一道天劫，每一条线的尽头都是一次筛选。\\n\\n'天劫不是考验——是收割。每一百年一次——挑走最强的人，剩下的——'她指着图的底部——那里画着一个巨大的、空白的区域。'剩下的被'回收'。变成灵脉——变成天地灵气——变成下一批修士修炼的资源。'",
           "leftText": "沉默——然后抱住她",
           "leftEffects": { "daoHeart": 25, "karmaGood": 15, "fortune": 10 },
-          "leftAffection": 20
+          "leftAffection": 20,
+          "rightText": "指着图上的缺口——'找到尚未被回收的人'",
+          "rightEffects": { "wisdom": 15, "cultivation": 10, "fortune": 5 },
+          "rightAffection": 14
         },
         "DESTINY": {
           "title": "慕青岚·共谋",
           "desc": "你可以飞升了——但你不想了。慕青岚给了你另一个选择。\\n\\n'飞升是骗局。'她翻开她这些日子整理的所有资料——三百年的记录、三千年被掩埋的真相、三万个被'回收'的飞升者。\\n\\n'但我们可以做一件事——一件三千年没有人做过的事。'\\n\\n她的眼睛在烛光里发光——不是兴奋，是决心。\\n\\n'我们可以把真相传下去。不是靠一个人——是靠因果。在每一个人心里种下怀疑的种子——让天道再也收割不了。'",
           "leftText": "'好——我们做'",
           "leftEffects": { "daoHeart": 35, "karmaGood": 30, "fortune": 15, "cultivation": 10 },
-          "leftAffection": 25
+          "leftAffection": 25,
+          "rightText": "'先建一座删不掉的藏书楼'",
+          "rightEffects": { "daoHeart": 25, "wisdom": 20, "fortune": 20 },
+          "rightAffection": 20
         }
       },
 
@@ -270,7 +285,7 @@
         "title": "慕青岚·天道反噬",
         "desc": "慕青岚动用了天道书的力量——天道察觉了。一道无形的力量从天空降下——不是雷劫，是因果碾碎。她七窍渗血——不是因为受伤，是因为她的记忆在被删除。\\n\\n'道侣——'她抓住你的袖子——眼睛在迅速失去焦点。'天道书的内容——我在忘——你帮我记住——记住天道是——'\\n\\n她的声音戛然而止——她盯着你——认不出你了。",
         "leftText": "用神识把自己的记忆注入她的识海",
-        "leftEffects": { "daoHeart": 25, "health": -20, "karmaGood": 20, "cultivation": -10 },
+        "leftEffects": { "daoHeart": 25, "health": -2, "karmaGood": 20, "cultivation": -10 },
         "leftAffection": 30
       },
 
@@ -285,9 +300,9 @@
 
     "yin_xue": {
       "name": "殷血",
-      "gender": "female",
+      "gender": "male",
       "arcTheme": "血月之约——魔道天才的救赎之路",
-      "arcNarrative": "她是血煞宗百年来唯一一个活着练成血魔功的弟子。她的剑快，嘴硬，杀人时眼皮都不眨——但她每次和你打完都偷吃回春丹。她的血魔功是七岁时被强行灌入的——不杀就会死。她是你最危险的道侣——也是唯一一个在你重伤时守在床前的人。",
+      "arcNarrative": "他是血煞宗百年来唯一一个活着练成血魔功的弟子。他的剑快，嘴硬，杀人时眼皮都不眨——但他每次和你打完都偷吃回春丹。他的血魔功是七岁时被强行灌入的——不杀就会死。他是你最危险的道侣——也是唯一一个在你重伤时守在床前的人。",
 
       "bonuses": {
         "id": "yin_xue_bonus",
@@ -295,50 +310,66 @@
         "icon": "🩸",
         "effects": { "lowHpAtk": 15, "painConversion": 25, "damageReduction": 10, "rageGeneration": 20 },
         "desc": "殷血的血战意志——HP低于50%时攻击+15%，痛觉转化率+25%，减伤+10%",
-        "passiveDesc": "她在你背后时——你不会死。"
+        "passiveDesc": "他在你背后时——你不会死。"
       },
 
       "arcStages": {
         "ACQUAINTANCE": {
           "title": "殷血·初见",
-          "desc": "殷血靠在枯树上——剑尖在石头上划出三道血槽。\\n\\n'你就是那个青云弟子？听说你最近挺能打。不过——正道教的那些花里胡哨的剑法——拿来杀鸡还行。'\\n\\n她把剑从石头上拔出来——石头上留下三道深深的划痕。\\n\\n'来。三招。我倒要看看——你值不值得我记住名字。'",
+          "semanticKey": "arc:yin_xue:ACQUAINTANCE",
+          "desc": "殷血靠在枯树上——剑尖在石头上划出三道血槽。\\n\\n'你就是那个青云弟子？听说你最近挺能打。不过——正道教的那些花里胡哨的剑法——拿来杀鸡还行。'\\n\\n他把剑从石头上拔出来——石头上留下三道深深的划痕。\\n\\n'来。三招。我倒要看看——你值不值得我记住名字。'",
           "leftText": "拔剑——'我的剑不会让你失望'",
           "leftEffects": { "cultivation": 10, "daoHeart": 5 },
-          "leftAffection": 5
+          "leftAffection": 5,
+          "rightText": "收剑——'三招可以，但先报上你的名字'",
+          "rightEffects": { "daoHeart": 8, "wisdom": 5 },
+          "rightAffection": 7
         },
         "KNOWING": {
           "title": "殷血·酒后",
-          "desc": "殷血破天荒请你喝酒——不是血煞宗的'血酒'，是西域荒漠深处才有的烈酒。\\n\\n'——你又赢了。他妈的——你到底怎么练的？'她喝了半壶，说话开始含糊。\\n\\n但下一句很清楚：'你以为我为什么杀人？我七岁那年——血煞老祖把血魔功灌进了我的丹田。不杀就会反噬。我不是想杀人——是不杀就会死。'\\n\\n她的酒杯砸在石头上——碎了。'算了——这些话你听过就忘。我没说。'",
+          "desc": "殷血破天荒请你喝酒——不是血煞宗的'血酒'，是西域荒漠深处才有的烈酒。\\n\\n'——你又赢了。他妈的——你到底怎么练的？'他喝了半壶，说话开始含糊。\\n\\n但下一句很清楚：'你以为我为什么杀人？我七岁那年——血煞老祖把血魔功灌进了我的丹田。不杀就会反噬。我不是想杀人——是不杀就会死。'\\n\\n他的酒杯砸在石头上——碎了。'算了——这些话你听过就忘。我没说。'",
           "leftText": "'我没忘——但我可以帮你找解药'",
           "leftEffects": { "daoHeart": 15, "karmaGood": 15, "fortune": 5 },
-          "leftAffection": 15
+          "leftAffection": 15,
+          "rightText": "把新酒杯推给他——'今夜不问，你想说时我再听'",
+          "rightEffects": { "daoHeart": 12, "fortune": 8 },
+          "rightAffection": 12
         },
         "DEEP_BOND": {
           "title": "殷血·七具尸体",
-          "desc": "你重伤昏迷。醒来时——房间里倒了七具血煞宗弟子的尸体。殷血瘫坐在墙角——剑上全是血。\\n\\n'醒了？'她的声音很哑——像很久没喝水。\\n\\n'他们——想来收你的尸。'她冷笑了一声——但嘴角的血痕不像笑。\\n\\n'我说不行。'\\n\\n她的剑滑落到地上——她的手在抖。不是害怕，是血魔功的反噬。她为了你杀了她自己的同门。",
-          "leftText": "起身——握住她的手腕检查反噬",
-          "leftEffects": { "daoHeart": 20, "karmaGood": 10, "health": -10, "cultivation": 5 },
-          "leftAffection": 20
+          "desc": "你重伤昏迷。醒来时——房间里倒了七具血煞宗弟子的尸体。殷血瘫坐在墙角——剑上全是血。\\n\\n'醒了？'他的声音很哑——像很久没喝水。\\n\\n'他们——想来收你的尸。'他冷笑了一声——但嘴角的血痕不像笑。\\n\\n'我说不行。'\\n\\n他的剑滑落到地上——他的手在抖。不是害怕，是血魔功的反噬。他为了你杀了他自己的同门。",
+          "leftText": "起身——握住他的手腕检查反噬",
+          "leftEffects": { "daoHeart": 20, "karmaGood": 10, "health": -1, "cultivation": 5 },
+          "leftAffection": 20,
+          "rightText": "先封住七具尸身的血气——'追兵还会来，我们一起走'",
+          "rightEffects": { "wisdom": 12, "fortune": 10, "daoHeart": 10 },
+          "rightAffection": 15
         },
         "SOUL_BOND": {
           "title": "殷血·洗魔",
-          "desc": "殷血在沙漠深处找到了一处上古遗迹——据说里面有能洗去血魔功的上古法宝。\\n\\n'你跟我去——还是在这等？'她问。\\n\\n遗迹里机关重重——但最危险的不是机关。是血煞老祖的追兵。\\n\\n'你走吧——我一个人扛。'她在黑暗中握紧了剑。\\n\\n她的眼神告诉你——不是不需要你，是怕你死了。",
+          "desc": "殷血在沙漠深处找到了一处上古遗迹——据说里面有能洗去血魔功的上古法宝。\\n\\n'你跟我去——还是在这等？'他问。\\n\\n遗迹里机关重重——但最危险的不是机关。是血煞老祖的追兵。\\n\\n'你走吧——我一个人扛。'他在黑暗中握紧了剑。\\n\\n他的眼神告诉你——不是不需要你，是怕你死了。",
           "leftText": "'一起——要么一起出来，要么一起死在里面'",
           "leftEffects": { "daoHeart": 25, "karmaGood": 20, "cultivation": 15, "health": 10 },
-          "leftAffection": 25
+          "leftAffection": 25,
+          "rightText": "'你进遗迹，我在外面断他们的后路'",
+          "rightEffects": { "wisdom": 15, "cultivation": 12, "fortune": 8 },
+          "rightAffection": 18
         },
         "DESTINY": {
           "title": "殷血·重新做人",
-          "desc": "洗魔成功了。殷血坐在遗迹废墟上——浑身的血纹在消退。她的瞳孔第一次不是血红色——是黑色。正常人的黑色。\\n\\n'我……不疼了。'她低头看着自己的手——手上没有血痕。\\n\\n'七岁以后——我没一天不疼的。'她抬头看着天空——不是血月，是干净的夜空。\\n\\n'以后——我跟你走。你修道，我练剑。我不杀人了——除非有人要杀你。'",
+          "desc": "洗魔成功了。殷血坐在遗迹废墟上——浑身的血纹在消退。他的瞳孔第一次不是血红色——是黑色。正常人的黑色。\\n\\n'我……不疼了。'他低头看着自己的手——手上没有血痕。\\n\\n'七岁以后——我没一天不疼的。'他抬头看着天空——不是血月，是干净的夜空。\\n\\n'以后——我跟你走。你修道，我练剑。我不杀人了——除非有人要杀你。'",
           "leftText": "'欢迎回来——从此我们是同路'",
           "leftEffects": { "daoHeart": 35, "karmaGood": 30, "fortune": 20, "cultivation": 15 },
-          "leftAffection": 30
+          "leftAffection": 30,
+          "rightText": "把那柄旧血剑埋进沙里——'先选你自己要成为谁'",
+          "rightEffects": { "daoHeart": 30, "karmaGood": 25, "fortune": 25 },
+          "rightAffection": 24
         }
       },
 
       "secretReveal": {
         "title": "殷血·七岁的血魔功",
-        "desc": "殷血今天没约你打架。她坐在一棵枯死的胡杨树下——身边放了三壶酒。\\n\\n'我七岁那年——血煞老祖来我村里。他说我有根骨——是练血魔功的好材料。'她喝了一口。\\n\\n'你知道他怎么测试根骨的吗？他把全村人杀了——然后用那些人的血在我丹田里种了血魔种。'\\n\\n她的声音很平静——比任何时候都可怕。\\n\\n'所以我从来不解释。解释了也没用——我手上确实有血。不管你知不知道原因。'",
+        "desc": "殷血今天没约你打架。他坐在一棵枯死的胡杨树下——身边放了三壶酒。\\n\\n'我七岁那年——血煞老祖来我村里。他说我有根骨——是练血魔功的好材料。'他喝了一口。\\n\\n'你知道他怎么测试根骨的吗？他把全村人杀了——然后用那些人的血在我丹田里种了血魔种。'\\n\\n他的声音很平静——比任何时候都可怕。\\n\\n'所以我从来不解释。解释了也没用——我手上确实有血。不管你知不知道原因。'",
         "leftText": "'他欠你的——我帮你要回来'",
         "leftEffects": { "daoHeart": 15, "karmaGood": 15, "karmaBad": 10, "cultivation": 10 },
         "leftAffection": 18
@@ -346,16 +377,16 @@
 
       "tribulationClimax": {
         "title": "殷血·血魔反噬",
-        "desc": "血煞老祖亲自出手了。他要把殷血的魔功收回——殷血死了不要紧，但血魔功是他几百年的心血。\\n\\n殷血跪在血池中——七窍流血，血纹从皮肤下浮出。\\n\\n'别过来——'她嘶吼着——'血魔功一旦炸出来——会连你一起——'\\n\\n血煞老祖站在血池边——冷笑。'选吧——你是他唯一的希望。但你敢碰他——你也得死。'",
-        "leftText": "跳进血池——用自己的灵气帮她压制血魔功",
-        "leftEffects": { "daoHeart": 25, "health": -40, "karmaGood": 20, "karmaBad": 15, "fortune": -10 },
+        "desc": "血煞老祖亲自出手了。他要把殷血的魔功收回——殷血死了不要紧，但血魔功是他几百年的心血。\\n\\n殷血跪在血池中——七窍流血，血纹从皮肤下浮出。\\n\\n'别过来——'他嘶吼着——'血魔功一旦炸出来——会连你一起——'\\n\\n血煞老祖站在血池边——冷笑。'选吧——你是他唯一的希望。但你敢碰他——你也得死。'",
+        "leftText": "跳进血池——用自己的灵气帮他压制血魔功",
+        "leftEffects": { "daoHeart": 25, "health": -3, "karmaGood": 20, "karmaBad": 15, "fortune": -10 },
         "leftAffection": 35
       },
 
       "destinyClimax": {
         "title": "殷血·正魔之间",
-        "desc": "正魔大战——两军对垒。殷血站在两军之间——左边是血煞宗的魔军，右边是青云剑宗的正道。\\n\\n她回头看你——不是求救，是确认你在。\\n\\n'我这个人——没选过。'她拔出剑——剑上的血纹在消退——'七岁被种魔功，没得选。被正道追杀，没得选。'\\n\\n'今天——我第一次有的选。'\\n\\n她转身面对血煞老祖——'我不跟你走了。我跟他走。'",
-        "leftText": "拔剑站在她身边——'我们两个，够了'",
+        "desc": "正魔大战——两军对垒。殷血站在两军之间——左边是血煞宗的魔军，右边是青云剑宗的正道。\\n\\n他回头看你——不是求救，是确认你在。\\n\\n'我这个人——没选过。'他拔出剑——剑上的血纹在消退——'七岁被种魔功，没得选。被正道追杀，没得选。'\\n\\n'今天——我第一次有的选。'\\n\\n他转身面对血煞老祖——'我不跟你走了。我跟他走。'",
+        "leftText": "拔剑站在他身边——'我们两个，够了'",
         "leftEffects": { "daoHeart": 35, "karmaGood": 25, "cultivation": 20, "health": 10 },
         "leftAffection": 30
       }
@@ -379,38 +410,54 @@
       "arcStages": {
         "ACQUAINTANCE": {
           "title": "九尾溯月·月下初见",
-          "desc": "月湖边——她从月色中走出来。九条白色的尾巴如瀑布般散落在身后——不是炫耀，是天狐的本相。\\n\\n'就是你——救了落霜？'她眯着眼——琥珀色的瞳孔在月光下变成了竖瞳。\\n\\n'白狐部欠你的——我还。不过你的修为——实在太差了。跟我来——三千年的东西——够你学了。'\\n\\n她转身——九尾在身后一甩——不是示威，是指路。",
+          "semanticKey": "arc:jiuwei_suyue:ACQUAINTANCE",
+          "desc": "月湖边——她从月色中走出来。九条白色的尾巴如瀑布般散落在身后——不是炫耀，是天狐的本相。\\n\\n她眯着眼打量你，琥珀色的瞳孔在月光下变成了竖瞳。'既然到了月湖，就别只在岸边看。跟我来——三千年的东西，够你学了。'\\n\\n她转身——九尾在身后一甩——不是示威，是指路。",
           "leftText": "跟上——'请前辈指教'",
           "leftEffects": { "cultivation": 15, "daoHeart": 5, "fortune": 5 },
-          "leftAffection": 5
+          "leftAffection": 5,
+          "rightText": "留在月湖边——'我想先弄清这里发生了什么'",
+          "rightEffects": { "karmaGood": 8, "daoHeart": 8, "fortune": 3 },
+          "rightAffection": 8
         },
         "KNOWING": {
           "title": "九尾溯月·太古浩劫",
           "desc": "九尾坐在月湖边——没有平时的威严，只有疲惫。\\n\\n'你知道太古浩劫吗？不是书上写的那种——书上写的都是假的。'她的九条尾巴垂在水面上——像九道白色的伤口。\\n\\n'妖族在浩劫中死了九成。不是被人杀的——是被天道'回收'的。'她抬头看着月亮——月亮已经看了她三千年。\\n\\n'我活了下来——不是因为我强。是因为天道留着我。'她顿了顿——'看守封印。'",
           "leftText": "'封印了什么？'",
           "leftEffects": { "daoHeart": 15, "fortune": 10, "cultivation": 5 },
-          "leftAffection": 10
+          "leftAffection": 10,
+          "rightText": "'不想说封印也可以——先说说那些消失的妖族'",
+          "rightEffects": { "karmaGood": 10, "daoHeart": 12, "wisdom": 5 },
+          "rightAffection": 12
         },
         "DEEP_BOND": {
           "title": "九尾溯月·飞升回头",
-          "desc": "九尾第一次用认真的语气和你说话——不是威严的妖皇，是一个做出过选择的人。\\n\\n'三千年前的满月之夜——我也面对过飞升之门。我的修为够了——天道允许我走了。'\\n\\n她伸出手——掌心有一道白色的纹路——是飞升时的天痕。\\n\\n'但我在最后一刻回头了。我看到了飞升的真相——那不是接引之光，是加工厂的门。进去的人——没有一个回来。'\\n\\n她收手——天痕还亮着。'所以我留下了。三千年——一个人。'她看着你——'直到你救了我家那只小白狐。'",
+          "desc": "九尾第一次用认真的语气和你说话——不是威严的妖皇，是一个做出过选择的人。\\n\\n'三千年前的满月之夜——我也面对过飞升之门。我的修为够了——天道允许我走了。'\\n\\n她伸出手——掌心有一道白色的纹路——是飞升时的天痕。\\n\\n'但我在最后一刻回头了。我看到了飞升的真相——那不是接引之光，是加工厂的门。进去的人——没有一个回来。'\\n\\n她收手——天痕还亮着。'所以我留下了。三千年——一个人。'她看着你——'直到你愿意听我说这些。'",
           "leftText": "'三千年——不孤单吗？'",
           "leftEffects": { "daoHeart": 20, "karmaGood": 15, "fortune": 10 },
-          "leftAffection": 15
+          "leftAffection": 15,
+          "rightText": "把手放在天痕旁边——'你回头看到的门，画给我看'",
+          "rightEffects": { "wisdom": 15, "daoHeart": 15, "cultivation": 8 },
+          "rightAffection": 13
         },
         "SOUL_BOND": {
           "title": "九尾溯月·混沌碎片",
           "desc": "九尾打开了一个匣子——里面有两块黑色的碎片。碎片在月光下发出不祥的光。\\n\\n'混沌碎片——唯一能打破天道的东西。我找了三千年——只找到两块。'\\n\\n她拿起一块——碎片在她手上像活了一样蠕动。\\n\\n'这些碎片来自天道建立之前的时代——那个时候苍茫界没有天劫，没有筛选——每个修士都可以自由飞升。'\\n\\n她把一块碎片递向你——'你想碰吗？它不是力量——是真相。真相有时候比力量更危险。'",
           "leftText": "接过碎片——'我不怕真相'",
           "leftEffects": { "daoHeart": 25, "karmaGood": 15, "cultivation": 15, "fortune": -5 },
-          "leftAffection": 20
+          "leftAffection": 20,
+          "rightText": "让她先收回碎片——'先教我怎样不被它反噬'",
+          "rightEffects": { "wisdom": 18, "daoHeart": 15, "fortune": 8 },
+          "rightAffection": 16
         },
         "DESTINY": {
           "title": "九尾溯月·新天道",
           "desc": "九尾站在月湖中央——九条尾巴如孔雀开屏般展开。她手里握着三块混沌碎片——第三块是你帮她找到的。\\n\\n'三千年——我终于凑够了。'混沌碎片在她手中拼合——形成了一个黑色的圆盘。\\n\\n'这不是武器——是钥匙。天道建立之前——苍茫界的灵气是自由的。我要用它——打开一扇门。'\\n\\n她转身——九尾在你身上轻轻拂过。\\n\\n'不是我要走——是我们。三千年——我不想再一个人了。'",
           "leftText": "'三千年后的这三千年——有我'",
           "leftEffects": { "daoHeart": 40, "karmaGood": 30, "fortune": 25, "cultivation": 20 },
-          "leftAffection": 30
+          "leftAffection": 30,
+          "rightText": "'开门之前，先让所有妖族知道他们也有选择'",
+          "rightEffects": { "daoHeart": 35, "karmaGood": 35, "fortune": 20 },
+          "rightAffection": 26
         }
       },
 
@@ -426,7 +473,7 @@
         "title": "九尾溯月·天道的审判",
         "desc": "天道终于动手了。它的目标不是你的天劫——是九尾。她活了太久、知道太多、而且正在收集混沌碎片。\\n\\n一道白色的光柱从天而降——不是毁灭，是召唤。天道在回收它的'证人'。\\n\\n九尾悬浮在空中——九条尾巴被光柱拉扯着往上飘。她的眼睛在失去焦距——不是被控制，是被太久的孤独压垮了。\\n\\n'三千年——够了。'她的嘴唇在动——但发不出声音。",
         "leftText": "冲进光柱——抓住她的手",
-        "leftEffects": { "daoHeart": 30, "health": -30, "karmaGood": 25, "fortune": -15, "cultivation": 15 },
+        "leftEffects": { "daoHeart": 30, "health": -3, "karmaGood": 25, "fortune": -15, "cultivation": 15 },
         "leftAffection": 35
       },
 
@@ -517,7 +564,7 @@
         "title": "师尊·剑劫",
         "desc": "不是你的天劫——是白刃真人的。他在金丹巅峰困了一百二十年，只差最后一步。但天道给他的劫不是雷——是剑。是他师弟的剑，从记忆里拔出来，一剑刺进他的道心。\\n\\n你看着他单膝跪地，七窍渗血——但他的手还握着剑。\\n\\n'剑出无悔——'他的嘴唇在动，声音几乎听不到。\\n\\n'师弟……我到现在也不后悔。'",
         "leftText": "冲过去——握住他的手",
-        "leftEffects": { "daoHeart": 20, "health": -30, "karmaGood": 20, "fortune": 10 },
+        "leftEffects": { "daoHeart": 20, "health": -3, "karmaGood": 20, "fortune": 10 },
         "rightText": "在旁边护法——相信他能渡过去",
         "rightEffects": { "daoHeart": 10, "cultivation": 15, "fortune": 5 }
       },
@@ -526,9 +573,9 @@
         "title": "师尊·薪火相传",
         "desc": "飞升时刻——天道之门在云层中缓缓打开。白刃真人站在门前，回头看了你最后一眼。\\n\\n他的嘴唇动了动——没有声音，但你看懂了。\\n\\n'剑出无悔。'\\n\\n然后他一步踏入天道之门。那道门在他身后缓缓关闭——而你手里握着的，是他的剑。\\n\\n一百二十年的剑。现在该由你出鞘了。",
         "leftText": "挥剑——'师父，我会找到你'",
-        "leftEffects": { "daoHeart": 35, "cultivation": 25, "karmaGood": 20, "fortune": 15 },
+        "leftEffects": { "daoHeart": 35, "cultivation": 25, "karmaGood": 20, "fortune": 15, "npcLifecycle": { "npcId": "bai_ren", "lifecycle": "ASCENDED", "manifestation": "ECHO_ONLY", "locationId": "upper_realm_heaven_gate", "changedByNode": "mentor_bai_ren_destiny" } },
         "rightText": "将剑插在剑冢——等师父回来",
-        "rightEffects": { "daoHeart": 30, "karmaGood": 25, "fortune": 10 }
+        "rightEffects": { "daoHeart": 30, "karmaGood": 25, "fortune": 10, "npcLifecycle": { "npcId": "bai_ren", "lifecycle": "ASCENDED", "manifestation": "ECHO_ONLY", "locationId": "upper_realm_heaven_gate", "changedByNode": "mentor_bai_ren_destiny" } }
       }
     }
   },
@@ -557,6 +604,7 @@
       "arcStages": {
         "ENCOUNTER": {
           "title": "先知·等你很久了",
+          "semanticKey": "arc:tianji_laoren:ENCOUNTER",
           "desc": "天机阁·观星台。天机老人盘坐在满天星图之中——手中的天机盘碎片微微发光。\\n\\n'你来了。'他抬头——眼神中没有惊讶。'不对——应该说，你终于来了。'\\n\\n他手中的天机盘碎片转了转——指向你。\\n\\n'老夫等了你很久了——不是预知，是因果。你前世、前前世，做过的事，最终把你引到了这里。'\\n\\n他顿了顿。'不过今天——老夫只给你三个问题。'",
           "leftText": "'第一个问题——我是谁？'",
           "leftEffects": { "daoHeart": 15, "fortune": 10, "cultivation": 5 },
@@ -610,7 +658,7 @@
         "title": "先知·天道反噬",
         "desc": "天机老人越界了——他窥了天道的核心规则。天道反噬不是雷——是因果坍缩。他周围的因果线一根根崩断——他已经和你说了太多不该说的话，现在要为此付出代价。\\n\\n他的身体在一根根因果线崩断中迅速老化——头发白了，皮肤褶皱——但他在笑。\\n\\n'值了——'他的声音沙哑得像三百年没喝过水的老人。'老夫三千年——终于说了。'",
         "leftText": "用自己的因果线连接他的——帮他分担反噬",
-        "leftEffects": { "daoHeart": 30, "health": -25, "karmaGood": 25, "fortune": -15 },
+        "leftEffects": { "daoHeart": 30, "health": -3, "karmaGood": 25, "fortune": -15 },
         "rightText": "用混沌之力干扰天道",
         "rightEffects": { "daoHeart": 20, "karmaBad": 20, "fortune": 10 }
       },
@@ -650,6 +698,7 @@
       "arcStages": {
         "CONTACT": {
           "title": "盟友·白刃的弟子",
+          "semanticKey": "arc:xuesha_laozu:CONTACT",
           "desc": "血煞宗大殿——血煞老祖坐在血玉椅上，闭目养神。但你知道他没睡着——他手里握着剑。\\n\\n'白刃的弟子——'他睁开眼睛——一双血红色的瞳孔锁定了你。\\n\\n'长得可真像他那副正人君子的嘴脸。'他的声音低沉但清晰——像暗河里翻滚的石头。\\n\\n'不过——你的剑气里有一点东西我见过。不是白刃教的。是你自己的。'\\n\\n他站起身——比你高出两个头。'有点意思——所以今天不杀你。走吧。'",
           "leftText": "'我不是来求你不杀的——我是来问你的'",
           "leftEffects": { "daoHeart": 10, "fortune": 5 },
@@ -703,7 +752,7 @@
         "title": "盟友·七百年后的并肩",
         "desc": "天道降临了真正的考验——不是针对你，是针对血煞老祖。他一个人扛了七百年的反天道之战，今天终于引来了天道的最强反噬。\\n\\n天劫的形态不是雷——是因果链。每一条链都是他七百年间杀过的每一个人、背叛过的每一个理想、辜负过的每一个期待。\\n\\n血煞老祖跪在血池中——七窍流血——但在笑。\\n\\n'七百年——够本了。'他的手握着剑——但剑在碎裂。\\n\\n然后——另一把剑出现了。不是你的。是白刃真人的。他来了。",
         "leftText": "站在中间——'七百年前的账——今天了'",
-        "leftEffects": { "daoHeart": 30, "karmaGood": 25, "cultivation": 20, "fortune": 15, "health": -10 },
+        "leftEffects": { "daoHeart": 30, "karmaGood": 25, "cultivation": 20, "fortune": 15, "health": -1 },
         "rightText": "让开——让他们师兄弟并肩",
         "rightEffects": { "daoHeart": 25, "karmaGood": 20, "fortune": 10 }
       },

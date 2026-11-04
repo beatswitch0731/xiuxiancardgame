@@ -241,3 +241,10 @@ class ChoiceEchoEngine {
 
 // 全局单例
 const choiceEchoEngine = new ChoiceEchoEngine();
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = ChoiceEchoEngine;
+} else {
+  window.ChoiceEchoEngine = ChoiceEchoEngine;
+  window.choiceEchoEngine = choiceEchoEngine;
+}

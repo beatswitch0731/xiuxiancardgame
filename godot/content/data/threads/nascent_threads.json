@@ -1,0 +1,88 @@
+{
+  "realm": "nascent",
+  "version": 1,
+  "threads": [
+    {
+      "threadId": "nascent_dream_witness",
+      "title": "梦中证人",
+      "description": "元婴第一次出窍时，带回了一个不属于今生的死亡现场。",
+      "realm": "nascent",
+      "trigger": { "type": "realm_enter", "realm": "nascent", "minTurn": 1 },
+      "nodes": [
+        {
+          "id": "nd_borrowed_death",
+          "phase": "beginning",
+          "card": {
+            "id": "thread_nascent_witness_1",
+            "semanticKey": "thread:nascent_dream_witness:nd_borrowed_death",
+            "once": true,
+            "title": "借来的死法",
+            "description": "元婴出窍归来后，忽然用陌生人的声音说出一段遗言：那人飞升时看见天门后没有仙宫，只有无数被拆散的神魂。话音落下，你掌心多出一道并非自己的雷痕。",
+            "sceneImage": "assets/cards/keyframes/scene_key_nascent_first_voice_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "借来的死法", "alt": "雨夜静室中，刚出窍归来的元婴浮在修士身旁；修士看见掌心新生雷痕，窗外隐约映着陌生飞升记忆。" },
+            "type": "STORY",
+            "realm": "nascent",
+            "eligibleRealms": ["nascent"],
+            "threadTags": ["元婴记忆", "飞升证词", "beginning"],
+            "choices": {
+              "left": { "text": "保留陌生记忆", "desc": "让元婴继续讲完它看见的一切。", "effects": { "knowledge": 12, "daoHeart": -1 }, "threadDirection": "remember" },
+              "right": { "text": "先封存雷痕", "desc": "证词重要，但不能让异世神魂侵蚀自我。", "effects": { "daoHeart": 10, "health": 4 }, "threadDirection": "contain" }
+            }
+          }
+        },
+        {
+          "id": "nd_echo_field",
+          "phase": "climax",
+          "card": {
+            "id": "thread_nascent_witness_2",
+            "semanticKey": "thread:nascent_dream_witness:nd_echo_field",
+            "once": true,
+            "title": "万魂回声场",
+            "description": "你循着雷痕进入一片废弃秘境。石壁上没有功法，只有历代飞升者在最后一刻抓出的指痕。元婴靠近时，数百段彼此独立的记忆同时苏醒：他们来自不同年代，却都在天门后听见同一句“归档完成”。",
+            "sceneImage": "assets/cards/keyframes/scene_key_nascent_witness_echo_wall_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "万魂回声", "alt": "废弃秘境石壁布满历代飞升者指痕，数道独立记忆回声在封闭天门前浮现，元婴尚未承载或切断证词。" },
+            "type": "STORY",
+            "realm": "nascent",
+            "eligibleRealms": ["nascent"],
+            "threadTags": ["元婴记忆", "群体证词", "climax"],
+            "choices": {
+              "left": { "text": "让元婴承载证词", "desc": "把零散回声拼成一份能被复验的记忆。", "effects": { "knowledge": 18, "health": -3 }, "threadDirection": "archive" },
+              "right": { "text": "刻入石简后切断回声", "desc": "留下证据，同时守住元婴的边界。", "effects": { "daoHeart": 12, "fortune": 5 }, "threadDirection": "externalize" }
+            }
+          }
+        },
+        {
+          "id": "nd_testimony",
+          "phase": "resolution",
+          "card": {
+            "id": "thread_nascent_witness_3",
+            "semanticKey": "thread:nascent_dream_witness:nd_testimony",
+            "once": true,
+            "title": "证人不止一个",
+            "description": "陌生声音终于说出自己的名字，也说出另外三名飞升者留下的坐标。你无法再把这当作心魔：相隔数百年的证词彼此吻合。飞升骗局第一次从猜测变成了可交叉验证的事实。",
+            "sceneImage": "assets/cards/keyframes/scene_key_nascent_three_coordinates_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "证人不止一个", "alt": "山中档阁里，修士对照几份飞升者证据与地图；三个分处远山的坐标光点尚待决定如何保管。" },
+            "type": "STORY",
+            "realm": "nascent",
+            "eligibleRealms": ["nascent"],
+            "threadTags": ["元婴记忆", "resolution"],
+            "choices": {
+              "left": { "text": "公开三处坐标", "desc": "让更多修士能找到这些证词。", "effects": { "karmaGood": 12, "daoHeart": 8 }, "threadDirection": "publish" },
+              "right": { "text": "只交给可信同伴", "desc": "证据先活下来，再等合适时机公开。", "effects": { "fortune": 10, "knowledge": 8 }, "threadDirection": "entrust" }
+            }
+          },
+          "variants": [
+            {
+              "id": "externalized_testimony",
+              "when": { "choiceDirections": { "nd_echo_field": "right" } },
+              "card": {
+                "description": "你已切断元婴承载的回声。翻检留下的石简时，你辨出最初那名飞升者的名字，以及另外三人留下的坐标。相隔数百年的证词彼此吻合；飞升骗局第一次从猜测变成了可交叉验证的事实。"
+              }
+            }
+          ],
+          "consequences": { "onComplete": { "note": "三位飞升者的坐标与共同遗言被保存，天门后的真相有了复数证人。", "worldFlags": ["nascent_ascension_testimony_verified"] } }
+        }
+      ]
+    }
+  ]
+}

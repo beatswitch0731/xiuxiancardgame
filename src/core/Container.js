@@ -30,19 +30,96 @@ class Container {
 
   _initCore() {
     // 复用已有的全局核心实例（下一阶段可将它们也纳入容器）
-    this.gameState = gameState;
-    this.eventBus = eventBus;
-    this.dataLoader = dataLoader;
+    this.gameState = typeof gameState !== 'undefined' ? gameState : (typeof window !== 'undefined' ? window.gameState : null);
+    this.eventBus = typeof eventBus !== 'undefined' ? eventBus : (typeof window !== 'undefined' ? window.eventBus : null);
+    this.dataLoader = typeof dataLoader !== 'undefined' ? dataLoader : (typeof window !== 'undefined' ? window.dataLoader : null);
+    if (!this.gameState && this.debug) {
+      console.warn('[Container] Warning: gameState is not globally defined at initialization.');
+    }
     this._log('[Container] core wired: gameState, eventBus, dataLoader');
   }
 
   _initServices() {
-    this.effectService = new EffectService({
+    const readStartupData = (moduleName) => this.dataLoader && typeof this.dataLoader.getCached === 'function'
+      ? this.dataLoader.getCached(moduleName)
+      : null;
+    this.choiceOutcomeRouter = typeof choiceOutcomeRouter !== 'undefined'
+      ? choiceOutcomeRouter
+      : (typeof window !== 'undefined' ? window.choiceOutcomeRouter : null);
+    const endingAtlas = readStartupData('world:truth_atlas');
+    this.endingEligibilityService = typeof endingEligibilityService !== 'undefined' && endingEligibilityService
+      ? endingEligibilityService
+      : new EndingEligibilityService();
+    const endingServiceReady = this.endingEligibilityService.init(endingAtlas);
+    if (typeof window !== 'undefined') {
+      window.endingEligibilityService = this.endingEligibilityService;
+    }
+    if (!endingServiceReady) {
+      console.error('[Container] EndingEligibilityService failed closed: truth atlas unavailable.');
+    }
+    this._log('[Container] EndingEligibilityService created');
+
+    const skillContract = readStartupData('combat:skill_acquisitions');
+    const deckContract = readStartupData('combat:deck_progression');
+    const cardCatalog = readStartupData('cards:battle_cards');
+    this.skillCardAcquisitionSystem = new SkillCardAcquisitionSystem({
       gameState: this.gameState,
+      contract: skillContract,
+      deckContract,
+      cardCatalog,
+      deckCombatSystem: typeof deckCombatSystem !== 'undefined' ? deckCombatSystem : null,
       eventBus: this.eventBus,
       debug: this.debug
     });
+    if (typeof window !== 'undefined') {
+      window.skillCardAcquisitionSystem = this.skillCardAcquisitionSystem;
+    }
+    if (typeof deckCombatSystem !== 'undefined' && deckCombatSystem) {
+      deckCombatSystem.deckAuthority = this.skillCardAcquisitionSystem;
+    }
+    if (typeof shopSystem !== 'undefined' && shopSystem) {
+      shopSystem.deckAuthority = this.skillCardAcquisitionSystem;
+    }
+    this._log('[Container] SkillCardAcquisitionSystem created');
+
+    const opportunityContract = readStartupData('progression:acquisition_opportunities');
+    this.opportunityAcquisitionSystem = new OpportunityAcquisitionSystem({
+      gameState: this.gameState,
+      contract: opportunityContract,
+      skillCardAcquisitionSystem: this.skillCardAcquisitionSystem,
+      treasureSystem: typeof treasureSystem !== 'undefined' ? treasureSystem : null,
+      npcSystem: typeof npcSystem !== 'undefined' ? npcSystem : (typeof window !== 'undefined' ? window.npcSystem : null),
+      factionSystem: typeof factionSystem !== 'undefined' ? factionSystem : (typeof window !== 'undefined' ? window.factionSystem : null),
+      eventBus: this.eventBus,
+      debug: this.debug
+    });
+    if (typeof window !== 'undefined') {
+      window.opportunityAcquisitionSystem = this.opportunityAcquisitionSystem;
+    }
+    this._log('[Container] OpportunityAcquisitionSystem created');
+
+    this.effectService = new EffectService({
+      gameState: this.gameState,
+      eventBus: this.eventBus,
+      skillCardAcquisitionSystem: this.skillCardAcquisitionSystem,
+      opportunityAcquisitionSystem: this.opportunityAcquisitionSystem,
+      endingEligibilityService: this.endingEligibilityService,
+      choiceOutcomeRouter: this.choiceOutcomeRouter,
+      encounterDirector: typeof encounterDirector !== 'undefined' ? encounterDirector : null,
+      debug: this.debug
+    });
     this._log('[Container] EffectService created');
+
+    if (typeof EquipmentSystem !== 'undefined') {
+      this.equipmentSystem = new EquipmentSystem({
+        gameState: this.gameState,
+        eventBus: this.eventBus,
+        dataLoader: this.dataLoader,
+        debug: this.debug
+      });
+      window.equipmentSystem = this.equipmentSystem; // Expose globally for now
+      this._log('[Container] EquipmentSystem created');
+    }
   }
 
   _initCoordinators() {
@@ -50,7 +127,11 @@ class Container {
       gameState: this.gameState,
       deckCombatSystem: deckCombatSystem,
       effectService: this.effectService,
+      choiceOutcomeRouter: this.choiceOutcomeRouter,
+      endingEligibilityService: this.endingEligibilityService,
+      skillCardAcquisitionSystem: this.skillCardAcquisitionSystem,
       cardSystem: cardSystem,
+      chapterSystem: typeof chapterSystem !== 'undefined' ? chapterSystem : null,
       karmaSystem: karmaSystem,
       callbacks: this._buildCombatCallbacks(),
       debug: this.debug
@@ -78,14 +159,61 @@ class Container {
           this.game._triggerInnerVoice(category, probability);
         }
       },
-      onResolveBreakthrough: (rate, card) => {
+      onResolveBreakthrough: (rate, card, isCombat = false) => {
         if (this.game && typeof this.game._resolveBreakthrough === 'function') {
-          this.game._resolveBreakthrough(rate, card);
+          this.game._resolveBreakthrough(rate, card, isCombat);
         }
+      },
+      onCombatOutcome: (outcome, context, data) => {
+        if (this.game && typeof this.game._resolveCombatOutcome === 'function') {
+          return this.game._resolveCombatOutcome(outcome, context, data);
+        }
+        return false;
+      },
+      onRealmGateOutcome: (outcome, card) => {
+        if (this.game && typeof this.game._settleNarrativeSpineCombatOutcome === 'function') {
+          const settled = this.game._settleNarrativeSpineCombatOutcome(outcome, card);
+          if (settled === false) {
+            return {
+              accepted: false,
+              stateRolledBack: this.game._lastNarrativeSpineCombatSettlement?.stateRolledBack === true
+            };
+          }
+        }
+        if (typeof flowDirector !== 'undefined' &&
+            flowDirector &&
+            typeof flowDirector.settleRealmGate === 'function') {
+          return flowDirector.settleRealmGate(outcome, card) !== false;
+        }
+        return true;
       },
       getCurrentCard: () => this.game ? this.game.currentCard : null,
       setCurrentCard: (card) => {
         if (this.game) this.game.currentCard = card;
+      },
+      onDecisionCheckpoint: (sourceCardId = null) => {
+        if (this.game && typeof this.game._commitDecisionCheckpoint === 'function') {
+          return this.game._commitDecisionCheckpoint(sourceCardId);
+        }
+        return false;
+      },
+      onDirectRealmGateDecision: (sourceCardId, encounterInstanceId) => {
+        if (!encounterInstanceId || !this.game) return false;
+        return this.game._commitTopLevelDecision(sourceCardId, {
+          kind: 'combat', stableKey: `direct_gate:${encounterInstanceId}`
+        });
+      },
+      onDirectDungeonBossDecision: (sourceCardId, encounterInstanceId) => {
+        if (!encounterInstanceId || !this.game) return false;
+        return this.game._commitTopLevelDecision(sourceCardId, {
+          kind: 'combat', stableKey: `direct_dungeon:${encounterInstanceId}`
+        });
+      },
+      onDirectCombatDecision: (sourceCardId, encounterInstanceId) => {
+        if (!encounterInstanceId || !this.game) return false;
+        return this.game._commitTopLevelDecision(sourceCardId, {
+          kind: 'combat', stableKey: `direct_combat:${encounterInstanceId}`
+        });
       }
     };
   }
@@ -94,8 +222,23 @@ class Container {
     this.game = new GameLogic({
       gameState: this.gameState,
       eventBus: this.eventBus,
+      cardSystem: cardSystem,
       effectService: this.effectService,
       combatCoordinator: this.combatCoordinator,
+      skillCardAcquisitionSystem: this.skillCardAcquisitionSystem,
+      factionSystem: typeof factionSystem !== 'undefined' ? factionSystem : (typeof window !== 'undefined' ? window.factionSystem : null),
+      npcSystem: typeof npcSystem !== 'undefined' ? npcSystem : (typeof window !== 'undefined' ? window.npcSystem : null),
+      endingEligibilityService: this.endingEligibilityService,
+      choiceOutcomeRouter: this.choiceOutcomeRouter,
+      flowDirector: typeof flowDirector !== 'undefined'
+        ? flowDirector
+        : null,
+      marketSystem: typeof marketSystem !== 'undefined'
+        ? marketSystem
+        : null,
+      encounterDirector: typeof encounterDirector !== 'undefined'
+        ? encounterDirector
+        : null,
       debug: this.debug
     });
     this._log('[Container] GameLogic created');

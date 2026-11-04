@@ -11,7 +11,7 @@
         "left": {
           "text": "守住最后的道念——来世重修",
           "effects": {
-            "reincarnation_bonus": "daoHeart +10"
+            "reincarnation_bonus": "daoHeart +1"
           }
         },
         "right": {
@@ -20,7 +20,8 @@
             "reincarnation_bonus": "cultivation +10"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
     },
     "death_blood_loss": {
       "id": "death_blood_loss",
@@ -31,7 +32,7 @@
         "left": {
           "text": "肉身虽死——神魂不灭",
           "effects": {
-            "reincarnation_bonus": "maxHp +15"
+            "reincarnation_bonus": "maxHp +2"
           }
         },
         "right": {
@@ -40,7 +41,8 @@
             "reincarnation_bonus": "fortune +8"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
     },
     "death_fortune_zero": {
       "id": "death_fortune_zero",
@@ -60,7 +62,8 @@
             "reincarnation_bonus": "karmaBad +15, cultivation +15"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
     },
     "death_karma_good": {
       "id": "death_karma_good",
@@ -71,16 +74,17 @@
         "left": {
           "text": "微笑着消散——善始善终",
           "effects": {
-            "reincarnation_bonus": "karmaGood +20, daoHeart +10"
+            "reincarnation_bonus": "karmaGood +20, daoHeart +1"
           }
         },
         "right": {
           "text": "反抗——凭什么善良是错？",
           "effects": {
-            "reincarnation_bonus": "daoHeart +15"
+            "reincarnation_bonus": "daoHeart +2"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
     },
     "death_karma_bad": {
       "id": "death_karma_bad",
@@ -100,7 +104,8 @@
             "reincarnation_bonus": "karmaBad +10, cultivation +20"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
     },
     "death_lifespan": {
       "id": "death_lifespan",
@@ -111,16 +116,17 @@
         "left": {
           "text": "带着遗憾和感恩——下一世更精彩",
           "effects": {
-            "reincarnation_bonus": "cultivation +15, daoHeart +5"
+            "reincarnation_bonus": "cultivation +15, daoHeart +1"
           }
         },
         "right": {
           "text": "平静接受——此生无憾",
           "effects": {
-            "reincarnation_bonus": "daoHeart +20"
+            "reincarnation_bonus": "daoHeart +2"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_death_reckoning_v1.png"
     }
   }
 }

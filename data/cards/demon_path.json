@@ -49,7 +49,8 @@
             "cultivation": 3
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_meditation.png"
     },
     {
       "id": "dp_orthodox_warning",
@@ -85,7 +86,7 @@
         "right": {
           "text": "隐瞒——'没有'",
           "effects": {
-            "daoHeart": -5,
+            "daoHeart": -2,
             "cultivation": 5,
             "karmaBad": 5
           },
@@ -96,7 +97,8 @@
             "priority": 2
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
     },
     {
       "id": "dp_demon_face",
@@ -129,17 +131,19 @@
           "effects": {
             "daoHeart": 5,
             "karmaGood": 5,
-            "health": -10
+            "health": -2
           },
           "karmaSeed": {
             "id": "demonRefused",
             "seedType": "grudge",
+            "realm": "golden",
             "delay": 15,
             "priority": 3,
             "cancelGroup": "demon_path_choice"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_demon_offer",
@@ -157,13 +161,14 @@
         "left": {
           "text": "接过令牌——'只是看看'",
           "effects": {
-            "daoHeart": -8,
+            "daoHeart": -2,
             "cultivation": 10,
             "karmaBad": 8
           },
           "karmaSeed": {
             "id": "demonAccepted",
             "seedType": "grudge",
+            "realm": "golden",
             "delay": 12,
             "priority": 3,
             "cancelGroup": "demon_path_choice"
@@ -176,7 +181,8 @@
             "karmaGood": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_meditation.png"
     },
     {
       "id": "dp_demon_first_lesson",
@@ -198,7 +204,7 @@
           "text": "继续修炼魔功",
           "effects": {
             "cultivation": 15,
-            "daoHeart": -10,
+            "daoHeart": -2,
             "health": 5,
             "karmaBad": 10
           }
@@ -206,12 +212,13 @@
         "right": {
           "text": "停下——'这不是我要的'",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 10,
             "cultivation": -5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_orthodox_test",
@@ -248,7 +255,8 @@
           },
           "desc": "长老的目光冷了三分。'你可以拒绝——但我记住你了。'"
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_sect_elder_suspicion",
@@ -276,12 +284,13 @@
           "text": "不管——实力才是硬道理",
           "effects": {
             "cultivation": 10,
-            "daoHeart": -5,
+            "daoHeart": -2,
             "fortune": -5,
             "karmaBad": 3
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_end_of_qi",
@@ -300,7 +309,7 @@
         "left": {
           "text": "望向正道——坚定了道心",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 10,
             "fortune": 5
           }
@@ -309,11 +318,12 @@
           "text": "望向远方——心里泛起涟漪",
           "effects": {
             "cultivation": 10,
-            "daoHeart": -5,
+            "daoHeart": -2,
             "fortune": -5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_breakthrough.png"
     },
     {
       "id": "dp_conflict_erupts",
@@ -334,7 +344,7 @@
           "effects": {
             "cultivation": 10,
             "daoHeart": 5,
-            "health": -15
+            "health": -2
           },
           "karmaSeed": {
             "id": "huntDemonMessenger",
@@ -351,7 +361,8 @@
             "fortune": 3
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
     },
     {
       "id": "dp_ambush_by_orthodox",
@@ -373,7 +384,7 @@
         "left": {
           "text": "'他只是想拉拢我——我拒绝了'（半真半假）",
           "effects": {
-            "daoHeart": -5,
+            "daoHeart": -2,
             "fortune": 5
           },
           "karmaSeed": {
@@ -386,9 +397,9 @@
         "right": {
           "text": "'这和你们无关'——硬碰硬",
           "effects": {
-            "health": -20,
             "daoHeart": 5,
-            "karmaBad": 5
+            "karmaBad": 5,
+            "maxHealth": -1
           },
           "karmaSeed": {
             "id": "enmityWithPeers",
@@ -397,7 +408,8 @@
             "priority": 3
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
     },
     {
       "id": "dp_demon_recruit_again",
@@ -434,7 +446,8 @@
             "priority": 4
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
     },
     {
       "id": "dp_demon_truth",
@@ -465,7 +478,8 @@
             "fortune": 3
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_blood_moon_mission",
@@ -485,7 +499,7 @@
           "text": "违抗命令——先疏散村民",
           "effects": {
             "karmaGood": 20,
-            "daoHeart": 15,
+            "daoHeart": 2,
             "cultivation": -5
           },
           "karmaSeed": {
@@ -499,12 +513,13 @@
           "text": "服从命令——只针对魔修",
           "effects": {
             "cultivation": 10,
-            "daoHeart": -10,
+            "daoHeart": -2,
             "karmaBad": 10
           },
           "desc": "你告诉自己——这是军令。但村民的哭声让你三天没睡着。"
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_quest_board.png"
     },
     {
       "id": "dp_captured_by_demon",
@@ -527,7 +542,7 @@
           "text": "'放了我——或者杀了我'",
           "effects": {
             "daoHeart": 10,
-            "health": -10
+            "health": -2
           },
           "karmaSeed": [
             {
@@ -539,6 +554,7 @@
             {
               "id": "orthodoxSideChosen",
               "seedType": "bloodline",
+              "realm": "golden",
               "delay": 6,
               "priority": 5,
               "cancelGroup": "demon_path_choice"
@@ -548,18 +564,20 @@
         "right": {
           "text": "'……正道为什么放弃这片区域？'",
           "effects": {
-            "daoHeart": -5,
+            "daoHeart": -2,
             "fortune": 5
           },
           "karmaSeed": {
             "id": "demonSideChosen",
             "seedType": "bloodline",
+            "realm": "golden",
             "delay": 6,
             "priority": 5,
             "cancelGroup": "demon_path_choice"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_sect_council",
@@ -590,7 +608,8 @@
             "fortune": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_break_from_sect",
@@ -612,7 +631,7 @@
         "left": {
           "text": "'师父——我不会让你失望'",
           "effects": {
-            "daoHeart": 20,
+            "daoHeart": 2,
             "karmaGood": 10,
             "cultivation": 10
           }
@@ -625,7 +644,8 @@
             "karmaBad": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_demon_refugee",
@@ -657,7 +677,8 @@
             "spiritStone": -10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_meditation.png"
     },
     {
       "id": "dp_end_of_foundation",
@@ -676,13 +697,14 @@
         "left": {
           "text": "正道——但不再是盲从的正道",
           "effects": {
-            "daoHeart": 20,
+            "daoHeart": 2,
             "karmaGood": 10,
             "fortune": 5
           },
           "karmaSeed": {
             "id": "orthodoxSideChosen",
             "seedType": "bloodline",
+            "realm": "golden",
             "delay": 2,
             "priority": 5,
             "cancelGroup": "demon_path_choice"
@@ -691,7 +713,7 @@
         "right": {
           "text": "魔道——但不做殷血那样的人",
           "effects": {
-            "daoHeart": -10,
+            "daoHeart": -2,
             "cultivation": 15,
             "karmaBad": 10,
             "fortune": -5
@@ -699,12 +721,14 @@
           "karmaSeed": {
             "id": "demonSideChosen",
             "seedType": "bloodline",
+            "realm": "golden",
             "delay": 2,
             "priority": 5,
             "cancelGroup": "demon_path_choice"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_demon_camp_visit",
@@ -728,7 +752,7 @@
           "effects": {
             "daoHeart": 10,
             "karmaGood": 10,
-            "health": -20
+            "maxHealth": -1
           },
           "karmaSeed": {
             "id": "demonLawDefied",
@@ -740,12 +764,13 @@
         "right": {
           "text": "旁观——魔道的规则就是如此",
           "effects": {
-            "daoHeart": -5,
+            "daoHeart": -2,
             "karmaBad": 5,
             "cultivation": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_demon_factions",
@@ -785,7 +810,8 @@
             "karmaGood": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_orthodox_reconnaissance",
@@ -808,7 +834,7 @@
           "text": "答应——'我本来就打算离开'",
           "effects": {
             "karmaGood": 20,
-            "daoHeart": 15,
+            "daoHeart": 2,
             "fortune": -15
           },
           "karmaSeed": {
@@ -826,7 +852,8 @@
             "fortune": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_demon_betrayal",
@@ -848,9 +875,9 @@
         "left": {
           "text": "当面质问殷血",
           "effects": {
-            "daoHeart": 15,
-            "health": -25,
-            "karmaGood": 10
+            "daoHeart": 2,
+            "karmaGood": 10,
+            "maxHealth": -1
           },
           "karmaSeed": {
             "id": "demonBetrayal",
@@ -862,12 +889,13 @@
         "right": {
           "text": "假装不知——暗中准备后路",
           "effects": {
-            "daoHeart": -5,
+            "daoHeart": -2,
             "fortune": 10,
             "cultivation": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
     },
     {
       "id": "dp_demon_master_visit",
@@ -890,9 +918,9 @@
           "text": "接过——'教我'",
           "effects": {
             "cultivation": 25,
-            "daoHeart": -20,
             "karmaBad": 15,
-            "health": 10
+            "health": 10,
+            "maxDaoHeart": -1
           },
           "karmaSeed": [
             {
@@ -913,9 +941,9 @@
         "right": {
           "text": "拒绝——'我不是殷血'",
           "effects": {
-            "daoHeart": 20,
+            "daoHeart": 2,
             "karmaGood": 10,
-            "health": -15
+            "health": -2
           },
           "karmaSeed": {
             "id": "demonMasterRefused",
@@ -924,7 +952,8 @@
             "priority": 6
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_orthodox_mentor",
@@ -946,7 +975,7 @@
         "left": {
           "text": "接过剑道传承——发誓不辜负",
           "effects": {
-            "daoHeart": 25,
+            "daoHeart": 2,
             "cultivation": 15,
             "karmaGood": 10,
             "treasure": "白刃剑谱"
@@ -970,13 +999,14 @@
         "right": {
           "text": "'师父——你不会有事的'——去寻找灵药",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 15,
             "fortune": 5,
-            "health": -10
+            "health": -2
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_meditation.png"
     },
     {
       "id": "dp_blood_oath",
@@ -998,7 +1028,7 @@
         "left": {
           "text": "发血誓——'我以道基为誓'",
           "effects": {
-            "daoHeart": -15,
+            "daoHeart": -2,
             "cultivation": 30,
             "karmaBad": 20
           },
@@ -1007,10 +1037,10 @@
         "right": {
           "text": "拒绝——'道基是我自己的'",
           "effects": {
-            "daoHeart": 20,
+            "daoHeart": 2,
             "karmaGood": 10,
-            "health": -30,
-            "fortune": -15
+            "fortune": -15,
+            "maxHealth": -1
           },
           "karmaSeed": {
             "id": "bloodOathRefused",
@@ -1019,7 +1049,8 @@
             "priority": 8
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
     },
     {
       "id": "dp_sect_heirloom",
@@ -1041,7 +1072,7 @@
         "left": {
           "text": "握住问道剑——剑鸣如钟",
           "effects": {
-            "daoHeart": 30,
+            "daoHeart": 2,
             "cultivation": 20,
             "treasure": "问道剑"
           },
@@ -1050,11 +1081,12 @@
         "right": {
           "text": "将剑送回——'我不配'",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_demon_schism",
@@ -1076,9 +1108,9 @@
         "left": {
           "text": "站在殷血一边——'自由不该用誓约束缚'",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 10,
-            "health": -25
+            "maxHealth": -1
           },
           "karmaSeed": {
             "id": "demonCivilWarChosen",
@@ -1095,7 +1127,8 @@
             "karmaGood": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
     },
     {
       "id": "dp_orthodox_schism",
@@ -1119,19 +1152,20 @@
           "text": "支持公开真相——'修士有权知道'",
           "effects": {
             "karmaGood": 20,
-            "daoHeart": 15,
+            "daoHeart": 2,
             "fortune": -15
           }
         },
         "right": {
           "text": "支持维持稳定——'真相会害死更多人'",
           "effects": {
-            "daoHeart": -10,
+            "daoHeart": -2,
             "karmaBad": 10,
             "fortune": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
     },
     {
       "id": "dp_demon_redemption",
@@ -1155,9 +1189,9 @@
           "text": "救他——用自己十年修为换他一命",
           "effects": {
             "cultivation": -20,
-            "daoHeart": 25,
+            "daoHeart": 2,
             "karmaGood": 20,
-            "health": -15
+            "health": -2
           },
           "karmaSeed": {
             "id": "savedYinxue",
@@ -1174,7 +1208,8 @@
             "fortune": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
     },
     {
       "id": "dp_demon_ascend",
@@ -1197,13 +1232,14 @@
         "left": {
           "text": "'炸了它——让所有修士都自由'",
           "effects": {
-            "daoHeart": 30,
+            "daoHeart": 2,
             "karmaGood": 25,
             "fortune": -20
           },
           "karmaSeed": {
             "id": "destroyHeavenEngine",
             "seedType": "fate",
+            "realm": "deity",
             "delay": 8,
             "priority": 10
           }
@@ -1212,24 +1248,26 @@
           "text": "'吞噬——我不入地狱谁入地狱'",
           "effects": {
             "cultivation": 35,
-            "daoHeart": -25,
-            "karmaBad": 25
+            "karmaBad": 25,
+            "maxDaoHeart": -1
           },
           "karmaSeed": {
             "id": "consumeHeavenEngine",
             "seedType": "fate",
+            "realm": "deity",
             "delay": 8,
             "priority": 10,
             "cancelGroup": "final_path"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
     },
     {
       "id": "dp_final_stand",
       "type": "SPECIAL",
       "title": "最终抉择",
-      "description": "天道引擎的核心近在眼前——它的光芒照亮了整个界域。殷血和白刃分别站在你身后——一个浑身是魔纹，一个拄着剑。他们等了三百年，等的是这一刻——不是他们自己的抉择，是你的。",
+      "description": "正魔两方都声称自己的路能救人，却都留下了说不清的旧账。关于天道引擎的传闻仍只是碎片，天门也远在数境之外。你现在能决定的是继续追查什么、愿为哪一种答案付出代价；真正的裁断，要等你带着证据走到天门前。",
       "realm": "golden",
       "weight": 5,
       "path": null,
@@ -1244,28 +1282,29 @@
       },
       "choices": {
         "left": {
-          "text": "破而后立——建立新天道",
+          "text": "追查收割证据，预备改写天道",
           "effects": {
-            "daoHeart": 30,
+            "daoHeart": 2,
             "karmaGood": 30,
             "cultivation": 20,
             "fortune": 20,
-            "ending": "chaos"
+          "endingCandidate": "chaos"
           },
-          "desc": "你不会重蹈覆辙——新天道没有正道和魔道之分，只有'道'。殷血和白刃同时点了点头——这是他们三百年恩怨中唯一达成的一致。"
+          "desc": "你记下正魔双方说法中对不上的人名与年月，决定继续寻找天道收割修士的实证。若有一天真能改写规则，先要知道旧规则夺走了什么，也要让仍活着的人有机会作证。"
         },
         "right": {
-          "text": "维持现状——修改天道规则而非推翻",
+          "text": "循天门求证，暂不宣判秩序",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 15,
             "fortune": 10,
             "cultivation": 15,
-            "ending": "ascension"
+          "endingCandidate": "ascension"
           },
-          "desc": "不是所有错误都需要摧毁——有些需要修正。天道引擎继续运转，但不再收割——而是引导。"
+          "desc": "你暂不把传闻当成最终判词，决定先走到天门前，亲眼核对引擎与飞升之路。若现有秩序藏着罪证，届时仍须作出回答；此刻你只为继续求证留下余地。"
         }
-      }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_orthodox_demon_finale_v1.png"
     },
     {
       "id": "dp_refused_revenge",
@@ -1285,8 +1324,8 @@
           "text": "迎战——让他们知道你不是好惹的",
           "effects": {
             "cultivation": 15,
-            "health": -25,
-            "karmaBad": 5
+            "karmaBad": 5,
+            "maxHealth": -1
           }
         },
         "right": {
@@ -1297,7 +1336,8 @@
             "fortune": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
     },
     {
       "id": "dp_accepted_trial",
@@ -1317,9 +1357,9 @@
           "text": "同时炼化正魔两种力量",
           "effects": {
             "cultivation": 20,
-            "daoHeart": 15,
-            "health": -25,
-            "fortune": -10
+            "daoHeart": 2,
+            "fortune": -10,
+            "maxHealth": -1
           },
           "desc": "你不是第一个尝试的人——大多数都死了。但你感到两种力量在你体内开始融合——不是冲突，是互补。"
         },
@@ -1331,7 +1371,8 @@
             "health": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
     }
   ]
 }

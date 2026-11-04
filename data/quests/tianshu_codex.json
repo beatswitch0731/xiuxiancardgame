@@ -9,7 +9,7 @@
       "minTurn": 15,
       "requiredFlags": null,
       "forbiddenFlags": ["tianshuCodexCompleted"],
-      "requiredAttributes": { "daoHeart": 30 },
+      "requiredAttributes": { "daoHeart": 4 },
       "priority": 6
     },
     "entryCardId": "q_tianshu_1",
@@ -20,7 +20,7 @@
       "xuesha_sect": -15
     },
     "rewardOnComplete": {
-      "attributes": { "daoHeart": 15, "cultivation": 30 },
+      "attributes": { "cultivation": 10, "fortune": 5 },
       "flags": ["tianshuCodexCompleted"]
     }
   },
@@ -28,6 +28,8 @@
     {
       "id": "q_tianshu_1",
       "title": "万卷楼的低语",
+      "sceneImage": "assets/cards/keyframes/scene_key_tianshu_shelf_whisper_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天道残卷", "alt": "万卷楼书架上的浅色古籍发出微弱低语，叶凌云尚未打开。" },
       "description": "你在天枢道院的万卷楼修炼时，听到书架深处有微弱的呢喃声。声音来自一本被遗忘的古籍——封面写着《天道·残卷》。",
       "type": "QUEST",
       "questId": "tianshu_codex",
@@ -37,19 +39,22 @@
       "choices": {
         "left": {
           "text": "翻开古籍",
-          "effects": { "daoHeart": 5, "cultivation": 5 },
+          "effects": { "daoHeart": 1, "cultivation": 5 },
           "questNext": "q_tianshu_2"
         },
         "right": {
           "text": "关上书，当没看到",
-          "effects": { "daoHeart": -3 },
-          "questEnd": true
+          "effects": { "daoHeart": -1 },
+          "questEnd": true,
+          "questOutcome": "abandoned"
         }
       }
     },
     {
       "id": "q_tianshu_2",
       "title": "天道残卷——第二页",
+      "sceneImage": "assets/cards/keyframes/scene_key_tianshu_second_page_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天道残卷", "alt": "天道残卷第二页以断环和云阶暗示飞升并非坦途，主角尚未继续翻页或合书。" },
       "description": "古籍的第二页写着一个古老的预言：'天道有缺，非仙能补。飞升非仙路，而是一场选拔。'",
       "type": "QUEST",
       "questId": "tianshu_codex",
@@ -59,19 +64,22 @@
       "choices": {
         "left": {
           "text": "继续研究",
-          "effects": { "cultivation": 15, "daoHeart": 10, "fortune": 5 },
+          "effects": { "cultivation": 8, "daoHeart": 1, "fortune": 5 },
           "questNext": "q_tianshu_3"
         },
         "right": {
           "text": "合上——有些事不该知道",
-          "effects": { "daoHeart": 10, "karmaGood": 5 },
-          "questEnd": true
+          "effects": { "daoHeart": 1, "karmaGood": 5 },
+          "questEnd": true,
+          "questOutcome": "abandoned"
         }
       }
     },
     {
       "id": "q_tianshu_3",
       "title": "天道残卷——第三页",
+      "sceneImage": "assets/cards/keyframes/scene_key_tianshu_third_page_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天道残卷", "alt": "完整的第三页画着叶凌云的未来男性面容与模糊的回字印记，尚未选择保留或撕下。" },
       "description": "古籍第三页——上面画着你的脸。不是现在的你——是飞升后的你。画中的你在哭。下面写着一个字：'回'。",
       "type": "QUEST",
       "questId": "tianshu_codex",
@@ -80,13 +88,15 @@
       "weight": 0,
       "choices": {
         "left": {
-          "text": "记住这个画面",
-          "effects": { "daoHeart": 20, "cultivation": 15, "fortune": -10 },
+          "text": "记下画面与回字印记",
+          "desc": "保留第三页，并把回字与封印纹路摹入识海。",
+          "effects": { "daoHeart": 1, "cultivation": 8, "fortune": -5 },
           "questNext": "q_tianshu_4"
         },
         "right": {
-          "text": "撕掉这一页",
-          "effects": { "daoHeart": -10, "karmaBad": 10, "cultivation": 20 },
+          "text": "撕下这一页，留下拓痕",
+          "desc": "撕碎不祥画像，却把回字与背面的封印纹路拓在袖上；碎片仍可核验。",
+          "effects": { "daoHeart": -1, "karmaBad": 5, "cultivation": 10 },
           "questNext": "q_tianshu_4"
         }
       }
@@ -94,7 +104,10 @@
     {
       "id": "q_tianshu_4",
       "title": "天枢秘典——真相",
-      "description": "你集齐了《天道残卷》的所有碎片。真相是：飞升是一次'收割'——上界每隔千年收割一批最强的修士，抽取他们的修为维持上界运转。这就是天道。",
+      "sceneImage": "assets/cards/keyframes/scene_key_tianshu_codex_truth_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天枢真相", "alt": "万卷楼旧账将回字拓痕与天道收割刻度并列。" },
+      "audioCue": { "onCommittedChoice": { "left": "sfx_karma", "right": "sfx_karma" } },
+      "description": "你以第三页留下的回字与封印纹路，对照残卷其余页和万卷楼的旧账。纸页无论完整还是被撕碎，拓痕都指向同一事实：飞升是一轮收割，上界每七千年抽取一批修士的修为，维持天道引擎运转。你已看清这条账，却仍能决定如何回应。",
       "type": "QUEST",
       "questId": "tianshu_codex",
       "questStep": 4,
@@ -102,15 +115,19 @@
       "weight": 0,
       "choices": {
         "left": {
-          "text": "接受真相——修仙本就如此",
-          "effects": { "daoHeart": 15, "cultivation": 30, "karmaBad": 20 },
+          "text": "暂且接受这套秩序",
+          "desc": "先求自保，记住账目，等待下一次核验。",
+          "effects": { "daoHeart": 1, "cultivation": 10, "karmaBad": 10 },
           "questEnd": true,
+          "questOutcome": "completed",
           "karmaSeed": { "id": "tianshuStarted", "delay": 8, "realm": "golden", "priority": 2 }
         },
         "right": {
-          "text": "决意对抗天道",
-          "effects": { "daoHeart": 25, "karmaGood": 20, "cultivation": 10 },
+          "text": "留下证据，决意对抗收割",
+          "desc": "将可核验的拓痕带出万卷楼，寻找反抗上界的同道。",
+          "effects": { "daoHeart": 1, "karmaGood": 10, "cultivation": 8 },
           "questEnd": true,
+          "questOutcome": "completed",
           "karmaSeed": { "id": "tianshuDeep", "delay": 10, "realm": "nascent", "priority": 2 }
         }
       }

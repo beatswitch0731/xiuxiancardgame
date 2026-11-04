@@ -1,0 +1,418 @@
+{
+  "quest": {
+    "id": "sword_legacy",
+    "name": "剑道传承",
+    "type": "QUEST",
+    "startRealm": "foundation",
+    "pathRestriction": "sword",
+    "trigger": {
+      "minTurn": 8,
+      "requiredFlags": null,
+      "forbiddenFlags": [
+        "swordLegacyCompleted"
+      ],
+      "requiredAttributes": {
+        "daoHeart": 2
+      },
+      "priority": 7
+    },
+    "entryCardId": "q_sword_1",
+    "chainLength": 4,
+    "factionRewards": {
+      "qingyun_sword": 20,
+      "wumeng_alliance": -5
+    },
+    "rewardOnComplete": {
+      "attributes": {
+        "cultivation": 20,
+        "daoHeart": 1,
+        "fortune": 5
+      },
+      "flags": [
+        "swordLegacyCompleted"
+      ],
+      "karmaSeeds": [
+        {
+          "id": "swordLegacyEcho",
+          "delay": 12,
+          "realm": "nascent",
+          "priority": 3
+        }
+      ]
+    }
+  },
+  "cards": [
+    {
+      "id": "q_sword_1",
+      "title": "剑冢遗音",
+      "sceneImage": "assets/cards/keyframes/scene_key_sword_legacy_rust_echo_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "剑冢遗承", "alt": "剑冢中一柄锈剑初次震鸣，白刃和主角尚未触碰剑柄。" },
+      "description": "青云剑宗深处——一处被遗忘的剑冢。你路过时，一柄生锈的古剑轻轻震鸣。白刃真人停下脚步：'它三百年没响过了。它在对你说话。'\n\n剑身上刻着一行模糊的小字：'持剑者知道剑的重量——不是铁的重量，是心的重量。'",
+      "type": "QUEST",
+      "questId": "sword_legacy",
+      "questStep": 1,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "握住剑柄",
+          "effects": {
+            "cultivation": 5,
+            "daoHeart": 1,
+            "health": -1
+          },
+          "questNext": "q_sword_2"
+        },
+        "right": {
+          "text": "恭敬地退开",
+          "effects": {
+            "daoHeart": 1,
+            "fortune": 5
+          },
+          "questEnd": true,
+          "questOutcome": "abandoned"
+        }
+      }
+    },
+    {
+      "id": "q_sword_2",
+      "title": "铸剑之悟",
+      "sceneImage": "assets/cards/keyframes/scene_key_sword_legacy_forge_manual_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "剑冢遗承", "alt": "白刃在剑冢摊开残破铸剑谱，心剑和铁剑两种法门尚未择定。" },
+      "description": "古剑引你找到一本残破的铸剑谱。上半卷教人以心念成剑，下半卷却记着炉火、锤纹和握柄时的重量；两卷末尾同有一句：'器可承力，心须作答。'白刃真人把残谱摊在你面前：'这一次由你决定，先铸看不见的心剑，还是先铸握得住的铁剑。'",
+      "type": "QUEST",
+      "questId": "sword_legacy",
+      "questStep": 2,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "继续铸心剑",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 1,
+            "sword_insight": 1,
+            "_setFlag": "sword_legacy_forged_heart"
+          },
+          "questNext": "q_sword_3"
+        },
+        "right": {
+          "text": "铸一把实实在在的铁剑",
+          "effects": {
+            "cultivation": 5,
+            "daoHeart": 1,
+            "health": 1,
+            "_setFlag": "sword_legacy_forged_iron"
+          },
+          "questNext": "q_sword_3"
+        }
+      }
+    },
+    {
+      "id": "q_sword_3",
+      "title": "出鞘之试",
+      "description": "你将识海中的心剑凝成一线，尚不知它能否承受真正的锋芒。剑冢七柄古剑依次震响，旧日剑意在石壁前聚成一具持剑化身。白刃真人没有代你出手：'剑在心里，也要经得住剑锋。你可以迎战，也可以此刻离开。'",
+      "type": "QUEST",
+      "questId": "sword_legacy",
+      "questStep": 3,
+      "realm": "foundation",
+      "weight": 0,
+      "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_sword_tomb_2_native_v1.png",
+      "artDirection": {
+        "presentation": "scene",
+        "keyframe": true,
+        "chapter": "剑冢遗承试锋",
+        "alt": "同一剑冢石壁前，旧日剑意化身执剑现身；此镜头复用剑冢问心战场。"
+      },
+      "stateVariants": [
+        {
+          "whenFlag": "sword_legacy_forged_iron",
+          "description": "你依残谱锻出一柄有形铁剑，掌中是炉火与锤痕，识海里却仍留着古剑的问句。剑冢七柄古剑依次震响，旧日剑意在石壁前聚成一具持剑化身。白刃真人退开半步：'器可以替你承力，却不能替你回答为何出剑。你可以迎战，也可以离开。'"
+        }
+      ],
+      "choices": {
+        "left": {
+          "text": "以心剑迎战",
+          "desc": "借识海剑意应战；若先前铸的是铁剑，此时改以心念御锋。只有击败剑意化身才能进入最后一课，战败或撤离可重试。",
+          "triggerCombat": true,
+          "victoryEffects": {
+            "cultivation": 15,
+            "daoHeart": 1,
+            "health": -1,
+            "sword_insight": 1,
+            "_setFlag": "sword_legacy_trial_heart"
+          },
+          "defeatEffects": {
+            "daoHeart": -1
+          },
+          "fleeEffects": {
+            "lifespan": -1
+          },
+          "questEndOn": [
+            "victory"
+          ],
+          "karmaSeedOn": [
+            "victory"
+          ],
+          "questNext": "q_sword_4",
+          "karmaSeed": {
+            "id": "swordLegacyStarted",
+            "delay": 6,
+            "realm": "golden",
+            "priority": 2
+          },
+          "enemy": {
+            "templateId": "sword_intent_avatar_qi",
+            "name": "剑意化身",
+            "hp": 10,
+            "atk": 2,
+            "def": 1,
+            "tier": 2,
+            "expReward": 30
+          },
+          "defeatHealthFloor": 1,
+          "combatPresentation": {
+            "presentationId": "combat_q_sword_3_left_sword_tomb_reuse_v1",
+            "sourceCardId": "q_sword_3",
+            "sourceDirection": "left",
+            "battlefieldId": "battlefield_thread_sword_tomb_2_native_v1",
+            "battlefield": "sword_tomb_heart_trial",
+            "warningTitle": "剑冢遗承 · 心剑试锋",
+            "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_sword_tomb_2_native_v1.png",
+            "enemyType": "剑意化身",
+            "difficultyLabel": "筑基 · 剑意试炼",
+            "mechanic": "剑意化身凝势后斩击；以防御承锋，寻找出剑时机。败退不能领取遗承。",
+            "actorCards": {
+              "enemy": {
+                "id": "actor_thread_sword_tomb_2_native_v1",
+                "name": "剑意化身",
+                "kicker": "剑冢问心·承锋",
+                "portraitMode": "bust",
+                "image": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-1.png",
+                "intentFrames": {
+                  "attack": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-2.png",
+                  "defend": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-3.png",
+                  "buff": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-1.png",
+                  "debuff": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-4.png"
+                }
+              }
+            },
+            "vfx": {
+              "damage": {
+                "id": "fx_migrated_thread_sword_tomb_2_left_damage_native_v1",
+                "frames": [
+                  "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-1.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-2.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-3.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-4.png"
+                ],
+                "durationMs": 480
+              },
+              "shield": {
+                "id": "fx_migrated_thread_sword_tomb_2_left_shield_native_v1",
+                "frames": [
+                  "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-1.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-2.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-3.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-4.png"
+                ],
+                "durationMs": 480
+              },
+              "weak": {
+                "id": "fx_migrated_thread_sword_tomb_2_left_weak_native_v1",
+                "frames": [
+                  "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-1.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-2.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-3.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-4.png"
+                ],
+                "durationMs": 480
+              }
+            },
+            "actionPresentationId": "thread_sword_tomb_2",
+            "reuseSource": "thread_sword_tomb_2:left"
+          }
+        },
+        "right": {
+          "text": "执铁剑迎战",
+          "desc": "以手中铁剑承受古剑锋芒；若先前铸的是心剑，此时借实剑校验它。只有击败剑意化身才能进入最后一课，战败或撤离可重试。",
+          "triggerCombat": true,
+          "victoryEffects": {
+            "cultivation": 10,
+            "health": 1,
+            "fortune": 5,
+            "_setFlag": "sword_legacy_trial_iron"
+          },
+          "defeatEffects": {
+            "daoHeart": -1
+          },
+          "fleeEffects": {
+            "lifespan": -1
+          },
+          "questEndOn": [
+            "victory"
+          ],
+          "karmaSeedOn": [
+            "victory"
+          ],
+          "questNext": "q_sword_4",
+          "karmaSeed": {
+            "id": "swordLegacyStarted",
+            "delay": 6,
+            "realm": "golden",
+            "priority": 2
+          },
+          "enemy": {
+            "templateId": "sword_intent_avatar_qi",
+            "name": "剑意化身",
+            "hp": 10,
+            "atk": 2,
+            "def": 1,
+            "tier": 2,
+            "expReward": 30
+          },
+          "defeatHealthFloor": 1,
+          "combatPresentation": {
+            "presentationId": "combat_q_sword_3_right_sword_tomb_reuse_v1",
+            "sourceCardId": "q_sword_3",
+            "sourceDirection": "right",
+            "battlefieldId": "battlefield_thread_sword_tomb_2_native_v1",
+            "battlefield": "sword_tomb_heart_trial",
+            "warningTitle": "剑冢遗承 · 铁剑试锋",
+            "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_sword_tomb_2_native_v1.png",
+            "enemyType": "剑意化身",
+            "difficultyLabel": "筑基 · 剑意试炼",
+            "mechanic": "剑意化身凝势后斩击；以防御承锋，寻找出剑时机。败退不能领取遗承。",
+            "actorCards": {
+              "enemy": {
+                "id": "actor_thread_sword_tomb_2_native_v1",
+                "name": "剑意化身",
+                "kicker": "剑冢问心·破锋",
+                "portraitMode": "bust",
+                "image": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-1.png",
+                "intentFrames": {
+                  "attack": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-2.png",
+                  "defend": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-3.png",
+                  "buff": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-1.png",
+                  "debuff": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-4.png"
+                }
+              }
+            },
+            "vfx": {
+              "damage": {
+                "id": "fx_migrated_thread_sword_tomb_2_right_damage_native_v1",
+                "frames": [
+                  "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-1.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-2.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-3.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-4.png"
+                ],
+                "durationMs": 480
+              },
+              "shield": {
+                "id": "fx_migrated_thread_sword_tomb_2_right_shield_native_v1",
+                "frames": [
+                  "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-1.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-2.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-3.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-4.png"
+                ],
+                "durationMs": 480
+              },
+              "weak": {
+                "id": "fx_migrated_thread_sword_tomb_2_right_weak_native_v1",
+                "frames": [
+                  "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-1.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-2.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-3.png",
+                  "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-4.png"
+                ],
+                "durationMs": 480
+              }
+            },
+            "actionPresentationId": "thread_sword_tomb_2",
+            "reuseSource": "thread_sword_tomb_2:right"
+          }
+        },
+        "down": {
+          "text": "收剑离开剑冢",
+          "desc": "承认此刻还不足以过关，结束传承，不领取完成奖励。",
+          "effects": {
+            "daoHeart": 1
+          },
+          "questEnd": true,
+          "questOutcome": "abandoned"
+        }
+      }
+    },
+    {
+      "id": "q_sword_4",
+      "title": "剑之道",
+      "description": "你胜过剑意化身，白刃真人才带你到无人的山崖。崖边供着旧主的古剑，剑柄缠着尚未散尽的剑意。他说：'最后一课，是知道哪一柄剑属于你，哪一柄不属于你。'你可以依礼承受剑谱的传承，也可以背着守冢人抽走古剑上的一缕剑意；那会在原剑痕留下缺口。两条路都要由你自己承担。",
+      "type": "QUEST",
+      "questId": "sword_legacy",
+      "questStep": 4,
+      "realm": "foundation",
+      "weight": 0,
+      "sceneImage": "assets/cards/keyframes/scene_key_sword_legacy_cliff_choice_v1.png",
+      "artDirection": {
+        "presentation": "scene",
+        "keyframe": true,
+        "chapter": "剑冢遗承终章",
+        "alt": "山崖石龛上的古剑剑意仍完整，旁边放着未启的剑谱；试剑者尚未决定依礼领受或私取。"
+      },
+      "stateVariants": [
+        {
+          "whenFlag": "sword_legacy_trial_iron",
+          "description": "你以铁剑胜过剑意化身，白刃真人把你带到无人的山崖。你的剑仍有炉火留下的锤纹；崖边供着旧主的古剑，剑柄缠着尚未散尽的剑意。他说：'器能承力，却不能替你守礼。'你可以归还试剑之器，依礼承受剑谱；也可以背着守冢人抽走古剑上的一缕剑意，让原剑痕缺去一段。"
+        }
+      ],
+      "choices": {
+        "left": {
+          "text": "依礼领受剑谱，不取古剑",
+          "desc": "空手承受万剑问心。若境界、剑道见识与道心同时抵达门槛，会触发特殊传承；否则从技能牌与法宝混合池中按你的状态落定一份机缘。",
+          "effects": {
+            "opportunityReward": {
+              "opportunityId": "sword_legacy_completion_v1",
+              "profile": "empty_hand"
+            },
+            "cultivation": 15,
+            "daoHeart": 1,
+            "fortune": 8,
+            "_setFlag": "sword_legacy_inherited"
+          },
+          "questEnd": true,
+          "questOutcome": "completed",
+          "karmaSeed": {
+            "id": "swordLegacyTrial",
+            "delay": 10,
+            "realm": "nascent",
+            "priority": 2
+          }
+        },
+        "right": {
+          "text": "私取古剑剑意",
+          "desc": "瞒过守冢人，抽走旧主古剑的一缕剑意，令原剑痕缺去一段。它偏向器契机缘，但仍可能化作剑诀；缺口会留下可追索的因果。",
+          "effects": {
+            "opportunityReward": {
+              "opportunityId": "sword_legacy_completion_v1",
+              "profile": "kept_intent"
+            },
+            "cultivation": 18,
+            "daoHeart": 1,
+            "karmaBad": 1,
+            "_setFlag": "sword_legacy_stolen"
+          },
+          "questEnd": true,
+          "questOutcome": "completed",
+          "karmaSeed": {
+            "id": "swordLegacyTheft",
+            "delay": 8,
+            "realm": "golden",
+            "priority": 2
+          }
+        }
+      }
+    }
+  ]
+}

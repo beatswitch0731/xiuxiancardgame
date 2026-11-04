@@ -1,0 +1,29 @@
+{
+  "pins": {
+    "src/systems/DeckCombatSystem.js": "25c214fbb599ac146b5d4424ce4272ba5fdb77c3a9342acd6e80caba77a01be0",
+    "src/systems/PathArchetypeSystem.js": "52a719665e723bf3ad7fbfd37c1a4cade7e1bd6e9ee2bdea979d52091a23c8ef",
+    "data/cards/battle_cards.json": "2d8e0898f898d70ca7184f67039e717fc9540225b08ce7a1f55d901c84af35a0",
+    "data/config/path_archetypes.json": "53fd09b446cbe1d6108b184483644f4a6a87d27d3bee1ff3fbb7cba04f8845fe"
+  },
+  "firstTurn": [
+    "pill_recycle",
+    "pill_catalyst",
+    "pill_ember",
+    "pill_ember"
+  ],
+  "secondTurn": [
+    "pill_ember",
+    "pill_catalyst"
+  ],
+  "before": {
+    "hp": 3,
+    "enemyHp": 1,
+    "poison": 1,
+    "qi": 0
+  },
+  "after": {
+    "active": false,
+    "enemyHp": 0,
+    "nextCardId": "combat_reward"
+  }
+}

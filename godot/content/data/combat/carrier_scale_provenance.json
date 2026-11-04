@@ -1,0 +1,3072 @@
+{
+  "version": 1,
+  "contractId": "combat_carrier_scale_provenance_v1",
+  "policy": "one_asset_sha_one_entity_authored_profile_binding_species_morphology_stage_role_change_requires_rebind",
+  "entityAuthoredPolicy": "species_morphology_progression_stage_combat_role_own_scale_tier_rarity_hp_forbidden",
+  "records": {
+    "7bcd5173aeedc19ca03d910cfc600e40959163ab21ef3075832fa4aa1f4f6d5d": {
+      "recordId": "scale_7bcd5173aeedc19c",
+      "carrierMetricId": "carrier_yelingyun_s1_sword_idle_v6",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/sword.png",
+      "assetSha256": "7bcd5173aeedc19ca03d910cfc600e40959163ab21ef3075832fa4aa1f4f6d5d",
+      "bodyProfileId": "yelingyun_s1_lean_human",
+      "canonicalHeightU": 0.96,
+      "canonicalWidthU": 0.2674285714285714,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "normal",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.378125,
+        "y": 0.0875,
+        "width": 0.24375,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.34375,
+        "y": 0.0875,
+        "width": 0.3125,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.2785714285714286,
+      "rationale": "The old iron sword, sheath and relaxed left-hand reach are visible pose overhang; the common head-to-sole body ruler remains identical to the other S1 methods.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_outer_novice",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "player_multi_path_novice"
+      },
+      "bodyProfileContractSha256": "ce42ffe7e2ae2e11f3df0cf464e3c00cdc1a559fb91855a9bd56d37462d24645",
+      "staticMetricsContractId": "yelingyun_s1_static_carrier_metrics_v1",
+      "staticMetricsPath": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/static-carrier-metrics.json",
+      "staticMetricsSha256": "55608d6083b6cfda6d3e92e78ce170d2cef48dcbb36d6185ac9df2429a45414d",
+      "staticMetricsCarrierKey": "sword"
+    },
+    "10c746d8a87934bfda71f968d56b0d2601d20b45c9085e490740d144804a3f73": {
+      "recordId": "scale_10c746d8a87934bf",
+      "carrierMetricId": "carrier_quick_sword_dummy_idle_m1",
+      "assetPath": "assets/combat/enemy/enc_trial_sword_swift_agc_m2/identity/intent-1.png",
+      "assetSha256": "10c746d8a87934bfda71f968d56b0d2601d20b45c9085e490740d144804a3f73",
+      "bodyProfileId": "quick_sword_dummy_humanoid",
+      "canonicalHeightU": 1.06,
+      "canonicalWidthU": 0.4811347517730497,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "normal",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.4375,
+        "y": 0.459375,
+        "width": 0.2,
+        "height": 0.440625
+      },
+      "renderBounds": {
+        "x": 0.35,
+        "y": 0.459375,
+        "width": 0.3125,
+        "height": 0.440625,
+        "feetY": 0.9
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5375,
+        "y": 0.9
+      },
+      "bodyBoundsAspect": 0.4539007092198582,
+      "rationale": "The training dummy is deliberately a little taller and more rigid than the novice; its sword reach is excluded from anatomical width.",
+      "authoredScaleBasis": {
+        "speciesId": "sect_training_sword_puppet",
+        "morphologyId": "narrow_jointed_wood_metal_humanoid",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "tutorial_tempo_duelist"
+      },
+      "bodyProfileContractSha256": "58aa7cb85a5138a176ceddc121357c0a66135773144bc9b8aa3fa497fd878123"
+    },
+    "3863440e99c3624914bcf9b9ead706665ffaed65aafca82e8d5222650e0d9b63": {
+      "recordId": "scale_3863440e99c36249",
+      "carrierMetricId": "carrier_mountain_shadow_idle_v1",
+      "assetPath": "assets/combat/enemy_actions/enc_patrol_qi_mountain_shadow_idle_agc_v2/approved_v2/idle-1.png",
+      "assetSha256": "3863440e99c3624914bcf9b9ead706665ffaed65aafca82e8d5222650e0d9b63",
+      "bodyProfileId": "mountain_shadow_heavy_construct",
+      "canonicalHeightU": 1.22,
+      "canonicalWidthU": 1.0812322274881516,
+      "bodyClass": "heavy_construct",
+      "visualThreatRank": "elite",
+      "naturalWidth": 256,
+      "naturalHeight": 256,
+      "bodyBounds": {
+        "x": 0.1328125,
+        "y": 0.1015625,
+        "width": 0.73046875,
+        "height": 0.82421875
+      },
+      "renderBounds": {
+        "x": 0.1015625,
+        "y": 0.1015625,
+        "width": 0.79296875,
+        "height": 0.82421875,
+        "feetY": 0.92578125
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.498046875,
+        "y": 0.92578125
+      },
+      "bodyBoundsAspect": 0.8862559241706162,
+      "rationale": "The construct earns threat through independently authored breadth, low mass and forearm volume rather than a uniformly enlarged human.",
+      "authoredScaleBasis": {
+        "speciesId": "residual_array_stone_construct",
+        "morphologyId": "broad_low_center_oversized_forearm_humanoid",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "ordinary_patrol_pressure_recover"
+      },
+      "bodyProfileContractSha256": "d4b70dfb51097929a63875d297df0f50d0bf0247b79fcfc792db16ccb924a131"
+    },
+    "3551e36059ecd484b3096c707c7c7891613c47a941dda2ddcb0b3faa83b3674d": {
+      "recordId": "scale_3551e36059ecd484",
+      "carrierMetricId": "carrier_yelingyun_s1_spell_idle_v6",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/spell.png",
+      "assetSha256": "3551e36059ecd484b3096c707c7c7891613c47a941dda2ddcb0b3faa83b3674d",
+      "bodyProfileId": "yelingyun_s1_lean_human",
+      "canonicalHeightU": 0.96,
+      "canonicalWidthU": 0.2674285714285714,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "normal",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.378125,
+        "y": 0.0875,
+        "width": 0.24375,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.378125,
+        "y": 0.0875,
+        "width": 0.24375,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.2785714285714286,
+      "rationale": "The folded paper and low talisman pouch stay inside the novice's natural silhouette and do not create a wider or taller body profile.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_outer_novice",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "player_multi_path_novice"
+      },
+      "bodyProfileContractSha256": "ce42ffe7e2ae2e11f3df0cf464e3c00cdc1a559fb91855a9bd56d37462d24645",
+      "staticMetricsContractId": "yelingyun_s1_static_carrier_metrics_v1",
+      "staticMetricsPath": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/static-carrier-metrics.json",
+      "staticMetricsSha256": "55608d6083b6cfda6d3e92e78ce170d2cef48dcbb36d6185ac9df2429a45414d",
+      "staticMetricsCarrierKey": "spell"
+    },
+    "33cfcdfd8c4650158aaabbcd900782b34e75e8dafd091beda5d8485f5632de96": {
+      "recordId": "scale_33cfcdfd8c465015",
+      "carrierMetricId": "carrier_yelingyun_s1_body_idle_v6",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/body.png",
+      "assetSha256": "33cfcdfd8c4650158aaabbcd900782b34e75e8dafd091beda5d8485f5632de96",
+      "bodyProfileId": "yelingyun_s1_lean_human",
+      "canonicalHeightU": 0.96,
+      "canonicalWidthU": 0.2674285714285714,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "normal",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.378125,
+        "y": 0.0875,
+        "width": 0.24375,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.353125,
+        "y": 0.0875,
+        "width": 0.29375,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.2785714285714286,
+      "rationale": "Raised forearms and the wider planted stance are method and pose overhang. They must not bulk the same lean S1 body into a separate anatomy.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_outer_novice",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "player_multi_path_novice"
+      },
+      "bodyProfileContractSha256": "ce42ffe7e2ae2e11f3df0cf464e3c00cdc1a559fb91855a9bd56d37462d24645",
+      "staticMetricsContractId": "yelingyun_s1_static_carrier_metrics_v1",
+      "staticMetricsPath": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/static-carrier-metrics.json",
+      "staticMetricsSha256": "55608d6083b6cfda6d3e92e78ce170d2cef48dcbb36d6185ac9df2429a45414d",
+      "staticMetricsCarrierKey": "body"
+    },
+    "3e6bf68e786fd9e703eb655e643c4c63b23b01a6c6b30e0ddcbb0739a83a9dde": {
+      "recordId": "scale_3e6bf68e786fd9e7",
+      "carrierMetricId": "carrier_yelingyun_s1_pill_idle_v6",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/pill.png",
+      "assetSha256": "3e6bf68e786fd9e703eb655e643c4c63b23b01a6c6b30e0ddcbb0739a83a9dde",
+      "bodyProfileId": "yelingyun_s1_lean_human",
+      "canonicalHeightU": 0.96,
+      "canonicalWidthU": 0.2674285714285714,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "normal",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.378125,
+        "y": 0.0875,
+        "width": 0.24375,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.36875,
+        "y": 0.0875,
+        "width": 0.2625,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.2785714285714286,
+      "rationale": "The closed copper box and single medicine pouch are low method cues; their small overhang cannot alter the novice's canonical body scale.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_outer_novice",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "player_multi_path_novice"
+      },
+      "bodyProfileContractSha256": "ce42ffe7e2ae2e11f3df0cf464e3c00cdc1a559fb91855a9bd56d37462d24645",
+      "staticMetricsContractId": "yelingyun_s1_static_carrier_metrics_v1",
+      "staticMetricsPath": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/static-carrier-metrics.json",
+      "staticMetricsSha256": "55608d6083b6cfda6d3e92e78ce170d2cef48dcbb36d6185ac9df2429a45414d",
+      "staticMetricsCarrierKey": "pill"
+    },
+    "af0354b83be2c2060cef4dfe6339ad37f35a0e4fcf10c71ab8dc3587c634fa52": {
+      "recordId": "scale_af0354b83be2c206",
+      "carrierMetricId": "carrier_corridor_seal_spirit_idle_l1",
+      "assetPath": "assets/combat/enemy_identities/enc_trial_spell_seal_agc_l1/idle-1.png",
+      "assetSha256": "af0354b83be2c2060cef4dfe6339ad37f35a0e4fcf10c71ab8dc3587c634fa52",
+      "bodyProfileId": "corridor_seal_spirit_hovering_core",
+      "canonicalHeightU": 1.14,
+      "canonicalWidthU": 0.82,
+      "bodyClass": "hovering",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.33422423245614036,
+        "y": 0.23958333333333334,
+        "width": 0.3315515350877193,
+        "height": 0.4609375
+      },
+      "renderBounds": {
+        "x": 0.19791666666666666,
+        "y": 0.23958333333333334,
+        "width": 0.6015625,
+        "height": 0.5208333333333334,
+        "feetY": 0.7604166666666666
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.5,
+        "y": 0.91
+      },
+      "bodyBoundsAspect": 0.7192982456140351,
+      "rationale": "one narrow suspended seal core, asymmetric paper wings and visible empty air below; never a legged shrine or robed humanoid",
+      "authoredScaleBasis": {
+        "speciesId": "sect_corridor_seal_spirit",
+        "morphologyId": "narrow_suspended_bronze_paper_core",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "tutorial_lateral_cast_controller"
+      },
+      "bodyProfileContractSha256": "78f175c6faabc0c32efea06a80fbe256fc89d487e06a4f98674912d736c4a8cd",
+      "staticMetricsContractId": "actor_body_profile_enc_trial_spell_seal_agc_l1",
+      "staticMetricsPath": "assets/combat/enemy_actions/enc_trial_spell_seal_agc_l1/proportion-contract.json",
+      "staticMetricsSha256": "56575490b9fe16270ad79ed39ff2712c7a65066493f302acef81aab24997e64a",
+      "staticMetricsCarrierKey": "identityCarrierMetrics"
+    },
+    "63754ed5f60fde3b07459c87e4f6ea99bdfff7b2abb80419eeaf2ff6e41c20b0": {
+      "recordId": "scale_63754ed5f60fde3b",
+      "carrierMetricId": "carrier_qi_thunder_gate_stele_sentinel_idle_h1",
+      "assetPath": "assets/combat/enemy_identities/qi_thunder_gate_stele_sentinel_agc_h1/idle-1.png",
+      "assetSha256": "63754ed5f60fde3b07459c87e4f6ea99bdfff7b2abb80419eeaf2ff6e41c20b0",
+      "bodyProfileId": "qi_thunder_colossal_stele_quadruped",
+      "canonicalHeightU": 1.52,
+      "canonicalWidthU": 1.12,
+      "bodyClass": "colossal_stele_quadruped_construct",
+      "visualThreatRank": "boss",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.2588,
+        "y": 0.25,
+        "width": 0.5166529605263158,
+        "height": 0.701171875
+      },
+      "renderBounds": {
+        "x": 0.171875,
+        "y": 0.25,
+        "width": 0.693359375,
+        "height": 0.701171875,
+        "feetY": 0.951171875
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.517578125,
+        "y": 0.951171875
+      },
+      "bodyBoundsAspect": 0.736842105263158,
+      "rationale": "upper-narrow ritual stele over a broad low plinth and four independent pier legs; menace derives from material mass and contact stability, never giant shoulders or uniform humanoid enlargement",
+      "authoredScaleBasis": {
+        "speciesId": "sect_thunder_gate_ritual_stele_construct",
+        "morphologyId": "upper_narrow_stele_broad_plinth_four_pier_quadruped",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "realm_gate_boss_ground_conduit"
+      },
+      "bodyProfileContractSha256": "03e8f776adc9a7bb52266f0a08d324b8dc0139443f9bc7c4512f84d4cec54946",
+      "staticMetricsContractId": "actor_body_profile_qi_thunder_gate_stele_sentinel_agc_h1",
+      "staticMetricsPath": "assets/combat/enemy_actions/qi_thunder_gate_stele_sentinel_agc_h1/proportion-contract.json",
+      "staticMetricsSha256": "6b90cb65cd1cd43df6758413a2129062f1353581ddeaabd21d841d324c1699e7",
+      "staticMetricsCarrierKey": "identityCarrierMetrics"
+    },
+    "cf91cd05f7f54fb908d326c2b99de2554ae0d4ae8e2862a21d7ccf2cbdc11fb9": {
+      "recordId": "scale_cf91cd05f7f54fb9",
+      "carrierMetricId": "carrier_iron_beast_idle_agc_j2",
+      "assetPath": "assets/combat/enemy_identities/enc_trial_body_iron_agc_j2/idle-1.png",
+      "assetSha256": "cf91cd05f7f54fb908d326c2b99de2554ae0d4ae8e2862a21d7ccf2cbdc11fb9",
+      "bodyProfileId": "iron_beast_low_quadruped_j2",
+      "canonicalHeightU": 0.82,
+      "canonicalWidthU": 1.0528994082840237,
+      "bodyClass": "low_beast",
+      "visualThreatRank": "normal",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.159375,
+        "y": 0.3625,
+        "width": 0.678125,
+        "height": 0.528125
+      },
+      "renderBounds": {
+        "x": 0.159375,
+        "y": 0.3625,
+        "width": 0.678125,
+        "height": 0.528125,
+        "feetY": 0.890625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.4984375,
+        "y": 0.890625
+      },
+      "bodyBoundsAspect": 1.2840236686390534,
+      "rationale": "ordinary trial threat reads as a low wide machine that occupies ground and presses forward, never as a uniformly enlarged humanoid",
+      "authoredScaleBasis": {
+        "speciesId": "sect_iron_construct_beast",
+        "morphologyId": "low_broad_four_leg_chassis",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "ordinary_trial_pressure"
+      },
+      "bodyProfileContractSha256": "e42e2539190e471836d76102976262b434ab1f2ed96a4349b4710407557c31dc",
+      "staticMetricsContractId": "agc_enemy_authored_proportion_v2",
+      "staticMetricsPath": "assets/combat/enemy_identities/enc_trial_body_iron_agc_j2/provenance/proportion-contract.json",
+      "staticMetricsSha256": "e97b478be0fa33f9939aad34d592d0b0a62c1f8ca677a7a30c9c3cb39a427b6d",
+      "staticMetricsCarrierKey": "identityCarrierMetrics"
+    },
+    "1b8877394f47d31b24dbff3f23a0f149bfac850c9929f4ecf8a4903c27ed1dc7": {
+      "recordId": "scale_1b8877394f47d31b",
+      "carrierMetricId": "carrier_pill_furnace_idle_agc_j2",
+      "assetPath": "assets/combat/enemy_identities/enc_trial_pill_poison_agc_j2/idle-1.png",
+      "assetSha256": "1b8877394f47d31b24dbff3f23a0f149bfac850c9929f4ecf8a4903c27ed1dc7",
+      "bodyProfileId": "pill_furnace_compact_low_construct_j2",
+      "canonicalHeightU": 0.74,
+      "canonicalWidthU": 0.6830769230769231,
+      "bodyClass": "heavy_construct",
+      "visualThreatRank": "normal",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.14375,
+        "y": 0.11875,
+        "width": 0.7125,
+        "height": 0.771875
+      },
+      "renderBounds": {
+        "x": 0.14375,
+        "y": 0.11875,
+        "width": 0.7125,
+        "height": 0.771875,
+        "feetY": 0.890625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.890625
+      },
+      "bodyBoundsAspect": 0.9230769230769231,
+      "rationale": "introductory poison threat stays shorter than the novice; danger is read from the pressurised belly, high vent and lateral clamps",
+      "authoredScaleBasis": {
+        "speciesId": "sect_herbal_furnace_construct",
+        "morphologyId": "short_round_belly_raised_vent_biped",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "tutorial_poison_pressure_vent"
+      },
+      "bodyProfileContractSha256": "7070be7c4ff13db7ab54a380a255b94f7f7a994149b059168605483d55be074e",
+      "staticMetricsContractId": "agc_enemy_authored_proportion_v2",
+      "staticMetricsPath": "assets/combat/enemy_identities/enc_trial_pill_poison_agc_j2/provenance/proportion-contract.json",
+      "staticMetricsSha256": "d80daec8a2e3bbddf6c14a19fda639eb7667d09c9aab9eb67629f7c7f9152afe",
+      "staticMetricsCarrierKey": "identityCarrierMetrics"
+    },
+    "98cf11c2a7fb530d26f3824f54cc8f219967a574d8eb337e1f07ced26c2fdc6c": {
+      "recordId": "scale_98cf11c2a7fb530d",
+      "carrierMetricId": "carrier_yelingyun_s3_sword_idle_g2",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S3_marked_rebel/sword.png",
+      "assetSha256": "98cf11c2a7fb530d26f3824f54cc8f219967a574d8eb337e1f07ced26c2fdc6c",
+      "bodyProfileId": "yelingyun_s3_lean_adult_swordsman",
+      "canonicalHeightU": 1.04,
+      "canonicalWidthU": 0.315,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_golden_core",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.3674879807692308,
+        "y": 0.0875,
+        "width": 0.26502403846153844,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.34375,
+        "y": 0.0875,
+        "width": 0.3125,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.30288461538461536,
+      "rationale": "The 24-year-old sword cultivator gains modest height and a steadier adult stance; the old iron sword remains pose overhang, never body width. No muscle inflation, rags, armour or uniform scale multiplier.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_adult_swordsman",
+        "progressionStageId": "golden_s3",
+        "combatRoleId": "player_sword_method"
+      },
+      "bodyProfileContractSha256": "49d73ca8d7b135f20865ce6268b6ad4863b639b271b4514cb47cc43bb1f2ba7e",
+      "staticMetricsContractId": "yelingyun_s3_sword_static_carrier_metrics_g2_v1",
+      "staticMetricsPath": "assets/combat/protagonist/growth_matrix_agc_v6/S3_marked_rebel/static-carrier-metrics.json",
+      "staticMetricsSha256": "98f821c80aedd517b7031ded3aebfd05c5b6e3d398ed5e558359e5905d101686",
+      "staticMetricsCarrierKey": "sword"
+    },
+    "6e66bb44ade98a69c60ad172f05f243d1d5899cadc67f2f172934f1fa60750b8": {
+      "recordId": "scale_6e66bb44ade98a69",
+      "carrierMetricId": "carrier_sword_array_idle_agc_g2",
+      "assetPath": "assets/combat/enemy_identities/enc_trial_sword_array_agc_g2/intent-1.png",
+      "assetSha256": "6e66bb44ade98a69c60ad172f05f243d1d5899cadc67f2f172934f1fa60750b8",
+      "bodyProfileId": "floating_weapon_constellation",
+      "canonicalHeightU": 1.18,
+      "canonicalWidthU": 1.26,
+      "bodyClass": "hovering",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.16666666666666666,
+        "y": 0.18905009920634924,
+        "width": 0.6640625,
+        "height": 0.6218998015873015
+      },
+      "renderBounds": {
+        "x": 0.16666666666666666,
+        "y": 0.1796875,
+        "width": 0.6640625,
+        "height": 0.640625,
+        "feetY": 0.8203125
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.5,
+        "y": 0.9203125
+      },
+      "bodyBoundsAspect": 1.0677966101694916,
+      "rationale": "Seven separated swords author a broad 1.26U control domain; only 1.18U height and a visible hover gap avoid a uniformly enlarged humanoid read.",
+      "authoredScaleBasis": {
+        "speciesId": "artifact_sword_formation",
+        "morphologyId": "seven_member_hovering_constellation",
+        "progressionStageId": "golden_s3",
+        "combatRoleId": "elite_area_denial_formation"
+      },
+      "bodyProfileContractSha256": "0150c375cdb426b078a6b18cf8eddc150ef839497c4bfcb9b0bbd61aae5a1c4a",
+      "staticMetricsContractId": "agc_g2_sword_array_authored_proportion_v1",
+      "staticMetricsPath": "assets/combat/enemy_identities/enc_trial_sword_array_agc_g2/provenance/proportion-contract.json",
+      "staticMetricsSha256": "66f5968da8461571401a6af239c0427d8a04cc7af4376c1dfcaec8b8903bb894",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "25efcd51eb5d442f684e04db9f22d4faeac806aaab7c8f0354a4ac1f56d05288": {
+      "recordId": "scale_25efcd51eb5d442f",
+      "carrierMetricId": "carrier_yelingyun_s2_sword_idle_k2",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S2_resonant_disciple/sword.png",
+      "assetSha256": "25efcd51eb5d442f684e04db9f22d4faeac806aaab7c8f0354a4ac1f56d05288",
+      "bodyProfileId": "yelingyun_s2_resonant_swordsman",
+      "canonicalHeightU": 1,
+      "canonicalWidthU": 0.29,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_foundation",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.373125,
+        "y": 0.0875,
+        "width": 0.25375,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.334375,
+        "y": 0.0875,
+        "width": 0.33125,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.29,
+      "rationale": "The S2 disciple keeps a 1.00U young-human ruler and narrow 0.29U anatomy; sword reach remains pose overhang.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_resonant_swordsman",
+        "progressionStageId": "foundation_s2",
+        "combatRoleId": "player_sword_method"
+      },
+      "bodyProfileContractSha256": "3c715d7370996d19f0be0d2471bc2d1d27a51a50d8500fc6039d12241cd4d178",
+      "staticMetricsContractId": "agc_k2_s2_sword_generated_bundle_v1_authored_proportion",
+      "staticMetricsPath": "assets/combat/protagonist/s2_resonant_disciple_k2/provenance/proportion-contract.json",
+      "staticMetricsSha256": "5f9d2c4eb66dcaf6e69794643542deda64a0476073d343ba67d41869af9cb438",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "db6ed6d066d2cc8dcfdf7bec460d4aba50835b388ff293d5c19a6d05943c0654": {
+      "recordId": "scale_db6ed6d066d2cc8d",
+      "carrierMetricId": "carrier_wumeng_gatekeeper_idle_k2",
+      "assetPath": "assets/combat/enemy_identities/enc_faction_wumeng_elite_agc_k2/intent-1.png",
+      "assetSha256": "db6ed6d066d2cc8dcfdf7bec460d4aba50835b388ff293d5c19a6d05943c0654",
+      "bodyProfileId": "wumeng_stocky_gatekeeper",
+      "canonicalHeightU": 1.14,
+      "canonicalWidthU": 0.52,
+      "bodyClass": "stocky_humanoid",
+      "visualThreatRank": "elite",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.4676706414473684,
+        "y": 0.35546875,
+        "width": 0.26192434210526316,
+        "height": 0.57421875
+      },
+      "renderBounds": {
+        "x": 0.349609375,
+        "y": 0.35546875,
+        "width": 0.498046875,
+        "height": 0.57421875,
+        "feetY": 0.9296875
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9296875
+      },
+      "bodyBoundsAspect": 0.456140350877193,
+      "rationale": "The 1.14U height and 0.52U body ruler are independently authored; open palms and stance width remain pose overhang.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "stocky_wide_shoulder_gatekeeper",
+        "progressionStageId": "foundation_s2",
+        "combatRoleId": "elite_lane_gatekeeper"
+      },
+      "bodyProfileContractSha256": "bee4a299d49a3e81e0c3d4a30bb4e24d84c1ab66588fd59b5da7da3482380a70",
+      "staticMetricsContractId": "agc_k2_wumeng_gatekeeper_generated_bundle_v1_authored_proportion",
+      "staticMetricsPath": "assets/combat/enemy_identities/enc_faction_wumeng_elite_agc_k2/provenance/proportion-contract.json",
+      "staticMetricsSha256": "db65d5cd30fe11df617447798d4121c5b4e2bfabd3400bbbeffec846eb0a2dbd",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "66edfd309e54c70b5630b68ea1ad97c935805c80035ee803db5312cf46ef4d7d": {
+      "recordId": "scale_66edfd309e54c70b",
+      "carrierMetricId": "carrier_foundation_mirror_idle_k2",
+      "assetPath": "assets/combat/enemy_identities/enc_boss_foundation_mirror_agc_k2/intent-1.png",
+      "assetSha256": "66edfd309e54c70b5630b68ea1ad97c935805c80035ee803db5312cf46ef4d7d",
+      "bodyProfileId": "foundation_mirror_hovering_ordeal",
+      "canonicalHeightU": 1.6,
+      "canonicalWidthU": 0.94,
+      "bodyClass": "hovering",
+      "visualThreatRank": "boss",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.310546875,
+        "y": 0.3362283909574468,
+        "width": 0.369140625,
+        "height": 0.6283244680851064
+      },
+      "renderBounds": {
+        "x": 0.310546875,
+        "y": 0.3203125,
+        "width": 0.369140625,
+        "height": 0.66015625,
+        "feetY": 0.98046875
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.5,
+        "y": 0.99
+      },
+      "bodyBoundsAspect": 0.5874999999999999,
+      "rationale": "The mirror ordeal uses a separately authored formation ruler and shadow projection; it shares no scale profile, center of mass or foot shadow with humanoids.",
+      "authoredScaleBasis": {
+        "speciesId": "mirror_spirit_construct",
+        "morphologyId": "tall_fragmented_hovering_body",
+        "progressionStageId": "foundation_s2",
+        "combatRoleId": "boss_ordeal_controller"
+      },
+      "bodyProfileContractSha256": "79e0bd1ede0082356f6e35972ef59298ed7462a4ff7924b90b453a03671d5b86",
+      "staticMetricsContractId": "agc_k2_foundation_mirror_generated_bundle_v1_authored_proportion",
+      "staticMetricsPath": "assets/combat/enemy_identities/enc_boss_foundation_mirror_agc_k2/provenance/proportion-contract.json",
+      "staticMetricsSha256": "e8114da31f99a08929883e05224d06dca6ed11d26d82a6945de97f083e94cea0",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "ce0fb95f10422980c6481136b59c682e100208da77517470972659040f02fb9b": {
+      "recordId": "scale_ce0fb95f10422980",
+      "carrierMetricId": "carrier_yelingyun_s2_spell_idle_k4",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S2_resonant_disciple/spell.png",
+      "assetSha256": "ce0fb95f10422980c6481136b59c682e100208da77517470972659040f02fb9b",
+      "bodyProfileId": "yelingyun_s2_resonant_spellwright",
+      "canonicalHeightU": 1,
+      "canonicalWidthU": 0.28,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_foundation",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.3775,
+        "y": 0.08750000000000002,
+        "width": 0.24500000000000002,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.359375,
+        "y": 0.0875,
+        "width": 0.28125,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.28,
+      "rationale": "The same S2 Ye Lingyun keeps a 1.00U human height; spell changes authored stance width, center of mass and method without changing age, identity or camera scale.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_resonant_spellwright",
+        "progressionStageId": "foundation_s2",
+        "combatRoleId": "player_spell_method"
+      },
+      "bodyProfileContractSha256": "ceecde77fe37decc188c75b5b7f7751347a7cb5b5722a384a546b836df8fae42",
+      "staticMetricsContractId": "agc_k4_s2_spell_authored_proportion_v1",
+      "staticMetricsPath": "assets/combat/protagonist/s2_resonant_disciple_k4/spell/provenance/proportion-contract.json",
+      "staticMetricsSha256": "cd4ad4973e3a105034365946215cee83063fe6e8a6955230d6a5fa775acd4a38",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "537d3e90ac422ed1e56dfb3c843cb937e7358d00c74a191e70860272ffb199ef": {
+      "recordId": "scale_537d3e90ac422ed1",
+      "carrierMetricId": "carrier_yelingyun_s2_body_idle_k4",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S2_resonant_disciple/body.png",
+      "assetSha256": "537d3e90ac422ed1e56dfb3c843cb937e7358d00c74a191e70860272ffb199ef",
+      "bodyProfileId": "yelingyun_s2_resonant_body_method",
+      "canonicalHeightU": 1,
+      "canonicalWidthU": 0.32,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_foundation",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.36,
+        "y": 0.08750000000000002,
+        "width": 0.28,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.346875,
+        "y": 0.0875,
+        "width": 0.30625,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.32,
+      "rationale": "The same S2 Ye Lingyun keeps a 1.00U human height; body changes authored stance width, center of mass and method without changing age, identity or camera scale.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "low_center_body_method",
+        "progressionStageId": "foundation_s2",
+        "combatRoleId": "player_body_method"
+      },
+      "bodyProfileContractSha256": "2d754f96ec92404e3f751e82c21a72edbf3e55b099a07a5088c9939b7c9aaf08",
+      "staticMetricsContractId": "agc_k4_s2_body_authored_proportion_v1",
+      "staticMetricsPath": "assets/combat/protagonist/s2_resonant_disciple_k4/body/provenance/proportion-contract.json",
+      "staticMetricsSha256": "841b1434c25263969ca42b77eaba3c6fd7293089b13f46b169e25299f704fed4",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "a198315c983d054234183e03513fd4f9bd3d0255c5c5f6cf309de1f8e5a6ab57": {
+      "recordId": "scale_a198315c983d0542",
+      "carrierMetricId": "carrier_yelingyun_s2_pill_idle_k4",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S2_resonant_disciple/pill.png",
+      "assetSha256": "a198315c983d054234183e03513fd4f9bd3d0255c5c5f6cf309de1f8e5a6ab57",
+      "bodyProfileId": "yelingyun_s2_resonant_pill_method",
+      "canonicalHeightU": 1,
+      "canonicalWidthU": 0.3,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_foundation",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.36875,
+        "y": 0.08750000000000002,
+        "width": 0.2625,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.3375,
+        "y": 0.0875,
+        "width": 0.325,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.3,
+      "rationale": "The same S2 Ye Lingyun keeps a 1.00U human height; pill changes authored stance width, center of mass and method without changing age, identity or camera scale.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_resonant_alchemist",
+        "progressionStageId": "foundation_s2",
+        "combatRoleId": "player_pill_method"
+      },
+      "bodyProfileContractSha256": "a519006c55d10d6f27a3a943ddc79c9d0051cb9a379fa9b90e6ddc8f9a5e5362",
+      "staticMetricsContractId": "agc_k4_s2_pill_authored_proportion_v1",
+      "staticMetricsPath": "assets/combat/protagonist/s2_resonant_disciple_k4/pill/provenance/proportion-contract.json",
+      "staticMetricsSha256": "255f53fafe3618892e5ce9ae5a785bb1a95ded843563272a237be3a1f327417a",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "e3c57b2b5748366c798dba1c042babaf2f1e1892fec2017a24600c143eb2d750": {
+      "recordId": "scale_e3c57b2b5748366c",
+      "carrierMetricId": "carrier_yelingyun_s3_spell_idle_n1",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S3_marked_rebel/spell.png",
+      "assetSha256": "e3c57b2b5748366c798dba1c042babaf2f1e1892fec2017a24600c143eb2d750",
+      "bodyProfileId": "yelingyun_s3_marked_spellwright",
+      "canonicalHeightU": 1.04,
+      "canonicalWidthU": 0.295,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_golden",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.3759014423076923,
+        "y": 0.08750000000000002,
+        "width": 0.24819711538461536,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.34375,
+        "y": 0.0875,
+        "width": 0.3125,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.28365384615384615,
+      "rationale": "叶凌云 keeps an entity-authored 1.04U height and 0.295U width; threat is not produced by a shared enemy multiplier.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_marked_spellwright",
+        "progressionStageId": "golden_s3",
+        "combatRoleId": "player_spell_method"
+      },
+      "bodyProfileContractSha256": "2f6161e3cedaa53ea5fdb7986a0b1b877280bd81c39c889a34eefff24f64ee96"
+    },
+    "0aca930161ecadf1fca52a255d6030b36c2686124df0f36cc0b7c8006278e88d": {
+      "recordId": "scale_0aca930161ecadf1",
+      "carrierMetricId": "carrier_yelingyun_s3_body_idle_n1",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S3_marked_rebel/body.png",
+      "assetSha256": "0aca930161ecadf1fca52a255d6030b36c2686124df0f36cc0b7c8006278e88d",
+      "bodyProfileId": "yelingyun_s3_marked_body_method",
+      "canonicalHeightU": 1.04,
+      "canonicalWidthU": 0.35,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_golden",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.35625,
+        "y": 0.10821428571428571,
+        "width": 0.2875,
+        "height": 0.8542857142857143
+      },
+      "renderBounds": {
+        "x": 0.35625,
+        "y": 0.0875,
+        "width": 0.2875,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.3365384615384615,
+      "rationale": "叶凌云 keeps an entity-authored 1.04U height and 0.35U width; threat is not produced by a shared enemy multiplier.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "grounded_marked_body_method",
+        "progressionStageId": "golden_s3",
+        "combatRoleId": "player_body_method"
+      },
+      "bodyProfileContractSha256": "8bf8cbbac0fa0e8cf52bcf4cb8e1aa85cb14c118520f4ecca348969cbcb35d5d"
+    },
+    "8f470e6039e6759a7e32524e8fe6f7bbe5d5575c318b18aceff97fa09578aea2": {
+      "recordId": "scale_8f470e6039e6759a",
+      "carrierMetricId": "carrier_yelingyun_s3_pill_idle_n1",
+      "assetPath": "assets/combat/protagonist/growth_matrix_agc_v6/S3_marked_rebel/pill.png",
+      "assetSha256": "8f470e6039e6759a7e32524e8fe6f7bbe5d5575c318b18aceff97fa09578aea2",
+      "bodyProfileId": "yelingyun_s3_marked_pill_method",
+      "canonicalHeightU": 1.04,
+      "canonicalWidthU": 0.32,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_golden",
+      "naturalWidth": 320,
+      "naturalHeight": 320,
+      "bodyBounds": {
+        "x": 0.36538461538461536,
+        "y": 0.08750000000000002,
+        "width": 0.2692307692307693,
+        "height": 0.875
+      },
+      "renderBounds": {
+        "x": 0.3625,
+        "y": 0.0875,
+        "width": 0.275,
+        "height": 0.875,
+        "feetY": 0.9625
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.9625
+      },
+      "bodyBoundsAspect": 0.30769230769230776,
+      "rationale": "叶凌云 keeps an entity-authored 1.04U height and 0.32U width; threat is not produced by a shared enemy multiplier.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_marked_alchemist",
+        "progressionStageId": "golden_s3",
+        "combatRoleId": "player_pill_method"
+      },
+      "bodyProfileContractSha256": "8162573b14a076b5b01d59912b9c9562f82b0e33fb8d1ac20d792cccba420942"
+    },
+    "2820e568124020bb1bf3d57f0499eff0fb86f048fc6d108800a3dba15401a0ee": {
+      "recordId": "scale_2820e568124020bb",
+      "carrierMetricId": "carrier_golden_yinyang_twin_head_quadruped_n1",
+      "assetPath": "assets/combat/enemies/golden_thunder_beast_n1/action/action-1.png",
+      "assetSha256": "2820e568124020bb1bf3d57f0499eff0fb86f048fc6d108800a3dba15401a0ee",
+      "bodyProfileId": "golden_yinyang_twin_head_quadruped",
+      "canonicalHeightU": 1.22,
+      "canonicalWidthU": 1.18,
+      "bodyClass": "quadruped",
+      "visualThreatRank": "boss",
+      "naturalWidth": 768,
+      "naturalHeight": 768,
+      "bodyBounds": {
+        "x": 0.30904200819672134,
+        "y": 0.4440104166666667,
+        "width": 0.4105618169398907,
+        "height": 0.4244791666666667
+      },
+      "renderBounds": {
+        "x": 0.19661458333333334,
+        "y": 0.4440104166666667,
+        "width": 0.6354166666666666,
+        "height": 0.4244791666666667,
+        "feetY": 0.8684895833333334
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5143229166666667,
+        "y": 0.8684895833333334
+      },
+      "bodyBoundsAspect": 0.9672131147540982,
+      "rationale": "阴阳雷兽 keeps an entity-authored 1.22U height and 1.18U width; threat is not produced by a shared enemy multiplier.",
+      "authoredScaleBasis": {
+        "speciesId": "thunder_spirit_beast",
+        "morphologyId": "low_broad_twin_head_quadruped",
+        "progressionStageId": "golden_s3",
+        "combatRoleId": "boss_lane_pressure"
+      },
+      "bodyProfileContractSha256": "d2e0b7e58cd31dab4aae6e9e10a2a2b61367e590bc3f7f336eb7baf2e05119ae"
+    },
+    "2d99b33f7c1753cfeeb52179dd9867a1cb9ee976e9636463ee2f3de5e61eb8fb": {
+      "recordId": "scale_2d99b33f7c1753cf",
+      "carrierMetricId": "carrier_golden_furnace_flame_hovering_wisp_n1",
+      "assetPath": "assets/combat/enemies/golden_furnace_flame_n1/action/action-1.png",
+      "assetSha256": "2d99b33f7c1753cfeeb52179dd9867a1cb9ee976e9636463ee2f3de5e61eb8fb",
+      "bodyProfileId": "golden_furnace_flame_hovering_wisp",
+      "canonicalHeightU": 0.52,
+      "canonicalWidthU": 0.42,
+      "bodyClass": "hovering_construct",
+      "visualThreatRank": "ordinary",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.3333333333333333,
+        "y": 0.3249007936507936,
+        "width": 0.3307291666666667,
+        "height": 0.4094742063492064
+      },
+      "renderBounds": {
+        "x": 0.3333333333333333,
+        "y": 0.2682291666666667,
+        "width": 0.3307291666666667,
+        "height": 0.4661458333333333,
+        "feetY": 0.734375
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.49869791666666663,
+        "y": 0.769375
+      },
+      "bodyBoundsAspect": 0.8076923076923076,
+      "rationale": "离炉真火 keeps an entity-authored 0.52U height and 0.42U width; threat is not produced by a shared enemy multiplier.",
+      "authoredScaleBasis": {
+        "speciesId": "furnace_fire_spirit",
+        "morphologyId": "small_directional_hovering_wisp",
+        "progressionStageId": "golden_s3",
+        "combatRoleId": "ordinary_fast_pressure"
+      },
+      "bodyProfileContractSha256": "8fc81d7a11e475900b2b3291a04c2daa8fd3428487dc48e36f3582b81c24ef1f"
+    },
+    "b7efeba6376e2f932c12360b50cc2d7cec27eeac53d5bf6d71df2987f29c7480": {
+      "recordId": "scale_b7efeba6376e2f93",
+      "carrierMetricId": "carrier_outer_guard_idle_agc_n8",
+      "assetPath": "assets/combat/enemy_identities/outer_guard_disciplined_humanoid_agc_n8/idle-1.png",
+      "assetSha256": "b7efeba6376e2f932c12360b50cc2d7cec27eeac53d5bf6d71df2987f29c7480",
+      "bodyProfileId": "outer_guard_disciplined_humanoid_n8",
+      "canonicalHeightU": 1.03,
+      "canonicalWidthU": 0.34,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.382648159,
+        "y": 0.177083333,
+        "width": 0.232099515,
+        "height": 0.703125
+      },
+      "renderBounds": {
+        "x": 0.2526041666666667,
+        "y": 0.17708333333333334,
+        "width": 0.4921875,
+        "height": 0.703125,
+        "feetY": 0.8802083333333334
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.498697917,
+        "y": 0.8802083333333334
+      },
+      "bodyBoundsAspect": 0.330097088,
+      "rationale": "authority_reads_from_short_blade_reach_disciplined_stance_and_recovery_control_not_rank_scaling",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "disciplined_lean_outer_guard_short_blade",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "elite_tempo_gatekeeper"
+      },
+      "bodyProfileContractSha256": "f8136a9aeef9feb96484e9d5cb6e6674c56713945eba280596f7cd00f6e76ced",
+      "staticMetricsContractId": "agc_n8_measured_static_carrier_v1",
+      "staticMetricsPath": "assets/combat/enemy_identities/outer_guard_disciplined_humanoid_agc_n8/static-carrier-metrics.json",
+      "staticMetricsSha256": "8615ebe00a9c009ca97cd2eb8c0ad1853b24be5e1799ad2bda70b9380ccb4dfe",
+      "staticMetricsCarrierKey": "carrier_outer_guard_idle_agc_n8"
+    },
+    "dcf0003faf33b5a8064fd7b9847c0f39dea37b170f898b25f2cad4baa7e93c2e": {
+      "recordId": "scale_dcf0003faf33b5a8",
+      "carrierMetricId": "carrier_spirit_devouring_vine_idle_agc_n8",
+      "assetPath": "assets/combat/enemy_identities/spirit_devouring_vine_rooted_colony_agc_n8/idle-1.png",
+      "assetSha256": "dcf0003faf33b5a8064fd7b9847c0f39dea37b170f898b25f2cad4baa7e93c2e",
+      "bodyProfileId": "spirit_devouring_vine_rooted_colony_n8",
+      "canonicalHeightU": 0.72,
+      "canonicalWidthU": 0.82,
+      "bodyClass": "rooted_plant",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.185583044,
+        "y": 0.385416667,
+        "width": 0.608000579,
+        "height": 0.533854167
+      },
+      "renderBounds": {
+        "x": 0.1328125,
+        "y": 0.3854166666666667,
+        "width": 0.7135416666666666,
+        "height": 0.5338541666666666,
+        "feetY": 0.9192708333333334
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.489583334,
+        "y": 0.9192708333333334
+      },
+      "bodyBoundsAspect": 1.1388888887327915,
+      "rationale": "quest_pressure_reads_from_rooted_lateral_occupancy_charge_exposure_and_ground_lash_not_enemy_rank",
+      "authoredScaleBasis": {
+        "speciesId": "spirit_devouring_vine_colony",
+        "morphologyId": "low_radial_root_knot_asymmetric_lash_stems",
+        "progressionStageId": "qi_s1",
+        "combatRoleId": "quest_charge_interrupt"
+      },
+      "bodyProfileContractSha256": "6109bc14178a50b77d16508e143f6737748e9ec7de6a4dff031a2cb844944b06",
+      "staticMetricsContractId": "agc_n8_measured_static_carrier_v1",
+      "staticMetricsPath": "assets/combat/enemy_identities/spirit_devouring_vine_rooted_colony_agc_n8/static-carrier-metrics.json",
+      "staticMetricsSha256": "9b8bab51efb79a9c933dc2225e03bafef52829619b5203cd895102915035728d",
+      "staticMetricsCarrierKey": "carrier_spirit_devouring_vine_idle_agc_n8"
+    },
+    "338209998743a9ed1b5efae68cdf7df4377f03c6eb03d04ee284258211a85fdd": {
+      "recordId": "scale_338209998743a9ed",
+      "carrierMetricId": "carrier_foundation_broken_array_idle_agc_n9",
+      "assetPath": "assets/combat/enemy_identities/foundation_broken_array_agc_n9/idle/frame-1.png",
+      "assetSha256": "338209998743a9ed1b5efae68cdf7df4377f03c6eb03d04ee284258211a85fdd",
+      "bodyProfileId": "foundation_broken_array_rooted_n9",
+      "canonicalHeightU": 0.92,
+      "canonicalWidthU": 1.18,
+      "bodyClass": "heavy_construct",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.15885416666666666,
+        "y": 0.4049699858757062,
+        "width": 0.6796875,
+        "height": 0.5299258474576272
+      },
+      "renderBounds": {
+        "x": 0.15885416666666666,
+        "y": 0.34375,
+        "width": 0.6796875,
+        "height": 0.5911458333333334,
+        "feetY": 0.9348958333333334
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.5,
+        "y": 0.9348958333333334
+      },
+      "bodyBoundsAspect": 1.2826086956521738,
+      "rationale": "pressure_reads_from_lateral_ground_occupancy_crosscut_reach_and_persistent_ward_not_enemy_rank",
+      "authoredScaleBasis": {
+        "speciesId": "sect_array_spirit",
+        "morphologyId": "low_wide_octagonal_plinth_four_banner_arms",
+        "progressionStageId": "foundation_s2",
+        "combatRoleId": "quest_ward_break_crosscut"
+      },
+      "bodyProfileContractSha256": "2539db34e1d34cf814bdb0ddec7b1862f64cd0b7a66ef7cb273008ee37b8bffb"
+    },
+    "b7444dae6d2104b71d3f04a45bf4e3ec93ba56914c483a970f159e96fc296ab4": {
+      "recordId": "scale_b7444dae6d2104b7",
+      "carrierMetricId": "carrier_foundation_mirror_mist_idle_agc_n9",
+      "assetPath": "assets/combat/enemy_identities/foundation_mirror_mist_agc_n9/idle/frame-1.png",
+      "assetSha256": "b7444dae6d2104b71d3f04a45bf4e3ec93ba56914c483a970f159e96fc296ab4",
+      "bodyProfileId": "foundation_mirror_mist_hovering_n9",
+      "canonicalHeightU": 1.04,
+      "canonicalWidthU": 0.42,
+      "bodyClass": "hovering_wisp",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.39307892628205127,
+        "y": 0.3984375,
+        "width": 0.19561298076923075,
+        "height": 0.484375
+      },
+      "renderBounds": {
+        "x": 0.3411458333333333,
+        "y": 0.3984375,
+        "width": 0.2994791666666667,
+        "height": 0.484375,
+        "feetY": 0.8828125
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.5,
+        "y": 0.9278125
+      },
+      "bodyBoundsAspect": 0.4038461538461538,
+      "rationale": "uncanny_pressure_reads_from_vertical_negative_space_four_echo_silhouettes_and_ground_reflection_not_enemy_rank",
+      "authoredScaleBasis": {
+        "speciesId": "mirror_lake_mist_echo",
+        "morphologyId": "slender_s_column_crescent_plate_crown",
+        "progressionStageId": "foundation_s2",
+        "combatRoleId": "ordinary_trace_echo_sequence_break"
+      },
+      "bodyProfileContractSha256": "9c369991a0ef154389c4e013e6e53febd029ca50f7ac48a7c70fd5c23e60ecb7"
+    },
+    "4edfc21057a578602de6294a65fe9c7510160f7f64bbe157406097f0d346d5aa": {
+      "recordId": "scale_4edfc21057a57860",
+      "carrierMetricId": "carrier_yelingyun_s4_sword_idle_agc_n10",
+      "assetPath": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/sword/identity/processed/identity-1.png",
+      "assetSha256": "4edfc21057a578602de6294a65fe9c7510160f7f64bbe157406097f0d346d5aa",
+      "bodyProfileId": "yelingyun_s4_cycle_bearer_adult",
+      "canonicalHeightU": 1.02,
+      "canonicalWidthU": 0.31,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_nascent",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.37356387867647056,
+        "y": 0.0859375,
+        "width": 0.2528722426470588,
+        "height": 0.83203125
+      },
+      "renderBounds": {
+        "x": 0.3125,
+        "y": 0.0859375,
+        "width": 0.375,
+        "height": 0.83203125,
+        "feetY": 0.91796875
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.91796875
+      },
+      "bodyBoundsAspect": 0.30392156862745096,
+      "rationale": "S4_cycle_bearer/sword uses the shared 1.02U adult Ye Lingyun ruler; progression is expressed through controlled action and route grammar, not body inflation.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_intact_workwear_adult",
+        "progressionStageId": "nascent_s4",
+        "combatRoleId": "player_four_route_method_carrier"
+      },
+      "bodyProfileContractSha256": "6b10d55c89ed57747cd3761121329a45d47ade5dfdcfae7205a950d2be92c54d",
+      "staticMetricsContractId": "agc_n10_s4_sword_static_carrier_v1",
+      "staticMetricsPath": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/sword/identity/runtime-static-metric.json",
+      "staticMetricsSha256": "02a1e18e2a8b94d671b47ba7508ca7cdf544eb347b29a0b60bd54e56333831d0",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "4be416b89795bf9dc62703110ab63cb637b8f4c083164dd8f91f4a97e5267df8": {
+      "recordId": "scale_4be416b89795bf9d",
+      "carrierMetricId": "carrier_yelingyun_s4_spell_idle_agc_n10",
+      "assetPath": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/spell/identity/processed/identity-1.png",
+      "assetSha256": "4be416b89795bf9dc62703110ab63cb637b8f4c083164dd8f91f4a97e5267df8",
+      "bodyProfileId": "yelingyun_s4_cycle_bearer_adult",
+      "canonicalHeightU": 1.02,
+      "canonicalWidthU": 0.31,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_nascent",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.3723766850490196,
+        "y": 0.08203125,
+        "width": 0.2552466299019608,
+        "height": 0.83984375
+      },
+      "renderBounds": {
+        "x": 0.361328125,
+        "y": 0.08203125,
+        "width": 0.27734375,
+        "height": 0.83984375,
+        "feetY": 0.921875
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.921875
+      },
+      "bodyBoundsAspect": 0.30392156862745096,
+      "rationale": "S4_cycle_bearer/spell uses the shared 1.02U adult Ye Lingyun ruler; progression is expressed through controlled action and route grammar, not body inflation.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_intact_workwear_adult",
+        "progressionStageId": "nascent_s4",
+        "combatRoleId": "player_four_route_method_carrier"
+      },
+      "bodyProfileContractSha256": "6b10d55c89ed57747cd3761121329a45d47ade5dfdcfae7205a950d2be92c54d",
+      "staticMetricsContractId": "agc_n10_s4_spell_static_carrier_v1",
+      "staticMetricsPath": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/spell/identity/runtime-static-metric.json",
+      "staticMetricsSha256": "6a42373fad0f0056040ab26b13f0af2d3d137bcfdad7154ce60bec960043e78c",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "68f120cc3cad1aef4f2c92fac5cac89a0ac37ce1e5de07fe2e7de7f7a7a9bd28": {
+      "recordId": "scale_68f120cc3cad1aef",
+      "carrierMetricId": "carrier_yelingyun_s4_body_idle_agc_n10",
+      "assetPath": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/body/identity/identity.png",
+      "assetSha256": "68f120cc3cad1aef4f2c92fac5cac89a0ac37ce1e5de07fe2e7de7f7a7a9bd28",
+      "bodyProfileId": "yelingyun_s4_cycle_bearer_adult",
+      "canonicalHeightU": 1.02,
+      "canonicalWidthU": 0.31,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_nascent",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.35198376225490197,
+        "y": 0.19921875,
+        "width": 0.23743872549019607,
+        "height": 0.78125
+      },
+      "renderBounds": {
+        "x": 0.337890625,
+        "y": 0.19921875,
+        "width": 0.265625,
+        "height": 0.78125,
+        "feetY": 0.98046875
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.470703125,
+        "y": 0.98046875
+      },
+      "bodyBoundsAspect": 0.30392156862745096,
+      "rationale": "S4_cycle_bearer/body uses the shared 1.02U adult Ye Lingyun ruler; progression is expressed through controlled action and route grammar, not body inflation.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_intact_workwear_adult",
+        "progressionStageId": "nascent_s4",
+        "combatRoleId": "player_four_route_method_carrier"
+      },
+      "bodyProfileContractSha256": "6b10d55c89ed57747cd3761121329a45d47ade5dfdcfae7205a950d2be92c54d",
+      "staticMetricsContractId": "agc_n10_s4_body_static_carrier_v1",
+      "staticMetricsPath": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/body/identity/runtime-static-metric.json",
+      "staticMetricsSha256": "a57de05d41e9977f9f2c052bae8d0782e501c5d09ae015e1e32e472b6ef66613",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "93c2e039dbbc60ac56ccc2e6126f29a2bc695928e11eaac588fa0f542864b24d": {
+      "recordId": "scale_93c2e039dbbc60ac",
+      "carrierMetricId": "carrier_yelingyun_s4_pill_idle_agc_n10",
+      "assetPath": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/pill/identity/identity.png",
+      "assetSha256": "93c2e039dbbc60ac56ccc2e6126f29a2bc695928e11eaac588fa0f542864b24d",
+      "bodyProfileId": "yelingyun_s4_cycle_bearer_adult",
+      "canonicalHeightU": 1.02,
+      "canonicalWidthU": 0.31,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_nascent",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.40115655637254904,
+        "y": 0.181640625,
+        "width": 0.24456188725490194,
+        "height": 0.8046875
+      },
+      "renderBounds": {
+        "x": 0.390625,
+        "y": 0.181640625,
+        "width": 0.265625,
+        "height": 0.8046875,
+        "feetY": 0.986328125
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5234375,
+        "y": 0.986328125
+      },
+      "bodyBoundsAspect": 0.30392156862745096,
+      "rationale": "S4_cycle_bearer/pill uses the shared 1.02U adult Ye Lingyun ruler; progression is expressed through controlled action and route grammar, not body inflation.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_intact_workwear_adult",
+        "progressionStageId": "nascent_s4",
+        "combatRoleId": "player_four_route_method_carrier"
+      },
+      "bodyProfileContractSha256": "6b10d55c89ed57747cd3761121329a45d47ade5dfdcfae7205a950d2be92c54d",
+      "staticMetricsContractId": "agc_n10_s4_pill_static_carrier_v1",
+      "staticMetricsPath": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/pill/identity/runtime-static-metric.json",
+      "staticMetricsSha256": "816137e6bb9a8618aa013f79a153f831353989d03dfa460e2f00b8e5961cb652",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "9f83c4c7f8a1653f964a4b20a4b475c47382c885fe13cb9a32d35dff5d6bfa83": {
+      "recordId": "scale_9f83c4c7f8a1653f",
+      "carrierMetricId": "carrier_yelingyun_s5_sword_idle_agc_n10",
+      "assetPath": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/sword/identity/identity-transparent.png",
+      "assetSha256": "9f83c4c7f8a1653f964a4b20a4b475c47382c885fe13cb9a32d35dff5d6bfa83",
+      "bodyProfileId": "yelingyun_s5_way_definer_adult",
+      "canonicalHeightU": 1.03,
+      "canonicalWidthU": 0.315,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_deity",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.37217460558252424,
+        "y": 0.083984375,
+        "width": 0.25565078883495146,
+        "height": 0.8359375
+      },
+      "renderBounds": {
+        "x": 0.265625,
+        "y": 0.083984375,
+        "width": 0.46875,
+        "height": 0.8359375,
+        "feetY": 0.919921875
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.919921875
+      },
+      "bodyBoundsAspect": 0.30582524271844663,
+      "rationale": "S5_way_definer/sword uses the shared 1.03U adult Ye Lingyun ruler; progression is expressed through controlled action and route grammar, not body inflation.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_intact_workwear_adult",
+        "progressionStageId": "deity_s5",
+        "combatRoleId": "player_four_route_method_carrier"
+      },
+      "bodyProfileContractSha256": "4416de0b645c13d244c2d18eef34a7f579615a610b74021423994c313a2b82d0",
+      "staticMetricsContractId": "agc_n10_s5_sword_static_carrier_v1",
+      "staticMetricsPath": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/sword/identity/runtime-static-metric.json",
+      "staticMetricsSha256": "face7ab9882938a424e6bacc03eebbba2a4cb11f3c8f22f29aac0433df4fe7a9",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "c8407162c6c44de90382143a6d7cb18e212cdcb99f3ae5607600f8a5b6eb0cb3": {
+      "recordId": "scale_c8407162c6c44de9",
+      "carrierMetricId": "carrier_yelingyun_s5_spell_idle_agc_n10",
+      "assetPath": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/spell/identity/identity-transparent.png",
+      "assetSha256": "c8407162c6c44de90382143a6d7cb18e212cdcb99f3ae5607600f8a5b6eb0cb3",
+      "bodyProfileId": "yelingyun_s5_way_definer_adult",
+      "canonicalHeightU": 1.03,
+      "canonicalWidthU": 0.315,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_deity",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.37217460558252424,
+        "y": 0.083984375,
+        "width": 0.25565078883495146,
+        "height": 0.8359375
+      },
+      "renderBounds": {
+        "x": 0.318359375,
+        "y": 0.083984375,
+        "width": 0.36328125,
+        "height": 0.8359375,
+        "feetY": 0.919921875
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5,
+        "y": 0.919921875
+      },
+      "bodyBoundsAspect": 0.30582524271844663,
+      "rationale": "S5_way_definer/spell uses the shared 1.03U adult Ye Lingyun ruler; progression is expressed through controlled action and route grammar, not body inflation.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_intact_workwear_adult",
+        "progressionStageId": "deity_s5",
+        "combatRoleId": "player_four_route_method_carrier"
+      },
+      "bodyProfileContractSha256": "4416de0b645c13d244c2d18eef34a7f579615a610b74021423994c313a2b82d0",
+      "staticMetricsContractId": "agc_n10_s5_spell_static_carrier_v1",
+      "staticMetricsPath": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/spell/identity/runtime-static-metric.json",
+      "staticMetricsSha256": "15498ed18e27c4c0eacb464b4120501d40ad453d9fca23ba1182e54329c05ec5",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "787681d91b3a7ed158d665213f637988992c8a3c519bb3380488df40e6218d24": {
+      "recordId": "scale_787681d91b3a7ed1",
+      "carrierMetricId": "carrier_yelingyun_s5_body_idle_agc_n10",
+      "assetPath": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/body/identity/identity-transparent.png",
+      "assetSha256": "787681d91b3a7ed158d665213f637988992c8a3c519bb3380488df40e6218d24",
+      "bodyProfileId": "yelingyun_s5_way_definer_adult",
+      "canonicalHeightU": 1.03,
+      "canonicalWidthU": 0.315,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_deity",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.37119804308252424,
+        "y": 0.083984375,
+        "width": 0.25565078883495146,
+        "height": 0.8359375
+      },
+      "renderBounds": {
+        "x": 0.271484375,
+        "y": 0.083984375,
+        "width": 0.455078125,
+        "height": 0.8359375,
+        "feetY": 0.919921875
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.4990234375,
+        "y": 0.919921875
+      },
+      "bodyBoundsAspect": 0.30582524271844663,
+      "rationale": "S5_way_definer/body uses the shared 1.03U adult Ye Lingyun ruler; progression is expressed through controlled action and route grammar, not body inflation.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_intact_workwear_adult",
+        "progressionStageId": "deity_s5",
+        "combatRoleId": "player_four_route_method_carrier"
+      },
+      "bodyProfileContractSha256": "4416de0b645c13d244c2d18eef34a7f579615a610b74021423994c313a2b82d0",
+      "staticMetricsContractId": "agc_n10_s5_body_static_carrier_v1",
+      "staticMetricsPath": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/body/identity/runtime-static-metric.json",
+      "staticMetricsSha256": "e2da3a33aab7f9da2afe8dc4dea980bad5f760ab6a5a25fc267a7ca4b52e6928",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "04c325ad51048ec5a85ec857f931169efe8ad2d891b2dcd8d5938cadecf06734": {
+      "recordId": "scale_04c325ad51048ec5",
+      "carrierMetricId": "carrier_yelingyun_s5_pill_idle_agc_n10",
+      "assetPath": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/pill/identity/identity.png",
+      "assetSha256": "04c325ad51048ec5a85ec857f931169efe8ad2d891b2dcd8d5938cadecf06734",
+      "bodyProfileId": "yelingyun_s5_way_definer_adult",
+      "canonicalHeightU": 1.03,
+      "canonicalWidthU": 0.315,
+      "bodyClass": "humanoid",
+      "visualThreatRank": "player_deity",
+      "naturalWidth": 512,
+      "naturalHeight": 512,
+      "bodyBounds": {
+        "x": 0.37119804308252424,
+        "y": 0.083984375,
+        "width": 0.25565078883495146,
+        "height": 0.8359375
+      },
+      "renderBounds": {
+        "x": 0.36328125,
+        "y": 0.083984375,
+        "width": 0.271484375,
+        "height": 0.8359375,
+        "feetY": 0.919921875
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.4990234375,
+        "y": 0.919921875
+      },
+      "bodyBoundsAspect": 0.30582524271844663,
+      "rationale": "S5_way_definer/pill uses the shared 1.03U adult Ye Lingyun ruler; progression is expressed through controlled action and route grammar, not body inflation.",
+      "authoredScaleBasis": {
+        "speciesId": "human_cultivator",
+        "morphologyId": "lean_intact_workwear_adult",
+        "progressionStageId": "deity_s5",
+        "combatRoleId": "player_four_route_method_carrier"
+      },
+      "bodyProfileContractSha256": "4416de0b645c13d244c2d18eef34a7f579615a610b74021423994c313a2b82d0",
+      "staticMetricsContractId": "agc_n10_s5_pill_static_carrier_v1",
+      "staticMetricsPath": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/pill/identity/runtime-static-metric.json",
+      "staticMetricsSha256": "49d542d267c7fbde93a9ec7de41dda80490be8bb267fdf9f85d9fee7cb41d83e",
+      "staticMetricsCarrierKey": "identityCarrier"
+    },
+    "6aebcdf5dc1cc194e4068571f1d88e5168b2aaaa2504b8b58a4b58f25cb12a98": {
+      "recordId": "scale_6aebcdf5dc1cc194",
+      "carrierMetricId": "carrier_vein_wolf_idle_agc_n11",
+      "assetPath": "assets/combat/enemy_identities/vein_wolf_agc_n11/idle/frame-1.png",
+      "assetSha256": "6aebcdf5dc1cc194e4068571f1d88e5168b2aaaa2504b8b58a4b58f25cb12a98",
+      "bodyProfileId": "vein_wolf_low_n11",
+      "canonicalHeightU": 0.78,
+      "canonicalWidthU": 1.12,
+      "bodyClass": "low_quadruped",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.12850560897435895,
+        "y": 0.2421875,
+        "width": 0.7403846153846154,
+        "height": 0.515625
+      },
+      "renderBounds": {
+        "x": 0.049479166666666664,
+        "y": 0.2421875,
+        "width": 0.8984375,
+        "height": 0.515625,
+        "feetY": 0.7578125
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.3736979166666667,
+        "y": 0.7578125
+      },
+      "bodyBoundsAspect": 1.435897435897436,
+      "rationale": "low lateral reach, stone-hide shoulder mass and grounded pounce distance",
+      "authoredScaleBasis": {
+        "speciesId": "vein_wolf",
+        "morphologyId": "low_quadruped",
+        "progressionStageId": "authored_encounter_stage",
+        "combatRoleId": "native_visible_plan_graph"
+      },
+      "bodyProfileContractSha256": "0713cf5b28ad402e0c7bd66bab2986ff092141a9ce2970de7fe5dff7c2e2e567"
+    },
+    "8e561f5b2ff5de3947a0aae2ed7da53bd3887ef79c70b080063135caf4d97f38": {
+      "recordId": "scale_8e561f5b2ff5de39",
+      "carrierMetricId": "carrier_ore_spirit_idle_agc_n11",
+      "assetPath": "assets/combat/enemy_identities/ore_spirit_agc_n11/idle/frame-1.png",
+      "assetSha256": "8e561f5b2ff5de3947a0aae2ed7da53bd3887ef79c70b080063135caf4d97f38",
+      "bodyProfileId": "ore_spirit_rooted_n11",
+      "canonicalHeightU": 0.88,
+      "canonicalWidthU": 1.05,
+      "bodyClass": "rooted_mineral_construct",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.0730054450757576,
+        "y": 0.14322916666666663,
+        "width": 0.8513849431818181,
+        "height": 0.7135416666666666
+      },
+      "renderBounds": {
+        "x": 0.049479166666666664,
+        "y": 0.14322916666666666,
+        "width": 0.8984375,
+        "height": 0.7135416666666666,
+        "feetY": 0.8567708333333334
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.81640625,
+        "y": 0.8567708333333334
+      },
+      "bodyBoundsAspect": 1.1931818181818181,
+      "rationale": "rooted crystal breadth, dense ore core and short ram lane occupancy",
+      "authoredScaleBasis": {
+        "speciesId": "ore_spirit",
+        "morphologyId": "rooted_mineral_construct",
+        "progressionStageId": "authored_encounter_stage",
+        "combatRoleId": "native_visible_plan_graph"
+      },
+      "bodyProfileContractSha256": "6918473db076ccd2652af8c09eaccd6a7c08edbf644f050387249b47141345af"
+    },
+    "beb03bfdbd7dccdf310b75a3fd02fe2073184b0ed003d8310a19c4c7671c8b18": {
+      "recordId": "scale_beb03bfdbd7dccdf",
+      "carrierMetricId": "carrier_ancient_furnace_guardian_idle_agc_n11",
+      "assetPath": "assets/combat/enemy_identities/ancient_furnace_guardian_agc_n11/idle/frame-1.png",
+      "assetSha256": "beb03bfdbd7dccdf310b75a3fd02fe2073184b0ed003d8310a19c4c7671c8b18",
+      "bodyProfileId": "ancient_furnace_guardian_rooted_n11",
+      "canonicalHeightU": 0.96,
+      "canonicalWidthU": 0.84,
+      "bodyClass": "rooted_furnace_construct",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.10563151041666669,
+        "y": 0.04947916666666663,
+        "width": 0.7861328125,
+        "height": 0.8984375
+      },
+      "renderBounds": {
+        "x": 0.078125,
+        "y": 0.049479166666666664,
+        "width": 0.8411458333333334,
+        "height": 0.8984375,
+        "feetY": 0.9479166666666666
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.5403645833333334,
+        "y": 0.9479166666666666
+      },
+      "bodyBoundsAspect": 0.875,
+      "rationale": "upright furnace pressure, vent mouth height and rooted bronze volume",
+      "authoredScaleBasis": {
+        "speciesId": "ancient_furnace_guardian",
+        "morphologyId": "rooted_furnace_construct",
+        "progressionStageId": "authored_encounter_stage",
+        "combatRoleId": "native_visible_plan_graph"
+      },
+      "bodyProfileContractSha256": "47146dfa7303c410f20e505917bceab8b0023c9dace261150a1ea5875b49604f"
+    },
+    "69d90d2bf98eb6a848cc618d00bd7446e991d8645635ee628432b4a7409e409c": {
+      "recordId": "scale_69d90d2bf98eb6a8",
+      "carrierMetricId": "carrier_mountain_bronze_man_idle_agc_n11",
+      "assetPath": "assets/combat/enemy_identities/mountain_bronze_man_agc_n11/idle/frame-1.png",
+      "assetSha256": "69d90d2bf98eb6a848cc618d00bd7446e991d8645635ee628432b4a7409e409c",
+      "bodyProfileId": "mountain_bronze_man_grounded_n11",
+      "canonicalHeightU": 1.18,
+      "canonicalWidthU": 0.56,
+      "bodyClass": "tall_humanoid_construct",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.2855093573446328,
+        "y": 0.04947916666666663,
+        "width": 0.42637711864406785,
+        "height": 0.8984375
+      },
+      "renderBounds": {
+        "x": 0.2526041666666667,
+        "y": 0.049479166666666664,
+        "width": 0.4921875,
+        "height": 0.8984375,
+        "feetY": 0.9479166666666666
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5559895833333334,
+        "y": 0.9479166666666666
+      },
+      "bodyBoundsAspect": 0.47457627118644075,
+      "rationale": "tall lever-arm reach, narrow grounded stance and delayed mountain-weight strike",
+      "authoredScaleBasis": {
+        "speciesId": "mountain_bronze_man",
+        "morphologyId": "tall_humanoid_construct",
+        "progressionStageId": "authored_encounter_stage",
+        "combatRoleId": "native_visible_plan_graph"
+      },
+      "bodyProfileContractSha256": "3249097cc5ecffc81b71bcb26a3f8a61d06a4d832221087a235f6fb32ccff127"
+    },
+    "3c5759fcf99cc49a9acbeed38252ff38b2b0d451b8d9ad80705df5ac983929bd": {
+      "recordId": "scale_3c5759fcf99cc49a",
+      "carrierMetricId": "carrier_immortal_golden_shadow_idle_agc_n11",
+      "assetPath": "assets/combat/enemy_identities/immortal_golden_shadow_agc_n11/idle/frame-1.png",
+      "assetSha256": "3c5759fcf99cc49a9acbeed38252ff38b2b0d451b8d9ad80705df5ac983929bd",
+      "bodyProfileId": "immortal_golden_shadow_hovering_n11",
+      "canonicalHeightU": 1.28,
+      "canonicalWidthU": 0.52,
+      "bodyClass": "hovering_humanoid_shadow",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.3854166666666667,
+        "y": 0.38381410256410253,
+        "width": 0.22916666666666666,
+        "height": 0.5641025641025641
+      },
+      "renderBounds": {
+        "x": 0.3854166666666667,
+        "y": 0.049479166666666664,
+        "width": 0.22916666666666666,
+        "height": 0.8984375,
+        "feetY": 0.9479166666666666
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.48046875,
+        "y": 0.9879166666666667
+      },
+      "bodyBoundsAspect": 0.40625,
+      "rationale": "tall negative-space silhouette, floating heel clearance and compressed golden fist line",
+      "authoredScaleBasis": {
+        "speciesId": "immortal_golden_shadow",
+        "morphologyId": "hovering_humanoid_shadow",
+        "progressionStageId": "authored_encounter_stage",
+        "combatRoleId": "native_visible_plan_graph"
+      },
+      "bodyProfileContractSha256": "7a6c2ce5f3d31a04c4ef9ce227724a986fd9b5e49a34761b31baddbe4defd9b7"
+    },
+    "9cab470d668da7e012a8f61d9e72d6aec8e6049cecb02f00d8082fcc0f324403": {
+      "recordId": "scale_9cab470d668da7e0",
+      "carrierMetricId": "carrier_ward_beast_idle_agc_n11",
+      "assetPath": "assets/combat/enemy_identities/ward_beast_agc_n11/idle/frame-1.png",
+      "assetSha256": "9cab470d668da7e012a8f61d9e72d6aec8e6049cecb02f00d8082fcc0f324403",
+      "bodyProfileId": "ward_beast_broad_n11",
+      "canonicalHeightU": 1.02,
+      "canonicalWidthU": 1.28,
+      "bodyClass": "broad_quadruped_guardian",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.10817504084967319,
+        "y": 0.1875,
+        "width": 0.7810457516339869,
+        "height": 0.6223958333333334
+      },
+      "renderBounds": {
+        "x": 0.049479166666666664,
+        "y": 0.1875,
+        "width": 0.8984375,
+        "height": 0.6223958333333334,
+        "feetY": 0.8098958333333334
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.44140625,
+        "y": 0.8098958333333334
+      },
+      "bodyBoundsAspect": 1.2549019607843137,
+      "rationale": "broad horn-and-shoulder spread, ward-bound chest mass and crushing lane width",
+      "authoredScaleBasis": {
+        "speciesId": "ward_beast",
+        "morphologyId": "broad_quadruped_guardian",
+        "progressionStageId": "authored_encounter_stage",
+        "combatRoleId": "native_visible_plan_graph"
+      },
+      "bodyProfileContractSha256": "6d8a6daebbbe94495b85a0c2e599272d852865b90f61bb981b3b43afc9cbb8f9"
+    },
+    "4e4cbe10fa0b92bd7ea0482717302af1e5dec575d8276d6c40377d20d033cffe": {
+      "recordId": "scale_4e4cbe10fa0b92bd",
+      "carrierMetricId": "carrier_medicine_spirit_idle_agc_n11",
+      "assetPath": "assets/combat/enemy_identities/medicine_spirit_agc_n11/idle/frame-1.png",
+      "assetSha256": "4e4cbe10fa0b92bd7ea0482717302af1e5dec575d8276d6c40377d20d033cffe",
+      "bodyProfileId": "medicine_spirit_rooted_n11",
+      "canonicalHeightU": 0.86,
+      "canonicalWidthU": 0.68,
+      "bodyClass": "rooted_medicinal_growth",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.171875,
+        "y": 0.12124693627450978,
+        "width": 0.6536458333333334,
+        "height": 0.8266697303921569
+      },
+      "renderBounds": {
+        "x": 0.171875,
+        "y": 0.049479166666666664,
+        "width": 0.6536458333333334,
+        "height": 0.8984375,
+        "feetY": 0.9479166666666666
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.70703125,
+        "y": 0.9479166666666666
+      },
+      "bodyBoundsAspect": 0.7906976744186047,
+      "rationale": "rooted herb-core breadth, branching overgrowth and pruning-readable stem joints",
+      "authoredScaleBasis": {
+        "speciesId": "medicine_spirit",
+        "morphologyId": "rooted_medicinal_growth",
+        "progressionStageId": "authored_encounter_stage",
+        "combatRoleId": "native_visible_plan_graph"
+      },
+      "bodyProfileContractSha256": "6f4a3f707826df246bd0c746813623453a95759d8a1a8f73823d9dc62f0edb19"
+    },
+    "69d09ac29711d53df3fe207668298ec2f1ac75f3c7399de2f7d1f087c5bd8d8c": {
+      "recordId": "scale_69d09ac29711d53d",
+      "carrierMetricId": "carrier_qingyun_sword_envoy_idle_agc_n12",
+      "assetPath": "assets/combat/enemy_identities/qingyun_sword_envoy_agc_n12/idle/frame-1.png",
+      "assetSha256": "69d09ac29711d53df3fe207668298ec2f1ac75f3c7399de2f7d1f087c5bd8d8c",
+      "bodyProfileId": "qingyun_sword_envoy_grounded_n12",
+      "canonicalHeightU": 1.01,
+      "canonicalWidthU": 0.34,
+      "bodyClass": "lean_humanoid_swordsman",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.43040944719471946,
+        "y": 0.0625,
+        "width": 0.2954311056105611,
+        "height": 0.8776041666666666
+      },
+      "renderBounds": {
+        "x": 0.2708333333333333,
+        "y": 0.0625,
+        "width": 0.6145833333333334,
+        "height": 0.8776041666666666,
+        "feetY": 0.9401041666666666
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.55859375,
+        "y": 0.9401041666666666
+      },
+      "bodyBoundsAspect": 0.33663366336633666,
+      "rationale": "lean sword reach, grounded forward guard, disciplined robe axis",
+      "authoredScaleBasis": {
+        "speciesId": "ordinary_human",
+        "morphologyId": "lean_humanoid_swordsman",
+        "progressionStageId": "encounter_authored_enc_faction_qingyun_elite",
+        "combatRoleId": "disciplined_sword_envoy"
+      },
+      "bodyProfileContractSha256": "755ce866eddba7995ececab40f3db8fca7a9f5311c66edf6a4af7e51af9e7102"
+    },
+    "6252f4a342a5df1eb5e87aeed27416f049fd3072d8950d21c618df699e065dfe": {
+      "recordId": "scale_6252f4a342a5df1e",
+      "carrierMetricId": "carrier_tianshu_discipline_officer_idle_agc_n12",
+      "assetPath": "assets/combat/enemy_identities/tianshu_discipline_officer_agc_n12/idle/frame-1.png",
+      "assetSha256": "6252f4a342a5df1eb5e87aeed27416f049fd3072d8950d21c618df699e065dfe",
+      "bodyProfileId": "tianshu_discipline_officer_tall_n12",
+      "canonicalHeightU": 1.04,
+      "canonicalWidthU": 0.32,
+      "bodyClass": "tall_lean_humanoid_officer",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.36037660256410253,
+        "y": 0.0390625,
+        "width": 0.2844551282051282,
+        "height": 0.9244791666666666
+      },
+      "renderBounds": {
+        "x": 0.22395833333333334,
+        "y": 0.0390625,
+        "width": 0.5572916666666666,
+        "height": 0.9244791666666666,
+        "feetY": 0.9635416666666666
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.60546875,
+        "y": 0.9635416666666666
+      },
+      "bodyBoundsAspect": 0.3076923076923077,
+      "rationale": "tall official reach, narrow law-keeper robe, upright defensive axis",
+      "authoredScaleBasis": {
+        "speciesId": "ordinary_human",
+        "morphologyId": "tall_lean_humanoid_officer",
+        "progressionStageId": "encounter_authored_enc_faction_tianshu_elite",
+        "combatRoleId": "astral_discipline_officer"
+      },
+      "bodyProfileContractSha256": "da436bba6087a52a35d0675f0e7f57aac5376b175fbda33e6bca5a40c4cdb060"
+    },
+    "f236a03cbdf7883c2dec77321ca178d6538b000af61aa526ad1b22602ff1f1d4": {
+      "recordId": "scale_f236a03cbdf7883c",
+      "carrierMetricId": "carrier_dangu_furnace_keeper_idle_agc_n12",
+      "assetPath": "assets/combat/enemy_identities/dangu_furnace_keeper_agc_n12/idle/frame-1.png",
+      "assetSha256": "f236a03cbdf7883c2dec77321ca178d6538b000af61aa526ad1b22602ff1f1d4",
+      "bodyProfileId": "dangu_furnace_keeper_sturdy_n12",
+      "canonicalHeightU": 1.02,
+      "canonicalWidthU": 0.39,
+      "bodyClass": "sturdy_humanoid_keeper",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.3117723651960784,
+        "y": 0.0625,
+        "width": 0.32958026960784315,
+        "height": 0.8619791666666666
+      },
+      "renderBounds": {
+        "x": 0.20052083333333334,
+        "y": 0.0625,
+        "width": 0.5520833333333334,
+        "height": 0.8619791666666666,
+        "feetY": 0.9244791666666666
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.71484375,
+        "y": 0.9244791666666666
+      },
+      "bodyBoundsAspect": 0.3823529411764706,
+      "rationale": "broad keeper shoulders, low furnace guard, stable grounded mass",
+      "authoredScaleBasis": {
+        "speciesId": "ordinary_human",
+        "morphologyId": "sturdy_humanoid_keeper",
+        "progressionStageId": "encounter_authored_enc_faction_dangu_elite",
+        "combatRoleId": "furnace_guardian_human"
+      },
+      "bodyProfileContractSha256": "89637de583aecf1706634316593bcaeb52e1b66ee880dbfc9944b059b24302d6"
+    },
+    "2fe7ae3e1388e406e164fafba933ab1eca8782a7280a781eaaa1d015d1c5e561": {
+      "recordId": "scale_2fe7ae3e1388e406",
+      "carrierMetricId": "carrier_tianji_diviner_idle_agc_n12",
+      "assetPath": "assets/combat/enemy_identities/tianji_diviner_agc_n12/idle/frame-1.png",
+      "assetSha256": "2fe7ae3e1388e406e164fafba933ab1eca8782a7280a781eaaa1d015d1c5e561",
+      "bodyProfileId": "tianji_diviner_lean_n12",
+      "canonicalHeightU": 1.01,
+      "canonicalWidthU": 0.3,
+      "bodyClass": "lean_analytical_humanoid",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.3612572194719472,
+        "y": 0.04427083333333337,
+        "width": 0.27227722772277224,
+        "height": 0.9166666666666666
+      },
+      "renderBounds": {
+        "x": 0.2708333333333333,
+        "y": 0.044270833333333336,
+        "width": 0.453125,
+        "height": 0.9166666666666666,
+        "feetY": 0.9609375
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.62890625,
+        "y": 0.9609375
+      },
+      "bodyBoundsAspect": 0.297029702970297,
+      "rationale": "narrow diviner axis, measured sleeve span, grounded calculation stance",
+      "authoredScaleBasis": {
+        "speciesId": "ordinary_human",
+        "morphologyId": "lean_analytical_humanoid",
+        "progressionStageId": "encounter_authored_enc_faction_tianji_elite",
+        "combatRoleId": "divination_officer_human"
+      },
+      "bodyProfileContractSha256": "9e9e5be736629da05e385eea702008cc95fa1ff3e0d541557c20f62ebac324bb"
+    },
+    "08306417676115823c65ed417f214096ce24bae3b0313a53f48327938e15ad65": {
+      "recordId": "scale_0830641767611582",
+      "carrierMetricId": "carrier_xuesha_soul_pursuer_idle_agc_n12",
+      "assetPath": "assets/combat/enemy_identities/xuesha_soul_pursuer_agc_n12/idle/frame-1.png",
+      "assetSha256": "08306417676115823c65ed417f214096ce24bae3b0313a53f48327938e15ad65",
+      "bodyProfileId": "xuesha_soul_pursuer_low_n12",
+      "canonicalHeightU": 1,
+      "canonicalWidthU": 0.34,
+      "bodyClass": "lean_crouched_humanoid_pursuer",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.37606770833333336,
+        "y": 0.11979166666666663,
+        "width": 0.24526041666666668,
+        "height": 0.7213541666666666
+      },
+      "renderBounds": {
+        "x": 0.21354166666666666,
+        "y": 0.11979166666666667,
+        "width": 0.5703125,
+        "height": 0.7213541666666666,
+        "feetY": 0.8411458333333334
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.3059895833333333,
+        "y": 0.8411458333333334
+      },
+      "bodyBoundsAspect": 0.34,
+      "rationale": "low tracking stance, compact chain-hook reach, forward pursuit lean",
+      "authoredScaleBasis": {
+        "speciesId": "ordinary_human",
+        "morphologyId": "lean_crouched_humanoid_pursuer",
+        "progressionStageId": "encounter_authored_enc_faction_xuesha_elite",
+        "combatRoleId": "chain_hook_pursuer_human"
+      },
+      "bodyProfileContractSha256": "c933de63e7af4672c71b7014b50bfa7afa4c1fdc9b279b6f5083c71c570b238f"
+    },
+    "ac9d18e0babfb153a806881c706107f62f0012e170f8ff9dba019b6b6efbea40": {
+      "recordId": "scale_ac9d18e0babfb153",
+      "carrierMetricId": "carrier_yin_xue_pursuit_captain_idle_agc_n12",
+      "assetPath": "assets/combat/enemy_identities/yin_xue_pursuit_captain_agc_n12/idle/frame-1.png",
+      "assetSha256": "ac9d18e0babfb153a806881c706107f62f0012e170f8ff9dba019b6b6efbea40",
+      "bodyProfileId": "yin_xue_pursuit_captain_grounded_n12",
+      "canonicalHeightU": 1.02,
+      "canonicalWidthU": 0.35,
+      "bodyClass": "lean_humanoid_pursuit_captain",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.36796619689542487,
+        "y": 0.09375,
+        "width": 0.27969260620915026,
+        "height": 0.8151041666666666
+      },
+      "renderBounds": {
+        "x": 0.20833333333333334,
+        "y": 0.09375,
+        "width": 0.5989583333333334,
+        "height": 0.8151041666666666,
+        "feetY": 0.9088541666666666
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.6028645833333334,
+        "y": 0.9088541666666666
+      },
+      "bodyBoundsAspect": 0.34313725490196073,
+      "rationale": "capture-spear reach, tracking captain stance, disciplined forward pressure",
+      "authoredScaleBasis": {
+        "speciesId": "ordinary_human",
+        "morphologyId": "lean_humanoid_pursuit_captain",
+        "progressionStageId": "encounter_authored_enc_companion_yin_xue_pursuit",
+        "combatRoleId": "capture_spear_captain_human"
+      },
+      "bodyProfileContractSha256": "306790875a0b6e16dbd24c49ea37d8b4fd24333b466530af162ad8aec56f587e"
+    },
+    "2910e9606ad7208830700f3f9afe36c2cca0b0fe2389c8d952660ed678154781": {
+      "recordId": "scale_2910e9606ad72088",
+      "carrierMetricId": "carrier_sword_tomb_old_master_idle_agc_n12",
+      "assetPath": "assets/combat/enemy_identities/sword_tomb_old_master_agc_n12/idle/frame-1.png",
+      "assetSha256": "2910e9606ad7208830700f3f9afe36c2cca0b0fe2389c8d952660ed678154781",
+      "bodyProfileId": "sword_tomb_old_master_hovering_n12",
+      "canonicalHeightU": 1.05,
+      "canonicalWidthU": 0.31,
+      "bodyClass": "tall_hovering_humanoid_remnant",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.3745659722222222,
+        "y": 0.05989583333333337,
+        "width": 0.26909722222222227,
+        "height": 0.9114583333333334
+      },
+      "renderBounds": {
+        "x": 0.3046875,
+        "y": 0.059895833333333336,
+        "width": 0.4088541666666667,
+        "height": 0.9114583333333334,
+        "feetY": 0.9713541666666666
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.5143229166666666,
+        "y": 1
+      },
+      "bodyBoundsAspect": 0.2952380952380953,
+      "rationale": "elderly narrow silhouette, hovering robe clearance, restrained sword-memory reach",
+      "authoredScaleBasis": {
+        "speciesId": "ordinary_human",
+        "morphologyId": "tall_hovering_humanoid_remnant",
+        "progressionStageId": "encounter_authored_enc_companion_jian_linger_tomb",
+        "combatRoleId": "sword_tomb_memory_projection"
+      },
+      "bodyProfileContractSha256": "7bbf677791211edf0d48195a95d80ab72719471cb16536411243a4ae8a3c80b0"
+    },
+    "117450d099d5bde99ba9e6f03fe42c54db5caa85996fb512bba73d854829c7b4": {
+      "recordId": "scale_117450d099d5bde9",
+      "carrierMetricId": "carrier_heaven_envoy_idle_agc_n12",
+      "assetPath": "assets/combat/enemy_identities/heaven_envoy_agc_n12/idle/frame-1.png",
+      "assetSha256": "117450d099d5bde99ba9e6f03fe42c54db5caa85996fb512bba73d854829c7b4",
+      "bodyProfileId": "heaven_envoy_tall_n12",
+      "canonicalHeightU": 1.06,
+      "canonicalWidthU": 0.31,
+      "bodyClass": "tall_lean_celestial_officer",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.37701454402515727,
+        "y": 0.02604166666666663,
+        "width": 0.2772209119496855,
+        "height": 0.9479166666666666
+      },
+      "renderBounds": {
+        "x": 0.3307291666666667,
+        "y": 0.026041666666666668,
+        "width": 0.3697916666666667,
+        "height": 0.9479166666666666,
+        "feetY": 0.9739583333333334
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.5325520833333334,
+        "y": 0.9739583333333334
+      },
+      "bodyBoundsAspect": 0.29245283018867924,
+      "rationale": "tall edict reach, narrow official robe, upright boundary-control axis",
+      "authoredScaleBasis": {
+        "speciesId": "ordinary_human",
+        "morphologyId": "tall_lean_celestial_officer",
+        "progressionStageId": "encounter_authored_enc_quota_deity_heaven_envoy",
+        "combatRoleId": "heaven_edict_officer_human"
+      },
+      "bodyProfileContractSha256": "f4124162fc48905ecc8e5fb1a3ba6eee3542b1e6919879672b2f62b69d72e500"
+    },
+    "5c8a60dfa5106c9d08d660cc657a9bc3690ee1319a48d9a251cd92838baf3e46": {
+      "recordId": "scale_5c8a60dfa5106c9d",
+      "carrierMetricId": "carrier_heaven_gate_hunter_idle_agc_n12",
+      "assetPath": "assets/combat/enemy_identities/heaven_gate_hunter_agc_n12/idle/frame-1.png",
+      "assetSha256": "5c8a60dfa5106c9d08d660cc657a9bc3690ee1319a48d9a251cd92838baf3e46",
+      "bodyProfileId": "heaven_gate_hunter_sturdy_n12",
+      "canonicalHeightU": 1.03,
+      "canonicalWidthU": 0.38,
+      "bodyClass": "sturdy_humanoid_gate_hunter",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.34469811893203883,
+        "y": 0.08333333333333337,
+        "width": 0.313207928802589,
+        "height": 0.8489583333333334
+      },
+      "renderBounds": {
+        "x": 0.21875,
+        "y": 0.08333333333333333,
+        "width": 0.5651041666666666,
+        "height": 0.8489583333333334,
+        "feetY": 0.9322916666666666
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.6861979166666666,
+        "y": 0.9322916666666666
+      },
+      "bodyBoundsAspect": 0.36893203883495146,
+      "rationale": "broad hunter coat, gate-blocking stance, heavy capture reach",
+      "authoredScaleBasis": {
+        "speciesId": "ordinary_human",
+        "morphologyId": "sturdy_humanoid_gate_hunter",
+        "progressionStageId": "encounter_authored_enc_quota_tribulation_gate_hunter",
+        "combatRoleId": "heaven_route_hunter_human"
+      },
+      "bodyProfileContractSha256": "aa1472f95385484a6c3a721ce4bd723c030faebfa5dc63ca25c75ac924b8ed2d"
+    },
+    "24aceb6db820322142c4e68aab9032d5cf0d85d43a64cddf06ae6ab9e9df0d33": {
+      "recordId": "scale_24aceb6db8203221",
+      "carrierMetricId": "carrier_heaven_censor_idle_agc_n12",
+      "assetPath": "assets/combat/enemy_identities/heaven_censor_agc_n12/idle/frame-1.png",
+      "assetSha256": "24aceb6db820322142c4e68aab9032d5cf0d85d43a64cddf06ae6ab9e9df0d33",
+      "bodyProfileId": "heaven_censor_very_tall_n12",
+      "canonicalHeightU": 1.08,
+      "canonicalWidthU": 0.29,
+      "bodyClass": "very_tall_narrow_celestial_official",
+      "visualThreatRank": "boss",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.3662229938271605,
+        "y": 0.02083333333333337,
+        "width": 0.2545331790123456,
+        "height": 0.9479166666666666
+      },
+      "renderBounds": {
+        "x": 0.3229166666666667,
+        "y": 0.020833333333333332,
+        "width": 0.3411458333333333,
+        "height": 0.9479166666666666,
+        "feetY": 0.96875
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.4205729166666667,
+        "y": 0.96875
+      },
+      "bodyBoundsAspect": 0.2685185185185185,
+      "rationale": "very tall censor reach, narrow archive robe, severe upright control axis",
+      "authoredScaleBasis": {
+        "speciesId": "ordinary_human",
+        "morphologyId": "very_tall_narrow_celestial_official",
+        "progressionStageId": "encounter_authored_enc_hidden_heaven_censor",
+        "combatRoleId": "history_censor_human"
+      },
+      "bodyProfileContractSha256": "54abb8ad76aee2fc39b89b6f0c2a7346f5c0b5088ba4c9f6b27d3977154b0da3"
+    },
+    "0ba132656b61e672b725266695e62c3cb831d33b0120ba18d8b262981e4a21db": {
+      "recordId": "scale_0ba132656b61e672",
+      "carrierMetricId": "carrier_void_enforcer_shadow_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/void_enforcer_shadow_agc_n13/idle/frame-1.png",
+      "assetSha256": "0ba132656b61e672b725266695e62c3cb831d33b0120ba18d8b262981e4a21db",
+      "bodyProfileId": "void_enforcer_shadow_hovering_n13",
+      "canonicalHeightU": 1.18,
+      "canonicalWidthU": 0.62,
+      "bodyClass": "fractured_shadow_arbiter",
+      "visualThreatRank": "boss",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.35352665960451973,
+        "y": 0.12239583333333337,
+        "width": 0.4570091807909605,
+        "height": 0.8697916666666666
+      },
+      "renderBounds": {
+        "x": 0.23697916666666666,
+        "y": 0.12239583333333333,
+        "width": 0.6901041666666666,
+        "height": 0.8697916666666666,
+        "feetY": 0.9921875
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.5716145833333334,
+        "y": 1
+      },
+      "bodyBoundsAspect": 0.5254237288135594,
+      "rationale": "hollow judgment core, split seal shoulders, and suspended shadow length",
+      "authoredScaleBasis": {
+        "speciesId": "void_enforcer_shadow",
+        "morphologyId": "fractured_shadow_arbiter",
+        "progressionStageId": "encounter_authored_enc_boss_nascent_void",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "66f9e610a79ca8d0f239a015c124d7d48f5a8c38eae46fceacc15600ee8a084a"
+    },
+    "065c792ab8395eb7be7d1e0c242a5265b8bf563468f73e19a6a0fb0b575c885e": {
+      "recordId": "scale_065c792ab8395eb7",
+      "carrierMetricId": "carrier_five_element_inverse_array_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/five_element_inverse_array_agc_n13/idle/frame-1.png",
+      "assetSha256": "065c792ab8395eb7be7d1e0c242a5265b8bf563468f73e19a6a0fb0b575c885e",
+      "bodyProfileId": "five_element_inverse_array_rooted_n13",
+      "canonicalHeightU": 1.02,
+      "canonicalWidthU": 1.18,
+      "bodyClass": "wide_orbital_array_entity",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.14473549836601307,
+        "y": 0.31510416666666663,
+        "width": 0.7652165032679739,
+        "height": 0.6614583333333334
+      },
+      "renderBounds": {
+        "x": 0.10416666666666667,
+        "y": 0.3151041666666667,
+        "width": 0.8463541666666666,
+        "height": 0.6614583333333334,
+        "feetY": 0.9765625
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.48828125,
+        "y": 0.9765625
+      },
+      "bodyBoundsAspect": 1.156862745098039,
+      "rationale": "five-node lateral orbit, inverse spiral breadth, and rooted array core",
+      "authoredScaleBasis": {
+        "speciesId": "five_element_inverse_array",
+        "morphologyId": "wide_orbital_array_entity",
+        "progressionStageId": "encounter_authored_enc_trial_spell_elements",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "6284ba6080938b41a1a56930d7069c86bcea36c8077f78ddd1eb2c647912977a"
+    },
+    "8f6414e86b59ff35f3818c3985a96212e3219dcd629370e08c0d44034d3943e1": {
+      "recordId": "scale_8f6414e86b59ff35",
+      "carrierMetricId": "carrier_void_forbidden_formula_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/void_forbidden_formula_agc_n13/idle/frame-1.png",
+      "assetSha256": "8f6414e86b59ff35f3818c3985a96212e3219dcd629370e08c0d44034d3943e1",
+      "bodyProfileId": "void_forbidden_formula_rooted_n13",
+      "canonicalHeightU": 1.08,
+      "canonicalWidthU": 0.86,
+      "bodyClass": "upright_geometric_formula_entity",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.2421875,
+        "y": 0.2415213178294573,
+        "width": 0.5625,
+        "height": 0.7063953488372093
+      },
+      "renderBounds": {
+        "x": 0.2421875,
+        "y": 0.0546875,
+        "width": 0.5625,
+        "height": 0.8932291666666666,
+        "feetY": 0.9479166666666666
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.5377604166666666,
+        "y": 0.9479166666666666
+      },
+      "bodyBoundsAspect": 0.7962962962962963,
+      "rationale": "upright void lattice, offset node crown, and compressed formula core",
+      "authoredScaleBasis": {
+        "speciesId": "void_forbidden_formula",
+        "morphologyId": "upright_geometric_formula_entity",
+        "progressionStageId": "encounter_authored_enc_trial_spell_void",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "3d856af4a39689fba03844daaa17e0ddfa89568abb4d475df989681190fe9c47"
+    },
+    "e05050fcf8af4e4fee4ff00f2001696de99729a75afebffa16c610b531f13e55": {
+      "recordId": "scale_e05050fcf8af4e4f",
+      "carrierMetricId": "carrier_asking_fire_elixir_spirit_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/asking_fire_elixir_spirit_agc_n13/idle/frame-1.png",
+      "assetSha256": "e05050fcf8af4e4fee4ff00f2001696de99729a75afebffa16c610b531f13e55",
+      "bodyProfileId": "asking_fire_elixir_spirit_hovering_n13",
+      "canonicalHeightU": 0.94,
+      "canonicalWidthU": 0.74,
+      "bodyClass": "floating_pill_flame_spirit",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.22434618794326242,
+        "y": 0.15364583333333337,
+        "width": 0.6580784574468085,
+        "height": 0.8359375
+      },
+      "renderBounds": {
+        "x": 0.15885416666666666,
+        "y": 0.15364583333333334,
+        "width": 0.7890625,
+        "height": 0.8359375,
+        "feetY": 0.9895833333333334
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.5533854166666666,
+        "y": 1
+      },
+      "bodyBoundsAspect": 0.7872340425531914,
+      "rationale": "pill-core focus, asymmetric fire crown, and floating smoke-tail clearance",
+      "authoredScaleBasis": {
+        "speciesId": "asking_fire_elixir_spirit",
+        "morphologyId": "floating_pill_flame_spirit",
+        "progressionStageId": "encounter_authored_enc_trial_pill_spirit",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "b6d32c11f6eb3a7d1274838c8a0014a2f5ade7c318953e4137494f42856ea12b"
+    },
+    "1568ca41f9f2d5aafb3910f5ef28bf9bb39471b9b8efd46b56f18994568058d5": {
+      "recordId": "scale_1568ca41f9f2d5aa",
+      "carrierMetricId": "carrier_disembodied_soul_echo_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/disembodied_soul_echo_agc_n13/idle/frame-1.png",
+      "assetSha256": "1568ca41f9f2d5aafb3910f5ef28bf9bb39471b9b8efd46b56f18994568058d5",
+      "bodyProfileId": "disembodied_soul_echo_hovering_n13",
+      "canonicalHeightU": 1.16,
+      "canonicalWidthU": 0.5,
+      "bodyClass": "slender_reflection_soul",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.34767869971264365,
+        "y": 0.05989583333333337,
+        "width": 0.3827676005747127,
+        "height": 0.8880208333333334
+      },
+      "renderBounds": {
+        "x": 0.16145833333333334,
+        "y": 0.059895833333333336,
+        "width": 0.7552083333333334,
+        "height": 0.8880208333333334,
+        "feetY": 0.9479166666666666
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.53515625,
+        "y": 0.9879166666666667
+      },
+      "bodyBoundsAspect": 0.4310344827586207,
+      "rationale": "paired echo halves, silver hollow center, and long reflection tail",
+      "authoredScaleBasis": {
+        "speciesId": "disembodied_soul_echo",
+        "morphologyId": "slender_reflection_soul",
+        "progressionStageId": "encounter_authored_enc_quota_nascent_soul_echo",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "1acf0a3c5f7eef56ffbb3d89609e1edf03b8384fe885bd30af8196b8d1e0da72"
+    },
+    "e405aadadf606eecba7a18fc491f69f30f98bb8a4cb389cc4920c6838d6f80b5": {
+      "recordId": "scale_e405aadadf606eec",
+      "carrierMetricId": "carrier_void_eating_moth_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/void_eating_moth_agc_n13/idle/frame-1.png",
+      "assetSha256": "e405aadadf606eecba7a18fc491f69f30f98bb8a4cb389cc4920c6838d6f80b5",
+      "bodyProfileId": "void_eating_moth_broad_n13",
+      "canonicalHeightU": 0.86,
+      "canonicalWidthU": 1.06,
+      "bodyClass": "broad_void_wing_entity",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.24739583333333326,
+        "y": 0.37500000000000006,
+        "width": 0.5520833333333335,
+        "height": 0.4479166666666667
+      },
+      "renderBounds": {
+        "x": 0.06770833333333333,
+        "y": 0.375,
+        "width": 0.9114583333333334,
+        "height": 0.4479166666666667,
+        "feetY": 0.8229166666666666
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.5221354166666666,
+        "y": 0.8629166666666667
+      },
+      "bodyBoundsAspect": 1.232558139534884,
+      "rationale": "bitten wing span, small void core, and broad scale wake",
+      "authoredScaleBasis": {
+        "speciesId": "void_eating_moth",
+        "morphologyId": "broad_void_wing_entity",
+        "progressionStageId": "encounter_authored_enc_quota_nascent_void_moth",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "2b2ebb9213c0e760df8f1a7b2cc9f34b09dd6494c53a0a2b48d97e9fd9ffde93"
+    },
+    "3ac350b9044d0fc1e007f935344665d4fa03b6e60ea73ce6f2ad9042e9980491": {
+      "recordId": "scale_3ac350b9044d0fc1",
+      "carrierMetricId": "carrier_rift_hunter_shadow_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/rift_hunter_shadow_agc_n13/idle/frame-1.png",
+      "assetSha256": "3ac350b9044d0fc1e007f935344665d4fa03b6e60ea73ce6f2ad9042e9980491",
+      "bodyProfileId": "rift_hunter_shadow_hovering_n13",
+      "canonicalHeightU": 1.1,
+      "canonicalWidthU": 0.66,
+      "bodyClass": "forked_rift_hunter",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.3265625,
+        "y": 0.21614583333333337,
+        "width": 0.4640625,
+        "height": 0.7734375
+      },
+      "renderBounds": {
+        "x": 0.1875,
+        "y": 0.21614583333333334,
+        "width": 0.7421875,
+        "height": 0.7734375,
+        "feetY": 0.9895833333333334
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.6471354166666666,
+        "y": 1
+      },
+      "bodyBoundsAspect": 0.6,
+      "rationale": "forked rift hooks, cyan seam spine, and open shadow base",
+      "authoredScaleBasis": {
+        "speciesId": "rift_hunter_shadow",
+        "morphologyId": "forked_rift_hunter",
+        "progressionStageId": "encounter_authored_enc_quota_nascent_rift_rescue",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "6839e9002a026432398f910697c49db072ea76ede964db92f8f7bc834e09569b"
+    },
+    "53bd385dd0ad44db035f63ede876e77d8f1dd5406d78cd1da4c777385ff445dd": {
+      "recordId": "scale_53bd385dd0ad44db",
+      "carrierMetricId": "carrier_law_eating_cloud_beast_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/law_eating_cloud_beast_agc_n13/idle/frame-1.png",
+      "assetSha256": "53bd385dd0ad44db035f63ede876e77d8f1dd5406d78cd1da4c777385ff445dd",
+      "bodyProfileId": "law_eating_cloud_beast_broad_n13",
+      "canonicalHeightU": 1.16,
+      "canonicalWidthU": 1.34,
+      "bodyClass": "broad_cloud_quadruped",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.1555989583333333,
+        "y": 0.27083333333333326,
+        "width": 0.7851562500000001,
+        "height": 0.6796875
+      },
+      "renderBounds": {
+        "x": 0.14322916666666666,
+        "y": 0.2708333333333333,
+        "width": 0.8098958333333334,
+        "height": 0.6796875,
+        "feetY": 0.9505208333333334
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.4518229166666667,
+        "y": 0.9505208333333334
+      },
+      "bodyBoundsAspect": 1.1551724137931036,
+      "rationale": "bronze fang arc, cloud-boulder shoulder mass, and four-point grounding",
+      "authoredScaleBasis": {
+        "speciesId": "law_eating_cloud_beast",
+        "morphologyId": "broad_cloud_quadruped",
+        "progressionStageId": "encounter_authored_enc_quota_deity_law_beast",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "e8b87ad14aeb938062deda84051b64bd11a0738918fe8afcb66434ac9d06c60e"
+    },
+    "c7bea49b9199ff9be65dbd4334ddb6e6f9881d629af0b73c2cfc6e1ee77c7ab1": {
+      "recordId": "scale_c7bea49b9199ff9b",
+      "carrierMetricId": "carrier_runaway_prayer_flame_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/runaway_prayer_flame_agc_n13/idle/frame-1.png",
+      "assetSha256": "c7bea49b9199ff9be65dbd4334ddb6e6f9881d629af0b73c2cfc6e1ee77c7ab1",
+      "bodyProfileId": "runaway_prayer_flame_rooted_n13",
+      "canonicalHeightU": 1.04,
+      "canonicalWidthU": 0.78,
+      "bodyClass": "rooted_prayer_fire_entity",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.23860677083333337,
+        "y": 0.21614583333333337,
+        "width": 0.556640625,
+        "height": 0.7421875
+      },
+      "renderBounds": {
+        "x": 0.08854166666666667,
+        "y": 0.21614583333333334,
+        "width": 0.8567708333333334,
+        "height": 0.7421875,
+        "feetY": 0.9583333333333334
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.49609375,
+        "y": 0.9583333333333334
+      },
+      "bodyBoundsAspect": 0.75,
+      "rationale": "votive flame crown, censer-root base, and trailing ash petitions",
+      "authoredScaleBasis": {
+        "speciesId": "runaway_prayer_flame",
+        "morphologyId": "rooted_prayer_fire_entity",
+        "progressionStageId": "encounter_authored_enc_quota_deity_mortal_prayer",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "313a181a277075f6d2c949bed67e0f225e28be6908a8f99f00c959412a13e3e5"
+    },
+    "0e4916808317e140574e9115a07ad2776093f48060290c5aa963aedf11a29ea8": {
+      "recordId": "scale_0e4916808317e140",
+      "carrierMetricId": "carrier_thunder_scar_wraith_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/thunder_scar_wraith_agc_n13/idle/frame-1.png",
+      "assetSha256": "0e4916808317e140574e9115a07ad2776093f48060290c5aa963aedf11a29ea8",
+      "bodyProfileId": "thunder_scar_wraith_hovering_n13",
+      "canonicalHeightU": 1.22,
+      "canonicalWidthU": 0.58,
+      "bodyClass": "branching_lightning_wraith",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.38253500683060115,
+        "y": 0.08333333333333337,
+        "width": 0.41722165300546443,
+        "height": 0.8776041666666666
+      },
+      "renderBounds": {
+        "x": 0.3463541666666667,
+        "y": 0.08333333333333333,
+        "width": 0.4895833333333333,
+        "height": 0.8776041666666666,
+        "feetY": 0.9609375
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.6106770833333334,
+        "y": 1
+      },
+      "bodyBoundsAspect": 0.47540983606557374,
+      "rationale": "branching scar crown, fulgurite spine, and charged hollow base",
+      "authoredScaleBasis": {
+        "speciesId": "thunder_scar_wraith",
+        "morphologyId": "branching_lightning_wraith",
+        "progressionStageId": "encounter_authored_enc_quota_tribulation_thunder_wraith",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "c88a0f8b74bd1d8cecf4ac4310cb66108d82c910755e7fb61cdd79d71cd2b21c"
+    },
+    "1027637d646faace73b14fa013065f2fd9c0f311594803af83045335f1183b76": {
+      "recordId": "scale_1027637d646faace",
+      "carrierMetricId": "carrier_law_edict_echo_idle_agc_n13",
+      "assetPath": "assets/combat/enemy_identities/law_edict_echo_agc_n13/idle/frame-1.png",
+      "assetSha256": "1027637d646faace73b14fa013065f2fd9c0f311594803af83045335f1183b76",
+      "bodyProfileId": "law_edict_echo_hovering_n13",
+      "canonicalHeightU": 1.24,
+      "canonicalWidthU": 0.54,
+      "bodyClass": "slender_blank_decree_echo",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.3651293682795698,
+        "y": 0.2265625,
+        "width": 0.3061995967741936,
+        "height": 0.703125
+      },
+      "renderBounds": {
+        "x": 0.09114583333333333,
+        "y": 0.2265625,
+        "width": 0.8541666666666666,
+        "height": 0.703125,
+        "feetY": 0.9296875
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.17317708333333334,
+        "y": 0.9696875
+      },
+      "bodyBoundsAspect": 0.43548387096774205,
+      "rationale": "blank tablet frame, jade seal corners, and elongated decree wake",
+      "authoredScaleBasis": {
+        "speciesId": "law_edict_echo",
+        "morphologyId": "slender_blank_decree_echo",
+        "progressionStageId": "encounter_authored_enc_patrol_deity_law_echo",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "9e9479198cffb8eb5cef41ca8336b5ee6fd7fc133ef50c0617e8b1e04bcd63d5"
+    },
+    "f74c2fb631b5c27f4996ee5e4237f0a079f327bfc79e03462128d90e4bb4abe2": {
+      "recordId": "scale_f74c2fb631b5c27f",
+      "carrierMetricId": "carrier_karma_thunder_dragon_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/karma_thunder_dragon_agc_n14/idle/frame-1.png",
+      "assetSha256": "f74c2fb631b5c27f4996ee5e4237f0a079f327bfc79e03462128d90e4bb4abe2",
+      "bodyProfileId": "karma_thunder_dragon_coiled_n14",
+      "canonicalHeightU": 1.28,
+      "canonicalWidthU": 0.92,
+      "bodyClass": "long_coiled_chinese_dragon",
+      "visualThreatRank": "boss",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.18819173177083331,
+        "y": 0.0546875,
+        "width": 0.6158040364583334,
+        "height": 0.8567708333333334
+      },
+      "renderBounds": {
+        "x": 0.08333333333333333,
+        "y": 0.0546875,
+        "width": 0.8255208333333334,
+        "height": 0.8567708333333334,
+        "feetY": 0.9114583333333334
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.5455729166666666,
+        "y": 0.9514583333333334
+      },
+      "bodyBoundsAspect": 0.71875,
+      "rationale": "long Chinese-dragon coil, antlered head, and karma-fire scale seams",
+      "authoredScaleBasis": {
+        "speciesId": "karma_thunder_dragon",
+        "morphologyId": "long_coiled_chinese_dragon",
+        "progressionStageId": "encounter_authored_enc_boss_deity_karma_dragon",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "0e865db60cbb0e83c494edc9e0b45c24d22ebca4d95d50761014d0b772a85724"
+    },
+    "4668045a9516288eadf1b222a2760355e7f07c534365a4c4fb2cc845bc0ec822": {
+      "recordId": "scale_4668045a9516288e",
+      "carrierMetricId": "carrier_heaven_door_arbiter_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/heaven_door_arbiter_agc_n14/idle/frame-1.png",
+      "assetSha256": "4668045a9516288eadf1b222a2760355e7f07c534365a4c4fb2cc845bc0ec822",
+      "bodyProfileId": "heaven_door_arbiter_tall_n14",
+      "canonicalHeightU": 1.34,
+      "canonicalWidthU": 1.12,
+      "bodyClass": "tall_gate_pillar_arbiter",
+      "visualThreatRank": "boss",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.12257074004975123,
+        "y": 0.0546875,
+        "width": 0.7574626865671642,
+        "height": 0.90625
+      },
+      "renderBounds": {
+        "x": 0.09114583333333333,
+        "y": 0.0546875,
+        "width": 0.8203125,
+        "height": 0.90625,
+        "feetY": 0.9609375
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.7408854166666666,
+        "y": 0.9609375
+      },
+      "bodyBoundsAspect": 0.835820895522388,
+      "rationale": "paired celestial gate pillars, blank jade face, and decree-bearing threshold mass",
+      "authoredScaleBasis": {
+        "speciesId": "heaven_door_arbiter",
+        "morphologyId": "tall_gate_pillar_arbiter",
+        "progressionStageId": "encounter_authored_enc_boss_tribulation_heaven_door",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "4eb924b3567ae1c34641577978d26ca13b5d5632d51769769425cb4d6adea1ba"
+    },
+    "b8b167e08d4eabf6dfd2953d6ca7bc9eaec88a1d0cea438584515312cfeeec5c": {
+      "recordId": "scale_b8b167e08d4eabf6",
+      "carrierMetricId": "carrier_heaven_cleaving_sword_shadow_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/heaven_cleaving_sword_shadow_agc_n14/idle/frame-1.png",
+      "assetSha256": "b8b167e08d4eabf6dfd2953d6ca7bc9eaec88a1d0cea438584515312cfeeec5c",
+      "bodyProfileId": "heaven_cleaving_sword_shadow_diagonal_n14",
+      "canonicalHeightU": 1.18,
+      "canonicalWidthU": 0.46,
+      "bodyClass": "slender_straight_jian_shadow",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.38912429378531077,
+        "y": 0.10677083333333337,
+        "width": 0.3441472457627119,
+        "height": 0.8828125
+      },
+      "renderBounds": {
+        "x": 0.296875,
+        "y": 0.10677083333333333,
+        "width": 0.5286458333333334,
+        "height": 0.8828125,
+        "feetY": 0.9895833333333334
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.33984375,
+        "y": 1
+      },
+      "bodyBoundsAspect": 0.3898305084745763,
+      "rationale": "slender straight-jian axis, cloud-loop pommel, and readable diagonal cutting line",
+      "authoredScaleBasis": {
+        "speciesId": "heaven_cleaving_sword_shadow",
+        "morphologyId": "slender_straight_jian_shadow",
+        "progressionStageId": "encounter_authored_enc_trial_sword_heaven",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "64b3ff9236aa58a6e6e647e5215745121ac2d9f8f9e56944e2f2ed92e6d264cf"
+    },
+    "8f3ffc779bb3e55a9f634784140fba0d4addfeae76ff3c01f3c32b93ad2d7d80": {
+      "recordId": "scale_8f3ffc779bb3e55a",
+      "carrierMetricId": "carrier_chaos_elixir_tribulation_core_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/chaos_elixir_tribulation_core_agc_n14/idle/frame-1.png",
+      "assetSha256": "8f3ffc779bb3e55a9f634784140fba0d4addfeae76ff3c01f3c32b93ad2d7d80",
+      "bodyProfileId": "chaos_elixir_tribulation_ding_n14",
+      "canonicalHeightU": 0.88,
+      "canonicalWidthU": 0.96,
+      "bodyClass": "three_legged_bronze_ding",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.09895833333333333,
+        "y": 0.20247395833333326,
+        "width": 0.8046875,
+        "height": 0.7376302083333334
+      },
+      "renderBounds": {
+        "x": 0.09895833333333333,
+        "y": 0.0546875,
+        "width": 0.8046875,
+        "height": 0.8854166666666666,
+        "feetY": 0.9401041666666666
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.65234375,
+        "y": 0.9401041666666666
+      },
+      "bodyBoundsAspect": 1.0909090909090908,
+      "rationale": "three-legged bronze ding, paired handles, and sealed bagua body",
+      "authoredScaleBasis": {
+        "speciesId": "chaos_elixir_tribulation_core",
+        "morphologyId": "three_legged_bronze_ding",
+        "progressionStageId": "encounter_authored_enc_trial_pill_chaos",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "7d728fd7776dd5456550e2ee6473a9fd0855a9018c46acbf86632a6a69b677a3"
+    },
+    "4741d7f8792b65900c7ac28907c0ed729f580c8e19d0cf7edbf50f5157f99b42": {
+      "recordId": "scale_4741d7f8792b6590",
+      "carrierMetricId": "carrier_severed_memory_demon_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/severed_memory_demon_agc_n14/idle/frame-1.png",
+      "assetSha256": "4741d7f8792b65900c7ac28907c0ed729f580c8e19d0cf7edbf50f5157f99b42",
+      "bodyProfileId": "severed_memory_nuo_masks_n14",
+      "canonicalHeightU": 1.1,
+      "canonicalWidthU": 0.68,
+      "bodyClass": "joined_nuo_mask_hanfu",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.23697916666666666,
+        "y": 0.07728247549019618,
+        "width": 0.5494791666666666,
+        "height": 0.8888633578431372
+      },
+      "renderBounds": {
+        "x": 0.23697916666666666,
+        "y": 0.03125,
+        "width": 0.5494791666666666,
+        "height": 0.9348958333333334,
+        "feetY": 0.9661458333333334
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.55078125,
+        "y": 0.9661458333333334
+      },
+      "bodyBoundsAspect": 0.6181818181818182,
+      "rationale": "paired Chinese Nuo masks, bound fate threads, and one joined Hanfu mantle",
+      "authoredScaleBasis": {
+        "speciesId": "severed_memory_demon",
+        "morphologyId": "joined_nuo_mask_hanfu",
+        "progressionStageId": "encounter_authored_enc_companion_jiuwei_memory",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "6233e1f7004d056b46bf633978b1d66b3e9aef971b2bdd2d7f728b7b186f75f8"
+    },
+    "24ac08813e11327984aa78aacfcff36ed30042b60fa39ee386f07cb06fb90af0": {
+      "recordId": "scale_24ac08813e113279",
+      "carrierMetricId": "carrier_doomed_future_echo_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/doomed_future_echo_agc_n14/idle/frame-1.png",
+      "assetSha256": "24ac08813e11327984aa78aacfcff36ed30042b60fa39ee386f07cb06fb90af0",
+      "bodyProfileId": "doomed_future_hanfu_pair_n14",
+      "canonicalHeightU": 1.24,
+      "canonicalWidthU": 0.58,
+      "bodyClass": "black_white_hanfu_double",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.28309811827956993,
+        "y": 0.0390625,
+        "width": 0.4311995967741935,
+        "height": 0.921875
+      },
+      "renderBounds": {
+        "x": 0.06510416666666667,
+        "y": 0.0390625,
+        "width": 0.8671875,
+        "height": 0.921875,
+        "feetY": 0.9609375
+      },
+      "groundAnchor": {
+        "mode": "feet",
+        "x": 0.59765625,
+        "y": 0.9609375
+      },
+      "bodyBoundsAspect": 0.46774193548387094,
+      "rationale": "black-white human cultivator double, shared red fate cord, and opposed sleeve mass",
+      "authoredScaleBasis": {
+        "speciesId": "doomed_future_echo",
+        "morphologyId": "black_white_hanfu_double",
+        "progressionStageId": "encounter_authored_enc_companion_tianji_future",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "16f8488c9bc8a5e6d7ca5844c67ceae73a7862eebbfa7f02ee6685dc0de6fd60"
+    },
+    "9822eb8ee20df3a3b7ecb3d9a1b1a2d47b9285810c6fd4c60d20b9736f952f37": {
+      "recordId": "scale_9822eb8ee20df3a3",
+      "carrierMetricId": "carrier_tribulation_storm_echo_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/tribulation_storm_echo_agc_n14/idle/frame-1.png",
+      "assetSha256": "9822eb8ee20df3a3b7ecb3d9a1b1a2d47b9285810c6fd4c60d20b9736f952f37",
+      "bodyProfileId": "tribulation_thunder_drum_lowwide_n14",
+      "canonicalHeightU": 0.72,
+      "canonicalWidthU": 1.18,
+      "bodyClass": "low_wide_ritual_drum_frame",
+      "visualThreatRank": "normal",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.06510416666666667,
+        "y": 0.40245409604519766,
+        "width": 0.8854166666666666,
+        "height": 0.5402542372881356
+      },
+      "renderBounds": {
+        "x": 0.06510416666666667,
+        "y": 0.10416666666666667,
+        "width": 0.8854166666666666,
+        "height": 0.8385416666666666,
+        "feetY": 0.9427083333333334
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.30078125,
+        "y": 0.9427083333333334
+      },
+      "bodyBoundsAspect": 1.6388888888888888,
+      "rationale": "low ritual drum breadth, ruyi-cloud frame, and paired bell rhythm",
+      "authoredScaleBasis": {
+        "speciesId": "tribulation_storm_echo",
+        "morphologyId": "low_wide_ritual_drum_frame",
+        "progressionStageId": "encounter_authored_enc_patrol_tribulation_storm_echo",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "4a5782f11797b3d9e833ea8168d5725cdcf1f734993753243ecacff6a8d26bb0"
+    },
+    "a8d8d1e92d52a2ae58f3db0b3203108b5828e14ab1ae238fe503da081842b75c": {
+      "recordId": "scale_a8d8d1e92d52a2ae",
+      "carrierMetricId": "carrier_fallen_ascender_guardian_relic_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/fallen_ascender_guardian_relic_agc_n14/idle/frame-1.png",
+      "assetSha256": "a8d8d1e92d52a2ae58f3db0b3203108b5828e14ab1ae238fe503da081842b75c",
+      "bodyProfileId": "fallen_ascender_guardian_seal_broad_n14",
+      "canonicalHeightU": 0.92,
+      "canonicalWidthU": 1.14,
+      "bodyClass": "broad_jade_bi_seal_relic",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.16666666666666666,
+        "y": 0.40131578947368407,
+        "width": 0.703125,
+        "height": 0.5674342105263159
+      },
+      "renderBounds": {
+        "x": 0.16666666666666666,
+        "y": 0.06510416666666667,
+        "width": 0.703125,
+        "height": 0.9036458333333334,
+        "feetY": 0.96875
+      },
+      "groundAnchor": {
+        "mode": "rooted",
+        "x": 0.5065104166666666,
+        "y": 0.96875
+      },
+      "bodyBoundsAspect": 1.2391304347826084,
+      "rationale": "broad octagonal seal, broken jade bi-disc, and lotus-bell grounding",
+      "authoredScaleBasis": {
+        "speciesId": "fallen_ascender_guardian_relic",
+        "morphologyId": "broad_jade_bi_seal_relic",
+        "progressionStageId": "encounter_authored_enc_quota_tribulation_fallen_ascender",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "b489152de059732de5fe2f21efcd0ac2f1647ad9beefd0e9d8cdfef5488307f0"
+    },
+    "fcd6ba7a53837f04ec795dd2f754e1d16836ab13e55be5e5c311a351ea4e4980": {
+      "recordId": "scale_fcd6ba7a53837f04",
+      "carrierMetricId": "carrier_ascension_heaven_chain_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/ascension_heaven_chain_agc_n14/idle/frame-1.png",
+      "assetSha256": "fcd6ba7a53837f04ec795dd2f754e1d16836ab13e55be5e5c311a351ea4e4980",
+      "bodyProfileId": "ascension_decree_chain_bound_n14",
+      "canonicalHeightU": 1.02,
+      "canonicalWidthU": 0.82,
+      "bodyClass": "bound_black_jade_tablet",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.23697916666666666,
+        "y": 0.3767149390243901,
+        "width": 0.4947916666666667,
+        "height": 0.6154725609756099
+      },
+      "renderBounds": {
+        "x": 0.23697916666666666,
+        "y": 0.013020833333333334,
+        "width": 0.4947916666666667,
+        "height": 0.9791666666666666,
+        "feetY": 0.9921875
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.3450520833333333,
+        "y": 1
+      },
+      "bodyBoundsAspect": 0.8039215686274509,
+      "rationale": "bound black-jade decree, crossed iron chains, and suspended cloud pendants",
+      "authoredScaleBasis": {
+        "speciesId": "ascension_heaven_chain",
+        "morphologyId": "bound_black_jade_tablet",
+        "progressionStageId": "encounter_authored_enc_hidden_heaven_chain",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "563638d939e964c6b221af4fbdf90a49fcbcb2f43915971b2277319e4071fb2e"
+    },
+    "979fe6a28e018b5c9e190787d38a6faf3f1d57dc27bcb4069596c193e793d44a": {
+      "recordId": "scale_979fe6a28e018b5c",
+      "carrierMetricId": "carrier_chaos_reversal_dual_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/chaos_reversal_dual_agc_n14/idle/frame-1.png",
+      "assetSha256": "979fe6a28e018b5c9e190787d38a6faf3f1d57dc27bcb4069596c193e793d44a",
+      "bodyProfileId": "chaos_reversal_jian_pair_wide_n14",
+      "canonicalHeightU": 0.78,
+      "canonicalWidthU": 1.12,
+      "bodyClass": "wide_linked_yinyang_jian",
+      "visualThreatRank": "elite",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.1640625,
+        "y": 0.4839564732142857,
+        "width": 0.6848958333333334,
+        "height": 0.4769810267857143
+      },
+      "renderBounds": {
+        "x": 0.1640625,
+        "y": 0.03125,
+        "width": 0.6848958333333334,
+        "height": 0.9296875,
+        "feetY": 0.9609375
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.25390625,
+        "y": 1
+      },
+      "bodyBoundsAspect": 1.435897435897436,
+      "rationale": "linked pale-dark Chinese jian pair, yin-yang clasp, and mirrored horizontal reach",
+      "authoredScaleBasis": {
+        "speciesId": "chaos_reversal_dual",
+        "morphologyId": "wide_linked_yinyang_jian",
+        "progressionStageId": "encounter_authored_enc_hidden_chaos_reversal",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "08012bc2662b7e850835b2e88b3e80a2918d628461a43eab6bee8361877d14ad"
+    },
+    "fd0fe5860ccbbc3d1b31ceab24e090c7d7f4f4dfba0a7e8f0375c81b8983db5f": {
+      "recordId": "scale_fd0fe5860ccbbc3d",
+      "carrierMetricId": "carrier_nameless_heavenly_law_idle_agc_n14",
+      "assetPath": "assets/combat/enemy_identities/nameless_heavenly_law_agc_n14/idle/frame-1.png",
+      "assetSha256": "fd0fe5860ccbbc3d1b31ceab24e090c7d7f4f4dfba0a7e8f0375c81b8983db5f",
+      "bodyProfileId": "nameless_heavenly_law_hollow_n14",
+      "canonicalHeightU": 1.3,
+      "canonicalWidthU": 0.78,
+      "bodyClass": "tall_interlocked_law_armillary",
+      "visualThreatRank": "boss",
+      "naturalWidth": 384,
+      "naturalHeight": 384,
+      "bodyBounds": {
+        "x": 0.2260416666666667,
+        "y": 0.046875,
+        "width": 0.553125,
+        "height": 0.921875
+      },
+      "renderBounds": {
+        "x": 0.125,
+        "y": 0.046875,
+        "width": 0.7552083333333334,
+        "height": 0.921875,
+        "feetY": 0.96875
+      },
+      "groundAnchor": {
+        "mode": "shadow_projection",
+        "x": 0.5143229166666666,
+        "y": 1
+      },
+      "bodyBoundsAspect": 0.6,
+      "rationale": "interlocked dark-jade law rings, blank seals, and a hollow vertical axis",
+      "authoredScaleBasis": {
+        "speciesId": "nameless_heavenly_law",
+        "morphologyId": "tall_interlocked_law_armillary",
+        "progressionStageId": "encounter_authored_enc_hidden_chaos_nameless",
+        "combatRoleId": "native_phenomenon_plan_graph"
+      },
+      "bodyProfileContractSha256": "1f80013093db9d5ebd956466a3f6dafb8958df74f2f5d1fd1d25950a60a6da9a"
+    }
+  }
+}

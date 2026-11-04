@@ -15,6 +15,10 @@ class DataLoader {
   constructor() {
     this.cache = new Map();
     this.pendingLoads = new Map();
+    // 模块 ID 是稳定接口，物理文件名允许迁移；别名只在这里维护。
+    this.pathAliases = {
+      'npcs:core': 'npcs/core_npcs'
+    };
   }
 
   /**
@@ -25,6 +29,18 @@ class DataLoader {
   async load(moduleName) {
     if (this.cache.has(moduleName)) return this.cache.get(moduleName);
     if (this.pendingLoads.has(moduleName)) return this.pendingLoads.get(moduleName);
+
+    // A double-clicked production build already owns an inline module payload.
+    // Do not first issue a request guaranteed to fail by file:// CORS: besides
+    // noisy console errors it makes offline startup race its own fallback.
+    if (this._isFileProtocol()) {
+      const inline = this._readFromModules(moduleName);
+      if (inline !== null) {
+        this.cache.set(moduleName, inline);
+        eventBus.emit('data:loaded', { module: moduleName, count: this._countItems(inline), source: 'inline-file' });
+        return inline;
+      }
+    }
 
     const loadPromise = this._fetchAndParse(moduleName);
     this.pendingLoads.set(moduleName, loadPromise);
@@ -50,6 +66,15 @@ class DataLoader {
   loadSync(moduleName) {
     if (this.cache.has(moduleName)) return this.cache.get(moduleName);
 
+    if (this._isFileProtocol()) {
+      const inline = this._readFromModules(moduleName);
+      if (inline !== null) {
+        this.cache.set(moduleName, inline);
+        return inline;
+      }
+      return null;
+    }
+
     // 优先尝试从外部JSON同步加载（HTTP环境下可用）
     try {
       const externalData = this._fetchSync(moduleName);
@@ -62,6 +87,20 @@ class DataLoader {
     }
 
     // Fallback: 内联数据
+    const inline = this._readFromModules(moduleName);
+    if (inline !== null) {
+      this.cache.set(moduleName, inline);
+      return inline;
+    }
+    return null;
+  }
+
+  /**
+   * Read a module already hydrated by async startup (or the inline fallback)
+   * without ever opening a synchronous network request.
+   */
+  getCached(moduleName) {
+    if (this.cache.has(moduleName)) return this.cache.get(moduleName);
     const inline = this._readFromModules(moduleName);
     if (inline !== null) {
       this.cache.set(moduleName, inline);
@@ -110,6 +149,15 @@ class DataLoader {
     return null;
   }
 
+  _resolvePath(moduleName) {
+    const relative = this.pathAliases[moduleName] || moduleName.replace(/:/g, '/');
+    return `data/${relative}.json`;
+  }
+
+  _isFileProtocol() {
+    return typeof location !== 'undefined' && location?.protocol === 'file:';
+  }
+
   /**
    * 同步加载外部JSON（best-effort）
    * 在浏览器主线程中同步XHR已被弃用，但在以下环境可用：
@@ -119,8 +167,9 @@ class DataLoader {
    * 当同步XHR不可用时，会自动回退到内联数据
    */
   _fetchSync(moduleName) {
+    if (this._isFileProtocol()) return null;
     if (typeof XMLHttpRequest === 'undefined') return null;
-    const path = `data/${moduleName.replace(/:/g, '/')}.json`;
+    const path = this._resolvePath(moduleName);
     const xhr = new XMLHttpRequest();
     xhr.open('GET', path, false); // false = 同步请求
     xhr.send(null);
@@ -131,8 +180,13 @@ class DataLoader {
   }
 
   async _fetchAndParse(moduleName) {
+    if (this._isFileProtocol()) {
+      const inline = this._readFromModules(moduleName);
+      if (inline !== null) return inline;
+      throw new Error(`Failed to load ${moduleName}: file:// has no inline DATA_MODULES entry`);
+    }
     // 1. 优先从外部JSON加载（数据唯一维护来源）
-    const path = `data/${moduleName.replace(/:/g, '/')}.json`;
+    const path = this._resolvePath(moduleName);
     try {
       const response = await fetch(path);
       if (response.ok) {

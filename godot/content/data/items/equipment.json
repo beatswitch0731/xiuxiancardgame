@@ -1,0 +1,124 @@
+{
+  "items": {
+    "玄铁甲": {
+      "id": "玄铁甲",
+      "name": "玄铁甲",
+      "slot": "armor",
+      "tier": "qi",
+      "tierName": "凡阶",
+      "desc": "一套精良的凡人甲胄。战斗开始时获得5点护盾。",
+      "stats": {
+        "maxHealth": 5
+      },
+      "passives": [
+        {
+          "hook": "onCombatStart",
+          "effect": "block",
+          "value": 5
+        }
+      ]
+    },
+    "灵泉葫芦": {
+      "id": "灵泉葫芦",
+      "name": "灵泉葫芦",
+      "slot": "accessory",
+      "tier": "qi",
+      "tierName": "凡阶",
+      "desc": "蕴含微弱水灵气的葫芦。每回合结束回复1点气血。",
+      "stats": {
+        "fortune": 5
+      },
+      "passives": [
+        {
+          "hook": "onTurnEnd",
+          "effect": "heal",
+          "value": 1
+        }
+      ]
+    },
+    "避尘珠": {
+      "id": "避尘珠",
+      "name": "避尘珠",
+      "slot": "accessory",
+      "tier": "foundation",
+      "tierName": "地阶",
+      "desc": "一尘不染的宝珠。战斗开始时抽1张牌。",
+      "stats": {
+        "fortune": 10,
+        "daoHeart": 5
+      },
+      "passives": [
+        {
+          "hook": "onCombatStart",
+          "effect": "drawCard",
+          "value": 1
+        }
+      ]
+    },
+    "太乙精金剑": {
+      "id": "太乙精金剑",
+      "name": "太乙精金剑",
+      "slot": "weapon",
+      "tier": "golden",
+      "tierName": "天阶",
+      "desc": "金丹期大修士所佩剑。每打出2张攻击卡，造成5点穿透伤害。",
+      "stats": {
+        "cultivation": 10
+      },
+      "passives": [
+        {
+          "hook": "onCardPlay",
+          "cardType": "attack",
+          "triggerCount": 2,
+          "effect": "dealDamage",
+          "value": 5
+        }
+      ]
+    },
+    "青云剑匣": {
+      "id": "青云剑匣",
+      "name": "青云剑匣",
+      "slot": "artifact",
+      "tier": "nascent",
+      "tierName": "仙阶",
+      "desc": "青云剑宗镇派之宝（本命神兵）。每打出3张剑诀，对敌人造成10点伤害。",
+      "stats": {
+        "maxHealth": 10,
+        "daoHeart": 10
+      },
+      "passives": [
+        {
+          "hook": "onCardPlay",
+          "cardTag": "sword",
+          "triggerCount": 3,
+          "effect": "dealDamage",
+          "value": 10
+        }
+      ]
+    },
+    "神农鼎": {
+      "id": "神农鼎",
+      "name": "神农鼎",
+      "slot": "artifact",
+      "tier": "nascent",
+      "tierName": "仙阶",
+      "desc": "太古药帝遗落的宝鼎（本命神兵）。每回合结束回复3点气血，战斗开始获得15点护盾。",
+      "stats": {
+        "maxHealth": 20,
+        "fortune": 20
+      },
+      "passives": [
+        {
+          "hook": "onTurnEnd",
+          "effect": "heal",
+          "value": 3
+        },
+        {
+          "hook": "onCombatStart",
+          "effect": "block",
+          "value": 15
+        }
+      ]
+    }
+  }
+}

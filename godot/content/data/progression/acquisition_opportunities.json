@@ -1,0 +1,577 @@
+{
+  "version": 1,
+  "contractId": "cultivation_opportunity_acquisition_v1",
+  "description": "剧情、机遇、关卡与关系奖励的统一取得契约。剧情选择改变机缘档，不直接指定技能或法宝品类。",
+  "realmOrder": [
+    "qi",
+    "foundation",
+    "golden",
+    "nascent",
+    "deity",
+    "tribulation"
+  ],
+  "opportunities": {
+    "sword_legacy_completion_v1": {
+      "name": "剑之道·传承显现",
+      "sourceType": "story_quest_completion",
+      "sourceCardId": "q_sword_4",
+      "locationId": "qingyun_sword_cliff",
+      "locationName": "青云剑宗·无名山崖",
+      "path": "sword",
+      "minRealm": "foundation",
+      "oncePerLife": true,
+      "resolution": "special_then_weighted",
+      "guaranteedResult": true,
+      "profiles": {
+        "empty_hand": {
+          "name": "无剑之境",
+          "preview": "放下执剑之形，偏向心剑、剑阵与无形传承；既有剑道见闻可能唤醒特殊传承。"
+        },
+        "kept_intent": {
+          "name": "余锋之境",
+          "preview": "保留一缕可依凭的剑意，偏向古剑认主与护道器契，但仍可能悟得剑诀。"
+        }
+      },
+      "specialRules": [
+        {
+          "id": "special_empty_hand_myriad_swords_v1",
+          "profile": "empty_hand",
+          "rewardType": "card",
+          "rewardId": "legacy_sword_heart_art",
+          "rewardName": "万剑归宗",
+          "conditions": {
+            "requiredAttributes": {
+              "daoHeart": 3
+            },
+            "maximumAttributes": {
+              "karmaBad": 5
+            },
+            "requiredKnowledge": {
+              "sword": 2
+            }
+          },
+          "reason": "道心圆满且剑道见闻足够，放下有形之剑后，万剑归宗自行显现。"
+        }
+      ],
+      "candidates": [
+        {
+          "rewardType": "card",
+          "rewardId": "legacy_sword_heart_art",
+          "rewardName": "万剑归宗",
+          "baseWeight": 26,
+          "profileBonuses": {
+            "empty_hand": 20,
+            "kept_intent": 4
+          },
+          "attributeScales": {
+            "daoHeart": {
+              "center": 1,
+              "scale": 5
+            },
+            "cultivation": {
+              "center": 20,
+              "scale": 0.06
+            },
+            "karmaBad": {
+              "center": 0,
+              "scale": -1
+            }
+          },
+          "knowledgeScales": {
+            "sword": 3
+          }
+        },
+        {
+          "rewardType": "card",
+          "rewardId": "sword_array",
+          "rewardName": "太虚剑阵",
+          "baseWeight": 24,
+          "profileBonuses": {
+            "empty_hand": 8,
+            "kept_intent": 2
+          },
+          "attributeScales": {
+            "cultivation": {
+              "center": 20,
+              "scale": 0.04
+            }
+          },
+          "knowledgeScales": {
+            "sword": 1
+          }
+        },
+        {
+          "rewardType": "treasure",
+          "rewardId": "剑心古剑",
+          "rewardName": "剑心古剑",
+          "baseWeight": 24,
+          "profileBonuses": {
+            "empty_hand": 2,
+            "kept_intent": 20
+          },
+          "attributeScales": {
+            "fortune": {
+              "center": 50,
+              "scale": 0.18
+            }
+          },
+          "knowledgeScales": {
+            "sword": 2
+          }
+        },
+        {
+          "rewardType": "treasure",
+          "rewardId": "剑心佩",
+          "rewardName": "剑心佩",
+          "baseWeight": 16,
+          "profileBonuses": {
+            "empty_hand": 4,
+            "kept_intent": 10
+          },
+          "attributeScales": {
+            "fortune": {
+              "center": 50,
+              "scale": 0.12
+            }
+          }
+        }
+      ],
+      "weightClamp": {
+        "min": 1,
+        "max": 100
+      }
+    },
+    "spell_codex_completion_v1": {
+      "name": "禁术之书·封印回响",
+      "sourceType": "story_quest_completion",
+      "sourceCardId": "q_spell_4",
+      "locationId": "tianshu_archive_seal_core",
+      "locationName": "天枢道院·万卷楼封印中枢",
+      "path": "spell",
+      "minRealm": "foundation",
+      "oncePerLife": true,
+      "resolution": "special_then_weighted",
+      "guaranteedResult": true,
+      "profiles": {
+        "seal_keeper": {
+          "name": "守封之誓",
+          "preview": "以自身法力续写封印，偏向禁制回文与护道器契；清明道心和法道见闻可能唤醒特殊传承。"
+        },
+        "rift_witness": {
+          "name": "窥隙之念",
+          "preview": "把裂隙中的雷光记入识海，偏向虚隙雷法与星轨法器，但仍可能得到守封传承。"
+        }
+      },
+      "specialRules": [
+        {
+          "id": "special_seal_keeper_reversal_v1",
+          "profile": "seal_keeper",
+          "rewardType": "card",
+          "rewardId": "spell_seal_reversal",
+          "rewardName": "十方禁制回文",
+          "conditions": {
+            "requiredAttributes": {
+              "daoHeart": 2
+            },
+            "maximumAttributes": {
+              "karmaBad": 5
+            },
+            "requiredKnowledge": {
+              "spell": 2
+            }
+          },
+          "reason": "道心清明且已见禁术两重因果，封印在你手中自行倒转成文。"
+        },
+        {
+          "id": "special_rift_witness_thunder_v1",
+          "profile": "rift_witness",
+          "rewardType": "card",
+          "rewardId": "spell_void_thunder",
+          "rewardName": "虚隙雷引",
+          "conditions": {
+            "requiredAttributes": {
+              "karmaBad": 2
+            },
+            "requiredKnowledge": {
+              "spell": 2
+            }
+          },
+          "reason": "你已亲历两重禁术并承受契约恶业，裂隙雷光在识海中凝成真诀。"
+        }
+      ],
+      "candidates": [
+        {
+          "rewardType": "card",
+          "rewardId": "spell_seal_reversal",
+          "rewardName": "十方禁制回文",
+          "baseWeight": 26,
+          "profileBonuses": {
+            "seal_keeper": 20,
+            "rift_witness": 4
+          },
+          "attributeScales": {
+            "daoHeart": {
+              "center": 1,
+              "scale": 5
+            },
+            "cultivation": {
+              "center": 25,
+              "scale": 0.06
+            },
+            "karmaBad": {
+              "center": 0,
+              "scale": -1
+            }
+          },
+          "knowledgeScales": {
+            "spell": 3
+          }
+        },
+        {
+          "rewardType": "card",
+          "rewardId": "spell_void_thunder",
+          "rewardName": "虚隙雷引",
+          "baseWeight": 22,
+          "profileBonuses": {
+            "seal_keeper": 4,
+            "rift_witness": 18
+          },
+          "attributeScales": {
+            "cultivation": {
+              "center": 25,
+              "scale": 0.08
+            },
+            "karmaBad": {
+              "center": 0,
+              "scale": 2
+            }
+          },
+          "knowledgeScales": {
+            "spell": 2
+          }
+        },
+        {
+          "rewardType": "treasure",
+          "rewardId": "万卷封魔残页",
+          "rewardName": "万卷封魔残页",
+          "baseWeight": 24,
+          "profileBonuses": {
+            "seal_keeper": 14,
+            "rift_witness": 4
+          },
+          "attributeScales": {
+            "daoHeart": {
+              "center": 1,
+              "scale": 3
+            },
+            "fortune": {
+              "center": 50,
+              "scale": 0.1
+            }
+          },
+          "knowledgeScales": {
+            "spell": 2
+          }
+        },
+        {
+          "rewardType": "treasure",
+          "rewardId": "星轨法印盘",
+          "rewardName": "星轨法印盘",
+          "baseWeight": 24,
+          "profileBonuses": {
+            "seal_keeper": 4,
+            "rift_witness": 18
+          },
+          "attributeScales": {
+            "fortune": {
+              "center": 50,
+              "scale": 0.18
+            },
+            "karmaBad": {
+              "center": 0,
+              "scale": 0.5
+            }
+          },
+          "knowledgeScales": {
+            "spell": 1
+          }
+        }
+      ],
+      "weightClamp": {
+        "min": 1,
+        "max": 100
+      }
+    },
+    "body_tribulation_completion_v1": {
+      "name": "肉身天劫·雷纹入骨",
+      "sourceType": "story_quest_completion",
+      "sourceCardId": "q_body_4",
+      "locationId": "wumeng_heavenfall_waterfall_altar",
+      "locationName": "武盟禁地·天瀑劫台",
+      "path": "body",
+      "minRealm": "foundation",
+      "oncePerLife": true,
+      "resolution": "special_then_weighted",
+      "guaranteedResult": true,
+      "profiles": {
+        "bare_flesh": {
+          "name": "赤身承劫",
+          "preview": "让雷霆直接刻入筋骨，偏向天劫锻体与雷纹护具；肉身见闻和清明道心可能唤醒特殊传承。"
+        },
+        "qi_guarded": {
+          "name": "锁脉引雷",
+          "preview": "只用一缕真元锁住经脉，把雷势导向一处，偏向锁脉爆发与归元器物，但仍可能悟得锻体法。"
+        }
+      },
+      "specialRules": [
+        {
+          "id": "special_bare_flesh_thunder_temper_v1",
+          "profile": "bare_flesh",
+          "rewardType": "card",
+          "rewardId": "body_thunder_temper",
+          "rewardName": "天劫锻骨",
+          "conditions": {
+            "requiredAttributes": {
+              "daoHeart": 2
+            },
+            "maximumAttributes": {
+              "karmaBad": 5
+            },
+            "requiredKnowledge": {
+              "body": 2
+            }
+          },
+          "reason": "你已在地火与天瀑中认清肉身的极限，雷霆不再是伤势，而是下一层骨纹。"
+        },
+        {
+          "id": "special_qi_guarded_meridian_reversal_v1",
+          "profile": "qi_guarded",
+          "rewardType": "card",
+          "rewardId": "body_meridian_reversal",
+          "rewardName": "锁脉崩山",
+          "conditions": {
+            "requiredAttributes": {
+              "health": 6,
+              "fortune": 45
+            },
+            "requiredKnowledge": {
+              "body": 2
+            }
+          },
+          "reason": "两重炼体见闻让你找到雷势回流的窄门，锁住经脉的一瞬足以把余劲尽数轰出。"
+        }
+      ],
+      "candidates": [
+        {
+          "rewardType": "card",
+          "rewardId": "body_thunder_temper",
+          "rewardName": "天劫锻骨",
+          "baseWeight": 25,
+          "profileBonuses": {
+            "bare_flesh": 20,
+            "qi_guarded": 5
+          },
+          "attributeScales": {
+            "daoHeart": { "center": 1, "scale": 5 },
+            "health": { "center": 6, "scale": 1.5 },
+            "karmaBad": { "center": 0, "scale": -1 }
+          },
+          "knowledgeScales": {
+            "body": 3
+          }
+        },
+        {
+          "rewardType": "card",
+          "rewardId": "body_meridian_reversal",
+          "rewardName": "锁脉崩山",
+          "baseWeight": 23,
+          "profileBonuses": {
+            "bare_flesh": 5,
+            "qi_guarded": 19
+          },
+          "attributeScales": {
+            "cultivation": { "center": 25, "scale": 0.08 },
+            "fortune": { "center": 50, "scale": 0.1 }
+          },
+          "knowledgeScales": {
+            "body": 2
+          }
+        },
+        {
+          "rewardType": "treasure",
+          "rewardId": "天瀑雷纹甲",
+          "rewardName": "天瀑雷纹甲",
+          "baseWeight": 23,
+          "profileBonuses": {
+            "bare_flesh": 17,
+            "qi_guarded": 5
+          },
+          "attributeScales": {
+            "health": { "center": 6, "scale": 1.3 },
+            "daoHeart": { "center": 1, "scale": 2 }
+          },
+          "knowledgeScales": {
+            "body": 2
+          }
+        },
+        {
+          "rewardType": "treasure",
+          "rewardId": "锁脉玄铁环",
+          "rewardName": "锁脉玄铁环",
+          "baseWeight": 23,
+          "profileBonuses": {
+            "bare_flesh": 4,
+            "qi_guarded": 18
+          },
+          "attributeScales": {
+            "fortune": { "center": 50, "scale": 0.18 },
+            "cultivation": { "center": 25, "scale": 0.04 }
+          },
+          "knowledgeScales": {
+            "body": 1
+          }
+        }
+      ],
+      "weightClamp": {
+        "min": 1,
+        "max": 100
+      }
+    },
+    "pill_master_completion_v1": {
+      "name": "丹之极意·因果成炉",
+      "sourceType": "story_quest_completion",
+      "sourceCardId": "q_pill_4",
+      "locationId": "shennong_karma_furnace_hall",
+      "locationName": "神农丹谷·因果炉殿",
+      "path": "pill",
+      "minRealm": "foundation",
+      "oncePerLife": true,
+      "resolution": "special_then_weighted",
+      "guaranteedResult": true,
+      "profiles": {
+        "restraint_vow": {
+          "name": "空炉止炼",
+          "preview": "以不炼为丹道最后一味药，偏向返命丹诀与无相器皿；善因、道心与丹道见闻可能唤醒特殊传承。"
+        },
+        "vessel_keeper": {
+          "name": "执瓶观因",
+          "preview": "接过空瓶，记住因果可炼却不可滥用，偏向因果毒火与药王炉器，但仍可能得到回护丹诀。"
+        }
+      },
+      "specialRules": [
+        {
+          "id": "special_restraint_empty_cauldron_v1",
+          "profile": "restraint_vow",
+          "rewardType": "card",
+          "rewardId": "pill_empty_cauldron_reversal",
+          "rewardName": "空炉返命",
+          "conditions": {
+            "requiredAttributes": {
+              "daoHeart": 2,
+              "karmaGood": 2
+            },
+            "maximumAttributes": {
+              "karmaBad": 5
+            },
+            "requiredKnowledge": {
+              "pill": 2
+            }
+          },
+          "reason": "你见过因果入炉的代价，也守住了停手的一刻；空炉因此反照出生机。"
+        },
+        {
+          "id": "special_vessel_karma_ember_v1",
+          "profile": "vessel_keeper",
+          "rewardType": "card",
+          "rewardId": "pill_karma_ember",
+          "rewardName": "因果烬毒",
+          "conditions": {
+            "requiredAttributes": {
+              "fortune": 55,
+              "karmaBad": 2
+            },
+            "requiredKnowledge": {
+              "pill": 2
+            }
+          },
+          "reason": "你把恶因封进空瓶却没有遗忘它，残火遂凝成只灼敌脉的丹毒。"
+        }
+      ],
+      "candidates": [
+        {
+          "rewardType": "card",
+          "rewardId": "pill_empty_cauldron_reversal",
+          "rewardName": "空炉返命",
+          "baseWeight": 25,
+          "profileBonuses": {
+            "restraint_vow": 20,
+            "vessel_keeper": 5
+          },
+          "attributeScales": {
+            "daoHeart": { "center": 1, "scale": 5 },
+            "karmaGood": { "center": 0, "scale": 1.5 },
+            "karmaBad": { "center": 0, "scale": -1 }
+          },
+          "knowledgeScales": {
+            "pill": 3
+          }
+        },
+        {
+          "rewardType": "card",
+          "rewardId": "pill_karma_ember",
+          "rewardName": "因果烬毒",
+          "baseWeight": 22,
+          "profileBonuses": {
+            "restraint_vow": 4,
+            "vessel_keeper": 19
+          },
+          "attributeScales": {
+            "fortune": { "center": 50, "scale": 0.12 },
+            "karmaBad": { "center": 0, "scale": 1.5 }
+          },
+          "knowledgeScales": {
+            "pill": 2
+          }
+        },
+        {
+          "rewardType": "treasure",
+          "rewardId": "无相空瓶",
+          "rewardName": "无相空瓶",
+          "baseWeight": 23,
+          "profileBonuses": {
+            "restraint_vow": 17,
+            "vessel_keeper": 6
+          },
+          "attributeScales": {
+            "daoHeart": { "center": 1, "scale": 3 },
+            "fortune": { "center": 50, "scale": 0.1 }
+          },
+          "knowledgeScales": {
+            "pill": 2
+          }
+        },
+        {
+          "rewardType": "treasure",
+          "rewardId": "因果药王炉",
+          "rewardName": "因果药王炉",
+          "baseWeight": 24,
+          "profileBonuses": {
+            "restraint_vow": 4,
+            "vessel_keeper": 18
+          },
+          "attributeScales": {
+            "fortune": { "center": 50, "scale": 0.18 },
+            "karmaBad": { "center": 0, "scale": 0.5 }
+          },
+          "knowledgeScales": {
+            "pill": 1
+          }
+        }
+      ],
+      "weightClamp": {
+        "min": 1,
+        "max": 100
+      }
+    }
+  }
+}

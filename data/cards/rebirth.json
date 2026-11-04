@@ -33,25 +33,49 @@
       "realm": "qi",
       "weight": 0,
       "once": false,
-      "tags": ["rebirth", "boon"],
+      "tags": [
+        "rebirth",
+        "boon"
+      ],
       "choices": {
         "left": {
           "text": "前世的功法",
           "desc": "带着前世的一本高级功法开始。消耗 10 善缘。",
-          "effects": { "deckCard": "sword_intent" },
-          "costCheck": { "karmaGood": 10 }
+          "effects": {
+            "deckCard": "sword_intent"
+          },
+          "costCheck": {
+            "karmaGood": 10
+          }
         },
         "right": {
           "text": "本命法宝残片",
           "desc": "带着一件法宝降生。消耗 20 灵石（前世遗产）。",
-          "effects": { "treasure": "避尘珠" },
-          "costCheck": { "spiritStone": 20 }
+          "effects": {
+            "treasure": "避尘珠"
+          },
+          "costCheck": {
+            "spiritStone": 20
+          }
         },
         "down": {
           "text": "忘却前尘，轻装上阵",
           "desc": "遗忘两张基础防御牌。不消耗任何东西。",
-          "effects": { "removeCard": true, "health": 5 }
+          "effects": {
+            "removeCard": true,
+            "health": 5
+          }
         }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_rebirth_cycle_v1.png",
+      "protagonistIdentity": {
+        "consumer": "reincarnation_memory",
+        "visualStageId": "S0_mortal_memory",
+        "pathSource": "current_life_path",
+        "assetClass": "actor_identity",
+        "background": "transparent",
+        "finalArtApproved": false,
+        "replacementStillRequired": true
       }
     },
     {
@@ -83,11 +107,12 @@
         "right": {
           "text": "今生换一条路——不重复前世",
           "effects": {
-            "daoHeart": 12,
+            "daoHeart": 2,
             "fortune": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_destiny_fate.png"
     },
     {
       "id": "rb_memory_spell",
@@ -118,11 +143,12 @@
         "right": {
           "text": "避开前世的陷阱——学新的法术",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "fortune": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_meditation.png"
     },
     {
       "id": "rb_memory_pill",
@@ -153,12 +179,13 @@
         "right": {
           "text": "戒丹——前世就是死在丹上的",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "health": 5,
             "cultivation": -5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_herb_gathering.png"
     },
     {
       "id": "rb_memory_body",
@@ -181,7 +208,7 @@
         "left": {
           "text": "善用金刚骨——走体修大道",
           "effects": {
-            "health": 15,
+            "health": 2,
             "cultivation": 5,
             "daoHeart": 5
           }
@@ -189,12 +216,13 @@
         "right": {
           "text": "修心——弥补前世最大的短板",
           "effects": {
-            "daoHeart": 20,
+            "daoHeart": 2,
             "health": 5,
             "cultivation": -5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_destiny_fate.png"
     },
     {
       "id": "rb_memory_combat",
@@ -216,18 +244,19 @@
           "text": "接受这个本能——它救了你的命",
           "effects": {
             "cultivation": 10,
-            "daoHeart": -5,
+            "daoHeart": -2,
             "karmaBad": 3
           }
         },
         "right": {
           "text": "克制本能——此生不走杀戮之道",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
     },
     {
       "id": "rb_enemy_qi",
@@ -248,7 +277,7 @@
         "left": {
           "text": "放过ta——此人此生无罪",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 15,
             "fortune": 5
           }
@@ -256,12 +285,13 @@
         "right": {
           "text": "报复——前世的账也要算",
           "effects": {
-            "daoHeart": -10,
+            "daoHeart": -2,
             "karmaBad": 15,
             "cultivation": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
     },
     {
       "id": "rb_enemy_foundation",
@@ -295,7 +325,8 @@
             "karmaGood": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
     },
     {
       "id": "rb_enemy_golden",
@@ -317,7 +348,7 @@
         "left": {
           "text": "告诉ta真相——'那道裂痕是我'",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "karmaGood": 20,
             "fortune": -10
           }
@@ -325,12 +356,13 @@
         "right": {
           "text": "沉默——让ta带着裂痕活下去",
           "effects": {
-            "daoHeart": -5,
+            "daoHeart": -2,
             "karmaBad": 10,
             "fortune": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_breakthrough.png"
     },
     {
       "id": "rb_enemy_nascent",
@@ -352,7 +384,7 @@
         "left": {
           "text": "'说吧——三世恩怨，该了了'",
           "effects": {
-            "daoHeart": 30,
+            "daoHeart": 2,
             "karmaGood": 25,
             "fortune": 10,
             "cultivation": 10
@@ -362,12 +394,13 @@
           "text": "拔剑——'三世的账凭你一句话就想清？'",
           "effects": {
             "cultivation": 20,
-            "daoHeart": -15,
+            "daoHeart": -2,
             "karmaBad": 20,
-            "health": -25
+            "maxHealth": -1
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
     },
     {
       "id": "rb_enemy_deity",
@@ -389,7 +422,7 @@
         "left": {
           "text": "'我们一起——改变天道'",
           "effects": {
-            "daoHeart": 40,
+            "daoHeart": 2,
             "karmaGood": 30,
             "cultivation": 20,
             "fortune": 20
@@ -398,12 +431,13 @@
         "right": {
           "text": "让ta先——你殿后",
           "effects": {
-            "daoHeart": 25,
+            "daoHeart": 2,
             "karmaGood": 20,
-            "health": -30
+            "maxHealth": -1
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
     },
     {
       "id": "rb_heirloom_sword",
@@ -427,19 +461,20 @@
           "text": "拔剑——'我回来了'",
           "effects": {
             "cultivation": 25,
-            "daoHeart": 20,
+            "daoHeart": 2,
             "treasure": "前世佩剑"
           }
         },
         "right": {
           "text": "让它继续飞——'去找下一个我'",
           "effects": {
-            "daoHeart": 20,
+            "daoHeart": 2,
             "karmaGood": 15,
             "fortune": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_destiny_fate.png"
     },
     {
       "id": "rb_heirloom_spell",
@@ -463,18 +498,19 @@
           "text": "完成它——替前世的自己做完",
           "effects": {
             "cultivation": 25,
-            "daoHeart": 20,
+            "daoHeart": 2,
             "treasure": "禁术阵法残卷"
           }
         },
         "right": {
           "text": "烧掉——前世未完成的东西不该困住今生",
           "effects": {
-            "daoHeart": 25,
+            "daoHeart": 2,
             "karmaGood": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_destiny_fate.png"
     },
     {
       "id": "rb_heirloom_pill",
@@ -498,8 +534,8 @@
           "text": "服下——用前世的力量突破",
           "effects": {
             "cultivation": 30,
-            "daoHeart": -5,
-            "health": -10
+            "daoHeart": -2,
+            "health": -2
           }
         },
         "right": {
@@ -510,7 +546,8 @@
             "pill": "半成品仙丹"
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_breakthrough.png"
     },
     {
       "id": "rb_heirloom_treasure",
@@ -533,18 +570,19 @@
           "text": "重新炼化——修补前世遗憾",
           "effects": {
             "cultivation": 20,
-            "daoHeart": 15,
+            "daoHeart": 2,
             "treasure": "进化本命法器"
           }
         },
         "right": {
           "text": "让它自由——前世的羁绊不该绑住它",
           "effects": {
-            "daoHeart": 25,
+            "daoHeart": 2,
             "karmaGood": 15
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_destiny_fate.png"
     },
     {
       "id": "rb_heirloom_lifespan",
@@ -566,7 +604,7 @@
         "left": {
           "text": "融入己身——把前世的八十年活回来",
           "effects": {
-            "health": 25,
+            "health": 2,
             "cultivation": 15,
             "daoHeart": 10,
             "lifespan": 80
@@ -576,11 +614,12 @@
           "text": "散入天地——还给这个世界",
           "effects": {
             "karmaGood": 30,
-            "daoHeart": 25,
+            "daoHeart": 2,
             "fortune": 15
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_breakthrough.png"
     },
     {
       "id": "rb_heaven_1",
@@ -613,7 +652,8 @@
             "fortune": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_destiny_fate.png"
     },
     {
       "id": "rb_heaven_2",
@@ -635,7 +675,7 @@
         "left": {
           "text": "追寻印记的源头——'天道为什么要记录我？'",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "fortune": -10,
             "cultivation": 5
           }
@@ -647,7 +687,8 @@
             "fortune": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_destiny_fate.png"
     },
     {
       "id": "rb_heaven_mid",
@@ -669,7 +710,7 @@
         "left": {
           "text": "利用这个机制——每世刻意制造新的变数",
           "effects": {
-            "daoHeart": 25,
+            "daoHeart": 2,
             "cultivation": 15,
             "fortune": 10,
             "karmaGood": 15
@@ -678,12 +719,13 @@
         "right": {
           "text": "停止轮回——'我不做天道的实验品'",
           "effects": {
-            "daoHeart": 30,
+            "daoHeart": 2,
             "karmaGood": 20,
             "cultivation": -10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_rebirth_cycle_v1.png"
     },
     {
       "id": "rb_heaven_4",
@@ -705,21 +747,22 @@
         "left": {
           "text": "清洗灵根——'忘掉一切，重新开始'",
           "effects": {
-            "health": 20,
-            "daoHeart": -20,
-            "cultivation": 15
+            "health": 2,
+            "cultivation": 15,
+            "maxDaoHeart": -1
           }
         },
         "right": {
           "text": "承受侵蚀——让灵根变异",
           "effects": {
-            "health": -30,
-            "daoHeart": 25,
+            "daoHeart": 2,
             "cultivation": 20,
-            "fortune": -10
+            "fortune": -10,
+            "maxHealth": -1
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_rebirth_cycle_v1.png"
     },
     {
       "id": "rb_heaven_final",
@@ -741,7 +784,7 @@
         "left": {
           "text": "进入天道引擎核心——改写规则",
           "effects": {
-            "daoHeart": 50,
+            "daoHeart": 2,
             "cultivation": 30,
             "karmaGood": 40,
             "fortune": 30
@@ -750,13 +793,14 @@
         "right": {
           "text": "炸了它——用五世的因果力量",
           "effects": {
-            "daoHeart": 40,
+            "daoHeart": 2,
             "karmaGood": 30,
             "cultivation": 25,
-            "health": -50
+            "maxHealth": -1
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_rebirth_cycle_v1.png"
     }
   ]
 }

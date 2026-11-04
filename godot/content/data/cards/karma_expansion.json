@@ -1,0 +1,1176 @@
+{
+  "realm": "karma",
+  "realmName": "未了因果",
+  "_description": "集中承接章节里程碑、四流派序章、正魔线与交织线的延迟回报；weight=0，仅由成熟 seed 进入。",
+  "karmaCards": {
+    "causal:sword_awakening": "kx_ch_sword_awakening",
+    "causal:root_repair_attempt": "kx_ch_root_repair_attempt",
+    "causal:hoarded_manual": "kx_ch_hoarded_manual",
+    "causal:shared_opportunity": "kx_ch_shared_opportunity",
+    "causal:sword_sect_path": "kx_ch_sword_sect_path",
+    "causal:alchemy_path": "kx_ch_alchemy_path",
+    "causal:loyal_to_sect": "kx_ch_loyal_to_sect",
+    "causal:free_agent": "kx_ch_free_agent",
+    "causal:village_mystery": "kx_ch_village_mystery",
+    "causal:mediator": "kx_ch_mediator",
+    "causal:ruins_explorer": "kx_ch_ruins_explorer",
+    "causal:rejected_demon_path": "kx_ch_rejected_demon_path",
+    "causal:demon_temptation": "kx_ch_demon_temptation",
+    "causal:companion_meeting": "kx_ch_companion_meeting",
+    "causal:prepared_for_tribulation": "kx_ch_prepared_for_tribulation",
+    "causal:defied_heavens": "kx_ch_defied_heavens",
+    "causal:debts_paid": "kx_ch_debts_paid",
+    "causal:defy_fate": "kx_ch_defy_fate",
+    "causal:ancient_truth": "kx_ch_ancient_truth",
+    "causal:sword_legacy_start": "kx_path_sword_legacy",
+    "causal:spell_codex_start": "kx_path_spell_codex",
+    "causal:body_trial_start": "karma_body_awakening",
+    "causal:pill_master_start": "kx_path_pill_master",
+    "demonFirstContact": "kx_demon_first_contact",
+    "lieToSect": "kx_demon_lie_to_sect",
+    "huntDemonMessenger": "kx_demon_hunt_messenger",
+    "lieToPeers": "kx_demon_lie_to_peers",
+    "enmityWithPeers": "kx_demon_peer_enmity",
+    "demonRefusedTwice": "kx_demon_refused_twice",
+    "savedCivilians": "kx_demon_saved_civilians",
+    "defiedDemon": "kx_demon_defied_captor",
+    "demonLawDefied": "kx_demon_law_defied",
+    "demonFactionChosen": "kx_demon_faction_chosen",
+    "spyForOrthodox": "kx_demon_spy_ledger",
+    "demonBetrayal": "kx_demon_betrayal_truth",
+    "demonMasterRefused": "kx_demon_master_refused",
+    "bloodOathRefused": "kx_demon_oath_refused",
+    "demonCivilWarChosen": "kx_demon_civil_war",
+    "savedYinxue": "kx_demon_saved_yinxue",
+    "destroyHeavenEngine": "kx_demon_destroy_engine",
+    "consumeHeavenEngine": "kx_demon_consume_engine",
+    "demonTurnedGood": "kx_iw_demon_turned_good",
+    "compDemonClashResolved": "kx_iw_companion_demon_clash",
+    "heavenEngineProximity": "kx_pa_engine_gaze",
+    "destroyHeavenEngineUpper": "kx_pa_dawn_recruitment",
+    "firstEngineFragment": "kx_pa_fragment_memory",
+    "dilemmaResolved": "kx_pa_dilemma_echo",
+    "exiled_disciple_echo": "kx_thread_exiled_disciple",
+    "hermit_acquaintance": "kx_thread_hermit_acquaintance",
+    "sword_spirit_memory": "kx_thread_sword_spirit_memory",
+    "forbidden_pill_secret": "kx_thread_forbidden_pill",
+    "yuanming_karma_mark": "kx_thread_yuanming_mark",
+    "lonerGoesDown": "kx_program_loner_market",
+    "destinyPromise": "kx_program_destiny_promise",
+    "merged:great_karma": "kx_merged_great_karma",
+    "merged:great_grudge": "kx_merged_great_grudge",
+    "merged:blood_debt": "kx_merged_blood_debt",
+    "merged:fate_convergence": "kx_merged_fate_convergence",
+    "heaven_censor_grudge": "kx_combat_heaven_censor_grudge",
+    "broken_ascension_chain": "kx_combat_broken_ascension_chain",
+    "marked_by_heaven": "kx_combat_marked_by_heaven",
+    "heaven_chain_unfinished": "kx_combat_heaven_chain_unfinished",
+    "chaos_understood": "kx_combat_chaos_understood",
+    "chaos_scar": "kx_combat_chaos_scar",
+    "chaos_following": "kx_combat_chaos_following",
+    "nameless_dao_witness": "kx_combat_nameless_witness",
+    "nameless_dao_rejected": "kx_combat_nameless_rejected",
+    "nameless_dao_waits": "kx_combat_nameless_waits"
+  },
+  "cards": [
+    {
+      "id": "kx_ch_sword_awakening",
+      "type": "KARMA",
+      "title": "残炉里的第一声剑鸣",
+      "description": "你追过的微弱剑脉把你引回一座坍塌铸炉。炉灰中有半截无主剑胚，认得你的气息，也记得铸剑人未能完成的誓言。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "sword"],
+      "choices": {
+        "left": {"text": "以心血续上剑鸣", "desc": "让剑胚认主，承下那位铸剑人的未竟之志。", "effects": {"cultivation": 4, "health": -1, "deckCard": "sword_intent", "_setFlag": "karma_result_sword_shard_bound"}},
+        "right": {"text": "封炉，替亡者守住安宁", "desc": "不取无主之剑，只记下它呼吸灵气的节律。", "effects": {"daoHeart": 1, "fortune": 3, "karmaGood": 1, "_setFlag": "karma_result_sword_forge_sealed"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_qi_20.png"
+    },
+    {
+      "id": "kx_ch_root_repair_attempt",
+      "type": "KARMA",
+      "title": "错脉回潮",
+      "description": "那次强修灵根留下的岔脉终于反噬。三条经络同时争夺一缕灵气：继续硬撑可拓宽气海，改换周天则能保住根基。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "meridian"],
+      "choices": {
+        "left": {"text": "忍痛贯通岔脉", "desc": "承担一次可预见的经脉损伤，换取更快的修为循环。", "effects": {"cultivation": 5, "health": -1, "_setFlag": "karma_result_root_forced_open"}},
+        "right": {"text": "散功半周，重排经络", "desc": "放弃眼前速度，让残根依次归位。", "effects": {"health": 1, "daoHeart": 1, "fortune": 1, "_setFlag": "karma_result_root_stabilized"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_qi_20.png"
+    },
+    {
+      "id": "kx_ch_hoarded_manual",
+      "type": "KARMA",
+      "title": "半卷功法的署名",
+      "description": "被你藏起的半卷功法在月下显出署名。那名落魄散修正站在门外——此卷原是他师门最后一份传承。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "manual", "grudge"],
+      "choices": {
+        "left": {"text": "交还原卷，只留自己的批注", "desc": "归还传承，也承认当日的贪念。", "effects": {"karmaGood": 2, "fortune": 2, "daoHeart": 1, "_setFlag": "karma_result_manual_returned"}},
+        "right": {"text": "抹去署名，炼成私藏心法", "desc": "功法从此属于你，但原主会记住今夜。", "effects": {"cultivation": 5, "karmaBad": 2, "_setFlag": "karma_result_manual_claimed"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_qi_40.png"
+    },
+    {
+      "id": "kx_ch_shared_opportunity",
+      "type": "KARMA",
+      "title": "同行人的回帖",
+      "description": "当年与你共参残卷的散修寄来一张新绘山图。图上圈出一口灵泉，却也标着他正在被追杀的路线。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "ally"],
+      "choices": {
+        "left": {"text": "循图接应，共探灵泉", "desc": "把共享机缘变成真正的同盟。", "effects": {"fortune": 3, "spiritStone": 4, "karmaGood": 1, "_setFlag": "karma_result_shared_ally"}},
+        "right": {"text": "只寄去脱身法门", "desc": "偿还善意，却不把自己卷进追杀。", "effects": {"daoHeart": 1, "karmaGood": 2, "_setFlag": "karma_result_shared_advice"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_qi_40.png"
+    },
+    {
+      "id": "kx_ch_sword_sect_path",
+      "type": "KARMA",
+      "title": "剑宗誓册",
+      "description": "外门长老递来真正的入门誓册：宗门会赐剑，也要求你在来日清理一名被逐出的同门。那人的名字被墨迹遮住。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "sword", "sect"],
+      "choices": {
+        "left": {"text": "按下剑印，先承宗门之责", "desc": "换取完整剑诀，同时接受未来的清理命令。", "effects": {"cultivation": 4, "daoHeart": 1, "deckCard": "draw_sword", "_setFlag": "karma_result_sword_oath_signed"}},
+        "right": {"text": "划去杀令，只拜剑道", "desc": "拒绝替宗门预签一条性命。", "effects": {"karmaGood": 2, "fortune": 1, "daoHeart": 1, "_setFlag": "karma_result_sword_oath_revised"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_qi_60.png"
+    },
+    {
+      "id": "kx_ch_alchemy_path",
+      "type": "KARMA",
+      "title": "丹火前的一条命",
+      "description": "丹师让你守住将成的第一炉灵丹，山下却有人中了同源奇毒。开炉救人会毁掉成丹，守炉则能得到完整丹方。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "pill", "healer"],
+      "choices": {
+        "left": {"text": "提前开炉，以药液救人", "desc": "舍弃成丹，证明丹道首先是活人之术。", "effects": {"health": -1, "karmaGood": 3, "daoHeart": 1, "_setFlag": "karma_result_alchemy_saved_life"}},
+        "right": {"text": "守住炉火，记全丹方", "desc": "完成师承考验，把救人的机会留给下一炉。", "effects": {"cultivation": 4, "pill": "foundation", "_setFlag": "karma_result_alchemy_formula_kept"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_qi_60.png"
+    },
+    {
+      "id": "kx_ch_loyal_to_sect",
+      "type": "KARMA",
+      "title": "宗门征召令",
+      "description": "你当年的效忠誓言被宗门唤醒。征召令要你护送军资穿过饥荒村镇；若照章而行，沿途求助者一概不得开仓。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "sect"],
+      "choices": {
+        "left": {"text": "依令护送，一粒不少", "desc": "守住宗门秩序，领取应得的功勋。", "effects": {"cultivation": 4, "spiritStone": 5, "_setFlag": "karma_result_sect_order_kept"}},
+        "right": {"text": "开一车赈民，再补军资", "desc": "违背字面军令，但不背离你理解的正道。", "effects": {"karmaGood": 3, "spiritStone": -3, "daoHeart": 1, "_setFlag": "karma_result_sect_grain_shared"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_foundation_20.png"
+    },
+    {
+      "id": "kx_ch_free_agent",
+      "type": "KARMA",
+      "title": "山门之外",
+      "description": "你没有立誓，今日宗门也不肯为你打开内库。执事给出两条路：缴纳客卿供奉，或自己穿过封锁的旧矿道。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "wanderer"],
+      "choices": {
+        "left": {"text": "缴供奉，借一次内库", "desc": "用灵石换取清楚、稳定的人情边界。", "effects": {"spiritStone": -4, "cultivation": 4, "_setFlag": "karma_result_free_agent_paid"}},
+        "right": {"text": "走旧矿道，不欠山门", "desc": "保持自由，也承担没有庇护的风险。", "effects": {"fortune": 3, "health": -1, "daoHeart": 1, "_setFlag": "karma_result_free_agent_tunnel"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_foundation_20.png"
+    },
+    {
+      "id": "kx_ch_village_mystery",
+      "type": "KARMA",
+      "title": "黑影留下的线",
+      "description": "你追查的山村黑影并非妖兽，而是被丝线操纵的尸傀。丝线另一端通向宗门领地，显然有人借妖患掩护试法。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "mystery"],
+      "choices": {
+        "left": {"text": "烧掉尸傀，先断今夜灾祸", "desc": "救下村民，但失去追查主人的直接线索。", "effects": {"health": -1, "karmaGood": 3, "_setFlag": "karma_result_puppets_burned"}},
+        "right": {"text": "沿线追主，留下尸傀作证", "desc": "冒险追向幕后之人，获得更深的宗门情报。", "effects": {"cultivation": 3, "fortune": 2, "_setFlag": "karma_result_puppeteer_tracked"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_foundation_40.png"
+    },
+    {
+      "id": "kx_ch_mediator",
+      "type": "KARMA",
+      "title": "停战桌上的第三封信",
+      "description": "你促成的调停即将落印，却发现双方战书都由同一人伪造。揭穿会让两派颜面尽失，按下不表则能先换来停战。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "politics"],
+      "choices": {
+        "left": {"text": "先签停战，再暗查伪书人", "desc": "把眼前人命置于门派颜面之前。", "effects": {"karmaGood": 2, "daoHeart": 1, "_setFlag": "karma_result_truce_signed"}},
+        "right": {"text": "当众摊开三封伪书", "desc": "让真相立刻见光，承受两派共同的怒火。", "effects": {"cultivation": 2, "fortune": 2, "karmaBad": 1, "_setFlag": "karma_result_forgery_exposed"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_foundation_60.png"
+    },
+    {
+      "id": "kx_ch_ruins_explorer",
+      "type": "KARMA",
+      "title": "遗迹守门人的遗愿",
+      "description": "你从秘境深处带出的石片化成一名残魂。他不是宝物的守卫，而是被封在此处等待有人替他归还宗门印。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "ruins"],
+      "choices": {
+        "left": {"text": "送还宗门印，让残魂归寂", "desc": "舍弃石片中的力量，换一段被遗忘的宗门史。", "effects": {"karmaGood": 2, "daoHeart": 1, "fortune": 2, "_setFlag": "karma_result_ruin_spirit_freed"}},
+        "right": {"text": "炼化石片，接管遗迹禁制", "desc": "把残魂最后的力量并入自身阵纹。", "effects": {"cultivation": 5, "health": -1, "karmaBad": 1, "_setFlag": "karma_result_ruin_ward_bound"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_golden_40.png"
+    },
+    {
+      "id": "kx_ch_rejected_demon_path",
+      "type": "KARMA",
+      "title": "被拒绝的魔使",
+      "description": "当年被你拒绝的魔使没有报复。他在山道上留下正道内奸的名册，自己则被钉死在石壁前——这份情报未必干净。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "demon", "orthodox"],
+      "choices": {
+        "left": {"text": "验尸验墨，再用名册", "desc": "不因来源否定情报，也不让魔道牵着走。", "effects": {"fortune": 3, "cultivation": 2, "_setFlag": "karma_result_demon_intel_verified"}},
+        "right": {"text": "焚毁名册，拒绝第二次牵连", "desc": "守住立场，却也可能放走藏在宗门中的敌人。", "effects": {"daoHeart": 2, "karmaGood": 1, "_setFlag": "karma_result_demon_intel_burned"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_golden_60.png"
+    },
+    {
+      "id": "kx_ch_demon_temptation",
+      "type": "KARMA",
+      "title": "捷径开出的血花",
+      "description": "你曾动摇过的一念在金丹中结成一朵血花。摘下它，修为会暴涨；任它枯萎，则要直面自己当初为何心动。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "demon", "temptation"],
+      "choices": {
+        "left": {"text": "任血花枯萎，重审道途", "desc": "承认诱惑真实存在，但不让它替你决定。", "effects": {"daoHeart": 2, "karmaGood": 1, "_setFlag": "karma_result_blood_flower_withered"}},
+        "right": {"text": "摘花入丹，借恶念破关", "desc": "得到立刻可用的力量，也让魔念有了名字。", "effects": {"cultivation": 6, "karmaBad": 3, "_setFlag": "karma_result_blood_flower_consumed"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_golden_60.png"
+    },
+    {
+      "id": "kx_ch_companion_meeting",
+      "type": "KARMA",
+      "title": "灯市后的第二封信",
+      "description": "那位曾与你谈论修行的人寄来一封没有署名的信，只约你在月桥下相见。信纸带着剑霜与狐火交错的气息。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "companion"],
+      "choices": {
+        "left": {"text": "赴约，问清彼此的道", "desc": "把偶遇变成一段可以继续书写的关系。", "effects": {"fortune": 3, "karmaGood": 1, "daoHeart": 1, "_setFlag": "karma_result_moon_bridge_met"}},
+        "right": {"text": "回一封信，不赴月桥", "desc": "保留善意，也保留修行者必要的距离。", "effects": {"cultivation": 2, "daoHeart": 1, "_setFlag": "karma_result_moon_bridge_declined"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_golden_80.png"
+    },
+    {
+      "id": "kx_ch_prepared_for_tribulation",
+      "type": "KARMA",
+      "title": "劫前积蓄",
+      "description": "你提前积下的雷木、阵砂与护脉药终于派上用场。材料足够做一座完整避雷阵，也能拆卖换取后续修行资粮。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "tribulation", "preparation"],
+      "choices": {
+        "left": {"text": "布成避雷阵，先保经络", "desc": "把储备变成下一次雷劫的安全余量。", "effects": {"spiritStone": -6, "health": 1, "daoHeart": 1, "_setFlag": "karma_result_tribulation_array_ready"}},
+        "right": {"text": "售出半数，只留关键阵眼", "desc": "牺牲部分稳妥，换取眼下可调度的资源。", "effects": {"spiritStone": 8, "fortune": 1, "_setFlag": "karma_result_tribulation_reserve_sold"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_nascent_40.png"
+    },
+    {
+      "id": "kx_ch_defied_heavens",
+      "type": "KARMA",
+      "title": "天痕寻来",
+      "description": "你向天道挑衅的那一刻被劫云记住。如今一道天痕落在洞府门外，追着你的气机，也会波及附近凡城。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "tribulation", "defiance"],
+      "choices": {
+        "left": {"text": "引天痕入荒山，正面承受", "desc": "不让凡人替你分担曾经的豪言。", "effects": {"health": -1, "cultivation": 5, "daoHeart": 1, "_setFlag": "karma_result_heaven_mark_faced"}},
+        "right": {"text": "借城隍香火遮蔽气机", "desc": "暂避天痕，却把一笔因果压在凡俗香火上。", "effects": {"fortune": 3, "karmaBad": 2, "_setFlag": "karma_result_heaven_mark_hidden"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_nascent_40.png"
+    },
+    {
+      "id": "kx_ch_debts_paid",
+      "type": "KARMA",
+      "title": "旧债结成的伞",
+      "description": "你曾帮助过的人在劫雨前陆续赶来：药农带草、散修带阵旗、凡人只带来一把旧伞。每一份都不贵，却共同遮住了一角天。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "good"],
+      "choices": {
+        "left": {"text": "收下众人合力，记名还礼", "desc": "让偿债变成可继续往来的善缘。", "effects": {"spiritStone": 7, "fortune": 2, "health": 1, "_setFlag": "karma_result_debt_alliance"}},
+        "right": {"text": "只留旧伞，其余转赠灾民", "desc": "不把善意据为护身资本。", "effects": {"karmaGood": 3, "daoHeart": 1, "_setFlag": "karma_result_debt_gifts_forwarded"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_nascent_60.png"
+    },
+    {
+      "id": "kx_ch_defy_fate",
+      "type": "KARMA",
+      "title": "命书空白处",
+      "description": "你开辟的第三条路终于出现在命书上，却只有一页空白。写下名字，天道便能看见你；保持空白，则无人能替你证明这条路存在。",
+      "realm": "nascent",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "fate"],
+      "choices": {
+        "left": {"text": "以真元刻名，逼天道承认", "desc": "把自己的道路变成公开挑战。", "effects": {"cultivation": 5, "karmaBad": 1, "daoHeart": 1, "_setFlag": "karma_result_fate_name_carved"}},
+        "right": {"text": "留白而行，不向天道自证", "desc": "让道路只由每一次选择构成。", "effects": {"daoHeart": 2, "fortune": 2, "_setFlag": "karma_result_fate_page_blank"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_nascent_80.png"
+    },
+    {
+      "id": "kx_ch_ancient_truth",
+      "type": "KARMA",
+      "title": "石碑的另一半",
+      "description": "你终于找到缺失碑文：所谓飞升门曾是一台筛选并抽取修士道果的古老装置。碑末还刻着一条未验证的停机法。",
+      "realm": "deity",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "chapter", "revelation", "heaven_engine"],
+      "choices": {
+        "left": {"text": "拓印碑文，送往各宗", "desc": "让更多人提前知道飞升门后有什么。", "effects": {"karmaGood": 2, "fortune": -1, "daoHeart": 1, "_setFlag": "karma_result_ancient_truth_published"}},
+        "right": {"text": "独记停机法，毁去碑文", "desc": "保留唯一的破局筹码，也垄断这段真相。", "effects": {"cultivation": 5, "karmaBad": 1, "_setFlag": "karma_result_ancient_truth_hidden"}}
+      },
+      "sceneImage": "assets/cards/events/scene_ch_deity_40.png"
+    },
+    {
+      "id": "kx_path_sword_legacy",
+      "type": "KARMA",
+      "title": "血养剑种·第一次索剑",
+      "description": "以血养出的剑种在夜里化成少年剑灵。他不要你的命，只要你完成一式真正属于自己的出鞘。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "path", "sword", "legacy"],
+      "choices": {
+        "left": {"text": "以旧伤换一式凝剑", "desc": "把血养的代价炼成可进入战斗牌组的剑意。", "effects": {"health": -1, "cultivation": 3, "deckCard": "sword_intent", "_setFlag": "karma_result_sword_legacy_claimed"}},
+        "right": {"text": "令剑灵旁观百日再出鞘", "desc": "拒绝仓促借力，先让剑招长成自己的样子。", "effects": {"daoHeart": 2, "fortune": 1, "_setFlag": "karma_result_sword_legacy_tempered"}}
+      },
+      "sceneImage": "assets/cards/events/scene_qi_q_start_sword.png"
+    },
+    {
+      "id": "kx_path_spell_codex",
+      "type": "KARMA",
+      "title": "雷痕里的古法旁注",
+      "description": "当初引入体内的狂雷在经脉上烧出一页符典。正文教你聚气，旁注却警告：每一次强引天雷，都有东西在上界记录。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "path", "spell", "codex"],
+      "choices": {
+        "left": {"text": "临摹正文，纳入术法牌组", "desc": "得到稳定聚气法，保留那行危险旁注。", "effects": {"cultivation": 3, "deckCard": "spell_gather", "_setFlag": "karma_result_spell_codex_copied"}},
+        "right": {"text": "先解旁注，追索记录者", "desc": "暂不取术法，换取关于天道监听的线索。", "effects": {"fortune": 3, "daoHeart": 1, "_setFlag": "karma_result_spell_codex_traced"}}
+      },
+      "sceneImage": "assets/cards/events/scene_qi_q_start_spell.png"
+    },
+    {
+      "id": "kx_path_body_trial",
+      "type": "KARMA",
+      "title": "金刚试炼·骨中回声",
+      "description": "强炼金身留下的暗伤在雨夜一起发热。山壁上的古拳印与你的骨鸣同频：再受一击便能悟出守架，也可能留下永久裂纹。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "path", "body", "trial"],
+      "choices": {
+        "left": {"text": "迎拳入骨，悟金刚架", "desc": "把疼痛炼成战斗中的稳定防御姿态。", "effects": {"health": -1, "cultivation": 3, "deckCard": "body_guard", "_setFlag": "karma_result_body_guard_learned"}},
+        "right": {"text": "以吐纳卸力，修复暗伤", "desc": "不再证明肉身能挨多少，而是学会何时不挨。", "effects": {"health": 1, "daoHeart": 2, "_setFlag": "karma_result_body_wound_healed"}}
+      },
+      "sceneImage": "assets/cards/events/scene_qi_q_start_body.png"
+    },
+    {
+      "id": "kx_path_pill_master",
+      "type": "KARMA",
+      "title": "百草债·第一炉回香",
+      "description": "你掠采的百草在丹炉里生出不同药香。药灵要求你补种灵根；若强行封炉，也能炼出一张实战回春丹方。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "path", "pill", "master"],
+      "choices": {
+        "left": {"text": "封炉取方，先救眼前之人", "desc": "得到可进入牌组的回春丹，但草木债仍记在名下。", "effects": {"cultivation": 3, "deckCard": "pill_mending", "karmaBad": 1, "_setFlag": "karma_result_pill_formula_taken"}},
+        "right": {"text": "开炉放灵，补种三畦药苗", "desc": "放弃成丹，让被掠走的生机回到山中。", "effects": {"karmaGood": 3, "fortune": 2, "_setFlag": "karma_result_pill_herbs_restored"}}
+      },
+      "sceneImage": "assets/cards/events/scene_qi_q_start_pill.png"
+    },
+    {
+      "id": "kx_demon_first_contact",
+      "type": "KARMA",
+      "title": "低语认出了你",
+      "description": "你曾追问的低语终于显形：一枚血月印悬在镜中，称你体内有一段被正道封掉的记忆。它愿意指路，却不肯先说代价。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "mystery"],
+      "choices": {
+        "left": {"text": "沿血月印追查记忆", "desc": "让魔道先说出一件可验证的旧事。", "effects": {"cultivation": 3, "karmaBad": 1, "fortune": 2, "_setFlag": "karma_result_demon_memory_traced"}},
+        "right": {"text": "以剑意斩断镜中回声", "desc": "拒绝未知交易，也承受斩念伤神。", "effects": {"daoHeart": 2, "health": -1, "_setFlag": "karma_result_demon_whisper_cut"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_meditation.png"
+    },
+    {
+      "id": "kx_demon_lie_to_sect",
+      "type": "KARMA",
+      "title": "口供上的第二种墨",
+      "description": "执事把你当年的口供放在桌上。纸上多出一行并非你写的证词——有人知道你隐瞒了低语，并替你把谎言写得更完整。",
+      "realm": "qi",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "sect", "lie"],
+      "choices": {
+        "left": {"text": "补交真相，请执事验墨", "desc": "承认旧谎，把更危险的伪证者拉到明处。", "effects": {"daoHeart": 1, "karmaGood": 2, "fortune": -1, "_setFlag": "karma_result_sect_lie_confessed"}},
+        "right": {"text": "顺着伪证，把谎圆到底", "desc": "借陌生人的掩护脱身，也欠下无法定价的人情。", "effects": {"cultivation": 3, "karmaBad": 2, "_setFlag": "karma_result_sect_lie_deepened"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
+    },
+    {
+      "id": "kx_demon_hunt_messenger",
+      "type": "KARMA",
+      "title": "被追上的魔使",
+      "description": "你终于截住那名魔使。他腹中藏着传讯蛊，杀他可取出完整密令；留他一命，只能问到密令送往何处。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "messenger"],
+      "choices": {
+        "left": {"text": "封蛊问路，放他离开", "desc": "得到下一处接头地，不让追问变成处决。", "effects": {"fortune": 3, "karmaGood": 1, "_setFlag": "karma_result_messenger_spared"}},
+        "right": {"text": "取蛊读令，不留活口", "desc": "拿到完整名单，也让血煞宗记下一笔血债。", "effects": {"cultivation": 4, "karmaBad": 2, "_setFlag": "karma_result_messenger_killed"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
+    },
+    {
+      "id": "kx_demon_lie_to_peers",
+      "type": "KARMA",
+      "title": "同门带来的证人",
+      "description": "你用半真半假的话搪塞过同门。如今他们带回那名魔使的旧仆，证人只认出你的声音，不知道你最后究竟拒绝还是接受。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "peer", "lie"],
+      "choices": {
+        "left": {"text": "补全经过，承担隐瞒之责", "desc": "失去一点同门信任，却阻止猜疑继续发酵。", "effects": {"daoHeart": 1, "karmaGood": 2, "_setFlag": "karma_result_peer_truth_told"}},
+        "right": {"text": "抓住证词漏洞反制同门", "desc": "保住表面清白，把关系变成互相提防。", "effects": {"fortune": 2, "karmaBad": 2, "_setFlag": "karma_result_peer_witness_broken"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
+    },
+    {
+      "id": "kx_demon_peer_enmity",
+      "type": "KARMA",
+      "title": "山门前的公开战书",
+      "description": "当年与你硬碰硬的同门把战书钉在山门。他要的不是你的命，而是逼宗门承认：怀疑不该等同于定罪。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "peer", "duel"],
+      "choices": {
+        "left": {"text": "接战，但立下不伤性命之约", "desc": "用一场公开交手结束暗处敌意。", "effects": {"cultivation": 4, "health": -1, "daoHeart": 1, "_setFlag": "karma_result_peer_duel_honored"}},
+        "right": {"text": "撕掉战书，离山自证", "desc": "不把清白交给胜负裁定，也暂时失去山门庇护。", "effects": {"fortune": 2, "daoHeart": 2, "_setFlag": "karma_result_peer_duel_refused"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
+    },
+    {
+      "id": "kx_demon_refused_twice",
+      "type": "KARMA",
+      "title": "烧不尽的血月令",
+      "description": "第二次拒绝后，那枚你从未接过的血月令竟出现在袖中。它既能作为追踪殷血的诱饵，也会持续向魔营暴露你的位置。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "refusal"],
+      "choices": {
+        "left": {"text": "当众毁令，断绝第三次邀请", "desc": "让双方都知道你的拒绝不是试价。", "effects": {"daoHeart": 2, "karmaGood": 1, "_setFlag": "karma_result_blood_token_destroyed"}},
+        "right": {"text": "封住令牌，反追魔营信号", "desc": "保留危险诱饵，换取一次主动接近真相的机会。", "effects": {"fortune": 3, "karmaBad": 1, "_setFlag": "karma_result_blood_token_tracked"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
+    },
+    {
+      "id": "kx_demon_saved_civilians",
+      "type": "KARMA",
+      "title": "血月下活下来的人",
+      "description": "你违令疏散的村民带着孩子来到藏身处。他们愿为你作证，却会因此暴露整条逃难路线；血月军的追兵已经在山外点灯。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "civilian", "good"],
+      "choices": {
+        "left": {"text": "收留证人，转移整座营地", "desc": "让被救者有机会说出发生过什么。", "effects": {"karmaGood": 3, "spiritStone": -3, "health": 1, "_setFlag": "karma_result_civilians_sheltered"}},
+        "right": {"text": "抹去路线，让他们分散归乡", "desc": "保护多数人，却让你的违令无人能够证明。", "effects": {"cultivation": 3, "fortune": 2, "karmaBad": 1, "_setFlag": "karma_result_civilians_scattered"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_quest_board.png"
+    },
+    {
+      "id": "kx_demon_defied_captor",
+      "type": "KARMA",
+      "title": "牢墙里的旧剑痕",
+      "description": "你在魔牢中留下的抗争剑痕被后来囚徒拓印成暗号。如今一队逃犯循着暗号找到你，请你决定它是救人路线，还是谈判筹码。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "prison"],
+      "choices": {
+        "left": {"text": "补全暗号，带囚徒越狱", "desc": "把个人不屈变成一条可供他人逃生的路。", "effects": {"karmaGood": 2, "health": -1, "cultivation": 2, "_setFlag": "karma_result_prison_route_opened"}},
+        "right": {"text": "以暗号换取停杀协议", "desc": "交出路线的一半，迫使守牢人暂缓处决。", "effects": {"fortune": 2, "daoHeart": 1, "_setFlag": "karma_result_prison_truce_bought"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_demon_law_defied",
+      "type": "KARMA",
+      "title": "你救下的人也学会了反抗",
+      "description": "被你从魔营私刑中救下的人聚成小队，开始反过来处决施暴者。他们把你的那句话刻在旗上，却走得比你更远。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "law", "rebellion"],
+      "choices": {
+        "left": {"text": "拦下滥刑，为他们立三条戒律", "desc": "继续保护反抗者，也限制复仇扩散。", "effects": {"karmaGood": 3, "spiritStone": -2, "daoHeart": 1, "_setFlag": "karma_result_rebels_disciplined"}},
+        "right": {"text": "收编小队，以战功约束杀性", "desc": "让他们服从你的命令，而非抽象善恶。", "effects": {"cultivation": 3, "karmaBad": 1, "_setFlag": "karma_result_rebels_commanded"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_demon_faction_chosen",
+      "type": "KARMA",
+      "title": "血煞宗的第一道军令",
+      "description": "你曾站在血煞宗一边，今日军令要求你封锁一条逃兵山路。服从能换来座次，拒绝则会让所有派系重新衡量你。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "faction"],
+      "choices": {
+        "left": {"text": "执行封锁，只收兵器不取命", "desc": "接受阵营责任，同时给逃兵留一条退路。", "effects": {"cultivation": 4, "karmaBad": 1, "_setFlag": "karma_result_demon_order_tempered"}},
+        "right": {"text": "退回军令，划清合作边界", "desc": "不让一次站队变成永久服从。", "effects": {"daoHeart": 2, "fortune": -1, "_setFlag": "karma_result_demon_order_refused"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_demon_spy_ledger",
+      "type": "KARMA",
+      "title": "带血的间谍册",
+      "description": "你为正道搜集的名册里混着平民、低阶弟子和真正的屠村者。交出全部最省事，删改则可能被视为再次背叛。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "spy", "orthodox"],
+      "choices": {
+        "left": {"text": "交出罪证，不交无辜姓名", "desc": "承担情报不完整的怀疑，守住行动底线。", "effects": {"karmaGood": 2, "fortune": -2, "daoHeart": 1, "_setFlag": "karma_result_spy_ledger_redacted"}},
+        "right": {"text": "全册上交，让正道自行裁断", "desc": "完成任务，却把所有人的命运交给清算者。", "effects": {"cultivation": 4, "karmaBad": 2, "_setFlag": "karma_result_spy_ledger_delivered"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_demon_betrayal_truth",
+      "type": "KARMA",
+      "title": "背叛者留下的半句真话",
+      "description": "你当面质问后，殷血只说了一半：他确实出卖了路线，却是为了把血煞宗追兵引离你的旧宗门。另一半证据藏在追兵首领手里。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "betrayal", "yinxue"],
+      "choices": {
+        "left": {"text": "先信半句，与他取回证据", "desc": "把信任变成一次共同承担风险的行动。", "effects": {"cultivation": 3, "fortune": 2, "karmaGood": 1, "_setFlag": "karma_result_yinxue_evidence_sought"}},
+        "right": {"text": "不追证据，从此各走一边", "desc": "拒绝让解释覆盖已经发生的伤害。", "effects": {"daoHeart": 2, "karmaBad": 1, "_setFlag": "karma_result_yinxue_cut_ties"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_demon_master_refused",
+      "type": "KARMA",
+      "title": "血剑问心",
+      "description": "殷血的师父把被你拒绝的传承炼成一柄血剑，隔空斩来。他要证明：不学他的法，你也只能用他的方式活下去。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "master", "duel"],
+      "choices": {
+        "left": {"text": "受一剑而不还手", "desc": "用自己的道证明拒绝并非畏惧。", "effects": {"health": -1, "daoHeart": 2, "karmaGood": 1, "_setFlag": "karma_result_blood_sword_endured"}},
+        "right": {"text": "夺剑反斩，毁掉传承印", "desc": "以更强硬的方式结束这次纠缠。", "effects": {"cultivation": 4, "karmaBad": 1, "_setFlag": "karma_result_blood_sword_broken"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_demon_oath_refused",
+      "type": "KARMA",
+      "title": "未立之誓也会反噬",
+      "description": "你拒绝血誓后，祭坛把空缺誓位变成一道追魂咒。咒印只认归属：由你承受，或把它转进一件煞器。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "oath", "curse"],
+      "choices": {
+        "left": {"text": "以道基承咒，不借他物", "desc": "承担拒绝的代价，让咒印找不到第二个受害者。", "effects": {"health": -1, "daoHeart": 2, "_setFlag": "karma_result_blood_oath_borne"}},
+        "right": {"text": "把咒印封入炼魂幡", "desc": "化危机为可用煞气，却让法宝记住了活人的怨。", "effects": {"cultivation": 3, "karmaBad": 2, "_setFlag": "karma_result_blood_oath_sealed"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_demon_civil_war",
+      "type": "KARMA",
+      "title": "内战后的空座",
+      "description": "你支持的反誓派赢下了第一夜，血煞宗主座却空着。有人要你拆掉誓坛，有人要你坐上去，用新的命令替代旧誓。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "civil_war"],
+      "choices": {
+        "left": {"text": "拆誓坛，分还被夺的魂血", "desc": "让胜利兑现成普通弟子的自由。", "effects": {"karmaGood": 3, "cultivation": 2, "_setFlag": "karma_result_demon_oath_altar_broken"}},
+        "right": {"text": "暂坐主位，以军令止战", "desc": "用权力结束混乱，也承认自己成了新的中心。", "effects": {"cultivation": 5, "karmaBad": 2, "_setFlag": "karma_result_demon_command_taken"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_demon_saved_yinxue",
+      "type": "KARMA",
+      "title": "殷血还来的十年",
+      "description": "你曾用十年修为换他一命。如今殷血送回一缕炼净的本源，说这不是报恩，只是不愿让你的道途永远缺一块。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "yinxue", "redemption"],
+      "choices": {
+        "left": {"text": "收回本源，与他并肩一次", "desc": "接受归还，也接受这段关系仍未结束。", "effects": {"cultivation": 4, "health": 1, "fortune": 1, "_setFlag": "karma_result_yinxue_essence_accepted"}},
+        "right": {"text": "让他把本源用于救人", "desc": "不取回损失，让他的第二条命先兑现为善行。", "effects": {"karmaGood": 3, "daoHeart": 1, "_setFlag": "karma_result_yinxue_essence_donated"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_demon_destroy_engine",
+      "type": "KARMA",
+      "title": "天道引擎的断齿",
+      "description": "被你炸毁的天道引擎落下一枚断齿。它能证明飞升收割的真相，也能被重新磨成破界钥匙；上界巡察已经循着碎屑逼近。",
+      "realm": "deity",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "heaven_engine", "revelation"],
+      "choices": {
+        "left": {"text": "公开断齿，让各宗共同验看", "desc": "把破坏行动变成所有修士都能核验的证据。", "effects": {"karmaGood": 3, "fortune": -2, "daoHeart": 1, "_setFlag": "karma_result_engine_tooth_published"}},
+        "right": {"text": "藏下断齿，磨成破界钥匙", "desc": "把真相收进口袋，优先准备下一次破门。", "effects": {"cultivation": 4, "karmaBad": 1, "_setFlag": "karma_result_engine_tooth_forged"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
+    },
+    {
+      "id": "kx_demon_consume_engine",
+      "type": "KARMA",
+      "title": "腹中的天道齿轮",
+      "description": "你吞下的引擎碎片开始替你推演最有效的修行路径。每条路径都更快，也都要求你把某个人当成可以舍弃的数值。",
+      "realm": "deity",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "demon", "heaven_engine", "corruption"],
+      "choices": {
+        "left": {"text": "继续消化，只删去献祭名单", "desc": "保留引擎算力，试图靠意志控制它的结论。", "effects": {"cultivation": 6, "health": -1, "karmaBad": 3, "_setFlag": "karma_result_engine_fragment_digested"}},
+        "right": {"text": "剖出碎片，交给众人封印", "desc": "失去捷径，也不让自己成为新的引擎容器。", "effects": {"daoHeart": 2, "karmaGood": 2, "_setFlag": "karma_result_engine_fragment_removed"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
+    },
+    {
+      "id": "kx_iw_demon_turned_good",
+      "type": "KARMA",
+      "title": "欠命者带回的人",
+      "description": "被你劝降的魔修真的回来还债，身后跟着一群从血牢救出的孩子。追兵也到了——你必须判断这次改过是真心，还是一场更大的伏击。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "interweave", "demon", "redemption"],
+      "choices": {
+        "left": {"text": "信他一次，共守山口", "desc": "让一次饶命拥有成为同盟的机会。", "effects": {"cultivation": 3, "karmaGood": 2, "health": -1, "_setFlag": "karma_result_reformed_demon_trusted"}},
+        "right": {"text": "先护送孩子，再审他的来路", "desc": "救人不等于免除核验，把两件事分开。", "effects": {"daoHeart": 1, "fortune": 2, "karmaGood": 1, "_setFlag": "karma_result_reformed_demon_tested"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_combat.png"
+    },
+    {
+      "id": "kx_iw_companion_demon_clash",
+      "type": "KARMA",
+      "title": "道不同之后的同一场雨",
+      "description": "你和道侣关于魔道往事的争执没有真正结束。今夜追兵逼近，彼此都必须先决定：并肩迎敌，还是各自守住不肯退让的道。",
+      "realm": "golden",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "interweave", "companion", "demon"],
+      "choices": {
+        "left": {"text": "把未说完的真相全部交代", "desc": "让对方知道风险，也知道你为什么走到这里。", "effects": {"daoHeart": 2, "karmaGood": 1, "fortune": 1, "_setFlag": "karma_result_companion_demon_truth_shared"}},
+        "right": {"text": "先定共同底线，再谈旧账", "desc": "不强求认同，只确认这一战不能伤及无辜。", "effects": {"cultivation": 2, "fortune": 2, "_setFlag": "karma_result_companion_demon_boundary_set"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
+    },
+    {
+      "id": "kx_pa_engine_gaze",
+      "type": "KARMA",
+      "title": "引擎也在看你",
+      "description": "你靠近天道引擎时留下的共振终于回返。胸口浮出一圈积分刻度，每增长一分，引擎便从你体内抽走一缕无法察觉的道韵。",
+      "realm": "tribulation",
+      "worldLayer": "upper_realm",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "post_ascension", "heaven_engine"],
+      "choices": {
+        "left": {"text": "记录每次抽取，反推引擎周期", "desc": "暂时承受监视，换取可用于破局的运转数据。", "effects": {"cultivation": 3, "fortune": -1, "daoHeart": 1, "_setFlag": "karma_result_engine_cycle_logged"}},
+        "right": {"text": "割断共振，抹去自己的积分", "desc": "放弃一段修为增长，让引擎暂时失去你的坐标。", "effects": {"cultivation": -2, "fortune": 3, "karmaGood": 1, "_setFlag": "karma_result_engine_score_erased"}}
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_ascension_truth_v1.png"
+    },
+    {
+      "id": "kx_pa_dawn_recruitment",
+      "type": "KARMA",
+      "title": "破晓在第七座桥下等你",
+      "description": "你决定对抗引擎的念头被破晓捕捉。来人带着一枚可验证的旧版天道符印，也带来一份要求共享全部行动情报的入盟契约。",
+      "realm": "tribulation",
+      "worldLayer": "upper_realm",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "post_ascension", "resistance"],
+      "choices": {
+        "left": {"text": "验印入盟，共享破坏方案", "desc": "用组织的千年情报校正自己的冒险计划。", "effects": {"karmaGood": 2, "fortune": 2, "daoHeart": 1, "_setFlag": "karma_result_dawn_cell_joined"}},
+        "right": {"text": "只换情报，不交行动主权", "desc": "保持独立，但必须独自承担计划泄露后的追捕。", "effects": {"cultivation": 3, "karmaBad": 1, "_setFlag": "karma_result_dawn_intel_only"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
+    },
+    {
+      "id": "kx_pa_fragment_memory",
+      "type": "KARMA",
+      "title": "初号机碎片中的上一片天空",
+      "description": "碎片恢复了第一段记忆：天道引擎本为维持界域通道而生，收割指令来自后来插入的九行原码。最后一行签名被人为刮去。",
+      "realm": "tribulation",
+      "worldLayer": "upper_realm",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "post_ascension", "fragment", "revelation"],
+      "choices": {
+        "left": {"text": "保全碎片，交给多人复核", "desc": "把记忆作为证据，而非只对自己有利的答案。", "effects": {"karmaGood": 2, "fortune": 2, "_setFlag": "karma_result_first_fragment_preserved"}},
+        "right": {"text": "拆解碎片，推演反制原码", "desc": "消耗唯一实物证据，换取一次直接攻击核心的算法。", "effects": {"cultivation": 5, "daoHeart": -1, "karmaBad": 1, "_setFlag": "karma_result_first_fragment_weaponized"}}
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_ascension_truth_v1.png"
+    },
+    {
+      "id": "kx_pa_dilemma_echo",
+      "type": "KARMA",
+      "title": "新规则的第一条例外",
+      "description": "无论你选择改写还是掌控引擎，新天道都在第一天遇到同一个问题：一名将死的飞升者请求破例抽取他人的道果续命。",
+      "realm": "tribulation",
+      "worldLayer": "upper_realm",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "post_ascension", "final_choice"],
+      "choices": {
+        "left": {"text": "拒绝献祭，为他开放归乡通道", "desc": "新规则从第一例开始就不把任何人当作燃料。", "effects": {"karmaGood": 3, "daoHeart": 2, "_setFlag": "karma_result_new_heaven_no_sacrifice"}},
+        "right": {"text": "允许一次自愿转赠，但全程公开", "desc": "承认规则需要人情例外，也让代价接受所有人的审视。", "effects": {"fortune": 2, "karmaBad": 1, "cultivation": 2, "_setFlag": "karma_result_new_heaven_public_exception"}}
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_ascension_truth_v1.png"
+    },
+    {
+      "id": "kx_thread_exiled_disciple",
+      "type": "KARMA",
+      "title": "又一个被逐出山门的人",
+      "description": "荒村旧怨散去后，一名别宗少年循着断剑故事找来。他也被逐，却还没有走到周元通那一步；山门不收，散修又把他当成麻烦。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "thread", "sect", "echo"],
+      "choices": {
+        "left": {"text": "替他争取一年察看期", "desc": "让宗门承担一次纠错，而非等怨念成形后才追悔。", "effects": {"karmaGood": 3, "daoHeart": 1, "_setFlag": "karma_result_exile_probation"}},
+        "right": {"text": "教他独行法，不送回山门", "desc": "不强求旧秩序接纳，先让少年能活下去。", "effects": {"cultivation": 3, "fortune": 2, "_setFlag": "karma_result_exile_wanderer_taught"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_thread_hermit_acquaintance",
+      "type": "KARMA",
+      "title": "矿脉外的一盏旧茶",
+      "description": "灵石风波中欠你人情的散修老者在雾谷设茶。他知道一条不归宗门管辖的小矿脉，也知道那里的灵泉正在被过度开采。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "thread", "hermit", "mine"],
+      "choices": {
+        "left": {"text": "与散修订轮采约，再开矿", "desc": "让机缘可持续，也让每个人的份额有据可查。", "effects": {"spiritStone": 6, "karmaGood": 2, "fortune": 1, "_setFlag": "karma_result_mine_rotation"}},
+        "right": {"text": "封住矿眼，只取灵泉修复山脉", "desc": "放弃一笔灵石，让山谷有时间恢复。", "effects": {"health": 1, "daoHeart": 1, "karmaGood": 2, "_setFlag": "karma_result_mine_sealed"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_market.png"
+    },
+    {
+      "id": "kx_thread_sword_spirit_memory",
+      "type": "KARMA",
+      "title": "剑灵最后记住的名字",
+      "description": "剑冢剑灵收锋时留下的名字属于一名失踪剑修。她的后人仍在找剑，而你手中的古剑正是他们族谱里缺失的一页。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "thread", "sword", "memory"],
+      "choices": {
+        "left": {"text": "带剑归族，交还姓名与遗言", "desc": "剑仍可由你使用，但它不再是无主机缘。", "effects": {"karmaGood": 2, "daoHeart": 2, "fortune": 1, "_setFlag": "karma_result_sword_name_returned"}},
+        "right": {"text": "留下古剑，只送回剑拓", "desc": "承认来历，却把继承权握在自己手中。", "effects": {"cultivation": 4, "karmaBad": 1, "_setFlag": "karma_result_sword_memory_kept"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_thread_forbidden_pill",
+      "type": "KARMA",
+      "title": "药铺转来的无署名信",
+      "description": "筑基后，坊市药铺伙计托人送来一封无署名的信：追兵盘问你的事传开后，有人把一页药王谷货账抄件留在柜台。抄件把那味禁药与「炉毒」并列，旁注「不可骤停」，背面还记着两味替代药材的试验批注。写信人猜它被用来压制高阶丹师的炉毒，却没有附上病患名单或原账。一名丹师学徒带着与信中相似的症状来到药铺；这页来路未明的抄件，该如何处置？",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "thread", "pill", "secret"],
+      "choices": {
+        "left": {"text": "公开这页抄件与来信，注明尚待核验", "desc": "请病患与独立丹师一起核对，不让线索再被封口。", "effects": {"karmaGood": 3, "cultivation": 2, "fortune": -1, "_setFlag": "karma_result_forbidden_pill_exposed"}},
+        "right": {"text": "试配应急解毒方，先救眼前学徒", "desc": "只验证这一人是否好转，不替整座药谷宣布痊愈。", "narrativeBlock": "你沿抄件背面的批注换掉一味药材，学徒的呼吸平稳下来；这次救治尚不足以证明所有炉毒都有解。", "effects": {"cultivation": 4, "pill": "foundation", "daoHeart": 1, "_setFlag": "karma_result_forbidden_pill_cured"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_quest_board.png"
+    },
+    {
+      "id": "kx_thread_yuanming_mark",
+      "type": "KARMA",
+      "title": "元明洞府的下一位来客",
+      "description": "因果阵把百年后的景象送入梦中：另一名年轻散修站在洞府里，正在读你留下的选择。你还能改最后一次记录，却不能替他做决定。",
+      "realm": "foundation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "thread", "yuanming", "legacy", "thread_receipt_dynamic"],
+      "threadReceiptSource": "mist_valley",
+      "threadReceiptNodeId": "mv_discovery",
+      "threadReceiptVariants": {
+        "left": {
+          "description": "因果阵把百年后的景象送入梦中：另一名散修走进洞府，阵纹显出你当年取走玉简的痕迹。他知道前人曾选择修行之法，却仍须自己判断该走哪条路。你还能留下对这次取舍的实录，却不能替他修行。"
+        },
+        "right": {
+          "description": "因果阵把百年后的景象送入梦中：另一名散修走进洞府，阵纹显出你当年打开紫檀木盒的痕迹。他知道前人曾选择实物，却仍须自己判断眼前还留有什么。你还能留下对这次取舍的实录，却不能替他决定如何使用。"
+        }
+      },
+      "choices": {
+        "left": {"text": "留下实录，也写下自己的疑惑", "desc": "让后来者看到选择的代价，而非只看到胜者答案。", "effects": {"daoHeart": 2, "karmaGood": 2, "_setFlag": "karma_result_yuanming_record_left"}},
+        "right": {"text": "只记取舍，不署自己的名字", "desc": "让后来者看见这次取舍，不把你的姓名当成无形命令。", "effects": {"fortune": 3, "cultivation": 2, "_setFlag": "karma_result_yuanming_name_erased"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
+    },
+    {
+      "id": "kx_program_loner_market",
+      "type": "KARMA",
+      "title": "孤峰之后，坊市仍亮着灯",
+      "description": "你终于从孤峰走进人群。没有命定贵人，只有一名替散修写家书的少年递来一盏热茶：修行若只剩境界，究竟是谁抵达了终点？",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "programmatic", "loner", "market"],
+      "choices": {
+        "left": {"text": "坐下替三名散修写完家书", "desc": "不求机缘，只让今夜有人知道他们还活着。", "effects": {"daoHeart": 2, "karmaGood": 2, "fortune": 1, "_setFlag": "karma_result_loner_rejoined_world"}},
+        "right": {"text": "买一壶酒，仍独自走回山中", "desc": "承认孤独，却不再把它误认成高贵。", "effects": {"cultivation": 3, "daoHeart": 1, "_setFlag": "karma_result_loner_accepted"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_market.png"
+    },
+    {
+      "id": "kx_program_destiny_promise",
+      "type": "KARMA",
+      "title": "{{companion}}·飞升后的回信",
+      "description": "你当年向{{companion}}许诺，要找到让两个人都能越过天门的方法。如今一枚刻着旧誓的传讯玉从界壁落下：门能开，但只能由仍在人间的一方决定是否等待。",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "programmatic", "companion_dynamic", "destiny"],
+      "choices": {
+        "left": {"text": "暂停登天，为{{companion}}稳住界门", "desc": "用自己的时机换一条可共同抵达的路。", "effects": {"daoHeart": 2, "karmaGood": 3, "cultivation": -3, "_setFlag": "karma_result_destiny_gate_held"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 8, "trustDelta": 10, "bondDelta": 1}},
+        "right": {"text": "先行登天，把坐标留给{{companion}}", "desc": "不放弃飞升，也不让旧誓只剩一句安慰。", "effects": {"cultivation": 4, "fortune": 2, "daoHeart": 1, "_setFlag": "karma_result_destiny_coordinates_left"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 3, "trustDelta": 5}}
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_ascension_truth_v1.png"
+    },
+    {
+      "id": "kx_merged_great_karma",
+      "type": "KARMA",
+      "title": "众善并不替你作答",
+      "description": "数桩善缘在同一日回返：有人送药、有人开路、有人愿替你作证。它们能把你托得很高，也可能让你开始相信自己永远站在正确的一边。",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "merged", "great_karma"],
+      "choices": {
+        "left": {"text": "把回报分给当初没有被救到的人", "desc": "让善果继续流动，而不是成为自己的功德账。", "effects": {"karmaGood": 4, "daoHeart": 2, "fortune": 2, "_setFlag": "karma_result_great_karma_shared"}},
+        "right": {"text": "收下众人相助，承担下一桩难事", "desc": "承认善缘也是资源，并为它承担明确责任。", "effects": {"cultivation": 4, "fortune": 3, "_setFlag": "karma_result_great_karma_burden"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_merged_great_grudge",
+      "type": "KARMA",
+      "title": "百怨同门",
+      "description": "彼此无关的仇家交换了你的名字。怨念合流后不再追问每桩旧事的真相，只要求一个共同的出口。",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "merged", "great_grudge"],
+      "choices": {
+        "left": {"text": "逐桩对账，先偿能偿之债", "desc": "放弃一次突围机会，把不同的怨重新拆回具体的人。", "effects": {"spiritStone": -6, "karmaBad": -4, "daoHeart": 2, "_setFlag": "karma_result_great_grudge_accounted"}},
+        "right": {"text": "破阵离去，接受怨网继续追随", "desc": "保住眼前战力，但不把逃脱说成清算。", "effects": {"cultivation": 5, "health": -1, "karmaBad": 3, "_setFlag": "karma_result_great_grudge_escaped"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_merged_blood_debt",
+      "type": "KARMA",
+      "title": "血债有了继承人",
+      "description": "旧战场的亡者没有回来，来的是继承他们姓名的人。对方不要一句泛泛的道歉，只问你愿不愿让真相进入宗门案卷。",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "merged", "blood_debt"],
+      "choices": {
+        "left": {"text": "公开战录，接受宗门裁断", "desc": "失去声望与资源，换来可以被后人追查的真相。", "effects": {"spiritStone": -8, "karmaBad": -5, "daoHeart": 3, "_setFlag": "karma_result_blood_debt_recorded"}},
+        "right": {"text": "以一场生死斗结清私人恩怨", "desc": "把制度之债缩成两个人的胜负。", "effects": {"health": -2, "cultivation": 5, "karmaBad": 2, "_setFlag": "karma_result_blood_debt_duel"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_merged_fate_convergence",
+      "type": "KARMA",
+      "title": "数条命线交于一夜",
+      "description": "你曾放过、帮助、拒绝的人同时抵达一座雨亭。每个人都带着一条通往未来的路，而你不可能让所有路线同时成立。",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "merged", "fate_convergence"],
+      "choices": {
+        "left": {"text": "让众人各自陈述，再共同定一条路", "desc": "失去最快的机会，换取命线主人对结果的参与。", "effects": {"daoHeart": 3, "karmaGood": 2, "fortune": 2, "_setFlag": "karma_result_fate_convergence_council"}},
+        "right": {"text": "独自择路，承担所有后果", "desc": "保留决断速度，也把失败的名字写在自己名下。", "effects": {"cultivation": 4, "fortune": 3, "karmaBad": 1, "_setFlag": "karma_result_fate_convergence_chosen"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_companion_bond_acquaint",
+      "type": "KARMA",
+      "title": "{{companion}}·被记住的小事",
+      "description": "{{companion}}在数日后送回你遗落的物件。真正被归还的不是东西，而是初识时那句无人留意的话。",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "companion_dynamic", "bond_acquaint"],
+      "choices": {
+        "left": {"text": "说出自己也记得{{companion}}的细节", "desc": "让相识从礼貌走向真实关注。", "effects": {"daoHeart": 1, "fortune": 1, "_setFlag": "karma_result_companion_acquaint_reciprocated"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 5, "trustDelta": 3}},
+        "right": {"text": "郑重收下，不急着追问", "desc": "给这段关系留下不被催促的余地。", "effects": {"daoHeart": 1, "_setFlag": "karma_result_companion_acquaint_respected"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 2, "trustDelta": 2}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_market.png"
+    },
+    {
+      "id": "kx_companion_bond_trust",
+      "type": "KARMA",
+      "title": "{{companion}}·秘密交到你手中",
+      "description": "{{companion}}曾经只讲了一半的往事终于有了下文。你现在握着一个能伤害对方的秘密，也握着证明信任并非空话的机会。",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "companion_dynamic", "bond_trust"],
+      "choices": {
+        "left": {"text": "共同拆开秘密带来的危险", "desc": "不只保密，也参与解决它。", "effects": {"daoHeart": 2, "karmaGood": 1, "_setFlag": "karma_result_companion_trust_shared"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 5, "trustDelta": 8}},
+        "right": {"text": "封入神识，此生不对第三人提起", "desc": "把信任变成一个明确而克制的承诺。", "effects": {"daoHeart": 2, "_setFlag": "karma_result_companion_trust_kept"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 3, "trustDelta": 10}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_companion_bond_deep",
+      "type": "KARMA",
+      "title": "{{companion}}·两条路的同一轮月",
+      "description": "{{companion}}把下一阶段的修行路线铺在你面前。两人可以同行，也可以各自深入不同险地；深交不是永不分开，而是分开时仍知道为何同行。",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "companion_dynamic", "bond_deep"],
+      "choices": {
+        "left": {"text": "合并路线，共担一场大劫", "desc": "用更高风险换取并肩成长。", "effects": {"cultivation": 3, "fortune": 1, "_setFlag": "karma_result_companion_deep_joint_route"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 8, "trustDelta": 5, "bondDelta": 1}},
+        "right": {"text": "各走一程，约定归期与信标", "desc": "让彼此保持独立，也让重逢可被兑现。", "effects": {"daoHeart": 3, "fortune": 2, "_setFlag": "karma_result_companion_deep_separate_vow"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 5, "trustDelta": 8}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_companion_bond_ultimate",
+      "type": "KARMA",
+      "title": "{{companion}}·天命不是婚书",
+      "description": "好感抵达圆满后，{{companion}}没有问你是否永不改变，只问当两个人的道冲突时，是否仍愿意把对方当作能作出选择的人。",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "companion_dynamic", "bond_ultimate"],
+      "choices": {
+        "left": {"text": "立平等道契，不以任何一方为附属", "desc": "道契提供共同机制，也保留各自的路线与代价。", "effects": {"daoHeart": 3, "karmaGood": 2, "_setFlag": "karma_result_companion_ultimate_equal_oath"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 0, "trustDelta": 10, "bondDelta": 1}},
+        "right": {"text": "不立天契，只许一个凡人的承诺", "desc": "让关系依靠持续选择，而不是系统强制。", "effects": {"daoHeart": 4, "fortune": 1, "_setFlag": "karma_result_companion_ultimate_mortal_vow"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 5, "trustDelta": 6, "bondDelta": 1}}
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_ascension_truth_v1.png"
+    },
+    {
+      "id": "kx_companion_bond_hostile",
+      "type": "KARMA",
+      "title": "{{companion}}·裂痕已经有了名字",
+      "description": "{{companion}}不再把争执当成一次误会。被忽视、被利用或被背叛的细节连成了完整证词；关系破裂不是一个减号，而是对方重新划定了边界。",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "companion_dynamic", "bond_hostile"],
+      "choices": {
+        "left": {"text": "承认具体伤害，交还对方的信物", "desc": "不要求立刻原谅，只先终止继续占有。", "effects": {"daoHeart": 2, "karmaBad": -2, "_setFlag": "karma_result_companion_hostile_accounted"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": 5, "trustDelta": 2}},
+        "right": {"text": "拒绝纠缠，从此各走各路", "desc": "尊重离开的决定，但裂痕会成为后续因果。", "effects": {"cultivation": 2, "karmaBad": 2, "_setFlag": "karma_result_companion_hostile_severed"}, "companionEffects": {"compId": "{{companionId}}", "affectionDelta": -5, "trustDelta": -5}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_combat_heaven_censor_grudge",
+      "type": "KARMA",
+      "title": "删史官没有删掉副本",
+      "description": "你与删史官交手的记录被抄成三份：一份在仙庭案库，一份流入散修坊市，最后一份由记录中的凡人后代带到你面前。他们只问，这段历史应属于谁。",
+      "realm": "deity",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "combat_outcome", "heaven_censor"],
+      "choices": {
+        "left": {"text": "公开三份副本，让彼此校验", "desc": "历史不再由胜者或你独占。", "effects": {"knowledge": 3, "karmaGood": 2, "fortune": -1, "_setFlag": "karma_result_censor_archive_public"}},
+        "right": {"text": "保留人间本，销毁仙庭定位印", "desc": "先保护记录持有者，再等待公开时机。", "effects": {"tianji": 2, "daoHeart": 2, "karmaBad": 1, "_setFlag": "karma_result_censor_tracking_burned"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_combat_broken_ascension_chain",
+      "type": "KARMA",
+      "title": "断链里仍有人的名字",
+      "description": "飞升锁链断裂后，失败者的姓名没有消失。残魂愿把上界坐标交给你，但要求你承诺：下一次开门不能只放最强的人通过。",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "combat_outcome", "ascension_chain"],
+      "choices": {
+        "left": {"text": "刻下众名，建立公共天门坐标", "desc": "坐标更慢，却不再只服务一条强者路线。", "effects": {"tianji": 3, "karmaGood": 3, "daoHeart": 1, "_setFlag": "karma_result_chain_public_gate"}},
+        "right": {"text": "先取坐标，承诺飞升后再改规则", "desc": "保留最快登天时机，也留下尚未兑现的责任。", "effects": {"cultivation": 4, "fortune": 2, "karmaBad": 1, "_setFlag": "karma_result_chain_private_coordinate"}}
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_ascension_truth_v1.png"
+    },
+    {
+      "id": "kx_combat_marked_by_heaven",
+      "type": "KARMA",
+      "title": "天痕开始替你报位",
+      "description": "战败留下的天痕每逢运功便向仙庭回传位置。剜去它会伤及道基，保留它则能反向听见追索者的调度。",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "combat_outcome", "heaven_mark"],
+      "choices": {
+        "left": {"text": "剜去天痕，停修七日", "desc": "以短期修为代价终止长期定位。", "effects": {"cultivation": -4, "health": -1, "karmaBad": -2, "_setFlag": "karma_result_heaven_mark_removed"}},
+        "right": {"text": "保留天痕，反听仙庭巡令", "desc": "接受持续风险，换取一次稳定情报源。", "effects": {"tianji": 4, "fortune": -1, "karmaBad": 2, "_setFlag": "karma_result_heaven_mark_inverted"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_combat_heaven_chain_unfinished",
+      "type": "KARMA",
+      "title": "未断的锁链找到了下一人",
+      "description": "你撤离后，飞升锁链转而缠住一名从未见过的散修。他的求援沿着你留下的战斗气息而来；这不是替你受罚，却确实因你而提前。",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "combat_outcome", "ascension_chain"],
+      "choices": {
+        "left": {"text": "返回旧战场，与他合断余链", "desc": "承担第二次风险，把未完之战具体地结束。", "effects": {"health": -1, "karmaGood": 3, "daoHeart": 2, "_setFlag": "karma_result_unfinished_chain_returned"}},
+        "right": {"text": "传去断链法，让他自己选择", "desc": "提供方法而不替代另一名修士作决定。", "effects": {"knowledge": 2, "tianji": 2, "karmaGood": 1, "_setFlag": "karma_result_unfinished_chain_method_sent"}}
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_ascension_truth_v1.png"
+    },
+    {
+      "id": "kx_combat_chaos_understood",
+      "type": "KARMA",
+      "title": "混沌不是随机，而是未命名的规则",
+      "description": "击败逆相后，你终于看清它的结构：混沌并非任意篡改数值，而是在两套自洽规则间切换。你可以封住其中一套，也可以保留切换的钥匙。",
+      "realm": "deity",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "combat_outcome", "chaos"],
+      "choices": {
+        "left": {"text": "固定规则，换取可传授的稳定法门", "desc": "失去爆发上限，让后来者能够复现。", "effects": {"knowledge": 4, "daoHeart": 2, "karmaGood": 1, "_setFlag": "karma_result_chaos_stabilized"}},
+        "right": {"text": "保留逆相钥匙，只在危局开启", "desc": "获得更高变化空间，也承担误判代价。", "effects": {"cultivation": 4, "fortune": 2, "karmaBad": 1, "_setFlag": "karma_result_chaos_key_kept"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_path_choice.png"
+    },
+    {
+      "id": "kx_combat_chaos_scar",
+      "type": "KARMA",
+      "title": "伤痕在两种经脉间呼吸",
+      "description": "逆相留下的伤痕会在攻势与守势之间迁移：压制它能恢复稳定，顺着它修行则会让每次选择都更极端。",
+      "realm": "deity",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "combat_outcome", "chaos_scar"],
+      "choices": {
+        "left": {"text": "请医修封住逆相经脉", "desc": "支付疗伤资源，避免战败继续改写构筑节奏。", "effects": {"spiritStone": -8, "health": 2, "daoHeart": 1, "_setFlag": "karma_result_chaos_scar_sealed"}},
+        "right": {"text": "以伤为师，记录每次逆转", "desc": "保留风险，换取对无名规则的理解。", "effects": {"knowledge": 3, "cultivation": 3, "health": -1, "_setFlag": "karma_result_chaos_scar_studied"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_combat_chaos_following",
+      "type": "KARMA",
+      "title": "你离场了，逆相没有",
+      "description": "撤离后的每一面镜子都比你慢半拍。混沌没有追杀，只在观察你会不会把一次退让解释成永远不再面对。",
+      "realm": "deity",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "combat_outcome", "chaos_following"],
+      "choices": {
+        "left": {"text": "设下观测阵，允许它继续跟随", "desc": "把恐惧转成一份可验证的长期记录。", "effects": {"tianji": 3, "knowledge": 2, "fortune": -1, "_setFlag": "karma_result_chaos_observed"}},
+        "right": {"text": "砸碎所有镜面，切断回响", "desc": "获得暂时安宁，但放弃理解它的机会。", "effects": {"daoHeart": 2, "karmaBad": 1, "_setFlag": "karma_result_chaos_echo_cut"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_combat_nameless_witness",
+      "type": "KARMA",
+      "title": "无名天道请你为它命名",
+      "description": "成为见证者后，那条新规则把命名权交给你。名字会让它进入所有人的经典，也会把你的立场永久写进规则本身。",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "combat_outcome", "nameless_dao"],
+      "choices": {
+        "left": {"text": "以众生共议命名，不署自己的名", "desc": "延迟规则成形，让受影响者参与定义。", "effects": {"karmaGood": 4, "daoHeart": 3, "tianji": 2, "_setFlag": "karma_result_nameless_collective_name"}},
+        "right": {"text": "仍称无名，让规则保持可质疑", "desc": "拒绝用一个答案封死后人的解释空间。", "effects": {"knowledge": 4, "fortune": 2, "_setFlag": "karma_result_nameless_kept_open"}}
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_ascension_truth_v1.png"
+    },
+    {
+      "id": "kx_combat_nameless_rejected",
+      "type": "KARMA",
+      "title": "被新规则拒绝的人仍能作证",
+      "description": "战败没有抹去你的记忆。无名天道拒绝承认你为见证者，却无法解释：若失败者没有发言权，规则又如何证明自己不是另一座仙庭。",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "combat_outcome", "nameless_dao"],
+      "choices": {
+        "left": {"text": "整理战败全录，交给后来挑战者", "desc": "把失败转化为可复用的反证材料。", "effects": {"knowledge": 4, "karmaGood": 2, "daoHeart": 1, "_setFlag": "karma_result_nameless_defeat_archive"}},
+        "right": {"text": "养伤后再战，但不隐藏第一次失败", "desc": "保留重试意志，也拒绝伪造无败神话。", "effects": {"health": 2, "cultivation": 3, "karmaBad": 1, "_setFlag": "karma_result_nameless_rematch_vow"}}
+      },
+      "sceneImage": "assets/cards/events/scene_pool_karma_echo.png"
+    },
+    {
+      "id": "kx_combat_nameless_waits",
+      "type": "KARMA",
+      "title": "没有关闭的邀战书",
+      "description": "你离开无名天道后，邀战书仍每月出现一次，日期从不催促。它等待的不是勇气表演，而是你决定何时愿意承担一条新规则的后果。",
+      "realm": "tribulation",
+      "weight": 0,
+      "once": true,
+      "tags": ["karma", "combat_outcome", "nameless_dao"],
+      "choices": {
+        "left": {"text": "写下再战条件，并公开给同道", "desc": "把准备标准从心情变成可检查的承诺。", "effects": {"daoHeart": 3, "knowledge": 2, "_setFlag": "karma_result_nameless_rematch_terms"}},
+        "right": {"text": "封存邀战书，承认此生未必作答", "desc": "不把每一条道路都包装成必须完成的使命。", "effects": {"daoHeart": 2, "fortune": 2, "karmaGood": 1, "_setFlag": "karma_result_nameless_invitation_sealed"}}
+      },
+      "sceneImage": "assets/cards/keyframes/scene_key_ascension_truth_v1.png"
+    }
+  ]
+}

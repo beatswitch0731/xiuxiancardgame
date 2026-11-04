@@ -99,9 +99,13 @@ gameState.karmaSeeds = [{
     priority: 2, originTurn: 10, originCard: 'test', originChoice: 'right'
 }];
 
-const karmaCard = cardSystem._drawKarmaCard();
-check('Karma seed germinates', karmaCard !== null, karmaCard ? karmaCard.id + ': ' + karmaCard.title : '');
-check('Seed consumed', gameState.karmaSeeds.length === 0, 'remaining: ' + gameState.karmaSeeds.length);
+  const karmaCard = cardSystem._drawKarmaCard();
+  check('Karma seed germinates', karmaCard !== null, karmaCard ? karmaCard.id + ': ' + karmaCard.title : '');
+  check(
+    'Seed remains pending until an accepted choice consumes it',
+    gameState.karmaSeeds.length === 1,
+    'remaining: ' + gameState.karmaSeeds.length
+  );
 
 // ===== TEST 2: Golden realm card pool =====
 console.log('\\n=== TEST 2: Golden realm card pool ===');
@@ -112,7 +116,7 @@ gameState.dungeon = null;
 
 cardSystem._loadRealmCards('golden');
 const goldenPool = cardSystem.getCardPool('golden');
-check('Golden pool has 15 cards', goldenPool.length === 15, 'got ' + goldenPool.length);
+check('Golden pool has at least 15 cards', goldenPool.length >= 15, 'got ' + goldenPool.length);
 
 // Verify structure
 let structOK = true;

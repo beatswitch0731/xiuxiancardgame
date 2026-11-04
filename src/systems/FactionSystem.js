@@ -19,6 +19,8 @@ class FactionSystem {
     this.globalFlags = {};
     /** @type {number} 距离上次势力事件的轮数 */
     this._ticksSinceEvent = 0;
+    this._baselineReputations = {};
+    this._baselineUndercurrentStages = {};
   }
 
   /**
@@ -40,10 +42,10 @@ class FactionSystem {
     if (data.factions) {
       for (const faction of data.factions) {
         this.factions.set(faction.id, faction);
-        this.reputations[faction.id] = faction.startReputation || 0;
+        this._baselineReputations[faction.id] = Number(faction.startReputation) || 0;
         if (faction.subfactions) {
           for (const sub of faction.subfactions) {
-            this.reputations[sub.id] = sub.startReputation || 0;
+            this._baselineReputations[sub.id] = Number(sub.startReputation) || 0;
           }
         }
       }
@@ -54,8 +56,107 @@ class FactionSystem {
     }
 
     if (data.undercurrents) {
-      this.undercurrents = data.undercurrents;
+      this.undercurrents = JSON.parse(JSON.stringify(data.undercurrents));
+      this._baselineUndercurrentStages = Object.fromEntries(
+        Object.entries(this.undercurrents).map(([id, value]) => [
+          id,
+          Math.max(0, Math.floor(Number(value?.stage) || 0))
+        ])
+      );
     }
+
+    const restored = gameState.factionProgress && typeof gameState.factionProgress === 'object'
+      ? gameState.factionProgress
+      : null;
+    const hasRestoredProgress = restored
+      && Object.keys(restored.reputations || {}).length > 0;
+    if (hasRestoredProgress) this._hydrateProgress(restored);
+    else this._resetForNewLife({ useLegacy: !this._hasSameLifeSnapshot() });
+    gameState.factionProgress = this.exportProgress();
+  }
+
+  _hasSameLifeSnapshot() {
+    const snapshot = gameState.unlocks?.causalSessionState;
+    return Boolean(snapshot
+      && Number(snapshot.lifeCount) === Number(gameState.getLifeCount?.() || 0));
+  }
+
+  _resetForNewLife({ useLegacy = true } = {}) {
+    const inherited = useLegacy ? (gameState.unlocks?.legacy?.factionReputations || {}) : {};
+    this.reputations = {};
+    for (const [factionId, baseline] of Object.entries(this._baselineReputations)) {
+      const legacyValue = Number(inherited[factionId]);
+      this.reputations[factionId] = Number.isFinite(legacyValue) && legacyValue !== 0
+        ? Math.max(-100, Math.min(100, Math.round(legacyValue)))
+        : baseline;
+    }
+    for (const [id, undercurrent] of Object.entries(this.undercurrents || {})) {
+      undercurrent.stage = this._baselineUndercurrentStages[id] || 0;
+    }
+    this.globalFlags = {};
+    this._ticksSinceEvent = 0;
+  }
+
+  _hydrateProgress(progress) {
+    this.reputations = { ...this._baselineReputations };
+    for (const [factionId, reputation] of Object.entries(progress.reputations || {})) {
+      if (!Object.prototype.hasOwnProperty.call(this._baselineReputations, factionId)) continue;
+      if (!Number.isFinite(Number(reputation))) continue;
+      this.reputations[factionId] = Math.max(-100, Math.min(100, Number(reputation)));
+    }
+    for (const [id, undercurrent] of Object.entries(this.undercurrents || {})) {
+      const savedStage = Number(progress.undercurrentStages?.[id]);
+      const baseline = this._baselineUndercurrentStages[id] || 0;
+      undercurrent.stage = Number.isFinite(savedStage)
+        ? Math.max(0, Math.min(Number(undercurrent.maxStage) || 5, Math.floor(savedStage)))
+        : baseline;
+    }
+    this.globalFlags = Object.fromEntries(
+      Object.entries(progress.globalFlags || {}).filter(([id, enabled]) => id && enabled === true)
+    );
+    this._ticksSinceEvent = Math.max(0, Math.floor(Number(progress.ticksSinceEvent) || 0));
+  }
+
+  // Only for an already trusted, same-transaction snapshot. Unlike cold data
+  // migration, rollback must preserve legal dynamic reputations and must not
+  // retain IDs introduced by the rejected candidate.
+  restoreRollbackState(progress) {
+    const before = progress ? JSON.parse(JSON.stringify(progress)) : {};
+    this.reputations = before.reputations || {};
+    for (const [id, undercurrent] of Object.entries(this.undercurrents || {})) {
+      undercurrent.stage = before.undercurrentStages?.[id] ?? 0;
+    }
+    this.globalFlags = before.globalFlags || {};
+    this._ticksSinceEvent = before.ticksSinceEvent ?? 0;
+    return true;
+  }
+
+  exportProgress() {
+    return {
+      reputations: Object.fromEntries(Object.entries(this.reputations || {})
+        .filter(([id, value]) => id && Number.isFinite(Number(value)))
+        .map(([id, value]) => [id, Math.max(-100, Math.min(100, Number(value)))])),
+      undercurrentStages: Object.fromEntries(Object.entries(this.undercurrents || {})
+        .map(([id, value]) => [id, Math.max(0, Math.floor(Number(value?.stage) || 0))])),
+      globalFlags: Object.fromEntries(Object.entries(this.globalFlags || {})
+        .filter(([id, enabled]) => id && enabled === true)),
+      ticksSinceEvent: Math.max(0, Math.floor(Number(this._ticksSinceEvent) || 0))
+    };
+  }
+
+  _persistProgress() {
+    gameState.factionProgress = this.exportProgress();
+    return typeof gameState.persistCausalSession === 'function'
+      ? gameState.persistCausalSession()
+      : false;
+  }
+
+  _isNarrativeEligible(card) {
+    return Boolean(card) && (
+      typeof narrativeLedger === 'undefined' || !narrativeLedger
+      || typeof narrativeLedger.canPresent !== 'function'
+      || narrativeLedger.canPresent(card, { state: gameState })
+    );
   }
 
   // ==========================================
@@ -64,6 +165,7 @@ class FactionSystem {
 
   _onCheckEvent() {
     this._ticksSinceEvent++;
+    this._persistProgress();
 
     // 至少要过了15轮才可能触发
     if (this._ticksSinceEvent < 15) {
@@ -71,21 +173,16 @@ class FactionSystem {
       return;
     }
 
-    // 检查是否有匹配的势力事件，并避免重复已玩过的一次性事件
-    let event = this._pickFactionEvent();
-    let card = event ? this._buildFactionCard(event) : null;
-    let safety = 0;
-    while (event && card && gameState.cardsPlayed.includes(card.id) && safety < 5) {
-      event = this._pickFactionEvent();
-      card = event ? this._buildFactionCard(event) : null;
-      safety++;
-    }
-    if (!event || !card) {
+    // 候选池先做语义准入；耗尽时不允许把已完成卡重新发出。
+    const event = this._pickFactionEvent();
+    const card = event ? this._buildFactionCard(event) : null;
+    if (!event || !this._isNarrativeEligible(card)) {
       eventBus.emit('faction:eventCard', { card: null });
       return;
     }
 
     this._ticksSinceEvent = 0;
+    this._persistProgress();
 
     eventBus.emit('faction:eventCard', { card, priority: 40 });
   }
@@ -100,6 +197,12 @@ class FactionSystem {
       if (!faction.events) continue;
 
       for (const ev of faction.events) {
+        // A physical faction beat belongs to its authored place.  The map is
+        // observational, so this gate is enforced by the same card-flow state
+        // that other narrative producers use; an invitation cannot materialize
+        // in a disconnected cave merely because its cadence happened to tick.
+        if (!this._isEventLocationEligible(ev)) continue;
+
         // 境界检查
         if (ev.minRealm) {
           const realmOrder = ['qi', 'foundation', 'golden', 'nascent', 'deity', 'tribulation'];
@@ -132,7 +235,9 @@ class FactionSystem {
         if (gameState.attributes.fortune > 60) weight += 3;
         if (ev.pathRestriction === gameState.path) weight *= 1.5;
 
-        candidates.push({ factionId, event: ev, weight });
+        const candidate = { factionId, event: ev, weight };
+        if (!this._isNarrativeEligible(this._buildFactionCard(candidate))) continue;
+        candidates.push(candidate);
       }
     }
 
@@ -158,16 +263,51 @@ class FactionSystem {
 
     return {
       id: `faction_${ev.id}`,
+      semanticKey: ev.semanticKey || `faction:${factionId}:event:${ev.id}`,
       title: ev.title || '势力事件',
       description: ev.desc || '宗门中暗流涌动...',
       type: 'FACTION_EVENT',
       realm: gameState.realm,
       factionId,
       factionEventId: ev.id,
+      location: ev.location || null,
+      requiresPlayerPresence: ev.requiresPlayerPresence === true,
+      // A location-combat invitation is a commitment made at this place, not
+      // an ambient beat that may expire invisibly behind unrelated cards.
+      // FlowDirector owns its safe-gap delivery policy; keep the authored
+      // classification on the runtime card so that policy survives the
+      // FactionSystem producer boundary and cold-resume source rebuild.
+      deliveryClass: typeof ev.deliveryClass === 'string' ? ev.deliveryClass : null,
+      // The invitation scene belongs to the faction event itself. It is not a
+      // cropped combat battlefield: the choice below owns the later move into
+      // that battlefield through a confirmed combat entry effect.
+      sceneImage: ev.sceneImage || null,
+      narrativeSource: ev.narrativeSource || `faction:${factionId}:${ev.id}`,
       weight: 0,
       once: ev.once !== false,
       choices: this._fmtFactionChoices(ev, factionId)
     };
+  }
+
+  /**
+   * Recreate a faction source card from the authored world data.
+   *
+   * This intentionally does not run cadence, location, once, or reputation
+   * eligibility.  Those rules decide whether a new invitation may appear;
+   * a paused combat already has an authorized source card and must be rebuilt
+   * from the same static definition before DeckCombatSystem accepts its saved
+   * authority projection on a cold resume.
+   */
+  getAuthoritativeEventCard(cardId) {
+    if (typeof cardId !== 'string' || !cardId.startsWith('faction_')) return null;
+    for (const [factionId, faction] of this.factions) {
+      for (const event of faction?.events || []) {
+        if (`faction_${event?.id || ''}` !== cardId) continue;
+        const card = this._buildFactionCard({ factionId, event });
+        return card?.id === cardId ? card : null;
+      }
+    }
+    return null;
   }
 
   _fmtFactionChoices(event, factionId) {
@@ -184,7 +324,18 @@ class FactionSystem {
           undercurrentId: ch.undercurrentId || null,
           undercurrentStageChange: ch.undercurrentStageChange || 0,
           globalFlag: ch.globalFlag || null
-        }
+        },
+        // Faction data may name an existing encounter, but never owns its
+        // enemy, rewards or outcome links. GameLogic resolves this ID through
+        // CardSystem before it can create a warning card.
+        ...(ch.triggerCombat === true ? {
+          triggerCombat: true,
+          combatEncounterId: ch.combatEncounterId || null,
+          ...(ch.entryEffects ? { entryEffects: JSON.parse(JSON.stringify(ch.entryEffects)) } : {}),
+          ...(ch.combatOutcomePresentation
+            ? { combatOutcomePresentation: JSON.parse(JSON.stringify(ch.combatOutcomePresentation)) }
+            : {})
+        } : {})
       };
     }
     return result;
@@ -204,12 +355,12 @@ class FactionSystem {
 
     // 势力声望
     if (fe.reputationDelta && fe.factionId) {
-      this.addReputation(fe.factionId, fe.reputationDelta);
+      this.addReputation(fe.factionId, fe.reputationDelta, { persist: false });
     }
 
     // 子派系声望
     if (fe.subReputationDelta && fe.subfactionId) {
-      this.addReputation(fe.subfactionId, fe.subReputationDelta);
+      this.addReputation(fe.subfactionId, fe.subReputationDelta, { persist: false });
     }
 
     // 暗流推进
@@ -242,6 +393,7 @@ class FactionSystem {
     if (fe.globalFlag) {
       this.globalFlags[fe.globalFlag] = true;
     }
+    this._persistProgress();
   }
 
   // ==========================================
@@ -251,7 +403,7 @@ class FactionSystem {
   /**
    * 增加势力声望
    */
-  addReputation(factionId, delta) {
+  addReputation(factionId, delta, { persist = true } = {}) {
     const old = this.reputations[factionId] || 0;
     this.reputations[factionId] = Math.max(-100, Math.min(100, old + delta));
 
@@ -260,9 +412,11 @@ class FactionSystem {
         factionId,
         oldValue: old,
         newValue: this.reputations[factionId],
+        delta: this.reputations[factionId] - old,
         factionName: this._getFactionName(factionId)
       });
     }
+    if (persist) this._persistProgress();
   }
 
   /**
@@ -332,6 +486,7 @@ class FactionSystem {
     if (newRealm === 'nascent' && gameState.path === 'pill') {
       this.globalFlags['faction_forbiddenPill_available'] = true;
     }
+    this._persistProgress();
   }
 
   // ==========================================
@@ -354,7 +509,19 @@ class FactionSystem {
   }
 
   _onReset() {
-    this._ticksSinceEvent = 0;
+    this._resetForNewLife({ useLegacy: true });
+    gameState.factionProgress = this.exportProgress();
+  }
+
+  _isEventLocationEligible(event) {
+    if (event?.requiresPlayerPresence !== true || !event.location) return true;
+    const current = gameState?.currentLocation || null;
+    if (typeof narrativeLedger !== 'undefined' && narrativeLedger
+      && typeof narrativeLedger.areLocationsCompatible === 'function') {
+      return narrativeLedger.areLocationsCompatible(current, event.location);
+    }
+    const authored = Array.isArray(event.location) ? event.location : [event.location];
+    return authored.includes(current);
   }
 
   getFaction(factionId) {
@@ -373,3 +540,17 @@ class FactionSystem {
 
 // 全局单例
 const factionSystem = new FactionSystem();
+
+if (typeof window !== 'undefined') {
+  window.FactionSystem = FactionSystem;
+  window.factionSystem = factionSystem;
+}
+if (typeof global !== 'undefined') {
+  global.FactionSystem = FactionSystem;
+  global.factionSystem = factionSystem;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = FactionSystem;
+  module.exports.FactionSystem = FactionSystem;
+  module.exports.factionSystem = factionSystem;
+}

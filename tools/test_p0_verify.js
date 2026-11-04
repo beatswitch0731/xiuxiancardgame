@@ -54,11 +54,12 @@ console.log('=== P0-1: 功法被动接入战斗 ===');
 // 检查 game.js _applyEffects 处理 daoHeart 时应用 daoResist
 {
   const content = fs.readFileSync(path.join(PROJECT_ROOT, 'src/game.js'), 'utf8');
+  const effectContent = fs.readFileSync(path.join(PROJECT_ROOT, 'src/services/EffectService.js'), 'utf8');
   test('game.js _applyEffects 处理 daoHeart + daoResist', () => {
     assert(content.includes('daoResist') && content.includes('daoHeart'), 'game.js 未处理 daoResist');
   });
-  test('game.js _applyEffects 处理 spiritStone + spiritStoneBonus', () => {
-    assert(content.includes('spiritStoneBonus'), 'game.js 未处理 spiritStoneBonus');
+  test('EffectService 处理 spiritStone + spiritStoneBonus', () => {
+    assert(effectContent.includes('spiritStoneBonus'), 'EffectService 未处理 spiritStoneBonus');
   });
   test('game.js _resolveBreakthrough 应用 pillBonus', () => {
     assert(content.includes('pillBonus'), '_resolveBreakthrough 未应用 pillBonus');
@@ -89,11 +90,12 @@ console.log('\n=== P0-2: 商店系统 ===');
   }
 }
 
-// 检查 game.js 处理 openShop
+// 当前商店入口由 ENTER_VENDOR 合约开启，并在关闭时继续卡牌流。
 {
   const content = fs.readFileSync(path.join(PROJECT_ROOT, 'src/game.js'), 'utf8');
-  test('game.js 处理 openShop:true', () => {
-    assert(content.includes('openShop'), 'game.js 未处理 openShop');
+  test('game.js 通过 ENTER_VENDOR 开启商店会话', () => {
+    assert(content.includes("choice.action?.type === 'ENTER_VENDOR'") && content.includes("this.eventBus.emit('shop:open'"),
+      'game.js 未通过 ENTER_VENDOR 开启商店会话');
   });
   test('game.js 监听 shop:closed 恢复卡牌流', () => {
     assert(content.includes('shop:closed'), 'game.js 未监听 shop:closed');
@@ -156,21 +158,7 @@ console.log('\n=== P0-3: 法宝ID映射 ===');
 // ============================================================
 console.log('\n=== P0-4: 因果seed来源闭环 ===');
 
-// 检查所有9种因果种子都有种植源头
-const allSeedIds = [
-  'combatScar',      // CombatSystem._victory
-  'combatGlory',     // CombatSystem._victory
-  'lifespanWaste',   // game.js makeChoice
-  'factionUprising', // FactionSystem
-  'companionSacrifice', // CompanionSystem
-  'companionTrust',   // CompanionSystem
-  'spellHidden',      // spell_codex.json q_spell_3 right
-  'spellRevealed',   // spell_codex.json q_spell_3 left
-  'pillPoison',       // pill_master.json q_pill_2 left
-  'pillCure',         // pill_master.json q_pill_3 left
-];
-
-// 检查代码中是否有种植这些种子的逻辑
+// 检查仍由系统代码种植的通用因果种子；任务专属种子在下方按选项验来源与回报映射。
 {
   const combatContent = fs.readFileSync(path.join(PROJECT_ROOT, 'src/systems/CombatSystem.js'), 'utf8');
   test('CombatSystem 种植 combatScar 种子', () => {
@@ -217,22 +205,38 @@ const allSeedIds = [
   const pillMasterPath = path.join(PROJECT_ROOT, 'data/quests/pill_master.json');
   
   if (fs.existsSync(spellCodexPath)) {
-    const content = fs.readFileSync(spellCodexPath, 'utf8');
-    test('spell_codex.json 包含 spellHidden 种子', () => {
-      assert(content.includes('spellHidden'), 'spell_codex.json 缺少 spellHidden');
-    });
-    test('spell_codex.json 包含 spellRevealed 种子', () => {
-      assert(content.includes('spellRevealed'), 'spell_codex.json 缺少 spellRevealed');
+    const quest = JSON.parse(fs.readFileSync(spellCodexPath, 'utf8'));
+    const karma = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'data/cards/karma.json'), 'utf8'));
+    const contract = quest.cards.find(card => card.id === 'q_spell_3');
+    const disclosure = quest.cards.find(card => card.id === 'q_spell_4');
+    const karmaCards = new Set(karma.cards.map(card => card.id));
+    for (const [label, seeds] of [
+      ['拒绝契约', contract?.choices?.left?.karmaSeed],
+      ['接受契约', contract?.choices?.right?.karmaSeed],
+      ['公开阵眼', disclosure?.choices?.left?.karmaSeed]
+    ]) {
+      test(`spell_codex ${label}种子有来源与兑现卡`, () => {
+        const seed = Array.isArray(seeds) ? seeds[0] : seeds;
+        assert(seed?.id, `${label}缺少种子来源`);
+        assert(karma.karmaCards[seed.id] && karmaCards.has(karma.karmaCards[seed.id]),
+          `${label}种子 ${seed.id} 缺少可兑现因果卡`);
+      });
+    }
+    test('spell_codex 拒绝与接受契约不会种下同一后果', () => {
+      assert(contract?.choices?.left?.karmaSeed?.[0]?.id !== contract?.choices?.right?.karmaSeed?.[0]?.id,
+        '契约两侧写入相同因果种子');
     });
   }
   
   if (fs.existsSync(pillMasterPath)) {
     const content = fs.readFileSync(pillMasterPath, 'utf8');
-    test('pill_master.json 包含 pillPoison 种子', () => {
-      assert(content.includes('pillPoison'), 'pill_master.json 缺少 pillPoison');
+    test('pill_master.json 保留专属多丹后效与毁丹种子', () => {
+      assert(content.includes('pillMasterStarted') && content.includes('pillMasterSacrifice'),
+        'pill_master.json 缺少专属任务来源种子');
     });
-    test('pill_master.json 包含 pillCure 种子', () => {
-      assert(content.includes('pillCure'), 'pill_master.json 缺少 pillCure');
+    test('pill_master.json 不借用未确证的万毒中毒与解毒种子', () => {
+      assert(!content.includes('"id": "pillPoison"') && !content.includes('"id": "pillCure"'),
+        'pill_master.json 将未发生的万毒病因误写进延迟回报');
     });
   }
 }

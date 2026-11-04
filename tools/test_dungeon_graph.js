@@ -51,6 +51,7 @@ var sandbox = {
     dead: false,
     deadReason: '',
     dungeon: null,
+    dungeonRun: null,
     dungeonNodeIndex: 0,
     dungeonNodeId: null,
     dungeonPath: [],
@@ -58,6 +59,25 @@ var sandbox = {
     resources: { spiritStone: 100, pill: 3, karmaGood: 0, karmaBad: 0, lifespan: 9999 },
     cardsPlayed: [],
     flags: {},
+    unlocks: { lifeCount: 0 },
+    turn: 6,
+    getLifeCount: function() { return this.unlocks.lifeCount; },
+    getCausalDecisionIndex: function() { return this.turn + 1; },
+    getNextDecisionIndex: function() { return this.turn + 1; },
+    persistCausalSession: function() { return true; },
+    beginCausalTransaction: function() {
+      if (this._causalTransaction) return false;
+      this._causalTransaction = { active: true };
+      return true;
+    },
+    finishCausalTransaction: function() {
+      this._causalTransaction = null;
+      return true;
+    },
+    rollbackCausalTransaction: function() {
+      this._causalTransaction = null;
+      return true;
+    },
     checkFlags: function() { return true; },
     hasFlag: function(k) { return !!this.flags[k]; },
     getFlag: function(k) { return this.flags[k] || null; },
@@ -164,14 +184,33 @@ script.runInContext(context);
 // CardSystem 类和 cardSystem 单例都被挂到了 sandbox (即 context 的 this)
 var CardSystem = sandbox.CardSystem;
 var cs = sandbox.cardSystem;
+var acceptedSettlements = [];
+sandbox.eventBus.on('dungeon:completed', function(payload) {
+  // Match GameLogic's production order: only CardSystem's pending object can
+  // be consumed, then the outcome is acknowledged and the transaction closes.
+  if (!cs.consumeDungeonSettlement(payload)) return;
+  acceptedSettlements.push({ outcome: payload.outcome, path: payload.path.slice(),
+    sessionId: payload.sessionId, sourceCardId: payload.sourceCardId });
+  if (payload.settlementOwnsTransaction) {
+    if (!sandbox.gameState.persistCausalSession({ force: true })) return;
+    sandbox.gameState.finishCausalTransaction();
+  }
+  payload.settlementAccepted = true;
+});
+
+function enterDungeon(id) {
+  var entry = cs.enterDungeon(id, { sourceCardId: 'q_cave' });
+  if (!entry.entered || !sandbox.gameState.dungeonRun) {
+    throw new Error('Expected authenticated dungeon entry: ' + JSON.stringify(entry));
+  }
+  return entry;
+}
 
 // ════════════════════════════════════════
 // 测试 1: 进入秘境 — 首张卡是 entrance 事件
 // ════════════════════════════════════════
 console.log('--- Test 1: Enter dungeon, get entrance card ---');
-sandbox.gameState.dungeon = 'ancientCave';
-sandbox.gameState.dungeonNodeId = null;
-sandbox.gameState.dungeonPath = [];
+enterDungeon('ancientCave');
 
 var card1 = cs._drawDungeonCard();
 console.log('Card 1:', card1.id, '| type:', card1.type, '| nodeId:', card1._dungeonNodeId);
@@ -235,15 +274,19 @@ var card5 = cs._drawDungeonCard();
 console.log('Card 5 (EXIT): dungeon should be null, got:', sandbox.gameState.dungeon);
 if (sandbox.gameState.dungeon !== null) throw new Error('Expected dungeon=null after EXIT');
 if (sandbox.gameState.dungeonNodeId !== null) throw new Error('Expected dungeonNodeId=null after EXIT');
+if (sandbox.gameState.dungeonRun !== null) throw new Error('Expected dungeonRun=null after EXIT');
+if (acceptedSettlements.at(-1)?.outcome !== 'success') throw new Error('EXIT did not accept authenticated success');
+if (acceptedSettlements.at(-1)?.sourceCardId !== 'q_cave') throw new Error('EXIT lost sourceCardId');
+if (JSON.stringify(acceptedSettlements.at(-1)?.path) !== JSON.stringify(['entrance', 'fork1', 'herbGarden', 'reward', 'exit'])) {
+  throw new Error('Left EXIT settlement path mismatch: ' + JSON.stringify(acceptedSettlements.at(-1)?.path));
+}
 console.log('PASS\n');
 
 // ════════════════════════════════════════
 // 测试 3B: 重新进入，选择右路 (妖兽巢穴) → beastDen → bossRoom → reward → exit
 // ════════════════════════════════════════
 console.log('--- Test 3B: Choose right path (beastDen → bossRoom) ---');
-sandbox.gameState.dungeon = 'ancientCave';
-sandbox.gameState.dungeonNodeId = null;
-sandbox.gameState.dungeonPath = [];
+enterDungeon('ancientCave');
 
 // 快进到 fork
 cs._drawDungeonCard(); // entrance
@@ -280,19 +323,19 @@ if (rewardCard.id !== 'cave_reward') throw new Error('Expected cave_reward');
 cs.advanceDungeon();
 var exitCard = cs._drawDungeonCard();
 if (sandbox.gameState.dungeon !== null) throw new Error('Expected dungeon=null after EXIT');
+if (acceptedSettlements.at(-1)?.outcome !== 'success') throw new Error('Right EXIT did not settle');
+if (JSON.stringify(acceptedSettlements.at(-1)?.path) !== JSON.stringify(['entrance', 'fork1', 'beastDen', 'bossRoom', 'reward', 'exit'])) {
+  throw new Error('Right EXIT settlement path mismatch: ' + JSON.stringify(acceptedSettlements.at(-1)?.path));
+}
 
-console.log('Full path (right):', JSON.stringify(sandbox.gameState.dungeonPath));
-// dungeonPath 在 EXIT 时被清空，但我们在退出前可以验证
-// 实际上 dungeonPath 在 _drawDungeonGraphCard 的 EXIT 分支中被清空
+console.log('Full path (right):', JSON.stringify(acceptedSettlements.at(-1).path));
 console.log('PASS\n');
 
 // ════════════════════════════════════════
 // 测试 4: 路径追踪验证
 // ════════════════════════════════════════
 console.log('--- Test 4: Path tracking ---');
-sandbox.gameState.dungeon = 'ancientCave';
-sandbox.gameState.dungeonNodeId = null;
-sandbox.gameState.dungeonPath = [];
+enterDungeon('ancientCave');
 
 // entrance
 cs._drawDungeonCard();
@@ -313,14 +356,10 @@ if (sandbox.gameState.dungeonPath[2] !== 'herbGarden') throw new Error('Expected
 // fork event fired?
 var forkEventFired = false;
 sandbox.eventBus.on('dungeon:forkChosen', function() { forkEventFired = true; });
-cs.advanceDungeonToFork('herbGarden', 'reward'); // not a real fork, but test the event
-// Wait, herbGarden is not a FORK node. Let's test with a real fork.
-
-// Reset and test event
+// Return through the authenticated abandon port before a fresh fork test.
+if (cs.abandonDungeon('test_path_reset')?.outcome !== 'abandon') throw new Error('Path reset was not settled');
 forkEventFired = false;
-sandbox.gameState.dungeon = 'ancientCave';
-sandbox.gameState.dungeonNodeId = null;
-sandbox.gameState.dungeonPath = [];
+enterDungeon('ancientCave');
 cs._drawDungeonCard(); // entrance
 cs.advanceDungeon(); // → fork1
 cs._drawDungeonCard(); // fork
@@ -328,6 +367,7 @@ cs.advanceDungeonToFork('fork1', 'herbGarden');
 
 if (!forkEventFired) throw new Error('Expected dungeon:forkChosen event to fire');
 console.log('Fork event fired correctly');
+if (cs.abandonDungeon('test_fork_event')?.outcome !== 'abandon') throw new Error('Fork event run was not settled');
 console.log('PASS\n');
 
 // ════════════════════════════════════════
@@ -362,10 +402,7 @@ sandbox.dataLoader.loadSync = function(key) {
   return null;
 };
 
-sandbox.gameState.dungeon = 'linearCave';
-sandbox.gameState.dungeonNodeIndex = 0;
-sandbox.gameState.dungeonNodeId = null;
-sandbox.gameState.dungeonPath = [];
+enterDungeon('linearCave');
 
 var lc1 = cs._drawDungeonCard();
 console.log('Linear card 1:', lc1.id, '(expect cave_spirit)');
@@ -394,9 +431,7 @@ console.log('PASS\n');
 // 测试 6: FORK 节点不自动推进
 // ════════════════════════════════════════
 console.log('--- Test 6: FORK node does not auto-advance ---');
-sandbox.gameState.dungeon = 'ancientCave';
-sandbox.gameState.dungeonNodeId = null;
-sandbox.gameState.dungeonPath = [];
+enterDungeon('ancientCave');
 
 cs._drawDungeonCard(); // entrance
 cs.advanceDungeon();   // → fork1
@@ -412,6 +447,26 @@ if (nodeIdBeforeAdvance !== nodeIdAfterAdvance) {
   throw new Error('FORK node should not auto-advance! Before: ' + nodeIdBeforeAdvance + ', After: ' + nodeIdAfterAdvance);
 }
 console.log('FORK node correctly stays in place until player chooses');
+console.log('PASS\n');
+
+// ════════════════════════════════════════
+// 测试 7: 无活动 run 的裸完成和伪造事件不可认证
+// ════════════════════════════════════════
+console.log('--- Test 7: Ownerless completion cannot settle ---');
+if (cs.abandonDungeon('test_ownerless_cleanup')?.outcome !== 'abandon') {
+  throw new Error('Test 6 active run cleanup was not authenticated');
+}
+var acceptedBeforeForgery = acceptedSettlements.length;
+if (cs.completeDungeon('success', 'ownerless_exit') !== null) {
+  throw new Error('Ownerless completion unexpectedly returned a settlement');
+}
+sandbox.eventBus.emit('dungeon:completed', {
+  settlementId: 'dungeon-settlement:forged', sessionId: 'forged',
+  dungeonId: 'ancientCave', outcome: 'success', success: true
+});
+if (acceptedSettlements.length !== acceptedBeforeForgery) {
+  throw new Error('Ownerless or forged completion was accepted');
+}
 console.log('PASS\n');
 
 console.log('═════════════════════════════════════════');

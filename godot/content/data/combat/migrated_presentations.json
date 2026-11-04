@@ -1,0 +1,598 @@
+{
+  "version": "1.0.0",
+  "contractId": "combat_migrated_presentation_catalog_v1",
+  "description": "迁移战斗入口按“来源卡 ID:选项方向”冻结的战场、敌人动作与语义 FX 契约。",
+  "presentations": {
+    "f_mission:right": {
+      "presentationId": "combat_f_mission_right_native_v1",
+      "sourceCardId": "f_mission",
+      "sourceDirection": "right",
+      "battlefieldId": "battlefield_f_mission_native_v1",
+      "battlefield": "blazing_tiger_lair",
+      "warningTitle": "烈焰虎巢·战前推演",
+      "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_f_mission_native_v1.png",
+      "enemyType": "妖兽·烈焰虎",
+      "difficultyLabel": "筑基·凶兽",
+      "mechanic": "烈焰印记逐回合升温；先削弱再爆发，避免火势叠满。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_f_mission_native_v1",
+          "name": "妖兽·烈焰虎",
+          "kicker": "筑基·宗门任务",
+          "portraitMode": "bust",
+          "image": "assets/combat/migrated_encounters_v1/enemies/f_mission/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/migrated_encounters_v1/enemies/f_mission/intent-2.png",
+            "defend": "assets/combat/migrated_encounters_v1/enemies/f_mission/intent-3.png",
+            "buff": "assets/combat/migrated_encounters_v1/enemies/f_mission/intent-1.png",
+            "debuff": "assets/combat/migrated_encounters_v1/enemies/f_mission/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_migrated_f_mission_right_damage_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "shield": {
+          "id": "fx_migrated_f_mission_right_shield_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_migrated_f_mission_right_weak_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    },
+    "n_hunt:left": {
+      "presentationId": "combat_n_hunt_left_native_v1",
+      "sourceCardId": "n_hunt",
+      "sourceDirection": "left",
+      "battlefieldId": "battlefield_n_hunt_native_v1",
+      "battlefield": "corrupted_hunter_ground",
+      "warningTitle": "噬婴猎场·战前推演",
+      "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_n_hunt_native_v1.png",
+      "enemyType": "邪修·噬婴道人",
+      "difficultyLabel": "元婴·邪修",
+      "mechanic": "魂钩会侵蚀护盾并夺取手牌节奏；保留净化与非攻击手段。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_n_hunt_native_v1",
+          "name": "邪修·噬婴道人",
+          "kicker": "元婴·邪修追猎",
+          "portraitMode": "bust",
+          "image": "assets/combat/migrated_encounters_v1/enemies/n_hunt/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/migrated_encounters_v1/enemies/n_hunt/intent-2.png",
+            "defend": "assets/combat/migrated_encounters_v1/enemies/n_hunt/intent-3.png",
+            "buff": "assets/combat/migrated_encounters_v1/enemies/n_hunt/intent-1.png",
+            "debuff": "assets/combat/migrated_encounters_v1/enemies/n_hunt/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_migrated_n_hunt_left_damage_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "shield": {
+          "id": "fx_migrated_n_hunt_left_shield_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_migrated_n_hunt_left_weak_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    },
+    "ar_boss:left": {
+      "presentationId": "combat_ar_boss_left_native_v1",
+      "sourceCardId": "ar_boss",
+      "sourceDirection": "left",
+      "battlefieldId": "battlefield_ar_boss_native_v1",
+      "battlefield": "imperial_spirit_mausoleum",
+      "warningTitle": "帝陵墓门·战前推演",
+      "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_ar_boss_native_v1.png",
+      "enemyType": "守墓之灵",
+      "difficultyLabel": "元婴·守关灵",
+      "mechanic": "墓印在格挡后反击；先破印，再投入高伤攻击牌。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_ar_boss_native_v1",
+          "name": "守墓之灵",
+          "kicker": "元婴·古墓守关",
+          "portraitMode": "bust",
+          "image": "assets/combat/migrated_encounters_v1/enemies/ar_boss/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/migrated_encounters_v1/enemies/ar_boss/intent-2.png",
+            "defend": "assets/combat/migrated_encounters_v1/enemies/ar_boss/intent-3.png",
+            "buff": "assets/combat/migrated_encounters_v1/enemies/ar_boss/intent-1.png",
+            "debuff": "assets/combat/migrated_encounters_v1/enemies/ar_boss/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_migrated_ar_boss_left_damage_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "shield": {
+          "id": "fx_migrated_ar_boss_left_shield_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_migrated_ar_boss_left_weak_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    },
+    "q_fellow:right": {
+      "presentationId": "combat_q_fellow_right_native_v1",
+      "sourceCardId": "q_fellow",
+      "sourceDirection": "right",
+      "battlefieldId": "battlefield_q_fellow_native_v1",
+      "battlefield": "sect_sparring_terrace",
+      "warningTitle": "青云论剑台·切磋推演",
+      "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_q_fellow_native_v1.png",
+      "enemyType": "同门师兄",
+      "difficultyLabel": "炼气·切磋",
+      "mechanic": "对手会读取连续攻击；交替进攻与防守能积累剑势优势。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_q_fellow_native_v1",
+          "name": "同门师兄",
+          "kicker": "炼气·宗门切磋",
+          "portraitMode": "bust",
+          "image": "assets/combat/migrated_encounters_v1/enemies/q_fellow/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/migrated_encounters_v1/enemies/q_fellow/intent-2.png",
+            "defend": "assets/combat/migrated_encounters_v1/enemies/q_fellow/intent-3.png",
+            "buff": "assets/combat/migrated_encounters_v1/enemies/q_fellow/intent-1.png",
+            "debuff": "assets/combat/migrated_encounters_v1/enemies/q_fellow/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_migrated_q_fellow_right_damage_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "shield": {
+          "id": "fx_migrated_q_fellow_right_shield_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_migrated_q_fellow_right_weak_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    },
+    "it_combat:left": {
+      "presentationId": "combat_it_combat_left_native_v1",
+      "sourceCardId": "it_combat",
+      "sourceDirection": "left",
+      "battlefieldId": "battlefield_it_combat_native_v1",
+      "battlefield": "immortal_shadow_rift",
+      "warningTitle": "破碎天隙·战前推演",
+      "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_it_combat_native_v1.png",
+      "enemyType": "仙人残影",
+      "difficultyLabel": "渡劫·仙影",
+      "mechanic": "攻击牌会唤醒仙痕反噬；法术、毒、道侣与法宝触发可绕开。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_it_combat_native_v1",
+          "name": "仙人残影",
+          "kicker": "渡劫·天隙遗影",
+          "portraitMode": "bust",
+          "image": "assets/combat/migrated_encounters_v1/enemies/it_combat/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/migrated_encounters_v1/enemies/it_combat/intent-2.png",
+            "defend": "assets/combat/migrated_encounters_v1/enemies/it_combat/intent-3.png",
+            "buff": "assets/combat/migrated_encounters_v1/enemies/it_combat/intent-1.png",
+            "debuff": "assets/combat/migrated_encounters_v1/enemies/it_combat/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_migrated_it_combat_left_damage_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/heaven_damage/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/heaven_damage/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/heaven_damage/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/heaven_damage/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "shield": {
+          "id": "fx_migrated_it_combat_left_shield_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/heaven_shield/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/heaven_shield/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/heaven_shield/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/heaven_shield/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_migrated_it_combat_left_weak_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/heaven_weak/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/heaven_weak/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/heaven_weak/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/heaven_weak/frame-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    },
+    "thread_ab_village_3:left": {
+      "presentationId": "combat_thread_ab_village_3_left_native_v1",
+      "sourceCardId": "thread_ab_village_3",
+      "sourceDirection": "left",
+      "battlefieldId": "battlefield_thread_ab_village_3_left_native_v1",
+      "battlefield": "resentment_village_guard",
+      "warningTitle": "怨村祖祠·守念推演",
+      "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_ab_village_3_left_native_v1.png",
+      "enemyType": "怨念之影",
+      "difficultyLabel": "炼气·因果战",
+      "mechanic": "守住祖祠会承受递增诅咒；护盾与净化可保全村民因果。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_thread_ab_village_3_native_v1",
+          "name": "怨念之影",
+          "kicker": "怨村因果·守念",
+          "portraitMode": "bust",
+          "image": "assets/combat/migrated_encounters_v1/enemies/thread_ab_village_3/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/migrated_encounters_v1/enemies/thread_ab_village_3/intent-2.png",
+            "defend": "assets/combat/migrated_encounters_v1/enemies/thread_ab_village_3/intent-3.png",
+            "buff": "assets/combat/migrated_encounters_v1/enemies/thread_ab_village_3/intent-1.png",
+            "debuff": "assets/combat/migrated_encounters_v1/enemies/thread_ab_village_3/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_migrated_thread_ab_village_3_left_damage_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "shield": {
+          "id": "fx_migrated_thread_ab_village_3_left_shield_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_migrated_thread_ab_village_3_left_weak_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    },
+    "thread_ab_village_3:right": {
+      "presentationId": "combat_thread_ab_village_3_right_native_v1",
+      "sourceCardId": "thread_ab_village_3",
+      "sourceDirection": "right",
+      "battlefieldId": "battlefield_thread_ab_village_3_right_native_v1",
+      "battlefield": "resentment_village_sever",
+      "warningTitle": "怨根古树·斩根推演",
+      "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_ab_village_3_right_native_v1.png",
+      "enemyType": "怨念之影",
+      "difficultyLabel": "炼气·因果战",
+      "mechanic": "斩断怨根会令敌人先攻暴涨；虚弱与速攻构成抢节奏路线。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_thread_ab_village_3_native_v1",
+          "name": "怨念之影",
+          "kicker": "怨村因果·斩根",
+          "portraitMode": "bust",
+          "image": "assets/combat/migrated_encounters_v1/enemies/thread_ab_village_3/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/migrated_encounters_v1/enemies/thread_ab_village_3/intent-2.png",
+            "defend": "assets/combat/migrated_encounters_v1/enemies/thread_ab_village_3/intent-3.png",
+            "buff": "assets/combat/migrated_encounters_v1/enemies/thread_ab_village_3/intent-1.png",
+            "debuff": "assets/combat/migrated_encounters_v1/enemies/thread_ab_village_3/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_migrated_thread_ab_village_3_right_damage_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_damage/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "shield": {
+          "id": "fx_migrated_thread_ab_village_3_right_shield_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_shield/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_migrated_thread_ab_village_3_right_weak_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/spell_weak/frame-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    },
+    "thread_sword_tomb_2:left": {
+      "presentationId": "combat_thread_sword_tomb_2_left_native_v1",
+      "sourceCardId": "thread_sword_tomb_2",
+      "sourceDirection": "left",
+      "battlefieldId": "battlefield_thread_sword_tomb_2_native_v1",
+      "battlefield": "sword_tomb_heart_trial",
+      "warningTitle": "剑冢问心·承锋推演",
+      "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_sword_tomb_2_native_v1.png",
+      "enemyType": "剑意化身",
+      "difficultyLabel": "炼气·剑意试炼",
+      "mechanic": "承锋路线奖励精准格挡后的反击；过早出尽攻击牌会失去剑势。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_thread_sword_tomb_2_native_v1",
+          "name": "剑意化身",
+          "kicker": "剑冢问心·承锋",
+          "portraitMode": "bust",
+          "image": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-2.png",
+            "defend": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-3.png",
+            "buff": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-1.png",
+            "debuff": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_migrated_thread_sword_tomb_2_left_damage_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "shield": {
+          "id": "fx_migrated_thread_sword_tomb_2_left_shield_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_migrated_thread_sword_tomb_2_left_weak_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    },
+    "thread_sword_tomb_2:right": {
+      "presentationId": "combat_thread_sword_tomb_2_right_native_v1",
+      "sourceCardId": "thread_sword_tomb_2",
+      "sourceDirection": "right",
+      "battlefieldId": "battlefield_thread_sword_tomb_2_native_v1",
+      "battlefield": "sword_tomb_heart_trial",
+      "warningTitle": "剑冢问心·破锋推演",
+      "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_sword_tomb_2_native_v1.png",
+      "enemyType": "剑意化身",
+      "difficultyLabel": "炼气·剑意试炼",
+      "mechanic": "破锋路线要求连续压制剑印；攻击、虚弱与法宝触发共同完成破势。",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_thread_sword_tomb_2_native_v1",
+          "name": "剑意化身",
+          "kicker": "剑冢问心·破锋",
+          "portraitMode": "bust",
+          "image": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-2.png",
+            "defend": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-3.png",
+            "buff": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-1.png",
+            "debuff": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_migrated_thread_sword_tomb_2_right_damage_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "shield": {
+          "id": "fx_migrated_thread_sword_tomb_2_right_shield_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_migrated_thread_sword_tomb_2_right_weak_native_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    },
+    "thread_last_lesson_n3:left": {
+      "presentationId": "combat_thread_last_lesson_n3_left_provisional_v1",
+      "sourceCardId": "thread_last_lesson_n3",
+      "sourceDirection": "left",
+      "battlefieldId": "battlefield_last_lesson_market_stone_street_provisional_v1",
+      "battlefield": "last_lesson_market_stone_street",
+      "warningTitle": "三鸣旧剑·三意争锋",
+      "sceneImage": "assets/cards/events/scene_gd_g_swordIntent.png",
+      "enemyType": "旧剑残念",
+      "difficultyLabel": "化神·剧情精英",
+      "mechanic": "三道残念会依据玩家的过度进攻与成功偏转切换意图；防御、打断和出牌节奏共同决定最后一课的结局。",
+      "status": "PROVISIONAL_REPLACE_B13",
+      "actorCards": {
+        "enemy": {
+          "id": "actor_last_lesson_three_intents_provisional_v1",
+          "name": "三鸣旧剑·暴走剑灵",
+          "kicker": "最后一课·残剑争夺",
+          "portraitMode": "scene_actor",
+          "image": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-1.png",
+          "intentFrames": {
+            "attack": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-2.png",
+            "defend": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-3.png",
+            "buff": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-1.png",
+            "debuff": "assets/combat/migrated_encounters_v1/enemies/thread_sword_tomb_2/intent-4.png"
+          }
+        }
+      },
+      "vfx": {
+        "damage": {
+          "id": "fx_last_lesson_three_intents_damage_provisional_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_damage/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "shield": {
+          "id": "fx_last_lesson_three_intents_shield_provisional_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_shield/frame-4.png"
+          ],
+          "durationMs": 480
+        },
+        "weak": {
+          "id": "fx_last_lesson_three_intents_weak_provisional_v1",
+          "frames": [
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-1.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-2.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-3.png",
+            "assets/combat/encounter_catalog_v1/fx/martial_weak/frame-4.png"
+          ],
+          "durationMs": 480
+        }
+      }
+    }
+  }
+}

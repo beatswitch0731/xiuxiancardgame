@@ -1,0 +1,174 @@
+{
+  "quest": {
+    "id": "pill_master",
+    "name": "失传丹方",
+    "type": "QUEST",
+    "startRealm": "foundation",
+    "pathRestriction": "pill",
+    "trigger": {
+      "minTurn": 8,
+      "requiredFlags": null,
+      "forbiddenFlags": ["pillMasterCompleted"],
+      "requiredAttributes": { "fortune": 35 },
+      "priority": 7
+    },
+    "entryCardId": "q_pill_1",
+    "chainLength": 4,
+    "factionRewards": {
+      "shennong_dangu": 20,
+      "tianshu_academy": 5
+    },
+    "rewardOnComplete": {
+      "attributes": { "cultivation": 8, "daoHeart": 1, "fortune": 4 },
+      "resources": { "spiritStone": 10 },
+      "flags": ["pillMasterCompleted"],
+      "karmaSeeds": [
+        { "id": "pillMasterEcho", "delay": 8, "realm": "golden", "priority": 3 }
+      ]
+    }
+  },
+  "cards": [
+    {
+      "id": "q_pill_1",
+      "title": "药王谷的密卷",
+      "sceneImage": "assets/cards/keyframes/scene_key_pill_ancient_box_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "药王谷密卷", "alt": "药圣在丹房将盛有金边古简的木匣递向主角，尚未决定接下或婉拒。" },
+      "description": "神农丹谷——药圣私下召见你。他递给一个布满灰尘的木匣——里面是一卷用金箔封边的古简。'这是上古丹方——失传了三千年。我老了，配不出——但你的手还年轻。'\n\n你打开古简——配方上用的不是草药，是因果。第一味药：'善因三丝'。",
+      "type": "QUEST",
+      "questId": "pill_master",
+      "questStep": 1,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "接受药圣的托付",
+          "effects": { "cultivation": 4, "daoHeart": 1, "fortune": 3 },
+          "questNext": "q_pill_2"
+        },
+        "right": {
+          "text": "婉拒——因果炼丹太危险",
+          "effects": { "daoHeart": 1, "fortune": 4 },
+          "questEnd": true,
+          "questOutcome": "abandoned"
+        }
+      }
+    },
+    {
+      "id": "q_pill_2",
+      "title": "因果炼丹",
+      "sceneImage": "assets/cards/keyframes/scene_key_pill_first_causal_flame_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "因果炼丹", "alt": "第一粒因果丹在炉中将成，手指已被灼伤，尚未选择继续炼制或停在一粒。" },
+      "description": "你按照古简上的法门——用神识将微量的因果从天地间抽离出来。第一根'善因丝'——从一个老农还泪的故事里提炼。第二根——从一个母亲为子祈福的香火里提炼。\n\n手指被因果之力灼得焦黑——但丹炉里，第一粒'因果丹'正在成型。",
+      "type": "QUEST",
+      "questId": "pill_master",
+      "questStep": 2,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "继续炼制——投入更多因果",
+          "effects": { "cultivation": 6, "health": -1, "karmaGood": 2, "pill_insight": 1, "_setFlag": "pillMasterFiveBatch" },
+          "questNext": "q_pill_3",
+          "karmaSeed": [
+            { "id": "pillMasterStarted", "delay": 5, "realm": "golden", "priority": 2 }
+          ]
+        },
+        "right": {
+          "text": "到此为止——一粒就够了",
+          "effects": { "cultivation": 3, "health": 1, "fortune": 3, "pill_insight": 1, "_setFlag": "pillMasterSingleBatch" },
+          "questNext": "q_pill_3"
+        }
+      }
+    },
+    {
+      "id": "q_pill_3",
+      "title": "因果丹的代价",
+      "description": "五粒因果丹——金光流转，每一粒都包含一段世间因果。药圣颤抖着手拿起一粒——然后放了下来。他说：'这些丹，不是给人吃的。它们是给天道看的——证明人可以操纵因果。'\n\n话音未落，天空暗了下来。天道注意到了。",
+      "sceneImage": "assets/cards/keyframes/scene_key_pill_fate_pills_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "因果丹的代价", "alt": "五粒金色因果丹放在药王炉旁的浅盘中，药圣停手，殿外天光骤暗。" },
+      "stateVariants": [
+        {
+          "whenFlag": "pillMasterSingleBatch",
+          "description": "丹炉里只有一粒因果丹，金光沿着丹纹缓缓流动。药圣伸出手，又在碰到它之前收了回来：'一粒也足以证明人能触碰因果。你现在收手，还来得及。'\n\n炉火忽然低了一寸，天光在窗纸上凝住。天道已经看见了这一粒丹。",
+          "sceneImage": "assets/cards/keyframes/scene_key_pill_single_fate_pill_v1.png",
+          "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "因果丹的代价", "alt": "药王炉旁的浅盘中只有一粒金色因果丹，药圣伸手又收回，天光凝在窗纸上。" }
+        }
+      ],
+      "type": "QUEST",
+      "questId": "pill_master",
+      "questStep": 3,
+      "realm": "foundation",
+      "weight": 0,
+      "choices": {
+        "left": {
+          "text": "毁掉因果丹",
+          "effects": { "daoHeart": 1, "karmaGood": 3, "cultivation": -2, "pill_insight": 1, "_setFlag": "pillMasterDestroyed" },
+          "questNext": "q_pill_4",
+          "karmaSeed": [
+            { "id": "pillMasterSacrifice", "delay": 8, "realm": "nascent", "priority": 3 }
+          ]
+        },
+        "right": {
+          "text": "藏起来——这是力量",
+          "effects": { "cultivation": 8, "daoHeart": -1, "karmaBad": 2, "pill_insight": 1, "_setFlag": "pillMasterHidden" },
+          "questNext": "q_pill_4"
+        }
+      }
+    },
+    {
+      "id": "q_pill_4",
+      "title": "丹之极意",
+      "description": "药圣将一只空瓶放在炉边：'丹道能炼出什么，你已见过。下一步要由你自己定。'",
+      "stateVariants": [
+        {
+          "whenFlag": "pillMasterDestroyed",
+          "description": "因果丹已毁，炉中只剩余温。药圣看着空炉，将一只空瓶交到你手里：'你证明了能炼，也证明了能停。别把今天忘了。'\n\n他翻开旧丹经，指出最后一页留白：'真正难写的丹方，是何时不炼。'"
+        },
+        {
+          "whenFlag": "pillMasterHidden",
+          "description": "你把因果丹封存起来，药圣没有索要，只另递给你一只空瓶：'你已经知道它有多危险。留着，是你的选择；以后每一次开封，也都是你的选择。'\n\n他没有称赞你，只让你在旧丹经的空白页写下封存之法。"
+        }
+      ],
+      "type": "QUEST",
+      "questId": "pill_master",
+      "questStep": 4,
+      "realm": "foundation",
+      "weight": 0,
+      "sceneImage": "assets/combat/pill_master_opportunity_v1/pill_master_climax_native_v1.png",
+      "artSignature": "scene_pill_master_climax_native_v1",
+      "artFocus": "因果炉殿中央的空瓶、药王炉与赤金因果火；下方留出机缘卡预览安全区",
+      "isKeyframe": true,
+      "choices": {
+        "left": {
+          "text": "醍醐灌顶——领悟丹道",
+          "desc": "以克制与善因理解空炉之道。条件足够时可触发特殊传承，否则从技能与器契混合池中结算。",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 1,
+            "karmaGood": 2,
+            "opportunityReward": {
+              "opportunityId": "pill_master_completion_v1",
+              "profile": "restraint_vow"
+            }
+          },
+          "questEnd": true,
+          "questOutcome": "completed"
+        },
+        "right": {
+          "text": "沉默接过瓶子",
+          "desc": "保存容器与因果余烬，等待下一次成丹。条件足够时可触发特殊传承，否则从技能与器契混合池中结算。",
+          "effects": {
+            "cultivation": 8,
+            "fortune": 4,
+            "opportunityReward": {
+              "opportunityId": "pill_master_completion_v1",
+              "profile": "vessel_keeper"
+            }
+          },
+          "questEnd": true,
+          "questOutcome": "completed"
+        }
+      }
+    }
+  ]
+}

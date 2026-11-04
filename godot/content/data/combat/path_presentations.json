@@ -1,0 +1,789 @@
+{
+  "version": 3,
+  "contractId": "combat_player_path_presentation_v3",
+  "identityContractId": "protagonist_yelingyun_visual_identity_v1",
+  "description": "同一叶凌云身份的纵向境界成长与四流派横向差分契约。境界决定人物年龄、身形和衣构阶段；路径只改变战斗方法、局部装备与 UI。角色身份卡、战斗场景卡和动作序列资产彼此独立。",
+  "growthVisualContract": {
+    "revision": "agc_identity_v6_user_direction_candidate",
+    "assetClass": "actor_identity",
+    "background": "transparent",
+    "reviewStatus": "candidate_self_qc_pending_independent_review",
+    "identityRule": "六阶段先锁叶凌云的年龄、骨相、重心与衣构；流派只用可见工具、手部处理和方法姿势横向分化，禁止以长衣、光效、神装或换脸冒充成长。",
+    "stageSignals": {
+      "S0_mortal_memory": {
+        "ageRead": "十五岁，6.6 头身，短颈窄肩，仍像铁匠家的少年而非缩小版成年人。",
+        "posture": "脚距收窄、重心微收，双手低位，尚未形成宗门动作习惯。",
+        "material": "整洁炭灰工衣、完整缠脚与旧棕束带；贫寒只由实用重制表达。",
+        "methodRead": {
+          "sword": "无剑，旧铁环与空手说明剑路尚未成立。",
+          "spell": "空白折纸低置，尚未结印。",
+          "body": "工匠护腕与软膝，不作拳架。",
+          "pill": "空药囊低挂，尚未以丹术定义自己。"
+        }
+      },
+      "S1_outer_novice": {
+        "ageRead": "十六至十七岁，6.9 头身，精瘦窄肩的外门少年。",
+        "posture": "收束上身、手肘贴近身体，重心谨慎保留。",
+        "material": "合身烟蓝短衣、旧而干净的鞋履和局部加固，不出现破洞或披挂。",
+        "methodRead": {
+          "sword": "旧铁直剑低位入鞘，手不抢握。",
+          "spell": "符囊与干朱砂指尖，折符低置。",
+          "body": "右袖卷起、护腕与微沉下盘。",
+          "pill": "闭合小铜盒与单一药囊，避免药瓶阵列。"
+        }
+      },
+      "S2_resonant_disciple": {
+        "ageRead": "十九岁，7.1 头身，肩背开始展开但仍是瘦长青年。",
+        "posture": "双足均衡、骨盆水平，动作从防备转为训练后的稳定。",
+        "material": "三铆护臂与可追溯的工装结构，材质修复而非奢华升级。",
+        "methodRead": {
+          "sword": "低鞘与更直的站线说明出手前的控制。",
+          "spell": "整齐符条在腰侧检视，不摆施法姿势。",
+          "body": "加固护臂和更宽脚距承接力量。",
+          "pill": "拇指确认合匣，先准备再使用。"
+        }
+      },
+      "S3_marked_rebel": {
+        "ageRead": "二十四岁，7.3 头身，精瘦成年旅行者。",
+        "posture": "重心低而略向前，像正在选择下一段路而不是摆英雄姿势。",
+        "material": "完整短肩披覆盖旧宗门缝位，旅途层次仍保持清洁、收束。",
+        "methodRead": {
+          "sword": "鞘位后斜、手停在近处但不拔剑。",
+          "spell": "合起的小册在侧，保留一只空手。",
+          "body": "结构护腕与腰侧停手表达可承受的压力。",
+          "pill": "药匣被一手固定，草药包只作备用。"
+        }
+      },
+      "S4_cycle_bearer": {
+        "ageRead": "三十一岁，7.4 头身，成熟而不膨胀的轮廓。",
+        "posture": "髋部沉稳、头部水平，手离开武器与道具中心。",
+        "material": "多来源工装层叠与三段旧铁护臂，经历通过结构而非装饰显示。",
+        "methodRead": {
+          "sword": "剑仍低位，空出的手说明不靠拔剑证明力量。",
+          "spell": "卷轴收在身后，干朱砂手掌停在可读位置。",
+          "body": "力量由腿和护臂承接，不变成壮汉体型。",
+          "pill": "铜盒固定于腰侧，草木染色只作为功能边线。"
+        }
+      },
+      "S5_way_definer": {
+        "ageRead": "三十八岁，7.5 头身，鬓角少量灰发的成熟定道者。",
+        "posture": "胸口打开、站姿松而不散，力量读作自控。",
+        "material": "删去多余层次的完成型蓝灰衣构，完整干净而无神装膨胀。",
+        "methodRead": {
+          "sword": "无光旧铁剑低悬，方法是收束而非神兵。",
+          "spell": "密封纸匣低置，方法是压住术而非放光。",
+          "body": "完成的护腕与落地重心，方法是承受。",
+          "pill": "闭合铜盒低置，方法是预置和转化。"
+        }
+      }
+    }
+  },
+  "realmStageMap": {
+    "qi": "S1_outer_novice",
+    "foundation": "S2_resonant_disciple",
+    "golden": "S3_marked_rebel",
+    "nascent": "S4_cycle_bearer",
+    "deity": "S5_way_definer",
+    "tribulation": "S5_way_definer"
+  },
+  "fallbackStageId": "S1_outer_novice",
+  "growthStages": {
+    "S0_mortal_memory": {
+      "label": "凡尘·铁匠旧忆",
+      "assetStatus": "matrix_candidate_pending_independent_review",
+      "actorCard": {
+        "id": "actor_yelingyun_s0_sword_agc_v6",
+        "name": "叶凌云",
+        "image": "assets/combat/protagonist/growth_matrix_agc_v6/S0_mortal_memory/sword.png",
+        "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+        "visualStageId": "S0_mortal_memory",
+        "ageBand": "teen_15",
+        "style": "pc98_restricted_growth_agc_v6_user_direction_candidate",
+        "portraitMode": "full_body",
+        "motionApproved": false,
+        "assetClass": "actor_identity",
+        "background": "transparent",
+        "embeddedBattlefieldAllowed": false,
+        "embeddedVfxAllowed": false,
+        "feetAnchor": "bottom_center",
+        "identityRevision": "agc_identity_v6_user_direction_candidate",
+        "finalArtApproved": false,
+        "replacementStillRequired": true
+      },
+      "pathVariants": {
+        "sword": {
+          "actorCard": {
+            "id": "actor_yelingyun_s0_sword_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S0_mortal_memory/sword.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S0_mortal_memory",
+            "pathVariantId": "yelingyun_sword_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true
+          }
+        },
+        "spell": {
+          "actorCard": {
+            "id": "actor_yelingyun_s0_spell_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S0_mortal_memory/spell.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S0_mortal_memory",
+            "pathVariantId": "yelingyun_spell_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true
+          }
+        },
+        "body": {
+          "actorCard": {
+            "id": "actor_yelingyun_s0_body_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S0_mortal_memory/body.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S0_mortal_memory",
+            "pathVariantId": "yelingyun_body_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true
+          }
+        },
+        "pill": {
+          "actorCard": {
+            "id": "actor_yelingyun_s0_pill_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S0_mortal_memory/pill.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S0_mortal_memory",
+            "pathVariantId": "yelingyun_pill_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true
+          }
+        }
+      }
+    },
+    "S1_outer_novice": {
+      "label": "炼气·外门",
+      "assetStatus": "matrix_candidate_pending_independent_review",
+      "actorCard": {
+        "id": "actor_yelingyun_s1_sword_agc_v6",
+        "name": "叶凌云",
+        "image": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/sword.png",
+        "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+        "visualStageId": "S1_outer_novice",
+        "ageBand": "teen_16",
+        "style": "pc98_restricted_growth_agc_v6_user_direction_candidate",
+        "portraitMode": "full_body",
+        "motionApproved": false,
+        "assetClass": "actor_identity",
+        "background": "transparent",
+        "embeddedBattlefieldAllowed": false,
+        "embeddedVfxAllowed": false,
+        "feetAnchor": "bottom_center",
+        "identityRevision": "agc_identity_v6_user_direction_candidate",
+        "finalArtApproved": false,
+        "replacementStillRequired": true
+      },
+      "pathVariants": {
+        "sword": {
+          "actorCard": {
+            "id": "actor_yelingyun_s1_sword_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/sword.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "scaleProfileId": "yelingyun_s1_lean_human",
+            "visualStageId": "S1_outer_novice",
+            "pathVariantId": "yelingyun_sword_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true
+          }
+        },
+        "spell": {
+          "actorCard": {
+            "id": "actor_yelingyun_s1_spell_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/spell.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "scaleProfileId": "yelingyun_s1_lean_human",
+            "visualStageId": "S1_outer_novice",
+            "pathVariantId": "yelingyun_spell_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true
+          }
+        },
+        "body": {
+          "actorCard": {
+            "id": "actor_yelingyun_s1_body_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/body.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "scaleProfileId": "yelingyun_s1_lean_human",
+            "visualStageId": "S1_outer_novice",
+            "pathVariantId": "yelingyun_body_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true
+          }
+        },
+        "pill": {
+          "actorCard": {
+            "id": "actor_yelingyun_s1_pill_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/pill.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "scaleProfileId": "yelingyun_s1_lean_human",
+            "visualStageId": "S1_outer_novice",
+            "pathVariantId": "yelingyun_pill_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true
+          }
+        }
+      }
+    },
+    "S2_resonant_disciple": {
+      "label": "筑基·共鸣弟子",
+      "assetStatus": "matrix_candidate_pending_independent_review",
+      "actorCard": {
+        "id": "actor_yelingyun_s2_sword_agc_v6",
+        "name": "叶凌云",
+        "image": "assets/combat/protagonist/growth_matrix_agc_v6/S2_resonant_disciple/sword.png",
+        "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+        "visualStageId": "S2_resonant_disciple",
+        "ageBand": "young_19",
+        "style": "pc98_restricted_growth_agc_v6_user_direction_candidate",
+        "portraitMode": "full_body",
+        "motionApproved": true,
+        "finalArtApproved": false,
+        "identityRevision": "agc_identity_v6_user_direction_candidate",
+        "replacementStillRequired": true,
+        "scaleProfileId": "yelingyun_s2_resonant_swordsman",
+        "visualWorldId": "cangmang_sect_pc98_v1"
+      },
+      "pathVariants": {
+        "sword": {
+          "actorCard": {
+            "id": "actor_yelingyun_s2_sword_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S2_resonant_disciple/sword.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S2_resonant_disciple",
+            "pathVariantId": "yelingyun_sword_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s2_resonant_swordsman",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "spell": {
+          "actorCard": {
+            "id": "actor_yelingyun_s2_spell_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S2_resonant_disciple/spell.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S2_resonant_disciple",
+            "pathVariantId": "yelingyun_spell_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s2_resonant_spellwright",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "body": {
+          "actorCard": {
+            "id": "actor_yelingyun_s2_body_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S2_resonant_disciple/body.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S2_resonant_disciple",
+            "pathVariantId": "yelingyun_body_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s2_resonant_body_method",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "pill": {
+          "actorCard": {
+            "id": "actor_yelingyun_s2_pill_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S2_resonant_disciple/pill.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S2_resonant_disciple",
+            "pathVariantId": "yelingyun_pill_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s2_resonant_pill_method",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        }
+      }
+    },
+    "S3_marked_rebel": {
+      "label": "金丹·受印逆行",
+      "assetStatus": "matrix_candidate_pending_independent_review",
+      "actorCard": {
+        "id": "actor_yelingyun_s3_sword_agc_v6",
+        "name": "叶凌云",
+        "image": "assets/combat/protagonist/growth_matrix_agc_v6/S3_marked_rebel/sword.png",
+        "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+        "visualStageId": "S3_marked_rebel",
+        "ageBand": "adult_24",
+        "style": "pc98_restricted_growth_agc_v6_user_direction_candidate",
+        "portraitMode": "full_body",
+        "motionApproved": false,
+        "assetClass": "actor_identity",
+        "background": "transparent",
+        "embeddedBattlefieldAllowed": false,
+        "embeddedVfxAllowed": false,
+        "feetAnchor": "bottom_center",
+        "identityRevision": "agc_identity_v6_user_direction_candidate",
+        "finalArtApproved": false,
+        "replacementStillRequired": true,
+        "scaleProfileId": "yelingyun_s3_lean_adult_swordsman",
+        "visualWorldId": "cangmang_sect_pc98_v1"
+      },
+      "pathVariants": {
+        "sword": {
+          "actorCard": {
+            "id": "actor_yelingyun_s3_sword_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S3_marked_rebel/sword.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S3_marked_rebel",
+            "pathVariantId": "yelingyun_sword_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s3_lean_adult_swordsman",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "spell": {
+          "actorCard": {
+            "id": "actor_yelingyun_s3_spell_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S3_marked_rebel/spell.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S3_marked_rebel",
+            "pathVariantId": "yelingyun_spell_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s3_marked_spellwright",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "body": {
+          "actorCard": {
+            "id": "actor_yelingyun_s3_body_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S3_marked_rebel/body.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S3_marked_rebel",
+            "pathVariantId": "yelingyun_body_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s3_marked_body_method",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "pill": {
+          "actorCard": {
+            "id": "actor_yelingyun_s3_pill_agc_v6",
+            "image": "assets/combat/protagonist/growth_matrix_agc_v6/S3_marked_rebel/pill.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S3_marked_rebel",
+            "pathVariantId": "yelingyun_pill_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s3_marked_pill_method",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        }
+      }
+    },
+    "S4_cycle_bearer": {
+      "label": "元婴·轮回承载",
+      "assetStatus": "matrix_candidate_pending_independent_review",
+      "actorCard": {
+        "id": "actor_yelingyun_s4_sword_agc_v6",
+        "image": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/sword/identity/processed/identity-1.png",
+        "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+        "visualStageId": "S4_cycle_bearer",
+        "pathVariantId": "yelingyun_sword_method_v1",
+        "assetClass": "actor_identity",
+        "background": "transparent",
+        "feetAnchor": "bottom_center",
+        "identityRevision": "agc_identity_v6_user_direction_candidate",
+        "finalArtApproved": false,
+        "replacementStillRequired": true,
+        "scaleProfileId": "yelingyun_s4_cycle_bearer_adult",
+        "visualWorldId": "cangmang_sect_pc98_v1",
+        "motionApproved": true
+      },
+      "pathVariants": {
+        "sword": {
+          "actorCard": {
+            "id": "actor_yelingyun_s4_sword_agc_v6",
+            "image": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/sword/identity/processed/identity-1.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S4_cycle_bearer",
+            "pathVariantId": "yelingyun_sword_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s4_cycle_bearer_adult",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "spell": {
+          "actorCard": {
+            "id": "actor_yelingyun_s4_spell_agc_v6",
+            "image": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/spell/identity/processed/identity-1.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S4_cycle_bearer",
+            "pathVariantId": "yelingyun_spell_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s4_cycle_bearer_adult",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "body": {
+          "actorCard": {
+            "id": "actor_yelingyun_s4_body_agc_v6",
+            "image": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/body/identity/identity.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S4_cycle_bearer",
+            "pathVariantId": "yelingyun_body_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s4_cycle_bearer_adult",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "pill": {
+          "actorCard": {
+            "id": "actor_yelingyun_s4_pill_agc_v6",
+            "image": "assets/combat/protagonist/action_matrix_agc_n10/S4_cycle_bearer/pill/identity/identity.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S4_cycle_bearer",
+            "pathVariantId": "yelingyun_pill_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s4_cycle_bearer_adult",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        }
+      }
+    },
+    "S5_way_definer": {
+      "label": "化神渡劫·自定其道",
+      "assetStatus": "matrix_candidate_pending_independent_review",
+      "actorCard": {
+        "id": "actor_yelingyun_s5_sword_agc_v6",
+        "image": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/sword/identity/identity-transparent.png",
+        "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+        "visualStageId": "S5_way_definer",
+        "pathVariantId": "yelingyun_sword_method_v1",
+        "assetClass": "actor_identity",
+        "background": "transparent",
+        "feetAnchor": "bottom_center",
+        "identityRevision": "agc_identity_v6_user_direction_candidate",
+        "finalArtApproved": false,
+        "replacementStillRequired": true,
+        "scaleProfileId": "yelingyun_s5_way_definer_adult",
+        "visualWorldId": "cangmang_sect_pc98_v1",
+        "motionApproved": true
+      },
+      "pathVariants": {
+        "sword": {
+          "actorCard": {
+            "id": "actor_yelingyun_s5_sword_agc_v6",
+            "image": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/sword/identity/identity-transparent.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S5_way_definer",
+            "pathVariantId": "yelingyun_sword_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s5_way_definer_adult",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "spell": {
+          "actorCard": {
+            "id": "actor_yelingyun_s5_spell_agc_v6",
+            "image": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/spell/identity/identity-transparent.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S5_way_definer",
+            "pathVariantId": "yelingyun_spell_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s5_way_definer_adult",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "body": {
+          "actorCard": {
+            "id": "actor_yelingyun_s5_body_agc_v6",
+            "image": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/body/identity/identity-transparent.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S5_way_definer",
+            "pathVariantId": "yelingyun_body_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s5_way_definer_adult",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        },
+        "pill": {
+          "actorCard": {
+            "id": "actor_yelingyun_s5_pill_agc_v6",
+            "image": "assets/combat/protagonist/action_matrix_agc_n10/S5_way_definer/pill/identity/identity.png",
+            "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+            "visualStageId": "S5_way_definer",
+            "pathVariantId": "yelingyun_pill_method_v1",
+            "assetClass": "actor_identity",
+            "background": "transparent",
+            "feetAnchor": "bottom_center",
+            "identityRevision": "agc_identity_v6_user_direction_candidate",
+            "finalArtApproved": false,
+            "replacementStillRequired": true,
+            "scaleProfileId": "yelingyun_s5_way_definer_adult",
+            "visualWorldId": "cangmang_sect_pc98_v1",
+            "motionApproved": true
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "spell": {
+      "pathLabel": "术修",
+      "pathVariantId": "yelingyun_spell_method_v1",
+      "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "actorCard": {
+        "id": "actor_yelingyun_s1_spell_agc_v6",
+        "name": "叶凌云",
+        "kicker": "炼气·外门 · 术修",
+        "image": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/spell.png",
+        "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+        "scaleProfileId": "yelingyun_s1_lean_human",
+        "visualStageId": "S1_outer_novice",
+        "ageBand": "teen_16",
+        "style": "pc98_restricted_growth_agc_v6_user_direction_candidate",
+        "portraitMode": "full_body",
+        "motionApproved": false,
+        "finalArtApproved": false,
+        "replacementStillRequired": true
+      },
+      "uiTheme": {
+        "id": "combat_ui_spell_young_v1",
+        "pathClass": "path-spell",
+        "resourceLabel": "法力",
+        "statusLabel": "法印",
+        "motif": "旧纸符囊与朱砂墨迹",
+        "primary": "#9b91bd",
+        "secondary": "#b89a62"
+      },
+      "signatureCardIds": [
+        "spell_gather",
+        "spell_tide",
+        "spell_nuke"
+      ]
+    },
+    "sword": {
+      "pathLabel": "剑修",
+      "pathVariantId": "yelingyun_sword_method_v1",
+      "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "actorCard": {
+        "id": "actor_yelingyun_s1_sword_agc_v6",
+        "name": "叶凌云",
+        "kicker": "炼气·外门 · 剑修",
+        "image": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/sword.png",
+        "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+        "scaleProfileId": "yelingyun_s1_lean_human",
+        "visualStageId": "S1_outer_novice",
+        "ageBand": "teen_16",
+        "style": "pc98_restricted_growth_agc_v6_user_direction_candidate",
+        "portraitMode": "full_body",
+        "motionApproved": false,
+        "finalArtApproved": false,
+        "replacementStillRequired": true
+      },
+      "uiTheme": {
+        "id": "combat_ui_sword_young_v1",
+        "pathClass": "path-sword",
+        "resourceLabel": "剑元",
+        "statusLabel": "剑意",
+        "motif": "旧铁剑痕",
+        "primary": "#77a9b2",
+        "secondary": "#c5d2cc"
+      },
+      "signatureCardIds": [
+        "draw_sword",
+        "sword_array",
+        "sword_intent"
+      ]
+    },
+    "body": {
+      "pathLabel": "体修",
+      "pathVariantId": "yelingyun_body_method_v1",
+      "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "actorCard": {
+        "id": "actor_yelingyun_s1_body_agc_v6",
+        "name": "叶凌云",
+        "kicker": "炼气·外门 · 体修",
+        "image": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/body.png",
+        "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+        "scaleProfileId": "yelingyun_s1_lean_human",
+        "visualStageId": "S1_outer_novice",
+        "ageBand": "teen_16",
+        "style": "pc98_restricted_growth_agc_v6_user_direction_candidate",
+        "portraitMode": "full_body",
+        "motionApproved": false,
+        "finalArtApproved": false,
+        "replacementStillRequired": true
+      },
+      "uiTheme": {
+        "id": "combat_ui_body_young_v1",
+        "pathClass": "path-body",
+        "resourceLabel": "气血力",
+        "statusLabel": "金刚力",
+        "motif": "旧皮护臂与沉身架",
+        "primary": "#b77c4e",
+        "secondary": "#d1b073"
+      },
+      "signatureCardIds": [
+        "body_guard",
+        "heavy_strike",
+        "qi_shield"
+      ]
+    },
+    "pill": {
+      "pathLabel": "丹修",
+      "pathVariantId": "yelingyun_pill_method_v1",
+      "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+      "visualWorldId": "cangmang_sect_pc98_v1",
+      "actorCard": {
+        "id": "actor_yelingyun_s1_pill_agc_v6",
+        "name": "叶凌云",
+        "kicker": "炼气·外门 · 丹修",
+        "image": "assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/pill.png",
+        "identityAnchorId": "protagonist_yelingyun_visual_identity_v1",
+        "scaleProfileId": "yelingyun_s1_lean_human",
+        "visualStageId": "S1_outer_novice",
+        "ageBand": "teen_16",
+        "style": "pc98_restricted_growth_agc_v6_user_direction_candidate",
+        "portraitMode": "full_body",
+        "motionApproved": false,
+        "finalArtApproved": false,
+        "replacementStillRequired": true
+      },
+      "uiTheme": {
+        "id": "combat_ui_pill_young_v1",
+        "pathClass": "path-pill",
+        "resourceLabel": "丹息",
+        "statusLabel": "丹毒",
+        "motif": "旧药囊与炭灰药痕",
+        "primary": "#73977d",
+        "secondary": "#b87d54"
+      },
+      "signatureCardIds": [
+        "pill_mending",
+        "pill_poison",
+        "mana_potion"
+      ]
+    }
+  }
+}

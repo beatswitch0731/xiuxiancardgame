@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "id": "qi_first_session_v1",
+  "realm": "qi",
+  "topLevelDecisionWindow": { "max": 10 },
+  "paths": {
+    "sword": { "prologueCardId": "q_start_sword", "teachingEncounterId": "enc_trial_sword_swift", "routeLensRef": { "cardId": "q_mountain_shadow_approach", "variantKey": "sword" } },
+    "spell": { "prologueCardId": "q_start_spell", "teachingEncounterId": "enc_trial_spell_seal", "routeLensRef": { "cardId": "q_mountain_shadow_approach", "variantKey": "spell" } },
+    "body": { "prologueCardId": "q_start_body", "teachingEncounterId": "enc_trial_body_iron", "routeLensRef": { "cardId": "q_mountain_shadow_approach", "variantKey": "body" } },
+    "pill": { "prologueCardId": "q_start_pill", "teachingEncounterId": "enc_trial_pill_poison", "routeLensRef": { "cardId": "q_mountain_shadow_approach", "variantKey": "pill" } }
+  },
+  "beats": {
+    "tutorial": { "cardIds": ["tutorial_1", "tutorial_2", "tutorial_3", "tutorial_4"] },
+    "teaching": { "kind": "authored_encounter" },
+    "reward": { "kind": "combat_reward_resolution" },
+    "route": { "cardId": "q_mountain_shadow_approach", "locationId": "裂石山径", "investigateChoice": "left", "encounterId": "enc_patrol_qi_mountain_shadow" },
+    "firstVendor": { "entryCardId": "loc_market_first", "vendorId": "regulated_market", "completion": "successful_matching_close" }
+  },
+  "serialDelivery": {
+    "continuityClass": "first_session_serial",
+    "from": { "cardId": "q_mountain_shadow_approach", "choice": "right" },
+    "to": { "cardId": "loc_market_first" },
+    "preemptionRecovery": { "maxAdditionalTopLevelDecisions": 1, "resumeCardId": "loc_market_first" },
+    "ambientDeferrals": ["market", "destiny", "karma_ripple", "heavens_hint", "chapter_milestone"],
+    "permittedPreemption": ["death", "frozen_combat", "due_ghost_debt", "licensed_delivery", "narrative_fact"]
+  },
+  "routeLenses": {
+    "sword": {
+      "description": "断剑池的试锋余震仍压在虎口。你沿山门外的旧径走出一段，雨水停在断裂路标与碎石之间；两道新鲜剑痕斜切过石板，雾里的山门在身后，而裂缝深处有一处极淡阵光，像在等人失了步。",
+      "choices": {
+        "left": { "text": "循剑痕前探", "desc": "靠近裂缝，看清是谁以这一式把阵力留在山径上；战斗前仍可在预警中确认。" },
+        "right": { "text": "沿商道去坊市整备", "desc": "不把看不清的阵影当赌局。沿山门外商道先去坊市补足行装，再决定何时折返。", "effects": {}, "nextCard": "loc_market_first", "continuityClass": "first_session_serial", "narrativeBlock": null }
+      },
+      "outcomes": {
+        "victory": { "title": "裂石山径·石影归寂", "description": "最后一道裂纹在雨水里合拢。你把石影回气时露出的节奏记下，也知道这条山径会记得有人怎样出剑。" },
+        "defeat": { "title": "裂石山径·记下失守", "description": "石影没有追到山门，只把你逼退到断裂路标旁。虎口仍麻，你得带着这一式未竟的缺口重新整备。" },
+        "flee": { "title": "裂石山径·雾中折返", "description": "你在石臂压下前退回湿滑旧径。石影伏回裂缝，剑痕仍在提醒你：这一段剑路尚未走完。" }
+      }
+    },
+    "spell": {
+      "description": "观天台残留的雷息还绕在指间。你沿山门外旧径走出一段，雨水把碎石间的朱砂灰冲成细线；裂缝里有一枚被雷意灼过的残印忽明忽灭，雾中的山门在身后，像在等你辨清它的来处。",
+      "choices": {
+        "left": { "text": "循残印验阵", "desc": "靠近裂缝，以余下法印辨明阵力的回路；战斗前仍可在预警中确认。" },
+        "right": { "text": "沿商道去坊市整备", "desc": "先补齐朱砂与符纸，不让一枚来历不明的残印替你决定下一步。", "effects": {}, "nextCard": "loc_market_first", "continuityClass": "first_session_serial", "narrativeBlock": null }
+      },
+      "outcomes": {
+        "victory": { "title": "裂石山径·残印熄灭", "description": "最后一笔雷纹在雨中散开。你记住石影回气时阵力的断点，这条路不再只是观天台外的一段空白。" },
+        "defeat": { "title": "裂石山径·阵路失守", "description": "石影把你逼退到路标旁，残印仍在裂缝里微亮。法印耗空的那一步已被你记下，得先整备再回来辨它。" },
+        "flee": { "title": "裂石山径·符灰折返", "description": "你退回被雨水冲淡的朱砂灰旁。残印没有追来，却仍在雾里维持同一道错误的回路。" }
+      }
+    },
+    "body": {
+      "description": "雷音瀑下练出的卸力还留在肩背。你沿山门外旧径走出一段，湿石被山雨敲得发沉；裂缝里有一串不合人步的凹痕，像有什么东西反复借岩脊起落，雾里的山门在身后静着。",
+      "choices": {
+        "left": { "text": "循凹痕近看", "desc": "贴近裂缝，先用步法试出岩脊下藏着的起落节奏；战斗前仍可在预警中确认。" },
+        "right": { "text": "沿商道去坊市整备", "desc": "先换妥护臂与药贴，不以一身疲力去探来路不明的重物。", "effects": {}, "nextCard": "loc_market_first", "continuityClass": "first_session_serial", "narrativeBlock": null }
+      },
+      "outcomes": {
+        "victory": { "title": "裂石山径·岩势归静", "description": "碎石不再随你的呼吸起伏。你记住石影借力时的停顿，也明白这条山径能把人的下盘与胆气一并量出来。" },
+        "defeat": { "title": "裂石山径·承势未成", "description": "石影把你压回断裂路标旁，肩背仍记得那一记借岩而来的重势。路还在，先把架子重新站稳。" },
+        "flee": { "title": "裂石山径·湿石折返", "description": "你借湿石滑开石臂，退回旧径。裂缝里重新传来闷响，提醒你这次不是退散，而是留待下一次承势。" }
+      }
+    },
+    "pill": {
+      "description": "药王谷炉火留下的草木气仍缠在袖口。你沿山门外旧径走出一段，雨水把碎石间的药渣灰洗出苦味；裂缝里有一缕不该在山路上出现的冷药气浮沉，雾中的山门在身后，像在等你辨药而行。",
+      "choices": {
+        "left": { "text": "循药气验看", "desc": "靠近裂缝，以药性分辨其中是残阵还是异物；战斗前仍可在预警中确认。" },
+        "right": { "text": "沿商道去坊市整备", "desc": "先补齐药材与净器，不让一缕未知药气替你开炉冒险。", "effects": {}, "nextCard": "loc_market_first", "continuityClass": "first_session_serial", "narrativeBlock": null }
+      },
+      "outcomes": {
+        "victory": { "title": "裂石山径·药气散尽", "description": "冷药气在雨里散了。你记住石影回气时露出的浊息，这条路从此有了可追查的药性与来处。" },
+        "defeat": { "title": "裂石山径·药性反噬", "description": "石影把你逼退到路标旁，袖口的药气已被雨水冲淡。炉火未熄，先带着这次失手回去重配一炉。" },
+        "flee": { "title": "裂石山径·苦雨折返", "description": "你退回苦味渐淡的碎石旁。裂缝里的异气重新伏下，留下足够清楚的药性，等你备妥再来。" }
+      }
+    }
+  },
+  "authorities": { "flow": "GameLogic authored continuation", "location": "EffectService / SceneLayerSystem", "combat": "CombatCoordinator / DeckCombatSystem", "vendor": "MarketSystem" }
+}

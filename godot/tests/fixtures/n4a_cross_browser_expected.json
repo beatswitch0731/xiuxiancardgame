@@ -1,0 +1,259 @@
+{
+  "evidence": "tools/capture_noncombat_avoid_browser.js --ack --milestone-choice --second-milestone-choice --first-right --second-left",
+  "paths": {
+    "sword": {
+      "afterFirstRight": {
+        "attributes": {
+          "cultivation": 39,
+          "daoHeart": 4,
+          "karmaGood": 0,
+          "karmaBad": 5,
+          "fortune": 53,
+          "health": 3,
+          "aura": 0,
+          "tianji": 0
+        },
+        "karmaSeeds": [
+          {
+            "id": "causal:sword_legacy_start",
+            "delay": 4
+          },
+          {
+            "id": "causal:qi_sword_nurture",
+            "delay": 7
+          }
+        ],
+        "triggeredMilestones": [
+          15,
+          30
+        ],
+        "nextCardId": "ch_qi_40"
+      },
+      "afterSecondLeft": {
+        "attributes": {
+          "cultivation": 45,
+          "daoHeart": 4,
+          "karmaGood": 0,
+          "karmaBad": 6,
+          "fortune": 53,
+          "health": 3,
+          "aura": 0,
+          "tianji": 0
+        },
+        "karmaSeeds": [
+          {
+            "id": "causal:sword_legacy_start",
+            "delay": 3
+          },
+          {
+            "id": "causal:qi_sword_nurture",
+            "delay": 6
+          },
+          {
+            "id": "causal:hoarded_manual",
+            "delay": 7
+          }
+        ],
+        "triggeredMilestones": [
+          15,
+          30
+        ],
+        "nextCardId": "q_whiteFox_quest"
+      }
+    },
+    "spell": {
+      "afterFirstRight": {
+        "attributes": {
+          "cultivation": 37,
+          "daoHeart": 5,
+          "karmaGood": 0,
+          "karmaBad": 0,
+          "fortune": 61,
+          "health": 4,
+          "aura": 0,
+          "tianji": 0
+        },
+        "karmaSeeds": [
+          {
+            "id": "causal:spell_codex_start",
+            "delay": 4
+          },
+          {
+            "id": "causal:qi_spell_flow",
+            "delay": 7
+          }
+        ],
+        "triggeredMilestones": [
+          15,
+          30
+        ],
+        "nextCardId": "ch_qi_40"
+      },
+      "afterSecondLeft": {
+        "attributes": {
+          "cultivation": 43,
+          "daoHeart": 5,
+          "karmaGood": 0,
+          "karmaBad": 1,
+          "fortune": 61,
+          "health": 4,
+          "aura": 0,
+          "tianji": 0
+        },
+        "karmaSeeds": [
+          {
+            "id": "causal:spell_codex_start",
+            "delay": 3
+          },
+          {
+            "id": "causal:qi_spell_flow",
+            "delay": 6
+          },
+          {
+            "id": "causal:hoarded_manual",
+            "delay": 7
+          }
+        ],
+        "triggeredMilestones": [
+          15,
+          30
+        ],
+        "nextCardId": "q_whiteFox_quest"
+      }
+    },
+    "body": {
+      "afterFirstRight": {
+        "attributes": {
+          "cultivation": 35,
+          "daoHeart": 4,
+          "karmaGood": 0,
+          "karmaBad": 2,
+          "fortune": 51,
+          "health": 6,
+          "aura": 0,
+          "tianji": 0
+        },
+        "karmaSeeds": [
+          {
+            "id": "causal:body_trial_start",
+            "delay": 4
+          },
+          {
+            "id": "causal:qi_body_burden",
+            "delay": 7
+          }
+        ],
+        "triggeredMilestones": [
+          15,
+          30
+        ],
+        "nextCardId": "ch_qi_40",
+        "resources": {
+          "spiritStone": 10,
+          "lifespan": 77,
+          "pills": {},
+          "treasures": [],
+          "companions": []
+        }
+      },
+      "afterSecondLeft": {
+        "attributes": {
+          "cultivation": 41,
+          "daoHeart": 4,
+          "karmaGood": 0,
+          "karmaBad": 3,
+          "fortune": 51,
+          "health": 6,
+          "aura": 0,
+          "tianji": 0
+        },
+        "karmaSeeds": [
+          {
+            "id": "causal:body_trial_start",
+            "delay": 3
+          },
+          {
+            "id": "causal:qi_body_burden",
+            "delay": 6
+          },
+          {
+            "id": "causal:hoarded_manual",
+            "delay": 7
+          }
+        ],
+        "triggeredMilestones": [
+          15,
+          30
+        ],
+        "nextCardId": "q_whiteFox_quest",
+        "resources": {
+          "spiritStone": 10,
+          "lifespan": 77,
+          "pills": {},
+          "treasures": [],
+          "companions": []
+        }
+      }
+    },
+    "pill": {
+      "afterFirstRight": {
+        "attributes": {
+          "cultivation": 36,
+          "daoHeart": 2,
+          "karmaGood": 0,
+          "karmaBad": 5,
+          "fortune": 69,
+          "health": 6,
+          "aura": 0,
+          "tianji": 0
+        },
+        "karmaSeeds": [
+          {
+            "id": "causal:pill_master_start",
+            "delay": 4
+          },
+          {
+            "id": "causal:qi_pill_first_fire",
+            "delay": 7
+          }
+        ],
+        "triggeredMilestones": [
+          15,
+          30
+        ],
+        "nextCardId": "ch_qi_40"
+      },
+      "afterSecondLeft": {
+        "attributes": {
+          "cultivation": 42,
+          "daoHeart": 2,
+          "karmaGood": 0,
+          "karmaBad": 6,
+          "fortune": 69,
+          "health": 6,
+          "aura": 0,
+          "tianji": 0
+        },
+        "karmaSeeds": [
+          {
+            "id": "causal:pill_master_start",
+            "delay": 3
+          },
+          {
+            "id": "causal:qi_pill_first_fire",
+            "delay": 6
+          },
+          {
+            "id": "causal:hoarded_manual",
+            "delay": 7
+          }
+        ],
+        "triggeredMilestones": [
+          15,
+          30
+        ],
+        "nextCardId": "q_whiteFox_quest"
+      }
+    }
+  }
+}

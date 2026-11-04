@@ -15,11 +15,13 @@
       "choices": {
         "left": {
           "text": "挡在两人中间：「何必见面就拔剑」",
+          "desc": "你的话压住了剑鸣。白刃的拇指离开剑格，血煞老祖也散去半天血光；两人约定将旧账留到真相查清之后。",
           "effects": { "heroism": 10, "daoHeart": 5, "npc_relation:bai_ren:xuesha_laozu": 15 },
           "npcAffection": { "bai_ren": 3, "xuesha_laozu": 2 }
         },
         "right": {
           "text": "后退一步，让开中间——看他们解决",
+          "desc": "你让开的瞬间，两道剑意在山门前相撞。他们最终各自收手，却把下次见面定成了必须分生死的约定。",
           "effects": { "wisdom": 8, "npc_relation:bai_ren:xuesha_laozu": -30 },
           "npcAffection": { "bai_ren": -1, "xuesha_laozu": -1 }
         }
@@ -28,7 +30,7 @@
     {
       "id": "npc_cross_jian_linger_yin_xue_sword",
       "title": "青鸾与血蝶",
-      "description": "坊市灵草街上，剑灵儿正在挑选剑穗。\n\n殷血从街角走来，一身暗红——她在这条街上，像一滴血落入清水中。\n\n剑灵儿的手从剑穗上移开，按上了剑柄。\n\n「你的剑还在我这里，」殷血的声音不急不缓，「要不要拿回去？」\n\n剑灵儿脸色微变：「我的青鸾果然是——」\n\n「不是偷，」殷血截断她，嘴角微翘，「是捡。你丢在战场上的东西，按魔道的规矩就是我的。」\n\n两人之间隔着三步——这距离刚好够一把剑刺穿。",
+      "description": "坊市灵草街上，剑灵儿正在挑选剑穗。\n\n殷血从街角走来，一身暗红——他在这条街上，像一滴血落入清水中。\n\n剑灵儿的手从剑穗上移开，按上了剑柄。\n\n「你的剑还在我这里，」殷血的声音不急不缓，「要不要拿回去？」\n\n剑灵儿脸色微变：「我的青鸾果然是——」\n\n「不是偷，」殷血截断她，嘴角微翘，「是捡。你丢在战场上的东西，按魔道的规矩就是我的。」\n\n两人之间隔着三步——这距离刚好够一把剑刺穿。",
       "npcIds": ["jian_linger", "yin_xue"],
       "status": "rival",
       "location": "坊市",
@@ -39,11 +41,13 @@
       "choices": {
         "left": {
           "text": "对殷血说：「把青鸾还给她」",
+          "desc": "殷血将青鸾倒转剑柄递回。剑灵儿抱剑后没有道谢，却也没有再出剑；她记住了你替她守住的界限。",
           "effects": { "daoHeart": 5, "bond_jian_linger": 8, "bond_yin_xue": -3 },
           "npcAffection": { "jian_linger": 8, "yin_xue": -3 }
         },
         "right": {
           "text": "拦下剑灵儿：「一把剑而已，不值得」",
+          "desc": "剑灵儿收了杀意，却把你的话也记了下来。殷血带着青鸾离开，留下一场未结的讨剑之约。",
           "effects": { "wisdom": 5, "bond_jian_linger": -2, "bond_yin_xue": 5 },
           "npcAffection": { "jian_linger": -2, "yin_xue": 5 }
         }
@@ -63,11 +67,13 @@
       "choices": {
         "left": {
           "text": "上前——「用你自己的节奏，别追求快」",
+          "desc": "剑灵儿照着你的节奏重走了一遍，终于在剑势失控前收住剑尖。白刃对你微微点头，让她下次直接来找你对招。",
           "effects": { "wisdom": 5, "daoHeart": 3, "bond_jian_linger": 8, "bond_bai_ren": 3 },
           "npcAffection": { "jian_linger": 8, "bai_ren": 3 }
         },
         "right": {
           "text": "继续站着不动——让他们师徒自己解决",
+          "desc": "白刃没有再叫你，而是亲自放慢剑势陪剑灵儿重练。你在远处看懂了那套心法，也保留了他们的师徒时刻。",
           "effects": { "wisdom": 3, "bond_bai_ren": 2 },
           "npcAffection": { "bai_ren": 2 }
         }
@@ -76,7 +82,7 @@
     {
       "id": "npc_cross_xuesha_laozu_yin_xue_family",
       "title": "血脉的真相",
-      "description": "血煞魔宫深处，殷血跪在血煞老祖面前——但你看到她攥紧了拳，指甲嵌进掌心。\n\n「你到底还要瞒我到什么时候？」殷血的声线在颤抖。\n\n血煞沉默了很久。魔域的阴风将他的白发吹得四散。\n\n「你母亲的事，」他终于开口，像是咬碎了什么，「我本来打算到我死的那天都不说。」\n\n殷血猛地抬头——她等了这句话，等了二十年。\n\n你站在门外。不该在场。但你的脚步声出卖了你。",
+      "description": "血煞魔宫深处，殷血跪在血煞老祖面前——但你看到他攥紧了拳，指甲嵌进掌心。\n\n「你到底还要瞒我到什么时候？」殷血的声线在颤抖。\n\n血煞沉默了很久。魔域的阴风将他的白发吹得四散。\n\n「你母亲的事，」他终于开口，像是咬碎了什么，「我本来打算到我死的那天都不说。」\n\n殷血猛地抬头——他等了这句话，等了二十年。\n\n你站在门外。不该在场。但你的脚步声出卖了你。",
       "npcIds": ["xuesha_laozu", "yin_xue"],
       "status": "master-disciple",
       "location": "魔域",
@@ -87,11 +93,13 @@
       "choices": {
         "left": {
           "text": "推门进去——「有些真相，活着不说就死了」",
+          "desc": "血煞老祖终于说出殷血母亲的名字与死因。殷血没有原谅他，但收起了已经抬起的剑——这场对话得以继续。",
           "effects": { "heroism": 8, "daoHeart": 5, "bond_yin_xue": 15, "bond_xuesha_laozu": -5 },
           "npcAffection": { "yin_xue": 15, "xuesha_laozu": -5 }
         },
         "right": {
           "text": "转身离开——这是他们的家事",
+          "desc": "你离开后，门内很久没有声音。殷血最终也离开了魔宫；他知道你听见了，也知道你选择不替他做决定。",
           "effects": { "wisdom": 5, "bond_xuesha_laozu": 5, "bond_yin_xue": -3 },
           "npcAffection": { "xuesha_laozu": 5, "yin_xue": -3 }
         }
@@ -111,11 +119,13 @@
       "choices": {
         "left": {
           "text": "对天机老人说：「给她真正的答案」",
+          "desc": "天机老人将烧毁的竹简全部展开，承认当年他隐去了预言的后半句。溯月的怒意未消，但她终于得到了可以追查的真相。",
           "effects": { "daoHeart": 8, "wisdom": 5, "npc_relation:tianji_laoren:jiuwei_suyue": 20 },
           "npcAffection": { "tianji_laoren": -3, "jiuwei_suyue": 8 }
         },
         "right": {
           "text": "对溯月说：「恨了一千年，不如问清真相」",
+          "desc": "溯月收起了九尾，一句一句追问预言如何被执行。天机老人没有逃避；一千年的债没有勾销，却第一次有了可对证的账本。",
           "effects": { "wisdom": 8, "bond_jiuwei_suyue": 10, "npc_relation:tianji_laoren:jiuwei_suyue": 10 },
           "npcAffection": { "jiuwei_suyue": 10, "tianji_laoren": 3 }
         }

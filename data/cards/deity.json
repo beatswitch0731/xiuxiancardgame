@@ -42,14 +42,14 @@
           "text": "以杀意铸领域",
           "effects": {
             "cultivation": 20,
-            "daoHeart": -5,
+            "daoHeart": -2,
             "karmaBad": 10
           }
         },
         "right": {
           "text": "以道心化领域",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "cultivation": 10,
             "karmaGood": 5
           }
@@ -112,9 +112,9 @@
         "right": {
           "text": "一剑斩之——妖言惑众",
           "effects": {
-            "health": -20,
             "daoHeart": 10,
-            "cultivation": 5
+            "cultivation": 5,
+            "maxHealth": -1
           }
         }
       },
@@ -184,7 +184,7 @@
         "left": {
           "text": "坦然接受天道的审视",
           "effects": {
-            "daoHeart": 15,
+            "daoHeart": 2,
             "cultivation": 10,
             "fortune": 5
           }
@@ -193,7 +193,7 @@
           "text": "屏蔽感应——还没准备好",
           "effects": {
             "cultivation": 5,
-            "daoHeart": -5
+            "daoHeart": -2
           }
         }
       },
@@ -211,8 +211,8 @@
           "text": "破域而出——以力证道",
           "effects": {
             "cultivation": 15,
-            "health": -20,
-            "daoHeart": 5
+            "daoHeart": 5,
+            "maxHealth": -1
           }
         },
         "right": {
@@ -259,7 +259,9 @@
       "type": "NORMAL",
       "realm": "deity",
       "weight": 6,
-      "pathRestriction": "sword",
+      "paths": [
+        "sword"
+      ],
       "choices": {
         "left": {
           "text": "收剑意——不与前辈争锋",
@@ -273,7 +275,7 @@
           "text": "不——我的剑道不容退让",
           "effects": {
             "cultivation": 20,
-            "health": -15,
+            "health": -2,
             "daoHeart": 10
           }
         }
@@ -287,7 +289,9 @@
       "type": "NORMAL",
       "realm": "deity",
       "weight": 6,
-      "pathRestriction": "spell",
+      "paths": [
+        "spell"
+      ],
       "choices": {
         "left": {
           "text": "继续深研——触碰天道本源",
@@ -314,13 +318,15 @@
       "type": "NORMAL",
       "realm": "deity",
       "weight": 6,
-      "pathRestriction": "body",
+      "paths": [
+        "body"
+      ],
       "choices": {
         "left": {
           "text": "以地心之火淬体",
           "effects": {
             "cultivation": 15,
-            "health": -15
+            "health": -2
           }
         },
         "right": {
@@ -340,7 +346,9 @@
       "type": "NORMAL",
       "realm": "deity",
       "weight": 6,
-      "pathRestriction": "pill",
+      "paths": [
+        "pill"
+      ],
       "choices": {
         "left": {
           "text": "服下九转金丹",
@@ -417,7 +425,7 @@
           "text": "斩断因果线——我欠的已还清",
           "effects": {
             "karmaBad": 10,
-            "daoHeart": -10,
+            "daoHeart": -2,
             "cultivation": 10
           }
         }
@@ -434,23 +442,7 @@
       "choices": {
         "left": {
           "text": "进入仙人遗府",
-          "dungeon": {
-            "id": "immortal_ruins",
-            "nodes": [
-              {
-                "card": "ir_gate"
-              },
-              {
-                "card": "ir_test"
-              },
-              {
-                "card": "ir_treasure"
-              },
-              {
-                "card": "ir_truth"
-              }
-            ]
-          }
+          "dungeon": "immortal_ruins"
         },
         "right": {
           "text": "在门外行礼后离开——不敢惊扰仙人",
@@ -473,7 +465,7 @@
         "left": {
           "text": "竞拍化神丹 (200灵石)",
           "effects": {
-            "spiritStone": -200,
+            "spiritStone": -40,
             "pill": "化神丹",
             "cultivation": 10
           },
@@ -487,10 +479,15 @@
         "right": {
           "text": "竞拍残缺仙器 (300灵石)",
           "effects": {
-            "spiritStone": -300,
+            "spiritStone": -60,
             "cultivation": 25,
             "daoHeart": 10
           }
+        },
+        "down": {
+          "text": "离开",
+          "effects": {},
+          "desc": "囊中羞涩，只能离开"
         }
       },
       "sceneImage": "assets/cards/events/scene_dt_d_auction.png"
@@ -502,6 +499,7 @@
       "type": "NORMAL",
       "realm": "deity",
       "weight": 10,
+      "evergreen": true,
       "choices": {
         "left": {
           "text": "接受命运的提示",
@@ -538,11 +536,12 @@
           "breakSuccess": 0.35,
           "effects": {}
         },
-        "right": {
-          "text": "再修炼一阵——稳扎稳打",
-          "effects": {
-            "cultivation": 15
-          }
+      "right": {
+        "text": "再修炼一阵——稳扎稳打",
+        "effects": {
+          "cultivation": -30,
+          "daoHeart": 2
+        }
         }
       },
       "successText": "九九八十一道天雷落下——你扛住了。肉身焦黑，神魂却前所未有地明亮。渡劫期——你已经是修真界金字塔尖的存在。",
@@ -555,7 +554,21 @@
       "id": "immortal_ruins",
       "name": "仙人遗府",
       "description": "真仙飞升前的故居，藏着飞升的秘密",
-      "nodeCount": 4
+      "nodeCount": 4,
+      "nodes": [
+        {
+          "card": "ir_gate"
+        },
+        {
+          "card": "ir_test"
+        },
+        {
+          "card": "ir_treasure"
+        },
+        {
+          "card": "ir_truth"
+        }
+      ]
     }
   },
   "dungeonCards": {
@@ -580,7 +593,8 @@
             "cultivation": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
     },
     "ir_test": {
       "id": "ir_test",
@@ -603,7 +617,8 @@
             "fortune": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
     },
     "ir_treasure": {
       "id": "ir_treasure",
@@ -626,7 +641,8 @@
             "daoHeart": 5
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
     },
     "ir_truth": {
       "id": "ir_truth",
@@ -650,7 +666,8 @@
             "cultivation": 10
           }
         }
-      }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
     }
   }
 }

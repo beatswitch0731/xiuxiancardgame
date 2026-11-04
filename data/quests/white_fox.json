@@ -9,6 +9,7 @@
       "minTurn": 5,
       "requiredFlags": null,
       "forbiddenFlags": ["whiteFoxCompleted", "quest_white_fox_line_active"],
+      "forbiddenCardIds": ["q_whiteFox", "sd_qi_white_fox"],
       "requiredAttributes": null,
       "priority": 8
     },
@@ -27,7 +28,7 @@
       "resources": { "spiritStone": 20 },
       "flags": ["whiteFoxCompleted"],
       "karmaSeeds": [
-        { "id": "foxGratitude", "delay": 10, "realm": "foundation", "priority": 2 }
+          { "id": "foxGratitude", "delay": 10, "realm": "deity", "priority": 2 }
       ]
     }
   },
@@ -42,28 +43,33 @@
       "realm": "qi",
       "npcId": "bai_luoxuan",
       "weight": 0,
+      "sceneImage": "assets/cards/events/scene_event_qi_whitefox.png",
       "choices": {
         "left": {
           "text": "妖兽当诛，取丹炼药",
-          "effects": { "cultivation": 12, "health": -5, "karmaBad": 18 },
-          "questEnd": true
+          "effects": { "cultivation": 12, "health": -1, "karmaBad": 18, "npcLifecycle": { "npcId": "bai_luoxuan", "lifecycle": "DEAD", "reason": "q_whiteFox_quest_left" } },
+          "questEnd": true,
+          "questOutcome": "failed"
         },
         "right": {
           "text": "掰开铁夹，救它脱困",
-          "effects": { "cultivation": -3, "karmaGood": 18, "fortune": 8 }
+          "effects": { "cultivation": -3, "karmaGood": 18, "fortune": 8, "_setFlag": "bai_luoxuan_met" },
+          "questNext": "q_whiteFox_2"
         }
       }
     },
     {
       "id": "q_whiteFox_2",
       "title": "白狐的谢礼",
-      "description": "数日后，你在洞府修炼，忽然闻到一阵异香。白狐衔着一株灵草来到洞前，轻轻放在门槛上，朝你点了点头便转身隐入山林。",
+      "description": "你回到洞府修炼时，忽然闻到一阵异香。白狐衔着一株灵草来到洞前，轻轻放在门槛上，朝你点了点头便转身隐入山林。",
       "type": "QUEST",
       "questId": "white_fox_line",
       "questStep": 2,
       "realm": "qi",
       "npcId": "bai_luoxuan",
       "weight": 0,
+      "sceneImage": "assets/cards/keyframes/scene_key_white_fox_cave_gift_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "白狐的谢礼", "alt": "获救白狐在洞府门槛放下一株灵草，转头致意后仍可循山径离去；主角尚未收下或追上。" },
       "choices": {
         "left": {
           "text": "收下灵草",
@@ -80,18 +86,117 @@
     {
       "id": "q_whiteFox_3",
       "title": "狐踪再现",
-      "description": "又过了一阵，你在采集灵草时再次遇到了那只白狐。它似乎受了些伤，身后还有猎户的狗在追赶。",
+      "description": "你沿药径再次遇到那只受伤的白狐。猎户的狗守在坡下，白狐仍被困在附近；猎户本人也尚未走远。你可以迎战、付灵石请他收犬，或离开药径，不再介入。",
       "type": "QUEST",
       "questId": "white_fox_line",
       "questStep": 3,
       "realm": "qi",
       "npcId": "bai_luoxuan",
       "weight": 0,
+      "sceneImage": "assets/cards/keyframes/scene_key_white_fox_herb_chase_v1.png",
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "狐踪再现", "alt": "受伤白狐停在药径边，群犬从远处逼近；护送或周旋尚未发生。" },
       "choices": {
         "left": {
           "text": "击退猎狗，护送白狐",
-          "effects": { "health": -15, "karmaGood": 20, "fortune": 10 },
+          "triggerCombat": true,
+          "enemy": {
+            "id": "hound_pack_qi",
+            "name": "猎狗群",
+            "hp": 6,
+            "atk": 1,
+            "def": 0,
+            "tier": 1,
+            "battlefield": "wilderness",
+            "type": "妖兽",
+            "mechanic": "猎狗会先以狂吠扰乱气息，再从两侧发动围猎重击。"
+          },
+          "combatPresentation": {
+            "presentationId": "combat_beast_hound_pack_v1",
+            "battlefieldId": "battlefield_hound_wilderness_pc98_v1",
+            "warningTitle": "狐踪之后 · 群犬逼近",
+            "sceneImage": "assets/combat/beast_hound_pack_v1/battlefield_hound_wilderness_pc98_v1.png",
+            "enemyType": "凡俗猎犬",
+            "difficultyLabel": "炼气 · 普通",
+            "mechanic": "狂吠施加虚弱，随后扑咬；第三次行动的围猎会造成2点伤害。",
+            "actorCards": {
+              "player": {
+                "id": "actor_card_wandering_swordsman_pc98_v1",
+                "image": "assets/cards/characters/card_swordsman_wanderer_pc98.png"
+              },
+              "enemy": {
+                "id": "actor_card_hound_pack_pc98_v1",
+                "image": "assets/combat/beast_hound_pack_v1/hound_pack_actions/hound-pack-1.png",
+                "intentFrames": {
+                  "debuff": "assets/combat/beast_hound_pack_v1/hound_pack_actions/hound-pack-2.png",
+                  "attack": "assets/combat/beast_hound_pack_v1/hound_pack_actions/hound-pack-4.png",
+                  "defend": "assets/combat/beast_hound_pack_v1/hound_pack_actions/hound-pack-1.png",
+                  "buff": "assets/combat/beast_hound_pack_v1/hound_pack_actions/hound-pack-3.png"
+                }
+              }
+            },
+            "cardArt": {
+              "strike": {
+                "id": "combat_card_strike_pc98_v1",
+                "image": "assets/combat/beast_hound_pack_v1/combat_card_strike_pc98_v1.png"
+              },
+              "defend": {
+                "id": "combat_card_guard_pc98_v1",
+                "image": "assets/combat/beast_hound_pack_v1/combat_card_guard_pc98_v1.png"
+              }
+            },
+            "vfx": {
+              "damage": {
+                "id": "fx_hound_damage_pc98_v1",
+                "durationMs": 360,
+                "frames": [
+                  "assets/combat/beast_hound_pack_v1/fx_damage/damage-1.png",
+                  "assets/combat/beast_hound_pack_v1/fx_damage/damage-2.png",
+                  "assets/combat/beast_hound_pack_v1/fx_damage/damage-3.png",
+                  "assets/combat/beast_hound_pack_v1/fx_damage/damage-4.png"
+                ]
+              },
+              "shield": {
+                "id": "fx_hound_shield_pc98_v1",
+                "durationMs": 440,
+                "frames": [
+                  "assets/combat/beast_hound_pack_v1/fx_shield/shield-1.png",
+                  "assets/combat/beast_hound_pack_v1/fx_shield/shield-2.png",
+                  "assets/combat/beast_hound_pack_v1/fx_shield/shield-3.png",
+                  "assets/combat/beast_hound_pack_v1/fx_shield/shield-4.png"
+                ]
+              },
+              "weak": {
+                "id": "fx_hound_weak_pc98_v1",
+                "durationMs": 440,
+                "frames": [
+                  "assets/combat/beast_hound_pack_v1/fx_weak/weak-1.png",
+                  "assets/combat/beast_hound_pack_v1/fx_weak/weak-2.png",
+                  "assets/combat/beast_hound_pack_v1/fx_weak/weak-3.png",
+                  "assets/combat/beast_hound_pack_v1/fx_weak/weak-4.png"
+                ]
+              }
+            }
+          },
+          "entryEffects": {},
+          "victoryEffects": { "karmaGood": 20, "fortune": 10 },
+          "defeatEffects": { "daoHeart": -1 },
+          "fleeEffects": { "lifespan": -1 },
           "questEnd": true,
+          "questOutcome": "completed",
+          "questEndOn": ["victory"],
+          "karmaSeed": {
+            "id": "whiteFox",
+            "delay": 10,
+            "realm": "nascent",
+            "priority": 1
+          },
+          "karmaSeedOn": ["victory"]
+        },
+        "right": {
+          "text": "用灵石打发猎户",
+          "effects": { "spiritStone": -20, "karmaGood": 12, "daoHeart": 5 },
+          "questEnd": true,
+          "questOutcome": "completed",
           "karmaSeed": {
             "id": "whiteFox",
             "delay": 10,
@@ -99,16 +204,11 @@
             "priority": 1
           }
         },
-        "right": {
-          "text": "用灵石打发猎户",
-          "effects": { "spiritStone": -20, "karmaGood": 12, "daoHeart": 5 },
+        "down": {
+          "text": "离开药径，不再介入",
+          "effects": {},
           "questEnd": true,
-          "karmaSeed": {
-            "id": "whiteFox",
-            "delay": 10,
-            "realm": "nascent",
-            "priority": 1
-          }
+          "questOutcome": "abandoned"
         }
       }
     }

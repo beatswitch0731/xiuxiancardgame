@@ -1,0 +1,1929 @@
+{
+  "ruleSha": "08cd0d1ac24caeae35629210a0f2de0a24a563c7e3c4ea2da3ffe346f8f0a1e4",
+  "dataSha": "62a9a96e504d79183e451e8148cb2c83fb2410b908f94a703a195a9abf3a6600",
+  "fallbacks": [
+    {
+      "cardId": "arc_jian_linger_secret_reveal",
+      "direction": "right",
+      "fields": [
+        "text",
+        "effects"
+      ],
+      "source": "StoryNetworkSystem.CompanionArcEngine.SECRET.generic"
+    },
+    {
+      "cardId": "arc_jian_linger_tribulation",
+      "direction": "right",
+      "fields": [
+        "text",
+        "effects"
+      ],
+      "source": "StoryNetworkSystem.CompanionArcEngine.CLIMAX.generic"
+    },
+    {
+      "cardId": "arc_jiuwei_suyue_secret_reveal",
+      "direction": "right",
+      "fields": [
+        "text",
+        "effects"
+      ],
+      "source": "StoryNetworkSystem.CompanionArcEngine.SECRET.generic"
+    },
+    {
+      "cardId": "arc_jiuwei_suyue_tribulation",
+      "direction": "right",
+      "fields": [
+        "text",
+        "effects"
+      ],
+      "source": "StoryNetworkSystem.CompanionArcEngine.CLIMAX.generic"
+    },
+    {
+      "cardId": "arc_mu_qinglan_secret_reveal",
+      "direction": "right",
+      "fields": [
+        "text",
+        "effects"
+      ],
+      "source": "StoryNetworkSystem.CompanionArcEngine.SECRET.generic"
+    },
+    {
+      "cardId": "arc_mu_qinglan_tribulation",
+      "direction": "right",
+      "fields": [
+        "text",
+        "effects"
+      ],
+      "source": "StoryNetworkSystem.CompanionArcEngine.CLIMAX.generic"
+    },
+    {
+      "cardId": "arc_yin_xue_secret_reveal",
+      "direction": "right",
+      "fields": [
+        "text",
+        "effects"
+      ],
+      "source": "StoryNetworkSystem.CompanionArcEngine.SECRET.generic"
+    },
+    {
+      "cardId": "arc_yin_xue_tribulation",
+      "direction": "right",
+      "fields": [
+        "text",
+        "effects"
+      ],
+      "source": "StoryNetworkSystem.CompanionArcEngine.CLIMAX.generic"
+    }
+  ],
+  "cards": {
+    "bai_luoxuan": [
+      {
+        "id": "arc_bai_luoxuan_stage_ACQUAINTANCE",
+        "semanticKey": "arc:bai_luoxuan:ACQUAINTANCE",
+        "title": "白落霜·参汤",
+        "description": "白落霜站在你的洞府门口，白衣银发，傍晚的光从背后透过她的发丝。她端着一碗参汤——这是今天第三次热了。\\n\\n'恩公——参汤要趁热喝。'\\n\\n你接过碗。碗是温的——她的手是烫的。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "bai_luoxuan",
+        "arcStage": "ACQUAINTANCE",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'以后别叫我恩公了'",
+            "effects": {
+              "daoHeart": 8,
+              "fortune": 5
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 8,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "'谢谢——你其实不必每天都来'",
+            "effects": {
+              "daoHeart": 3
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 3
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_bai_luoxuan_stage_KNOWING",
+        "semanticKey": "arc:bai_luoxuan:KNOWING",
+        "title": "白落霜·采药",
+        "description": "白落霜带你到南疆深处采药。她在密林中行走的姿态不像修士——像一只真正的狐狸，每一步都踩在最安全的落叶上。\\n\\n'这株是金线莲——你上次闭关伤了经脉，它可以修复灵脉。'她蹲下来，用一根细枝小心地挖出药根。\\n\\n你看着她专注的侧脸——她采这株药不是为了自己。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "bai_luoxuan",
+        "arcStage": "KNOWING",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "蹲下来帮她",
+            "effects": {
+              "daoHeart": 10,
+              "karmaGood": 5,
+              "fortune": 5
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 10,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "在旁边看着",
+            "effects": {
+              "daoHeart": 5,
+              "fortune": 3
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 5
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_bai_luoxuan_stage_DEEP_BOND",
+        "semanticKey": "arc:bai_luoxuan:DEEP_BOND",
+        "title": "白落霜·月下真身",
+        "description": "满月之夜——白落霜的妖力达到巅峰。她的银发在月光下泛着淡蓝的光，瞳孔变成了竖瞳——不是可怕，是陌生。\\n\\n'道侣。'她第一次用这个词。'满月之夜，我的妖力会外溢——但你的灵气可以安抚我。你愿意……陪我在月下坐坐吗？'\\n\\n她闭上眼睛，九条半透明的尾巴在身后若隐若现。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "bai_luoxuan",
+        "arcStage": "DEEP_BOND",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "握住她的手——用灵气安抚她",
+            "effects": {
+              "daoHeart": 15,
+              "cultivation": 10,
+              "fortune": 10
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 15,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "保持距离——观察",
+            "effects": {
+              "daoHeart": 8,
+              "cultivation": 5
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 5
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_bai_luoxuan_stage_SOUL_BOND",
+        "semanticKey": "arc:bai_luoxuan:SOUL_BOND",
+        "title": "白落霜·狐牙",
+        "description": "白落霜把一条项链放在你手心——项链上坠着一颗白色的狐牙。她的手在发抖。\\n\\n'这是……白狐部的定情信物。'她的声音很轻——轻到你能听见自己的心跳。'白狐一辈子只有一颗本命狐牙。我娘把这颗给了我，现在——我给你。'\\n\\n狐牙温热的——刚从她心口取下来。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "bai_luoxuan",
+        "arcStage": "SOUL_BOND",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "戴上项链——'我会珍惜它'",
+            "effects": {
+              "daoHeart": 25,
+              "karmaGood": 15,
+              "fortune": 10,
+              "health": 10
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 20,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "收下但不戴——'太贵重了'",
+            "effects": {
+              "daoHeart": 10,
+              "karmaGood": 10
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": -10
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_bai_luoxuan_stage_DESTINY",
+        "semanticKey": "arc:bai_luoxuan:DESTINY",
+        "title": "白落霜·九世婚契",
+        "description": "月华最盛的一夜——白落霜用指尖在你掌心画了一道古老的白狐部符文。符文入肉的瞬间，你感到一股温暖的力量渗进了你的识海。\\n\\n'这是婚契。画了这个——你就是我九辈子的夫君。'\\n\\n她抬起头——琥珀色的眼睛里有泪光，泪光里有月光。\\n\\n'白狐的记忆可以传三百年。三百年后，三千年后，这世上还有人记得你修炼时的侧脸——那个侧脸的后方，永远有一只半透明的白色尾巴在轻轻摇。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "bai_luoxuan",
+        "arcStage": "DESTINY",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "握住她的手——'九辈子太短'",
+            "effects": {
+              "daoHeart": 35,
+              "karmaGood": 25,
+              "health": 20,
+              "fortune": 15
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 25,
+              "bondDelta": 1
+            }
+          },
+          "right": {
+            "text": "紧紧抱住她——不说话",
+            "effects": {
+              "daoHeart": 30,
+              "karmaGood": 20,
+              "fortune": 10
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 20
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_bai_luoxuan_secret_reveal",
+        "title": "白落霜·长生之代价",
+        "description": "白落霜今天没有熬参汤。她坐在石桌旁——她的尾巴垂在地上，一动不动。\\n\\n'道侣——我有件事要告诉你。'她的声音很平静，平静得像在说别人的事。\\n\\n'我是九尾天狐的血脉。太古浩劫中，九尾一族被天道诅咒——若与人族结为道侣，将失去长生。'\\n\\n她看着你，琥珀色的眼睛里没有恐惧。\\n\\n'我的长生还有多少年——我不知道。但我知道的是——参汤我会熬到最后一年。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "bai_luoxuan",
+        "arcStage": "SECRET",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "secret",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'我会找到打破诅咒的方法'",
+            "effects": {
+              "daoHeart": 20,
+              "karmaGood": 15,
+              "fortune": 10,
+              "cultivation": 10
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 20,
+              "trustDelta": 25
+            }
+          },
+          "right": {
+            "text": "'那我们就珍惜每一碗参汤'",
+            "effects": {
+              "daoHeart": 25,
+              "karmaGood": 10,
+              "health": 10
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 15,
+              "trustDelta": 15
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_bai_luoxuan_tribulation",
+        "title": "白落霜·人妖殊途",
+        "description": "正道修士找上门来了。他们说你与妖物结为道侣——有辱仙门。\\n\\n白落霜站在你身后，她的手指在你背后写着什么——不是求救，是'别为我伤了自己'。\\n\\n他们的剑已经出鞘。他们的眼神告诉你——今天不是来讲道理的。\\n\\n白落霜的尾巴轻轻碰了碰你的手——这是她唯一的'求救'。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "bai_luoxuan",
+        "arcStage": "CLIMAX",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "tribulation",
+          "climax",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "拔剑——'我的人，谁敢动'",
+            "effects": {
+              "daoHeart": 15,
+              "karmaBad": 10,
+              "health": -2,
+              "cultivation": 10
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 30,
+              "bondDelta": 1
+            }
+          },
+          "right": {
+            "text": "护着她离开——不正面冲突",
+            "effects": {
+              "daoHeart": 10,
+              "karmaGood": 10,
+              "fortune": 5
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 15
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_bai_luoxuan_destiny",
+        "title": "白落霜·三百年",
+        "description": "飞升之前——白落霜站在你面前，月光从她背后照透她的银发。\\n\\n'我知道你要飞升了。'她微笑——但尾巴没有摇。\\n\\n'天道诅咒让我的长生化为百年——但我已经活了够久了。我不知道飞升之后能不能带着记忆——如果能，下一世我还会找你。'\\n\\n她用手指在你掌心画了一道——不是婚契，是一个'念'字。\\n\\n'白狐的记忆可以传三百年。三百年内——我一定会找到你。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "bai_luoxuan",
+        "arcStage": "DESTINY_CLIMAX",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "destiny",
+          "finale",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'不用找——我会回来接你'",
+            "effects": {
+              "daoHeart": 35,
+              "karmaGood": 30,
+              "fortune": 20,
+              "health": 15
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 30,
+              "bondDelta": 2
+            }
+          },
+          "right": {
+            "text": "'如果下一世还能见到你——我会认出来的'",
+            "effects": {
+              "daoHeart": 30,
+              "karmaGood": 25,
+              "fortune": 15
+            },
+            "companionEffects": {
+              "compId": "bai_luoxuan",
+              "affectionDelta": 25,
+              "bondDelta": 0,
+              "trustDelta": -3
+            },
+            "karmaSeed": {
+              "id": "destinyPromise",
+              "seedType": "fate",
+              "delay": 20,
+              "realm": "tribulation",
+              "priority": 10,
+              "context": {
+                "companionId": "bai_luoxuan",
+                "companionName": "白落霜",
+                "milestoneId": "destiny_promise"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "jian_linger": [
+      {
+        "id": "arc_jian_linger_stage_ACQUAINTANCE",
+        "semanticKey": "arc:jian_linger:ACQUAINTANCE",
+        "title": "剑灵儿·三招",
+        "description": "剑灵儿抱着剑靠在剑冢石壁上，眼神从上扫到下把你打量了一遍。\\n\\n'你就是师尊新收的弟子？看起来——一般。'\\n\\n她把剑从怀里抽出来，剑尖指向你。\\n\\n'来。拔剑。三招之内你还能站着——就算我认你这个师弟。'\\n\\n她的眼神很冷——但她的剑尖比平时低了三分。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jian_linger",
+        "arcStage": "ACQUAINTANCE",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "拔剑应战——'请师姐指教'",
+            "effects": {
+              "cultivation": 10,
+              "daoHeart": 5
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 5,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "'我不想伤到师姐'",
+            "effects": {
+              "daoHeart": 8
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 3
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jian_linger_stage_KNOWING",
+        "semanticKey": "arc:jian_linger:KNOWING",
+        "title": "剑灵儿·陪练",
+        "description": "剑灵儿每天在剑冢练剑四个时辰。风雨无阻。\\n\\n但你发现——每当你也在剑冢，她的剑路就变了。不是变快了——是变慢了。每一个动作都慢到你能看清。\\n\\n'别多想——'她头也不回地说，'我只是今天状态不好。'\\n\\n但她的耳朵红了。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jian_linger",
+        "arcStage": "KNOWING",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'师姐——你是在教我？'",
+            "effects": {
+              "cultivation": 15,
+              "daoHeart": 8
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 8,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "默默模仿她的剑路",
+            "effects": {
+              "cultivation": 10,
+              "daoHeart": 5
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 10
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jian_linger_stage_DEEP_BOND",
+        "semanticKey": "arc:jian_linger:DEEP_BOND",
+        "title": "剑灵儿·冰心剑意",
+        "description": "剑灵儿第一次在你面前施展完整的冰心剑意。剑尖凝出一片冰晶——然后整片剑冢的温度都降了。\\n\\n'冰心剑意——心要静，剑要冷。'她收了剑，呼出的气化成白雾。\\n\\n'但心冷不是无情。'她别过头——不是看风景，是不想让你看到她的表情。\\n\\n'我在心魔劫中悟出这道剑意的时候——是师尊用一半修为换我活着。'\\n\\n她的声音第一次没有攻击性——只有坦诚。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jian_linger",
+        "arcStage": "DEEP_BOND",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'师姐——谢谢你告诉我'",
+            "effects": {
+              "daoHeart": 20,
+              "cultivation": 10,
+              "fortune": 5
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 12,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "'师尊值得'",
+            "effects": {
+              "daoHeart": 15,
+              "karmaGood": 5
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 8
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jian_linger_stage_SOUL_BOND",
+        "semanticKey": "arc:jian_linger:SOUL_BOND",
+        "title": "剑灵儿·慢了半拍",
+        "description": "今天的切磋中——她的剑又慢了半拍。但这次你知道不是'状态不好'。\\n\\n你一剑震开了她的冰心剑意——她的剑飞出三丈，插在石壁上。\\n\\n她愣了一瞬——然后笑了。不是平时那种带刺的笑——是月华突然穿透云层的那种亮。\\n\\n'你赢了。'她低头看着空荡荡的手——'七十年了，第一次有人赢我。'\\n\\n她抬头时眼眶微红。\\n\\n'但不是第一次有人——让我想输。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jian_linger",
+        "arcStage": "SOUL_BOND",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "伸手帮她拔出剑——'下次我们再比'",
+            "effects": {
+              "daoHeart": 25,
+              "cultivation": 15,
+              "fortune": 10
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 20,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "'师姐——你让了我'",
+            "effects": {
+              "daoHeart": 15,
+              "cultivation": 10
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 15
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jian_linger_stage_DESTINY",
+        "semanticKey": "arc:jian_linger:DESTINY",
+        "title": "剑灵儿·冰心化暖",
+        "description": "她的手第一次不是冰凉的。\\n\\n她握着你——手指微微发颤，指节泛白。不像握剑——握剑不会这么用力，也不会这么轻。\\n\\n'我在剑冢练了七十年剑——从来不知道冷是什么。'她的声音像剑鸣——清越但颤抖。\\n\\n'现在知道了——是你不在的时候。'\\n\\n她低头看着你们交握的手——冰心剑意的传人，手指终于是暖的了。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jian_linger",
+        "arcStage": "DESTINY",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'那我就永远在'",
+            "effects": {
+              "daoHeart": 35,
+              "karmaGood": 20,
+              "fortune": 15,
+              "cultivation": 10
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 25,
+              "bondDelta": 1
+            }
+          },
+          "right": {
+            "text": "沉默——但把她拉近",
+            "effects": {
+              "daoHeart": 30,
+              "karmaGood": 15,
+              "fortune": 10
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 20
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jian_linger_secret_reveal",
+        "title": "剑灵儿·心魔劫",
+        "description": "剑灵儿带你去了一个地方——剑冢最深处的密室。密室中央有一个人形的焦痕。\\n\\n'这是我。'她的声音很平静。'十年前——我练冰心剑意走火入魔，心魔反噬。师尊用一半修为把我拉了回来——这个焦痕是他被反噬时留下的。'\\n\\n她蹲下来，手指划过焦痕。\\n\\n'从那之后——我对谁出剑都留三分力。怕伤到人。'她抬头看你——'除了你。对你的第一剑——我全力以赴。因为师尊说——你不一样。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jian_linger",
+        "arcStage": "SECRET",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "secret",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'师姐——我帮你一起扛'",
+            "effects": {
+              "daoHeart": 20,
+              "karmaGood": 15,
+              "cultivation": 10
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 18,
+              "trustDelta": 25
+            }
+          },
+          "right": {
+            "text": "也分享一个自己的秘密",
+            "effects": {
+              "daoHeart": 15,
+              "karmaGood": 10
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 10,
+              "trustDelta": 15
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jian_linger_tribulation",
+        "title": "剑灵儿·冰心劫",
+        "description": "天劫不是雷——是心魔。剑灵儿的心魔劫比十年前更凶——不只是她自己的心魔，还有天道的加码。\\n\\n冰心剑意在崩塌——她的剑尖凝不出冰晶了。\\n\\n她单膝跪地，咬着牙——不让你看出来她在发抖。\\n\\n'别过来——'她的声音碎成了冰渣。'我不想让你看到——我这个样子。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jian_linger",
+        "arcStage": "CLIMAX",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "tribulation",
+          "climax",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "冲过去——用自己的灵气帮她稳住冰心",
+            "effects": {
+              "daoHeart": 20,
+              "health": -3,
+              "karmaGood": 15,
+              "fortune": 10
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 25,
+              "bondDelta": 1
+            }
+          },
+          "right": {
+            "text": "冲进去——'去他妈的天道'",
+            "effects": {
+              "daoHeart": 2,
+              "health": -2,
+              "karmaGood": 3,
+              "fortune": -2
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 10
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jian_linger_destiny",
+        "title": "剑灵儿·剑道同归",
+        "description": "飞升之门前——剑灵儿背对着你，她对着天道之门举起了剑。\\n\\n不是对抗——是宣告。\\n\\n'天道——我练剑七十年，只对一个人留过手。不是怕伤他——是怕他走了没人陪我练剑。'\\n\\n她回头，冰心剑意最后一次绽放——不是冰晶，是暖光。\\n\\n'今天我要带他一起走。你不让——我就把你劈开。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jian_linger",
+        "arcStage": "DESTINY_CLIMAX",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "destiny",
+          "finale",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "拔剑并肩——'一起劈'",
+            "effects": {
+              "daoHeart": 35,
+              "cultivation": 25,
+              "karmaGood": 15,
+              "fortune": 20
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": 25,
+              "bondDelta": 2
+            }
+          },
+          "right": {
+            "text": "先行飞升——为剑灵儿从上界重开天门",
+            "effects": {
+              "cultivation": 4,
+              "daoHeart": 2,
+              "karmaGood": 2,
+              "fortune": 1
+            },
+            "companionEffects": {
+              "compId": "jian_linger",
+              "affectionDelta": -5,
+              "bondDelta": 0,
+              "trustDelta": -3
+            },
+            "karmaSeed": {
+              "id": "destinyPromise",
+              "seedType": "fate",
+              "delay": 20,
+              "realm": "tribulation",
+              "priority": 10,
+              "context": {
+                "companionId": "jian_linger",
+                "companionName": "剑灵儿",
+                "milestoneId": "destiny_promise"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "jiuwei_suyue": [
+      {
+        "id": "arc_jiuwei_suyue_stage_ACQUAINTANCE",
+        "semanticKey": "arc:jiuwei_suyue:ACQUAINTANCE",
+        "title": "九尾溯月·月下初见",
+        "description": "月湖边——她从月色中走出来。九条白色的尾巴如瀑布般散落在身后——不是炫耀，是天狐的本相。\\n\\n她眯着眼打量你，琥珀色的瞳孔在月光下变成了竖瞳。'既然到了月湖，就别只在岸边看。跟我来——三千年的东西，够你学了。'\\n\\n她转身——九尾在身后一甩——不是示威，是指路。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jiuwei_suyue",
+        "arcStage": "ACQUAINTANCE",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "跟上——'请前辈指教'",
+            "effects": {
+              "cultivation": 15,
+              "daoHeart": 5,
+              "fortune": 5
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 5,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "留在月湖边——'我想先弄清这里发生了什么'",
+            "effects": {
+              "karmaGood": 8,
+              "daoHeart": 8,
+              "fortune": 3
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 8
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jiuwei_suyue_stage_KNOWING",
+        "semanticKey": "arc:jiuwei_suyue:KNOWING",
+        "title": "九尾溯月·太古浩劫",
+        "description": "九尾坐在月湖边——没有平时的威严，只有疲惫。\\n\\n'你知道太古浩劫吗？不是书上写的那种——书上写的都是假的。'她的九条尾巴垂在水面上——像九道白色的伤口。\\n\\n'妖族在浩劫中死了九成。不是被人杀的——是被天道'回收'的。'她抬头看着月亮——月亮已经看了她三千年。\\n\\n'我活了下来——不是因为我强。是因为天道留着我。'她顿了顿——'看守封印。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jiuwei_suyue",
+        "arcStage": "KNOWING",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'封印了什么？'",
+            "effects": {
+              "daoHeart": 15,
+              "fortune": 10,
+              "cultivation": 5
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 10,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "'不想说封印也可以——先说说那些消失的妖族'",
+            "effects": {
+              "karmaGood": 10,
+              "daoHeart": 12,
+              "wisdom": 5
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 12
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jiuwei_suyue_stage_DEEP_BOND",
+        "semanticKey": "arc:jiuwei_suyue:DEEP_BOND",
+        "title": "九尾溯月·飞升回头",
+        "description": "九尾第一次用认真的语气和你说话——不是威严的妖皇，是一个做出过选择的人。\\n\\n'三千年前的满月之夜——我也面对过飞升之门。我的修为够了——天道允许我走了。'\\n\\n她伸出手——掌心有一道白色的纹路——是飞升时的天痕。\\n\\n'但我在最后一刻回头了。我看到了飞升的真相——那不是接引之光，是加工厂的门。进去的人——没有一个回来。'\\n\\n她收手——天痕还亮着。'所以我留下了。三千年——一个人。'她看着你——'直到你愿意听我说这些。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jiuwei_suyue",
+        "arcStage": "DEEP_BOND",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'三千年——不孤单吗？'",
+            "effects": {
+              "daoHeart": 20,
+              "karmaGood": 15,
+              "fortune": 10
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 15,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "把手放在天痕旁边——'你回头看到的门，画给我看'",
+            "effects": {
+              "wisdom": 15,
+              "daoHeart": 15,
+              "cultivation": 8
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 13
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jiuwei_suyue_stage_SOUL_BOND",
+        "semanticKey": "arc:jiuwei_suyue:SOUL_BOND",
+        "title": "九尾溯月·混沌碎片",
+        "description": "九尾打开了一个匣子——里面有两块黑色的碎片。碎片在月光下发出不祥的光。\\n\\n'混沌碎片——唯一能打破天道的东西。我找了三千年——只找到两块。'\\n\\n她拿起一块——碎片在她手上像活了一样蠕动。\\n\\n'这些碎片来自天道建立之前的时代——那个时候苍茫界没有天劫，没有筛选——每个修士都可以自由飞升。'\\n\\n她把一块碎片递向你——'你想碰吗？它不是力量——是真相。真相有时候比力量更危险。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jiuwei_suyue",
+        "arcStage": "SOUL_BOND",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "接过碎片——'我不怕真相'",
+            "effects": {
+              "daoHeart": 25,
+              "karmaGood": 15,
+              "cultivation": 15,
+              "fortune": -5
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 20,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "让她先收回碎片——'先教我怎样不被它反噬'",
+            "effects": {
+              "wisdom": 18,
+              "daoHeart": 15,
+              "fortune": 8
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 16
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jiuwei_suyue_stage_DESTINY",
+        "semanticKey": "arc:jiuwei_suyue:DESTINY",
+        "title": "九尾溯月·新天道",
+        "description": "九尾站在月湖中央——九条尾巴如孔雀开屏般展开。她手里握着三块混沌碎片——第三块是你帮她找到的。\\n\\n'三千年——我终于凑够了。'混沌碎片在她手中拼合——形成了一个黑色的圆盘。\\n\\n'这不是武器——是钥匙。天道建立之前——苍茫界的灵气是自由的。我要用它——打开一扇门。'\\n\\n她转身——九尾在你身上轻轻拂过。\\n\\n'不是我要走——是我们。三千年——我不想再一个人了。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jiuwei_suyue",
+        "arcStage": "DESTINY",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'三千年后的这三千年——有我'",
+            "effects": {
+              "daoHeart": 40,
+              "karmaGood": 30,
+              "fortune": 25,
+              "cultivation": 20
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 30,
+              "bondDelta": 1
+            }
+          },
+          "right": {
+            "text": "'开门之前，先让所有妖族知道他们也有选择'",
+            "effects": {
+              "daoHeart": 35,
+              "karmaGood": 35,
+              "fortune": 20
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 26
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jiuwei_suyue_secret_reveal",
+        "title": "九尾溯月·天道的囚徒",
+        "description": "九尾带你到了月湖底——那里有一个被封印的洞府。封印上的符文不是人间的——是天道亲手刻的。\\n\\n'你知道天道为什么留着我吗？'她的九条尾巴在水中散开——像九条锁链。\\n\\n'因为它需要一个'见证者'。需要一个活着的证明——证明妖族是被'正当回收'的。我是它的证据——它的囚徒。'\\n\\n她伸手按在封印上——封印发出一声悲鸣。\\n\\n'三千年——我每天都在想——杀了自己，天道就没证据了。但我没死——因为我在等一个人，一个能让我觉得——活着不是服刑。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jiuwei_suyue",
+        "arcStage": "SECRET",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "secret",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'那个封印——我们一起打开'",
+            "effects": {
+              "daoHeart": 30,
+              "karmaGood": 20,
+              "cultivation": 15,
+              "fortune": -10
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 25,
+              "trustDelta": 25
+            }
+          },
+          "right": {
+            "text": "也分享一个自己的秘密",
+            "effects": {
+              "daoHeart": 15,
+              "karmaGood": 10
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 10,
+              "trustDelta": 15
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jiuwei_suyue_tribulation",
+        "title": "九尾溯月·天道的审判",
+        "description": "天道终于动手了。它的目标不是你的天劫——是九尾。她活了太久、知道太多、而且正在收集混沌碎片。\\n\\n一道白色的光柱从天而降——不是毁灭，是召唤。天道在回收它的'证人'。\\n\\n九尾悬浮在空中——九条尾巴被光柱拉扯着往上飘。她的眼睛在失去焦距——不是被控制，是被太久的孤独压垮了。\\n\\n'三千年——够了。'她的嘴唇在动——但发不出声音。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jiuwei_suyue",
+        "arcStage": "CLIMAX",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "tribulation",
+          "climax",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "冲进光柱——抓住她的手",
+            "effects": {
+              "daoHeart": 30,
+              "health": -3,
+              "karmaGood": 25,
+              "fortune": -15,
+              "cultivation": 15
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 35,
+              "bondDelta": 1
+            }
+          },
+          "right": {
+            "text": "冲进去——'去他妈的天道'",
+            "effects": {
+              "daoHeart": 2,
+              "health": -2,
+              "karmaGood": 3,
+              "fortune": -2
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 10
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_jiuwei_suyue_destiny",
+        "title": "九尾溯月·最后的月亮",
+        "description": "飞升之门在云层中开启。九尾站在你身边——她的九条尾巴第一次全部展开——不是为了捍卫，是为了送别。\\n\\n'我三千年没走过这条路了——'她看着天道之门，语气像在说今晚吃什么。\\n\\n'但这一次——我不是囚徒，不是证人，不是幸存者。我是你的——同伴。'\\n\\n她向你伸出手——掌心不再是天痕，而是你的名字——她用妖力刻的。\\n\\n'走吧——管它门后是什么。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "jiuwei_suyue",
+        "arcStage": "DESTINY_CLIMAX",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "destiny",
+          "finale",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "握住她的手——'看看门后是什么'",
+            "effects": {
+              "daoHeart": 40,
+              "karmaGood": 30,
+              "fortune": 25,
+              "cultivation": 20,
+              "health": 15
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": 30,
+              "bondDelta": 2
+            }
+          },
+          "right": {
+            "text": "先行飞升——为九尾溯月从上界重开天门",
+            "effects": {
+              "cultivation": 4,
+              "daoHeart": 2,
+              "karmaGood": 2,
+              "fortune": 1
+            },
+            "companionEffects": {
+              "compId": "jiuwei_suyue",
+              "affectionDelta": -5,
+              "bondDelta": 0,
+              "trustDelta": -3
+            },
+            "karmaSeed": {
+              "id": "destinyPromise",
+              "seedType": "fate",
+              "delay": 20,
+              "realm": "tribulation",
+              "priority": 10,
+              "context": {
+                "companionId": "jiuwei_suyue",
+                "companionName": "九尾溯月",
+                "milestoneId": "destiny_promise"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "mu_qinglan": [
+      {
+        "id": "arc_mu_qinglan_stage_ACQUAINTANCE",
+        "semanticKey": "arc:mu_qinglan:ACQUAINTANCE",
+        "title": "慕青岚·万卷楼",
+        "description": "慕青岚从古籍后面探出头——鼻尖上沾了一点灰。\\n\\n'你要找什么书？等一下——万卷楼的书都是我管的。你先说你要找什么——我可以告诉你它在哪里，或者直接告诉你它里面写的是什么。'\\n\\n她说话的速度很快——不是不耐烦，是怕你嫌她啰嗦。\\n\\n'——我话是不是太多了。你直接说吧。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "mu_qinglan",
+        "arcStage": "ACQUAINTANCE",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'我需要《通玄真经》第七卷'",
+            "effects": {
+              "cultivation": 8,
+              "daoHeart": 3
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 5,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "'你先说说万卷楼最奇怪的书是什么'",
+            "effects": {
+              "daoHeart": 8,
+              "fortune": 5
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 8
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_mu_qinglan_stage_KNOWING",
+        "semanticKey": "arc:mu_qinglan:KNOWING",
+        "title": "慕青岚·无字书",
+        "description": "慕青岚带你去看了万卷楼最深处的暗格。她从里面抽出一本没有名字的书——打开，全是空白。\\n\\n'不是没写——是被删掉了。'她翻着空白的页面，手指划过那些曾经有字的地方。\\n\\n'这本书的作者至少是三千年前的人。他写的东西——被人从因果层面抹去了。'\\n\\n她抬头看你——眼里有兴奋，也有恐惧。'什么人能从因果层面抹去一本书？我只想到一种——上界。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "mu_qinglan",
+        "arcStage": "KNOWING",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'你觉得他在写什么？'",
+            "effects": {
+              "daoHeart": 10,
+              "fortune": 8,
+              "cultivation": 5
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 10,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "先封存无字书——'不要让它再被擦去一次'",
+            "effects": {
+              "daoHeart": 8,
+              "fortune": 10
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 7
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_mu_qinglan_stage_DEEP_BOND",
+        "semanticKey": "arc:mu_qinglan:DEEP_BOND",
+        "title": "慕青岚·天道书",
+        "description": "慕青岚犹豫了很久——最后还是把天道书摊开在你面前。\\n\\n'最后一页——你看。'她翻到最后一页。空白。\\n\\n'但这不是空白——是被隐藏了。隐藏手法来自上界。'她深吸一口气——然后拿出一张纸，上面密密麻麻写满了推演。\\n\\n'我破译了一部分。上面写的不是对天道的赞歌——是一份清单。一份飞升者的清单——哪些被'接收'了，哪些被'销毁'了。'\\n\\n她的手在发抖。'飞升——不是终点。是选拔。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "mu_qinglan",
+        "arcStage": "DEEP_BOND",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "握住她的手——'我们继续查'",
+            "effects": {
+              "daoHeart": 20,
+              "karmaGood": 10,
+              "fortune": 5
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 15,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "抄下名单分别藏起——'先让证据活下来'",
+            "effects": {
+              "wisdom": 12,
+              "fortune": 12,
+              "daoHeart": 8
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 10
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_mu_qinglan_stage_SOUL_BOND",
+        "semanticKey": "arc:mu_qinglan:SOUL_BOND",
+        "title": "慕青岚·上界真相",
+        "description": "慕青岚已经好几天没出万卷楼了。她的眼睛布满血丝——但她在笑。\\n\\n'我破译了。'她铺开一张巨大的纸——上面是一幅图。苍茫界在上，上界在下——用一条条线连着。每一条线都是一道天劫，每一条线的尽头都是一次筛选。\\n\\n'天劫不是考验——是收割。每一百年一次——挑走最强的人，剩下的——'她指着图的底部——那里画着一个巨大的、空白的区域。'剩下的被'回收'。变成灵脉——变成天地灵气——变成下一批修士修炼的资源。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "mu_qinglan",
+        "arcStage": "SOUL_BOND",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "沉默——然后抱住她",
+            "effects": {
+              "daoHeart": 25,
+              "karmaGood": 15,
+              "fortune": 10
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 20,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "指着图上的缺口——'找到尚未被回收的人'",
+            "effects": {
+              "wisdom": 15,
+              "cultivation": 10,
+              "fortune": 5
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 14
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_mu_qinglan_stage_DESTINY",
+        "semanticKey": "arc:mu_qinglan:DESTINY",
+        "title": "慕青岚·共谋",
+        "description": "你可以飞升了——但你不想了。慕青岚给了你另一个选择。\\n\\n'飞升是骗局。'她翻开她这些日子整理的所有资料——三百年的记录、三千年被掩埋的真相、三万个被'回收'的飞升者。\\n\\n'但我们可以做一件事——一件三千年没有人做过的事。'\\n\\n她的眼睛在烛光里发光——不是兴奋，是决心。\\n\\n'我们可以把真相传下去。不是靠一个人——是靠因果。在每一个人心里种下怀疑的种子——让天道再也收割不了。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "mu_qinglan",
+        "arcStage": "DESTINY",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'好——我们做'",
+            "effects": {
+              "daoHeart": 35,
+              "karmaGood": 30,
+              "fortune": 15,
+              "cultivation": 10
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 25,
+              "bondDelta": 1
+            }
+          },
+          "right": {
+            "text": "'先建一座删不掉的藏书楼'",
+            "effects": {
+              "daoHeart": 25,
+              "wisdom": 20,
+              "fortune": 20
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 20
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_mu_qinglan_secret_reveal",
+        "title": "慕青岚·三千年前的日记",
+        "description": "慕青岚从万卷楼最深处的暗格里取出一本泛黄的日记——纸张已经薄得像蝉翼。\\n\\n'这本日记的作者——他活了三千四百年。'她小心翼翼地翻开——上面密密麻麻写着飞升失败的记录。\\n\\n'他飞升了七次——七次都被拒绝。最后一次他放弃了——用余生在记录每一次飞升的真相。'\\n\\n她翻到最后一页——只有一句话。\\n\\n'天道不是法则——是牢笼。飞升不是出去——是被榨干。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "mu_qinglan",
+        "arcStage": "SECRET",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "secret",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'这太重要了——不能让他白写'",
+            "effects": {
+              "daoHeart": 20,
+              "karmaGood": 15,
+              "fortune": 10
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 15,
+              "trustDelta": 25
+            }
+          },
+          "right": {
+            "text": "也分享一个自己的秘密",
+            "effects": {
+              "daoHeart": 15,
+              "karmaGood": 10
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 10,
+              "trustDelta": 15
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_mu_qinglan_tribulation",
+        "title": "慕青岚·天道反噬",
+        "description": "慕青岚动用了天道书的力量——天道察觉了。一道无形的力量从天空降下——不是雷劫，是因果碾碎。她七窍渗血——不是因为受伤，是因为她的记忆在被删除。\\n\\n'道侣——'她抓住你的袖子——眼睛在迅速失去焦点。'天道书的内容——我在忘——你帮我记住——记住天道是——'\\n\\n她的声音戛然而止——她盯着你——认不出你了。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "mu_qinglan",
+        "arcStage": "CLIMAX",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "tribulation",
+          "climax",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "用神识把自己的记忆注入她的识海",
+            "effects": {
+              "daoHeart": 25,
+              "health": -2,
+              "karmaGood": 20,
+              "cultivation": -10
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 30,
+              "bondDelta": 1
+            }
+          },
+          "right": {
+            "text": "冲进去——'去他妈的天道'",
+            "effects": {
+              "daoHeart": 2,
+              "health": -2,
+              "karmaGood": 3,
+              "fortune": -2
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 10
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_mu_qinglan_destiny",
+        "title": "慕青岚·最后一页",
+        "description": "飞升之门在你们面前——但慕青岚没有走向门。她走向了万卷楼。\\n\\n'天道书最后一页——我今天要把它写完。'她提笔——不是毛笔，是她的血。\\n\\n'三千年来——天道一直在删。但我今天要写一句——一句它删不掉的话。'\\n\\n她写下——'飞升是骗局。读到这一页的人——记住'。\\n\\n然后她转身面对天道之门——像一个共谋者面对法官。'我们走——还是留？'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "mu_qinglan",
+        "arcStage": "DESTINY_CLIMAX",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "destiny",
+          "finale",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'留——把真相传下去'",
+            "effects": {
+              "daoHeart": 40,
+              "karmaGood": 35,
+              "fortune": 20
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": 25,
+              "bondDelta": 2
+            }
+          },
+          "right": {
+            "text": "先行飞升——为慕青岚从上界重开天门",
+            "effects": {
+              "cultivation": 4,
+              "daoHeart": 2,
+              "karmaGood": 2,
+              "fortune": 1
+            },
+            "companionEffects": {
+              "compId": "mu_qinglan",
+              "affectionDelta": -5,
+              "bondDelta": 0,
+              "trustDelta": -3
+            },
+            "karmaSeed": {
+              "id": "destinyPromise",
+              "seedType": "fate",
+              "delay": 20,
+              "realm": "tribulation",
+              "priority": 10,
+              "context": {
+                "companionId": "mu_qinglan",
+                "companionName": "慕青岚",
+                "milestoneId": "destiny_promise"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "yin_xue": [
+      {
+        "id": "arc_yin_xue_stage_ACQUAINTANCE",
+        "semanticKey": "arc:yin_xue:ACQUAINTANCE",
+        "title": "殷血·初见",
+        "description": "殷血靠在枯树上——剑尖在石头上划出三道血槽。\\n\\n'你就是那个青云弟子？听说你最近挺能打。不过——正道教的那些花里胡哨的剑法——拿来杀鸡还行。'\\n\\n他把剑从石头上拔出来——石头上留下三道深深的划痕。\\n\\n'来。三招。我倒要看看——你值不值得我记住名字。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "yin_xue",
+        "arcStage": "ACQUAINTANCE",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "拔剑——'我的剑不会让你失望'",
+            "effects": {
+              "cultivation": 10,
+              "daoHeart": 5
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 5,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "收剑——'三招可以，但先报上你的名字'",
+            "effects": {
+              "daoHeart": 8,
+              "wisdom": 5
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 7
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_yin_xue_stage_KNOWING",
+        "semanticKey": "arc:yin_xue:KNOWING",
+        "title": "殷血·酒后",
+        "description": "殷血破天荒请你喝酒——不是血煞宗的'血酒'，是西域荒漠深处才有的烈酒。\\n\\n'——你又赢了。他妈的——你到底怎么练的？'他喝了半壶，说话开始含糊。\\n\\n但下一句很清楚：'你以为我为什么杀人？我七岁那年——血煞老祖把血魔功灌进了我的丹田。不杀就会反噬。我不是想杀人——是不杀就会死。'\\n\\n他的酒杯砸在石头上——碎了。'算了——这些话你听过就忘。我没说。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "yin_xue",
+        "arcStage": "KNOWING",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'我没忘——但我可以帮你找解药'",
+            "effects": {
+              "daoHeart": 15,
+              "karmaGood": 15,
+              "fortune": 5
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 15,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "把新酒杯推给他——'今夜不问，你想说时我再听'",
+            "effects": {
+              "daoHeart": 12,
+              "fortune": 8
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 12
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_yin_xue_stage_DEEP_BOND",
+        "semanticKey": "arc:yin_xue:DEEP_BOND",
+        "title": "殷血·七具尸体",
+        "description": "你重伤昏迷。醒来时——房间里倒了七具血煞宗弟子的尸体。殷血瘫坐在墙角——剑上全是血。\\n\\n'醒了？'他的声音很哑——像很久没喝水。\\n\\n'他们——想来收你的尸。'他冷笑了一声——但嘴角的血痕不像笑。\\n\\n'我说不行。'\\n\\n他的剑滑落到地上——他的手在抖。不是害怕，是血魔功的反噬。他为了你杀了他自己的同门。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "yin_xue",
+        "arcStage": "DEEP_BOND",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "起身——握住他的手腕检查反噬",
+            "effects": {
+              "daoHeart": 20,
+              "karmaGood": 10,
+              "health": -1,
+              "cultivation": 5
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 20,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "先封住七具尸身的血气——'追兵还会来，我们一起走'",
+            "effects": {
+              "wisdom": 12,
+              "fortune": 10,
+              "daoHeart": 10
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 15
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_yin_xue_stage_SOUL_BOND",
+        "semanticKey": "arc:yin_xue:SOUL_BOND",
+        "title": "殷血·洗魔",
+        "description": "殷血在沙漠深处找到了一处上古遗迹——据说里面有能洗去血魔功的上古法宝。\\n\\n'你跟我去——还是在这等？'他问。\\n\\n遗迹里机关重重——但最危险的不是机关。是血煞老祖的追兵。\\n\\n'你走吧——我一个人扛。'他在黑暗中握紧了剑。\\n\\n他的眼神告诉你——不是不需要你，是怕你死了。",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "yin_xue",
+        "arcStage": "SOUL_BOND",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'一起——要么一起出来，要么一起死在里面'",
+            "effects": {
+              "daoHeart": 25,
+              "karmaGood": 20,
+              "cultivation": 15,
+              "health": 10
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 25,
+              "bondDelta": 0
+            }
+          },
+          "right": {
+            "text": "'你进遗迹，我在外面断他们的后路'",
+            "effects": {
+              "wisdom": 15,
+              "cultivation": 12,
+              "fortune": 8
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 18
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_yin_xue_stage_DESTINY",
+        "semanticKey": "arc:yin_xue:DESTINY",
+        "title": "殷血·重新做人",
+        "description": "洗魔成功了。殷血坐在遗迹废墟上——浑身的血纹在消退。他的瞳孔第一次不是血红色——是黑色。正常人的黑色。\\n\\n'我……不疼了。'他低头看着自己的手——手上没有血痕。\\n\\n'七岁以后——我没一天不疼的。'他抬头看着天空——不是血月，是干净的夜空。\\n\\n'以后——我跟你走。你修道，我练剑。我不杀人了——除非有人要杀你。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "yin_xue",
+        "arcStage": "DESTINY",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "milestone",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'欢迎回来——从此我们是同路'",
+            "effects": {
+              "daoHeart": 35,
+              "karmaGood": 30,
+              "fortune": 20,
+              "cultivation": 15
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 30,
+              "bondDelta": 1
+            }
+          },
+          "right": {
+            "text": "把那柄旧血剑埋进沙里——'先选你自己要成为谁'",
+            "effects": {
+              "daoHeart": 30,
+              "karmaGood": 25,
+              "fortune": 25
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 24
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_yin_xue_secret_reveal",
+        "title": "殷血·七岁的血魔功",
+        "description": "殷血今天没约你打架。他坐在一棵枯死的胡杨树下——身边放了三壶酒。\\n\\n'我七岁那年——血煞老祖来我村里。他说我有根骨——是练血魔功的好材料。'他喝了一口。\\n\\n'你知道他怎么测试根骨的吗？他把全村人杀了——然后用那些人的血在我丹田里种了血魔种。'\\n\\n他的声音很平静——比任何时候都可怕。\\n\\n'所以我从来不解释。解释了也没用——我手上确实有血。不管你知不知道原因。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "yin_xue",
+        "arcStage": "SECRET",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "secret",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "'他欠你的——我帮你要回来'",
+            "effects": {
+              "daoHeart": 15,
+              "karmaGood": 15,
+              "karmaBad": 10,
+              "cultivation": 10
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 18,
+              "trustDelta": 25
+            }
+          },
+          "right": {
+            "text": "也分享一个自己的秘密",
+            "effects": {
+              "daoHeart": 15,
+              "karmaGood": 10
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 10,
+              "trustDelta": 15
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_yin_xue_tribulation",
+        "title": "殷血·血魔反噬",
+        "description": "血煞老祖亲自出手了。他要把殷血的魔功收回——殷血死了不要紧，但血魔功是他几百年的心血。\\n\\n殷血跪在血池中——七窍流血，血纹从皮肤下浮出。\\n\\n'别过来——'他嘶吼着——'血魔功一旦炸出来——会连你一起——'\\n\\n血煞老祖站在血池边——冷笑。'选吧——你是他唯一的希望。但你敢碰他——你也得死。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "yin_xue",
+        "arcStage": "CLIMAX",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "tribulation",
+          "climax",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "跳进血池——用自己的灵气帮他压制血魔功",
+            "effects": {
+              "daoHeart": 25,
+              "health": -3,
+              "karmaGood": 20,
+              "karmaBad": 15,
+              "fortune": -10
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 35,
+              "bondDelta": 1
+            }
+          },
+          "right": {
+            "text": "冲进去——'去他妈的天道'",
+            "effects": {
+              "daoHeart": 2,
+              "health": -2,
+              "karmaGood": 3,
+              "fortune": -2
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 10
+            }
+          }
+        }
+      },
+      {
+        "id": "arc_yin_xue_destiny",
+        "title": "殷血·正魔之间",
+        "description": "正魔大战——两军对垒。殷血站在两军之间——左边是血煞宗的魔军，右边是青云剑宗的正道。\\n\\n他回头看你——不是求救，是确认你在。\\n\\n'我这个人——没选过。'他拔出剑——剑上的血纹在消退——'七岁被种魔功，没得选。被正道追杀，没得选。'\\n\\n'今天——我第一次有的选。'\\n\\n他转身面对血煞老祖——'我不跟你走了。我跟他走。'",
+        "type": "COMPANION_ARC",
+        "realm": "__REALM__",
+        "compId": "yin_xue",
+        "arcStage": "DESTINY_CLIMAX",
+        "once": true,
+        "weight": 0,
+        "tags": [
+          "companion_arc",
+          "destiny",
+          "finale",
+          "personalized"
+        ],
+        "choices": {
+          "left": {
+            "text": "拔剑站在他身边——'我们两个，够了'",
+            "effects": {
+              "daoHeart": 35,
+              "karmaGood": 25,
+              "cultivation": 20,
+              "health": 10
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": 30,
+              "bondDelta": 2
+            }
+          },
+          "right": {
+            "text": "先行飞升——为殷血从上界重开天门",
+            "effects": {
+              "cultivation": 4,
+              "daoHeart": 2,
+              "karmaGood": 2,
+              "fortune": 1
+            },
+            "companionEffects": {
+              "compId": "yin_xue",
+              "affectionDelta": -5,
+              "bondDelta": 0,
+              "trustDelta": -3
+            },
+            "karmaSeed": {
+              "id": "destinyPromise",
+              "seedType": "fate",
+              "delay": 20,
+              "realm": "tribulation",
+              "priority": 10,
+              "context": {
+                "companionId": "yin_xue",
+                "companionName": "殷血",
+                "milestoneId": "destiny_promise"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -14,6 +14,22 @@
       "startAffection": 30,
       "startBond": 1,
       "startTrust": 30,
+      "combatContract": {
+        "mechanismId": "bai_luoxuan_moon_mending_v1",
+        "mechanism": "月华狐火同时温养气血与护体灵息。",
+        "tiers": [
+          {
+            "id": "bond_60",
+            "minAffection": 60,
+            "cardId": "comp_bai_luoxuan_moon_mending",
+            "unlockText": "好感 60：月华报恩",
+            "cardArt": {
+              "id": "combat_card_bai_luoxuan_bond_v1",
+              "image": "assets/cards/characters/card_character_bai_luoxuan.png"
+            }
+          }
+        ]
+      },
       "events": [
         {
           "id": "blx_1",
@@ -229,7 +245,7 @@
               "affection": 50,
               "bondDelta": 1,
               "effects": {
-                "health": -40,
+                "health": -3,
                 "daoHeart": 15
               }
             },
@@ -287,6 +303,32 @@
       "startAffection": 20,
       "startBond": 1,
       "startTrust": 15,
+      "combatContract": {
+        "mechanismId": "jian_linger_ice_sword_resonance_v1",
+        "mechanism": "冰心剑意先守后攻；好感越深，合璧剑意越完整。",
+        "tiers": [
+          {
+            "id": "bond_60",
+            "minAffection": 60,
+            "cardId": "comp_jian_linger_ice_resonance",
+            "unlockText": "好感 60：冰心剑意共鸣",
+            "cardArt": {
+              "id": "combat_card_jian_linger_bond_skill_native_v1",
+              "image": "assets/combat/companion_skills_v1/jian_linger_bond_skill_native_v1.png"
+            }
+          },
+          {
+            "id": "bond_100",
+            "minAffection": 100,
+            "cardId": "comp_jian_linger_sword_oath",
+            "unlockText": "好感 100：此生剑誓",
+            "cardArt": {
+              "id": "combat_card_jian_linger_bond_skill_native_v1",
+              "image": "assets/combat/companion_skills_v1/jian_linger_bond_skill_native_v1.png"
+            }
+          }
+        ]
+      },
       "events": [
         {
           "id": "jle_1",
@@ -459,6 +501,32 @@
               }
             }
           }
+        },
+        {
+          "id": "jle_8_sword_tomb_old_master",
+          "type": "crisis",
+          "once": true,
+          "minAffection": 60,
+          "minBond": 2,
+          "realm": "golden",
+          "title": "剑冢旧主",
+          "sceneImage": "assets/cards/keyframes/collected/jian_linger_old_master_pc98.png",
+          "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "并肩", "alt": "剑棺开裂，剑灵儿没有拔剑，只回头等待你的选择。" },
+          "desc": "剑冢最深处的青铜剑棺忽然开裂。旧主残念仍把{name}视为一件应当封存的遗物，命她归棺。她没有拔剑，只转身看向你——这一次，选择由你们共同作出。",
+          "choices": {
+            "left": {
+              "text": "与她并肩破棺",
+              "encounterId": "enc_companion_jian_linger_tomb"
+            },
+            "right": {
+              "text": "先退至剑冢外重整",
+              "affection": -3,
+              "trustDelta": -2,
+              "effects": {
+                "daoHeart": 1
+              }
+            }
+          }
         }
       ],
       "factionId": "qingyun_sword"
@@ -477,6 +545,22 @@
       "startAffection": 20,
       "startBond": 1,
       "startTrust": 10,
+      "combatContract": {
+        "mechanismId": "yin_xue_blood_sword_duet_v1",
+        "mechanism": "以一线气血换取凌厉的合击，适合抢下斩杀窗口。",
+        "tiers": [
+          {
+            "id": "bond_60",
+            "minAffection": 60,
+            "cardId": "comp_yin_xue_blood_duet",
+            "unlockText": "好感 60：血月并锋",
+            "cardArt": {
+              "id": "combat_card_yin_xue_bond_v1",
+              "image": "assets/cards/characters/card_character_yin_xue.png"
+            }
+          }
+        ]
+      },
       "events": [
         {
           "id": "yxe_1",
@@ -620,6 +704,22 @@
       "startAffection": 10,
       "startBond": 1,
       "startTrust": 15,
+      "combatContract": {
+        "mechanismId": "bai_ren_sword_guidance_v1",
+        "mechanism": "宗师只递出一式，却能把散乱剑意归入正轨。",
+        "tiers": [
+          {
+            "id": "bond_60",
+            "minAffection": 60,
+            "cardId": "comp_bai_ren_sword_guidance",
+            "unlockText": "好感 60：白刃点锋",
+            "cardArt": {
+              "id": "combat_card_bai_ren_bond_v1",
+              "image": "assets/cards/characters/card_character_bai_ren.png"
+            }
+          }
+        ]
+      },
       "events": [
         {
           "id": "br_1",
@@ -713,6 +813,22 @@
       "startAffection": 20,
       "startBond": 1,
       "startTrust": 20,
+      "combatContract": {
+        "mechanismId": "mu_qinglan_heavenly_annotation_v1",
+        "mechanism": "以天书批注修正眼前局势，兼顾防护与续牌。",
+        "tiers": [
+          {
+            "id": "bond_60",
+            "minAffection": 60,
+            "cardId": "comp_mu_qinglan_heavenly_annotation",
+            "unlockText": "好感 60：天书同参",
+            "cardArt": {
+              "id": "combat_card_mu_qinglan_bond_v1",
+              "image": "assets/cards/characters/card_character_mu_qinglan.png"
+            }
+          }
+        ]
+      },
       "events": [
         {
           "id": "mql_1",
@@ -809,6 +925,32 @@
       "startAffection": 15,
       "startBond": 1,
       "startTrust": 10,
+      "combatContract": {
+        "mechanismId": "jiuwei_moon_illusion_domain_v1",
+        "mechanism": "月幻扰乱敌方节奏；好感越深，九尾领域越稳定。",
+        "tiers": [
+          {
+            "id": "bond_60",
+            "minAffection": 60,
+            "cardId": "comp_jiuwei_moon_illusion",
+            "unlockText": "好感 60：溯月幻境",
+            "cardArt": {
+              "id": "combat_card_jiuwei_bond_skill_native_v1",
+              "image": "assets/combat/companion_skills_v1/jiuwei_bond_skill_native_v1.png"
+            }
+          },
+          {
+            "id": "bond_100",
+            "minAffection": 100,
+            "cardId": "comp_jiuwei_nine_tail_domain",
+            "unlockText": "好感 100：九尾月域",
+            "cardArt": {
+              "id": "combat_card_jiuwei_bond_skill_native_v1",
+              "image": "assets/combat/companion_skills_v1/jiuwei_bond_skill_native_v1.png"
+            }
+          }
+        ]
+      },
       "events": [
         {
           "id": "jw_1",
@@ -905,6 +1047,22 @@
       "startAffection": 10,
       "startBond": 1,
       "startTrust": 15,
+      "combatContract": {
+        "mechanismId": "tianji_shared_constellation_v1",
+        "mechanism": "借命星预见下一步，在有限真元中重排手牌。",
+        "tiers": [
+          {
+            "id": "bond_60",
+            "minAffection": 60,
+            "cardId": "comp_tianji_shared_constellation",
+            "unlockText": "好感 60：命星同轨",
+            "cardArt": {
+              "id": "combat_card_tianji_bond_v1",
+              "image": "assets/cards/characters/card_tianji_laoren_pc98.png"
+            }
+          }
+        ]
+      },
       "events": [
         {
           "id": "tj_1",
@@ -1001,6 +1159,22 @@
       "startAffection": 5,
       "startBond": 1,
       "startTrust": 5,
+      "combatContract": {
+        "mechanismId": "xuesha_blood_throne_guard_v1",
+        "mechanism": "血煞之威撕开敌势，再用煞气护住同行之人。",
+        "tiers": [
+          {
+            "id": "bond_60",
+            "minAffection": 60,
+            "cardId": "comp_xuesha_blood_throne_guard",
+            "unlockText": "好感 60：血座共誓",
+            "cardArt": {
+              "id": "combat_card_xuesha_bond_v1",
+              "image": "assets/cards/characters/card_character_xuesha_laozu.png"
+            }
+          }
+        ]
+      },
       "events": [
         {
           "id": "xs_1",
@@ -1015,7 +1189,7 @@
               "affection": 10,
               "effects": {
                 "cultivation": 10,
-                "health": -5,
+                "health": -1,
                 "karmaBad": 5
               }
             },
@@ -1069,7 +1243,7 @@
               "effects": {
                 "karmaBad": 20,
                 "daoHeart": 15,
-                "health": -20
+                "health": -2
               }
             },
             "right": {

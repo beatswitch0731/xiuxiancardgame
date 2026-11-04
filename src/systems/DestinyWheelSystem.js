@@ -142,10 +142,20 @@ class DestinyWheelSystem {
         {
           name: '混元神石',
           desc: '获得传说级法宝：混元神石',
-          apply: () => {
-            gameState.addResource('treasures', '混元神石', 1);
-            if (typeof treasureSystem !== 'undefined') treasureSystem.acquire('混元神石');
-            return '💎 混元神石入袋——传说级法宝！';
+          apply: (reward = {}) => {
+            const rewardToken = reward.transactionId || this._rewardToken(reward.index, '混元神石');
+            const acquired = typeof treasureSystem !== 'undefined' && treasureSystem
+              && typeof treasureSystem.acquire === 'function'
+              ? treasureSystem.acquire('混元神石', {
+                source: 'destiny_wheel',
+                sourceId: rewardToken,
+                channel: 'destiny',
+                transactionId: rewardToken
+              })
+              : false;
+            return acquired
+              ? '💎 混元神石入袋——传说级法宝！'
+              : '💎 命盘显出混元神石，但法宝契约未能写入，请稍后重试。';
           }
         }
       ],
@@ -257,7 +267,7 @@ class DestinyWheelSystem {
 
     let msg = '';
     if (card.apply) {
-      try { msg = card.apply(); } catch (e) { msg = '天机紊乱...'; }
+      try { msg = card.apply({ index, transactionId: this._rewardToken(index, card.name) }); } catch (e) { msg = '天机紊乱...'; }
     }
 
     // 翻牌后关闭命盘
@@ -267,6 +277,21 @@ class DestinyWheelSystem {
     }
 
     return msg;
+  }
+
+  _rewardToken(index, rewardName = 'reward') {
+    const runClock = gameState?.getRunClock?.() || null;
+    const life = runClock?.lifeId
+      || `legacy:${Number(gameState?.getLifeCount?.() ?? gameState?.unlocks?.lifeCount ?? 0) || 0}`;
+    // A wheel reward is opened within a persisted decision. Do not derive its
+    // receipt from `_totalTicks`: that counter resets on boot and cannot make
+    // a replay idempotent.
+    const decision = Math.max(0, Number(
+      gameState?.getNextDecisionIndex?.()
+      ?? gameState?.getDecisionIndex?.()
+      ?? gameState?.turn
+    ) || 0);
+    return `treasure:destiny:life:${life}:decision:${decision}:slot:${Math.max(0, Number(index) || 0)}:item:${rewardName}`;
   }
 
   /**

@@ -15,7 +15,7 @@
         + data-visual-world-compatible="true"）：
    deck-combat.css:7038-7060 用**双ID 特异度**规则把真元气块改成
      background-color: transparent;
-     background-image: var(--world-ui-qi-slot-frame);  /* PNG 框 */
+     background-image: var(--world-ui-qi-slot-frame);  [PNG frame]
    这条特异性高于本文件的 #deck-combat-screen .qi-orb，
    导致真元槽渲染成冷灰白、与暖墨金体系割裂（实测
    background-color 解析为 transparent、background-image 为 PNG 框）。

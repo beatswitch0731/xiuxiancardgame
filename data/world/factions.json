@@ -18,8 +18,12 @@
           "right": { "text": "支持革新派（惊鸿道人）", "reputationDelta": 5, "subfactionId": "qingyun_sword_reform", "subReputationDelta": 20, "effectText": "革新派崛起，剑意派声望略降。" }
         }},
         { "id": "sword_2", "title": "剑冢异动", "minRealm": "nascent", "pathRestriction": "sword", "minReputation": 30, "desc": "剑冢深处的那柄上古仙剑突然发出一声剑鸣——整个青云剑宗都听到了。白刃真人面色凝重。", "weight": 10, "choices": {
-          "left": { "text": "深入剑冢探查", "reputationDelta": 10, "effects": { "cultivation": 15, "health": -10, "karmaGood": 5 }, "undercurrentStageChange": 1 },
+          "left": { "text": "深入剑冢探查", "reputationDelta": 10, "effects": { "cultivation": 15, "health": -1, "karmaGood": 5 }, "undercurrentStageChange": 1 },
           "right": { "text": "禀报白刃真人", "reputationDelta": 5, "effects": { "daoHeart": 10 }, "undercurrentStageChange": 0 }
+        }},
+        { "id": "sword_teach", "title": "剑宗秘传", "minRealm": "golden", "pathRestriction": "sword", "minReputation": 40, "once": true, "desc": "你在青云剑宗的声望极高。白刃真人亲自召见你，叹道：'你剑心通明，这本《太虚剑阵》便传予你吧。'", "weight": 20, "choices": {
+          "left": { "text": "恭敬受教", "reputationDelta": 10, "effects": { "deckCard": "sword_array", "daoHeart": 10 }, "globalFlag": "qingyun_sword_teach" },
+          "right": { "text": "婉拒好意", "reputationDelta": -5, "effects": { "daoHeart": 15 }, "globalFlag": "qingyun_sword_teach" }
         }}
       ]
     },
@@ -47,6 +51,10 @@
         { "id": "spell_2", "title": "万卷楼的秘密", "minRealm": "nascent", "pathRestriction": "spell", "minReputation": 30, "desc": "慕青岚在万卷楼深处发现了一页被撕掉的《天道书》残页——上面写着\"飞升非仙路\"四个字。该不该告诉大家？", "weight": 10, "choices": {
           "left": { "text": "保守秘密", "reputationDelta": 0, "effects": { "daoHeart": 15, "fortune": 10 }, "globalFlag": "tianshu_secret_kept" },
           "right": { "text": "公之于众", "reputationDelta": -10, "effects": { "karmaGood": 10, "daoHeart": -5 }, "globalFlag": "tianshu_secret_revealed" }
+        }},
+        { "id": "spell_teach", "title": "万卷真解", "minRealm": "golden", "pathRestriction": "spell", "minReputation": 40, "once": true, "desc": "你在天枢道院的声望极高。慕青岚破例为你开放万卷楼顶层，你翻阅古籍，领悟了失传的雷法。", "weight": 20, "choices": {
+          "left": { "text": "沉浸参悟", "reputationDelta": 10, "effects": { "deckCard": "spell_nuke", "cultivation": 15 }, "globalFlag": "tianshu_spell_teach" },
+          "right": { "text": "浅尝辄止", "reputationDelta": 0, "effects": { "daoHeart": 10 }, "globalFlag": "tianshu_spell_teach" }
         }}
       ]
     },
@@ -64,6 +72,10 @@
         { "id": "pill_1", "title": "禁药堂的秘密", "minRealm": "nascent", "pathRestriction": "pill", "desc": "你在禁药堂的地窖里发现了一本交易记录——上面有药圣的签名。禁药原料来自万毒门。", "weight": 10, "choices": {
           "left": { "text": "销毁记录", "reputationDelta": 15, "effects": { "karmaBad": 10, "daoHeart": -5 }, "undercurrentId": "dangu_forbidden", "undercurrentStageChange": 1 },
           "right": { "text": "上报宗门", "reputationDelta": -20, "effects": { "karmaGood": 20, "daoHeart": 10 } }
+        }},
+        { "id": "pill_teach", "title": "丹谷秘录", "minRealm": "golden", "pathRestriction": "pill", "minReputation": 40, "once": true, "desc": "药王见你丹心一片，决定将神农鼎内封存的一篇上古心法传授给你。", "weight": 20, "choices": {
+          "left": { "text": "潜心修习", "reputationDelta": 10, "effects": { "deckCard": "mana_potion", "cultivation": 20 }, "globalFlag": "dangu_pill_teach" },
+          "right": { "text": "归还玉简", "reputationDelta": 5, "effects": { "daoHeart": 15 }, "globalFlag": "dangu_pill_teach" }
         }}
       ]
     },
@@ -94,6 +106,14 @@
       ],
       "undercurrentId": "wumeng_split",
       "events": [
+        { "id": "wumeng_gatekeeper_call", "title": "雷峰关道·请关", "minRealm": "foundation", "location": "宗门", "requiresPlayerPresence": true, "deliveryClass": "location_combat_invitation", "once": true, "weight": 18, "sceneImage": "assets/cards/events/scene_wumeng_gate_approach_agc_v1.png", "narrativeSource": "world_map:wumeng:sect_wumeng_pass", "desc": "宗门山门外，武盟驿使展开一卷带着雨痕的路引。路引先给你看万钧瀑布的雾、湿石阶与远处关门，再写下一句：\"不问你从哪一脉来。看清拳路，站得住，就进。\" 这不是传送阵；从此处出发，才会踏上雷峰关道。", "choices": {
+          "left": { "text": "携路引赴关", "desc": "离开山门，沿雷峰关道进入武盟雷峰的镇关石台，以一次正面试关回答他。", "triggerCombat": true, "combatEncounterId": "enc_faction_wumeng_elite", "entryEffects": { "playerLocation": "武盟雷峰" }, "combatOutcomePresentation": {
+            "victory": { "title": "镇关后·拳路留印", "description": "镇关者收拳，让你从石台边缘走回雨雾。\"你没有照着谁的路出手，\"他说，\"但你站住了。\" 武盟把这次试关记成对你的承认。" },
+            "defeat": { "title": "镇关后·记下空档", "description": "镇关者没有追击，只用指节敲了敲你失守的中线。雨雾仍压在石阶上；这次没能站住的地方，已经被武盟和你自己一同记下。" },
+            "flee": { "title": "镇关后·雾中折返", "description": "你在拳路转换前退回山道。镇关者没有拦，只让瀑声替他留下那句未完的话：下一次来，别只带着退路。" }
+          } },
+          "right": { "text": "记下关道，改日再来", "desc": "不把这场试关当成随机赌注；先收好路引，记住瀑声与关门的位置。", "effects": { "daoHeart": 1 } }
+        }},
         { "id": "body_0", "title": "武盟入门试", "minRealm": "foundation", "pathRestriction": "body", "minReputation": 0, "desc": "\"你这身板不错！\"一个赤膊大汉拍着你的肩膀，震得你气血翻涌。\"来武盟吧，正道那帮耍剑念咒的娘们玩意有啥意思！\"", "weight": 12, "choices": {
           "left": { "text": "接受邀请", "reputationDelta": 15, "subfactionId": "wumeng_steel", "subReputationDelta": 15, "effects": { "cultivation": 10, "health": 10 } },
           "right": { "text": "婉拒但保持联系", "reputationDelta": 5, "effects": { "daoHeart": 5, "fortune": 5 } }
@@ -104,7 +124,11 @@
         }},
         { "id": "body_2", "title": "雷体之争", "minRealm": "nascent", "pathRestriction": "body", "minReputation": 30, "desc": "雷体流掌门公开挑战钢骨流——\"炼体不淬雷，等于只炼了一半！\"两派为此争执不休，武盟面临分裂。", "weight": 10, "choices": {
           "left": { "text": "调和两派", "reputationDelta": 15, "effects": { "karmaGood": 15, "daoHeart": 10 }, "undercurrentId": "wumeng_split", "undercurrentStageChange": -1 },
-          "right": { "text": "加入雷体流", "reputationDelta": -5, "subfactionId": "wumeng_thunder", "subReputationDelta": 20, "effects": { "cultivation": 20, "health": -15 }, "undercurrentId": "wumeng_split", "undercurrentStageChange": 1 }
+          "right": { "text": "加入雷体流", "reputationDelta": -5, "subfactionId": "wumeng_thunder", "subReputationDelta": 20, "effects": { "cultivation": 20, "health": -2 }, "undercurrentId": "wumeng_split", "undercurrentStageChange": 1 }
+        }},
+        { "id": "body_teach", "title": "武盟真意", "minRealm": "golden", "pathRestriction": "body", "minReputation": 40, "once": true, "desc": "武盟大长老在瀑布下拍了拍你的肩膀：'你的体魄已不输上古大妖。这套内门秘典，拿去练吧！'", "weight": 20, "choices": {
+          "left": { "text": "接下秘典", "reputationDelta": 10, "effects": { "deckCard": "body_guard", "health": 20 }, "globalFlag": "wumeng_body_teach" },
+          "right": { "text": "只切磋不看书", "reputationDelta": 0, "effects": { "health": 10, "daoHeart": 10 }, "globalFlag": "wumeng_body_teach" }
         }}
       ]
     },

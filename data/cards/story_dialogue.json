@@ -12,16 +12,28 @@
       "once": true,
       "path": "sword",
       "npcId": "bai_ren",
-      "tags": ["mentor", "story", "discovery"],
+      "tags": [
+        "mentor",
+        "story",
+        "discovery"
+      ],
       "choices": {
         "left": {
           "text": "'我没有别的地方可去'",
-          "effects": { "daoHeart": 15, "cultivation": 3, "fortune": 5 },
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 3,
+            "fortune": 5
+          },
           "desc": "白刃真人沉默了很久。然后他做了件你从没见他对别的弟子做过的事——他把手放在你头上。'以后——这里就是你的家。'"
         },
         "right": {
           "text": "'我想变强——强到没有人能随便决定我的命运'",
-          "effects": { "daoHeart": 10, "cultivation": 8, "karmaBad": 3 },
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 8,
+            "karmaBad": 3
+          },
           "desc": "白刃真人看着你的眼睛——他的眼神不是赞许，是确认。'好。但记住——变强不是为了不被欺负，是为了有资格保护别人。'"
         }
       },
@@ -36,17 +48,31 @@
       "weight": 7,
       "once": true,
       "npcId": "bai_ren",
-      "tags": ["secret", "lore", "sword_way", "discovery"],
+      "tags": [
+        "secret",
+        "lore",
+        "sword_way",
+        "discovery"
+      ],
       "choiceType": "RISK",
       "choices": {
         "left": {
           "text": "走进去——不管那声音是什么",
-          "effects": { "cultivation": 15, "daoHeart": 10, "health": -10, "fortune": 5 },
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 10,
+            "health": -2,
+            "fortune": 5
+          },
           "desc": "你看到了一柄剑——不是插在石壁上的，是浮在空中的。剑身上有一道裂纹——裂纹里透出的光不是灵光，是某种在'看'着你的东西。碎玉在你怀里剧烈震动。它认识这柄剑——或者说，怕它。"
         },
         "right": {
           "text": "退出来——'不是时候'",
-          "effects": { "daoHeart": 8, "fortune": 10, "karmaGood": 5 },
+          "effects": {
+            "daoHeart": 8,
+            "fortune": 10,
+            "karmaGood": 5
+          },
           "desc": "你退出了剑冢。碎玉的温度慢慢降了下来。但你心里知道——总有一天你要回来。那柄剑在等你。"
         }
       },
@@ -58,23 +84,36 @@
       "title": "山中有狐",
       "description": "你在后山采药时发现一只受伤的白狐——它的后腿被捕兽夹夹伤了，雪白的毛上沾着血。它不跑——琥珀色的眼睛看着你，像在等一个答案。'你是妖——'你蹲下来。白狐的耳朵抖了抖——它在听。",
       "realm": "qi",
-      "weight": 8,
+      "weight": 0,
       "once": true,
       "npcId": "bai_luoxuan",
-      "tags": ["kindness", "discovery", "story"],
+      "tags": [
+        "kindness",
+        "discovery",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "帮它解开捕兽夹——包扎伤口",
-          "effects": { "karmaGood": 15, "daoHeart": 10, "fortune": 5, "health": -5 },
-          "cardEffect": "bai_luoxuan_met",
-          "desc": "白狐没有挣扎——它让你的手在它腿上折腾了半个时辰。包扎完的时候，它舔了舔你的手指。不是感谢——你后来才知道，白狐舔手指是'我欠你的'的意思。第二天早上，一碗热参汤放在你的洞府门口。"
+          "effects": {
+        "karmaGood": 15,
+        "daoHeart": 10,
+        "fortune": 5,
+        "health": -2,
+        "_setFlag": "bai_luoxuan_met"
+      },
+      "desc": "白狐没有挣扎——它让你的手在它腿上折腾了半个时辰。包扎完的时候，它舔了舔你的手指。不是感谢——你后来才知道，白狐舔手指是'我欠你的'的意思。第二天早上，一碗热参汤放在你的洞府门口。"
         },
         "right": {
           "text": "走开——'妖的事与我无关'",
-          "effects": { "daoHeart": -3, "karmaBad": 5 },
+          "effects": {
+            "daoHeart": -3,
+            "karmaBad": 5
+          },
           "desc": "白狐没有叫。它只是看着你走远——琥珀色的眼睛在你背后，盯了很远很远。后来你会知道——白狐的记忆可以传三百年。这一眼，它记了三百年。"
         }
       },
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "初遇", "alt": "受困的白狐等待你的抉择。" },
       "sceneImage": "assets/cards/events/scene_event_qi_whitefox.png"
     },
     {
@@ -85,17 +124,28 @@
       "realm": "qi",
       "weight": 7,
       "once": true,
-      "tags": ["hidden", "truth", "self"],
+      "tags": [
+        "hidden",
+        "truth",
+        "self"
+      ],
       "choiceType": "INNER",
       "choices": {
         "left": {
           "text": "'你是谁？'——追问那个声音",
-          "effects": { "daoHeart": 12, "cultivation": 5, "fortune": 3 },
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 5,
+            "fortune": 3
+          },
           "desc": "没有回答。但三片残根的震动频率变了——它们开始缓慢地旋转，像一个不完整的漩涡。你有一种奇怪的感觉——那个声音不是别人，是你自己。是'完整的你'在隔着时间对你说话。"
         },
         "right": {
           "text": "忽略它——专注入定",
-          "effects": { "cultivation": 15, "daoHeart": 5 },
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 5
+          },
           "desc": "你压下了那个声音。三片残根安静下来——但你没有注意到，它们之间的距离近了一丝。不是入定做到的——是那个声音。"
         }
       },
@@ -103,6 +153,7 @@
     },
     {
       "id": "sd_fd_bai_luo_soup",
+      "semanticKey": "arc:bai_luoxuan:ACQUAINTANCE",
       "type": "STORY",
       "title": "白衣银发",
       "description": "一个白衣银发的女子站在你的洞府门口——傍晚的光从背后透过她的发丝。她端着一碗参汤。'恩公——参汤要趁热喝。'你接过碗。碗是温的——她的手是烫的。'以后别叫我恩公了。'你说。她想了想：'那叫什么？'",
@@ -110,16 +161,28 @@
       "weight": 8,
       "once": true,
       "npcId": "bai_luoxuan",
-      "tags": ["companion", "kindness", "story"],
+      "requiresAnyFlags": ["bai_luoxuan_met", "whiteFoxCompleted"],
+      "tags": [
+        "companion",
+        "kindness",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "'叫我名字就好——凌云'",
-          "effects": { "daoHeart": 10, "karmaGood": 8, "fortune": 5 },
+          "effects": {
+            "daoHeart": 10,
+            "karmaGood": 8,
+            "fortune": 5
+          },
           "desc": "'凌云——'她重复了一遍，像在品一个陌生的字。然后她笑了——很浅，但琥珀色的眼睛亮了一下。'好。凌云。明天的参汤也是这个时候。'"
         },
         "right": {
           "text": "'随便——你自己想'",
-          "effects": { "daoHeart": 5, "karmaGood": 5 },
+          "effects": {
+            "daoHeart": 5,
+            "karmaGood": 5
+          },
           "desc": "她歪了歪头——你后来才知道这是白狐在想事情时的习惯。'那就——道侣？'她说得很认真，认真到你不确定她是不是在开玩笑。"
         }
       },
@@ -127,6 +190,7 @@
     },
     {
       "id": "sd_fd_jian_linger_three",
+      "semanticKey": "arc:jian_linger:ACQUAINTANCE",
       "type": "STORY",
       "title": "三招之内",
       "description": "剑灵儿抱着剑靠在剑冢石壁上——眼神从上扫到下把你打量了一遍。'你就是师尊新收的弟子？看起来——一般。'她把剑从怀里抽出来——剑尖指向你。'来。拔剑。三招之内你还能站着——就算我认你这个师弟。'她的眼神很冷——但她的剑尖比平时低了三分。",
@@ -135,20 +199,32 @@
       "once": true,
       "path": "sword",
       "npcId": "jian_linger",
-      "tags": ["disciple", "sword_way", "companion", "story"],
+      "tags": [
+        "disciple",
+        "sword_way",
+        "companion",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "拔剑应战——'请师姐指教'",
-          "effects": { "cultivation": 12, "daoHeart": 8, "health": -10 },
+          "effects": {
+            "cultivation": 12,
+            "daoHeart": 8,
+            "health": -2
+          },
           "desc": "第一招——她的剑快得像一条银线。你挡住了。第二招——银线变成了网。你的剑被震得脱手——但你还站着。第三招——她的剑尖在你眉心前三寸停下了。她的眼神变了——不是冷，是确认。'行——你是我师弟了。'"
         },
         "right": {
           "text": "'我不想伤到师姐'",
-          "effects": { "daoHeart": 10 },
+          "effects": {
+            "daoHeart": 10
+          },
           "desc": "她愣了愣——然后嗤了一声。'伤到我？你先把自己的剑拿稳再说。'但她把剑收回了鞘里。没有出第三招——不是看不起你，是怕你真的伤到。"
         }
       },
-      "sceneImage": "assets/cards/events/scene_gd_g_swordIntent.png"
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "问剑", "alt": "剑灵儿在剑冢石壁前向你递出挑战。" },
+      "sceneImage": "assets/cards/keyframes/collected/jian_linger_challenge_pc98.png"
     },
     {
       "id": "sd_fd_sect_rumor",
@@ -157,16 +233,26 @@
       "description": "食堂里，几个内门弟子在低声议论——'听说掌门当年有个师弟——不是死了，是……叛出去了。''闭嘴——这事谁敢提？'他们看到你走近，立刻噤声。但你听清了——'叛出去'。白刃真人有过一个师弟。",
       "realm": "foundation",
       "weight": 6,
-      "tags": ["secret", "lore", "sect"],
+      "tags": [
+        "secret",
+        "lore",
+        "sect"
+      ],
       "choices": {
         "left": {
           "text": "假装没听到——但记在心里",
-          "effects": { "daoHeart": 5, "fortune": 3 },
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 3
+          },
           "desc": "你端着饭盒走开——但'叛出去'三个字像一根刺扎在你的识海里。白刃真人从来不说过去。他在隐藏什么？还是——在保护谁？"
         },
         "right": {
           "text": "直接问——'掌门的师弟是谁？'",
-          "effects": { "daoHeart": 8, "fortune": -5 },
+          "effects": {
+            "daoHeart": 8,
+            "fortune": -5
+          },
           "desc": "几个弟子面面相觑——然后各自散了。但其中一个临走前塞给你一张纸条：'剑冢最深处——有答案。别跟人说是我说的。'"
         }
       },
@@ -181,16 +267,26 @@
       "weight": 6,
       "path": "sword",
       "npcId": "jian_linger",
-      "tags": ["disciple", "sword_way", "companion"],
+      "tags": [
+        "disciple",
+        "sword_way",
+        "companion"
+      ],
       "choices": {
         "left": {
           "text": "'师姐——你是在教我？'",
-          "effects": { "cultivation": 15, "daoHeart": 8 },
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 8
+          },
           "desc": "她的剑顿了一下——然后继续挥。'别多想——我只是睡不着。'但她的耳朵红了。寅时的天色还暗——你看不见，但你知道。"
         },
         "right": {
           "text": "默默模仿她的剑路——不说话",
-          "effects": { "cultivation": 12, "daoHeart": 10 },
+          "effects": {
+            "cultivation": 12,
+            "daoHeart": 10
+          },
           "desc": "你们练到天亮。她收剑的时候看了你一眼——不是夸奖，是计算你进步了多少。'明天这个时辰——再来。别迟到。'"
         }
       },
@@ -198,27 +294,40 @@
     },
     {
       "id": "sd_gd_yin_xue_meet",
+      "semanticKey": "arc:yin_xue:ACQUAINTANCE",
       "type": "STORY",
       "title": "枯树下的魔修",
-      "description": "殷血靠在枯树上——剑尖在石头上划出三道血槽。'你就是那个青云弟子？听说你最近挺能打。不过——正道教的那些花里胡哨的剑法——拿来杀鸡还行。'她把剑从石头上拔出来。石头上留下三道深深的划痕。'来。三招。我倒要看看——你值不值得我记住名字。'",
+      "description": "殷血靠在枯树上——剑尖在石头上划出三道血槽。'你就是那个青云弟子？听说你最近挺能打。不过——正道教的那些花里胡哨的剑法——拿来杀鸡还行。'他把剑从石头上拔出来。石头上留下三道深深的划痕。'来。三招。我倒要看看——你值不值得我记住名字。'",
       "realm": "golden",
       "weight": 7,
       "once": true,
       "npcId": "yin_xue",
-      "tags": ["battle", "demonic", "companion", "story"],
+      "tags": [
+        "battle",
+        "demonic",
+        "companion",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "拔剑——'我的剑不会让你失望'",
-          "effects": { "cultivation": 15, "daoHeart": 10, "health": -15 },
-          "desc": "三招过后——你的剑断了一截。她的剑还在手里——但她的手在微微发抖。不是因为受伤——是因为她笑了。'有意思——你比那些假正经的有意思。记住——我叫殷血。下次见面——不一定比剑。'"
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 10,
+            "health": -2
+          },
+          "desc": "三招过后——你的剑断了一截。他的剑还在手里——但他的手在微微发抖。不是因为受伤——是因为他笑了。'有意思——你比那些假正经的有意思。记住——我叫殷血。下次见面——不一定比剑。'"
         },
         "right": {
           "text": "'我今天不想打'",
-          "effects": { "daoHeart": 8, "karmaGood": 5 },
-          "desc": "她把剑插回石头上——'没种。'但她没有走。而是靠在树上看着你——像在等一个解释。'正道弟子见了我不是跑就是打——你是第一个说'不想打'的。'她顿了顿。'有点意思。下次——我请你喝酒。'"
+          "effects": {
+            "daoHeart": 8,
+            "karmaGood": 5
+          },
+          "desc": "他把剑插回石头上——'没种。'但他没有走，而是靠在树上看着你——像在等一个解释。'正道弟子见了我不是跑就是打——你是第一个说“不想打”的。'他顿了顿。'有点意思。下次——我请你喝酒。'"
         }
       },
-      "sceneImage": "assets/cards/events/scene_karma_k_combat_scar.png"
+      "sceneImage": "assets/cards/companions/scene_comp_yin_xue_bloodmoon.png"
     },
     {
       "id": "sd_gd_sect_pressure",
@@ -227,16 +336,29 @@
       "description": "执事长老把你叫到了侧殿——不是表扬，是警告。'你最近——接触的魔修有点多。'他把一份名单推到你面前——上面记着你见过的每一个魔修。'宗门不禁止历练，但有些线——踩了就回不来了。'他的眼神在说：有人在看着你。",
       "realm": "golden",
       "weight": 6,
-      "tags": ["sect", "demonic", "conflict", "story"],
+      "tags": [
+        "sect",
+        "demonic",
+        "conflict",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "'我知道自己在做什么——正魔之间不只有一种答案'",
-          "effects": { "daoHeart": 15, "fortune": -10, "karmaGood": 5 },
+          "effects": {
+            "daoHeart": 2,
+            "fortune": -10,
+            "karmaGood": 5
+          },
           "desc": "执事长老沉默了——不是因为被说服，是因为你的态度让他想起了另一个人。'掌门当年也这么跟执事会说——后来他的师弟成了血煞老祖。你会走同一条路吗？'"
         },
         "right": {
           "text": "'我会注意的——谢谢长老提醒'",
-          "effects": { "daoHeart": 5, "fortune": 10, "karmaGood": 8 },
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 10,
+            "karmaGood": 8
+          },
           "desc": "他点点头——但你知道这不是信任，是监视。他给了你一条绳子——现在看你怎么走。"
         }
       },
@@ -244,6 +366,7 @@
     },
     {
       "id": "sd_gd_mu_qing_library",
+      "semanticKey": "arc:mu_qinglan:ACQUAINTANCE",
       "type": "STORY",
       "title": "万卷楼的姑娘",
       "description": "万卷楼最深处的灯还亮着——不是你的灯，是她的。慕青岚从古籍后面探出头——鼻尖上沾了一点灰。'你要找什么书？等一下——万卷楼的书都是我管的。你先说你要找什么——我可以告诉你它在哪里，或者直接告诉你它里面写的是什么。'她说话语速很快——不是不耐烦，是怕你嫌她啰嗦。",
@@ -251,23 +374,36 @@
       "weight": 6,
       "once": true,
       "npcId": "mu_qinglan",
-      "tags": ["secret", "lore", "companion", "story"],
+      "tags": [
+        "secret",
+        "lore",
+        "companion",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "'我需要《通玄真经》第七卷'",
-          "effects": { "cultivation": 10, "daoHeart": 5 },
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 5
+          },
           "desc": "'第七卷——第三排，左数第十二本。不过——'她犹豫了一下——'那上面的注解是我写的。不要笑。'她没有问你为什么需要第七卷——她只是把你带到了书架前，然后假装整理旁边的书——其实在等你问她问题。"
         },
         "right": {
           "text": "'你先说说万卷楼最奇怪的书是什么'",
-          "effects": { "daoHeart": 12, "fortune": 8 },
+          "effects": {
+            "daoHeart": 2,
+            "fortune": 8
+          },
           "desc": "她眼睛亮了——然后拉着你到了最深处的暗格。'这本书——没有名字，也没有内容。不是没写——是被删掉了。从因果层面抹去的。'她看着你的眼睛——不是在炫耀，是在寻求一个能分担恐惧的人。"
         }
       },
-      "sceneImage": "assets/cards/events/scene_gd_g_forbiddenTome.png"
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "相识", "alt": "慕青岚从古籍后抬起头，等待你的来意。" },
+      "sceneImage": "assets/cards/keyframes/collected/mu_qinglan_library_pc98.png"
     },
     {
       "id": "sd_gd_dao_heart_test",
+      "semanticKey": "arc:tianji_laoren:ENCOUNTER",
       "type": "STORY",
       "title": "道心之问",
       "description": "天机阁的观星台上——天机老人第一次对你开口。'你来了——不，应该说，你终于来了。'他手中的天机盘碎片转了转——指向你。'老夫等了你很久——不是预知，是因果。不过今天老夫只给你三个问题——第一个，你自己想。'",
@@ -275,20 +411,33 @@
       "weight": 7,
       "once": true,
       "npcId": "tianji_laoren",
-      "tags": ["prophecy", "truth", "seer", "story"],
+      "tags": [
+        "prophecy",
+        "truth",
+        "seer",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "'第一个问题——我是谁？'",
-          "effects": { "daoHeart": 15, "fortune": 10, "cultivation": 5 },
+          "effects": {
+            "daoHeart": 2,
+            "fortune": 10,
+            "cultivation": 5
+          },
           "desc": "天机老人笑了——一个看过太多的人的笑。'你的灵根是碎的——不是缺陷，是钥匙。你不是修仙者——你是'破坏者'。天道不知道该怎么下你这颗棋子——因为你不在棋盘上。'"
         },
         "right": {
           "text": "'我想问——天道是什么？'",
-          "effects": { "daoHeart": 12, "fortune": 10, "karmaGood": 8 },
+          "effects": {
+            "daoHeart": 2,
+            "fortune": 10,
+            "karmaGood": 8
+          },
           "desc": "天机老人沉默了——然后叹了口气。'天道不是法则——是牢笼。但这个答案你现在承受不了。我答应你——等你金丹圆满时，我再告诉你。'"
         }
       },
-      "sceneImage": "assets/cards/events/scene_dt_d_star_gazing.png"
+      "sceneImage": "assets/cards/companions/scene_comp_tianji_laoren_stargazing.png"
     },
     {
       "id": "sd_gd_broken_jade_glow",
@@ -298,16 +447,30 @@
       "realm": "golden",
       "weight": 5,
       "once": true,
-      "tags": ["truth", "hidden", "self", "story"],
+      "tags": [
+        "truth",
+        "hidden",
+        "self",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "握住碎玉——回应它的呼唤",
-          "effects": { "cultivation": 20, "daoHeart": 15, "fortune": -10, "health": -10 },
+          "effects": {
+            "cultivation": 20,
+            "daoHeart": 2,
+            "fortune": -10,
+            "health": -2
+          },
           "desc": "一瞬间——你'看到'了。不是用眼睛——是用碎玉。你看到了混沌虚空——天道法则在其中像蛛网一样密布。而你的三脉残根——是三根可以穿过蛛网的针。你不是漏网之鱼——你是故意被放在网外的人。"
         },
         "right": {
           "text": "压制碎玉——'不是时候'",
-          "effects": { "daoHeart": 10, "fortune": 15, "karmaGood": 5 },
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 15,
+            "karmaGood": 5
+          },
           "desc": "碎玉的光慢慢暗了下去。但你知道——它只是暂时睡着了。下一次它亮起来的时候——你可能就压不住了。"
         }
       },
@@ -321,24 +484,38 @@
       "realm": "golden",
       "weight": 5,
       "once": true,
-      "tags": ["mortal", "family", "self", "story"],
+      "tags": [
+        "mortal",
+        "family",
+        "self",
+        "story"
+      ],
       "choiceType": "EMOTIONAL",
       "choices": {
         "left": {
           "text": "立刻回柳河村——不管身上有什么伤",
-          "effects": { "daoHeart": 20, "karmaGood": 15, "cultivation": -10, "fortune": -5 },
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 15,
+            "cultivation": -10,
+            "fortune": -5
+          },
           "desc": "你赶了三百里路——到的时候你养父刚下葬。村里人说：'他每天去河边看你小时候玩的地方——他说你肯定会回来。'你在他坟前跪了一夜。不是哭——是答应。答应他——活着。"
         },
         "right": {
           "text": "把信折好放在枕下——'等我金丹圆满就回去'",
-          "effects": { "daoHeart": 10, "cultivation": 10 },
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 10
+          },
           "desc": "你告诉自己：再等一等。但你知道——修仙者的一等，有时候就是一辈子。信纸压在枕下——每天晚上你都能感觉到它在发热。不是灵力——是铁匠的手温。"
         }
       },
-      "sceneImage": "assets/cards/events/scene_gd_g_oldFriend.png"
+      "sceneImage": "assets/cards/companions/scene_sn_1.png"
     },
     {
       "id": "sd_nd_jiuwei_moon",
+      "semanticKey": "arc:jiuwei_suyue:ACQUAINTANCE",
       "type": "STORY",
       "title": "月湖边的九尾",
       "description": "月湖边——她从月色中走出来。九条白色的尾巴如瀑布般散落在身后——不是炫耀，是天狐的本相。'就是你——救了落霜？'她眯着眼——琥珀色的瞳孔在月光下变成了竖瞳。'白狐部欠你的——我还。不过你的修为——实在太差了。跟我来——三千年的东西——够你学了。'",
@@ -346,16 +523,29 @@
       "weight": 7,
       "once": true,
       "npcId": "jiuwei_suyue",
-      "tags": ["companion", "lore", "ancient", "story"],
+      "requiresAnyFlags": ["bai_luoxuan_met", "whiteFoxCompleted"],
+      "tags": [
+        "companion",
+        "lore",
+        "ancient",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "跟上——'请前辈指教'",
-          "effects": { "cultivation": 15, "daoHeart": 8, "fortune": 8 },
+          "effects": {
+            "cultivation": 15,
+            "daoHeart": 8,
+            "fortune": 8
+          },
           "desc": "她转身——九尾在身后一甩——不是示威，是指路。月华在她身后铺成一条银色的路——不是法术，是天狐血脉在月光下的自然投影。你跟了上去。"
         },
         "right": {
           "text": "'我的路我自己走'",
-          "effects": { "daoHeart": 15, "fortune": 5 },
+          "effects": {
+            "daoHeart": 2,
+            "fortune": 5
+          },
           "desc": "她回头——嘴角有一丝意外的笑意。'有意思——三千年了，第一次有人拒绝天狐的指点。'她收了九尾——但没有走。'那你走你的——我在前面等你。三千年我都等了——不差这点时间。'"
         }
       },
@@ -363,6 +553,7 @@
     },
     {
       "id": "sd_nd_xue_sha_trial",
+      "semanticKey": "arc:xuesha_laozu:CONTACT",
       "type": "STORY",
       "title": "血煞老祖的测试",
       "description": "血煞宗大殿——血煞老祖坐在血玉椅上，闭目养神。但你知道他没睡着——他手里握着剑。'白刃的弟子——'他睁开眼睛——一双血红色的瞳孔锁定了你。'不过——你的剑气里有一点东西我见过。不是白刃教的——是你自己的。'他站起身——比你高出两个头。'有点意思——所以今天不杀你。但明天——不一定。'",
@@ -370,20 +561,33 @@
       "weight": 7,
       "once": true,
       "npcId": "xuesha_laozu",
-      "tags": ["demonic", "ally", "battle", "story"],
+      "tags": [
+        "demonic",
+        "ally",
+        "battle",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "'我不是来求你不杀的——我是来问你的'",
-          "effects": { "daoHeart": 15, "fortune": 5, "karmaGood": 8 },
+          "effects": {
+            "daoHeart": 2,
+            "fortune": 5,
+            "karmaGood": 8
+          },
           "desc": "他停下——血红色的瞳孔里闪过了一丝意外。'问什么？''你叛出青云——是真的背叛，还是被冤枉的？'他笑了——笑声在大殿里回荡。'好小子——你是第一个敢当面问我这个的正道弟子。坐下来——我今天不杀人了。'"
         },
         "right": {
           "text": "沉默——但握紧了剑",
-          "effects": { "daoHeart": 10, "cultivation": 8, "karmaBad": 3 },
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 8,
+            "karmaBad": 3
+          },
           "desc": "他的笑变成了审视。'有骨气——但骨气不值钱。不过你的剑意告诉我——你不怕我。不怕就好——怕我的人太多了，没意思。'"
         }
       },
-      "sceneImage": "assets/cards/events/scene_karma_k_betrayed_npc.png"
+      "sceneImage": "assets/cards/companions/scene_comp_xuesha_laozu_bloodfeast.png"
     },
     {
       "id": "sd_nd_demon_within",
@@ -393,17 +597,30 @@
       "realm": "nascent",
       "weight": 5,
       "once": true,
-      "tags": ["self", "trial", "tribulation", "story"],
+      "tags": [
+        "self",
+        "trial",
+        "tribulation",
+        "story"
+      ],
       "choiceType": "INNER",
       "choices": {
         "left": {
           "text": "'我是怕做一个普通人——但我不怕承认'",
-          "effects": { "daoHeart": 25, "cultivation": 10, "fortune": 5 },
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 10,
+            "fortune": 5
+          },
           "desc": "心魔沉默了——然后消散。不是因为被说服——是因为你承认了。心魔的力量来自隐瞒——你把它说了出来，它就失去了武器。"
         },
         "right": {
           "text": "闭口不言——不回应",
-          "effects": { "daoHeart": 5, "cultivation": 15, "health": -10 },
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 15,
+            "health": -2
+          },
           "desc": "心魔笑了——你的沉默让它更强。它知道——只要你不承认，它就可以一直在你耳边说话。"
         }
       },
@@ -418,20 +635,34 @@
       "weight": 8,
       "once": true,
       "npcId": "bai_ren",
-      "tags": ["mentor", "truth", "legacy", "story"],
+      "tags": [
+        "mentor",
+        "truth",
+        "legacy",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "'他用错了方法——但没选错方向'",
-          "effects": { "daoHeart": 20, "karmaGood": 15, "fortune": 10 },
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 15,
+            "fortune": 10
+          },
           "desc": "白刃真人看着你——看了很久。'我花了一百二十年才接受这个答案——你只用了二十秒。'他拍了拍你的肩——'也许我师弟当年需要的不是一个掌门师兄，是一个像你这样敢说真话的师弟。'"
         },
         "right": {
           "text": "'叛出师门就是错的——不管原因是什么'",
-          "effects": { "daoHeart": 8, "cultivation": 15, "karmaBad": 5 },
+          "effects": {
+            "daoHeart": 8,
+            "cultivation": 15,
+            "karmaBad": 5
+          },
           "desc": "他沉默了很久——然后叹了口气。'这是执事会的标准答案。但标准答案不一定是真的——你是我的关门弟子。我希望你有一天能给出自己的答案。'"
         }
       },
-      "sceneImage": "assets/cards/events/scene_fd_f_master.png"
+      "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "坦白", "alt": "白刃真人在上古仙剑前转身，将秘密交给你。" },
+      "sceneImage": "assets/cards/keyframes/collected/bai_ren_confession_pc98.png"
     },
     {
       "id": "sd_dt_chaos_gate",
@@ -441,16 +672,30 @@
       "realm": "deity",
       "weight": 6,
       "once": true,
-      "tags": ["truth", "hidden", "fate", "story"],
+      "tags": [
+        "truth",
+        "hidden",
+        "fate",
+        "story"
+      ],
       "choices": {
         "left": {
           "text": "打开混沌之门——看看天道之后是什么",
-          "effects": { "daoHeart": 30, "cultivation": 20, "fortune": -20, "health": -20 },
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 20,
+            "fortune": -20,
+            "maxHealth": -1
+          },
           "desc": "门在虚空中开了一条缝——不是光溢出来，是黑暗。纯粹的、原初的黑暗——天道之前的、规则之前的、恐惧之前的黑暗。你看到了——所有三个结局在你面前展开。每个结局里都有一个人——你自己——在回头看现在的你。"
         },
         "right": {
           "text": "关上它——'还没准备好'",
-          "effects": { "daoHeart": 15, "fortune": 20, "karmaGood": 15 },
+          "effects": {
+            "daoHeart": 2,
+            "fortune": 20,
+            "karmaGood": 15
+          },
           "desc": "你合上了裂缝。碎玉的温度慢慢降下来——它在等。你知道——下一次打开的时候，就没有回头路了。"
         }
       },
@@ -465,17 +710,31 @@
       "weight": 8,
       "once": true,
       "npcId": "bai_luoxuan",
-      "tags": ["companion", "kindness", "emotion", "story"],
+      "requiresAnyFlags": ["bai_luoxuan_met", "whiteFoxCompleted"],
+      "requiresResolvedSemanticKeys": ["arc:bai_luoxuan:ACQUAINTANCE"],
+      "tags": [
+        "companion",
+        "kindness",
+        "emotion",
+        "story"
+      ],
       "choiceType": "EMOTIONAL",
       "choices": {
         "left": {
           "text": "'我怕飞升之后——你们都不在了'",
-          "effects": { "daoHeart": 25, "karmaGood": 15, "fortune": 10 },
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 15,
+            "fortune": 10
+          },
           "desc": "她沉默了很久——参汤的热气在她面前慢慢散了。然后她笑了——不是你见过的那种浅笑，是一个白狐三百年来第一次露出的、完整的笑。'飞升——不是丢掉我们。是带我们一起。你不知道吧？天狐可以和道侣共用灵压——你的境界越高，我的尾巴越多。'她端起参汤——手是稳的。'喝吧——我在。'"
         },
         "right": {
           "text": "'没什么——只是累了'",
-          "effects": { "daoHeart": 5, "cultivation": 10 },
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 10
+          },
           "desc": "她看着你——琥珀色的眼睛里没有指责，只有确认。'好——你不说，我不问。但参汤要喝。'她把碗推到你手边——然后在你对面坐下了。没有走——只是在。白狐的陪伴不需要言语——这是三千年血脉教会她的唯一一件事。"
         }
       },
@@ -484,23 +743,33 @@
     {
       "id": "sd_dt_all_companions_gather",
       "type": "STORY",
-      "title": "最后一面",
-      "description": "混沌之门开启前夜——不是你去见他们，是他们来找你。白落霜端来最后一碗参汤。剑灵儿把你的剑磨了三遍——她不说，但剑尖颤了三下。慕青岚送来一本没有书名的册子——里面不是功法，是她替你这几十年记下的所有你忽略的事。殷血靠在门框上——没有进来，但也没有走。白刃真人最后一个到——他没有带剑。'今晚——我不是掌门。我只是你师父。'",
+      "title": "门前回望",
+      "description": "你在识海中再次看见混沌之门，清晰得像已在眼前，又像水面的月光。案上有一张空白纸。你回望这一世：有人同行，有人走散，也有人再也无法回应。这道景象没有替你回答任何事；你能决定的，是把没说完的话留下，还是独自带着它们继续走。",
       "realm": "deity",
       "weight": 8,
       "once": true,
-      "tags": ["companion", "mentor", "emotion", "story"],
+      "tags": [
+        "emotion",
+        "story"
+      ],
       "choiceType": "EMOTIONAL",
       "choices": {
         "left": {
-          "text": "给每个人留一句话——最后的话",
-          "effects": { "daoHeart": 30, "karmaGood": 20, "fortune": 15 },
-          "desc": "你对白落霜说——'参汤很好喝。'对剑灵儿说——'下次寅时——别一个人练。'对慕青岚说——'书我收下了。不是法宝，胜过法宝。'对殷血说——'下次见面——请你喝酒。'对白刃真人——你没有说话。你跪了下来——膝盖没有碰到地面，被他托住了。'够了——'他收回手。'我的弟子——不用跪。'"
+          "text": "写下未说完的话，留给后来者",
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 20,
+            "fortune": 15
+          },
+          "desc": "你写下这一路所学，也写下仍愿意守护的名字。有人能读到，有人永远读不到；你仍把纸留在灯下。这不是替谁许诺未来，只是承认那些相遇已经改变了你。"
         },
         "right": {
-          "text": "让他们走——'我习惯一个人'",
-          "effects": { "daoHeart": 5, "karmaBad": 5 },
-          "desc": "他们走了——一个一个。白刃真人最后一个——他在门口停了一下，没有回头。'习惯一个人——是学不会'被人需要'。希望明天——你学会。'门关上的声音很轻，但你的识海响了一次——不是灵力，是六个不同频率的心跳在同频共振了一瞬间。"
+          "text": "烧去纸页，独自记住这一世",
+          "effects": {
+            "daoHeart": 5,
+            "karmaBad": 5
+          },
+          "desc": "火光吞没空纸，你不再向任何人解释。记忆不会因此消失，但那些本可以交出的答案也随灰烬散去。你转身面对门影，决定独自承受接下来的路。"
         }
       },
       "sceneImage": "assets/cards/events/scene_dt_d_before_ascension.png"
@@ -508,23 +777,39 @@
     {
       "id": "sd_dt_final_choice",
       "type": "STORY",
-      "title": "飞升或留下",
-      "description": "碎玉在你手中拼成了完整的一把钥匙——不是金属，是光。混沌之门在你面前缓缓张开——不是向外开，是向内开。门后不是虚空——是你。是你走这三条路之后的自己——破天者的你站在左边，守护者的你在中间，隐仙者的你在右边。三个结局的你同时开口——只有一个字。不是指令——是确认。他们在等你自己选。",
+      "title": "天门之前",
+      "description": "碎玉在掌心映出两道尚未成形的光痕。一道通向被天道遮住的旧账，一道通向你在人间留下的牵挂。它们都没有越过天门，连你能否走到门前也尚无定数。你可以先选一条要追问的路，再用余下的修行去寻找证据，承担它的代价。",
       "realm": "deity",
       "weight": 5,
       "once": true,
-      "tags": ["truth", "fate", "self", "story"],
+      "tags": [
+        "truth",
+        "fate",
+        "self",
+        "story"
+      ],
       "choiceType": "INNER",
       "choices": {
         "left": {
-          "text": "破天——撕开天道，让所有人自由",
-          "effects": { "daoHeart": 40, "cultivation": 30, "fortune": -30, "health": -30, "ending": "chaos" },
-          "desc": "你走进了混沌之门——不是被吞噬，是穿过。天道在你身后碎裂——不是破坏，是释放。无数被锁住的因果线同时断裂——修仙者不需要再逆天，因为天——不再是牢笼。柳河村的孩子们会抬头看到一道划破天空的剑痕——那道剑痕会永远留在天幕上，告诉他们——有一个人，从这里走出去的——把天劈开了一道缝。"
+          "text": "追查天道旧账，准备破局",
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 30,
+            "fortune": -30,
+          "endingCandidate": "chaos",
+            "maxHealth": -1
+          },
+          "desc": "你把已得的线索逐条刻在碎玉背面，留出仍无证据的空格。若天道真在收割修士，你想在终战之前找齐能指认它的证词；若找不齐，也不能把猜测说成胜利。"
         },
         "right": {
-          "text": "守护——不飞升，留在人间守千年",
-          "effects": { "daoHeart": 30, "karmaGood": 40, "fortune": 20, "ending": "red_dust" },
-          "desc": "你关上了混沌之门——不是放弃，是选择。你落在了柳河村——不是修仙，是打铁。你的剑变成了铁锤——每一锤都落在一个孩子的手心上，教他们握剑。白落霜站在你身边——她的九条尾巴在身后慢慢展开——不是飞升，是陪。'以后——这里就是我们的家。'你说。她笑了——琥珀色的眼睛里映着村里的灯火。'好。'"
+          "text": "守住人间牵挂，准备选择归途",
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 40,
+            "fortune": 20,
+          "endingCandidate": "red_dust"
+          },
+          "desc": "你在纸上写下这一世仍想回应的人，写到空处时停了笔。谁还愿意与你同行，要由彼此往后的选择回答；你先决定在天门前为这份羁绊留一个位置。"
         }
       },
       "sceneImage": "assets/cards/events/scene_dt_d_heaven_dao.png"

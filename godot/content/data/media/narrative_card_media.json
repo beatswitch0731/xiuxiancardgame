@@ -1,0 +1,648 @@
+{
+  "assets/cards/characters/collected/jian_linger_pc98.png": {
+    "display": "assets/card-illustrations/hd/jian_linger.png",
+    "original": "assets/card-illustrations/hd/jian_linger.png",
+    "motion": {
+      "characterId": "jian_linger",
+      "name": "晨山系剑",
+      "reference": "assets/cards/characters/collected/jian_linger_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jian-0.png",
+        "assets/card-illustrations/motion/jian-1.png",
+        "assets/card-illustrations/motion/jian-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jian-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jian-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-8182275c-bb0b-44ed-841f-b062f392eac6.png",
+      "rawSha256": "da34b4daf22e54aaeb0d7e187b5387bef615a01499a8c388f74016e0901dc68c",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": false
+    }
+  },
+  "assets/cards/characters/collected/bai_luoxuan_pc98.png": {
+    "display": "assets/card-illustrations/hd/bai_luoxuan.png",
+    "original": "assets/card-illustrations/hd/bai_luoxuan.png"
+  },
+  "assets/cards/characters/collected/mu_qinglan_pc98.png": {
+    "display": "assets/card-illustrations/hd/mu_qinglan.png",
+    "original": "assets/card-illustrations/hd/mu_qinglan.png"
+  },
+  "assets/cards/characters/collected/jiuwei_suyue_pc98.png": {
+    "display": "assets/card-illustrations/hd/jiuwei_suyue.png",
+    "original": "assets/card-illustrations/hd/jiuwei_suyue.png",
+    "motion": {
+      "characterId": "jiuwei_suyue",
+      "name": "月畔听风",
+      "reference": "assets/cards/characters/collected/jiuwei_suyue_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jiuwei-0.png",
+        "assets/card-illustrations/motion/jiuwei-1.png",
+        "assets/card-illustrations/motion/jiuwei-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jiuwei-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jiuwei-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-3f2e6b25-447c-40db-ae62-18b5653021d4.png",
+      "rawSha256": "e20da21b1498ec263eb871159f4df0c24976606ec2d384757e5cef1fb364ebcc",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": false
+    }
+  },
+  "assets/cards/characters/collected/yin_xue_pc98.png": {
+    "display": "assets/card-illustrations/hd/yin_xue.png",
+    "original": "assets/card-illustrations/hd/yin_xue.png"
+  },
+  "assets/cards/characters/collected/bai_ren_pc98.png": {
+    "display": "assets/card-illustrations/hd/bai_ren.png",
+    "original": "assets/card-illustrations/hd/bai_ren.png"
+  },
+  "assets/cards/characters/collected/tianji_laoren_pc98.png": {
+    "display": "assets/card-illustrations/hd/tianji_laoren.png",
+    "original": "assets/card-illustrations/hd/tianji_laoren.png"
+  },
+  "assets/cards/characters/collected/xuesha_laozu_pc98.png": {
+    "display": "assets/card-illustrations/hd/xuesha_laozu.png",
+    "original": "assets/card-illustrations/hd/xuesha_laozu.png"
+  },
+  "assets/cards/keyframes/collected/jian_linger_challenge_pc98.png": {
+    "display": "assets/card-illustrations/hd/jian_linger_challenge.png",
+    "original": "assets/card-illustrations/hd/jian_linger_challenge.png"
+  },
+  "assets/cards/keyframes/collected/mu_qinglan_library_pc98.png": {
+    "display": "assets/card-illustrations/hd/mu_qinglan_library.png",
+    "original": "assets/card-illustrations/hd/mu_qinglan_library.png"
+  },
+  "assets/cards/keyframes/collected/bai_ren_confession_pc98.png": {
+    "display": "assets/card-illustrations/hd/bai_ren_confession.png",
+    "original": "assets/card-illustrations/hd/bai_ren_confession.png"
+  },
+  "assets/cards/keyframes/collected/jian_linger_old_master_pc98.png": {
+    "display": "assets/card-illustrations/hd/jian_linger_old_master.png",
+    "original": "assets/card-illustrations/hd/jian_linger_old_master.png"
+  },
+  "assets/characters/stages/bai_luoxuan_trapped.png": {
+    "original": "assets/characters/stages/raw/bai_luoxuan_trapped_raw.png"
+  },
+  "assets/characters/stages/bai_luoxuan_meet.png": {
+    "original": "assets/characters/stages/raw/bai_luoxuan_meet_raw.png"
+  },
+  "assets/characters/stages/bai_luoxuan_trust.png": {
+    "original": "assets/characters/stages/raw/bai_luoxuan_trust_raw.png"
+  },
+  "assets/characters/stages/bai_luoxuan_intimate.png": {
+    "original": "assets/characters/stages/raw/bai_luoxuan_intimate_raw.png"
+  },
+  "assets/characters/stages/bai_luoxuan_bonded.png": {
+    "original": "assets/characters/stages/raw/bai_luoxuan_bonded_raw.png"
+  },
+  "assets/characters/stages/jian_linger_thaw.png": {
+    "original": "assets/characters/stages/raw/jian_linger_thaw_raw.png",
+    "motion": {
+      "characterId": "jian_linger",
+      "name": "晨山系剑",
+      "reference": "assets/cards/characters/collected/jian_linger_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jian-0.png",
+        "assets/card-illustrations/motion/jian-1.png",
+        "assets/card-illustrations/motion/jian-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jian-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jian-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-8182275c-bb0b-44ed-841f-b062f392eac6.png",
+      "rawSha256": "da34b4daf22e54aaeb0d7e187b5387bef615a01499a8c388f74016e0901dc68c",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jian_linger_resonance.png": {
+    "original": "assets/characters/stages/raw/jian_linger_resonance_raw.png",
+    "motion": {
+      "characterId": "jian_linger",
+      "name": "晨山系剑",
+      "reference": "assets/cards/characters/collected/jian_linger_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jian-0.png",
+        "assets/card-illustrations/motion/jian-1.png",
+        "assets/card-illustrations/motion/jian-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jian-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jian-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-8182275c-bb0b-44ed-841f-b062f392eac6.png",
+      "rawSha256": "da34b4daf22e54aaeb0d7e187b5387bef615a01499a8c388f74016e0901dc68c",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jian_linger_intimate.png": {
+    "original": "assets/characters/stages/raw/jian_linger_intimate_raw.png",
+    "motion": {
+      "characterId": "jian_linger",
+      "name": "晨山系剑",
+      "reference": "assets/cards/characters/collected/jian_linger_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jian-0.png",
+        "assets/card-illustrations/motion/jian-1.png",
+        "assets/card-illustrations/motion/jian-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jian-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jian-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-8182275c-bb0b-44ed-841f-b062f392eac6.png",
+      "rawSha256": "da34b4daf22e54aaeb0d7e187b5387bef615a01499a8c388f74016e0901dc68c",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/mu_qinglan_secret.png": {
+    "original": "assets/characters/stages/raw/mu_qinglan_secret_raw.png"
+  },
+  "assets/characters/stages/mu_qinglan_intimate.png": {
+    "original": "assets/characters/stages/raw/mu_qinglan_intimate_raw.png"
+  },
+  "assets/characters/stages/mu_qinglan_seductive.png": {
+    "original": "assets/characters/stages/raw/mu_qinglan_seductive_raw.png"
+  },
+  "assets/characters/stages/jiuwei_suyue_tales.png": {
+    "original": "assets/characters/stages/source/jiuwei_fall_source_reencoded.png",
+    "motion": {
+      "characterId": "jiuwei_suyue",
+      "name": "月畔听风",
+      "reference": "assets/cards/characters/collected/jiuwei_suyue_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jiuwei-0.png",
+        "assets/card-illustrations/motion/jiuwei-1.png",
+        "assets/card-illustrations/motion/jiuwei-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jiuwei-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jiuwei-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-3f2e6b25-447c-40db-ae62-18b5653021d4.png",
+      "rawSha256": "e20da21b1498ec263eb871159f4df0c24976606ec2d384757e5cef1fb364ebcc",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jiuwei_suyue_intimate.png": {
+    "original": "assets/characters/stages/source/jiuwei_bath_source_reencoded.png",
+    "motion": {
+      "characterId": "jiuwei_suyue",
+      "name": "月畔听风",
+      "reference": "assets/cards/characters/collected/jiuwei_suyue_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jiuwei-0.png",
+        "assets/card-illustrations/motion/jiuwei-1.png",
+        "assets/card-illustrations/motion/jiuwei-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jiuwei-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jiuwei-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-3f2e6b25-447c-40db-ae62-18b5653021d4.png",
+      "rawSha256": "e20da21b1498ec263eb871159f4df0c24976606ec2d384757e5cef1fb364ebcc",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jiuwei_suyue_water.png": {
+    "original": "assets/characters/stages/source/jiuwei_lower_source_reencoded.png",
+    "environment": {
+      "name": "月湖涟漪",
+      "water": [
+        0.05,
+        0.808,
+        0.97,
+        0.885
+      ],
+      "download": "assets/card-illustrations/motion/jiuwei-water-environment.webp"
+    },
+    "motion": {
+      "characterId": "jiuwei_suyue",
+      "name": "月畔听风",
+      "reference": "assets/cards/characters/collected/jiuwei_suyue_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jiuwei-0.png",
+        "assets/card-illustrations/motion/jiuwei-1.png",
+        "assets/card-illustrations/motion/jiuwei-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jiuwei-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jiuwei-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-3f2e6b25-447c-40db-ae62-18b5653021d4.png",
+      "rawSha256": "e20da21b1498ec263eb871159f4df0c24976606ec2d384757e5cef1fb364ebcc",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jiuwei_suyue_bond_ultimate_100_v1.png": {
+    "original": "assets/characters/stages/source/jiuwei_ultimate_source_reencoded.png",
+    "motion": {
+      "characterId": "jiuwei_suyue",
+      "name": "月畔听风",
+      "reference": "assets/cards/characters/collected/jiuwei_suyue_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jiuwei-0.png",
+        "assets/card-illustrations/motion/jiuwei-1.png",
+        "assets/card-illustrations/motion/jiuwei-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jiuwei-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jiuwei-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-3f2e6b25-447c-40db-ae62-18b5653021d4.png",
+      "rawSha256": "e20da21b1498ec263eb871159f4df0c24976606ec2d384757e5cef1fb364ebcc",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jian_linger_seductive.png": {
+    "original": "assets/characters/jian_linger_seductive.webp",
+    "motion": {
+      "characterId": "jian_linger",
+      "name": "晨山系剑",
+      "reference": "assets/cards/characters/collected/jian_linger_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jian-0.png",
+        "assets/card-illustrations/motion/jian-1.png",
+        "assets/card-illustrations/motion/jian-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jian-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jian-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-8182275c-bb0b-44ed-841f-b062f392eac6.png",
+      "rawSha256": "da34b4daf22e54aaeb0d7e187b5387bef615a01499a8c388f74016e0901dc68c",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jiuwei_suyue_regal.png": {
+    "motion": {
+      "characterId": "jiuwei_suyue",
+      "name": "月畔听风",
+      "reference": "assets/cards/characters/collected/jiuwei_suyue_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jiuwei-0.png",
+        "assets/card-illustrations/motion/jiuwei-1.png",
+        "assets/card-illustrations/motion/jiuwei-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jiuwei-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jiuwei-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-3f2e6b25-447c-40db-ae62-18b5653021d4.png",
+      "rawSha256": "e20da21b1498ec263eb871159f4df0c24976606ec2d384757e5cef1fb364ebcc",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jiuwei_suyue_seductive.png": {
+    "motion": {
+      "characterId": "jiuwei_suyue",
+      "name": "月畔听风",
+      "reference": "assets/cards/characters/collected/jiuwei_suyue_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jiuwei-0.png",
+        "assets/card-illustrations/motion/jiuwei-1.png",
+        "assets/card-illustrations/motion/jiuwei-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jiuwei-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jiuwei-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-3f2e6b25-447c-40db-ae62-18b5653021d4.png",
+      "rawSha256": "e20da21b1498ec263eb871159f4df0c24976606ec2d384757e5cef1fb364ebcc",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jiuwei_suyue_sheer.png": {
+    "motion": {
+      "characterId": "jiuwei_suyue",
+      "name": "月畔听风",
+      "reference": "assets/cards/characters/collected/jiuwei_suyue_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jiuwei-0.png",
+        "assets/card-illustrations/motion/jiuwei-1.png",
+        "assets/card-illustrations/motion/jiuwei-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jiuwei-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jiuwei-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-3f2e6b25-447c-40db-ae62-18b5653021d4.png",
+      "rawSha256": "e20da21b1498ec263eb871159f4df0c24976606ec2d384757e5cef1fb364ebcc",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jian_linger_cold.png": {
+    "motion": {
+      "characterId": "jian_linger",
+      "name": "晨山系剑",
+      "reference": "assets/cards/characters/collected/jian_linger_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jian-0.png",
+        "assets/card-illustrations/motion/jian-1.png",
+        "assets/card-illustrations/motion/jian-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jian-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jian-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-8182275c-bb0b-44ed-841f-b062f392eac6.png",
+      "rawSha256": "da34b4daf22e54aaeb0d7e187b5387bef615a01499a8c388f74016e0901dc68c",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jian_linger_heavy_sword.png": {
+    "motion": {
+      "characterId": "jian_linger",
+      "name": "晨山系剑",
+      "reference": "assets/cards/characters/collected/jian_linger_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jian-0.png",
+        "assets/card-illustrations/motion/jian-1.png",
+        "assets/card-illustrations/motion/jian-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jian-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jian-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-8182275c-bb0b-44ed-841f-b062f392eac6.png",
+      "rawSha256": "da34b4daf22e54aaeb0d7e187b5387bef615a01499a8c388f74016e0901dc68c",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  },
+  "assets/characters/stages/jian_linger_bond_ultimate_100_v1.png": {
+    "motion": {
+      "characterId": "jian_linger",
+      "name": "晨山系剑",
+      "reference": "assets/cards/characters/collected/jian_linger_pc98.png",
+      "frames": [
+        "assets/card-illustrations/motion/jian-0.png",
+        "assets/card-illustrations/motion/jian-1.png",
+        "assets/card-illustrations/motion/jian-2.png"
+      ],
+      "poster": "assets/card-illustrations/motion/jian-0.png",
+      "order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "durations": [
+        420,
+        180,
+        420,
+        180
+      ],
+      "download": "assets/card-illustrations/motion/jian-idle.webp",
+      "size": [
+        443,
+        591
+      ],
+      "raw": "output/imagegen/narrative-motion-2026-09-08/raw/exec-8182275c-bb0b-44ed-841f-b062f392eac6.png",
+      "rawSha256": "da34b4daf22e54aaeb0d7e187b5387bef615a01499a8c388f74016e0901dc68c",
+      "production": "ImageGen frames; deterministic extraction and lossless WebP encoding",
+      "limitations": "Only first-row 3 frames; lower row rejected for pose drift. Native frame 443x591; supplementary low-frame-count motion preview, never substitute for HD still.",
+      "alternate": true
+    }
+  }
+}

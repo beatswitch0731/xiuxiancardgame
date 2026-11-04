@@ -100,7 +100,7 @@ const RealmChapterSystem = (function() {
 
     // 第三章：金丹期
     'ch_golden_20':  'assets/cards/events/scene_qi_q_cave.png',           // 金丹初成
-    'ch_golden_40':  'assets/cards/events/scene_qi_q_cave.png',           // 秘境探索→古洞
+    'ch_golden_40':  'assets/cards/events/scene_ch_golden_40_agc_g2.png', // 秘境探索→剑阵遗台
     'ch_golden_60':  'assets/cards/events/scene_qi_q_demon.png',          // 正魔抉择→妖魔
     'ch_golden_80':  'assets/cards/events/scene_qi_q_fortune.png',        // 道侣机缘→机缘
     'ch_golden_100': 'assets/cards/events/scene_qi_break_qi.png',         // 突破元婴
@@ -245,7 +245,7 @@ const RealmChapterSystem = (function() {
    * @param {number} threshold
    * @returns {Object|null}
    */
-  RealmChapterSystem.prototype.getMilestoneCard = function(realm, threshold) {
+  RealmChapterSystem.prototype.getMilestoneCard = function(realm, threshold, overridePath) {
     var card = null;
     // FIX-5: 先用原始阈值查，查不到再用别名映射查旧数据
     // 优先从按境界索引查询
@@ -275,6 +275,14 @@ const RealmChapterSystem = (function() {
 
     if (!card) return null;
 
+    // 动态流派文本与选项适配（体修/剑修/法修/丹修）
+    var gs = (typeof gameState !== 'undefined' && gameState) ? gameState : (typeof window !== 'undefined' && window.gameState ? window.gameState : (typeof globalThis !== 'undefined' && globalThis.gameState ? globalThis.gameState : null));
+    var playerPath = overridePath || (gs && gs.path ? gs.path : 'sword');
+    card = _adaptCardForPath(card, playerPath);
+    if (!card) return null;
+    card = _attachBossJourneyStage(this, card, realm, threshold);
+    card = _attachNarrativeSpineContext(card);
+
     // sceneImage fallback: 如果文件不存在，用映射中的图片
     if (card.sceneImage) {
       // 浏览器端检查（Node.js 环境用 fs.existsSync 不可用）
@@ -296,6 +304,195 @@ const RealmChapterSystem = (function() {
   };
 
   /**
+   * 将终局 Boss 的劫兆旅程投射到本境界各里程碑。
+   * 终局卡是权威生产者；前期卡只消费对应阶段，避免复制后出现文案/机制漂移。
+   */
+  function _attachBossJourneyStage(system, card, realm, requestedThreshold) {
+    if (!system || !card || !realm) return card;
+    var bossCard = system._cardsByRealm
+      && system._cardsByRealm[realm]
+      && system._cardsByRealm[realm][100];
+    var journey = bossCard && bossCard.bossJourney;
+    if (!journey || !journey.stages) return card;
+
+    var canonicalThreshold = card._aliasedFrom || card.threshold || requestedThreshold;
+    var stage = journey.stages[String(canonicalThreshold)];
+    if (!stage) return card;
+
+    var projected = JSON.parse(JSON.stringify(card));
+    projected.bossJourneyStage = Object.assign({
+      journeyId: journey.id,
+      bossName: journey.bossName,
+      strengthModel: journey.strengthModel,
+      scalesWithPlayerRealm: journey.scalesWithPlayerRealm,
+      canonicalThreshold: Number(canonicalThreshold),
+      triggerThreshold: Number(requestedThreshold)
+    }, JSON.parse(JSON.stringify(stage)));
+    if (stage.cue && projected.description && projected.description.indexOf(stage.cue) === -1) {
+      projected.description += '\n\n' + stage.cue;
+    }
+    return projected;
+  }
+
+  /**
+   * A chapter spine is authored on the card, but provenance remains owned by
+   * NarrativeLedger.  Project a read-only echo at presentation time so an old
+   * market receipt can inform a later chapter without becoming a new reward or
+   * a second settlement opportunity.
+   */
+  function _attachNarrativeSpineContext(card) {
+    if (!card || !card.narrativeSpine) return card;
+    var projected = JSON.parse(JSON.stringify(card));
+    var ledger = typeof narrativeLedger !== 'undefined' ? narrativeLedger
+      : (typeof globalThis !== 'undefined' ? globalThis.narrativeLedger : null);
+    var spine = projected.narrativeSpine;
+    if (!ledger) return projected;
+    if (spine.threadId === 'qi_ask_sword') {
+    var originTypes = ['sword_origin_licensed', 'sword_origin_traded', 'sword_origin_ghost_oath'];
+    var observations = typeof ledger.getObservedFacts === 'function'
+      ? ledger.getObservedFacts({
+        consumerId: 'qi_main_origin_observation',
+        vendorId: 'chapter_qi',
+        factTypeIds: originTypes
+      })
+      : [];
+    spine.observedOrigins = observations.map(function(entry) {
+      return { factTypeId: entry.factTypeId, status: entry.status };
+    });
+    if (Number(spine.step) === 3) {
+      var echoMap = {
+        sword_origin_licensed: '官坊印记与流转号仍在：这把剑曾被明码交付。',
+        sword_origin_traded: '集市札记的折痕仍在：这把剑曾在旧主与摊主之间易手。',
+        sword_origin_ghost_oath: '雾中夜契的余温仍在：这把剑曾以寿契记名。'
+      };
+      var echo = observations.map(function(entry) { return echoMap[entry.factTypeId]; }).filter(Boolean)[0]
+        || '这一世未曾留下残剑来历；问剑只能照见你自己立下的气机。';
+      projected.description = (projected.description || '') + '\n\n【来历回声】' + echo;
+    }
+    if (Number(spine.step) === 5) {
+      var stance = typeof ledger.getFactByType === 'function' ? ledger.getFactByType('qi_sword_master_stance') : null;
+      var stanceId = stance?.status === 'active' ? stance.payload?.stance : null;
+      var settlementOriginMap = {
+        sword_origin_licensed: '曾在坊市凭官印收下这把残剑',
+        sword_origin_traded: '曾在集市承下这把残剑与旧主札记',
+        sword_origin_ghost_oath: '曾在鬼市以夜契为这把残剑记名'
+      };
+      var settlementOrigin = observations.map(function(entry) {
+        return settlementOriginMap[entry.factTypeId];
+      }).filter(Boolean)[0] || '未以残剑来历替自己回答这一问';
+      if (stanceId === 'guarded' || stanceId === 'advance') {
+        projected.combatRules = Object.assign({}, projected.combatRules || {}, {
+          narrativeStance: stanceId === 'guarded'
+            ? { id: 'guarded', openingBlock: 1 }
+            : { id: 'advance', firstDamagingLightningReduction: 1 }
+        });
+        spine.stance = stanceId;
+        projected.description = (projected.description || '') + (stanceId === 'guarded'
+          ? '\n\n【问剑清算】因你' + settlementOrigin + '，且在剑主前立下守势；雷劫开场获得 1 点护盾。'
+          : '\n\n【问剑清算】因你' + settlementOrigin + '，且在剑主前选择进势；第一道有效雷击伤害 -1。');
+      }
+    }
+    }
+    var presentation = spine.presentation && typeof spine.presentation === 'object'
+      ? spine.presentation
+      : null;
+    var specification = presentation?.echo || presentation?.settlement || null;
+    var summary = _buildNarrativeSpinePresentation(ledger, specification);
+    if (summary && projected.description && projected.description.indexOf(summary) === -1) {
+      projected.description += '\n\n' + summary;
+    }
+    return projected;
+  }
+
+  /**
+   * Keep player-facing chapter echoes authored in card data.  The projection
+   * reads this-life Ledger records (including already-settled predecessors)
+   * without creating an observer receipt, reopening a fact, or touching Flow.
+   */
+  function _buildNarrativeSpinePresentation(ledger, specification) {
+    if (!ledger || !specification || typeof specification !== 'object') return '';
+    var marker = typeof specification.marker === 'string' ? specification.marker.trim() : '';
+    var segments = Array.isArray(specification.segments) ? specification.segments : [];
+    if (!marker || !segments.length) return '';
+    var phrases = segments.map(function(segment) {
+      if (!segment || typeof segment !== 'object' || typeof segment.factTypeId !== 'string') return '';
+      var fact = typeof ledger.getFactByType === 'function'
+        ? ledger.getFactByType(segment.factTypeId)
+        : null;
+      var payloadKey = typeof segment.payloadKey === 'string' ? segment.payloadKey : '';
+      var value = payloadKey && fact?.payload ? fact.payload[payloadKey] : null;
+      var variants = segment.variants && typeof segment.variants === 'object' ? segment.variants : {};
+      return typeof variants[value] === 'string' ? variants[value].trim() : '';
+    }).filter(Boolean);
+    if (!phrases.length) return '';
+    var prefix = typeof specification.prefix === 'string' ? specification.prefix : '';
+    var separator = typeof specification.separator === 'string' ? specification.separator : '；';
+    var suffix = typeof specification.suffix === 'string' ? specification.suffix : '';
+    return marker + prefix + phrases.join(separator) + suffix;
+  }
+
+  /**
+   * 动态按玩家流派适配里程碑卡文案与选项
+   */
+  function _adaptCardForPath(card, path) {
+    if (!card || !path) return card;
+    var adapted = JSON.parse(JSON.stringify(card));
+    var variants = adapted.pathVariants;
+    if (!variants) return adapted;
+    var variant = variants[path];
+    var directions = ['left', 'right'];
+    var valid = variant
+      && variant.realm === adapted.realm
+      && variant.path === path
+      && variant.text && variant.text.title && variant.text.description && variant.text.choices
+      && variant.rules && variant.rules.identityTag === 'path:' + path
+      && variant.rewards && variant.causal
+      && variant.scene && variant.scene.image && variant.scene.location
+      && Array.isArray(variant.consumers)
+      && directions.every(function(direction) {
+        return variant.text.choices[direction]
+          && variant.text.choices[direction].text
+          && variant.rewards[direction]
+          && variant.rewards[direction].effects
+          && variant.causal[direction]
+          && variant.causal[direction].realm === adapted.realm
+          && variant.causal[direction].path === path;
+      });
+    if (!valid) {
+      console.error('[RealmChapterSystem] 非法流派变体，拒绝发放基础卡:', adapted.id, path);
+      return null;
+    }
+
+    adapted.title = variant.text.title;
+    adapted.description = variant.text.description;
+    adapted.path = path;
+    adapted.location = variant.scene.location;
+    adapted.sceneImage = variant.scene.image;
+    adapted.tags = Array.from(new Set((adapted.tags || []).concat([
+      'milestone', 'realm:' + adapted.realm, variant.rules.identityTag
+    ])));
+    adapted.choices = adapted.choices || {};
+    directions.forEach(function(direction) {
+      var text = variant.text.choices[direction];
+      adapted.choices[direction] = Object.assign({}, adapted.choices[direction] || {}, {
+        text: text.text,
+        desc: text.desc || '',
+        effects: JSON.parse(JSON.stringify(variant.rewards[direction].effects)),
+        karmaSeed: JSON.parse(JSON.stringify(variant.causal[direction]))
+      });
+    });
+    adapted._pathVariant = {
+      sourceCardId: adapted.id,
+      realm: variant.realm,
+      path: variant.path,
+      identityTag: variant.rules.identityTag,
+      consumers: variant.consumers.slice()
+    };
+    delete adapted.pathVariants;
+    return adapted;
+  }
+
+  /**
    * 标记里程碑已触发
    * @param {string} realm
    * @param {number} threshold
@@ -307,6 +504,63 @@ const RealmChapterSystem = (function() {
     if (this.triggeredMilestones[realm].indexOf(threshold) === -1) {
       this.triggeredMilestones[realm].push(threshold);
     }
+  };
+
+  /**
+   * Export only durable chapter facts. Card definitions remain owned by the
+   * data loader; the snapshot carries the consumed milestone thresholds.
+   */
+  RealmChapterSystem.prototype.exportProgress = function() {
+    var triggeredMilestones = {};
+    Object.keys(CHAPTER_DEFINITIONS).forEach(function(realm) {
+      var allowed = CHAPTER_DEFINITIONS[realm].milestones || [];
+      var current = Array.isArray(this.triggeredMilestones[realm])
+        ? this.triggeredMilestones[realm]
+        : [];
+      triggeredMilestones[realm] = current
+        .map(function(value) { return Number(value); })
+        .filter(function(value, index, values) {
+          return Number.isFinite(value)
+            && allowed.indexOf(value) !== -1
+            && values.indexOf(value) === index;
+        });
+    }, this);
+    return {
+      version: 1,
+      activeChapterRealm: typeof this.activeChapterRealm === 'string'
+        ? this.activeChapterRealm
+        : null,
+      triggeredMilestones: triggeredMilestones
+    };
+  };
+
+  /**
+   * Hydrate durable chapter facts after card definitions have been loaded.
+   * Unknown realms/thresholds are discarded instead of creating ghost
+   * progress that the chapter data cannot explain.
+   */
+  RealmChapterSystem.prototype.hydrateProgress = function(snapshot) {
+    if (!snapshot || typeof snapshot !== 'object') return false;
+    var incoming = snapshot.triggeredMilestones;
+    if (!incoming || typeof incoming !== 'object' || Array.isArray(incoming)) return false;
+    var restored = {};
+    Object.keys(CHAPTER_DEFINITIONS).forEach(function(realm) {
+      var allowed = CHAPTER_DEFINITIONS[realm].milestones || [];
+      var values = Array.isArray(incoming[realm]) ? incoming[realm] : [];
+      restored[realm] = values
+        .map(function(value) { return Number(value); })
+        .filter(function(value, index, all) {
+          return Number.isFinite(value)
+            && allowed.indexOf(value) !== -1
+            && all.indexOf(value) === index;
+        });
+    });
+    this.triggeredMilestones = restored;
+    this.activeChapterRealm = typeof snapshot.activeChapterRealm === 'string'
+      && CHAPTER_DEFINITIONS[snapshot.activeChapterRealm]
+      ? snapshot.activeChapterRealm
+      : null;
+    return true;
   };
 
   /**
@@ -372,4 +626,7 @@ const RealmChapterSystem = (function() {
 // 挂载到全局
 if (typeof window !== 'undefined') {
   window.RealmChapterSystem = RealmChapterSystem;
+}
+if (typeof module !== 'undefined') {
+  module.exports = RealmChapterSystem;
 }

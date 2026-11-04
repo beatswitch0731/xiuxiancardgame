@@ -1,0 +1,267 @@
+{
+  "source": "src/systems/CompanionWhisper.js",
+  "sourceSha256": "4c3035245f1ecc2e16ab0a0cce8103222234384e4fe8b18ca09d5b24409df3c6",
+  "uiSource": "src/ui.js",
+  "uiSourceSha256": "82ae0a82c1568b722992bdccc2078be99c5291887b021634cd170ff222053e29",
+  "reactions": {
+    "bai_luoxuan": {
+      "heal": [
+        "你受伤了？我回去熬药。",
+        "参汤一直在灶上温着。",
+        "以后受伤——先告诉我。"
+      ],
+      "cultivate": [
+        "修炼时注意经脉。",
+        "你的灵气越来越稳了。",
+        "道侣修炼的样子——很好看。"
+      ],
+      "kill": [
+        "……那个人必须死吗？",
+        "你是对的。但下次让我帮忙。",
+        "杀便杀了。天道不记这一笔——我替你记。"
+      ],
+      "save": [
+        "你救了人。",
+        "你是好人——我一直知道。",
+        "三百年后——世人会记得你做过什么。"
+      ],
+      "breakthrough": [
+        "恭喜。",
+        "你的修为又进一步了。",
+        "道侣——我为你高兴。真的。"
+      ],
+      "dao_heart_gain": [
+        "道心坚定是好事。",
+        "你的道——越来越清晰了。",
+        "你选的每条路——我都跟随。"
+      ],
+      "karma_bad": [
+        "你……做了什么？",
+        "天道在看着。",
+        "不管怎样——我站在你这边。"
+      ],
+      "death_near": [
+        "不行！",
+        "你不能死——参汤还没喝完。",
+        "你答应过我的——三百年不够！"
+      ],
+      "neutral": [
+        "……。",
+        "今天的风有点凉。",
+        "我在。"
+      ]
+    },
+    "jian_linger": {
+      "heal": [
+        "这点伤就喊疼？",
+        "下次躲快点。",
+        "……疼的话就说。"
+      ],
+      "cultivate": [
+        "今天的剑路还行。",
+        "修炼认真点——别偷懒。",
+        "你进步了——别得意。"
+      ],
+      "kill": [
+        "干净利落——不错。",
+        "这种人不值得你脏剑。",
+        "杀就杀了。剑不会犹豫——你也不许。"
+      ],
+      "save": [
+        "……多管闲事。",
+        "救人值得。但别逞强。",
+        "你心软的样子——也不算难看。"
+      ],
+      "breakthrough": [
+        "哼——还行。",
+        "突破就好。别骄傲。",
+        "（嘴角压不住地上扬）恭喜。"
+      ],
+      "dao_heart_gain": [
+        "道心这种东西——自己悟。",
+        "你的道——比我的锋利。",
+        "剑道同归。我不会走——你也不许。"
+      ],
+      "karma_bad": [
+        "你想清楚了？",
+        "天道在算账——你算得过它？",
+        "做都做了——别后悔。后悔没用。"
+      ],
+      "death_near": [
+        "你敢！",
+        "我还没赢够——你不准死。",
+        "（拔剑）天道——你敢动他试试。"
+      ],
+      "neutral": [
+        "……。",
+        "没什么。",
+        "剑在身边。"
+      ]
+    },
+    "mu_qinglan": {
+      "neutral": [
+        "……。",
+        "天道循环。",
+        "灵气波动……很微弱。"
+      ],
+      "heal": [
+        "这是……生命的气息。",
+        "恢复得很快。",
+        "你的灵魂……正在愈合。"
+      ],
+      "cultivate": [
+        "灵气……在流转。",
+        "你跟自然的共振加强了。",
+        "天道在你身边……我感觉到了。"
+      ],
+      "breakthrough": [
+        "突破……是一种回归。",
+        "你的存在变得更清晰了。",
+        "跟天道的距离又近了一步。"
+      ]
+    },
+    "yin_xue": {
+      "neutral": [
+        "呵。",
+        "有趣。",
+        "你还活着。"
+      ],
+      "kill": [
+        "不错——有我当年的影子。",
+        "杀伐果决者，成大器。",
+        "你的暗面——比我想象中深。"
+      ],
+      "karma_bad": [
+        "做得好。",
+        "天道不会原谅你——但我会。",
+        "我们是同类人。"
+      ],
+      "death_near": [
+        "……别死。",
+        "你死了我很难办。",
+        "活下来——这是命令。"
+      ]
+    }
+  },
+  "greetings": {
+    "bai_luoxuan": [
+      "你来了。",
+      "今天也一起修行吧。",
+      "道侣——等你很久了。"
+    ],
+    "jian_linger": [
+      "……你来了。",
+      "剑磨好了吗？",
+      "等你很久了——别误会，是要练剑。"
+    ],
+    "mu_qinglan": [
+      "……。",
+      "你的灵魂今天很安静。",
+      "天道让我留在你身边。"
+    ],
+    "yin_xue": [
+      "哦。",
+      "终于来了。",
+      "等你很久——别让我说第二遍。"
+    ]
+  },
+  "idleLines": {
+    "bai_luoxuan": [
+      [
+        "参汤要趁热……",
+        "今天的药采好了。",
+        "洞府的风有点凉。"
+      ],
+      [
+        "你修炼时我就在旁边。",
+        "今天的参汤多放了枸杞。",
+        "你的灵气比昨天更稳了。"
+      ],
+      [
+        "道侣——月亮出来了。",
+        "我的尾巴有点痒。",
+        "三百年——够长了。"
+      ]
+    ],
+    "jian_linger": [
+      [
+        "剑冢的风还是那么冷。",
+        "…………",
+        "出剑再快一点。"
+      ],
+      [
+        "今天的剑路——还行。",
+        "我不是在等你。",
+        "你出剑慢了半拍。"
+      ],
+      [
+        "冰心剑意——原来是暖的。",
+        "别走太远。",
+        "我在剑冢等你。"
+      ]
+    ],
+    "mu_qinglan": [
+      [
+        "……",
+        "天地有灵。",
+        "山水之间……大道在流转。"
+      ],
+      [
+        "你的灵魂很干净。",
+        "天道……在你这边。",
+        "感谢你……让我留在这里。"
+      ],
+      [
+        "你是天道的意志。",
+        "我愿意……为你承载天地。",
+        "不要离开。"
+      ]
+    ],
+    "yin_xue": [
+      [
+        "呵。",
+        "还没死啊。",
+        "无聊。"
+      ],
+      [
+        "有点意思。",
+        "你比那些废物强。",
+        "继续——我在看。"
+      ],
+      [
+        "你很特别。",
+        "别让我失望。",
+        "……暖和的东西。"
+      ]
+    ]
+  },
+  "npcPortraitMap": {
+    "bai_ren": "assets/characters/concept_bai_ren_zhenren.webp",
+    "bai_luoxuan": "assets/characters/concept_bai_luoxuan.webp",
+    "jian_linger": "assets/characters/concept_jian_linger.webp",
+    "mu_qinglan": "assets/characters/concept_mu_qinglan.webp",
+    "yin_xue": "assets/cards/characters/card_yinxue_pc98.png",
+    "jiuwei_suyue": "assets/characters/concept_jiuwei_suyue.webp",
+    "jiuwei": "assets/characters/concept_jiuwei_suyue.webp",
+    "tianji_laoren": "assets/characters/concept_tianji_laoren.webp",
+    "tian_ji": "assets/characters/concept_tianji_laoren.webp",
+    "xuesha_laozu": "assets/characters/concept_xuesha_laozu.webp",
+    "xue_sha": "assets/characters/concept_xuesha_laozu.webp",
+    "mortal": "assets/cards/characters/card_sunian_mortal_pc98.png",
+    "wandering_mortal": "assets/cards/characters/card_sunian_mortal_pc98.png",
+    "wandering_swordsman": "assets/cards/characters/card_swordsman_wanderer_pc98.png",
+    "liu_qingluan": "assets/cards/characters/card_liu_qingluan_pc98.png",
+    "shi_potian": "assets/cards/characters/card_shi_potian_pc98.png",
+    "dieyi_xianzi": "assets/cards/characters/card_dieyi_xianzi_pc98.png",
+    "youming_shusheng": "assets/cards/characters/card_youming_shusheng_pc98.png",
+    "liu_ruyan": "assets/cards/characters/card_liu_ruyan_pc98.png",
+    "hua_xiangrong": "assets/cards/characters/card_hua_xiangrong_pc98.png",
+    "ds_bloodrose": "assets/cards/characters/card_dieyi_xianzi_pc98.png",
+    "ds_moonmist": "assets/cards/characters/card_liu_ruyan_pc98.png",
+    "ds_spiritvine": "assets/cards/characters/card_hua_xiangrong_pc98.png",
+    "ds_demoness": "assets/cards/characters/card_demoness_pc98.png",
+    "ds_traveler": "assets/cards/characters/card_liu_qingluan_pc98.png",
+    "ds_alchemist": "assets/cards/characters/card_liu_qingluan_pc98.png",
+    "ds_bandit_queen": "assets/cards/characters/card_bandit_queen_pc98.png"
+  }
+}

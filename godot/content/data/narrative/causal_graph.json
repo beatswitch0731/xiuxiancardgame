@@ -1,0 +1,555 @@
+{
+  "version": 1,
+  "factTypes": [
+    {
+      "factTypeId": "rumor_rusted_sword_origin",
+      "description": "集市二手铁器的合法流转号。它只证明来路，并不授予法宝。",
+      "consumers": [
+        {
+          "consumerId": "regulated_rusted_sword_order",
+          "vendorId": "regulated_market",
+          "earliestDecisionOffset": 1,
+          "latestDecisionOffset": 4,
+          "label": "凭流转号登记正货订购",
+          "description": "因你曾在集市查得锈铁的官印流转号，坊市愿按账册为你登记一件正货。",
+          "costSpec": [
+            { "kind": "resource", "key": "spiritStone", "amount": 12 }
+          ],
+          "receiptText": "官坊核过流转号，收下十二灵石定金；三次决断后，可凭官坊回执领取正货。",
+          "delivery": {
+            "definitionId": "licensed_rusted_sword",
+            "coreDecisionDelay": 3,
+            "orderLabel": "坊市净炼残剑",
+            "receiptText": "官坊核过流转号，收下十二灵石定金；三次决断后，可凭官坊回执领取正货。",
+            "provenanceFactTypeId": "sword_origin_licensed"
+          },
+          "terminalClosure": "流转号超过了坊市的核验期限，锈铁的来路又被旧账封住。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "sword_origin_licensed",
+      "description": "坊市以官印流转号交付的净炼残剑。它记录交付因果，不是新的订购凭据。",
+      "consumers": [
+        {
+          "consumerId": "qi_main_origin_observation",
+          "vendorId": "chapter_qi",
+          "mode": "observe",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "问剑辨源",
+          "description": "官印与流转号留下的来历，可在炼气问剑时被回望；它不重新开启交付。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "sword_origin_traded",
+      "description": "集市瘸脚许易出的残剑来历。它把具体实例、支付方式与旧主札记绑在同一世，不能被新的同名剑覆盖。",
+      "consumers": [
+        {
+          "consumerId": "former_owner_traded_trace",
+          "vendorId": "narrative_flow",
+          "earliestDecisionOffset": 3,
+          "latestDecisionOffset": 8,
+          "label": "栖霞渡旧主循札而来",
+          "description": "你曾在集市从瘸脚许手中易得此剑；三次决断后，一名循着札记找来的旧主在渡口截住了你。",
+          "costSpec": [],
+          "receiptText": "旧主的追问已被记入这把残剑的来历。",
+          "terminalClosure": "栖霞渡的渡船已经换了三班，旧主和这页札记都没再出现。",
+          "narrative": {
+            "title": "栖霞渡 · 旧主循札",
+            "description": "渡口雾起，一名戴斗笠的人看见你腰间的残剑便停下脚步。他认得剑脊的第三道折痕，也认得夹在鞘口的那页许摊札记。你当初是在集市从瘸脚许手中易得它；此刻，他只问一句：许爷如今往哪里去？",
+            "priority": 58,
+            "choices": [
+              {
+                "id": "name_luo_route",
+                "text": "报出许爷的去向",
+                "desc": "你承认残剑来自集市，也把札记背面的去向交给旧主。旧主收下线索，许爷的人情会在此后变得复杂。",
+                "receiptDisposition": "named_luo_route"
+              },
+              {
+                "id": "withhold_luo_route",
+                "text": "只交还札记，不提摊主",
+                "desc": "你留下旧主能辨认的折痕与札记，却把许爷的去向压在舌下。旧主记住了你的选择。",
+                "receiptDisposition": "withheld_luo_route"
+              }
+            ]
+          }
+        },
+        {
+          "consumerId": "qi_main_origin_observation",
+          "vendorId": "chapter_qi",
+          "mode": "observe",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "问剑辨源",
+          "description": "集市旧主札记留下的来历，可在炼气问剑时被回望；它不重开旧主追索。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "sword_origin_ghost_oath",
+      "description": "鬼市夜契残剑的签约回执。它绑定具体剑实例、无面债主与到期清偿，不能被同名器物或卸装替代。",
+      "consumers": [
+        {
+          "consumerId": "ghost_oath_debt_settlement",
+          "vendorId": "ghost_debt",
+          "earliestDecisionOffset": 2,
+          "latestDecisionOffset": 12,
+          "label": "夜契到期结清",
+          "description": "鬼市夜契的债务到期后，以清偿或违约的同一回执收束这把残剑的取得事实。",
+          "costSpec": [],
+          "receiptText": "夜契的去留已经写进同一张回执。",
+          "terminalClosure": "夜契回执在雾中自行烧尽。"
+        },
+        {
+          "consumerId": "qi_main_origin_observation",
+          "vendorId": "chapter_qi",
+          "mode": "observe",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "问剑辨源",
+          "description": "夜契曾留下的来历，可在炼气问剑时被回望；它不重开债务或违约。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "qi_main_call",
+      "description": "炼气问剑的第一拍：你已听见剑与自身气机的第一声回应。",
+      "consumers": [
+        {
+          "consumerId": "qi_main_call_to_pressure",
+          "vendorId": "chapter_qi",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "问剑受压",
+          "description": "第一声剑鸣必须经由现实的压力被验证。",
+          "terminalClosure": "第一声剑鸣已散在尘世里。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "qi_main_pressure",
+      "description": "炼气问剑的第二拍：你已在外界压力下检验过这声剑鸣。",
+      "consumers": [
+        {
+          "consumerId": "qi_main_pressure_to_commitment",
+          "vendorId": "chapter_qi",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "问剑立志",
+          "description": "承过压力后，才可为自己的剑路作出承诺。",
+          "terminalClosure": "这份压力未能落成剑路。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "qi_main_commitment",
+      "description": "炼气问剑的第三拍：你已经把选择立为不可回避的修行承诺。",
+      "consumers": [
+        {
+          "consumerId": "qi_main_commitment_to_trial",
+          "vendorId": "chapter_qi",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "问剑入试",
+          "description": "立下的承诺要在试炼里被检验。",
+          "terminalClosure": "这份承诺未及试炼便已消散。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "qi_main_trial",
+      "description": "炼气问剑的第四拍：试炼已经完成，雷劫将裁定它是否成立。",
+      "consumers": [
+        {
+          "consumerId": "qi_main_trial_resolution",
+          "vendorId": "chapter_qi",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "问剑雷劫裁定",
+          "description": "雷劫结束时，试炼必须以同一张回执收束。",
+          "terminalClosure": "试炼未能等到雷劫的裁定。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "qi_sword_master_stance",
+      "description": "炼气问剑第三拍的师承立势（PATH_ARC）：守势或进势只影响本世雷劫开局。",
+      "consumers": [
+        {
+          "consumerId": "qi_sword_master_stance_resolution",
+          "vendorId": "chapter_qi",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "师承立势结算",
+          "description": "雷劫结束时，守与进的选择同时结算。",
+          "terminalClosure": "这式剑势未及雷劫便已消散。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "qi_main_outcome",
+      "description": "炼气问剑的第五拍：雷劫已经给出这一世的结论。",
+      "consumers": []
+    },
+    {
+      "factTypeId": "foundation_main_enrollment",
+      "description": "筑基宗册照心的第一拍：你已决定以誓约入册，或保留独行之身。",
+      "consumers": [
+        {
+          "consumerId": "foundation_main_enrollment_to_witness",
+          "vendorId": "chapter_foundation",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "宗册外务取证",
+          "description": "入宗时留下的取舍，要在第一桩外务中承受具体的人与事。",
+          "terminalClosure": "这页宗册未及外务验证，已经被山门的雾气打湿。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "foundation_main_witness",
+      "description": "筑基宗册照心的第二拍：你已把山村异象记成证词，或先为村民挡下危机。",
+      "consumers": [
+        {
+          "consumerId": "foundation_main_witness_to_register_stance",
+          "vendorId": "chapter_foundation",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "灵矿纷争立场",
+          "description": "证词必须在宗门的利益冲突中被选择如何保全。",
+          "terminalClosure": "山村留下的证词未及带回宗门，已散作无人认领的流言。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "foundation_main_register_stance",
+      "description": "筑基宗册照心的第三拍：你已在灵矿纷争中站队，或为被抹去的名字留出余地。",
+      "consumers": [
+        {
+          "consumerId": "foundation_main_register_stance_to_mirror_preparedness",
+          "vendorId": "chapter_foundation",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "红尘照心准备",
+          "description": "在宗门里作出的取舍，必须在红尘的劫语前被自己承认。",
+          "terminalClosure": "灵矿纷争的立场未及照见己心，已被宗门的旧规矩掩住。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "foundation_main_mirror_preparedness",
+      "description": "筑基宗册照心的第四拍：你已经正视劫兆，或决定独自承担镜中的质问。",
+      "consumers": [
+        {
+          "consumerId": "foundation_main_mirror_verdict",
+          "vendorId": "chapter_foundation",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "金丹心魔裁定",
+          "description": "金丹心魔结束时，必须以同一张回执裁定这次照心准备。",
+          "terminalClosure": "镜劫尚未降临，这次照心准备已随旧世记录归档。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "foundation_main_mirror_verdict",
+      "description": "筑基宗册照心的第五拍：金丹心魔已经给出这一世的裁定。",
+      "consumers": [
+        {
+          "consumerId": "golden_main_mirror_observation",
+          "vendorId": "chapter_golden",
+          "mode": "observe",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "金丹照心回声",
+          "description": "筑基时照见自己的结论，可在金丹初成时被只读回望；它不重开镜劫，也不改变金丹选择。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "golden_main_core_intent",
+      "description": "金丹丹心的第一拍：你已决定先温养初成金丹，或带着它走入人间。",
+      "consumers": [
+        {
+          "consumerId": "golden_main_core_intent_to_relic_price",
+          "vendorId": "chapter_golden",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "太虚秘境见价",
+          "description": "初成金丹的去向必须在秘境的真实代价前被验证。",
+          "terminalClosure": "初成金丹未及秘境验证，便在旧世记录中沉静下来。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "golden_main_relic_price",
+      "description": "金丹丹心的第二拍：你已在秘境深处承担代价，或在边缘守住自己的边界。",
+      "consumers": [
+        {
+          "consumerId": "golden_main_relic_price_to_creed",
+          "vendorId": "chapter_golden",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "正魔之间定界",
+          "description": "见过秘境的代价后，才可决定是否把裁决交给魔引。",
+          "terminalClosure": "秘境里承担或守住的代价，未及正魔之间便失去回声。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "golden_main_creed",
+      "description": "金丹丹心的第三拍：你已拒绝魔引，或承认动摇却没有交出裁决。",
+      "consumers": [
+        {
+          "consumerId": "golden_main_creed_to_anchor",
+          "vendorId": "chapter_golden",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "同道与独行立锚",
+          "description": "道心边界必须由同道互证或独行自证，才会成为可经雷劫裁定的锚点。",
+          "terminalClosure": "这道边界未及立锚，已在雷声未至前归为旧世的沉默。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "golden_main_anchor",
+      "description": "金丹丹心的第四拍：你已选择以同道互证，或以独行自证，作为丹碎成婴前的道心锚点。",
+      "consumers": [
+        {
+          "consumerId": "golden_main_anchor_to_yinyang_verdict",
+          "vendorId": "chapter_golden",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "阴阳雷劫裁定",
+          "description": "阴阳雷劫结束时，必须以同一张回执裁定这枚丹心锚点。",
+          "terminalClosure": "阴阳雷劫尚未降临，丹心锚点已被收进旧世记录。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "golden_main_yinyang_verdict",
+      "description": "金丹丹心的第五拍：阴阳雷劫已经给出这一世碎丹成婴的结论。",
+      "consumers": [
+        {
+          "consumerId": "nascent_main_golden_observation",
+          "vendorId": "chapter_nascent",
+          "mode": "observe",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "元婴回望丹心",
+          "description": "金丹雷劫的结论可在元婴初成时被只读回望；它不重新开启雷劫，也不替元婴选择道路。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "nascent_main_soul_posture",
+      "description": "元婴回返的第一拍：你已让神魂外放，或守住本体。",
+      "consumers": [{
+        "consumerId": "nascent_main_soul_posture_to_tribulation_response",
+        "vendorId": "chapter_nascent",
+        "mode": "settle_once",
+        "earliestDecisionOffset": 0,
+        "latestDecisionOffset": 99,
+        "label": "天劫之前应对",
+        "description": "神魂的安放必须在天劫试探前落实为准备或迎击。",
+        "terminalClosure": "神魂的安放尚未回应天劫，便随旧世记录沉静下来。"
+      }]
+    },
+    {
+      "factTypeId": "nascent_main_tribulation_response",
+      "description": "元婴回返的第二拍：你已选择蓄势，或迎击天劫。",
+      "consumers": [{
+        "consumerId": "nascent_main_tribulation_response_to_karma_settlement",
+        "vendorId": "chapter_nascent",
+        "mode": "settle_once",
+        "earliestDecisionOffset": 0,
+        "latestDecisionOffset": 99,
+        "label": "旧因果清算",
+        "description": "面对天劫的姿态必须在旧因果前落实为偿还或自行清算。",
+        "terminalClosure": "天劫前的回应未及因果清算，已归为旧世的余响。"
+      }]
+    },
+    {
+      "factTypeId": "nascent_main_karma_settlement",
+      "description": "元婴回返的第三拍：你已选择偿还旧债，或自行清算。",
+      "consumers": [{
+        "consumerId": "nascent_main_karma_settlement_to_fate_claim",
+        "vendorId": "chapter_nascent",
+        "mode": "settle_once",
+        "earliestDecisionOffset": 0,
+        "latestDecisionOffset": 99,
+        "label": "命定之前认领",
+        "description": "旧因果如何落定，决定你会接受二分，还是认领第三条路。",
+        "terminalClosure": "旧因果未及命定之前，已被收进旧世账册。"
+      }]
+    },
+    {
+      "factTypeId": "nascent_main_fate_claim",
+      "description": "元婴回返的第四拍：你已承认命运二分，或认领第三条路。",
+      "consumers": [{
+        "consumerId": "nascent_main_fate_claim_to_void_verdict",
+        "vendorId": "chapter_nascent",
+        "mode": "settle_once",
+        "earliestDecisionOffset": 0,
+        "latestDecisionOffset": 99,
+        "label": "化神雷罚回照",
+        "description": "化神雷罚结束时，必须以同一张回执回照你已认领的道路。",
+        "terminalClosure": "化神雷罚尚未降临，命数认领已被收进旧世记录。"
+      }]
+    },
+    {
+      "factTypeId": "nascent_main_void_verdict",
+      "description": "元婴回返的第五拍：化神雷罚已经给出这一世元婴回返的结论。",
+      "consumers": [{
+        "consumerId": "deity_main_nascent_observation",
+        "vendorId": "chapter_deity",
+        "mode": "observe",
+        "earliestDecisionOffset": 0,
+        "latestDecisionOffset": 99,
+        "label": "化神回望虚空",
+        "description": "元婴回返的结论可在化神初成时被只读回望；它不重开雷罚，也不替化神决定如何介入众生。"
+      }]
+    },
+    {
+      "factTypeId": "deity_main_gaze",
+      "description": "化神万因的第一拍：你已收束神念自守，或以威势介入众生。",
+      "consumers": [{
+        "consumerId": "deity_main_gaze_to_truth_position",
+        "vendorId": "chapter_deity",
+        "mode": "settle_once",
+        "earliestDecisionOffset": 0,
+        "latestDecisionOffset": 99,
+        "label": "石碑之前定真相",
+        "description": "看见众生后的姿态，必须在世界漏洞的真相前落实为追索或灭迹。",
+        "terminalClosure": "看见众生的姿态未及石碑，已随旧世记录沉静下来。"
+      }]
+    },
+    {
+      "factTypeId": "deity_main_truth_position",
+      "description": "化神万因的第二拍：你已追索世界漏洞的真相，或选择毁碑灭迹。",
+      "consumers": [{
+        "consumerId": "deity_main_truth_position_to_world_response",
+        "vendorId": "chapter_deity",
+        "mode": "settle_once",
+        "earliestDecisionOffset": 0,
+        "latestDecisionOffset": 99,
+        "label": "天裂之前作答",
+        "description": "对世界漏洞的立场，必须在天裂降临时落实为护世或取利。",
+        "terminalClosure": "石碑前的立场未及天裂，已归为旧世未竟的判断。"
+      }]
+    },
+    {
+      "factTypeId": "deity_main_world_response",
+      "description": "化神万因的第三拍：你已在天裂前选择护住苍生，或借裂取利。",
+      "consumers": [{
+        "consumerId": "deity_main_world_response_to_debt_claim",
+        "vendorId": "chapter_deity",
+        "mode": "settle_once",
+        "earliestDecisionOffset": 0,
+        "latestDecisionOffset": 99,
+        "label": "众生因果认领",
+        "description": "天裂前的回应必须在众生因果前落实为斩断或承担。",
+        "terminalClosure": "天裂前的回应未及众生因果，便被收进旧世账册。"
+      }]
+    },
+    {
+      "factTypeId": "deity_main_debt_claim",
+      "description": "化神万因的第四拍：你已选择斩断因果，或承担因果。",
+      "consumers": [{
+        "consumerId": "deity_main_debt_claim_to_karma_verdict",
+        "vendorId": "chapter_deity",
+        "mode": "settle_once",
+        "earliestDecisionOffset": 0,
+        "latestDecisionOffset": 99,
+        "label": "九重业锁裁定",
+        "description": "九重业锁结束时，必须以同一张回执裁定你如何认领因果。",
+        "terminalClosure": "九重业锁尚未降临，因果认领已被收进旧世记录。"
+      }]
+    },
+    {
+      "factTypeId": "deity_main_karma_verdict",
+      "description": "化神万因的第五拍：九重业锁已经给出这一世的渡劫结论。",
+      "consumers": []
+    },
+    {
+      "factTypeId": "sect_register_lead",
+      "description": "墨线宗册的第一拍：你已选择暗中追查被抹去的名字，或当面向执事质问。",
+      "consumers": [
+        {
+          "consumerId": "sect_register_lead_to_evidence",
+          "vendorId": "chapter_foundation",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "墨线取证",
+          "description": "空行留下的方向必须在坊市旧账前落成可用证据。",
+          "terminalClosure": "宗册的空行在旧墨里散去，未能留下可核验的追查方向。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "sect_register_evidence",
+      "description": "墨线宗册的第二拍：你保全了原账，或只留下了通向灵脉的货路。",
+      "consumers": [
+        {
+          "consumerId": "sect_register_evidence_to_verdict",
+          "vendorId": "chapter_foundation",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 0,
+          "latestDecisionOffset": 99,
+          "label": "宗册裁决",
+          "description": "证据必须先被选择如何交付，才可能成为坊市可归档的回执。",
+          "terminalClosure": "旧账和货路都没有等到裁决，灵脉的裂口重新被尘土盖住。"
+        }
+      ]
+    },
+    {
+      "factTypeId": "sect_register_resolution",
+      "description": "墨线宗册的第三拍：你已决定公开十七人的名字，或先救人再封存证据；此裁决须由坊市留下正式归档。",
+      "consumers": [
+        {
+          "consumerId": "regulated_register_archive",
+          "vendorId": "regulated_market",
+          "mode": "settle_once",
+          "earliestDecisionOffset": 1,
+          "latestDecisionOffset": 8,
+          "label": "递交宗册归档",
+          "description": "将墨线宗册交由坊市核验，留下本世唯一可追查的归档回执。",
+          "costSpec": [],
+          "receiptText": "坊市已将宗册裁决记入本世账册。",
+          "presentationByPayload": {
+            "payloadKey": "resolution",
+            "variants": {
+              "public_truth": {
+                "label": "将十七人名册公示归档",
+                "description": "以正册公示十七个被抹去的名字，让内务堂的旧令接受公开核验。",
+                "receiptText": "坊市已将十七人的名字录入正册并公示：内务堂的旧令从此留下可核验的公开裂口。"
+              },
+              "rescue_first": {
+                "label": "封存副册，先救矿洞活人",
+                "description": "以封存副册保住证据与营救路线，待活人脱险后仍可循坊市回执追查。",
+                "receiptText": "坊市已封存副册并留存营救路线：十七人的名字没有再被抹去，证据也未被提前惊动。"
+              }
+            }
+          },
+          "terminalClosure": "坊市的归档期限已过；这份宗册裁决只能作为本世未竟的旧账留下。"
+        }
+      ]
+    }
+  ]
+}

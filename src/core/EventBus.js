@@ -116,3 +116,10 @@ class EventBus {
 
 // 全局单例
 const eventBus = new EventBus();
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = eventBus;
+} else if (typeof window !== 'undefined') {
+  window.EventBus = EventBus;
+  window.eventBus = eventBus;
+}

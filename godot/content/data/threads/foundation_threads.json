@@ -1,0 +1,215 @@
+{
+  "realm": "foundation",
+  "version": 1,
+  "threads": [
+    {
+      "threadId": "tianshu_seal_echo",
+      "title": "残卷指向的暗门",
+      "description": "因你已完成天枢秘典，残卷里被忽略的一枚封印印记开始在筑基层显出后路。",
+      "realm": "foundation",
+      "priority": 90,
+      "requirements": {
+        "completedQuestIds": ["tianshu_codex"]
+      },
+      "trigger": { "type": "realm_enter", "realm": "foundation", "minTurn": 1 },
+      "nodes": [
+        {
+          "id": "tse_seal_echo",
+          "phase": "consequence",
+          "card": {
+            "id": "thread_tianshu_seal_echo_1",
+            "semanticKey": "thread:tianshu_seal_echo:tse_seal_echo",
+            "once": true,
+            "title": "残页指向的暗门",
+            "description": "因你已完成天枢秘典，第三页留下的“回”字与背面封印纹路在夜里显出新的对应：不论原页还在，还是只剩你袖上的拓痕，它们都指向筑基层地底的一道封印门径。门后有人把上界收割的账目留成了可被改写的空白。你要把线索交给道院，还是先独自确认它是否是陷阱？",
+            "sceneImage": "assets/cards/keyframes/scene_key_tianshu_seal_door_v2.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "天枢暗门", "alt": "筑基层地底的封印门仍紧闭，主角袖上拓痕与门纹相应，尚未决定分享线索或独自入门。" },
+            "type": "STORY",
+            "realm": "foundation",
+            "eligibleRealms": ["foundation"],
+            "threadTags": ["天枢余波", "封印暗门", "consequence"],
+            "choices": {
+              "left": {
+                "text": "拓下账目，交给可信之人",
+                "desc": "先让真相有见证者，再决定如何改写这条账。",
+                "effects": { "knowledge": 8, "daoHeart": 5 },
+                "threadDirection": "share_evidence"
+              },
+              "right": {
+                "text": "独自入门，先辨虚实",
+                "desc": "线索若是陷阱，不能把同门一同拖进去。",
+                "effects": { "fortune": 6, "cultivation": 4 },
+                "threadDirection": "verify_alone"
+              }
+            }
+          }
+        },
+        {
+            "id": "tse_commitment",
+            "phase": "resolution",
+            "card": {
+              "id": "thread_tianshu_seal_echo_2",
+              "semanticKey": "thread:tianshu_seal_echo:tse_commitment",
+              "once": true,
+              "title": "封门前留下的凭证",
+              "description": "你确认那条门径并非凭空出现：有人把上界收割的旧账藏进了筑基层，等后来者决定它该成为公开的证据，还是一条必须先被守住的暗线。你无法替未来的人选路，但可以决定这一次留下些什么。",
+              "sceneImage": "assets/cards/keyframes/scene_key_tianshu_seal_door_v2.png",
+              "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "暗门凭证", "alt": "回到筑基层地底的封印门前，旧账线索已有核验，抄本与封门两种做法都尚未发生。" },
+              "type": "STORY",
+              "realm": "foundation",
+              "eligibleRealms": ["foundation"],
+              "threadTags": ["天枢余波", "封印暗门", "resolution"],
+              "choices": {
+                "left": {
+                  "text": "留下可核验的抄本",
+                  "desc": "让后来追查的人能知道这条暗门从何而来。",
+                  "effects": { "knowledge": 6, "karmaGood": 4 },
+                  "threadDirection": "preserve_evidence"
+                },
+                "right": {
+                  "text": "先封住门径，保留线索",
+                  "desc": "不让尚未准备好的人被账目背后的东西吞没。",
+                  "effects": { "daoHeart": 4, "fortune": 4 },
+                  "threadDirection": "guard_the_path"
+                }
+              }
+            },
+          "variants": [
+            {
+              "id": "shared_with_witness",
+              "when": { "choiceDirections": { "tse_seal_echo": "left" } },
+              "card": {
+                "description": "你把账目拓痕交给可信之人，对方留下见证记号；你再回到暗门，核验原账仍在。线索已有第二双眼睛见过，却还没有公开。你无法替未来的人选路，但可以决定这一次留下些什么。"
+              }
+            },
+            {
+              "id": "verified_alone",
+              "when": { "choiceDirections": { "tse_seal_echo": "right" } },
+              "card": {
+                "description": "你独自核查暗门与旧账，确认账目确实指向上界收割；此刻还没有第二位见证者，也没人替你保管这条线索。你无法替未来的人选路，但可以决定这一次留下些什么。"
+              }
+            }
+          ],
+            "consequences": {
+              "onComplete": {
+                "note": "你已在暗门前选择如何安置线索；这份选择能否改变后来者的处境，尚待核验。"
+              }
+            }
+          }
+        ]
+      },
+    {
+      "threadId": "sect_shadow_register",
+      "title": "墨线宗册",
+      "description": "筑基名册里被抹去的名字，把宗门、坊市与一条被掩埋的灵脉连在了一起。",
+      "realm": "foundation",
+      "trigger": { "type": "realm_enter", "realm": "foundation", "minTurn": 1 },
+      "nodes": [
+        {
+          "id": "sr_erased_names",
+          "phase": "beginning",
+          "card": {
+            "id": "thread_sect_register_1",
+            "semanticKey": "thread:sect_shadow_register:sr_erased_names",
+            "once": true,
+            "title": "宗册里的空行",
+            "description": "执事让你在筑基名册上落印。墨迹干透后，纸背却浮出十七个被刮去的名字：他们都曾接过同一桩灵脉巡查，归档处只写着“外出未归”。最末一人的批注，是三日前才留下的。",
+            "sceneImage": "assets/cards/keyframes/scene_key_sect_register_erased_names_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "宗册空名", "alt": "宗门档案室的筑基名册背面露出一列被刮去的名字，执事在远处，主角尚未拓录或质问。" },
+            "type": "STORY",
+            "realm": "foundation",
+            "eligibleRealms": ["foundation"],
+            "threadTags": ["宗门暗线", "失踪名册", "beginning"],
+            "narrativeSpine": {
+              "threadId": "sect_shadow_register",
+              "label": "支线·墨线宗册",
+              "lane": "SIDE_THREAD",
+              "step": 1,
+              "totalSteps": 3,
+              "produces": ["sect_register_lead"],
+              "choicePayload": {
+                "left": { "lead": "investigate" },
+                "right": { "lead": "confront" }
+              }
+            },
+            "choices": {
+              "left": { "text": "拓下空行，暗中追查", "desc": "先保住证据，再问这些人去了哪里。", "effects": { "knowledge": 8, "daoHeart": 5 }, "threadDirection": "investigate" },
+              "right": { "text": "当面质问执事", "desc": "让负责名册的人立刻解释。", "effects": { "daoHeart": 8, "fortune": 3 }, "threadDirection": "confront" }
+            }
+          }
+        },
+        {
+          "id": "sr_market_copy",
+          "phase": "middle",
+          "card": {
+            "id": "thread_sect_register_2",
+            "semanticKey": "thread:sect_shadow_register:sr_market_copy",
+            "once": true,
+            "title": "坊市里的同一枚印",
+            "description": "你在坊市旧账摊找到一册被当作废纸出售的运货簿。名册上的十七人都替宗门押运过“废灵砂”，收货印却属于一条从未公开的灵脉。摊主低声说，昨夜也有人来找这本账。",
+            "sceneImage": "assets/cards/keyframes/scene_key_sect_register_market_ledger_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "坊市旧账", "alt": "坊市账摊打开一册带重复收货印的运货簿，废灵砂堆在旁边，主角尚未买下原账或只记货路。" },
+            "type": "STORY",
+            "realm": "foundation",
+            "eligibleRealms": ["foundation"],
+            "threadTags": ["宗门暗线", "坊市证据", "middle"],
+            "narrativeSpine": {
+              "threadId": "sect_shadow_register",
+              "label": "支线·墨线宗册",
+              "lane": "SIDE_THREAD",
+              "step": 2,
+              "totalSteps": 3,
+              "consumes": ["sect_register_lead"],
+              "consumerIds": { "sect_register_lead": "sect_register_lead_to_evidence" },
+              "produces": ["sect_register_evidence"],
+              "choicePayload": {
+                "left": { "evidence": "original_ledger" },
+                "right": { "evidence": "route_note" }
+              }
+            },
+            "choices": {
+              "left": { "text": "买下原账，承担风险", "desc": "原件能定案，也会让幕后人知道你介入了。", "effects": { "spiritStone": -8, "knowledge": 10 }, "threadDirection": "evidence" },
+              "right": { "text": "只记货路，不带走账册", "desc": "减少暴露，但证词可能随时消失。", "effects": { "fortune": 8, "daoHeart": 4 }, "threadDirection": "cautious" }
+            }
+          }
+        },
+        {
+          "id": "sr_verdict",
+          "phase": "resolution",
+          "card": {
+            "id": "thread_sect_register_3",
+            "semanticKey": "thread:sect_shadow_register:sr_verdict",
+            "once": true,
+            "title": "把名字写回来",
+            "description": "线索最终指向内务堂私采灵脉的旧令。失踪者并非叛逃，而是被留在矿洞里封口。你可以公开宗册，让宗门承担代价；也可以先救出活人，再把证据交给可信之人。无论选择哪条路，那十七个名字都不该继续空着。",
+            "type": "STORY",
+            "realm": "foundation",
+            "eligibleRealms": ["foundation"],
+            "sceneImage": "assets/cards/keyframes/scene_key_sect_missing_register_v1.png",
+            "artDirection": { "presentation": "scene", "keyframe": true, "chapter": "宗册空名", "alt": "宗册连续空行、矿灯和远处矿洞同框，尚未决定先公开还是先救人。" },
+            "threadTags": ["宗门暗线", "resolution"],
+            "narrativeSpine": {
+              "threadId": "sect_shadow_register",
+              "label": "支线·墨线宗册",
+              "lane": "SIDE_THREAD",
+              "step": 3,
+              "totalSteps": 3,
+              "consumes": ["sect_register_evidence"],
+              "consumerIds": { "sect_register_evidence": "sect_register_evidence_to_verdict" },
+              "produces": ["sect_register_resolution"],
+              "choicePayload": {
+                "left": { "resolution": "public_truth" },
+                "right": { "resolution": "rescue_first" }
+              }
+            },
+            "choices": {
+              "left": { "text": "公开宗册，追究内务堂", "desc": "秩序若靠抹去名字维持，就该被打破。", "effects": { "daoHeart": 12, "karmaGood": 10 }, "threadDirection": "public_truth" },
+              "right": { "text": "先救人，再递交证据", "desc": "真相必须留下，但活人比声势更重要。", "effects": { "fortune": 10, "karmaGood": 8, "cultivation": 6 }, "threadDirection": "rescue_first" }
+            }
+          },
+          "consequences": { "onComplete": { "note": "宗册的裁决已写成待归档的回执；你仍须亲自带它去坊市落印。" } }
+        }
+      ]
+    }
+  ]
+}

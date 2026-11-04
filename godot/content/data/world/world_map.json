@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "title": "苍茫界山河命卷",
+  "subtitle": "山河有界，因果无疆",
+  "coordinateSystem": { "width": 1000, "height": 620 },
+  "designRules": {
+    "navigation": "地图只承担观测、追踪与世界解释，不绕过卡牌流程直接传送。",
+    "discovery": "可进入地域由亲历解锁，远方势力由境界、传闻与剧情逐步显形。",
+    "chronicle": "角色日程、任务链、故事线程和商路状态必须读取运行时数据，不维护第二份剧情进度。"
+  },
+  "nodes": [
+    {
+      "id": "northwild", "name": "北荒冰原", "shortName": "北荒", "kind": "rumor",
+      "x": 23, "y": 14, "minRealm": "foundation", "sigil": "荒",
+      "aliases": ["北荒", "冰原", "北境"],
+      "summary": "极北终年不化的冰原，传闻冰层下沉睡着一座不属于此世的城。",
+      "factions": [], "landmarks": ["无名冰城", "问天碑"], "tone": "frost"
+    },
+    {
+      "id": "sect", "name": "青云剑宗", "shortName": "剑宗", "kind": "location",
+      "x": 55, "y": 20, "minRealm": "qi", "sigil": "宗", "playLocation": "宗门",
+      "aliases": ["宗门", "青云剑宗", "宗门大殿", "演武场", "闭关室", "裂石山径", "山门"],
+      "summary": "天下剑修圣地。剑气、丹香与千年古木共同遮住剑冢深处的上界秘密。",
+      "factions": ["qingyun_sword"], "landmarks": ["宗门大殿", "藏经阁", "后山竹林", "裂石山径"], "tone": "jade"
+    },
+    {
+      "id": "sword_cliff", "name": "剑崖与剑冢", "shortName": "剑崖", "kind": "landmark",
+      "x": 69, "y": 13, "minRealm": "qi", "sigil": "剑", "playLocation": "剑崖", "parent": "sect",
+      "aliases": ["剑崖", "剑冢"],
+      "summary": "万仞绝壁上的剑痕既是功法，也是情书；剑冢仙剑则是上界留下的眼睛。",
+      "factions": ["qingyun_sword"], "landmarks": ["千年剑痕", "上古仙剑", "白字情书"], "tone": "steel"
+    },
+    {
+      "id": "tianji", "name": "天机阁", "shortName": "天机阁", "kind": "faction",
+      "x": 83, "y": 27, "minRealm": "golden", "sigil": "机",
+      "aliases": ["天机阁", "观星台"],
+      "summary": "以残缺天机盘观测因果的中立势力，已经等待某个能承受真相的人七千年。",
+      "factions": ["tianji_pavilion"], "landmarks": ["观星台", "破天阵"], "tone": "violet"
+    },
+    {
+      "id": "void", "name": "天道虚空", "shortName": "虚空", "kind": "location",
+      "x": 91, "y": 8, "minRealm": "deity", "sigil": "道", "playLocation": "天道虚空",
+      "aliases": ["天道虚空", "天道裂缝", "因果之海", "时间回廊", "混沌虚空"],
+      "summary": "飞升前的无向虚空。每条因果线都指向一个被你改变的人，也指向天道筛选的真相。",
+      "factions": [], "landmarks": ["天道裂缝", "因果之海", "时间回廊"], "tone": "star"
+    },
+    {
+      "id": "ruins", "name": "上古秘境", "shortName": "秘境", "kind": "location",
+      "x": 19, "y": 39, "minRealm": "foundation", "sigil": "境", "playLocation": "秘境",
+      "aliases": ["秘境", "遗迹", "试炼通道", "灵脉矿洞", "古修洞府", "太古遗迹"],
+      "summary": "失传功法、灵脉和上古机关层层重叠；越接近核心，越能看见太古浩劫留下的证词。",
+      "factions": [], "landmarks": ["秘境入口", "灵脉矿洞", "太古遗迹"], "tone": "rune"
+    },
+    {
+      "id": "market", "name": "修仙坊市", "shortName": "坊市", "kind": "location",
+      "x": 48, "y": 47, "minRealm": "qi", "sigil": "市", "playLocation": "坊市",
+      "aliases": ["坊市", "修仙坊市", "坊市中心", "万宝楼", "灵草街", "铁匠铺"],
+      "summary": "四方商路交汇的中立长街。灵石价格、珍品流向与势力暗流都在灯笼下留下痕迹。",
+      "factions": [], "landmarks": ["万宝楼", "灵草街", "散修长街"], "tone": "amber"
+    },
+    {
+      "id": "tianshu", "name": "天枢道院", "shortName": "道院", "kind": "faction",
+      "x": 72, "y": 43, "minRealm": "foundation", "sigil": "书",
+      "aliases": ["天枢道院", "万卷楼", "天道书"],
+      "summary": "万卷楼保存着被撕去最后一页的《天道书》，规矩与求真在这里正面冲突。",
+      "factions": ["tianshu_academy"], "landmarks": ["万卷楼", "五行坛", "雷法台"], "tone": "ink"
+    },
+    {
+      "id": "demon", "name": "血煞魔域", "shortName": "魔域", "kind": "location",
+      "x": 8, "y": 60, "minRealm": "golden", "sigil": "煞", "playLocation": "魔域",
+      "aliases": ["魔域", "血煞", "西域", "血煞绿洲", "血煞圣殿", "白骨荒野"],
+      "summary": "西域血砂尽头的魔道国度。白刃与血煞的旧事、血魔功和飞升骗局在此汇流。",
+      "factions": ["xuesha_sect"], "landmarks": ["血煞圣殿", "血煞绿洲", "白骨荒野"], "tone": "blood"
+    },
+    {
+      "id": "wumeng", "name": "武盟雷峰", "shortName": "武盟", "kind": "faction",
+      "x": 23, "y": 76, "minRealm": "foundation", "sigil": "武", "playLocation": "武盟雷峰",
+      "aliases": ["武盟", "万钧瀑布", "天雷峰", "地火窟"],
+      "summary": "横炼、气血与雷体三脉争论肉身极境，万钧瀑布见证每一次不肯倒下。",
+      "factions": ["wumeng_alliance"], "landmarks": ["万钧瀑布", "天雷峰", "地火窟"], "tone": "thunder"
+    },
+    {
+      "id": "foxlands", "name": "南疆月湖", "shortName": "月湖", "kind": "story",
+      "x": 36, "y": 86, "minRealm": "qi", "sigil": "狐",
+      "aliases": ["南疆", "白狐部", "月湖", "狐丘"],
+      "summary": "白狐部世居的月湖与药山。报恩、三百年记忆和九尾一族的天道诅咒从这里开始。",
+      "factions": [], "landmarks": ["白狐部", "月湖", "太古药山"], "tone": "moon"
+    },
+    {
+      "id": "cave", "name": "修士洞府", "shortName": "洞府", "kind": "location",
+      "x": 52, "y": 77, "minRealm": "qi", "sigil": "府", "playLocation": "洞府",
+      "aliases": ["洞府", "修士洞府", "炼气室", "丹房", "剑室", "灵兽棚"],
+      "summary": "主角的私人修炼之所，也是同伴来访、闭关修行与前人遗愿进入日常的位置。",
+      "factions": [], "landmarks": ["炼气室", "月华泉", "灵兽棚"], "tone": "moss"
+    },
+    {
+      "id": "dangu", "name": "神农丹谷", "shortName": "丹谷", "kind": "faction",
+      "x": 73, "y": 73, "minRealm": "foundation", "sigil": "丹",
+      "aliases": ["神农丹谷", "药王谷", "禁药堂", "药谷"],
+      "summary": "救人与制人的丹药来自同一座炉。禁药交易正在动摇丹谷长老会。",
+      "factions": ["shennong_dangu"], "landmarks": ["药王殿", "禁药堂", "百草坡"], "tone": "herb"
+    }
+  ],
+  "routes": [
+    { "id": "cloud_sword_road", "from": "sect", "to": "market", "type": "trade", "curve": -25, "direction": "both" },
+    { "id": "herb_river", "from": "cave", "to": "market", "type": "trade", "curve": 18, "direction": "to" },
+    { "id": "western_blood_route", "from": "demon", "to": "market", "type": "trade", "curve": -20, "direction": "to" },
+    { "id": "ruin_star_path", "from": "ruins", "to": "void", "type": "trade", "curve": -86, "direction": "to" },
+    { "id": "sect_sword_path", "name": "问剑古道", "from": "sect", "to": "sword_cliff", "type": "story", "curve": 8, "direction": "to" },
+    { "id": "scroll_road", "name": "万卷书路", "from": "market", "to": "tianshu", "type": "story", "curve": -12, "direction": "both" },
+    { "id": "stargazer_road", "name": "观星驿路", "from": "tianshu", "to": "tianji", "type": "story", "curve": -12, "direction": "to" },
+    { "id": "fox_medicine_road", "name": "月湖药径", "from": "cave", "to": "foxlands", "type": "story", "curve": 12, "direction": "both" },
+    { "id": "alchemy_road", "name": "百草水道", "from": "market", "to": "dangu", "type": "story", "curve": 20, "direction": "both" },
+    { "id": "body_road", "name": "淬体山道", "from": "market", "to": "wumeng", "type": "story", "curve": 25, "direction": "both" },
+    { "id": "sect_wumeng_pass", "name": "雷峰关道", "from": "sect", "to": "wumeng", "type": "story", "curve": 34, "direction": "both" },
+    { "id": "north_rumor", "name": "北荒传闻", "from": "sect", "to": "northwild", "type": "rumor", "curve": -18, "direction": "to" }
+  ],
+  "characterBindings": {
+    "bai_ren": { "homeNode": "sword_cliff", "portrait": "assets/characters/concept_bai_ren_zhenren.webp" },
+    "bai_luoxuan": { "homeNode": "foxlands", "portrait": "assets/characters/concept_bai_luoxuan.webp" },
+    "jian_linger": { "homeNode": "sword_cliff", "portrait": "assets/characters/concept_jian_linger.webp" },
+    "mu_qinglan": { "homeNode": "tianshu", "portrait": "assets/characters/concept_mu_qinglan.webp" },
+    "yin_xue": { "homeNode": "demon", "portrait": "assets/cards/characters/card_yinxue_pc98.png" },
+    "jiuwei_suyue": { "homeNode": "foxlands", "portrait": "assets/characters/concept_jiuwei_suyue.webp" },
+    "tianji_laoren": { "homeNode": "tianji", "portrait": "assets/characters/concept_tianji_laoren.webp" },
+    "xuesha_laozu": { "homeNode": "demon", "portrait": "assets/characters/concept_xuesha_laozu.webp" }
+  },
+  "questBindings": {
+    "white_fox_line": "foxlands", "sword_legacy": "sword_cliff", "spell_codex": "tianshu",
+    "tianshu_codex": "tianshu", "pill_master": "dangu", "body_tribulation": "wumeng"
+  },
+  "threadBindings": {
+    "abandoned_village": "northwild", "spirit_mine": "market", "sword_tomb_trial": "sword_cliff",
+    "herb_refugee": "dangu", "mist_valley": "cave"
+  },
+  "chronicles": [
+    { "id": "white_fox_line", "node": "foxlands", "title": "白狐报恩", "kind": "quest", "minRealm": "qi", "summary": "一次救助把人妖两族、三百年记忆与天道诅咒连在一起。" },
+    { "id": "sword_tomb_trial", "node": "sword_cliff", "title": "剑冢试炼", "kind": "thread", "minRealm": "qi", "path": "sword", "summary": "残剑深处不仅有传承，还有上界监视苍茫界的证据。" },
+    { "id": "spirit_mine", "node": "market", "title": "灵石风波", "kind": "thread", "minRealm": "qi", "summary": "矿脉归属会改变坊市价格与宗门之间的信任。" },
+    { "id": "mist_valley", "node": "cave", "title": "雾隐秘府", "kind": "thread", "minRealm": "qi", "summary": "元明真人留下的不是宝箱，而是一道会记住选择的因果阵。" },
+    { "id": "herb_refugee", "node": "dangu", "title": "药谷叛逃", "kind": "thread", "minRealm": "qi", "summary": "一张禁药丹方揭开丹谷光明表象下的交易。" },
+    { "id": "sword_legacy", "node": "sword_cliff", "title": "剑道传承", "kind": "quest", "minRealm": "foundation", "path": "sword", "summary": "从听见剑冢遗音，到找到只属于自己的出鞘之道。" },
+    { "id": "spell_codex", "node": "tianshu", "title": "禁术之书", "kind": "quest", "minRealm": "foundation", "path": "spell", "summary": "万卷楼的封印与被撕去的天道书末页相互呼应。" },
+    { "id": "pill_master", "node": "dangu", "title": "失传丹方", "kind": "quest", "minRealm": "foundation", "path": "pill", "summary": "炼丹救人还是控制因果，答案会改变丹谷的未来。" },
+    { "id": "body_tribulation", "node": "wumeng", "title": "肉身渡劫", "kind": "quest", "minRealm": "foundation", "path": "body", "summary": "地火、瀑布与天雷共同拷问肉身是否也能叩开仙门。" },
+    { "id": "qingyun_debate", "node": "sect", "title": "青云论剑之争", "kind": "world", "minRealm": "golden", "summary": "剑意、古剑与革新三派将决定青云剑宗的方向。" },
+    { "id": "heaven_truth", "node": "void", "title": "飞升真相", "kind": "truth", "minRealm": "deity", "summary": "天劫可能不是考验，而是上界对高阶神魂的筛选与收割。" }
+  ]
+}

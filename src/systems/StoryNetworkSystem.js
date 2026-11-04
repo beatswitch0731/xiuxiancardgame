@@ -20,6 +20,201 @@
  *   - 不做内容生产——内容在卡牌JSON中，本系统只做"什么时候出哪张卡"的决策
  *   - 所有决策基于系统化规则，而非硬编码if-else
  */
+function _storyCardNpcIds(card) {
+  return Array.from(new Set([
+    card?.npcId,
+    card?.compId,
+    ...(Array.isArray(card?.npcIds) ? card.npcIds : [])
+  ].filter(id => typeof id === 'string' && id)));
+}
+
+function _arcSemanticKey(ownerId, stage) {
+  return ownerId && stage ? `arc:${ownerId}:${stage}` : null;
+}
+
+function _initArcPending(engine) {
+  engine._pendingClimaxes = [];
+  engine._pendingArcEvents = [];
+  // Existing save/tests may still use the old singular fields. Keep them as
+  // views of the queue, never as a second source of pending state.
+  Object.defineProperties(engine, {
+    _pendingClimax: {
+      configurable: true,
+      get() { return this._pendingClimaxes[0] || null; },
+      set(card) { this._pendingClimaxes = card ? [card] : []; }
+    },
+    _pendingArcEvent: {
+      configurable: true,
+      get() { return this._pendingArcEvents[0] || null; },
+      set(card) { this._pendingArcEvents = card ? [card] : []; }
+    }
+  });
+}
+
+function _arcOwnerId(card) {
+  return card?.npcId || card?.compId || null;
+}
+
+function _queueArcCard(engine, state, card, kind) {
+  if (!card?.id || !state) return false;
+  if (!(state.eventsTriggered instanceof Set)) {
+    state.eventsTriggered = new Set(state.eventsTriggered || []);
+  }
+  const queue = kind === 'climax' ? engine._pendingClimaxes : engine._pendingArcEvents;
+  if (state.eventsTriggered.has(card.id)
+    || queue.some(item => item.id === card.id && _arcOwnerId(item) === _arcOwnerId(card))) return false;
+  queue.push(card);
+  return true;
+}
+
+function _queueUniqueClimax(engine, state, card) {
+  return _queueArcCard(engine, state, card, 'climax');
+}
+
+function _arcCardIsPhysicalAndUnavailable(card) {
+  if (!card || (card.manifestation || 'PHYSICAL') !== 'PHYSICAL'
+    || typeof worldContinuityStore === 'undefined' || !worldContinuityStore) return false;
+  return _storyCardNpcIds(card).some(id => !worldContinuityStore.canManifest(id, 'PHYSICAL'));
+}
+
+function _peekArcCard(engine, kind) {
+  const queue = kind === 'climax' ? engine._pendingClimaxes : engine._pendingArcEvents;
+  for (let i = 0; i < queue.length;) {
+    const card = queue[i];
+    const state = engine.arcStates.get(_arcOwnerId(card));
+    if (!card?.id || !state || state.eventsTriggered?.has(card.id)
+      || _arcCardIsPhysicalAndUnavailable(card)) {
+      queue.splice(i, 1);
+      continue;
+    }
+    // The stage that creates a revelation must be chosen before its payoff.
+    if (kind === 'climax' && engine._pendingArcEvents.some(event => _arcOwnerId(event) === _arcOwnerId(card))) {
+      i++;
+      continue;
+    }
+    const presentable = card.realm && !card.eligibleRealms && card.realm !== gameState.realm
+      ? { ...card, realm: gameState.realm }
+      : card;
+    if (typeof narrativeLedger !== 'undefined' && narrativeLedger?.evaluate) {
+      const validity = narrativeLedger.evaluate(presentable, { state: gameState });
+      if (!validity.allowed) {
+        if (validity.reason === 'semantic_once_resolved') {
+          queue.splice(i, 1);
+          continue;
+        }
+        i++;
+        continue;
+      }
+    }
+    return presentable;
+  }
+  return null;
+}
+
+function _ackArcCard(engine, card) {
+  if (!card?.id) return false;
+  const ownerId = _arcOwnerId(card);
+  const state = engine.arcStates.get(ownerId);
+  if (!state) return false;
+  let found = false;
+  for (const queue of [engine._pendingClimaxes, engine._pendingArcEvents]) {
+    const index = queue.findIndex(item => item.id === card.id && _arcOwnerId(item) === ownerId);
+    if (index >= 0) {
+      queue.splice(index, 1);
+      found = true;
+    }
+  }
+  if (!found) return false;
+  if (!(state.eventsTriggered instanceof Set)) state.eventsTriggered = new Set(state.eventsTriggered || []);
+  state.eventsTriggered.add(card.id);
+  if (['CLIMAX', 'DESTINY', 'DESTINY_CLIMAX'].includes(card.arcStage)) state.climaxTriggered = true;
+  if (card.arcStage === 'SECRET') {
+    const revealed = Array.isArray(state.secretsRevealed) ? state.secretsRevealed : [];
+    if (!revealed.includes(card.id)) state.secretsRevealed = [...revealed, card.id];
+  }
+  return true;
+}
+
+function _reconcileArcRealm(engine, ownerId, realm = gameState.realm) {
+  const state = engine.arcStates.get(ownerId);
+  if (!state || !_canUsePhysicalNpc(ownerId)) return;
+  const realms = ['qi', 'foundation', 'golden', 'nascent', 'deity', 'tribulation'];
+  const realmIndex = realms.indexOf(realm);
+  const queueAtRealm = builder => {
+    const card = builder.call(engine, ownerId);
+    if (card) card.realm = realm;
+    _queueUniqueClimax(engine, state, card);
+  };
+  if (realmIndex >= 2 && state.stageIndex >= 3 && !state.climaxTriggered) {
+    queueAtRealm(engine._buildTribulationClimax);
+  }
+  if (realmIndex >= 4 && state.stageIndex >= 4) {
+    queueAtRealm(engine._buildDestinyClimax);
+  }
+}
+
+function _canUsePhysicalNpc(npcId) {
+  return typeof worldContinuityStore === 'undefined' || !worldContinuityStore
+    || worldContinuityStore.canPhysicallyAppear(npcId);
+}
+
+function _serializeArcEngine(engine) {
+  const arcStates = {};
+  for (const [id, state] of engine.arcStates || []) {
+    arcStates[id] = {
+      ...state,
+      eventsTriggered: Array.from(state.eventsTriggered || [])
+    };
+  }
+  return {
+    arcStates,
+    pendingClimaxes: JSON.parse(JSON.stringify(engine._pendingClimaxes)),
+    pendingArcEvents: JSON.parse(JSON.stringify(engine._pendingArcEvents))
+  };
+}
+
+function _hydrateArcEngine(engine, snapshot, strictLoadedIds = false) {
+  if (!snapshot || typeof snapshot !== 'object') return false;
+  const loadedIds = new Set(Object.keys(engine.arcData || {})
+    .filter(id => id && !id.startsWith('_')));
+  if (strictLoadedIds) {
+    for (const id of Array.from(engine.arcStates.keys())) {
+      if (!loadedIds.has(id)) engine.arcStates.delete(id);
+    }
+  }
+  for (const [id, saved] of Object.entries(snapshot.arcStates || {})) {
+    if (!saved || typeof saved !== 'object') continue;
+    if (strictLoadedIds && !loadedIds.has(id)) continue;
+    const current = engine.arcStates.get(id) || {};
+    engine.arcStates.set(id, {
+      ...current,
+      ...saved,
+      eventsTriggered: new Set(saved.eventsTriggered || [])
+    });
+  }
+  const restorePending = raw => {
+    if (!raw || typeof raw !== 'object') return null;
+    if (strictLoadedIds) {
+      const ownerIds = _storyCardNpcIds(raw);
+      if (ownerIds.length === 0 || !ownerIds.every(id => loadedIds.has(id))) return null;
+    }
+    return JSON.parse(JSON.stringify(raw));
+  };
+  const restoreQueue = (many, single) => {
+    const source = Array.isArray(many) ? many : (single ? [single] : []);
+    const seen = new Set();
+    return source.map(restorePending).filter(card => {
+      const key = `${_arcOwnerId(card)}:${card?.id}`;
+      if (!card?.id || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  };
+  engine._pendingClimaxes = restoreQueue(snapshot.pendingClimaxes, snapshot.pendingClimax);
+  engine._pendingArcEvents = restoreQueue(snapshot.pendingArcEvents, snapshot.pendingArcEvent);
+  return true;
+}
+
 class StoryNetworkSystem {
   constructor() {
     /** @type {WorldNarrativeState} 全局叙事状态 */
@@ -69,6 +264,104 @@ class StoryNetworkSystem {
     if (data.allyArc) this.allyArcs.loadArcs(data.allyArc);
   }
 
+  registerLoadedRoleArcs() {
+    const registerAll = (engine, methodName) => {
+      const ids = Object.keys(engine.arcData || {})
+        .filter(id => id && !id.startsWith('_'))
+        .sort();
+      for (const id of ids) {
+        if (!engine.arcStates.has(id)) engine[methodName](id);
+      }
+      return ids;
+    };
+    return {
+      mentors: registerAll(this.mentorArcs, 'registerMentor'),
+      seers: registerAll(this.seerArcs, 'registerSeer'),
+      allies: registerAll(this.allyArcs, 'registerAlly')
+    };
+  }
+
+  registerOwnedCompanionArcs(companionIds = []) {
+    const loadedIds = new Set(Object.keys(this.companionArcs.arcData || {})
+      .filter(id => id && !id.startsWith('_')));
+    const ids = Array.from(new Set(Array.isArray(companionIds) ? companionIds : []))
+      .filter(id => typeof id === 'string' && loadedIds.has(id))
+      .sort();
+    for (const id of ids) {
+      if (!this.companionArcs.arcStates.has(id)) this.companionArcs.registerCompanion(id);
+    }
+    return ids;
+  }
+
+  resetForNewLife() {
+    // WorldNarrativeState is shared with coherence, emergent and surfacing.
+    // Reset it in place, while replacing every current-life arc state.
+    this.worldState.reset();
+    this.emergent._pendingEmergent = null;
+    for (const engine of [this.companionArcs, this.mentorArcs, this.seerArcs, this.allyArcs]) {
+      engine.arcStates.clear();
+      engine._pendingClimaxes = [];
+      engine._pendingArcEvents = [];
+    }
+    this.registerLoadedRoleArcs();
+    this.registerOwnedCompanionArcs(gameState.resources?.companions || []);
+  }
+
+  exportState() {
+    return {
+      version: 3,
+      worldNarrative: this.worldState.exportState(),
+      companionArcs: _serializeArcEngine(this.companionArcs),
+      mentorArcs: _serializeArcEngine(this.mentorArcs),
+      seerArcs: _serializeArcEngine(this.seerArcs),
+      allyArcs: _serializeArcEngine(this.allyArcs)
+    };
+  }
+
+  // Exact rollback is not cold migration. Do not merge candidate fields or
+  // re-filter the trusted pending cards against a candidate NPC lifecycle.
+  restoreRollbackState(snapshot) {
+    const before = snapshot ? JSON.parse(JSON.stringify(snapshot)) : {};
+    this.worldState.hydrateState(before.worldNarrative);
+    for (const name of ['companionArcs', 'mentorArcs', 'seerArcs', 'allyArcs']) {
+      const engine = this[name], saved = before[name] || {};
+      engine.arcStates = new Map(Object.entries(saved.arcStates || {}).map(([id, state]) => [
+        id, { ...state, eventsTriggered: new Set(state.eventsTriggered || []) }
+      ]));
+      engine._pendingClimaxes = Array.isArray(saved.pendingClimaxes)
+        ? saved.pendingClimaxes : (saved.pendingClimax ? [saved.pendingClimax] : []);
+      engine._pendingArcEvents = Array.isArray(saved.pendingArcEvents)
+        ? saved.pendingArcEvents : (saved.pendingArcEvent ? [saved.pendingArcEvent] : []);
+    }
+    return true;
+  }
+
+  hydrateState(snapshot) {
+    if (!snapshot || typeof snapshot !== 'object') return false;
+    this.worldState.hydrateState(snapshot.worldNarrative);
+    _hydrateArcEngine(this.companionArcs, snapshot.companionArcs);
+    _hydrateArcEngine(this.mentorArcs, snapshot.mentorArcs, true);
+    _hydrateArcEngine(this.seerArcs, snapshot.seerArcs, true);
+    _hydrateArcEngine(this.allyArcs, snapshot.allyArcs, true);
+    if (typeof worldContinuityStore !== 'undefined' && worldContinuityStore?.exportState) {
+      for (const state of Object.values(worldContinuityStore.exportState().npcs || {})) {
+        if (state.manifestation !== 'PHYSICAL') {
+          this._onNpcLifecycleChanged({ npcId: state.npcId, current: state });
+        }
+      }
+    }
+    return true;
+  }
+
+  _isLifecycleEligible(card) {
+    const ids = _storyCardNpcIds(card);
+    if (ids.length === 0 || typeof worldContinuityStore === 'undefined' || !worldContinuityStore) {
+      return true;
+    }
+    const manifestation = card.manifestation || 'PHYSICAL';
+    return ids.every(id => worldContinuityStore.canManifest(id, manifestation));
+  }
+
   /**
    * 获取所有关系加成（道侣+师尊+先知+盟友）
    */
@@ -95,6 +388,7 @@ class StoryNetworkSystem {
    * 初始化：挂载所有事件监听
    */
   init() {
+    eventBus.on('state:reset', () => this.resetForNewLife());
     // 卡牌选择 → 记录叙事状态
     eventBus.on('card:chosen', (data) => this._onCardChosen(data));
 
@@ -122,9 +416,10 @@ class StoryNetworkSystem {
 
     // NPC死亡 → 清除相关叙事
     eventBus.on('npc:died', (data) => this._onNpcDied(data));
+    eventBus.on('npc:lifecycleChanged', (data) => this._onNpcLifecycleChanged(data));
 
     // 势力声望变化
-    eventBus.on('faction:repChanged', (data) => this._onFactionRepChanged(data));
+    eventBus.on('faction:reputationChanged', (data) => this._onFactionRepChanged(data));
 
     // CardSystem调度时调用 → 检查是否有该出的叙事卡
     eventBus.on('storynetwork:checkNarrative', () => this._onCheckNarrative());
@@ -203,7 +498,7 @@ class StoryNetworkSystem {
     });
 
     // --- 战斗胜利 → 血煞同盟度（魔道老祖认可实力） ---
-    eventBus.on('combat:victory', () => {
+    eventBus.on('combat:victorySettled', () => {
       this.allyArcs.addAlignment('xuesha_laozu', 4);
     });
   }
@@ -214,6 +509,10 @@ class StoryNetworkSystem {
 
   _onCardChosen(data) {
     const { card, choice, effects } = data;
+
+    for (const engine of [this.companionArcs, this.mentorArcs, this.seerArcs, this.allyArcs]) {
+      _ackArcCard(engine, card);
+    }
 
     // 记录叙事事件
     this.worldState.recordEvent({
@@ -306,6 +605,16 @@ class StoryNetworkSystem {
     this.worldState.markNpcDead(data.npcId, gameState.turn);
   }
 
+  _onNpcLifecycleChanged(data) {
+    if (!data?.npcId || data?.current?.manifestation === 'PHYSICAL') return;
+    for (const engine of [this.companionArcs, this.mentorArcs, this.seerArcs, this.allyArcs]) {
+      const retain = card => !_storyCardNpcIds(card).includes(data.npcId)
+        || (card.manifestation || 'PHYSICAL') !== 'PHYSICAL';
+      engine._pendingClimaxes = engine._pendingClimaxes.filter(retain);
+      engine._pendingArcEvents = engine._pendingArcEvents.filter(retain);
+    }
+  }
+
   _onFactionRepChanged(data) {
     this.worldState.recordEvent({
       type: 'faction_rep_change',
@@ -323,7 +632,7 @@ class StoryNetworkSystem {
   _onCheckNarrative() {
     // 优先级0：道侣弧线高潮事件（优先级最高——情感最密集）
     const arcClimax = this.companionArcs.getPendingClimax();
-    if (arcClimax) {
+    if (arcClimax && this._isLifecycleEligible(arcClimax)) {
       eventBus.emit('storynetwork:narrativeCard', {
         card: arcClimax,
         priority: 53,
@@ -334,7 +643,7 @@ class StoryNetworkSystem {
 
     // 优先级1：师尊弧线高潮事件（传承/真相揭示）
     const mentorClimax = this.mentorArcs.getPendingClimax();
-    if (mentorClimax) {
+    if (mentorClimax && this._isLifecycleEligible(mentorClimax)) {
       eventBus.emit('storynetwork:narrativeCard', {
         card: mentorClimax,
         priority: 52,
@@ -345,7 +654,7 @@ class StoryNetworkSystem {
 
     // 优先级2：道侣弧线推进事件
     const arcEvent = this.companionArcs.getPendingArcEvent();
-    if (arcEvent) {
+    if (arcEvent && this._isLifecycleEligible(arcEvent)) {
       eventBus.emit('storynetwork:narrativeCard', {
         card: arcEvent,
         priority: 51,
@@ -356,7 +665,7 @@ class StoryNetworkSystem {
 
     // 优先级3：盟友弧线高潮事件（对天道/仙庭的决战）
     const allyClimax = this.allyArcs.getPendingClimax();
-    if (allyClimax) {
+    if (allyClimax && this._isLifecycleEligible(allyClimax)) {
       eventBus.emit('storynetwork:narrativeCard', {
         card: allyClimax,
         priority: 49,
@@ -367,7 +676,7 @@ class StoryNetworkSystem {
 
     // 优先级4：师尊弧线推进事件
     const mentorEvent = this.mentorArcs.getPendingArcEvent();
-    if (mentorEvent) {
+    if (mentorEvent && this._isLifecycleEligible(mentorEvent)) {
       eventBus.emit('storynetwork:narrativeCard', {
         card: mentorEvent,
         priority: 48,
@@ -389,7 +698,7 @@ class StoryNetworkSystem {
 
     // 优先级6：先知弧线高潮事件（终极预言）
     const seerClimax = this.seerArcs.getPendingClimax();
-    if (seerClimax) {
+    if (seerClimax && this._isLifecycleEligible(seerClimax)) {
       eventBus.emit('storynetwork:narrativeCard', {
         card: seerClimax,
         priority: 44,
@@ -400,7 +709,7 @@ class StoryNetworkSystem {
 
     // 优先级7：盟友弧线推进事件
     const allyEvent = this.allyArcs.getPendingArcEvent();
-    if (allyEvent) {
+    if (allyEvent && this._isLifecycleEligible(allyEvent)) {
       eventBus.emit('storynetwork:narrativeCard', {
         card: allyEvent,
         priority: 42,
@@ -411,7 +720,7 @@ class StoryNetworkSystem {
 
     // 优先级8：先知弧线推进事件
     const seerEvent = this.seerArcs.getPendingArcEvent();
-    if (seerEvent) {
+    if (seerEvent && this._isLifecycleEligible(seerEvent)) {
       eventBus.emit('storynetwork:narrativeCard', {
         card: seerEvent,
         priority: 39,
@@ -463,6 +772,7 @@ class StoryNetworkSystem {
   }
 
   _onArcEventCard(data) {
+    if (!this._isLifecycleEligible(data?.card)) return;
     eventBus.emit('storynetwork:narrativeCard', {
       card: data.card,
       priority: data.priority || 51,
@@ -505,6 +815,60 @@ class WorldNarrativeState {
 
     /** @type {number} 叙事深度分数（0-100），越高越复杂 */
     this.narrativeDepth = 0;
+  }
+
+  reset() {
+    const fresh = new WorldNarrativeState();
+    Object.assign(this, fresh);
+  }
+
+  exportState() {
+    return {
+      version: 1,
+      eventLog: JSON.parse(JSON.stringify(this.eventLog.slice(-200))),
+      deadNpcs: Array.from(this.deadNpcs),
+      deathTurn: Array.from(this.deathTurn),
+      companionArcStates: Array.from(this.companionArcStates),
+      factionRepSnapshots: Array.from(this.factionRepSnapshots),
+      worldTags: { ...this.worldTags },
+      narrativeDepth: this.narrativeDepth
+    };
+  }
+
+  hydrateState(snapshot) {
+    this.reset();
+    if (!snapshot || typeof snapshot !== 'object' || Array.isArray(snapshot)) return false;
+    this.eventLog = Array.isArray(snapshot.eventLog)
+      ? snapshot.eventLog.filter(event => event && typeof event === 'object' && !Array.isArray(event)).slice(-200)
+        .map(event => JSON.parse(JSON.stringify(event)))
+      : [];
+    this.deadNpcs = new Set(Array.isArray(snapshot.deadNpcs)
+      ? snapshot.deadNpcs.filter(id => typeof id === 'string' && id)
+      : []);
+    this.deathTurn = new Map(Array.isArray(snapshot.deathTurn)
+      ? snapshot.deathTurn.filter(entry => Array.isArray(entry)
+        && typeof entry[0] === 'string' && Number.isFinite(Number(entry[1])))
+        .map(([id, turn]) => [id, Math.max(0, Number(turn))])
+      : []);
+    this.companionArcStates = new Map(Array.isArray(snapshot.companionArcStates)
+      ? snapshot.companionArcStates.filter(entry => Array.isArray(entry) && typeof entry[0] === 'string')
+      : []);
+    this.factionRepSnapshots = new Map(Array.isArray(snapshot.factionRepSnapshots)
+      ? snapshot.factionRepSnapshots.filter(entry => Array.isArray(entry)
+        && typeof entry[0] === 'string' && Number.isFinite(Number(entry[1])))
+        .map(([id, value]) => [id, Number(value)])
+      : []);
+    if (snapshot.worldTags && typeof snapshot.worldTags === 'object' && !Array.isArray(snapshot.worldTags)) {
+      for (const key of Object.keys(this.worldTags)) {
+        if (typeof snapshot.worldTags[key] === 'boolean') this.worldTags[key] = snapshot.worldTags[key];
+      }
+    }
+    if (Number.isFinite(Number(snapshot.narrativeDepth))) {
+      this.narrativeDepth = Math.max(0, Math.min(100, Number(snapshot.narrativeDepth)));
+    } else {
+      this._recalculateDepth();
+    }
+    return true;
   }
 
   recordEvent(event) {
@@ -823,8 +1187,8 @@ class EmergentNarrativeEngine {
         realm: gameState.realm,
         tags: ['emergent', 'crisis', 'dao_heart', 'introspective'],
         choices: {
-          left: { text: '接受裂隙——破碎之后才是真正的道', effects: { daoHeart: 30, cultivation: 10, health: -15 } },
-          right: { text: '修补裂隙——回到从前', effects: { daoHeart: 10, cultivation: 5, health: 5 } }
+          left: { text: '接受裂隙——破碎之后才是真正的道', effects: { daoHeart: 3, cultivation: 5, health: -2 } },
+          right: { text: '修补裂隙——回到从前', effects: { daoHeart: 1, cultivation: 3, health: 1 } }
         }
       },
       em_heaven_gaze: {
@@ -886,11 +1250,7 @@ class CompanionArcEngine {
     /** @type {Map<string, Object>} compId → arcState */
     this.arcStates = new Map();
 
-    /** @type {Object|null} 待触发的高潮事件 */
-    this._pendingClimax = null;
-
-    /** @type {Object|null} 待触发的弧线事件 */
-    this._pendingArcEvent = null;
+    _initArcPending(this);
   }
 
   /**
@@ -920,6 +1280,7 @@ class CompanionArcEngine {
     const merged = {};
     for (const [compId, state] of this.arcStates) {
       if (state.stageIndex < 1) continue; // 未结缘跳过
+      if (!_canUsePhysicalNpc(compId)) continue;
       const bonuses = this.getCompanionBonuses(compId);
       if (!bonuses) continue;
       for (const [key, val] of Object.entries(bonuses.effects)) {
@@ -951,6 +1312,7 @@ class CompanionArcEngine {
   onAffectionChanged(compId, newAffection, delta) {
     const state = this.arcStates.get(compId);
     if (!state) return;
+    if (!_canUsePhysicalNpc(compId)) return;
 
     // 确定新阶段
     let newStage = 'NOT_BOUND';
@@ -972,6 +1334,7 @@ class CompanionArcEngine {
     // 阶段提升 → 触发阶段进入事件
     if (newStageIndex > state.stageIndex) {
       const oldStage = state.stage;
+      const oldStageIndex = state.stageIndex;
       state.stage = newStage;
       state.stageIndex = newStageIndex;
       state.enteredAtTurn = gameState.turn;
@@ -984,13 +1347,18 @@ class CompanionArcEngine {
         turn: gameState.turn
       });
 
-      // 生成阶段进入事件卡
-      this._pendingArcEvent = this._buildStageEvent(compId, newStage);
+      // A single large affection gain may cross several authored beats.
+      for (const [stageName, stageDef] of Object.entries(this.ARC_STAGES)) {
+        if (stageDef.index > oldStageIndex && stageDef.index <= newStageIndex) {
+          _queueArcCard(this, state, this._buildStageEvent(compId, stageName), 'event');
+        }
+      }
 
       // 深交阶段以上 → 可能有秘密揭示
       if (newStageIndex >= 3 && state.secretsRevealed.length === 0) {
-        this._pendingClimax = this._buildSecretReveal(compId);
+        _queueUniqueClimax(this, state, this._buildSecretReveal(compId));
       }
+      _reconcileArcRealm(this, compId);
     }
 
     // 好感大幅下降 → 弧线倒退
@@ -1012,22 +1380,7 @@ class CompanionArcEngine {
    * 境界突破 → 弧线转折
    */
   onRealmChanged(to) {
-    // 对每个道侣检查是否有境界相关的弧线转折
-    for (const [compId, state] of this.arcStates) {
-      if (state.stageIndex < 2) continue;
-
-      // 金丹期 + 深交(≥3) → 情劫转折
-      if (to === 'golden' && state.stageIndex >= 3 && !state.climaxTriggered) {
-        this._pendingClimax = this._buildTribulationClimax(compId);
-        return;
-      }
-
-      // 化神期 + 至交(≥4) → 天命抉择
-      if ((to === 'deity' || to === 'tribulation') && state.stageIndex >= 4) {
-        this._pendingClimax = this._buildDestinyClimax(compId);
-        return;
-      }
-    }
+    for (const [compId] of this.arcStates) _reconcileArcRealm(this, compId, to);
   }
 
   /**
@@ -1057,15 +1410,11 @@ class CompanionArcEngine {
   // ==========================================
 
   getPendingClimax() {
-    const c = this._pendingClimax;
-    this._pendingClimax = null;
-    return c;
+    return _peekArcCard(this, 'climax');
   }
 
   getPendingArcEvent() {
-    const e = this._pendingArcEvent;
-    this._pendingArcEvent = null;
-    return e;
+    return _peekArcCard(this, 'event');
   }
 
   _buildStageEvent(compId, stage) {
@@ -1077,6 +1426,7 @@ class CompanionArcEngine {
       const pd = arcData.arcStages[stage];
       return {
         id: `arc_${compId}_stage_${stage}`,
+        semanticKey: pd.semanticKey || _arcSemanticKey(compId, stage),
         title: pd.title,
         description: pd.desc,
         type: 'COMPANION_ARC',
@@ -1131,7 +1481,7 @@ class CompanionArcEngine {
         title: `${name}·至交`,
         desc: `${name}把一件东西放在你手心——不是法器，不是丹药。是一个小小的、磨得光滑的木雕。ta说："这是我七岁时刻的——刻的是我娘。我娘走后，这是我最珍贵的东西。"\\n\\nta把最珍贵的东西给了你，什么都没要求。`,
         leftText: `紧紧握住——"我会比你娘活得更久"`,
-        leftEffects: { daoHeart: 25, karmaGood: 15, fortune: 10 },
+        leftEffects: { daoHeart: 20, karmaGood: 15, fortune: 10 },
         rightText: `还给ta——"你应该留着它"`,
         rightEffects: { daoHeart: 15, karmaGood: 10 }
       },
@@ -1139,7 +1489,7 @@ class CompanionArcEngine {
         title: `${name}·天命`,
         desc: `天命——修道之人最怕的词，因为你控制不了。但${name}站在天劫的边缘，回望你——不是害怕，是笃定。ta说："如果飞升之后不能在一起——我不飞升。"\\n\\n这是对抗天道的宣言。以血肉之躯，以凡人之心。`,
         leftText: `"我们一起——不走天道安排的路"`,
-        leftEffects: { daoHeart: 30, karmaGood: 20, fortune: 15, cultivation: 10 },
+        leftEffects: { daoHeart: 20, karmaGood: 15, fortune: 10, cultivation: 8 },
         rightText: `"你先走——我会追上"`,
         rightEffects: { daoHeart: 20, cultivation: 20, fortune: 5 }
       }
@@ -1150,6 +1500,7 @@ class CompanionArcEngine {
 
     return {
       id: `arc_${compId}_stage_${stage}`,
+      semanticKey: _arcSemanticKey(compId, stage),
       title: data.title,
       description: data.desc,
       type: 'COMPANION_ARC',
@@ -1294,7 +1645,7 @@ class CompanionArcEngine {
         },
         right: {
           text: "冲进去——'去他妈的天道'",
-          effects: { daoHeart: 25, health: -40, karmaGood: 20, fortune: -15 },
+          effects: { daoHeart: 2, health: -2, karmaGood: 3, fortune: -2 },
           companionEffects: { compId, affectionDelta: 30, bondDelta: 1 }
         }
       }
@@ -1326,9 +1677,20 @@ class CompanionArcEngine {
             companionEffects: { compId, affectionDelta: pd.leftAffection || 30, bondDelta: 2 }
           },
           right: {
-            text: pd.rightText,
-            effects: pd.rightEffects,
-            companionEffects: { compId, affectionDelta: pd.rightAffection || 15, bondDelta: 0 }
+            text: pd.rightText || `先行飞升——为${name}从上界重开天门`,
+            effects: pd.rightEffects || {
+              cultivation: 4,
+              daoHeart: 2,
+              karmaGood: 2,
+              fortune: 1
+            },
+            companionEffects: {
+              compId,
+              affectionDelta: pd.rightAffection !== undefined ? pd.rightAffection : -5,
+              bondDelta: 0,
+              trustDelta: -3
+            },
+            karmaSeed: this._buildDestinyPromiseSeed(compId, name)
           }
         }
       };
@@ -1349,15 +1711,30 @@ class CompanionArcEngine {
       choices: {
         left: {
           text: "留下——'大道若不共——不是我要的道'",
-          effects: { daoHeart: 40, karmaGood: 30, fortune: 20, cultivation: -20 },
+          effects: { daoHeart: 20, karmaGood: 20, fortune: 15, cultivation: -15 },
           companionEffects: { compId, affectionDelta: 50, bondDelta: 2 }
         },
         right: {
           text: "飞升——但发誓找到让ta也飞升的方法",
-          effects: { cultivation: 30, daoHeart: 15, karmaGood: 10, fortune: 5 },
+          effects: { cultivation: 20, daoHeart: 15, karmaGood: 10, fortune: 5 },
           companionEffects: { compId, affectionDelta: -10, bondDelta: 0, trustDelta: -5 },
-          karmaSeed: { id: 'destinyPromise', seedType: 'fate', delay: 20, priority: 10 }
+          karmaSeed: this._buildDestinyPromiseSeed(compId, name)
         }
+      }
+    };
+  }
+
+  _buildDestinyPromiseSeed(compId, name) {
+    return {
+      id: 'destinyPromise',
+      seedType: 'fate',
+      delay: 20,
+      realm: 'tribulation',
+      priority: 10,
+      context: {
+        companionId: compId,
+        companionName: name,
+        milestoneId: 'destiny_promise'
       }
     };
   }
@@ -1408,7 +1785,7 @@ class NarrativeSurfacing {
         realm: gameState.realm,
         choices: {
           left: { text: '接过剑——继承剑道传承', effects: { cultivation: 15, daoHeart: 20, treasure: '白刃遗剑' } },
-          right: { text: '让剑回剑冢——和师父一起安息', effects: { daoHeart: 25, karmaGood: 15 } }
+          right: { text: '让剑回剑冢——和师父一起安息', effects: { daoHeart: 20, karmaGood: 15 } }
         }
       };
     }
@@ -1437,8 +1814,14 @@ class NarrativeSurfacing {
 
   _checkAffectionSurface() {
     // 如果某个道侣好感接近但未达到阈值 → 浮现一个推动事件
-    for (const [compId, state] of Object.entries(companionSystem.states || {})) {
-      const aff = state.affection || 0;
+    const activeCompanionIds = Array.isArray(gameState.resources?.companions)
+      ? gameState.resources.companions
+      : Object.keys(companionSystem.states || {});
+    for (const compId of activeCompanionIds) {
+      if (!companionSystem.states?.[compId]) continue;
+      const aff = typeof npcSystem !== 'undefined' && typeof npcSystem?.getAffection === 'function'
+        ? Number(npcSystem.getAffection(compId)) || 0
+        : (typeof npcSystem !== 'undefined' ? Number(npcSystem?.affections?.[compId]) || 0 : 0);
       if (aff >= 18 && aff < 20 && !gameState.hasFlag(`surface_pushed_${compId}_20`)) {
         gameState.setFlag(`surface_pushed_${compId}_20`, true);
         const name = companionSystem._getName(compId);
@@ -1482,8 +1865,7 @@ class MentorArcEngine {
     };
 
     this.arcStates = new Map();
-    this._pendingClimax = null;
-    this._pendingArcEvent = null;
+    _initArcPending(this);
   }
 
   loadArcs(data) {
@@ -1512,6 +1894,7 @@ class MentorArcEngine {
     const merged = {};
     for (const [npcId, state] of this.arcStates) {
       if (state.stageIndex < 1) continue;
+      if (!_canUsePhysicalNpc(npcId)) continue;
       const bonuses = this.getMentorBonuses(npcId);
       if (!bonuses) continue;
       for (const [key, val] of Object.entries(bonuses.effects)) {
@@ -1524,6 +1907,7 @@ class MentorArcEngine {
   onProgressionChanged(npcId, newValue) {
     const state = this.arcStates.get(npcId);
     if (!state) return;
+    if (!_canUsePhysicalNpc(npcId)) return;
 
     let newStage = 'DISCIPLE';
     let newStageIndex = 0;
@@ -1535,14 +1919,20 @@ class MentorArcEngine {
     }
 
     if (newStageIndex > state.stageIndex) {
+      const oldStageIndex = state.stageIndex;
       state.stage = newStage;
       state.stageIndex = newStageIndex;
       state.enteredAtTurn = gameState.turn;
       this.worldState.recordEvent({ type: 'mentor_stage_change', npcId, to: newStage, turn: gameState.turn });
-      this._pendingArcEvent = this._buildStageEvent(npcId, newStage);
-      if (newStageIndex >= 3 && !state.climaxTriggered) {
-        this._pendingClimax = this._buildRevelation(npcId);
+      for (const [stageName, stageDef] of Object.entries(this.ARC_STAGES)) {
+        if (stageDef.index > oldStageIndex && stageDef.index <= newStageIndex) {
+          _queueArcCard(this, state, this._buildStageEvent(npcId, stageName), 'event');
+        }
       }
+      if (newStageIndex >= 3 && !state.climaxTriggered) {
+        _queueUniqueClimax(this, state, this._buildRevelation(npcId));
+      }
+      _reconcileArcRealm(this, npcId);
     }
   }
 
@@ -1557,20 +1947,11 @@ class MentorArcEngine {
   }
 
   onRealmChanged(to) {
-    for (const [npcId, state] of this.arcStates) {
-      if (state.stageIndex >= 3 && to === 'golden' && !state.climaxTriggered) {
-        this._pendingClimax = this._buildTribulationClimax(npcId);
-        return;
-      }
-      if ((to === 'deity' || to === 'tribulation') && state.stageIndex >= 4) {
-        this._pendingClimax = this._buildDestinyClimax(npcId);
-        return;
-      }
-    }
+    for (const [npcId] of this.arcStates) _reconcileArcRealm(this, npcId, to);
   }
 
-  getPendingClimax() { const c = this._pendingClimax; this._pendingClimax = null; return c; }
-  getPendingArcEvent() { const e = this._pendingArcEvent; this._pendingArcEvent = null; return e; }
+  getPendingClimax() { return _peekArcCard(this, 'climax'); }
+  getPendingArcEvent() { return _peekArcCard(this, 'event'); }
 
   _getName(npcId) {
     const arc = this.arcData[npcId];
@@ -1584,6 +1965,7 @@ class MentorArcEngine {
       const pd = arc.arcStages[stage];
       return {
         id: `mentor_${npcId}_stage_${stage}`,
+        semanticKey: pd.semanticKey || _arcSemanticKey(npcId, stage),
         title: pd.title, description: pd.desc,
         type: 'MENTOR_ARC', realm: gameState.realm, npcId, arcStage: stage,
         once: true, weight: 0, tags: ['mentor_arc', 'milestone'],
@@ -1598,12 +1980,12 @@ class MentorArcEngine {
       RECRUITMENT: { title: `${name}·收徒`, desc: `${name}看着你很久——不是看你的修为，是看你的骨。半晌，他点了点头。`, leftText: '跪下——行拜师礼', leftEffects: { daoHeart: 15, cultivation: 10 }, rightText: '拱手——以礼相待但不必跪', rightEffects: { daoHeart: 10, cultivation: 5 } },
       TRAINING: { title: `${name}·传道`, desc: `${name}把一本书放在你面前——封面已经快碎了，是他年轻时手抄的。`, leftText: '日夜研读——书中的每一个字都刻进心里', leftEffects: { cultivation: 20, daoHeart: 10 }, rightText: '通读一遍——抓住精髓就够了', rightEffects: { cultivation: 10, daoHeart: 5 } },
       REVELATION: { title: `${name}·真相`, desc: `${name}终于说了一件从来没说过的事——一件关于他自己、关于青云、关于你修炼速度的秘密。`, leftText: '追问——我想知道全部', leftEffects: { daoHeart: 20, cultivation: 5 }, rightText: '沉默——让师父说多少算多少', rightEffects: { daoHeart: 15 } },
-      TRANSMISSION: { title: `${name}·衣钵`, desc: `${name}脱下了他的剑——不是比喻，是真的剑。递给你。`, leftText: '双手接剑——"弟子不负此剑"', leftEffects: { daoHeart: 25, cultivation: 15 }, rightText: '推辞——"师父还需要它"', rightEffects: { daoHeart: 15, cultivation: 5 } },
-      ASCENSION: { title: `${name}·飞升`, desc: `${name}即将飞升。他最后看了你一眼——不需要说话。你明白。`, leftText: '叩首——"弟子送师父"', leftEffects: { daoHeart: 30, cultivation: 10 }, rightText: '站立——"弟子会追上"', rightEffects: { daoHeart: 20, cultivation: 20 } }
+      TRANSMISSION: { title: `${name}·衣钵`, desc: `${name}脱下了他的剑——不是比喻，是真的剑。递给你。`, leftText: '双手接剑——"弟子不负此剑"', leftEffects: { daoHeart: 20, cultivation: 15 }, rightText: '推辞——"师父还需要它"', rightEffects: { daoHeart: 15, cultivation: 5 } },
+      ASCENSION: { title: `${name}·飞升`, desc: `${name}即将飞升。他最后看了你一眼——不需要说话。你明白。`, leftText: '叩首——"弟子送师父"', leftEffects: { daoHeart: 20, cultivation: 10 }, rightText: '站立——"弟子会追上"', rightEffects: { daoHeart: 15, cultivation: 20 } }
     };
     const data = mentorStages[stage];
     if (!data) return null;
-    return { id: `mentor_${npcId}_stage_${stage}`, title: data.title, description: data.desc,
+    return { id: `mentor_${npcId}_stage_${stage}`, semanticKey: _arcSemanticKey(npcId, stage), title: data.title, description: data.desc,
       type: 'MENTOR_ARC', realm: gameState.realm, npcId, arcStage: stage,
       once: true, weight: 0, tags: ['mentor_arc', 'milestone'],
       choices: { left: { text: data.leftText, effects: data.leftEffects }, right: { text: data.rightText, effects: data.rightEffects } } };
@@ -1678,8 +2060,7 @@ class SeerArcEngine {
     };
 
     this.arcStates = new Map();
-    this._pendingClimax = null;
-    this._pendingArcEvent = null;
+    _initArcPending(this);
   }
 
   loadArcs(data) {
@@ -1703,6 +2084,7 @@ class SeerArcEngine {
     const merged = {};
     for (const [npcId, state] of this.arcStates) {
       if (state.stageIndex < 1) continue;
+      if (!_canUsePhysicalNpc(npcId)) continue;
       const bonuses = this.getSeerBonuses(npcId);
       if (!bonuses) continue;
       for (const [key, val] of Object.entries(bonuses.effects)) {
@@ -1715,6 +2097,7 @@ class SeerArcEngine {
   onRevelationChanged(npcId, newValue) {
     const state = this.arcStates.get(npcId);
     if (!state) return;
+    if (!_canUsePhysicalNpc(npcId)) return;
 
     let newStage = 'ENCOUNTER';
     let newStageIndex = 0;
@@ -1726,13 +2109,19 @@ class SeerArcEngine {
     }
 
     if (newStageIndex > state.stageIndex) {
+      const oldStageIndex = state.stageIndex;
       state.stage = newStage;
       state.stageIndex = newStageIndex;
       state.enteredAtTurn = gameState.turn;
-      this._pendingArcEvent = this._buildStageEvent(npcId, newStage);
-      if (newStageIndex >= 3 && !state.climaxTriggered) {
-        this._pendingClimax = this._buildRevelation(npcId);
+      for (const [stageName, stageDef] of Object.entries(this.ARC_STAGES)) {
+        if (stageDef.index > oldStageIndex && stageDef.index <= newStageIndex) {
+          _queueArcCard(this, state, this._buildStageEvent(npcId, stageName), 'event');
+        }
       }
+      if (newStageIndex >= 3 && !state.climaxTriggered) {
+        _queueUniqueClimax(this, state, this._buildRevelation(npcId));
+      }
+      _reconcileArcRealm(this, npcId);
     }
   }
 
@@ -1747,20 +2136,11 @@ class SeerArcEngine {
   }
 
   onRealmChanged(to) {
-    for (const [npcId, state] of this.arcStates) {
-      if (state.stageIndex >= 3 && to === 'golden' && !state.climaxTriggered) {
-        this._pendingClimax = this._buildTribulationClimax(npcId);
-        return;
-      }
-      if ((to === 'deity' || to === 'tribulation') && state.stageIndex >= 4) {
-        this._pendingClimax = this._buildDestinyClimax(npcId);
-        return;
-      }
-    }
+    for (const [npcId] of this.arcStates) _reconcileArcRealm(this, npcId, to);
   }
 
-  getPendingClimax() { const c = this._pendingClimax; this._pendingClimax = null; return c; }
-  getPendingArcEvent() { const e = this._pendingArcEvent; this._pendingArcEvent = null; return e; }
+  getPendingClimax() { return _peekArcCard(this, 'climax'); }
+  getPendingArcEvent() { return _peekArcCard(this, 'event'); }
 
   _getName(npcId) { const arc = this.arcData[npcId]; return arc ? arc.name : npcId; }
 
@@ -1773,19 +2153,20 @@ class SeerArcEngine {
         ENCOUNTER: { title: `${name}·窥命`, desc: `${name}抬头看了你一眼——不需要生辰八字，不需要罗盘。他看到了。`, leftText: '追问——"你看到了什么？"', leftEffects: { daoHeart: 15, fortune: 10 }, rightText: '沉默——等他自己说', rightEffects: { daoHeart: 10, fortune: 5 } },
         REVELATION: { title: `${name}·天机`, desc: `${name}终于开口了——他的话不多，但每一个字都像钉子一样钉进你的识海。`, leftText: '深信——按照预言行动', leftEffects: { daoHeart: 15, fortune: 15, cultivation: -5 }, rightText: '存疑——天机未必就是定数', rightEffects: { daoHeart: 10, cultivation: 10 } },
         UNVEILING: { title: `${name}·揭开`, desc: `${name}把一本发黄的古卷推到你面前——上面画着你。或者说是你应该成为的样子。`, leftText: '仔细研读——关于自己的每一句预言', leftEffects: { daoHeart: 20, fortune: 15 }, rightText: '合上——"我只信当下的自己"', rightEffects: { daoHeart: 15, cultivation: 10 } },
-        SACRIFICE: { title: `${name}·代价`, desc: `${name}咳了一口血——为你看天机的代价。天机不可泄，泄天机者折寿。`, leftText: '悔悟——"我不该让你看的"', leftEffects: { daoHeart: 25, karmaGood: 20, fortune: 5 }, rightText: '铭记——让你的牺牲不白费', rightEffects: { daoHeart: 20, cultivation: 15, fortune: 10 } },
-        FINAL_PROPHECY: { title: `${name}·终章`, desc: `${name}笑了——这个一辈子没笑过几次的人，笑了。他看到了什么，但不肯说了。`, leftText: '恳求——"最后一次——告诉我"', leftEffects: { daoHeart: 20, fortune: 20 }, rightText: '释然——"不说也好"', rightEffects: { daoHeart: 30 } }
+        SACRIFICE: { title: `${name}·代价`, desc: `${name}咳了一口血——为你看天机的代价。天机不可泄，泄天机者折寿。`, leftText: '悔悟——"我不该让你看的"', leftEffects: { daoHeart: 20, karmaGood: 18, fortune: 5 }, rightText: '铭记——让你的牺牲不白费', rightEffects: { daoHeart: 18, cultivation: 15, fortune: 8 } },
+        FINAL_PROPHECY: { title: `${name}·终章`, desc: `${name}笑了——这个一辈子没笑过几次的人，笑了。他看到了什么，但不肯说了。`, leftText: '恳求——"最后一次——告诉我"', leftEffects: { daoHeart: 20, fortune: 15 }, rightText: '释然——"不说也好"', rightEffects: { daoHeart: 20 } }
       };
       const data = seerStages[stage];
       if (!data) return null;
-      return { id: `seer_${npcId}_stage_${stage}`, title: data.title, description: data.desc,
+      return { id: `seer_${npcId}_stage_${stage}`, semanticKey: _arcSemanticKey(npcId, stage), title: data.title, description: data.desc,
         type: 'SEER_ARC', realm: gameState.realm, npcId, arcStage: stage,
         once: true, weight: 0, tags: ['seer_arc', 'milestone'],
         choices: { left: { text: data.leftText, effects: data.leftEffects }, right: { text: data.rightText, effects: data.rightEffects } } };
     }
     const pd = arc.arcStages[stage];
-    return {
-      id: `seer_${npcId}_stage_${stage}`,
+      return {
+        id: `seer_${npcId}_stage_${stage}`,
+        semanticKey: pd.semanticKey || _arcSemanticKey(npcId, stage),
       title: pd.title, description: pd.desc,
       type: 'SEER_ARC', realm: gameState.realm, npcId, arcStage: stage,
       once: true, weight: 0, tags: ['seer_arc', 'milestone'],
@@ -1862,8 +2243,7 @@ class AllyArcEngine {
     };
 
     this.arcStates = new Map();
-    this._pendingClimax = null;
-    this._pendingArcEvent = null;
+    _initArcPending(this);
   }
 
   loadArcs(data) {
@@ -1887,6 +2267,7 @@ class AllyArcEngine {
     const merged = {};
     for (const [npcId, state] of this.arcStates) {
       if (state.stageIndex < 1) continue;
+      if (!_canUsePhysicalNpc(npcId)) continue;
       const bonuses = this.getAllyBonuses(npcId);
       if (!bonuses) continue;
       for (const [key, val] of Object.entries(bonuses.effects)) {
@@ -1899,6 +2280,7 @@ class AllyArcEngine {
   onAlignmentChanged(npcId, newValue) {
     const state = this.arcStates.get(npcId);
     if (!state) return;
+    if (!_canUsePhysicalNpc(npcId)) return;
 
     let newStage = 'CONTACT';
     let newStageIndex = 0;
@@ -1910,13 +2292,19 @@ class AllyArcEngine {
     }
 
     if (newStageIndex > state.stageIndex) {
+      const oldStageIndex = state.stageIndex;
       state.stage = newStage;
       state.stageIndex = newStageIndex;
       state.enteredAtTurn = gameState.turn;
-      this._pendingArcEvent = this._buildStageEvent(npcId, newStage);
-      if (newStageIndex >= 3 && !state.climaxTriggered) {
-        this._pendingClimax = this._buildRevelation(npcId);
+      for (const [stageName, stageDef] of Object.entries(this.ARC_STAGES)) {
+        if (stageDef.index > oldStageIndex && stageDef.index <= newStageIndex) {
+          _queueArcCard(this, state, this._buildStageEvent(npcId, stageName), 'event');
+        }
       }
+      if (newStageIndex >= 3 && !state.climaxTriggered) {
+        _queueUniqueClimax(this, state, this._buildRevelation(npcId));
+      }
+      _reconcileArcRealm(this, npcId);
     }
   }
 
@@ -1931,20 +2319,11 @@ class AllyArcEngine {
   }
 
   onRealmChanged(to) {
-    for (const [npcId, state] of this.arcStates) {
-      if (state.stageIndex >= 3 && to === 'golden' && !state.climaxTriggered) {
-        this._pendingClimax = this._buildTribulationClimax(npcId);
-        return;
-      }
-      if ((to === 'deity' || to === 'tribulation') && state.stageIndex >= 4) {
-        this._pendingClimax = this._buildDestinyClimax(npcId);
-        return;
-      }
-    }
+    for (const [npcId] of this.arcStates) _reconcileArcRealm(this, npcId, to);
   }
 
-  getPendingClimax() { const c = this._pendingClimax; this._pendingClimax = null; return c; }
-  getPendingArcEvent() { const e = this._pendingArcEvent; this._pendingArcEvent = null; return e; }
+  getPendingClimax() { return _peekArcCard(this, 'climax'); }
+  getPendingArcEvent() { return _peekArcCard(this, 'event'); }
 
   _getName(npcId) { const arc = this.arcData[npcId]; return arc ? arc.name : npcId; }
 
@@ -1954,22 +2333,23 @@ class AllyArcEngine {
       // 回退：通用模板
       const name = this._getName(npcId);
       const allyStages = {
-        CONTACT: { title: `${name}·相逢`, desc: `${name}在黑暗里看着你——不是敌人，但也不是朋友。至少现在不是。`, leftText: '直面——"你想怎样"', leftEffects: { daoHeart: 10, health: -5 }, rightText: '观察——等待对方先开口', rightEffects: { daoHeart: 5, fortune: 5 } },
-        RECOGNITION: { title: `${name}·认可`, desc: `${name}点了点头——很轻，轻到你差点错过。这大概是他能给出的最大尊重。`, leftText: '回礼——"彼此彼此"', leftEffects: { daoHeart: 15, cultivation: 10 }, rightText: '无言——一个眼神就够了', rightEffects: { daoHeart: 10, cultivation: 5 } },
-        TRUST: { title: `${name}·托付`, desc: `${name}把后背交给了你——不是比喻。他真的背对着你，去处理前面的事。`, leftText: '守住——寸步不离', leftEffects: { daoHeart: 20, karmaGood: 15, health: -10 }, rightText: '警惕——他未必真的信你', rightEffects: { daoHeart: 10, fortune: 5 } },
-        COMRADE: { title: `${name}·并肩`, desc: `${name}和你背靠背站着——四周全是敌人。他笑了一声："没想到会是你。"`, leftText: '"我也没想到"——挥剑向前', leftEffects: { daoHeart: 25, cultivation: 15, health: -10 }, rightText: '"少废话——打完再说"', rightEffects: { cultivation: 20, daoHeart: 15 } },
-        LEGACY: { title: `${name}·传承`, desc: `${name}把他最珍贵的东西给你了——不是法器，不是功法。是一个承诺。`, leftText: '接受——"你的路，我替你走完"', leftEffects: { daoHeart: 30, karmaGood: 20 }, rightText: '拒绝——"你自己走完"', rightEffects: { daoHeart: 15, cultivation: 15 } }
+        CONTACT: { title: `${name}·相逢`, desc: `${name}在黑暗里看着你——不是敌人，但也不是朋友。至少现在不是。`, leftText: '直面——"你想怎样"', leftEffects: { daoHeart: 1, health: -1 }, rightText: '观察——等待对方先开口', rightEffects: { daoHeart: 1, fortune: 1 } },
+        RECOGNITION: { title: `${name}·认可`, desc: `${name}点了点头——很轻，轻到你差点错过。这大概是他能给出的最大尊重。`, leftText: '回礼——"彼此彼此"', leftEffects: { daoHeart: 2, cultivation: 2 }, rightText: '无言——一个眼神就够了', rightEffects: { daoHeart: 1, cultivation: 1 } },
+        TRUST: { title: `${name}·托付`, desc: `${name}把后背交给了你——不是比喻。他真的背对着你，去处理前面的事。`, leftText: '守住——寸步不离', leftEffects: { daoHeart: 2, karmaGood: 2, health: -1 }, rightText: '警惕——他未必真的信你', rightEffects: { daoHeart: 1, fortune: 1 } },
+        COMRADE: { title: `${name}·并肩`, desc: `${name}和你背靠背站着——四周全是敌人。他笑了一声："没想到会是你。"`, leftText: '"我也没想到"——挥剑向前', leftEffects: { daoHeart: 2, cultivation: 3, health: -1 }, rightText: '"少废话——打完再说"', rightEffects: { cultivation: 3, daoHeart: 2 } },
+        LEGACY: { title: `${name}·传承`, desc: `${name}把他最珍贵的东西给你了——不是法器，不是功法。是一个承诺。`, leftText: '接受——"你的路，我替你走完"', leftEffects: { daoHeart: 3, karmaGood: 3 }, rightText: '拒绝——"你自己走完"', rightEffects: { daoHeart: 2, cultivation: 3 } }
       };
       const data = allyStages[stage];
       if (!data) return null;
-      return { id: `ally_${npcId}_stage_${stage}`, title: data.title, description: data.desc,
+      return { id: `ally_${npcId}_stage_${stage}`, semanticKey: _arcSemanticKey(npcId, stage), title: data.title, description: data.desc,
         type: 'ALLY_ARC', realm: gameState.realm, npcId, arcStage: stage,
         once: true, weight: 0, tags: ['ally_arc', 'milestone'],
         choices: { left: { text: data.leftText, effects: data.leftEffects }, right: { text: data.rightText, effects: data.rightEffects } } };
     }
     const pd = arc.arcStages[stage];
-    return {
-      id: `ally_${npcId}_stage_${stage}`,
+      return {
+        id: `ally_${npcId}_stage_${stage}`,
+        semanticKey: pd.semanticKey || _arcSemanticKey(npcId, stage),
       title: pd.title, description: pd.desc,
       type: 'ALLY_ARC', realm: gameState.realm, npcId, arcStage: stage,
       once: true, weight: 0, tags: ['ally_arc', 'milestone'],
@@ -2028,3 +2408,17 @@ class AllyArcEngine {
 
 // 全局单例
 const storyNetworkSystem = new StoryNetworkSystem();
+
+if (typeof window !== 'undefined') {
+  window.StoryNetworkSystem = StoryNetworkSystem;
+  window.storyNetworkSystem = storyNetworkSystem;
+}
+if (typeof global !== 'undefined') {
+  global.StoryNetworkSystem = StoryNetworkSystem;
+  global.storyNetworkSystem = storyNetworkSystem;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = StoryNetworkSystem;
+  module.exports.StoryNetworkSystem = StoryNetworkSystem;
+  module.exports.storyNetworkSystem = storyNetworkSystem;
+}

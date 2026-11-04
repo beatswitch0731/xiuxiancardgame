@@ -1,0 +1,484 @@
+{
+  "_desc": "道侣立绘阶段系统 — 每个道侣在不同好感度解锁不同立绘",
+
+  "portraitStages": {
+    "bai_ren": {
+      "name": "白刃真人",
+      "stages": [
+        {
+          "id": "bai_ren_sword_tomb_master",
+          "name": "剑冢执剑",
+          "affection": 0,
+          "narrative": "白刃真人守在万剑旧冢之前，银蓝剑意如霜悬于衣袂。",
+          "asset": "assets/characters/stages/bai_ren_sword_tomb_master.png",
+          "pose": "负剑守冢",
+          "clothing": "银纹宗师剑袍",
+          "atmosphere": "冷峻"
+        },
+        {
+          "id": "bai_ren_unspoken_oath",
+          "name": "无言剑契",
+          "affection": 60,
+          "narrative": "他把断剑横放膝上，第一次允许你看见剑道之外未曾说出的旧誓。",
+          "asset": "assets/characters/stages/bai_ren_unspoken_oath.png",
+          "pose": "横剑对坐",
+          "clothing": "银蓝常服与旧剑穗",
+          "atmosphere": "托付"
+        }
+      ]
+    },
+
+    "bai_luoxuan": {
+      "name": "白落霜",
+      "stages": [
+        {
+          "id": "bai_luoxuan_trapped",
+          "name": "幼狐被困",
+          "affection": 0,
+          "narrative": "白狐被困竹林中，琥珀色眼眸戒备望向外界",
+          "asset": "assets/characters/stages/bai_luoxuan_trapped.png",
+          "pose": "蜷缩",
+          "clothing": "幼狐形态，毛发凌乱",
+          "atmosphere": "危机"
+        },
+        {
+          "id": "bai_luoxuan_meet",
+          "name": "初见报恩",
+          "affection": 20,
+          "narrative": "洞府门口白衣银发，逆光中的剪影",
+          "asset": "assets/characters/stages/bai_luoxuan_meet.png",
+          "pose": "站立施礼",
+          "clothing": "素白长裙，银发如瀑",
+          "atmosphere": "初遇"
+        },
+        {
+          "id": "bai_luoxuan_trust",
+          "name": "参汤相伴",
+          "affection": 40,
+          "narrative": "石桌旁双手托腮，尾巴在身后轻轻摇摆",
+          "asset": "assets/characters/stages/bai_luoxuan_trust.png",
+          "pose": "托腮凝望",
+          "clothing": "素白长裙，腰间束带微松",
+          "atmosphere": "温存"
+        },
+        {
+          "id": "bai_luoxuan_lamplight",
+          "name": "灯下暖汤",
+          "affection": 40,
+          "narrative": "洞府灯暖，银发白狐捧来一碗参汤，等你从修行中回神。",
+          "asset": "assets/cards/characters/collected/bai_luoxuan_pc98.png",
+          "pose": "捧碗相候",
+          "clothing": "素白常服",
+          "atmosphere": "相伴"
+        },
+        {
+          "id": "bai_luoxuan_intimate",
+          "name": "月下修行",
+          "affection": 60,
+          "sceneGate": "intimate_only",
+          "narrative": "满月之下狐尾环绕，灵气如银色丝线",
+          "asset": "assets/characters/stages/bai_luoxuan_intimate.png",
+          "pose": "闭目修炼",
+          "clothing": "轻薄月白纱衣",
+          "atmosphere": "灵修"
+        },
+        {
+          "id": "bai_luoxuan_bonded",
+          "name": "天命道侣",
+          "affection": 80,
+          "narrative": "她用手指在你掌心画下白狐部婚契符文",
+          "asset": "assets/characters/stages/bai_luoxuan_bonded.png",
+          "pose": "牵手低眉",
+          "clothing": "绣金婚契纹长裙，肩微露",
+          "atmosphere": "定情"
+        },
+        {
+          "id": "bai_luoxuan_seductive",
+          "name": "半掩狐媚",
+          "affection": 90,
+          "sceneGate": "intimate_only",
+          "narrative": "雪夜松林·侧面近景——低腰白丝旗袍侧开叉至臀线，狐尾从尾椎骨自然延出，轻纱缠腰半掩，回眸浅笑",
+          "asset": "assets/characters/stages/bai_luoxuan_seductive.png",
+          "pose": "侧面立姿，回眸浅笑",
+          "clothing": "低腰白丝旗袍，侧开叉至臀上线，透纱缠肩腰",
+          "atmosphere": "雪夜松林·半掩",
+          "adultContent": true
+        }
+      ]
+    },
+
+    "jian_linger": {
+      "name": "剑灵儿",
+      "stages": [
+        {
+          "id": "jian_linger_cold",
+          "name": "冷面剑修",
+          "affection": 0,
+          "narrative": "抱剑靠石壁，眼神从上扫到下检查你",
+          "asset": "assets/characters/stages/jian_linger_cold.png",
+          "pose": "抱剑而立",
+          "clothing": "青云道袍，正气凛然",
+          "atmosphere": "审视"
+        },
+        {
+          "id": "jian_linger_thaw",
+          "name": "冰心初融",
+          "affection": 30,
+          "narrative": "月下剑冢前，剑风慢了半拍",
+          "asset": "assets/characters/stages/jian_linger_thaw.png",
+          "pose": "剑尖点地，侧目偷看",
+          "clothing": "青云道袍，袖口稍有刺绣",
+          "atmosphere": "情愫"
+        },
+        {
+          "id": "jian_linger_heavy_sword",
+          "name": "重剑无锋",
+          "affection": 45,
+          "narrative": "她放下了惯用的轻剑，换上那柄从不示人的重剑——大巧不工，正如她对你不再设防的心",
+          "asset": "assets/characters/stages/jian_linger_heavy_sword.png",
+          "pose": "肩扛重剑，回眸浅笑",
+          "clothing": "劲装束腰，重剑在肩",
+          "atmosphere": "坦诚"
+        },
+        {
+          "id": "jian_linger_resonance",
+          "name": "剑意共鸣",
+          "affection": 60,
+          "narrative": "冰心剑意共鸣，两剑灵气交汇成漩涡",
+          "asset": "assets/characters/stages/jian_linger_resonance.png",
+          "pose": "双剑交鸣",
+          "clothing": "劲装束发，衣袂翻飞",
+          "atmosphere": "共鸣"
+        },
+        {
+          "id": "jian_linger_intimate",
+          "name": "冰心化暖",
+          "affection": 80,
+          "sceneGate": "intimate_only",
+          "narrative": "她的手第一次不是冰凉的——握着你的手指节泛白",
+          "asset": "assets/characters/stages/jian_linger_intimate.png",
+          "pose": "低头牵手",
+          "clothing": "淡蓝剑袍，腰带稍宽",
+          "atmosphere": "柔情"
+        },
+        {
+          "id": "jian_linger_seductive",
+          "name": "剑解罗裳",
+          "affection": 90,
+          "sceneGate": "intimate_only",
+          "narrative": "剑横膝上，道袍从肩头滑落——你最不敢看的角度",
+          "asset": "assets/characters/stages/jian_linger_seductive.png",
+          "pose": "跪坐横剑",
+          "clothing": "道袍半褪，剑掩身前",
+          "atmosphere": "诱惑",
+          "adultContent": true
+        },
+        {
+          "id": "jian_linger_bond_ultimate_100_v1",
+          "name": "剑心同契",
+          "affection": 100,
+          "autoSwitch": true,
+          "narrative": "百炼冰心终于不再独行。她横剑于两人之间，以剑誓确认这段能越过天道的羁绊。",
+          "asset": "assets/characters/stages/jian_linger_bond_ultimate_100_v1.png",
+          "pose": "静坐横剑，抬眸相守",
+          "clothing": "青白终契剑袍，轻纱与剑穗相映",
+          "atmosphere": "圆满"
+        }
+      ]
+    },
+
+    "mu_qinglan": {
+      "name": "慕青岚",
+      "stages": [
+        {
+          "id": "mu_qinglan_scholar",
+          "name": "万卷孤影",
+          "affection": 0,
+          "narrative": "从古籍后面探出头，鼻尖上沾了一点灰",
+          "asset": "assets/characters/stages/mu_qinglan_scholar.png",
+          "pose": "捧书观望",
+          "clothing": "素雅儒衫，发髻微松",
+          "atmosphere": "书卷"
+        },
+        {
+          "id": "mu_qinglan_secret",
+          "name": "天道之秘",
+          "affection": 40,
+          "narrative": "她摊开天道书最后一页——那是被隐藏的真相",
+          "asset": "assets/characters/stages/mu_qinglan_secret.png",
+          "pose": "翻书凝思",
+          "clothing": "月白儒裙，玉簪束发",
+          "atmosphere": "沉思"
+        },
+        {
+          "id": "mu_qinglan_intimate",
+          "name": "烛下共读",
+          "affection": 70,
+          "sceneGate": "intimate_only",
+          "narrative": "万卷楼深处烛光摇曳，书页间四目相对",
+          "asset": "assets/characters/stages/mu_qinglan_intimate.png",
+          "pose": "共读依偎",
+          "clothing": "宽松寝衣，外披薄袄",
+          "atmosphere": "亲昵"
+        },
+        {
+          "id": "mu_qinglan_seductive",
+          "name": "书中春色",
+          "affection": 90,
+          "sceneGate": "intimate_only",
+          "narrative": "古籍散落一地，她半躺书堆中，只以书卷轻掩",
+          "asset": "assets/characters/stages/mu_qinglan_seductive.png",
+          "pose": "半躺书堆",
+          "clothing": "寝衣散开，古籍掩体",
+          "atmosphere": "诱惑",
+          "adultContent": true
+        }
+      ]
+    },
+
+    "jiuwei_suyue": {
+      "name": "九尾溯月",
+      "stages": [
+        {
+          "id": "jiuwei_suyue_regal",
+          "name": "九尾天狐",
+          "affection": 0,
+          "narrative": "九条白尾如瀑布散落，从月下走出",
+          "asset": "assets/characters/stages/jiuwei_suyue_regal.png",
+          "pose": "月下行来",
+          "clothing": "金丝月白华服",
+          "atmosphere": "威严"
+        },
+        {
+          "id": "jiuwei_suyue_tales",
+          "name": "太古往事",
+          "affection": 35,
+          "narrative": "月光下讲述万妖之劫，九尾静止如雕塑",
+          "asset": "assets/characters/stages/jiuwei_suyue_tales.png",
+          "pose": "仰望残月",
+          "clothing": "素白妖皇袍",
+          "atmosphere": "沧桑"
+        },
+        {
+          "id": "jiuwei_suyue_intimate",
+          "name": "月湖共浴",
+          "affection": 60,
+          "sceneGate": "intimate_only",
+          "narrative": "月湖水面之上九尾环绕，水纹映着月光",
+          "asset": "assets/characters/stages/jiuwei_suyue_intimate.png",
+          "pose": "水中半坐",
+          "clothing": "湿纱裹身，水面半掩",
+          "atmosphere": "亲昵"
+        },
+        {
+          "id": "jiuwei_suyue_water",
+          "name": "出水芙蓉",
+          "affection": 75,
+          "sceneGate": "intimate_only",
+          "narrative": "九尾从月湖中缓缓起身，水珠沿妖皇脊线滑落——三千年不染尘埃的天狐，此刻在月光下纤毫毕现",
+          "asset": "assets/characters/stages/jiuwei_suyue_water.png",
+          "pose": "出水起身，九尾垂落",
+          "clothing": "湿透薄纱，水珠未干",
+          "atmosphere": "清艳"
+        },
+        {
+          "id": "jiuwei_suyue_seductive",
+          "name": "九尾妖媚",
+          "affection": 80,
+          "sceneGate": "intimate_only",
+          "narrative": "九尾如孔雀开屏般展开，身上唯余月光",
+          "asset": "assets/characters/stages/jiuwei_suyue_seductive.png",
+          "pose": "九尾环绕，月光为衣",
+          "clothing": "无衣毛尾掩体",
+          "atmosphere": "绝艳",
+          "adultContent": true
+        },
+        {
+          "id": "jiuwei_suyue_sheer",
+          "name": "九尾仙姿",
+          "affection": 95,
+          "sceneGate": "intimate_only",
+          "narrative": "薄纱轻覆九尾之上，月光透过纱衣勾勒出天狐真身——三千年前的妖皇，在这一刻只为你卸下所有防备",
+          "asset": "assets/characters/stages/jiuwei_suyue_sheer.png",
+          "pose": "侧卧云端，九尾半掩娇躯",
+          "clothing": "透明白纱，金丝腰链，狐耳轻垂",
+          "atmosphere": "仙姿",
+          "adultContent": true
+        },
+        {
+          "id": "jiuwei_suyue_bond_ultimate_100_v1",
+          "name": "九尾归心",
+          "affection": 100,
+          "autoSwitch": true,
+          "narrative": "三千年月光收束于九尾之间。妖皇不再以孤独守望天地，而把真正的名字与归处交给了你。",
+          "asset": "assets/characters/stages/jiuwei_suyue_bond_ultimate_100_v1.png",
+          "pose": "月下端坐，九尾环月",
+          "clothing": "月白终契华服，狐尾如雪展开",
+          "atmosphere": "圆满"
+        }
+      ]
+    },
+
+    "yin_xue": {
+      "name": "殷血",
+      "stages": [
+        {
+          "id": "yin_xue_rival",
+          "name": "宿敌",
+          "affection": 0,
+          "narrative": "靠在枯树上，剑尖在石头上划出血槽",
+          "asset": "assets/characters/yin_xue_stages/yin_xue_rival_v1.png",
+          "pose": "倚剑而立",
+          "clothing": "血煞黑袍",
+          "atmosphere": "对立"
+        },
+        {
+          "id": "yin_xue_swordmate",
+          "name": "惺惺相惜",
+          "affection": 50,
+          "narrative": "打完架瘫坐墙角，血洗的剑放在中间",
+          "asset": "assets/characters/yin_xue_stages/yin_xue_swordmate_v1.png",
+          "pose": "背靠背休憩",
+          "clothing": "破损血衣，坦露伤痕",
+          "atmosphere": "相惜"
+        },
+        {
+          "id": "yin_xue_protector",
+          "name": "护你周全",
+          "affection": 70,
+          "narrative": "重伤昏迷时他守在床前，手中剑从未放下",
+          "asset": "assets/characters/yin_xue_stages/yin_xue_protector_v1.png",
+          "pose": "坐守病榻",
+          "clothing": "简素玄衣",
+          "atmosphere": "守护"
+        },
+        {
+          "id": "yin_xue_intimate",
+          "name": "血月之下",
+          "affection": 90,
+          "sceneGate": "intimate_only",
+          "narrative": "血月之夜二人对坐，再无正魔之分",
+          "asset": "assets/characters/yin_xue_stages/yin_xue_bloodmoon_v1.png",
+          "pose": "对坐凝望",
+          "clothing": "玄衣半敞",
+          "atmosphere": "交融",
+          "adultContent": true
+        }
+      ]
+    },
+
+    "tianji_laoren": {
+      "name": "天机老人",
+      "stages": [
+        {
+          "id": "tianji_laoren_observer",
+          "name": "观星台之主",
+          "affection": 0,
+          "narrative": "白须老者立于观星台上，星图在身后缓缓旋转，眼中有洞察天机的深邃",
+          "asset": "assets/characters/stages/tianji_laoren_observer.png",
+          "pose": "负手而立",
+          "clothing": "星辰道袍，玉簪束白发",
+          "atmosphere": "神秘"
+        },
+        {
+          "id": "tianji_laoren_shared_constellation",
+          "name": "共观命星",
+          "affection": 60,
+          "narrative": "他把推演三百年的星图向你展开，让两颗本不相交的命星落在同一条轨迹。",
+          "asset": "assets/characters/stages/tianji_laoren_shared_constellation.png",
+          "pose": "并肩观星",
+          "clothing": "星轨法袍",
+          "atmosphere": "明悟"
+        }
+      ]
+    },
+
+    "xuesha_laozu": {
+      "name": "血煞老祖",
+      "stages": [
+        {
+          "id": "xuesha_laozu_overlord",
+          "name": "血玉王座",
+          "affection": 0,
+          "narrative": "血煞圣殿之主倚于血玉王座之上，周身煞气凝如实质，目含霸道与黑暗信念",
+          "asset": "assets/characters/stages/xuesha_laozu_overlord.png",
+          "pose": "倚座睥睨",
+          "clothing": "血煞玄袍，暗金纹饰",
+          "atmosphere": "威慑"
+        },
+        {
+          "id": "xuesha_laozu_blood_oath",
+          "name": "血契同座",
+          "affection": 60,
+          "narrative": "血玉王座旁第一次多出一个位置；他的煞气不再指向你，而是替你挡住殿外群魔。",
+          "asset": "assets/characters/stages/xuesha_laozu_blood_oath.png",
+          "pose": "血契并肩",
+          "clothing": "暗金血煞战袍",
+          "atmosphere": "霸道守护"
+        }
+      ]
+    }
+  },
+
+  "_defaultFallback": "当特定阶段立绘不存在时，系统自动回退到该道侣的基础立绘",
+
+  "cardAssets": {
+    "_desc": "每个角色的专属定制卡牌——非模板嵌套，而是卡牌设计与角色主题融合",
+    "bai_ren": {
+      "name": "白刃真人",
+      "asset": "assets/cards/characters/card_character_bai_ren.png",
+      "theme": "剑冢·银蓝剑意",
+      "borderColor": "#8090c0",
+      "mood": "冷峻·剑出无悔"
+    },
+    "bai_luoxuan": {
+      "name": "白落霜",
+      "asset": "assets/cards/characters/card_character_bai_luoxuan.png",
+      "theme": "白狐部·月下参汤",
+      "borderColor": "#e8d5b0",
+      "mood": "温柔·报恩之心"
+    },
+    "jian_linger": {
+      "name": "剑灵儿",
+      "asset": "assets/cards/characters/card_character_jian_linger.png",
+      "theme": "剑冢·冰心剑意",
+      "borderColor": "#88ccee",
+      "mood": "傲娇·重剑无锋"
+    },
+    "mu_qinglan": {
+      "name": "慕青岚",
+      "asset": "assets/cards/characters/card_character_mu_qinglan.png",
+      "theme": "万卷楼·书卷墨香",
+      "borderColor": "#c8a878",
+      "mood": "学者·天道之秘"
+    },
+    "jiuwei_suyue": {
+      "name": "九尾溯月",
+      "asset": "assets/cards/characters/card_character_jiuwei_suyue.png",
+      "theme": "月湖·九尾天狐",
+      "borderColor": "#d4a840",
+      "mood": "威严·三千年孤寂"
+    },
+    "yin_xue": {
+      "name": "殷血",
+      "asset": "assets/cards/characters/card_character_yin_xue.png",
+      "theme": "血煞·沙漠血月",
+      "borderColor": "#c03030",
+      "mood": "狂傲·以剑交心"
+    },
+    "tianji_laoren": {
+      "name": "天机老人",
+      "asset": "assets/cards/characters/card_tianji_laoren_pc98.png",
+      "theme": "观星台·天机星图",
+      "borderColor": "#304070",
+      "mood": "睿智·禁忌真相"
+    },
+    "xuesha_laozu": {
+      "name": "血煞老祖",
+      "asset": "assets/cards/characters/card_character_xuesha_laozu.png",
+      "theme": "血煞圣殿·血玉王座",
+      "borderColor": "#601010",
+      "mood": "霸道·黑暗信念"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "contractId": "rebirth_tree_v1",
+  "branches": [
+    {
+      "id": "foundation",
+      "name": "铸身",
+      "icon": "◇",
+      "description": "把历世磨损沉入根骨，为下一世留下克制的开局余裕。",
+      "nodes": [
+        {
+          "id": "foundation_tempered_meridian",
+          "name": "淬脉",
+          "cost": 1,
+          "requires": [],
+          "effect": { "channel": "bonuses", "key": "maxHp", "value": 1 },
+          "effectText": "下一世最大气血 +1"
+        },
+        {
+          "id": "foundation_awakened_breath",
+          "name": "醒息",
+          "cost": 2,
+          "requires": ["foundation_tempered_meridian"],
+          "effect": { "channel": "bonuses", "key": "startCultivation", "value": 1 },
+          "effectText": "下一世初始修为 +1"
+        },
+        {
+          "id": "foundation_long_cycle",
+          "name": "长生小周天",
+          "cost": 3,
+          "requires": ["foundation_awakened_breath"],
+          "effect": { "channel": "bonuses", "key": "maxLifespan", "value": 3 },
+          "effectText": "下一世寿元 +3"
+        },
+        {
+          "id": "foundation_jade_purse",
+          "name": "旧世玉囊",
+          "cost": 4,
+          "requires": ["foundation_long_cycle"],
+          "effect": { "channel": "bonuses", "key": "startSpiritStone", "value": 3 },
+          "effectText": "下一世初始灵石 +3"
+        }
+      ]
+    },
+    {
+      "id": "fragments",
+      "name": "拾遗",
+      "icon": "◆",
+      "description": "提高残卷追踪的稳定性，不改变传承牌强度。",
+      "nodes": [
+        {
+          "id": "fragments_echo",
+          "name": "残响",
+          "cost": 1,
+          "requires": [],
+          "effect": { "channel": "runtime", "key": "pityReduction", "value": 1 },
+          "effectText": "普通残卷保底少 1 次未掉落"
+        },
+        {
+          "id": "fragments_thread",
+          "name": "寻卷丝",
+          "cost": 2,
+          "requires": ["fragments_echo"],
+          "effect": { "channel": "runtime", "key": "focusedWeightBonus", "value": 0.1 },
+          "effectText": "追踪套装权重 +10%"
+        },
+        {
+          "id": "fragments_resonance",
+          "name": "古契共鸣",
+          "cost": 3,
+          "requires": ["fragments_thread"],
+          "effect": { "channel": "runtime", "key": "ordinaryDropBonus", "value": 0.01 },
+          "effectText": "普通残卷掉率 +1%"
+        },
+        {
+          "id": "fragments_boss_choice",
+          "name": "战利天眼",
+          "cost": 4,
+          "requires": ["fragments_resonance"],
+          "effect": { "channel": "runtime", "key": "bossChoiceBonus", "value": 1 },
+          "effectText": "Boss 残卷候选 +1"
+        }
+      ]
+    },
+    {
+      "id": "bonds",
+      "name": "系缘",
+      "icon": "♥",
+      "description": "让真实结下的缘分在轮回衰减时多留一线。",
+      "nodes": [
+        {
+          "id": "bonds_familiar_voice",
+          "name": "故人声",
+          "cost": 1,
+          "requires": [],
+          "effect": { "channel": "runtime", "key": "affectionRetention", "value": 0.05 },
+          "effectText": "跨世好感保留率 +5%"
+        },
+        {
+          "id": "bonds_red_thread",
+          "name": "红尘线",
+          "cost": 2,
+          "requires": ["bonds_familiar_voice"],
+          "effect": { "channel": "runtime", "key": "affectionRetention", "value": 0.05 },
+          "effectText": "跨世好感保留率再 +5%"
+        },
+        {
+          "id": "bonds_shared_dream",
+          "name": "同梦",
+          "cost": 3,
+          "requires": ["bonds_red_thread"],
+          "effect": { "channel": "runtime", "key": "affectionRetention", "value": 0.05 },
+          "effectText": "跨世好感保留率再 +5%"
+        },
+        {
+          "id": "bonds_returning_gaze",
+          "name": "回眸有痕",
+          "cost": 4,
+          "requires": ["bonds_shared_dream"],
+          "effect": { "channel": "runtime", "key": "affectionRetention", "value": 0.05 },
+          "effectText": "跨世好感保留率最高达到 70%"
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "name": "问道",
+      "icon": "∞",
+      "description": "保存修行理解，并把异途经验转译成当前道途的熟悉感。",
+      "nodes": [
+        {
+          "id": "memory_clear_mark",
+          "name": "道痕",
+          "cost": 1,
+          "requires": [],
+          "effect": { "channel": "runtime", "key": "pathMemoryGain", "value": 1 },
+          "effectText": "每世当前流派记忆额外 +1"
+        },
+        {
+          "id": "memory_other_shore",
+          "name": "见彼岸",
+          "cost": 2,
+          "requires": ["memory_clear_mark"],
+          "effect": { "channel": "runtime", "key": "crossPathMemoryRate", "value": 0.25 },
+          "effectText": "当前流派可借用最高异途记忆的 25%"
+        },
+        {
+          "id": "memory_four_paths",
+          "name": "四途同源",
+          "cost": 3,
+          "requires": ["memory_other_shore"],
+          "effect": { "channel": "runtime", "key": "crossPathMemoryRate", "value": 0.25 },
+          "effectText": "异途记忆转译率提高到 50%"
+        },
+        {
+          "id": "memory_rebirth_clarity",
+          "name": "轮回明悟",
+          "cost": 4,
+          "requires": ["memory_four_paths"],
+          "effect": { "channel": "runtime", "key": "lifeInsightBonus", "value": 1 },
+          "effectText": "以后每次首次归档额外获得 1 悟点"
+        }
+      ]
+    }
+  ]
+}

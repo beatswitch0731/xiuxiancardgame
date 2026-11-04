@@ -1,0 +1,502 @@
+{
+  "_desc": "世界氛围卡组 — 轻量叙事卡，让世界「呼吸」。茶馆流言、路人闲话、市井传说。低权重、可重复、不做重大选择。通过CardSystem._loadExtraModule加载，realm字段决定出现在哪个境界的抽卡池。",
+  "cards": [
+    {
+      "id": "atm_qi_tea_rumor",
+      "type": "STORY",
+      "title": "茶馆里的流言",
+      "description": "山脚茶馆里，两个散修在角落里低声交谈。'听说了吗——青云宗又收了一个弟子。不是什么好苗子。''你怎么知道？''好苗子不会跪三天——那是没地方去的人才会做的事。'茶杯在他们手里转着——没注意到你在隔壁桌。",
+      "realm": "qi",
+      "weight": 4,
+      "tags": [
+        "atmosphere",
+        "rumor",
+        "sect"
+      ],
+      "choices": {
+        "left": {
+          "text": "继续听——不入流也有不入流的消息",
+          "effects": {
+            "fortune": 3,
+            "daoHeart": 2
+          },
+          "desc": "他们接着聊起了剑冢——'听说青云宗的剑冢每隔几年就有弟子进去出不来。不是死在里面的——是找到了什么，然后不出来了。'茶杯磕在木桌上的声音比你想象的重。"
+        },
+        "right": {
+          "text": "起身离开——没必要听闲话",
+          "effects": {
+            "daoHeart": 5
+          },
+          "desc": "你放下茶钱走了——但茶馆的门关上之前，你听到最后一句：'那个跪了三天的——如果他能活过炼气期，我倒想看看。'茶杯又磕了一下——像在押注。"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
+    },
+    {
+      "id": "atm_qi_market_old_woman",
+      "type": "STORY",
+      "title": "市集里的老妪",
+      "description": "修仙坊市的角落——不是卖丹药和法器的那条街，是收旧货的那条。一位老妪在卖碎布料和旧经书。她面前的摊子上摆着一块黑黢黢的石头——不是灵石，是河里随便捡的鹅卵石。但石头上刻了两个字：'回来'。不是写给修士看的——是写给走了的人。",
+      "realm": "qi",
+      "weight": 4,
+      "tags": [
+        "atmosphere",
+        "mortal",
+        "emotion"
+      ],
+      "choiceType": "EMOTIONAL",
+      "choices": {
+        "left": {
+          "text": "买下那块石头（-5 灵石）",
+          "effects": {
+            "spiritStone": -5,
+            "daoHeart": 8,
+            "fortune": 3
+          },
+          "desc": "老妪不收灵石——她说：'我要这个没用。你拿着吧——我儿子当年也修仙，后来没回来。写这两个字是给我自己看的。'她把石头塞给你——手是冷的。"
+        },
+        "right": {
+          "text": "走开——不是每段故事都该听",
+          "effects": {
+            "daoHeart": -2
+          },
+          "desc": "你走开了。但'回来'两个字在脑子里留了很久——比任何剑诀都记得清楚。"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_herb_gathering.png"
+    },
+    {
+      "id": "atm_qi_sect_gate_night",
+      "type": "STORY",
+      "title": "山门夜话",
+      "description": "深夜的山门——你值夜。值夜是外门弟子的必修课——不是真有人会打上来，是让新弟子学会'守'。风从石阶上吹下来——你忽然注意到石阶上有深深浅浅的痕迹。不是剑痕——是膝盖跪出来的凹槽。你跪了三天的那个位置——不是第一个，也不会是最后一个。",
+      "realm": "qi",
+      "weight": 3,
+      "tags": [
+        "atmosphere",
+        "sect",
+        "self"
+      ],
+      "choiceType": "INNER",
+      "choices": {
+        "left": {
+          "text": "用手抚摸石阶上的凹槽——想想那些人也和你一样",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 3
+          },
+          "desc": "石阶是冷的——但凹槽比周围的石头光滑。多少膝盖磨出来的。有个凹槽特别深——那个人跪了不止三天。你忽然觉得自己那三天不算什么。"
+        },
+        "right": {
+          "text": "站直——你是来守的，不是来想的",
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 3
+          },
+          "desc": "你站直了——风吹过剑鞘，发出一声低鸣。不是你的剑在响——是山门的铁链。今晚没有敌人，只有风。"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
+    },
+    {
+      "id": "atm_fd_blacksmith_tale",
+      "type": "STORY",
+      "title": "铁匠的传说",
+      "description": "山脚铁匠铺——你偶尔来这里修剑。铁匠是个断了灵根的散修——不能修仙了就修铁。他的锤子比剑重——每一下都砸出火星。'你见过剑冢里的那柄古剑没有？'他没有停锤，继续说：'我师父说——那剑不是铸出来的，是长出来的。别问我什么叫长出来的——他就是这么说的。'锤子的节奏没变——但你注意到他敲得比平时重。",
+      "realm": "foundation",
+      "weight": 4,
+      "tags": [
+        "atmosphere",
+        "rumor",
+        "lore",
+        "sword_way"
+      ],
+      "choices": {
+        "left": {
+          "text": "'说说你师父——他也是青云弟子？'",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 8
+          },
+          "desc": "锤子停了一下——然后继续。'不是。他是被逐出去的。因为他说那剑是活的。执事会说他妖言惑众。'铁匠抬头看了你一眼——'你不一样——你的剑意里没有'规矩'。'"
+        },
+        "right": {
+          "text": "'剑怎么能长出来——别开玩笑'",
+          "effects": {
+            "daoHeart": 3,
+            "cultivation": 3
+          },
+          "desc": "铁匠笑了——不是嘲笑，是那种知道秘密的笑。'你以后会懂的——希望到时候你还能回来修剑。'他继续打铁——但锤子的节奏变了——不再是砸，是敲。在等什么。"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
+    },
+    {
+      "id": "atm_fd_herb_elder",
+      "type": "STORY",
+      "title": "药圃老人的话",
+      "description": "宗门外围的药圃——种着几百种灵草，管药圃的不是执事长老，是一个没有修为的老人。没人知道他的名字。有人说是掌门的远亲，有人说是上一代的守山弟子。他每天做的事只有三件：浇水、除草、跟你说话——但只说他在乎的那句。他朝你摆摆手：'来——看看这株紫灵芝。你猜它活了多久？'",
+      "realm": "foundation",
+      "weight": 3,
+      "tags": [
+        "atmosphere",
+        "sect",
+        "lore"
+      ],
+      "choices": {
+        "left": {
+          "text": "'五十年？'——凑近了看",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          },
+          "desc": "'错了——两百年。它长得很慢。'他摸了摸灵芝的伞盖——动作像在摸一个孩子的头。'奇怪吧——修仙的人拼命修快，它却拼命长慢。'他看着你：'有时候慢——是对的。'"
+        },
+        "right": {
+          "text": "'我不知道——我不懂草'",
+          "effects": {
+            "daoHeart": 3
+          },
+          "desc": "'不懂没关系——它懂你。'老人笑了笑——然后继续浇水了。你不确定他是疯子还是智者——但他手里的灵芝确实比你见过的任何灵植都要大。"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_herb_gathering.png"
+    },
+    {
+      "id": "atm_fd_wandering_minstrel",
+      "type": "STORY",
+      "title": "流浪琴师",
+      "description": "宗门外的山路上——一个背着琴的男人在路边歇脚。他的琴没有弦——不是断了，是根本没装。他看见你在看他的琴——'你是第几个了？都没人问这把琴怎么弹。都忙着问——弦呢？'他的手指在无弦的琴上比划——像是在弹一首你听不见的歌。'你听见了吗？'他问。你什么都没听见——但他那比划着的手指让你的三片残根突然震动了一下。",
+      "realm": "foundation",
+      "weight": 3,
+      "tags": [
+        "atmosphere",
+        "hidden",
+        "mystery"
+      ],
+      "choices": {
+        "left": {
+          "text": "'我听不见——但我感觉到了'",
+          "effects": {
+            "daoHeart": 10,
+            "cultivation": 5,
+            "fortune": 3
+          },
+          "desc": "他笑了——然后把琴递给你。'试试。'你在无弦的琴上比划了一小段柳河村的乡谣。琴没响——但你的残根响了——三根一起。琴师收回了琴：'留着吧——你已经会了。'然后他走了——沿山路向上，不是下山。"
+        },
+        "right": {
+          "text": "摇摇头——'我学剑的，不懂琴'",
+          "effects": {
+            "cultivation": 3
+          },
+          "desc": "'没关系——以后会懂的。'他站起来——背着无弦的琴沿山路向上走去。不是下山——是向着剑冢的方向。"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
+    },
+    {
+      "id": "atm_gd_wine_house_bet",
+      "type": "STORY",
+      "title": "酒肆赌约",
+      "description": "修仙坊市的酒肆里——几个散修在押注：'下一届论剑大会——青云还是血煞？'筹码哗啦啦堆在木桌上——灵石、法器、功法，什么都有。一个干瘦的老头看了看你腰间的剑穗——青云的剑穗。'小哥——你押谁？不赌也行——说说你的看法。这壶酒我请。'他把酒壶推过来——壶不是新的，是旧竹筒——散修最穷的那种。",
+      "realm": "golden",
+      "weight": 4,
+      "tags": [
+        "atmosphere",
+        "rumor",
+        "sect",
+        "demonic"
+      ],
+      "choices": {
+        "left": {
+          "text": "'我押自己——不是青云也不是血煞'",
+          "effects": {
+            "daoHeart": 2,
+            "fortune": 5
+          },
+          "desc": "酒肆安静了三秒——然后那个干瘦老头哈哈大笑。'好——好！三百年了——第一个说'我押自己'的青云弟子。'他把酒壶推过来：'这壶酒——不是请你，是敬你。'散修们开始窃窃私语——不是嘲笑，是重新打量你。"
+        },
+        "right": {
+          "text": "'青云必胜——不需要押'",
+          "effects": {
+            "daoHeart": 5,
+            "cultivation": 3
+          },
+          "desc": "几个散修交换了一个眼神——那种'又一个被宗门洗脑的'的眼神。干瘦老头笑着摇了摇头——把那壶旧竹筒酒端走了。'等你不说'必胜'的时候——我再请你。'"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_market.png"
+    },
+    {
+      "id": "atm_gd_familys_letter_unread",
+      "type": "STORY",
+      "title": "未读的家书",
+      "description": "宗门邮差送来一封信——不是你养父的笔迹，是村里教书先生的代笔。信封上用炭笔写着：'柳河村——叶铁匠——托寄'。信纸折了又折——折痕多得数不清。教书先生的字工工整整：'铁匠让我写——他说你不识字的时候教过你写名字，现在你应该会看信了。他说——没事。只是告诉你他没事。'信的边角有点湿——不是下雨，是泪水干掉的痕迹。",
+      "realm": "golden",
+      "weight": 3,
+      "tags": [
+        "atmosphere",
+        "mortal",
+        "family",
+        "emotion"
+      ],
+      "choiceType": "EMOTIONAL",
+      "choices": {
+        "left": {
+          "text": "回信——'我也没事'",
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 10,
+            "fortune": 5
+          },
+          "desc": "你的字歪歪扭扭的——比他教你那年好不了多少。但你写了。邮差接过信的时候看了你一眼——他认得你的剑穗。'青云弟子给凡人寄信——我送了一百年信，第一次见。'他把信在手里掂了掂——很轻。但你知道它比灵石重。"
+        },
+        "right": {
+          "text": "把信叠好放回信封——没有回",
+          "effects": {
+            "daoHeart": 3
+          },
+          "desc": "你没回。不是不想——是不知道写什么。'没关系——下次再写'——你告诉自己。但你后来收到下封信的时候，那个'下次'已经隔了两年。"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
+    },
+    {
+      "id": "atm_gd_shadow_market",
+      "type": "STORY",
+      "title": "暗市",
+      "description": "有人递给你一张纸条——纸条不是纸，是树叶。树叶上用灵气烫出一个地址：'西市第三巷，丑时。'不是邀请，是提醒。暗市——修仙界的地下交易会，不归任何宗门管。你去了——第三巷什么都没有，只有一面镜子。镜子照的不是你——是你想买的东西。一个戴面具的人在镜子边等着：'第一次来？'",
+      "realm": "golden",
+      "weight": 4,
+      "tags": [
+        "atmosphere",
+        "mystery",
+        "market"
+      ],
+      "choices": {
+        "left": {
+          "text": "'看看——不买'",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5,
+            "karmaGood": 3
+          },
+          "desc": "面具人摊摊手——'随便。反正来过一次的人——都会来第二次。不是买不起——是放不下。'镜子里闪过一柄剑——不是青云教的任何剑法——但剑刃和你的三脉残根同时震了一下。"
+        },
+        "right": {
+          "text": "转身离开——暗市不是正道弟子该来的地方",
+          "effects": {
+            "daoHeart": 8,
+            "karmaGood": 5
+          },
+          "desc": "你转身的时候镜子里的影像消失了——变成了一面普通的铜镜。但你走远之后——面具人对着空气说了一句：'他会回来的。他的残根——在找东西。'"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_market.png"
+    },
+    {
+      "id": "atm_nd_ancient_ruins",
+      "type": "STORY",
+      "title": "古道上的残垣",
+      "description": "北荒古道上——不是现修的商道，是三千年前元婴修士飞升前走过的石阶。石阶两边是残败的城墙——不是凡人垒的，是阵法轰塌的。一块残碑斜插在土里——上面的字被时光削掉了一半。能认出来的只有三个字：'……道……不……'三脉残根同时震动。这块碑——和你有关系。",
+      "realm": "nascent",
+      "weight": 4,
+      "tags": [
+        "atmosphere",
+        "ancient",
+        "lore",
+        "truth"
+      ],
+      "choices": {
+        "left": {
+          "text": "用灵识探查残碑——看它记住的",
+          "effects": {
+            "cultivation": 10,
+            "daoHeart": 8,
+            "fortune": 8
+          },
+          "desc": "灵识渗入残碑的瞬间——你看到了三千年前的一个片段：一个人站在这里的石阶上，他的三脉完整无缺。他回头看了一眼——在看你。三千年前的人——在看三千年后的你。然后残碑碎了——不是碎的石头，是时间终于追上来的声音。"
+        },
+        "right": {
+          "text": "路过——不打扰古人",
+          "effects": {
+            "daoHeart": 5,
+            "fortune": 5
+          },
+          "desc": "你没有探查——但经过残碑的时候，你的残根和石碑之间产生了一瞬间的共鸣。不是灵力——是某种更古老的东西在'相认'。"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_ascension.png"
+    },
+    {
+      "id": "atm_nd_faction_spy",
+      "type": "STORY",
+      "title": "茶楼里的探子",
+      "description": "坊市的茶楼二楼——你一个人喝茶。隔壁桌一个穿斗篷的人在写信——不是毛笔，是灵符。灵符燃烧的微光从斗篷边缘漏出来——是血煞宗的暗号。他察觉到你注意到了——抬起斗篷——露出一张意外的脸：不是陌生人——是殷血。他笑了笑——用唇语说：'别出声。'然后把灵符烧完——灰烬在空中组成了一行字——'晚上——老地方——有情报。'然后消失了。",
+      "realm": "nascent",
+      "weight": 4,
+      "npcId": "yin_xue",
+      "tags": [
+        "atmosphere",
+        "demonic",
+        "ally",
+        "companion"
+      ],
+      "choices": {
+        "left": {
+          "text": "晚上去见他——情报可能是关于青云内鬼的",
+          "effects": {
+            "daoHeart": 8,
+            "fortune": 5,
+            "karmaGood": 3
+          },
+          "desc": "老地方——枯树。殷血点了一盏灵灯——不是为了照明，是为了隔音。'青云宗执事会里有人和你师父不对付——不是要杀他，是要架空他。动手的时间——下个月圆之夜。'你点头——没有问更多。他知道就够了。"
+        },
+        "right": {
+          "text": "不去——正道弟子不应深夜见魔修",
+          "effects": {
+            "daoHeart": 3,
+            "karmaGood": 5
+          },
+          "desc": "你没去。但第二天一早——殷血托人给你送来一个锦囊——打开的时候，里面传出他的声音，只有一句：'你自己选择不听的——希望你不要后悔。'"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_market.png"
+    },
+    {
+      "id": "atm_nd_ice_cave_whisper",
+      "type": "STORY",
+      "title": "冰窟中的低吟",
+      "description": "极北冰原的一个冰窟里——白落霜站在你身边。她不是在修炼——在听。'你听到了吗？不是风声——是冰在唱。'她的银发在冰壁上投下淡蓝的倒影——不是灵力，是冰窟本身的寒光。她闭上眼睛：'三百年前——有一只白狐在这里等一个人。等了很久。后来她把自己冻在冰里——说要等到他回来。不是等不到——是不想忘掉。'她睁开眼——琥珀色的瞳孔里映着你。'白狐的记忆——可以传三百年。'",
+      "realm": "nascent",
+      "weight": 4,
+      "npcId": "bai_luoxuan",
+      "tags": [
+        "atmosphere",
+        "companion",
+        "emotion",
+        "ancient"
+      ],
+      "choiceType": "EMOTIONAL",
+      "choices": {
+        "left": {
+          "text": "'你不会等那么久的——我不会让你等'",
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 10,
+            "fortune": 5
+          },
+          "desc": "她笑了——很浅——但冰窟里的温度升了一度。不是法术——是天狐情绪的自然投影。'我知道——'她轻轻说——'因为你不是那时候的人。你是现在——现在的人不等人，只会追。'"
+        },
+        "right": {
+          "text": "沉默——握紧她的手",
+          "effects": {
+            "daoHeart": 10
+          },
+          "desc": "你没有说话——但你的手握紧了她。冰窟里没有声音——只有冰壁上的光在看你。不是监视——是见证了太多等待之后终于看到了一次'不放手的'。"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_dungeon_cave.png"
+    },
+    {
+      "id": "atm_dt_heaven_eye",
+      "type": "STORY",
+      "title": "天上的眼睛",
+      "description": "化神期的灵识覆盖数百里——你能感知到山脉的呼吸、河流的脉搏。但有一片区域你感知不到——就在你头顶正上方。一片黑色的区域——像一个盲点。不是你的灵识不够强——是那个盲点不想被看到。三脉残根同时震动——它们在告诉你：那是天道之眼——在看你。不是监视——是评估。它在评估——你值不值得被消灭。",
+      "realm": "deity",
+      "weight": 4,
+      "tags": [
+        "atmosphere",
+        "truth",
+        "hidden",
+        "fate"
+      ],
+      "choices": {
+        "left": {
+          "text": "用碎玉的力量回看那只眼睛",
+          "effects": {
+            "daoHeart": 2,
+            "cultivation": 10,
+            "fortune": -10
+          },
+          "desc": "碎玉在你怀里发光——不是召唤，是回击。你看到了——天道之眼后面不是虚无，是无数条因果的线。每一条线都连着一个人的命运——包括你的。其中一条线——比其他的都细——上面写着四个字：'漏洞。保留。'天道不是在消灭你——是在实验你。"
+        },
+        "right": {
+          "text": "收回灵识——不要惊动它",
+          "effects": {
+            "daoHeart": 8,
+            "fortune": 10
+          },
+          "desc": "你收回了灵识——但你知道，你已经引起了它的注意。盲点移动了一寸——跟了你一寸。然后不动了——不是不看了——是记下了。"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_destiny_fate.png"
+    },
+    {
+      "id": "atm_dt_mortal_village_fade",
+      "type": "STORY",
+      "title": "凡尘渐远",
+      "description": "你从柳河村上空飞过——不是特意，是顺路。但你飞得很慢——慢到能看见炊烟的形状。柳河村的黄昏和六十年前一样——铁匠铺的烟、河边的洗衣石、村口的柳树——只是铁匠铺的烟不是养父点的了。他已经走了。村里没有人认得你——凡人的寿命太短了。你落在村口的柳树下——六十年前你爬上去掏鸟窝的那根树枝还在。但鸟窝已经换了七代——没有一只鸟记得你的手。",
+      "realm": "deity",
+      "weight": 3,
+      "tags": [
+        "atmosphere",
+        "mortal",
+        "family",
+        "self"
+      ],
+      "choiceType": "EMOTIONAL",
+      "choices": {
+        "left": {
+          "text": "在柳树下埋一块灵石——佑柳河村千年不衰",
+          "effects": {
+            "daoHeart": 2,
+            "karmaGood": 15,
+            "spiritStone": -100
+          },
+          "desc": "灵石入土的声音很轻——像你养父的锤子最后一次落在铁砧上。柳树无风自动——不是害怕，是认识你。六十年前你从它身上摔下来的时候——它接住你的那根枝条，现在还在。但它的根——比你的境界还深。凡人的根——有时候比仙人的深。"
+        },
+        "right": {
+          "text": "看一眼就走——不留痕迹是最好的保护",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 5
+          },
+          "desc": "你没有留下任何痕迹。但柳树记住了你的灵压——在未来三百年的时间里，它会在每个黄昏重复你的灵压频率。不是召唤你——是告诉村里孩子们：'有一个人——从这里走出去的——飞到了天上。'"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_story_moment_v2.png"
+    },
+    {
+      "id": "atm_dt_elder_storyteller",
+      "type": "STORY",
+      "title": "茶馆里讲你的故事",
+      "description": "你路过一家凡间茶馆——在化神期修士的灵识中，凡人的对话像风吹叶子的声音——太轻了。但这片叶子飘进了你的灵识——茶博士在说书，说的是一个故事：'话说那青云宗的弃徒——三脉残根——从柳河村跪到山门……'你停下——不是因为他知道——是因为他不知道主角正在外面喝茶。他在编。但编得意外地准——连碎玉的颜色都说对了。",
+      "realm": "deity",
+      "weight": 4,
+      "tags": [
+        "atmosphere",
+        "rumor",
+        "self"
+      ],
+      "choices": {
+        "left": {
+          "text": "走进去——听他把故事讲完",
+          "effects": {
+            "daoHeart": 10,
+            "fortune": 8
+          },
+          "desc": "他讲完的时候全场寂静——然后有人问：'是真的吗？'茶博士笑了——'不知道——但每次青云宗的弟子从天上飞过的时候，我都觉得是真的。'你放下茶钱——没有人认出你。你的境界太高了——凡人看不见。但茶博士盯着你的方向看了很久——他看不到你，但他感觉到了。说书人的直觉——有时候比灵识还准。"
+        },
+        "right": {
+          "text": "离开——凡间的故事终究是故事",
+          "effects": {
+            "daoHeart": 5
+          },
+          "desc": "你飞走了。但心里知道——茶博士下次讲这个故事的时候，会加上一句：'那叶凌云——据说最近刚在云端客栈喝了一壶茶。非常普通的茶——因为他这辈子最好的茶，是在柳河村的井水里泡的。'"
+        }
+      },
+      "sceneImage": "assets/cards/events/scene_pool_sect_training.png"
+    }
+  ]
+}

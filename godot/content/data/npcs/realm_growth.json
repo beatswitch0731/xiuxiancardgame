@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "description": "NPC不再静止等候玩家；随主角推进，他们会破境、换位、改志，并在高羁绊时将成长成果带入战斗。",
+  "npcs": {
+    "bai_ren": [
+      { "id": "sword_keeper", "realm": "qi", "npcRealm": "golden", "title": "青云剑宗·守冢掌门", "location": "青云剑宗·剑冢", "mindset": "执念", "dialogue": "我守的不是一座剑冢，是青云尚未断绝的剑心。" },
+      { "id": "sword_awakening", "realm": "golden", "npcRealm": "nascent", "title": "青云剑宗·醒剑真人", "location": "青云剑宗·问剑台", "mindset": "通明", "dialogue": "你破金丹那一刻，剑冢里所有断剑都朝你的方向鸣了一声。", "minAffection": 20, "assist": { "atk": 1, "text": "一缕掌门剑意落在你的锋刃上" } },
+      { "id": "sky_cutter", "realm": "deity", "npcRealm": "deity", "title": "斩天剑主", "location": "天门裂隙", "mindset": "释然", "dialogue": "这一剑我替宗门藏了三百年。今日不斩人，只斩天门。", "minAffection": 55, "assist": { "atk": 1, "status": { "id": "sword_intent", "value": 1 }, "text": "斩天剑意与你的神魂共鸣" } }
+    ],
+    "bai_luoxuan": [
+      { "id": "fox_debtor", "realm": "foundation", "npcRealm": "foundation", "title": "白狐部·报恩者", "location": "南疆·白狐部", "mindset": "执念", "dialogue": "前世的恩，我这一世还；这一世的路，我想与你一起走。" },
+      { "id": "moon_guard", "realm": "nascent", "npcRealm": "nascent", "title": "月湖新主", "location": "南疆·月湖", "mindset": "通明", "dialogue": "我终于明白，报恩不是把命交给你，是让自己也有资格站在你身边。", "minAffection": 35, "assist": { "block": 1, "text": "月狐幻影替你挡下一线杀机" } },
+      { "id": "nine_tail_echo", "realm": "deity", "npcRealm": "deity", "title": "九尾月君", "location": "两界月廊", "mindset": "释然", "dialogue": "月亮照过你每一世，也照见我每一次追上你。", "minAffection": 70, "assist": { "block": 2, "text": "九尾月华覆住你的气海" } }
+    ],
+    "jian_linger": [
+      { "id": "young_blade", "realm": "qi", "npcRealm": "qi", "title": "青云剑宗·关门弟子", "location": "青云剑宗·试剑坪", "mindset": "迷茫", "dialogue": "师父说剑要直，可世上的路为什么总是弯的？" },
+      { "id": "wandering_sword", "realm": "golden", "npcRealm": "golden", "title": "青云行剑使", "location": "东洲·云剑商路", "mindset": "通明", "dialogue": "我替商队开过路，也替仇家收过剑。剑的直，不等于人要不知变通。", "minAffection": 25, "assist": { "atk": 1, "text": "她从商队云旗后递来一剑" } },
+      { "id": "sword_star", "realm": "deity", "npcRealm": "nascent", "title": "剑宗少宗主", "location": "青云剑宗·问剑台", "mindset": "执念", "dialogue": "下一代不必重复我们的旧错。我要让青云的剑，也能护住凡人的路。", "minAffection": 50, "assist": { "atk": 1, "block": 1, "text": "少宗主与你结成双剑阵" } }
+    ],
+    "mu_qinglan": [
+      { "id": "book_keeper", "realm": "foundation", "npcRealm": "foundation", "title": "天枢道院·万卷楼", "location": "天枢道院·万卷楼", "mindset": "迷茫", "dialogue": "书里每一个答案，都在最后一页留下更大的空白。" },
+      { "id": "forbidden_reader", "realm": "nascent", "npcRealm": "nascent", "title": "天道书解卷人", "location": "天枢道院·禁书层", "mindset": "执念", "dialogue": "飞升二字被人改过。我不是猜的——墨迹比整座道院还古老。", "minAffection": 30, "assist": { "status": { "id": "aura", "value": 1 }, "text": "她以天道残页替你稳定护盾" } },
+      { "id": "truth_scholar", "realm": "tribulation", "npcRealm": "deity", "title": "破卷天师", "location": "天机阁·破天阵", "mindset": "通明", "dialogue": "我读完了空白页。答案不是一句话，而是我们敢不敢把下一句写上去。", "minAffection": 60, "assist": { "block": 1, "status": { "id": "aura", "value": 1 }, "text": "破卷法阵锁住战场因果" } }
+    ],
+    "yin_xue": [
+      { "id": "blood_heir", "realm": "foundation", "npcRealm": "foundation", "title": "血煞宗·第一天才", "location": "西域·血煞绿洲", "mindset": "执念", "dialogue": "正邪都是赢家写在尸骨上的字。我只信活下来的人。" },
+      { "id": "red_wanderer", "realm": "nascent", "npcRealm": "nascent", "title": "离宗血衣", "location": "西域·血骨商路", "mindset": "迷茫", "dialogue": "我离开血煞宗后才发现，不听命令比杀人更难。", "minAffection": 25, "assist": { "atk": 1, "text": "血衣刀光抢先撕开敌阵" } },
+      { "id": "blood_reformer", "realm": "tribulation", "npcRealm": "deity", "title": "血河新宗主", "location": "西域·血煞圣殿", "mindset": "通明", "dialogue": "血煞宗欠这片土地太多。从我开始，血河只向天上流。", "minAffection": 60, "assist": { "atk": 1, "status": { "id": "fortify", "value": 1 }, "text": "血河战意淬炼你的气血" } }
+    ],
+    "jiuwei_suyue": [
+      { "id": "ancient_witness", "realm": "nascent", "npcRealm": "deity", "title": "九尾天狐·太古见证者", "location": "南疆·月湖", "mindset": "执念", "dialogue": "我见过天门第一次关闭。那一天，所有飞升者的名字同时从族谱上消失。" },
+      { "id": "memory_restored", "realm": "deity", "npcRealm": "tribulation", "title": "九尾族·忆世主", "location": "两界月廊", "mindset": "通明", "dialogue": "你的历世谱系补回了我缺失的记忆：天道怕的从来不是强者，是能彼此记住的人。", "minAffection": 40, "assist": { "block": 1, "status": { "id": "aura", "value": 1 }, "text": "太古月忆替你保留护体灵光" } },
+      { "id": "moon_gate", "realm": "tribulation", "npcRealm": "ascension", "title": "月门引渡者", "location": "天门背面", "mindset": "释然", "dialogue": "若天门只有一个出口，我便替众生再开一扇。", "minAffection": 75, "assist": { "block": 2, "text": "月门投影令敌意失去方向" } }
+    ],
+    "tianji_laoren": [
+      { "id": "observer", "realm": "qi", "npcRealm": "deity", "title": "天机阁·观星者", "location": "天机阁·观星台", "mindset": "执念", "dialogue": "老夫不是算不出结局，是不敢替众生选那一个结局。" },
+      { "id": "array_waker", "realm": "deity", "npcRealm": "tribulation", "title": "破天阵·启阵人", "location": "天机阁·破天阵", "mindset": "通明", "dialogue": "七千年够久了。今日这一卦，不问吉凶，只问后来者还有没有路。", "minAffection": 35, "assist": { "block": 1, "text": "星轨提前显出敌人的下一步" } },
+      { "id": "fate_breaker", "realm": "tribulation", "npcRealm": "ascension", "title": "无命老人", "location": "天外星盘", "mindset": "释然", "dialogue": "命书上已经没有老夫的名字。好极了，终于能做一件算不到的事。", "minAffection": 65, "assist": { "block": 1, "status": { "id": "aura", "value": 1 }, "text": "无命星盘替你挪开一次劫数" } }
+    ],
+    "xuesha_laozu": [
+      { "id": "demon_lord", "realm": "golden", "npcRealm": "deity", "title": "血煞宗宗主", "location": "西域·血煞圣殿", "mindset": "执念", "dialogue": "本座不怕天道。只怕有一日，连自己为何反它都忘了。" },
+      { "id": "old_oath", "realm": "deity", "npcRealm": "tribulation", "title": "旧誓魔尊", "location": "百年战场遗址", "mindset": "迷茫", "dialogue": "她的名字被天道抹去了，可本座每次拔刀，仍记得要替谁而战。", "minAffection": 30, "assist": { "atk": 1, "text": "旧誓魔气压住Boss的威势" } },
+      { "id": "heaven_rebel", "realm": "tribulation", "npcRealm": "ascension", "title": "逆天盟主", "location": "天门裂隙", "mindset": "通明", "dialogue": "正道、魔道，到门后都是天道的粮。今日先拆门，旧账以后再算。", "minAffection": 60, "assist": { "atk": 2, "text": "逆天魔刃与你同时斩向天门" } }
+    ]
+  }
+}
