@@ -129,7 +129,13 @@ var _experience_apply_queued := false
 
 
 func _ready() -> void:
-	registry = Registry.new()
+	# 生产环境复用 DataService 的共享 Registry（贴图别名缓存只解析一次）；
+	# `--script` 测试模式不加载 autoload，走自建——这是正常路径而非异常。
+	var data_service := get_node_or_null("/root/DataService") as GameDataService
+	if data_service != null:
+		registry = data_service.registry_or_new()
+	else:
+		registry = Registry.new()
 	content_repository = ContentRepository.new()
 	world_map = WorldMap.new(content_repository)
 	evidence_atlas = EvidenceAtlas.new(content_repository)

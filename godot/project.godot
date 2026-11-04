@@ -14,6 +14,10 @@ config/name="一念仙途 · Godot 迁移"
 run/main_scene="res://scenes/noncombat_opening.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[autoload]
+
+DataService="*res://autoload/data_service.gd"
+
 [display]
 
 window/size/viewport_width=1280
