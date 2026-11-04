@@ -1,3 +1,4 @@
+class_name NoncombatDomain
 extends RefCounted
 
 # Bounded fresh-life story slice. Source JSON owns cards, routes and path bonuses;

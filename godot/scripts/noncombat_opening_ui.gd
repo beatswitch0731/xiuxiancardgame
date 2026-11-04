@@ -1,3 +1,4 @@
+class_name NoncombatOpeningUI
 extends Control
 const LegacyFragmentFlow = preload("res://scripts/noncombat_legacy_fragment_flow.gd")
 const PathSkillFlow = preload("res://scripts/noncombat_path_skill_flow.gd")

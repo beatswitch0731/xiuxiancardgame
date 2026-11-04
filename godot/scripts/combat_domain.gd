@@ -1,3 +1,4 @@
+class_name CombatDomain
 extends RefCounted
 
 signal changed(event: Dictionary)

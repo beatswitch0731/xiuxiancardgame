@@ -1,3 +1,4 @@
+class_name NoncombatRunSession
 extends RefCounted
 
 # The only durable writer for the Godot opening while the full RunSession is

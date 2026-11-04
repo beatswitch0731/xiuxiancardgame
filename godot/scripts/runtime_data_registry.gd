@@ -1,3 +1,4 @@
+class_name RuntimeDataRegistry
 extends RefCounted
 
 const CONTENT_ROOT := "res://content/"

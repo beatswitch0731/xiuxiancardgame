@@ -1,3 +1,4 @@
+class_name NoncombatContentRepository
 extends RefCounted
 
 # Read-only index over the copied browser data. Source JSON and the generated
