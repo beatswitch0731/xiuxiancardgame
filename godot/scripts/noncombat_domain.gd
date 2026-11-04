@@ -67,6 +67,27 @@ const BrowserCombatActions = preload("res://scripts/noncombat_browser_combat_act
 const BrowserCombatPlan = preload("res://scripts/battle_plan_resolver.gd")
 signal changed(event: Dictionary)
 
+## 事件出口诊断：记录运行期实际发出过的事件类型与次数。
+## 用途：回答「UI 的 19 个 event.get("type") 分支里，哪些真的有事件进来」，
+## 为后续把 changed(Dictionary) 拆成强类型信号提供真实清单，
+## 避免凭空猜测事件集合。只计数，不改变任何行为。
+var emitted_event_types: Dictionary = {}
+
+
+func _emit_event(event: Dictionary) -> void:
+	var event_type := String(event.get("type", ""))
+	if event_type.is_empty():
+		push_error("[domain] event emitted without type")
+	else:
+		emitted_event_types[event_type] = int(
+			emitted_event_types.get(event_type, 0)) + 1
+	changed.emit(event)
+
+
+## 返回本次运行中实际发出过的事件类型 → 次数。
+func event_type_report() -> Dictionary:
+	return emitted_event_types.duplicate(true)
+
 class ReplaySnapshotStore extends RefCounted:
 	var snapshot: Dictionary
 
@@ -384,7 +405,7 @@ func start(path_id: String, authored_player_name: String = "叶凌云") -> bool:
 	_current_card_id = "tutorial_1"
 	_choice_token = 1
 	state = opening
-	changed.emit({"type": "STARTED", "path": path_id, "cardId": _current_card_id})
+	_emit_event({"type": "STARTED", "path": path_id, "cardId": _current_card_id})
 	return true
 
 
@@ -1605,7 +1626,7 @@ func restore() -> bool:
 	_companion_milestone_activation_index = rebuilt._companion_milestone_activation_index
 	_narrative_admission_activation_index = rebuilt._narrative_admission_activation_index
 	state = saved.duplicate(true)
-	changed.emit({"type": "RESTORED", "cardId": _current_card_id})
+	_emit_event({"type": "RESTORED", "cardId": _current_card_id})
 	return true
 
 
@@ -2403,7 +2424,7 @@ func _restore_rebirth(saved: Dictionary, record: Dictionary) -> bool:
 	if not path_bundle.is_empty():
 		_install_rebirth_path_bundle(path_bundle)
 	state = saved.duplicate(true)
-	changed.emit({"type": "RESTORED", "cardId": _current_card_id})
+	_emit_event({"type": "RESTORED", "cardId": _current_card_id})
 	return true
 
 
@@ -3147,7 +3168,7 @@ func _commit_encounter_transition(candidate: Dictionary, event_type: String,
 	if nested_milestone:
 		_flow_card_count += 1
 		_tick_normal_starvation("milestone")
-	changed.emit({"type": "DEATH_NARRATIVE" if not death_source_id.is_empty() \
+	_emit_event({"type": "DEATH_NARRATIVE" if not death_source_id.is_empty() \
 		and state.get("phase") == "DEATH_PENDING" else event_type, "sourceCardId": prior_id,
 		"cardId": _current_card_id, "turn": state["turn"]})
 	return true
@@ -4279,7 +4300,7 @@ func change_rebirth_tree(node_id: String, refund: bool = false) -> bool:
 			return false
 		_store_revision = int(committed.get("revision", -1))
 	state = candidate
-	changed.emit({"type": "REBIRTH_TREE_CHANGED", "nodeId": node_id,
+	_emit_event({"type": "REBIRTH_TREE_CHANGED", "nodeId": node_id,
 		"refunded": refund})
 	return true
 
@@ -4368,7 +4389,7 @@ func interact_npc(npc_id: String, action: String, item_id: String = "") -> bool:
 		return false
 	_store_revision = int(committed.get("revision", -1))
 	state = candidate
-	changed.emit({"type": "NPC_INTERACTION", "npcId": npc_id,
+	_emit_event({"type": "NPC_INTERACTION", "npcId": npc_id,
 		"action": action, "result": candidate.npcInteractionHistory.back()})
 	return true
 
@@ -4416,7 +4437,7 @@ func select_portrait(comp_id: String, stage_id: String) -> bool:
 		return false
 	_store_revision = int(committed.get("revision", -1))
 	state = candidate
-	changed.emit({"type": "COMPANION_PORTRAIT_SELECTED",
+	_emit_event({"type": "COMPANION_PORTRAIT_SELECTED",
 		"companionId": canonical, "stageId": stage_id})
 	return true
 
@@ -4498,7 +4519,7 @@ func set_legacy_focus(set_id: String) -> bool:
 			return false
 		_store_revision = int(committed.get("revision", -1))
 	state = candidate
-	changed.emit({"type": "LEGACY_FOCUS_CHANGED", "setId": set_id})
+	_emit_event({"type": "LEGACY_FOCUS_CHANGED", "setId": set_id})
 	return true
 
 
@@ -4558,7 +4579,7 @@ func claim_boss_fragment(set_id: String) -> bool:
 			return false
 		_store_revision = int(committed.get("revision", -1))
 	state = candidate
-	changed.emit({"type": "BOSS_FRAGMENT_CLAIMED", "setId": set_id})
+	_emit_event({"type": "BOSS_FRAGMENT_CLAIMED", "setId": set_id})
 	return true
 
 
@@ -4676,7 +4697,7 @@ func _commit_rebirth_candidate(candidate: Dictionary, direction: String) -> bool
 	_reset_new_life_runtime()
 	_current_card_id = "rebirth_boon"
 	_choice_token += 1
-	changed.emit({"type": "REBIRTH_PATH_REQUIRED", "cardId": _current_card_id,
+	_emit_event({"type": "REBIRTH_PATH_REQUIRED", "cardId": _current_card_id,
 		"lifeCount": candidate["lifeCount"]})
 	return true
 
@@ -4812,7 +4833,7 @@ func select_rebirth_path(path_id: String) -> bool:
 	_install_rebirth_path_bundle(bundle)
 	state = candidate
 	_choice_token += 1
-	changed.emit({"type": "REBIRTH_PATH_SELECTED", "cardId": "rebirth_boon",
+	_emit_event({"type": "REBIRTH_PATH_SELECTED", "cardId": "rebirth_boon",
 		"path": path_id, "lifeCount": candidate["lifeCount"]})
 	return true
 
@@ -5633,7 +5654,7 @@ func _acknowledge_narrative_result(direction: String) -> bool:
 	_current_card_id = ""
 	_choice_token += 1
 	state = candidate
-	changed.emit({"type": "RESULT_ACKNOWLEDGED", "sourceCardId": result_id,
+	_emit_event({"type": "RESULT_ACKNOWLEDGED", "sourceCardId": result_id,
 		"cardId": "", "turn": next_index})
 	return true
 
@@ -5825,7 +5846,7 @@ func _commit_choice(next_state: Dictionary, card: Dictionary, direction: String,
 	_current_card_id = next_id
 	_choice_token += 1
 	state = next_state
-	changed.emit({"type": "CHOICE_COMMITTED", "sourceCardId": prior_id,
+	_emit_event({"type": "CHOICE_COMMITTED", "sourceCardId": prior_id,
 		"direction": direction, "nextCardId": next_id, "turn": state["turn"]})
 	return true
 
