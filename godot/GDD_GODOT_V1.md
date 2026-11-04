@@ -1,11 +1,12 @@
-# 《一念仙途》Godot 版 · 游戏设计文档 GDD v1.0
+# 《一念仙途》Godot 版 · 游戏设计文档 GDD v1.1
 
 | 项 | 内容 |
 |---|---|
-| 文档版本 | v1.0（首版统一稿） |
+| 文档版本 | **v1.1**（v1.0 → v1.1：B2 音频总线落地；修正 B3 顺序判断） |
 | 制定日期 | 2026-11-05 |
+| 最近修订 | 2026-11-05（B2 完成后） |
 | 工程根 | `E:/4e/游1/2026-06-27-05-40-58/xiuxian-card-game/godot` |
-| 基线提交 | `5522063` / 分支 `remedy/noncombat-p0-2026-11-05` |
+| 基线提交 | `b875a55` / 分支 `remedy/noncombat-p0-2026-11-05` |
 | 引擎 | Godot 4.7.2 Stable / Forward+ / 1280×800 / Windows 桌面 |
 | 平台范围 | **仅 Windows 桌面 + 桌面浏览器 Web**；不含手机端、触摸适配 |
 
@@ -228,8 +229,14 @@ godot/ 实际代码
 | 名称 | 职责 | 生命周期 | 现状 |
 |---|---|---|---|
 | `DataService` | 共享 `RuntimeDataRegistry` | 启动 → 退出 | ✅ 已实现（P3） |
-| `AudioBus` | BGM/SFX/Voice/UI 四总线 + 音量 | 启动 → 退出 | ❌ 未实现（当前无 bus layout） |
+| `AudioBus` | BGM/SFX/Voice/UI 四总线 + 音量 | 启动 → 退出 | ✅ **已实现（B2，2026-11-05）**——5 总线在 `default_bus_layout.tres`，播放器已分配 |
 | `GameSettings` | 阅读偏好、特效档位、稳定背景 | 启动 → 退出 | ⚠️ 部分（存在 `noncombat_experience_settings.gd`，但是实例而非单例） |
+
+**B2 的实现要点**：子总线全部 0dB，音量仍由 `BUS_GAINS` 软件缩放，因此
+「bus 0dB × 软缩放」= 改造前的「Master × 软缩放」，**听感不变**。
+拆总线的收益是将来可独立调 BGM/SFX 而不必改代码。
+
+**门禁**：`tests/audio_bus_layout.gd` → `AUDIO_BUS_LAYOUT_PASS buses=5`
 
 **实现要求**：
 - 每个 Autoload 必须有 `##` 注释说明「放什么 / 不放什么」
@@ -548,16 +555,16 @@ content/data/            运行时唯一权威（77 个 JSON，9.1MB）【实测
 
 ### 7.3 技术债清单（按优先级）
 
-| # | 债务 | 量化 | 影响 |
-|---|---|---|---|
-| 1 | UI 不使用节点树 | 32/47 单节点场景，`Control` 仅 29 个 | 不能 F6、不能拖拽、diff 无意义 |
-| 2 | `noncombat_domain` 上帝对象 | 6,476 行 / 62 扇出 | 每加功能都要动它 |
-| 3 | 无 Theme | 14 处 `StyleBoxFlat.new()` | 换肤要改代码 |
-| 4 | 无音频总线 | `bus` 字段悬空 | BGM/SFX 无法独立调节 |
-| 5 | 资产缺失静默 | 已修（P0-2 已完成） | 现已可见 |
-| 6 | 事件类型裸字符串 | 7 处 | 拼错静默失效 |
-| 7 | `get_node` 硬编码 | 63 处 | 节点改名即崩 |
-| 8 | 战斗 stage 重复 | 23 脚本 / 4,299 行 | 一处演出修复要改多份 |
+| # | 债务 | 量化 | 影响 | 状态 |
+|---|---|---|---|---|
+| 1 | UI 不使用节点树 | 32/47 单节点场景，`Control` 仅 29 个 | 不能 F6、不能拖拽、diff 无意义 | 未动 |
+| 2 | `noncombat_domain` 上帝对象 | 6,476 行 / 62 扇出 | 每加功能都要动它 | 未动 |
+| 3 | 无 Theme | 14 处 `StyleBoxFlat.new()` | 换肤要改代码 | **价值重估为低**（见 §9.2） |
+| 4 | ~~无音频总线~~ | ~~`bus` 字段悬空~~ | ~~BGM/SFX 无法独立调节~~ | ✅ **已解决（B2，`b875a55`）** |
+| 5 | 资产缺失静默 | `texture_for` 静默 null | 缺图不可见 | ✅ 已解决（占位 + 告警） |
+| 6 | 事件类型裸字符串 | 7 处接收分支 | 拼错静默失效 | 部分（出口已统一，接收侧未改） |
+| 7 | `get_node` 硬编码 | 63 处（**54 在战斗侧**） | 节点改名即崩 | 未动（随战斗延后） |
+| 8 | 战斗 stage 重复 | 23 脚本 / 4,299 行 | 一处修复改多份 | 未动（随战斗延后） |
 
 ---
 
@@ -617,28 +624,68 @@ GODOT=<godot 可执行路径>
 | **C 结构治理** | domain 拆 5 Director / 信号强类型 | 长期可维护 | B + 完整测试网 |
 | **D 内容补全** | 卡面 / 立绘 / VFX / 战斗 stage 数据化 | 玩家可见质量 | B |
 
-### 9.2 批次 B 的任务分解
+### 9.2 批次 B 的任务分解（v1.1 更新状态）
 
-| # | 任务 | 验收 | 风险 |
-|---|---|---|---|
-| B1 | `Theme/main.tres` 资源化 | 改一处语义色，全局同步变化 | 低 |
-| B2 | `AudioBus` autoload + 5 总线 | BGM/SFX 可独立调节 | 中（bus 语义要接上） |
-| B3 | `portrait_panel.tscn`（Still + Frames 双模式） | 有帧用帧，无帧用图 | 中 |
-| B4 | 抽 `slot_screen.tscn` | F6 可单跑 | 中（视觉比对） |
-| B5 | 抽 `name_screen.tscn` | F6 可单跑 | 中 |
-| B6 | `@export NodePath` 替换 63 处 `get_node` | 节点改名不再崩 | 中 |
+| # | 任务 | 验收 | 风险 | 状态 |
+|---|---|---|---|---|
+| B1 | `Theme` 资源化 | 字体/字号可在编辑器改 | 低 | ⚠️ **价值重估为低**（见下） |
+| B2 | `AudioBus` + 5 总线 | BGM/SFX 可独立调节 | 中 | ✅ **已完成（`b875a55`）** |
+| B3 | `portrait_panel.tscn`（Still + Frames 双模式） | 有帧用帧，无帧用图 | 中 | ⏸ **降级为条件触发**（见 §9.3） |
+| B4 | 抽 `slot_screen.tscn` | F6 可单跑 | 中（视觉比对） | 未开始 |
+| B5 | 抽 `name_screen.tscn` | F6 可单跑 | 中 | 未开始 |
+| B6 | `@export NodePath` 替换 `get_node` | 节点改名不再崩 | 中 | 未开始 |
 
-### 9.3 批次 D 的顺序（关键）
+#### B1 价值重估（v1.1）
 
-**必须 B3 完成后再批量补立绘**。否则补完 230 张立绘还要再改一次结构。
+实测 `scripts/game_ui_skin.gd` 只有 135 行，结构是「8 个语义色常量 + 4 个静态工厂方法（`plaque(strength)` / `action_button(accent, state)`）」。
+
+**这已经是良好设计**：语义 token 化、参数化生成、无硬编码散落。
+
+**Theme 化的实际收益只剩「字体可在编辑器改」**，因为：
+- `action_button()` 是**参数化**的（accent、state 变体），Theme 的 StyleBox 是**固定**的，无法直接对应
+- 强行烘成 Theme 会丢失参数化能力，反而是退步
+
+**结论**：B1 从「批次 B 必做」降为「可选」。若要做，范围应限定为**只含字体与字号的 Theme**，不动 StyleBox 工厂方法。
+
+#### B6 的范围澄清
+
+63 处 `get_node` 的分布【实测】：`duel_stage_hd2d` 20 / `card_hand_ui` 17 / `real_3d_fighter` 10 / `reference_battle_hud` 7 = **54 处在战斗侧**，非战斗侧仅 1 处。
+
+**因此 B6 主要在战斗侧**，与「战斗本阶段延后」矛盾。B6 应随之延后，或只做非战斗部分（收益极小）。
+
+### 9.3 批次 D 的顺序（v1.1 修正）
+
+> **v1.0 的判断有误，此处更正。**
+> v1.0 写「B3 立绘双模式结构必须完成后再批量补立绘，否则补完还要再改结构」。
+> 实测后这个顺序是错的。
+
+**实测依据**：`content/source_manifest.json` 的 `animatedMedia` 只有 **3 条**：
+
+| 资产 | 帧数 | 类型 |
+|---|---|---|
+| `assets/card-illustrations/motion/jian-idle.webp` | 4 | 卡面动效 |
+| `assets/card-illustrations/motion/jiuwei-idle.webp` | 4 | 卡面动效 |
+| `assets/card-illustrations/motion/jiuwei-water-environment.webp` | 60 | 卡面动效 |
+
+**场景立绘（268 处引用）中，有帧序列的是 0 条。**
+
+**修正后的结论**：
+
+1. **立绘呼吸帧尚不存在**——不是「结构挡住了资产」，是「资产还没做」
+2. 先做 B3 结构 = 建一个永远走不到的分支（`sprite_frames_for()` 恒返回 null）
+3. 正确顺序应为：
 
 ```
-B3（立绘双模式结构）
+补立绘单图 230 张（解决 86% 缺失，玩家立即可见）
     ↓
-补立绘 230 张 → 补卡面 133 张 → 补法宝图标 23 张
-    ↓
-VFX 591 帧（需先过美术评审，当前 163 条 finalArtApproved 全 false）
+美术决定是否做立绘呼吸帧
+    ├─ 做 → 那时再做 B3 结构，一次到位
+    └─ 不做 → B3 永久不需要做，省下一整块工作量
 ```
+
+**因此 B3 从「批次 B 必做项」降级为「条件触发项」**，触发条件：美术产出第一组立绘帧序列。
+
+**保留的判断**：如果将来要做立绘帧，仍然必须用「Control 容器 + 内部 AnimatedSprite2D」或「TextureRect + AnimationPlayer 驱动 texture」，**不能直接把 `art_rect` 换成 `AnimatedSprite2D`**（会失去 `custom_minimum_size` 等布局属性）。
 
 ---
 
