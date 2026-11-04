@@ -90,6 +90,12 @@ func get_sword_actor() -> Dictionary:
 	return read_json("data/combat/path_presentations.json").get("paths", {}).get("sword", {}).get("actorCard", {})
 
 
+## 缺失登记表：解析后的运行路径 -> 命中次数。由 missing_texture_report() 读取。
+var missing_textures: Dictionary = {}
+var missing_frame_count: int = 0
+var _placeholder_texture_cache: Texture2D = null
+
+
 func texture_for(source_path: String) -> Texture2D:
 	if not source_path.begins_with("assets/"):
 		return null
@@ -101,7 +107,33 @@ func texture_for(source_path: String) -> Texture2D:
 				_texture_aliases[entry["sourcePath"]] = entry["runtimePath"]
 	var runtime_path: String = _texture_aliases.get(source_path, source_path)
 	var resource = load(CONTENT_ROOT + runtime_path)
-	return resource if resource is Texture2D else null
+	if not resource is Texture2D:
+		# 保持返回 null 的既有契约：战斗场景用 `texture_for(...) == null` 判定
+		# 资源可用性，改成返回占位图会让这些校验永远通过、掩盖真实缺失。
+		_record_missing(CONTENT_ROOT + runtime_path)
+		return null
+	return resource
+
+
+func _record_missing(full_path: String) -> void:
+	missing_textures[full_path] = int(missing_textures.get(full_path, 0)) + 1
+	push_warning("[ASSET_MISSING][texture] " + full_path)
+
+
+func missing_texture_report() -> Dictionary:
+	return missing_textures.duplicate(true)
+
+
+## 洋红占位纹理：让"缺图"在截图里一眼可见，而不是看起来正常的空白。
+## 仅供需要显式暴露缺失的调用方使用（非战斗 UI 经各自的 wrapper 调用）；
+## 不要用它替换 texture_for 的返回语义。
+func placeholder_texture() -> Texture2D:
+	if _placeholder_texture_cache != null:
+		return _placeholder_texture_cache
+	var image := Image.create(64, 64, false, Image.FORMAT_RGB8)
+	image.fill(Color(1.0, 0.0, 1.0))
+	_placeholder_texture_cache = ImageTexture.create_from_image(image)
+	return _placeholder_texture_cache
 
 
 func sprite_frames_for(source_path: String) -> SpriteFrames:
@@ -117,12 +149,24 @@ func sprite_frames_for(source_path: String) -> SpriteFrames:
 		frames.add_animation("play")
 		frames.set_animation_speed("play", 1.0)
 		frames.set_animation_loop("play", true)
+		# 逐帧容错：单帧缺失时跳过该帧并登记，而不是让整段动画作废。
+		# 历史上的拷贝是逐目录截断的（源 4 帧只拷 1~3 帧），"全或无"判定
+		# 会把这类局部缺失放大成"敌人完全不动"。
 		for frame in authored_frames:
-			if not frame is Dictionary or not frame.get("path") is String:
-				return null
-			var texture = load(CONTENT_ROOT + String(frame["path"]))
+			var frame_path := String(frame["path"]) if frame is Dictionary \
+					and frame.get("path") is String else ""
+			if frame_path.is_empty():
+				missing_frame_count += 1
+				push_warning("[ASSET_MISSING][frame] malformed frame in " + source_path)
+				continue
+			var texture = load(CONTENT_ROOT + frame_path)
 			if not texture is Texture2D:
-				return null
+				missing_frame_count += 1
+				push_warning("[ASSET_MISSING][frame] " + CONTENT_ROOT + frame_path)
+				continue
 			frames.add_frame("play", texture, float(frame.get("durationMs", 0)) / 1000.0)
+		if frames.get_frame_count("play") == 0:
+			push_warning("[ASSET_MISSING][animation] 0 frames survived: " + source_path)
+			return null
 		return frames
 	return null

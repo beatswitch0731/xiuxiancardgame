@@ -22,6 +22,10 @@ const BattleGateway = preload("res://scripts/noncombat_battle_gateway.gd")
 const BattlePlanResolver = preload("res://scripts/battle_plan_resolver.gd")
 const CombatStageRouter = preload("res://scripts/combat_stage_router.gd")
 const FirstBattleScene = preload("res://scenes/main.tscn")
+const BattleStubScript = preload("res://scripts/battle_stub.gd")
+# 战斗桩开关：true 时用 BattleStub 替代真实战斗场景，仅供非战斗侧端到端验证。
+# 生产运行必须保持 false——桩不播放任何战斗演出，也不参与战斗规则结算。
+const BATTLE_STUB_MODE := false
 const RewardArenaScene = preload("res://scenes/duel_stage_hd2d.tscn")
 const GameSkin = preload("res://scripts/game_ui_skin.gd")
 const WorldMap = preload("res://scripts/noncombat_world_map.gd")
@@ -201,7 +205,7 @@ func _build() -> void:
 	background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	background.texture = registry.texture_for("assets/backgrounds/bg_inkwash_masterpiece.png")
+	background.texture = _art_texture("assets/backgrounds/bg_inkwash_masterpiece.png")
 	add_child(background)
 
 	backdrop_shade = ColorRect.new()
@@ -233,7 +237,7 @@ func _build() -> void:
 
 
 func _set_scene_surface(story: bool) -> void:
-	background.texture = registry.texture_for("assets/backgrounds/bg_start.png" if story \
+	background.texture = _art_texture("assets/backgrounds/bg_start.png" if story \
 		else "assets/backgrounds/bg_inkwash_masterpiece.png")
 	backdrop_shade.color = Color(0.015, 0.023, 0.03, 0.65) if story \
 		else Color(1, 0.98, 0.94, 0.12)
@@ -246,7 +250,7 @@ func _reset_story_visual_mode() -> void:
 		reward_arena.queue_free()
 		reward_arena = null
 	background.visible = true
-	background.texture = registry.texture_for("assets/backgrounds/bg_start.png")
+	background.texture = _art_texture("assets/backgrounds/bg_start.png")
 	backdrop_shade.color = Color(0.015, 0.023, 0.03, 0.65)
 	art_rect.modulate = Color.WHITE
 	if npc_cross_portraits != null:
@@ -689,7 +693,7 @@ func _build_name_screen(parent: Control) -> void:
 	parent.add_child(name_screen)
 	var logo := TextureRect.new()
 	logo.name = "SourceLogo"
-	logo.texture = registry.texture_for("assets/icons/xianxia_minimal_logo.png")
+	logo.texture = _art_texture("assets/icons/xianxia_minimal_logo.png")
 	logo.custom_minimum_size = Vector2(104, 104)
 	logo.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -808,7 +812,7 @@ func _build_path_screen(parent: Control) -> void:
 		button.tooltip_text = "%s：%s" % [path.get("name", path_id), source_captions[path_id][1]]
 		var icon := TextureRect.new()
 		icon.name = "SourcePathIcon"
-		icon.texture = registry.texture_for("assets/icons/%s_ink.png" % path_id)
+		icon.texture = _art_texture("assets/icons/%s_ink.png" % path_id)
 		icon.position = Vector2(29, 18)
 		icon.size = Vector2(160, 160)
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -1853,7 +1857,7 @@ func _render() -> void:
 		title_label.text = String(offer["title"])
 		body_label.text = "%s\n\n对手：%s\n战前情报：%s" % [
 			offer["description"], offer["enemyName"], offer["mechanic"]]
-		art_rect.texture = registry.texture_for(String(offer["sceneImage"]))
+		art_rect.texture = _art_texture(String(offer["sceneImage"]))
 		if art_rect.texture == null:
 			status_label.text = "来源遭遇图未导入 · %s" % offer["sourceCardId"]
 			return
@@ -1932,16 +1936,16 @@ func _render() -> void:
 					scene_path = String(vendor.get("presentationProfile", {}).get(
 						"backgroundPath", "")).trim_prefix("../")
 					break
-	art_rect.texture = registry.texture_for(scene_path) if not scene_path.is_empty() else null
+	art_rect.texture = _art_texture(scene_path) if not scene_path.is_empty() else null
 	art_rect.visible = art_rect.texture != null
 	if current.get("type") == "NPC_CROSS":
 		var npc_ids: Array = current.get("npcIds", [])
 		if npc_ids.size() >= 2:
 			body_label.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY
 			var portraits = CompanionWhisper.new()
-			npc_cross_left.texture = registry.texture_for(
+			npc_cross_left.texture = _art_texture(
 				portraits.npc_portrait_path(String(npc_ids[0])))
-			npc_cross_right.texture = registry.texture_for(
+			npc_cross_right.texture = _art_texture(
 				portraits.npc_portrait_path(String(npc_ids[1])))
 			npc_cross_portraits.visible = npc_cross_left.texture != null \
 				and npc_cross_right.texture != null
@@ -2232,6 +2236,16 @@ func _render() -> void:
 		choice_row.add_child(exit_button)
 
 
+## 非战斗取图统一入口：缺失时返回洋红占位，让缺图在截图里一眼可见。
+## registry.texture_for() 保持"缺失返回 null"的契约——战斗场景依赖它判定
+## 资源可用性，因此占位逻辑只在非战斗这一层落地。
+func _art_texture(path: String) -> Texture2D:
+	if path.is_empty() or registry == null:
+		return null
+	var texture: Texture2D = registry.texture_for(path)
+	return texture if texture != null else registry.placeholder_texture()
+
+
 func _launch_battle() -> void:
 	if active_battle != null or opening == null \
 			or opening.state.get("phase") != "BATTLE_PENDING":
@@ -2241,7 +2255,8 @@ func _launch_battle() -> void:
 	if plan.get("launchAuthorized") != true:
 		status_label.text = "待战来源或场景校验失败 · 原存档未改动"
 		return
-	var battle: Control = FirstBattleScene.instantiate()
+	var battle: Control = BattleStubScript.new() if BATTLE_STUB_MODE \
+		else FirstBattleScene.instantiate()
 	battle.battle_request = request.duplicate(true)
 	battle.battle_plan = plan.duplicate(true)
 	if opening.state.get("browserCombatSnapshot") is Dictionary:
@@ -2337,9 +2352,9 @@ func _render_companion_hud(run: Dictionary) -> void:
 	var selected_stage: Dictionary = opening.selected_portrait(comp_id)
 	if not selected_stage.is_empty():
 		portrait_path = String(selected_stage.get("asset", portrait_path))
-	companion_portrait_rect.texture = registry.texture_for(portrait_path)
+	companion_portrait_rect.texture = _art_texture(portrait_path)
 	if companion_portrait_rect.texture == null:
-		companion_portrait_rect.texture = registry.texture_for(fallback_portrait)
+		companion_portrait_rect.texture = _art_texture(fallback_portrait)
 	var style := GameSkin.plaque(0.86)
 	style.set_content_margin_all(6)
 	style.border_color = Color("b89cba") if affection >= 80 else \
