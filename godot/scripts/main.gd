@@ -10,31 +10,38 @@ const CardPlacementDesk = preload("res://scripts/card_placement_desk.gd")
 const ReferenceBattleHUD = preload("res://scripts/reference_battle_hud.gd")
 const DUEL_STAGE_HD2D_PATH := "res://scenes/duel_stage_hd2d.tscn"
 const PIXEL_DUNGEON_STAGE_PATH := "res://scenes/duel_stage_pixel_dungeon.tscn"
-const QingyunPixelStageScene = preload("res://scenes/qingyun_pixel_battle_stage.tscn")
-const SpellStageScene = preload("res://scenes/duel_stage_spell_2d.tscn")
-const BodyStageScene = preload("res://scenes/duel_stage_body_2d.tscn")
-const PillStageScene = preload("res://scenes/duel_stage_pill_2d.tscn")
-const MountainStageScene = preload("res://scenes/duel_stage_mountain_2d.tscn")
-const WhitefoxStageScene = preload("res://scenes/duel_stage_whitefox_2d.tscn")
-const FellowStageScene = preload("res://scenes/duel_stage_fellow_2d.tscn")
-const MissionStageScene = preload("res://scenes/duel_stage_mission_2d.tscn")
-const GuardianStageScene = preload("res://scenes/duel_stage_guardian_2d.tscn")
-const QiGateStageScene = preload("res://scenes/duel_stage_qi_gate_2d.tscn")
-const FoundationGateStageScene = preload("res://scenes/duel_stage_foundation_gate_2d.tscn")
-const GoldenGateStageScene = preload("res://scenes/duel_stage_golden_gate_2d.tscn")
-const NascentGateStageScene = preload("res://scenes/duel_stage_nascent_gate_2d.tscn")
-const DeityGateStageScene = preload("res://scenes/duel_stage_deity_gate_2d.tscn")
-const TribulationGateStageScene = preload("res://scenes/duel_stage_tribulation_gate_2d.tscn")
-const BanditStageScene = preload("res://scenes/duel_stage_bandit_2d.tscn")
-const NascentHuntStageScene = preload("res://scenes/duel_stage_nascent_hunt_2d.tscn")
-const NascentRuinsStageScene = preload("res://scenes/duel_stage_nascent_ruins_2d.tscn")
-const TrialStageScene = preload("res://scenes/duel_stage_immortal_shadow_2d.tscn")
-const FoundationCatalogStageScene = preload("res://scenes/duel_stage_foundation_catalog_2d.tscn")
-const FactionWumengStageScene = preload("res://scenes/duel_stage_faction_wumeng_2d.tscn")
-const CompanionOldMasterStageScene = preload("res://scenes/duel_stage_companion_old_master_2d.tscn")
-const VillageStageScene = preload("res://scenes/duel_stage_village_2d.tscn")
-const SwordTombStageScene = preload("res://scenes/duel_stage_sword_tomb_2d.tscn")
-const LastLessonStageScene = preload("res://scenes/duel_stage_last_lesson_2d.tscn")
+# 战斗舞台路由表：按 key 延迟加载，避免 25 个 PackedScene 在脚本加载期
+# 全部解析（玩家只打一场战斗却承担全部 stage 的依赖图）。
+# 新增 stage 只需在此加一条，不必改分支结构。
+const STAGE_ROUTES := {
+	"hd2d": "res://scenes/duel_stage_hd2d.tscn",
+	"pixel_dungeon": "res://scenes/duel_stage_pixel_dungeon.tscn",
+	"qingyun_pixel": "res://scenes/qingyun_pixel_battle_stage.tscn",
+	"spell": "res://scenes/duel_stage_spell_2d.tscn",
+	"body": "res://scenes/duel_stage_body_2d.tscn",
+	"pill": "res://scenes/duel_stage_pill_2d.tscn",
+	"mountain": "res://scenes/duel_stage_mountain_2d.tscn",
+	"whitefox": "res://scenes/duel_stage_whitefox_2d.tscn",
+	"fellow": "res://scenes/duel_stage_fellow_2d.tscn",
+	"mission": "res://scenes/duel_stage_mission_2d.tscn",
+	"guardian": "res://scenes/duel_stage_guardian_2d.tscn",
+	"qi_gate": "res://scenes/duel_stage_qi_gate_2d.tscn",
+	"foundation_gate": "res://scenes/duel_stage_foundation_gate_2d.tscn",
+	"golden_gate": "res://scenes/duel_stage_golden_gate_2d.tscn",
+	"nascent_gate": "res://scenes/duel_stage_nascent_gate_2d.tscn",
+	"deity_gate": "res://scenes/duel_stage_deity_gate_2d.tscn",
+	"tribulation_gate": "res://scenes/duel_stage_tribulation_gate_2d.tscn",
+	"bandit": "res://scenes/duel_stage_bandit_2d.tscn",
+	"nascent_hunt": "res://scenes/duel_stage_nascent_hunt_2d.tscn",
+	"nascent_ruins": "res://scenes/duel_stage_nascent_ruins_2d.tscn",
+	"trial": "res://scenes/duel_stage_immortal_shadow_2d.tscn",
+	"foundation_catalog": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+	"faction_wumeng": "res://scenes/duel_stage_faction_wumeng_2d.tscn",
+	"companion_old_master": "res://scenes/duel_stage_companion_old_master_2d.tscn",
+	"village": "res://scenes/duel_stage_village_2d.tscn",
+	"sword_tomb": "res://scenes/duel_stage_sword_tomb_2d.tscn",
+	"last_lesson": "res://scenes/duel_stage_last_lesson_2d.tscn",
+}
 const StageRouter = preload("res://scripts/combat_stage_router.gd")
 const GameSkin = preload("res://scripts/game_ui_skin.gd")
 const IntentSlip = preload("res://scripts/battle_intent_slip.gd")
@@ -257,6 +264,20 @@ func _ready() -> void:
 		print("FIRST_FIGHT_BREATH_V17_CANDIDATE_ACTIVE")
 
 
+## 按路由 key 延迟加载战斗舞台。未命中或加载失败返回 null，
+## 由 _build() 转成 return false，避免静默进入空舞台。
+func _instantiate_stage(stage_key: String) -> Control:
+	var path: String = STAGE_ROUTES.get(stage_key, "")
+	if path.is_empty():
+		push_error("[main] unknown stage route: " + stage_key)
+		return null
+	var packed := load(path) as PackedScene
+	if packed == null:
+		push_error("[main] stage scene failed to load: " + path)
+		return null
+	return packed.instantiate() as Control
+
+
 func _build() -> bool:
 	var theme := Theme.new()
 	theme.default_font = load("res://assets/fonts/NotoSansSC-VF.ttf")
@@ -314,62 +335,65 @@ func _build() -> bool:
 	var qingyun_pixel := encounter_id == "enc_trial_sword_swift" and not source_stage \
 		and not pixel_dungeon_demo_preview and not reference_frontend_preview \
 		and not trial_candidate_preview
+	# 只决定路由 key，实例化统一在分支外做一次（按需 load）。
+	var stage_key := ""
 	if inline_whitefox:
-		duel_stage = WhitefoxStageScene.instantiate()
+		stage_key = "whitefox"
 	elif inline_fellow:
-		duel_stage = FellowStageScene.instantiate()
+		stage_key = "fellow"
 	elif inline_mission:
-		duel_stage = MissionStageScene.instantiate()
+		stage_key = "mission"
 	elif inline_bandit:
-		duel_stage = BanditStageScene.instantiate()
+		stage_key = "bandit"
 	elif inline_nascent:
-		duel_stage = NascentHuntStageScene.instantiate() if battle_request.get(
-			"sourceCardId") == "n_hunt" else NascentRuinsStageScene.instantiate()
+		stage_key = "nascent_hunt" if battle_request.get(
+			"sourceCardId") == "n_hunt" else "nascent_ruins"
 	elif inline_trial:
-		duel_stage = TrialStageScene.instantiate()
+		stage_key = "trial"
 	elif inline_guardian:
-		duel_stage = GuardianStageScene.instantiate()
+		stage_key = "guardian"
 	elif qi_gate:
-		duel_stage = QiGateStageScene.instantiate()
+		stage_key = "qi_gate"
 	elif foundation_gate:
-		duel_stage = FoundationGateStageScene.instantiate()
+		stage_key = "foundation_gate"
 	elif golden_gate:
-		duel_stage = GoldenGateStageScene.instantiate()
+		stage_key = "golden_gate"
 	elif nascent_gate:
-		duel_stage = NascentGateStageScene.instantiate()
+		stage_key = "nascent_gate"
 	elif deity_gate:
-		duel_stage = DeityGateStageScene.instantiate()
+		stage_key = "deity_gate"
 	elif tribulation_gate:
-		duel_stage = TribulationGateStageScene.instantiate()
+		stage_key = "tribulation_gate"
 	elif foundation_catalog:
-		duel_stage = FoundationCatalogStageScene.instantiate()
+		stage_key = "foundation_catalog"
 	elif faction:
-		duel_stage = FactionWumengStageScene.instantiate()
+		stage_key = "faction_wumeng"
 	elif companion:
-		duel_stage = CompanionOldMasterStageScene.instantiate()
+		stage_key = "companion_old_master"
 	elif inline_village:
-		duel_stage = VillageStageScene.instantiate()
+		stage_key = "village"
 	elif inline_sword_tomb:
-		duel_stage = SwordTombStageScene.instantiate()
+		stage_key = "sword_tomb"
 	elif inline_last_lesson:
-		duel_stage = LastLessonStageScene.instantiate()
+		stage_key = "last_lesson"
 	elif encounter_id == "enc_trial_spell_seal":
-		duel_stage = SpellStageScene.instantiate()
+		stage_key = "spell"
 	elif encounter_id == "enc_trial_body_iron":
-		duel_stage = BodyStageScene.instantiate()
+		stage_key = "body"
 	elif encounter_id == "enc_trial_pill_poison":
-		duel_stage = PillStageScene.instantiate()
+		stage_key = "pill"
 	elif encounter_id == "enc_patrol_qi_mountain_shadow":
-		duel_stage = MountainStageScene.instantiate()
+		stage_key = "mountain"
 	else:
 		if pixel_dungeon_demo_preview:
-			var pixel_scene: PackedScene = load(PIXEL_DUNGEON_STAGE_PATH)
-			duel_stage = pixel_scene.instantiate()
+			stage_key = "pixel_dungeon"
 		elif qingyun_pixel:
-			duel_stage = QingyunPixelStageScene.instantiate()
+			stage_key = "qingyun_pixel"
 		else:
-			var hd2d_scene: PackedScene = load(DUEL_STAGE_HD2D_PATH)
-			duel_stage = hd2d_scene.instantiate()
+			stage_key = "hd2d"
+	duel_stage = _instantiate_stage(stage_key)
+	if duel_stage == null:
+		return false
 	duel_stage.name = "DuelStageSource2D" if source_stage else (
 		"PixelDungeonStage" if pixel_dungeon_demo_preview else (
 			"QingyunPixelStage" if qingyun_pixel else "DuelStageHD2D"))
