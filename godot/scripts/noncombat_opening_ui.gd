@@ -25,7 +25,8 @@ const FirstBattleScene = preload("res://scenes/main.tscn")
 const BattleStubScript = preload("res://scripts/battle_stub.gd")
 # 战斗桩开关：true 时用 BattleStub 替代真实战斗场景，仅供非战斗侧端到端验证。
 # 生产运行必须保持 false——桩不播放任何战斗演出，也不参与战斗规则结算。
-const BATTLE_STUB_MODE := false
+# 设为实例变量而非常量，让端到端测试能在不改源码的前提下开启。
+var battle_stub_mode: bool = false
 const RewardArenaScene = preload("res://scenes/duel_stage_hd2d.tscn")
 const GameSkin = preload("res://scripts/game_ui_skin.gd")
 const WorldMap = preload("res://scripts/noncombat_world_map.gd")
@@ -2255,7 +2256,7 @@ func _launch_battle() -> void:
 	if plan.get("launchAuthorized") != true:
 		status_label.text = "待战来源或场景校验失败 · 原存档未改动"
 		return
-	var battle: Control = BattleStubScript.new() if BATTLE_STUB_MODE \
+	var battle: Control = BattleStubScript.new() if battle_stub_mode \
 		else FirstBattleScene.instantiate()
 	battle.battle_request = request.duplicate(true)
 	battle.battle_plan = plan.duplicate(true)
