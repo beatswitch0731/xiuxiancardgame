@@ -4,6 +4,7 @@ extends RefCounted
 # Bounded fresh-life story slice. Source JSON owns cards, routes and path bonuses;
 # this script only implements the existing browser's opening settlement semantics.
 const ContentRepository = preload("res://scripts/noncombat_content_repository.gd")
+const EventTypes = preload("res://scripts/noncombat_event_types.gd")
 const BattleGateway = preload("res://scripts/noncombat_battle_gateway.gd")
 const BattleReturnFlow = preload("res://scripts/noncombat_battle_return_flow.gd")
 const FirstSessionRoute = preload("res://scripts/noncombat_first_session_route.gd")
@@ -78,6 +79,11 @@ func _emit_event(event: Dictionary) -> void:
 	var event_type := String(event.get("type", ""))
 	if event_type.is_empty():
 		push_error("[domain] event emitted without type")
+	elif not EventTypes.is_event_type(event_type):
+		# 白名单闸门：新增事件类型必须先登记到 scripts/noncombat_event_types.gd
+		# （跑 python tools/audit_event_types.py --write 重新生成）。
+		# 拼错的事件名过去只是静默失效，现在会进 stderr 并被测试 runner 判失败。
+		push_error("[domain] unregistered event type: " + event_type)
 	else:
 		emitted_event_types[event_type] = int(
 			emitted_event_types.get(event_type, 0)) + 1
