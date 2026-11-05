@@ -21,8 +21,10 @@ func _initialize() -> void:
 	_check_snapshot()
 	_check_gate_present()
 	_check_lookup()
+	_check_no_literal_event_sites()
 	if _fails.is_empty():
-		print("NONCOMBAT_EVENT_CATALOG_PASS types=%d" % EventTypes.ALL.size())
+		print("NONCOMBAT_EVENT_CATALOG_PASS types=%d constant_sites=%d"
+			% [EventTypes.ALL.size(), _constant_site_count()])
 		quit(0)
 		return
 	for f in _fails:
@@ -94,3 +96,40 @@ func _check_lookup() -> void:
 	for phase in ["NORMAL_PENDING", "COMBAT_HANDOFF", "DEATH_PENDING"]:
 		if EventTypes.is_event_type(phase):
 			_fails.append("phase 名被误登记为事件类型: " + phase)
+
+
+func _constant_site_count() -> int:
+	var src := FileAccess.get_file_as_string(DOMAIN)
+	var total := 0
+	var index := src.find("EventTypes.")
+	while index >= 0:
+		total += 1
+		index = src.find("EventTypes.", index + 1)
+	return total
+
+
+## S1b 断言：事件位必须全部常量化。
+## 两条正则覆盖两类位置——逗号后的字面量（_commit_* 的第 2/3 实参）与
+## "type": 后的字面量（_emit_event 的字典字段）。命中且属于 62 个事件名
+## 即为残留。
+func _check_no_literal_event_sites() -> void:
+	var src := FileAccess.get_file_as_string(DOMAIN)
+	var comma_rule := RegEx.new()
+	comma_rule.compile(r',\s*"([A-Z][A-Z0-9_]*)"')
+	for match in comma_rule.search_all(src):
+		var name := match.get_string(1)
+		if EventTypes.is_event_type(name):
+			_fails.append("事件位仍残留字面量（逗号后）: " + name)
+	var type_rule := RegEx.new()
+	type_rule.compile(r'"type"\s*:\s*"([A-Z][A-Z0-9_]*)"')
+	for match in type_rule.search_all(src):
+		var name := match.get_string(1)
+		if EventTypes.is_event_type(name):
+			_fails.append("事件位仍残留字面量（type 字段）: " + name)
+	_check("常量引用数应 >= 93（事件位 %d + 闸门 1）" % 93,
+		_constant_site_count() >= 93)
+
+
+func _check(message: String, condition: bool) -> void:
+	if not condition:
+		_fails.append(message)

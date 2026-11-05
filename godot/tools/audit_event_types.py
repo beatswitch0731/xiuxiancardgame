@@ -30,7 +30,11 @@ CONST_FILE = os.path.join(ROOT, "scripts", "noncombat_event_types.gd")
 SNAPSHOT = os.path.join(ROOT, "tests", "fixtures", "event_types_v1.json")
 
 LITERAL = re.compile(r'^"([A-Z][A-Z0-9_]*)"$')
-TYPE_FIELD = re.compile(r'"type"\s*:\s*"([A-Z][A-Z0-9_]*)"')
+# S1b 之后调用点改为 EventTypes.X，提取器必须两种形态都认，
+# 否则常量表校验会在"已常量化"的源码上误报未解析。
+CONST_REF = re.compile(r'^EventTypes\.([A-Z][A-Z0-9_]*)$')
+TYPE_FIELD = re.compile(
+    r'"type"\s*:\s*(?:"([A-Z][A-Z0-9_]*)"|EventTypes\.([A-Z][A-Z0-9_]*))')
 
 
 def split_call_args(text: str, func_name: str):
@@ -93,6 +97,18 @@ def split_call_args(text: str, func_name: str):
     return calls
 
 
+def _event_name(arg: str):
+    """从实参文本取事件名，支持字面量与 EventTypes.X 两种形态。"""
+    text = arg.strip()
+    match = LITERAL.match(text)
+    if match:
+        return match.group(1)
+    match = CONST_REF.match(text)
+    if match:
+        return match.group(1)
+    return None
+
+
 def extract():
     text = open(DOMAIN, encoding="utf-8").read()
     a_group, unparsed_a = [], []
@@ -100,26 +116,26 @@ def extract():
         if len(args) < 2:
             unparsed_a.append((line, args))
             continue
-        m = LITERAL.match(args[1])
-        if not m:
+        name = _event_name(args[1])
+        if name is None:
             # _commit_camp_target 把 event_type 变量透传进来（L5101/L5113 已覆盖），
             # 这类动态调用不算未解析
             if args[1].strip() == "event_type":
                 continue
             unparsed_a.append((line, args))
             continue
-        a_group.append(m.group(1))
+        a_group.append(name)
 
     b_group, unparsed_b = [], []
     for line, args in split_call_args(text, "_commit_camp_target"):
         if len(args) < 3:
             unparsed_b.append((line, args))
             continue
-        m = LITERAL.match(args[2])
-        if not m:
+        name = _event_name(args[2])
+        if name is None:
             unparsed_b.append((line, args))
             continue
-        b_group.append(m.group(1))
+        b_group.append(name)
 
     c_group = []
     for _line, args in split_call_args(text, "_emit_event"):
@@ -127,7 +143,7 @@ def extract():
             continue
         m = TYPE_FIELD.search(args[0])
         if m:
-            c_group.append(m.group(1))
+            c_group.append(m.group(1) or m.group(2))
 
     return (sorted(set(a_group)), sorted(set(b_group)), sorted(set(c_group)),
             unparsed_a, unparsed_b)

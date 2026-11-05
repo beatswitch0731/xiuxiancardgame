@@ -411,7 +411,7 @@ func start(path_id: String, authored_player_name: String = "叶凌云") -> bool:
 	_current_card_id = "tutorial_1"
 	_choice_token = 1
 	state = opening
-	_emit_event({"type": "STARTED", "path": path_id, "cardId": _current_card_id})
+	_emit_event({"type": EventTypes.STARTED, "path": path_id, "cardId": _current_card_id})
 	return true
 
 
@@ -1632,7 +1632,7 @@ func restore() -> bool:
 	_companion_milestone_activation_index = rebuilt._companion_milestone_activation_index
 	_narrative_admission_activation_index = rebuilt._narrative_admission_activation_index
 	state = saved.duplicate(true)
-	_emit_event({"type": "RESTORED", "cardId": _current_card_id})
+	_emit_event({"type": EventTypes.RESTORED, "cardId": _current_card_id})
 	return true
 
 
@@ -2430,7 +2430,7 @@ func _restore_rebirth(saved: Dictionary, record: Dictionary) -> bool:
 	if not path_bundle.is_empty():
 		_install_rebirth_path_bundle(path_bundle)
 	state = saved.duplicate(true)
-	_emit_event({"type": "RESTORED", "cardId": _current_card_id})
+	_emit_event({"type": EventTypes.RESTORED, "cardId": _current_card_id})
 	return true
 
 
@@ -2796,7 +2796,7 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 		if expected_token <= 0 or expected_token != _choice_token:
 			return false
 		if direction == "left" and state.get("currentCardId") == FirstSessionRoute.ROUTE_ID:
-			return _commit_encounter_transition(_encounter_flow.accept(state), "ENCOUNTER_WARNING")
+			return _commit_encounter_transition(_encounter_flow.accept(state), EventTypes.ENCOUNTER_WARNING)
 		if direction == "left" and state.get("currentCardId") == FirstSessionRoute.MARKET_ID:
 			return _choose_shop(direction)
 		if direction != "right":
@@ -2804,10 +2804,10 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 		var route_base := state.duplicate(true)
 		if not _normal_choice_policy._apply_passive_regen(route_base):
 			return false
-		return _commit_encounter_transition(_first_session_route.settle_right(route_base), "FIRST_SESSION_ROUTE_CHOSEN")
+		return _commit_encounter_transition(_first_session_route.settle_right(route_base), EventTypes.FIRST_SESSION_ROUTE_CHOSEN)
 	if state.get("phase") == "BATTLE_RESULT_PENDING":
 		return expected_token > 0 and expected_token == _choice_token \
-			and _commit_encounter_transition(_battle_return_flow.dismiss(state, direction), "BATTLE_RESULT_ACKNOWLEDGED")
+			and _commit_encounter_transition(_battle_return_flow.dismiss(state, direction), EventTypes.BATTLE_RESULT_ACKNOWLEDGED)
 	if state.get("phase") == "ENDING_PENDING":
 		if expected_token <= 0 or expected_token != _choice_token:
 			return false
@@ -2815,7 +2815,7 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 		var choice: Dictionary = ending_card.get("choices", {}).get(direction, {})
 		if choice.get("enterUpperRealm") == true:
 			return _commit_encounter_transition(
-				_realm_gate_flow.continue_after_ending(state), "UPPER_REALM_ENTERED")
+				_realm_gate_flow.continue_after_ending(state), EventTypes.UPPER_REALM_ENTERED)
 		if choice.get("effects", {}).get("reincarnate") == true:
 			return _commit_rebirth_candidate(_rebirth_flow.ending_new_life(
 				state, ending_card, direction, _slot_id), direction)
@@ -2832,15 +2832,15 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 		if upper_candidate.is_empty() or not _normal_choice_policy._apply_passive_regen(
 				upper_candidate):
 			return false
-		return _commit_encounter_transition(upper_candidate, "UPPER_REALM_CHOSEN")
+		return _commit_encounter_transition(upper_candidate, EventTypes.UPPER_REALM_CHOSEN)
 	if state.get("phase") == "INNER_DEMON_PENDING":
 		return expected_token > 0 and expected_token == _choice_token \
 			and _commit_encounter_transition(_realm_gate_flow.settle_inner_demon(
-				state, direction, _death_flow), "INNER_DEMON_CHOSEN")
+				state, direction, _death_flow), EventTypes.INNER_DEMON_CHOSEN)
 	if state.get("phase") == "NPC_PENDING":
 		return expected_token > 0 and expected_token == _choice_token \
 			and _commit_encounter_transition(_npc_encounter_flow.settle(state, direction),
-				"NPC_ENCOUNTER_CHOSEN")
+				EventTypes.NPC_ENCOUNTER_CHOSEN)
 	if state.get("phase") == "NPC_CROSS_PENDING":
 		if expected_token <= 0 or expected_token != _choice_token:
 			return false
@@ -2849,11 +2849,11 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 				cross_candidate, int(cross_candidate.get("runClock", {}).get(
 					"decisionIndex", -1))):
 			return false
-		return _commit_encounter_transition(cross_candidate, "NPC_CROSS_CHOSEN")
+		return _commit_encounter_transition(cross_candidate, EventTypes.NPC_CROSS_CHOSEN)
 	if state.get("phase") == "REALM_ARRIVAL_PENDING":
 		return expected_token > 0 and expected_token == _choice_token \
 			and _commit_encounter_transition(_realm_gate_flow.settle_epiphany(state, direction),
-				"REALM_EPIPHANY_CHOSEN")
+				EventTypes.REALM_EPIPHANY_CHOSEN)
 	if not state.get("phase") in ["TUTORIAL", "STARTER_BOUNDARY",
 			"DEATH_PENDING", "REBIRTH_PENDING", "INNER_DEMON_PENDING",
 			"COMBAT_HANDOFF", "WARNING_PENDING", "NARRATIVE_RESULT_PENDING",
@@ -2868,13 +2868,13 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 		return _choose_rebirth_boon(direction)
 	if state.get("phase") == "DESTINY_WHEEL_PENDING":
 		return _commit_encounter_transition(_destiny_wheel_flow.flip(state, direction),
-			"DESTINY_WHEEL_FLIPPED")
+			EventTypes.DESTINY_WHEEL_FLIPPED)
 	if state.get("phase") == "LICENSED_DELIVERY_PENDING":
 		return _commit_encounter_transition(_licensed_delivery.claim(state),
-			"LICENSED_DELIVERY_CLAIMED") if direction == "left" else false
+			EventTypes.LICENSED_DELIVERY_CLAIMED) if direction == "left" else false
 	if state.get("phase") == "GHOST_DEBT_PENDING":
 		return _commit_encounter_transition(_ghost_debt_flow.settle_choice(
-			state, direction), "GHOST_DEBT_SETTLED")
+			state, direction), EventTypes.GHOST_DEBT_SETTLED)
 	if state.get("phase") == "THREAD_PENDING":
 		if state.get("currentCardId") == LastLessonVendor.ENTRY_ID \
 				and direction == "left":
@@ -2884,19 +2884,19 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 			var battle_candidate: Dictionary = state.duplicate(true)
 			battle_candidate["pendingThreadCombatDirection"] = direction
 			return _commit_encounter_transition(_encounter_flow.accept(battle_candidate),
-				"ENCOUNTER_WARNING")
+				EventTypes.ENCOUNTER_WARNING)
 		if state.get("currentCardId") == "thread_last_lesson_n3" \
 				and direction == "left" and _story_thread_flow.choice_available(
 					state, direction):
 			var battle_candidate: Dictionary = state.duplicate(true)
 			battle_candidate["pendingThreadCombatDirection"] = direction
 			return _commit_encounter_transition(_encounter_flow.accept(battle_candidate),
-				"ENCOUNTER_WARNING")
+				EventTypes.ENCOUNTER_WARNING)
 		var thread_choice: Dictionary = _story_thread_flow.settle_choice(state, direction)
 		if thread_choice.is_empty():
 			_mark_thread_failure(_story_thread_flow)
 			return false
-		return _commit_encounter_transition(thread_choice, "THREAD_CHOSEN")
+		return _commit_encounter_transition(thread_choice, EventTypes.THREAD_CHOSEN)
 	if state.get("phase") == "NORMAL_PENDING":
 		return _choose_normal(direction)
 	if state.get("phase") == "CAMP_PENDING":
@@ -2911,7 +2911,7 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 	if state.get("phase") == "COMBAT_HANDOFF":
 		if direction == "left":
 			return _commit_encounter_transition(_encounter_flow.accept(state),
-				"ENCOUNTER_WARNING")
+				EventTypes.ENCOUNTER_WARNING)
 		var avoided: Dictionary = _cadence_flow.avoid(state) if state.has("pendingCadenceCard") else _avoid_flow.settle(state)
 		if avoided.is_empty() and state.has("pendingCadenceCard"):
 			_mark_battle_return_failure(_cadence_flow)
@@ -2933,13 +2933,13 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 			avoided.decisionCheckpoint = {"version": 1, "cardId": result.id,
 				"sourceCardId": state.pendingCadenceCard.id,
 				"turn": avoided.turn, "decisionIndex": avoided.runClock.decisionIndex}
-		return _commit_encounter_transition(avoided, "ENCOUNTER_AVOIDED")
+		return _commit_encounter_transition(avoided, EventTypes.ENCOUNTER_AVOIDED)
 	if state.get("phase") == "WARNING_PENDING":
 		if state.get("pendingRealmGateCard", {}).get("id") == RealmGateFlow.TRIBULATION_CARD_ID \
 				and direction == "right":
 			return _choose_voluntary_rebirth()
 		return _commit_encounter_transition(_encounter_flow.confirm(state, direction),
-			"BATTLE_REQUEST_READY")
+			EventTypes.BATTLE_REQUEST_READY)
 	if state.get("phase") == "NARRATIVE_RESULT_PENDING":
 		return _acknowledge_narrative_result(direction)
 	if state.get("phase") == "MILESTONE_PENDING":
@@ -2963,19 +2963,19 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 				settled_milestone = _death_flow.prepare_death(
 					settled_milestone, String(state.get("currentCardId", "")))
 				return _commit_encounter_transition(settled_milestone,
-					"DEATH_NARRATIVE") if not settled_milestone.is_empty() else false
-		return _commit_encounter_transition(settled_milestone, "MILESTONE_CHOSEN")
+					EventTypes.DEATH_NARRATIVE) if not settled_milestone.is_empty() else false
+		return _commit_encounter_transition(settled_milestone, EventTypes.MILESTONE_CHOSEN)
 	if state.get("phase") == "QUEST_PENDING":
 		if state.get("currentCardId") == "q_sword_3" and direction in ["left", "right"]:
 			var sword_trial: Dictionary = state.duplicate(true)
 			sword_trial["pendingQuestCombatDirection"] = direction
 			return _commit_encounter_transition(_encounter_flow.accept(sword_trial),
-				"ENCOUNTER_WARNING")
+				EventTypes.ENCOUNTER_WARNING)
 		if state.get("currentCardId") == "q_whiteFox_3" and direction == "left":
-			return _commit_encounter_transition(_encounter_flow.accept(state), "ENCOUNTER_WARNING")
+			return _commit_encounter_transition(_encounter_flow.accept(state), EventTypes.ENCOUNTER_WARNING)
 		var quest_source := String(state.get("currentCardId", ""))
 		return _commit_encounter_transition(_quest_flow.settle(state, direction),
-			"QUEST_CHOSEN", quest_source if quest_source.begins_with("q_body_") \
+			EventTypes.QUEST_CHOSEN, quest_source if quest_source.begins_with("q_body_") \
 				or quest_source.begins_with("q_sword_") \
 				or quest_source.begins_with("q_spell_") \
 				or quest_source.begins_with("q_pill_") \
@@ -2988,11 +2988,11 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 			or int(settled_karma.get("attributes", {}).get("daoHeart", 1)) <= 0
 			or int(settled_karma.get("resources", {}).get("lifespan", 1)) <= 0)
 		return _commit_encounter_transition(settled_karma,
-			"KARMA_CHOSEN", karma_source if depleted or karma_source in [
+			EventTypes.KARMA_CHOSEN, karma_source if depleted or karma_source in [
 				KarmaFlow.BODY_ECHO_CARD_ID, KarmaFlow.BODY_ASCENSION_CARD_ID] else "")
 	if state.get("phase") == "EMERGENT_PENDING":
 		return _commit_encounter_transition(_emergent_flow.settle(state, direction),
-			"EMERGENT_CHOSEN")
+			EventTypes.EMERGENT_CHOSEN)
 	if state.get("phase") == "RIPPLE_PENDING":
 		var ripple_candidate: Dictionary = _ripple_flow.settle_choice(state,
 			direction)
@@ -3003,7 +3003,7 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 				and not _normal_choice_policy._apply_passive_regen(
 					ripple_candidate, choice_index):
 			return false
-		return _commit_encounter_transition(ripple_candidate, "RIPPLE_CHOSEN")
+		return _commit_encounter_transition(ripple_candidate, EventTypes.RIPPLE_CHOSEN)
 	if state.get("phase") == "HINT_PENDING":
 		var hint_candidate: Dictionary = _hint_flow.settle_choice(state, direction)
 		if hint_candidate.is_empty():
@@ -3013,45 +3013,45 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 				and not _normal_choice_policy._apply_passive_regen(
 					hint_candidate, choice_index):
 			return false
-		return _commit_encounter_transition(hint_candidate, "HINT_CHOSEN")
+		return _commit_encounter_transition(hint_candidate, EventTypes.HINT_CHOSEN)
 	if state.get("phase") == "LOCATION_PENDING":
 		var scene_candidate: Dictionary = _scene_layer_flow.settle(state, direction)
 		if scene_candidate.is_empty() or not _normal_choice_policy._apply_passive_regen(
 				scene_candidate):
 			return false
-		return _commit_encounter_transition(scene_candidate, "LOCATION_CHOSEN")
+		return _commit_encounter_transition(scene_candidate, EventTypes.LOCATION_CHOSEN)
 	if state.get("phase") == "CHOICE_ECHO_PENDING":
 		var echo_candidate: Dictionary = _choice_echo_flow.settle(state, direction)
 		if echo_candidate.is_empty() or not _normal_choice_policy._apply_passive_regen(
 				echo_candidate):
 			return false
-		return _commit_encounter_transition(echo_candidate, "CHOICE_ECHO_CHOSEN")
+		return _commit_encounter_transition(echo_candidate, EventTypes.CHOICE_ECHO_CHOSEN)
 	if state.get("phase") == "ALLY_PENDING":
 		var ally_candidate: Dictionary = _ally_arc_flow.settle(state, direction)
 		if ally_candidate.is_empty() or not _normal_choice_policy._apply_passive_regen(
 				ally_candidate):
 			return false
-		return _commit_encounter_transition(ally_candidate, "ALLY_CHOSEN")
+		return _commit_encounter_transition(ally_candidate, EventTypes.ALLY_CHOSEN)
 	if state.get("phase") == "COMPANION_ARC_PENDING":
 		return _commit_encounter_transition(
-			_companion_arc_flow.settle(state, direction), "COMPANION_ARC_CHOSEN")
+			_companion_arc_flow.settle(state, direction), EventTypes.COMPANION_ARC_CHOSEN)
 	if state.get("phase") == "SEER_PENDING":
 		var seer_candidate: Dictionary = _seer_arc_flow.settle(state, direction)
 		if seer_candidate.is_empty() or not _normal_choice_policy._apply_passive_regen(
 				seer_candidate):
 			return false
-		return _commit_encounter_transition(seer_candidate, "SEER_CHOSEN")
+		return _commit_encounter_transition(seer_candidate, EventTypes.SEER_CHOSEN)
 	if state.get("phase") == "SURFACING_PENDING":
 		var surface_candidate: Dictionary = _narrative_surfacing.settle(state, direction)
 		if surface_candidate.is_empty() or not _normal_choice_policy._apply_passive_regen(
 				surface_candidate):
 			return false
-		return _commit_encounter_transition(surface_candidate, "SURFACING_CHOSEN")
+		return _commit_encounter_transition(surface_candidate, EventTypes.SURFACING_CHOSEN)
 	if state.get("phase") == "COMPANION_PENDING":
 		if direction == "left" and state.get("currentCardId") \
 				== BattleGateway.COMPANION_OLD_MASTER_SOURCE_ID:
 			return _commit_encounter_transition(_encounter_flow.accept(state),
-				"ENCOUNTER_WARNING")
+				EventTypes.ENCOUNTER_WARNING)
 		var companion_input: Dictionary = state
 		if not _replaying_history and state.has("companionProgress") \
 				and not state.companionProgress.has("milestoneActivationIndex"):
@@ -3063,41 +3063,41 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 		if companion_candidate.is_empty() or not _normal_choice_policy._apply_passive_regen(
 				companion_candidate):
 			return false
-		return _commit_encounter_transition(companion_candidate, "COMPANION_CHOSEN",
+		return _commit_encounter_transition(companion_candidate, EventTypes.COMPANION_CHOSEN,
 			String(state.get("currentCardId", "")))
 	if state.get("phase") == "FACTION_PENDING":
 		if direction == "left" and state.get("currentCardId") \
 				== BattleGateway.FACTION_GATE_SOURCE_ID:
 			return _commit_encounter_transition(_encounter_flow.accept(state),
-				"ENCOUNTER_WARNING")
+				EventTypes.ENCOUNTER_WARNING)
 		return _commit_encounter_transition(_faction_events.settle(state, direction),
-			"FACTION_CHOSEN", String(state.get("currentCardId", "")))
+			EventTypes.FACTION_CHOSEN, String(state.get("currentCardId", "")))
 	if state.get("phase") == "MARKET_PENDING":
 		if direction == "left":
 			if not _vendor_state_committed():
 				return false
 			return _commit_encounter_transition((_ghost_vendor_flow.open(state) \
 				if state.get("currentCardId") == MarketFlow.GHOST_ID \
-				else _vendor_flow.open(state)), "VENDOR_OPENED")
+				else _vendor_flow.open(state)), EventTypes.VENDOR_OPENED)
 		var historical_seed_tick := not (_replaying_history
 			and _market_skip_seed_tick_activation_index > int(state.get(
 				"runClock", {}).get("decisionIndex", -1)) + 1)
 		return _commit_encounter_transition(_market_flow.settle_skip(
 			state, direction, historical_seed_tick),
-			"MARKET_SKIPPED")
+			EventTypes.MARKET_SKIPPED)
 	if state.get("phase") == "VENDOR_RESULT_PENDING":
 		if _last_lesson_vendor_active():
 			return direction == "right" and _commit_encounter_transition(
-				_last_lesson_vendor.dismiss(state), "VENDOR_DISMISSED")
+				_last_lesson_vendor.dismiss(state), EventTypes.VENDOR_DISMISSED)
 		return _commit_encounter_transition((_ghost_vendor_flow.dismiss(state) \
 			if _ghost_vendor_active() else (_regulated_vendor.dismiss(state) \
-			if _regulated_vendor_active() else _vendor_flow.dismiss(state))), "VENDOR_DISMISSED") \
+			if _regulated_vendor_active() else _vendor_flow.dismiss(state))), EventTypes.VENDOR_DISMISSED) \
 			if direction == "right" else false
 	if state.get("phase") == "MENTOR_PENDING":
 		return _commit_encounter_transition(_mentor_flow.settle(state, direction,
 			int(state.runClock.decisionIndex) + 1 >= \
 				_passive_regen_extension_activation_index),
-			"MENTOR_CHOSEN")
+			EventTypes.MENTOR_CHOSEN)
 	if state.get("phase") == "STARTER_BOUNDARY":
 		return _choose_prologue(direction)
 	var card: Dictionary = _cards.get(_current_card_id, {})
@@ -3132,7 +3132,7 @@ func _choose_internal(direction: String, expected_token: int) -> bool:
 
 func _commit_encounter_transition(candidate: Dictionary, event_type: String,
 		death_source_id: String = "") -> bool:
-	if candidate.is_empty() and event_type in ["ENCOUNTER_WARNING", "BATTLE_REQUEST_READY"]:
+	if candidate.is_empty() and event_type in ["ENCOUNTER_WARNING", EventTypes.BATTLE_REQUEST_READY]:
 		_mark_battle_return_failure(_battle_gateway)
 		return false
 	var nested_milestone: bool = event_type == "MILESTONE_CHOSEN" \
@@ -3174,7 +3174,7 @@ func _commit_encounter_transition(candidate: Dictionary, event_type: String,
 	if nested_milestone:
 		_flow_card_count += 1
 		_tick_normal_starvation("milestone")
-	_emit_event({"type": "DEATH_NARRATIVE" if not death_source_id.is_empty() \
+	_emit_event({"type": EventTypes.DEATH_NARRATIVE if not death_source_id.is_empty() \
 		and state.get("phase") == "DEATH_PENDING" else event_type, "sourceCardId": prior_id,
 		"cardId": _current_card_id, "turn": state["turn"]})
 	return true
@@ -3295,7 +3295,7 @@ func submit_battle_result(result: Dictionary) -> bool:
 		if candidate.get("legacyRunState", {}).get("pendingBossFragmentReward") is Dictionary \
 				and (not _replaying_history or _boss_reward_marker_present):
 			candidate["bossRewardActivationIndex"] = _boss_reward_activation_index
-	return _commit_encounter_transition(candidate, "BATTLE_RESULT_COMMITTED")
+	return _commit_encounter_transition(candidate, EventTypes.BATTLE_RESULT_COMMITTED)
 
 
 func _mark_battle_return_failure(flow: RefCounted) -> void:
@@ -3645,7 +3645,7 @@ func resume_flow() -> bool:
 		next["normalFlow"]["cardCount"] = _flow_card_count + 1
 		next["normalFlow"]["phase"] = cursor.get("phase")
 		next["normalFlow"]["phaseProgress"] = cursor.get("phaseProgress")
-	var committed := _commit_encounter_transition(next, "FLOW_CARD_READY")
+	var committed := _commit_encounter_transition(next, EventTypes.FLOW_CARD_READY)
 	if committed:
 		_flow_card_count += 1
 		_tick_normal_starvation(_source_for_card(next))
@@ -4058,7 +4058,7 @@ func _choose_normal(direction: String) -> bool:
 		if upper_candidate.is_empty() or not _normal_choice_policy._apply_passive_regen(
 				upper_candidate):
 			return false
-		return _commit_encounter_transition(upper_candidate, "UPPER_REALM_CHOSEN")
+		return _commit_encounter_transition(upper_candidate, EventTypes.UPPER_REALM_CHOSEN)
 	if card.get("id") == "pa_ending_reform" and direction == "left" \
 			and state.get("flags", {}).get("post_ascension_active") == true:
 		return _commit_rebirth_candidate(_rebirth_flow.upper_new_life(state,
@@ -4067,16 +4067,16 @@ func _choose_normal(direction: String) -> bool:
 			state, card, direction):
 		return false
 	if card.get("id") in ["q_fellow", "f_mission"] and direction == "right":
-		return _commit_encounter_transition(_encounter_flow.accept(state), "ENCOUNTER_WARNING")
+		return _commit_encounter_transition(_encounter_flow.accept(state), EventTypes.ENCOUNTER_WARNING)
 	if card.get("id") == "ds_female_bandit" and direction == "left":
-		return _commit_encounter_transition(_encounter_flow.accept(state), "ENCOUNTER_WARNING")
+		return _commit_encounter_transition(_encounter_flow.accept(state), EventTypes.ENCOUNTER_WARNING)
 	if card.get("id") in ["n_hunt", "ar_boss", "it_combat"] and direction == "left":
-		return _commit_encounter_transition(_encounter_flow.accept(state), "ENCOUNTER_WARNING")
+		return _commit_encounter_transition(_encounter_flow.accept(state), EventTypes.ENCOUNTER_WARNING)
 	if card.get("id") == FoundationDungeonFlow.NODE_CARDS["boss"]:
 		var boss_state := state.duplicate(true)
 		boss_state["pendingDungeonBossDirection"] = direction
 		return _commit_encounter_transition(_encounter_flow.accept(boss_state),
-			"ENCOUNTER_WARNING")
+			EventTypes.ENCOUNTER_WARNING)
 	if int(state.get("lifeCount", 0)) > 0 and (
 			card.get("id") == "q_shop" and direction == "up"):
 		return false
@@ -4136,7 +4136,7 @@ func _choose_normal(direction: String) -> bool:
 			if not _cave_flow.complete(candidate, "failure", next_index):
 				return false
 			return _commit_dungeon_fatal_or_revived(candidate, "q_cave")
-		return _commit_encounter_transition(candidate, "DUNGEON_ENTERED")
+		return _commit_encounter_transition(candidate, EventTypes.DUNGEON_ENTERED)
 	if card.get("id") == "f_trial" and direction == "right":
 		if not _foundation_dungeon_flow.enter(candidate, card, next_index):
 			return false
@@ -4146,24 +4146,24 @@ func _choose_normal(direction: String) -> bool:
 			if not _foundation_dungeon_flow.complete(candidate, "failure", next_index):
 				return false
 			return _commit_dungeon_fatal_or_revived(candidate, "f_trial")
-		return _commit_encounter_transition(candidate, "DUNGEON_ENTERED")
+		return _commit_encounter_transition(candidate, EventTypes.DUNGEON_ENTERED)
 	if card.get("id") in GoldenDungeonFlow.ENTRIES and card.get(
 			"choices", {}).get(direction, {}).has("dungeon"):
 		if not _golden_dungeon_flow.enter(candidate, card, direction, next_index):
 			return false
-		return _commit_encounter_transition(candidate, "DUNGEON_ENTERED")
+		return _commit_encounter_transition(candidate, EventTypes.DUNGEON_ENTERED)
 	if card.get("id") == NascentCaveFlow.ENTRY_CARD_ID and direction == "left":
 		if not _nascent_cave_flow.enter(candidate, card, direction, next_index):
 			return false
-		return _commit_encounter_transition(candidate, "DUNGEON_ENTERED")
+		return _commit_encounter_transition(candidate, EventTypes.DUNGEON_ENTERED)
 	if card.get("id") == NascentRuinsFlow.ENTRY_CARD_ID and direction == "left":
 		if not _nascent_ruins_flow.enter(candidate, card, direction, next_index):
 			return false
-		return _commit_encounter_transition(candidate, "DUNGEON_ENTERED")
+		return _commit_encounter_transition(candidate, EventTypes.DUNGEON_ENTERED)
 	if HigherDungeonFlow.ENTRIES.has(card.get("id")) and direction == "left":
 		if not _higher_dungeon_flow.enter(candidate, card, direction, next_index):
 			return false
-		return _commit_encounter_transition(candidate, "DUNGEON_ENTERED")
+		return _commit_encounter_transition(candidate, EventTypes.DUNGEON_ENTERED)
 	if card.has("_dungeonId"):
 		var dungeon_flow: RefCounted = _nascent_cave_flow if card.get(
 			"_dungeonId") == NascentCaveFlow.DUNGEON_ID else (
@@ -4178,7 +4178,7 @@ func _choose_normal(direction: String) -> bool:
 			return _commit_dungeon_fatal_or_revived(candidate, String(card.id))
 		if not dungeon_flow.advance(candidate, String(card.id), next_index):
 			return false
-		return _commit_encounter_transition(candidate, "DUNGEON_ADVANCED")
+		return _commit_encounter_transition(candidate, EventTypes.DUNGEON_ADVANCED)
 	if card.get("id") in CaveFlow.NODE_IDS:
 		var cult_roll := 0.0
 		var stone_roll := 0.0
@@ -4195,7 +4195,7 @@ func _choose_normal(direction: String) -> bool:
 				or int(candidate.get("attributes", {}).get("daoHeart", 1)) <= 0 \
 				or int(candidate.get("resources", {}).get("lifespan", 1)) <= 0:
 			return _commit_dungeon_fatal_or_revived(candidate, String(card["id"]))
-		return _commit_encounter_transition(candidate, "DUNGEON_ADVANCED")
+		return _commit_encounter_transition(candidate, EventTypes.DUNGEON_ADVANCED)
 	if card.get("id") in FoundationDungeonFlow.NODE_CARDS.values() \
 			or card.get("id") == FoundationDungeonFlow.FORK_CARD_ID:
 		var cult_roll := -1.0
@@ -4215,7 +4215,7 @@ func _choose_normal(direction: String) -> bool:
 			if not _foundation_dungeon_flow.complete(candidate, "failure", next_index):
 				return false
 			return _commit_dungeon_fatal_or_revived(candidate, String(card["id"]))
-		return _commit_encounter_transition(candidate, "DUNGEON_ADVANCED")
+		return _commit_encounter_transition(candidate, EventTypes.DUNGEON_ADVANCED)
 	if int(candidate.get("attributes", {}).get("daoHeart", 1)) <= 0 \
 			or int(candidate.get("attributes", {}).get("health", 1)) <= 0 \
 			or int(candidate.get("resources", {}).get("lifespan", 1)) <= 0:
@@ -4241,7 +4241,7 @@ func _choose_normal(direction: String) -> bool:
 		"cardId": card["id"] if pending_remove else null,
 		"sourceCardId": card["id"], "turn": next_index,
 		"decisionIndex": next_index, "flowPending": not pending_remove}
-	return _commit_encounter_transition(candidate, "NORMAL_CHOSEN")
+	return _commit_encounter_transition(candidate, EventTypes.NORMAL_CHOSEN)
 
 
 func _commit_dungeon_fatal_or_revived(candidate: Dictionary,
@@ -4251,9 +4251,9 @@ func _commit_dungeon_fatal_or_revived(candidate: Dictionary,
 	if revival.is_empty():
 		return false
 	if revival.get("revived") == true:
-		return _commit_encounter_transition(revival["state"], "DUNGEON_ADVANCED")
+		return _commit_encounter_transition(revival["state"], EventTypes.DUNGEON_ADVANCED)
 	var fatal: Dictionary = _death_flow.prepare_death(candidate, source_card_id)
-	return _commit_encounter_transition(fatal, "DEATH_NARRATIVE") \
+	return _commit_encounter_transition(fatal, EventTypes.DEATH_NARRATIVE) \
 		if not fatal.is_empty() else false
 
 
@@ -4279,7 +4279,7 @@ func abandon_dungeon(expected_token: int) -> bool:
 	actions.append({"kind": "abandon", "sessionId": run["sessionId"],
 		"decisionIndex": decision})
 	candidate["dungeonActionHistory"] = actions
-	return _commit_encounter_transition(candidate, "DUNGEON_ABANDONED")
+	return _commit_encounter_transition(candidate, EventTypes.DUNGEON_ABANDONED)
 
 
 func _choose_death(direction: String) -> bool:
@@ -4306,7 +4306,7 @@ func change_rebirth_tree(node_id: String, refund: bool = false) -> bool:
 			return false
 		_store_revision = int(committed.get("revision", -1))
 	state = candidate
-	_emit_event({"type": "REBIRTH_TREE_CHANGED", "nodeId": node_id,
+	_emit_event({"type": EventTypes.REBIRTH_TREE_CHANGED, "nodeId": node_id,
 		"refunded": refund})
 	return true
 
@@ -4395,7 +4395,7 @@ func interact_npc(npc_id: String, action: String, item_id: String = "") -> bool:
 		return false
 	_store_revision = int(committed.get("revision", -1))
 	state = candidate
-	_emit_event({"type": "NPC_INTERACTION", "npcId": npc_id,
+	_emit_event({"type": EventTypes.NPC_INTERACTION, "npcId": npc_id,
 		"action": action, "result": candidate.npcInteractionHistory.back()})
 	return true
 
@@ -4443,7 +4443,7 @@ func select_portrait(comp_id: String, stage_id: String) -> bool:
 		return false
 	_store_revision = int(committed.get("revision", -1))
 	state = candidate
-	_emit_event({"type": "COMPANION_PORTRAIT_SELECTED",
+	_emit_event({"type": EventTypes.COMPANION_PORTRAIT_SELECTED,
 		"companionId": canonical, "stageId": stage_id})
 	return true
 
@@ -4525,7 +4525,7 @@ func set_legacy_focus(set_id: String) -> bool:
 			return false
 		_store_revision = int(committed.get("revision", -1))
 	state = candidate
-	_emit_event({"type": "LEGACY_FOCUS_CHANGED", "setId": set_id})
+	_emit_event({"type": EventTypes.LEGACY_FOCUS_CHANGED, "setId": set_id})
 	return true
 
 
@@ -4585,7 +4585,7 @@ func claim_boss_fragment(set_id: String) -> bool:
 			return false
 		_store_revision = int(committed.get("revision", -1))
 	state = candidate
-	_emit_event({"type": "BOSS_FRAGMENT_CLAIMED", "setId": set_id})
+	_emit_event({"type": EventTypes.BOSS_FRAGMENT_CLAIMED, "setId": set_id})
 	return true
 
 
@@ -4703,7 +4703,7 @@ func _commit_rebirth_candidate(candidate: Dictionary, direction: String) -> bool
 	_reset_new_life_runtime()
 	_current_card_id = "rebirth_boon"
 	_choice_token += 1
-	_emit_event({"type": "REBIRTH_PATH_REQUIRED", "cardId": _current_card_id,
+	_emit_event({"type": EventTypes.REBIRTH_PATH_REQUIRED, "cardId": _current_card_id,
 		"lifeCount": candidate["lifeCount"]})
 	return true
 
@@ -4820,7 +4820,7 @@ func _choose_rebirth_boon(direction: String) -> bool:
 		if director.is_empty():
 			return false
 		candidate["noncombatFlow"]["encounterDirectorState"] = director
-	return _commit_encounter_transition(candidate, "REBIRTH_BOON_CHOSEN") \
+	return _commit_encounter_transition(candidate, EventTypes.REBIRTH_BOON_CHOSEN) \
 		if not candidate.is_empty() else false
 
 
@@ -4839,7 +4839,7 @@ func select_rebirth_path(path_id: String) -> bool:
 	_install_rebirth_path_bundle(bundle)
 	state = candidate
 	_choice_token += 1
-	_emit_event({"type": "REBIRTH_PATH_SELECTED", "cardId": "rebirth_boon",
+	_emit_event({"type": EventTypes.REBIRTH_PATH_SELECTED, "cardId": "rebirth_boon",
 		"path": path_id, "lifeCount": candidate["lifeCount"]})
 	return true
 
@@ -4883,7 +4883,7 @@ func _open_last_lesson_vendor() -> bool:
 	flow.shopEntries.append(row)
 	candidate.normalFlow = flow
 	return _commit_encounter_transition(_last_lesson_vendor.open(candidate,
-		offers), "VENDOR_OPENED")
+		offers), EventTypes.VENDOR_OPENED)
 
 
 func _choose_shop(direction: String) -> bool:
@@ -4948,7 +4948,7 @@ func _choose_shop(direction: String) -> bool:
 		candidate["normalFlow"] = flow
 		return _commit_encounter_transition(_regulated_vendor.open(candidate, offers,
 			card if authored else {}),
-			"VENDOR_OPENED")
+			EventTypes.VENDOR_OPENED)
 	var next := state.duplicate(true)
 	if not _normal_choice_policy._apply_passive_regen(next):
 		return false
@@ -5005,13 +5005,13 @@ func _choose_shop(direction: String) -> bool:
 			next["decisionCheckpoint"] = {"version": 1, "cardId": result["id"],
 				"sourceCardId": source_id, "turn": next_index,
 				"decisionIndex": next_index}
-			return _commit_encounter_transition(next, "MARKET_NARRATIVE_RESULT")
+			return _commit_encounter_transition(next, EventTypes.MARKET_NARRATIVE_RESULT)
 	next["phase"] = "FLOW_PENDING"
 	next["currentCardId"] = ""
 	next["decisionCheckpoint"] = {"version": 1, "cardId": null,
 		"sourceCardId": source_id, "turn": next_index,
 		"decisionIndex": next_index, "flowPending": true}
-	return _commit_encounter_transition(next, "SHOP_SKIPPED")
+	return _commit_encounter_transition(next, EventTypes.SHOP_SKIPPED)
 
 
 func _narrative_result_from_choice(candidate: Dictionary, card: Dictionary) -> Dictionary:
@@ -5077,7 +5077,7 @@ func _choose_camp(direction: String) -> bool:
 		"cardId": CampFlow.CARD_ID if not action.is_empty() else null,
 		"sourceCardId": CampFlow.CARD_ID, "turn": next_index,
 		"decisionIndex": next_index, "flowPending": action.is_empty()}
-	return _commit_encounter_transition(candidate, "CAMP_CHOSEN")
+	return _commit_encounter_transition(candidate, EventTypes.CAMP_CHOSEN)
 
 
 func camp_targets() -> Array:
@@ -5104,7 +5104,7 @@ func resolve_camp_target(index: int, expected_card_id: String,
 		"action": action, "index": index, "cardId": expected_card_id}
 	if state.get("currentCardId") in ["q_shop", "f_shop", "g_shop"]:
 		record["sourceCardId"] = state["currentCardId"]
-	return _commit_camp_target(candidate, record, "CAMP_TARGET_SELECTED")
+	return _commit_camp_target(candidate, record, EventTypes.CAMP_TARGET_SELECTED)
 
 
 func cancel_camp_target(expected_token: int) -> bool:
@@ -5116,7 +5116,7 @@ func cancel_camp_target(expected_token: int) -> bool:
 		"action": "cancel", "index": -1, "cardId": ""}
 	if state.get("currentCardId") in ["q_shop", "f_shop", "g_shop"]:
 		record["sourceCardId"] = state["currentCardId"]
-	return _commit_camp_target(candidate, record, "CAMP_TARGET_CANCELLED")
+	return _commit_camp_target(candidate, record, EventTypes.CAMP_TARGET_CANCELLED)
 
 
 func _commit_camp_target(candidate: Dictionary, record: Dictionary,
@@ -5303,7 +5303,7 @@ func change_treasure_equipment(operation: String, instance_id: String,
 		"cardId": String(state.currentCardId), "phase": String(state.phase),
 		"operation": operation,
 		"instanceId": instance_id, "slot": slot})
-	return _commit_encounter_transition(candidate, "TREASURE_EQUIPMENT_CHANGED")
+	return _commit_encounter_transition(candidate, EventTypes.TREASURE_EQUIPMENT_CHANGED)
 
 func perform_vendor_action(action_id: String, expected_token: int) -> bool:
 	if expected_token <= 0 or expected_token != _choice_token \
@@ -5311,12 +5311,12 @@ func perform_vendor_action(action_id: String, expected_token: int) -> bool:
 		return false
 	if _last_lesson_vendor_active():
 		return _commit_encounter_transition(_last_lesson_vendor.interact(state,
-			action_id), "VENDOR_ACTION")
+			action_id), EventTypes.VENDOR_ACTION)
 	return _commit_encounter_transition((_ghost_vendor_flow.inspect_seal(
 		state, action_id) if _ghost_vendor_active() else \
 		_regulated_vendor.interact(state, action_id) \
 		if _regulated_vendor_active() else _vendor_flow.interact(state, action_id)),
-		"VENDOR_ACTION")
+		EventTypes.VENDOR_ACTION)
 
 func purchase_vendor_offer(offer_id: String, expected_token: int,
 		cost_mode_id: String = "", identify_rolls: Dictionary = {}) -> bool:
@@ -5325,16 +5325,16 @@ func purchase_vendor_offer(offer_id: String, expected_token: int,
 		return false
 	if _last_lesson_vendor_active():
 		return _commit_encounter_transition(_last_lesson_vendor.purchase(state,
-			offer_id, cost_mode_id, identify_rolls), "VENDOR_PURCHASED")
+			offer_id, cost_mode_id, identify_rolls), EventTypes.VENDOR_PURCHASED)
 	if _regulated_vendor_active():
 		return _commit_encounter_transition(_regulated_vendor.purchase(state,
-			offer_id, cost_mode_id, identify_rolls), "VENDOR_PURCHASED")
+			offer_id, cost_mode_id, identify_rolls), EventTypes.VENDOR_PURCHASED)
 	if not identify_rolls.is_empty():
 		return false
 	return _commit_encounter_transition((_ghost_vendor_flow.purchase_oath(
 			state, offer_id, cost_mode_id) if _ghost_vendor_active() else \
 		_vendor_flow.purchase_offer(state, offer_id, cost_mode_id)),
-		"VENDOR_PURCHASED")
+		EventTypes.VENDOR_PURCHASED)
 
 func close_vendor(expected_token: int) -> bool:
 	if expected_token <= 0 or expected_token != _choice_token \
@@ -5342,10 +5342,10 @@ func close_vendor(expected_token: int) -> bool:
 		return false
 	if _last_lesson_vendor_active():
 		return _commit_encounter_transition(_last_lesson_vendor.close(state),
-			"VENDOR_CLOSED")
+			EventTypes.VENDOR_CLOSED)
 	return _commit_encounter_transition((_regulated_vendor.close(state) \
 		if _regulated_vendor_active() else _ghost_vendor_flow.close(state) \
-		if _ghost_vendor_active() else _vendor_flow.close(state)), "VENDOR_CLOSED")
+		if _ghost_vendor_active() else _vendor_flow.close(state)), EventTypes.VENDOR_CLOSED)
 
 func resolve_vendor_loadout(action: String, expected_token: int) -> bool:
 	if expected_token <= 0 or expected_token != _choice_token \
@@ -5357,7 +5357,7 @@ func resolve_vendor_loadout(action: String, expected_token: int) -> bool:
 		else _regulated_vendor.resolve_loadout(state, action) if _regulated_loadout_pending() \
 		else _ghost_vendor_flow.resolve_loadout(state, action) if _ghost_vendor_active() \
 		else _vendor_flow.resolve_loadout(state, action)),
-		"VENDOR_LOADOUT_RESOLVED")
+		EventTypes.VENDOR_LOADOUT_RESOLVED)
 
 func _replay_vendor_actions(saved: Dictionary) -> bool:
 	var session: Dictionary = state.get("marketState", {}).get("activeSession", {})
@@ -5660,7 +5660,7 @@ func _acknowledge_narrative_result(direction: String) -> bool:
 	_current_card_id = ""
 	_choice_token += 1
 	state = candidate
-	_emit_event({"type": "RESULT_ACKNOWLEDGED", "sourceCardId": result_id,
+	_emit_event({"type": EventTypes.RESULT_ACKNOWLEDGED, "sourceCardId": result_id,
 		"cardId": "", "turn": next_index})
 	return true
 
@@ -5852,7 +5852,7 @@ func _commit_choice(next_state: Dictionary, card: Dictionary, direction: String,
 	_current_card_id = next_id
 	_choice_token += 1
 	state = next_state
-	_emit_event({"type": "CHOICE_COMMITTED", "sourceCardId": prior_id,
+	_emit_event({"type": EventTypes.CHOICE_COMMITTED, "sourceCardId": prior_id,
 		"direction": direction, "nextCardId": next_id, "turn": state["turn"]})
 	return true
 
