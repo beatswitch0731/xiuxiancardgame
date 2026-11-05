@@ -50,6 +50,7 @@ var _impact_material: StandardMaterial3D
 var _arc_material: StandardMaterial3D
 var _arc_core_material: StandardMaterial3D
 var _camera_tween: Tween
+var _camera_shake: CameraShake
 var _camera_orbit_x := 0.0
 var _light_tween: Tween
 var _impact_tween: Tween
@@ -238,6 +239,12 @@ func use_demo_composition() -> void:
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# 打击感第五层：屏幕震动。只产出 offset，应用在下面的 _process 里，
+	# 与 _set_camera_yaw（改 position/朝向）和 _camera_tween（改 position:x）
+	# 正交，互不覆盖。
+	_camera_shake = CameraShake.new()
+	_camera_shake.name = "CameraShake"
+	add_child(_camera_shake)
 	_action_audio = AudioStreamPlayer.new()
 	_action_audio.name = "SourceActionSfx"
 	add_child(_action_audio)
@@ -328,6 +335,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	_apply_camera_shake(delta)
 	_reference_breath_elapsed += delta
 	_sync_motion_to_animation()
 	if _modular_actor != null and not _active_motion.is_empty() \
@@ -1452,6 +1460,29 @@ func _sync_ground_contact_decals(actor: Node3D) -> void:
 	for i in mini(points.size(), marks.size()):
 		var point := points[i]
 		(marks[i] as Decal).global_position = Vector3(point.x, point.y + 0.20, point.z)
+
+
+## 屏幕震动的像素 → 世界单位换算。视口 800px 在相机距离处约合 16 世界单位，
+## 故 1px ≈ 0.02。震动幅度只有几像素，2% 的估算误差对手感无感知。
+const SHAKE_PIXELS_TO_METERS := 0.02
+
+
+## 触发一次屏幕震动。由 main.gd 在 contact 帧调用，与 hit-stop 同一时刻。
+## 通道所有权：本方法只写 Camera3D 的投影偏移（h_offset/v_offset），
+## 与 _set_camera_yaw（改 position/朝向）和 _camera_tween（改 position:x）正交。
+func pulse_camera(tier: String) -> void:
+	if _camera_shake != null:
+		_camera_shake.trigger(tier)
+
+
+## 每帧把震动 offset 应用到相机投影偏移。归零时写回精确 0.0，
+## 否则相机会永久歪着。
+func _apply_camera_shake(delta: float) -> void:
+	if _camera_shake == null or _camera == null:
+		return
+	var offset := _camera_shake._step(delta)
+	_camera.h_offset = offset.x * SHAKE_PIXELS_TO_METERS
+	_camera.v_offset = offset.y * SHAKE_PIXELS_TO_METERS
 
 
 func _set_camera_yaw(yaw: float) -> void:

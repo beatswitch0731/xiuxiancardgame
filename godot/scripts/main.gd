@@ -951,9 +951,12 @@ func _on_presentation_missing(_event_type: String, reason: String) -> void:
 
 func _on_contact_frame(side: String) -> void:
 	# contact 帧时刻 = 打击感五件套的触发时刻（VFX 方案 §3.5）。
-	# 当前接线 hit-stop；闪白/震屏随批次 V2/V3 扩展。
+	# 已接线：hit-stop（时间）+ 屏震（镜头）。闪白待后续。
 	if hitstop != null and not _pending_damage_tier.is_empty():
 		hitstop.trigger(_pending_damage_tier)
+		# 只有 hd2d 舞台有 3D 相机；其余 2D 舞台静默跳过。
+		if duel_stage != null and duel_stage.has_method("pulse_camera"):
+			duel_stage.pulse_camera(_pending_damage_tier)
 		_pending_damage_tier = ""
 	if side == "player" and (_held_enemy_hp >= 0 or _held_enemy_block >= 0 or _hold_outcome):
 		_held_enemy_hp = -1
