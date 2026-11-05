@@ -1,0 +1,55 @@
+# Generated visual audit and Playwright screenshots.
+/output/*
+!/output/imagegen/
+/output/imagegen/*
+!/output/imagegen/pc98-card-art/
+!/output/imagegen/pc98-card-art/**
+/.playwright-cli/
+
+# Local context-intelligence indexes and dependencies.
+**/.codegraph/
+/graphify-out/
+/node_modules/
+/serena_repo/
+
+# ============================================================
+# Secrets / environment (NEVER commit credentials)
+# ============================================================
+.env
+.env.*
+secrets.*
+*.local
+
+# ============================================================
+# Backups — the game tracks many *.bak-* snapshot files
+# ============================================================
+*.bak-*
+*.bak
+index.html.bak-*
+src/**/*.bak-*
+data/**/*.json.bak-*
+
+# ============================================================
+# Stray shell-redirect junk (accidental `>` fragments at repo root)
+# ============================================================
+\(\{tag
+\(\[k
+n.id
+n.id)
+location.href
+x.name
+x.name)
+x.includes('audit'))})
+x.toLowerCase().includes('render')
+x.toLowerCase().includes(y))).slice(0
+k.toLowerCase().includes('game'))
+k.toLowerCase().includes('game')).slice(-20)})
+JSON.stringify(window.__b10frames
+JSON.stringify(\{phase
+
+# ============================================================
+# Large generated asset tree — manage via LFS / archive, not git
+# (keeps the repo light; deploy pulls assets separately)
+# ============================================================
+/assets/combat/
+__pycache__/

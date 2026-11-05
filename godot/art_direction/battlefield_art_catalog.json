@@ -1,0 +1,2127 @@
+{
+  "version": 1,
+  "sourceOfTruth": [
+    "data/combat/encounters.json",
+    "data/combat/encounter_presentations.json",
+    "data/combat/migrated_presentations.json",
+    "data/cards/demonic_seductress.json"
+  ],
+  "policy": "Identity ledger, not art approval; no generic stage fallback",
+  "presentationCount": 73,
+  "battlefieldCount": 70,
+  "battlefields": {
+    "battlefield_sword_tomb_old_master_native_v1": {
+      "battlefieldId": "battlefield_sword_tomb_old_master_native_v1",
+      "productionFamily": "companion_old_master",
+      "sources": [{
+        "sourceKind": "encounter",
+        "sourceKey": "enc_companion_jian_linger_tomb",
+        "presentationId": "combat_companion_jian_linger_tomb_native_v1",
+        "sceneImage": "assets/combat/companion_jian_linger_tomb_v1/battlefield_sword_tomb_old_master_native_v1.png",
+        "title": "并肩战·剑灵儿的旧主",
+        "mechanic": "旧主残念先凝聚剑影，下一次攻击爆发；虚弱可削减爆发，护盾可保住羁绊节奏。",
+        "category": "companionQuest",
+        "realm": "golden",
+        "productionFamily": "companion_old_master",
+        "enemyScaleProfileId": ""
+      }],
+      "artStatus": "source_stage",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_companion_old_master_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {"status": "pending_authored_brief"}
+    },
+    "battlefield_bandit_fort_pc98_v1": {
+      "battlefieldId": "battlefield_bandit_fort_pc98_v1",
+      "productionFamily": "bandit_fort",
+      "sources": [{
+        "sourceKind": "card_choice",
+        "sourceKey": "ds_female_bandit:left",
+        "presentationId": "combat_tiger_queen_bandit_fort_v1",
+        "sceneImage": "assets/combat/tiger_queen_bandit_fort_v1/battlefield_bandit_fort_pc98_v1.png",
+        "title": "女匪寨·虎娘试刀",
+        "mechanic": "虎啸施加虚弱，破阵斩造成2点伤害，伏虎架获得2点护盾。",
+        "category": "inline_combat",
+        "realm": "golden",
+        "productionFamily": "bandit_fort",
+        "enemyScaleProfileId": ""
+      }],
+      "artStatus": "source_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_bandit_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {"status": "pending_authored_brief"}
+    },
+    "battlefield_ar_boss_native_v1": {
+      "battlefieldId": "battlefield_ar_boss_native_v1",
+      "productionFamily": "imperial_mausoleum",
+      "sources": [
+        {
+          "sourceKind": "migrated_choice",
+          "sourceKey": "ar_boss:left",
+          "presentationId": "combat_ar_boss_left_native_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_ar_boss_native_v1.png",
+          "title": "帝陵墓门·战前推演",
+          "mechanic": "墓印在格挡后反击；先破印，再投入高伤攻击牌。",
+          "category": "migrated_choice",
+          "realm": "",
+          "productionFamily": "imperial_mausoleum",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_nascent_ruins_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_boss_deity_karma_dragon_agc_n14": {
+      "battlefieldId": "battlefield_enc_boss_deity_karma_dragon_agc_n14",
+      "productionFamily": "realm_gate_boss",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_boss_deity_karma_dragon",
+          "presentationId": "combat_enc_boss_deity_karma_dragon_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_deity_karma_dragon_agc_n14.png",
+          "title": "化神巡关·业火雷龙 · 现象式路",
+          "mechanic": "屏障与因果重击交替；必须规划破盾后的爆发回合。",
+          "category": "realmBoss",
+          "realm": "deity",
+          "productionFamily": "realm_gate_boss",
+          "enemyScaleProfileId": "karma_thunder_dragon_coiled_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_boss_foundation_mirror_agc_k2": {
+      "battlefieldId": "battlefield_enc_boss_foundation_mirror_agc_k2",
+      "productionFamily": "realm_gate_boss",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_boss_foundation_mirror",
+          "presentationId": "combat_enc_boss_foundation_mirror_agc_k2",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_foundation_mirror_agc_k2.png",
+          "title": "筑基巡关·镜湖心魔 · 战前推演",
+          "mechanic": "攻击、心防、震爆循环；在心防回合积攒资源。",
+          "category": "realmBoss",
+          "realm": "foundation",
+          "productionFamily": "realm_gate_boss",
+          "enemyScaleProfileId": "foundation_mirror_hovering_ordeal"
+        }
+      ],
+      "artStatus": "source_stage",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_gate_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_boss_golden_yinyang_agc_n1": {
+      "battlefieldId": "battlefield_enc_boss_golden_yinyang_agc_n1",
+      "productionFamily": "realm_gate_boss",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_boss_golden_yinyang",
+          "presentationId": "combat_enc_boss_golden_yinyang_agc_n1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_golden_yinyang_agc_n1.png",
+          "title": "金丹巡关·阴阳雷兽 · 战前推演",
+          "mechanic": "阴阳状态按出牌节拍切换：阳雷重压、阴雷穿脉，保留真元可令两极错位。",
+          "category": "realmBoss",
+          "realm": "golden",
+          "productionFamily": "realm_gate_boss",
+          "enemyScaleProfileId": "golden_yinyang_twin_head_quadruped"
+        }
+      ],
+      "artStatus": "source_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_golden_gate_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_break_nascent_void_womb_v1": {
+      "battlefieldId": "battlefield_break_nascent_void_womb_v1",
+      "productionFamily": "realm_gate_boss",
+      "sources": [
+        {
+          "sourceKind": "chapter_choice",
+          "sourceKey": "ch_nascent_100:left",
+          "presentationId": "combat_break_nascent_void_backlash_v1",
+          "sceneImage": "assets/combat/realm_boss_r9bc/nascent/battlefield_break_nascent_void_womb_v1.png",
+          "title": "化神虚空雷罚",
+          "realm": "nascent",
+          "productionFamily": "realm_gate_boss"
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_nascent_gate_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {"status": "pending_authored_brief"}
+    },
+    "battlefield_break_deity_karma_tribunal_v1": {
+      "battlefieldId": "battlefield_break_deity_karma_tribunal_v1",
+      "productionFamily": "realm_gate_boss",
+      "sources": [
+        {
+          "sourceKind": "chapter_choice",
+          "sourceKey": "ch_deity_100:left",
+          "presentationId": "combat_break_deity_karma_tribunal_v1",
+          "sceneImage": "assets/combat/realm_boss_r9bc/deity/battlefield_break_deity_karma_tribunal_v1.png",
+          "title": "九重雷劫",
+          "realm": "deity",
+          "productionFamily": "realm_gate_boss"
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_deity_gate_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {"status": "pending_authored_brief"}
+    },
+    "battlefield_break_tribulation_samsara_gate_v1": {
+      "battlefieldId": "battlefield_break_tribulation_samsara_gate_v1",
+      "productionFamily": "realm_gate_boss",
+      "sources": [
+        {
+          "sourceKind": "chapter_choice",
+          "sourceKey": "ch_tribulation_100:left",
+          "presentationId": "combat_break_tribulation_samsara_gate_v1",
+          "sceneImage": "assets/combat/realm_boss_r9bc/tribulation/battlefield_break_tribulation_samsara_gate_v1.png",
+          "title": "九九飞升大劫",
+          "realm": "tribulation",
+          "productionFamily": "realm_gate_boss"
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_tribulation_gate_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {"status": "pending_authored_brief"}
+    },
+    "battlefield_enc_boss_nascent_void_agc_n13": {
+      "battlefieldId": "battlefield_enc_boss_nascent_void_agc_n13",
+      "productionFamily": "realm_gate_boss",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_boss_nascent_void",
+          "presentationId": "combat_enc_boss_nascent_void_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_nascent_void_agc_n13.png",
+          "title": "元婴巡关·虚空执法影 · 现象式路",
+          "mechanic": "聚雷后重击；攻击窗口短，过度防守会被持续压制。",
+          "category": "realmBoss",
+          "realm": "nascent",
+          "productionFamily": "realm_gate_boss",
+          "enemyScaleProfileId": "void_enforcer_shadow_hovering_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_boss_qi_thunder_gate_native_v1": {
+      "battlefieldId": "battlefield_enc_boss_qi_thunder_gate_native_v1",
+      "productionFamily": "realm_gate_boss",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_boss_qi_thunder_gate",
+          "presentationId": "combat_enc_boss_qi_thunder_gate_native_v1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_qi_thunder_gate_agc_v2.png",
+          "title": "炼气巡关·雷门碑兽 · 战前推演",
+          "mechanic": "四足碑座以三段震击逐步升压；护盾必须留给第三击，倒伏时才暴露碑心。",
+          "category": "realmBoss",
+          "realm": "qi",
+          "productionFamily": "realm_gate_boss",
+          "enemyScaleProfileId": "qi_thunder_colossal_stele_quadruped"
+        }
+      ],
+      "artStatus": "source_stage",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_qi_gate_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_boss_tribulation_heaven_door_agc_n14": {
+      "battlefieldId": "battlefield_enc_boss_tribulation_heaven_door_agc_n14",
+      "productionFamily": "realm_gate_boss",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_boss_tribulation_heaven_door",
+          "presentationId": "combat_enc_boss_tribulation_heaven_door_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_boss_tribulation_heaven_door_agc_n14.png",
+          "title": "渡劫巡关·天门守序者 · 现象式路",
+          "mechanic": "法则蓄力后发动终极神雷；必须在第三行动前建立优势。",
+          "category": "realmBoss",
+          "realm": "tribulation",
+          "productionFamily": "realm_gate_boss",
+          "enemyScaleProfileId": "heaven_door_arbiter_tall_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_companion_bai_luoxuan_hunt_agc_n11": {
+      "battlefieldId": "battlefield_enc_companion_bai_luoxuan_hunt_agc_n11",
+      "productionFamily": "companion_story_location",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_companion_bai_luoxuan_hunt",
+          "presentationId": "combat_enc_companion_bai_luoxuan_hunt_agc_n11",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_bai_luoxuan_hunt_agc_n11.png",
+          "title": "猎妖守阵兽 · 独立式路",
+          "mechanic": "阵纹震慑 → 阔肩碾压 → 阵纹反冲 → 退爪重整",
+          "category": "companionQuest",
+          "realm": "foundation",
+          "productionFamily": "companion_story_location",
+          "enemyScaleProfileId": "ward_beast_broad_n11"
+        }
+      ],
+      "artStatus": "source_stage",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_companion_jian_linger_tomb_agc_n12": {
+      "battlefieldId": "battlefield_enc_companion_jian_linger_tomb_agc_n12",
+      "productionFamily": "companion_story_location",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_companion_jian_linger_tomb",
+          "presentationId": "combat_enc_companion_jian_linger_tomb_agc_n12",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_jian_linger_tomb_agc_n12.png",
+          "title": "并肩战·剑灵儿的旧主 · 战前推演",
+          "mechanic": "旧主残念凝剑后爆发；能否共同撑过爆发回合将改变剑灵儿的羁绊。",
+          "category": "companionQuest",
+          "realm": "golden",
+          "productionFamily": "companion_story_location",
+          "enemyScaleProfileId": "sword_tomb_old_master_hovering_n12"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_companion_jiuwei_memory_agc_n14": {
+      "battlefieldId": "battlefield_enc_companion_jiuwei_memory_agc_n14",
+      "productionFamily": "companion_story_location",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_companion_jiuwei_memory",
+          "presentationId": "combat_enc_companion_jiuwei_memory_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_jiuwei_memory_agc_n14.png",
+          "title": "并肩战·九尾溯月的断忆 · 现象式路",
+          "mechanic": "心防与震爆轮换；守住记忆回合比抢攻更重要。",
+          "category": "companionQuest",
+          "realm": "deity",
+          "productionFamily": "companion_story_location",
+          "enemyScaleProfileId": "severed_memory_nuo_masks_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_companion_mu_qinglan_medicine_agc_n11": {
+      "battlefieldId": "battlefield_enc_companion_mu_qinglan_medicine_agc_n11",
+      "productionFamily": "companion_story_location",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_companion_mu_qinglan_medicine",
+          "presentationId": "combat_enc_companion_mu_qinglan_medicine_agc_n11",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_mu_qinglan_medicine_agc_n11.png",
+          "title": "失控药灵 · 独立式路",
+          "mechanic": "根须摄养 → 药枝横生 → 同性催狂 → 枝节受剪",
+          "category": "companionQuest",
+          "realm": "golden",
+          "productionFamily": "companion_story_location",
+          "enemyScaleProfileId": "medicine_spirit_rooted_n11"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_companion_tianji_future_agc_n14": {
+      "battlefieldId": "battlefield_enc_companion_tianji_future_agc_n14",
+      "productionFamily": "companion_story_location",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_companion_tianji_future",
+          "presentationId": "combat_enc_companion_tianji_future_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_tianji_future_agc_n14.png",
+          "title": "并肩战·天机老人的死局 · 现象式路",
+          "mechanic": "三段法则攻击，第三击前必须完成资源循环。",
+          "category": "companionQuest",
+          "realm": "tribulation",
+          "productionFamily": "companion_story_location",
+          "enemyScaleProfileId": "doomed_future_hanfu_pair_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_companion_yin_xue_pursuit_agc_n12": {
+      "battlefieldId": "battlefield_enc_companion_yin_xue_pursuit_agc_n12",
+      "productionFamily": "companion_story_location",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_companion_yin_xue_pursuit",
+          "presentationId": "combat_enc_companion_yin_xue_pursuit_agc_n12",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_companion_yin_xue_pursuit_agc_n12.png",
+          "title": "并肩战·殷血的追兵 · 战前推演",
+          "mechanic": "虚弱与吸血交替，拖延会让追兵恢复优势。",
+          "category": "companionQuest",
+          "realm": "nascent",
+          "productionFamily": "companion_story_location",
+          "enemyScaleProfileId": "yin_xue_pursuit_captain_grounded_n12"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_faction_dangu_elite_agc_n12": {
+      "battlefieldId": "battlefield_enc_faction_dangu_elite_agc_n12",
+      "productionFamily": "faction_identity",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_faction_dangu_elite",
+          "presentationId": "combat_enc_faction_dangu_elite_agc_n12",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_dangu_elite_agc_n12.png",
+          "title": "势力精英·丹谷护炉人 · 战前推演",
+          "mechanic": "炉火蓄力后爆发，需提前建立护盾。",
+          "category": "factionElite",
+          "realm": "golden",
+          "productionFamily": "faction_identity",
+          "enemyScaleProfileId": "dangu_furnace_keeper_sturdy_n12"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_faction_qingyun_elite_agc_n12": {
+      "battlefieldId": "battlefield_enc_faction_qingyun_elite_agc_n12",
+      "productionFamily": "faction_identity",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_faction_qingyun_elite",
+          "presentationId": "combat_enc_faction_qingyun_elite_agc_n12",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_qingyun_elite_agc_n12.png",
+          "title": "势力精英·青云执剑使 · 战前推演",
+          "mechanic": "凝剑后破空斩；胜败分别改变青云声望。",
+          "category": "factionElite",
+          "realm": "foundation",
+          "productionFamily": "faction_identity",
+          "enemyScaleProfileId": "qingyun_sword_envoy_grounded_n12"
+        }
+      ],
+      "artStatus": "source_stage",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_faction_tianji_elite_agc_n12": {
+      "battlefieldId": "battlefield_enc_faction_tianji_elite_agc_n12",
+      "productionFamily": "faction_identity",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_faction_tianji_elite",
+          "presentationId": "combat_enc_faction_tianji_elite_agc_n12",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_tianji_elite_agc_n12.png",
+          "title": "势力精英·天机巡算师 · 战前推演",
+          "mechanic": "聚势后锁定重击，考验提前规划。",
+          "category": "factionElite",
+          "realm": "nascent",
+          "productionFamily": "faction_identity",
+          "enemyScaleProfileId": "tianji_diviner_lean_n12"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_faction_tianshu_elite_agc_n12": {
+      "battlefieldId": "battlefield_enc_faction_tianshu_elite_agc_n12",
+      "productionFamily": "faction_identity",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_faction_tianshu_elite",
+          "presentationId": "combat_enc_faction_tianshu_elite_agc_n12",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_tianshu_elite_agc_n12.png",
+          "title": "势力精英·天枢戒律官 · 战前推演",
+          "mechanic": "心防与精神重击循环。",
+          "category": "factionElite",
+          "realm": "golden",
+          "productionFamily": "faction_identity",
+          "enemyScaleProfileId": "tianshu_discipline_officer_tall_n12"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_faction_wumeng_elite_agc_k2": {
+      "battlefieldId": "battlefield_enc_faction_wumeng_elite_agc_k2",
+      "productionFamily": "faction_identity",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_faction_wumeng_elite",
+          "presentationId": "combat_enc_faction_wumeng_elite_agc_k2",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_wumeng_elite_agc_k2.png",
+          "title": "势力精英·武盟镇关者 · 战前推演",
+          "mechanic": "观式会记住连续同类招式；真元只剩 2 点时，他会以重拳强压。偏架成功后，趁其失衡收架变招。",
+          "category": "factionElite",
+          "realm": "foundation",
+          "productionFamily": "faction_identity",
+          "enemyScaleProfileId": "wumeng_stocky_gatekeeper"
+        }
+      ],
+      "artStatus": "source_stage",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_faction_wumeng_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_faction_xuesha_elite_agc_n12": {
+      "battlefieldId": "battlefield_enc_faction_xuesha_elite_agc_n12",
+      "productionFamily": "faction_identity",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_faction_xuesha_elite",
+          "presentationId": "combat_enc_faction_xuesha_elite_agc_n12",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_faction_xuesha_elite_agc_n12.png",
+          "title": "势力精英·血煞追魂使 · 战前推演",
+          "mechanic": "随机虚弱与吸血，要求保留应急手段。",
+          "category": "factionElite",
+          "realm": "nascent",
+          "productionFamily": "faction_identity",
+          "enemyScaleProfileId": "xuesha_soul_pursuer_low_n12"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_hidden_chaos_nameless_agc_n14": {
+      "battlefieldId": "battlefield_enc_hidden_chaos_nameless_agc_n14",
+      "productionFamily": "heaven_chaos_finale",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_hidden_chaos_nameless",
+          "presentationId": "combat_enc_hidden_chaos_nameless_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_hidden_chaos_nameless_agc_n14.png",
+          "title": "隐藏战·无名天道 · 现象式路",
+          "mechanic": "终局三拍攻击；失败结算固定伤势，而不是把局内护体直接写成死亡。",
+          "category": "heavenChaos",
+          "realm": "tribulation",
+          "productionFamily": "heaven_chaos_finale",
+          "enemyScaleProfileId": "nameless_heavenly_law_hollow_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_hidden_chaos_reversal_agc_n14": {
+      "battlefieldId": "battlefield_enc_hidden_chaos_reversal_agc_n14",
+      "productionFamily": "heaven_chaos_finale",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_hidden_chaos_reversal",
+          "presentationId": "combat_enc_hidden_chaos_reversal_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_hidden_chaos_reversal_agc_n14.png",
+          "title": "隐藏战·混沌逆相 · 现象式路",
+          "mechanic": "逆相先凝聚剑意再连续斩击；它只反转叙事立场，不暗改伤害规则。",
+          "category": "heavenChaos",
+          "realm": "deity",
+          "productionFamily": "heaven_chaos_finale",
+          "enemyScaleProfileId": "chaos_reversal_jian_pair_wide_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_hidden_heaven_censor_agc_n12": {
+      "battlefieldId": "battlefield_enc_hidden_heaven_censor_agc_n12",
+      "productionFamily": "heaven_chaos_finale",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_hidden_heaven_censor",
+          "presentationId": "combat_enc_hidden_heaven_censor_agc_n12",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_hidden_heaven_censor_agc_n12.png",
+          "title": "隐藏战·仙庭删史官 · 战前推演",
+          "mechanic": "聚雷与删改交替，战斗会种下仙庭追索因果。",
+          "category": "heavenChaos",
+          "realm": "deity",
+          "productionFamily": "heaven_chaos_finale",
+          "enemyScaleProfileId": "heaven_censor_very_tall_n12"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_hidden_heaven_chain_agc_n14": {
+      "battlefieldId": "battlefield_enc_hidden_heaven_chain_agc_n14",
+      "productionFamily": "heaven_chaos_finale",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_hidden_heaven_chain",
+          "presentationId": "combat_enc_hidden_heaven_chain_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_hidden_heaven_chain_agc_n14.png",
+          "title": "隐藏战·飞升锁链 · 现象式路",
+          "mechanic": "屏障和因果重击交替；破链会触发上界关注。",
+          "category": "heavenChaos",
+          "realm": "tribulation",
+          "productionFamily": "heaven_chaos_finale",
+          "enemyScaleProfileId": "ascension_decree_chain_bound_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_patrol_deity_law_echo_agc_n13": {
+      "battlefieldId": "battlefield_enc_patrol_deity_law_echo_agc_n13",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_patrol_deity_law_echo",
+          "presentationId": "combat_enc_patrol_deity_law_echo_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_patrol_deity_law_echo_agc_n13.png",
+          "title": "化神巡战·律令余响 · 现象式路",
+          "mechanic": "法影在施压与结界间轮换；先稳住护盾，再在结界收束前完成反击。",
+          "category": "realmPatrol",
+          "realm": "deity",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "law_edict_echo_hovering_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_patrol_qi_mountain_shadow_native_v1": {
+      "battlefieldId": "battlefield_enc_patrol_qi_mountain_shadow_native_v1",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_patrol_qi_mountain_shadow",
+          "presentationId": "combat_enc_patrol_qi_mountain_shadow_native_v1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_patrol_qi_mountain_shadow_agc_v2.png",
+          "title": "炼气巡战·山影拦途 · 战前推演",
+          "mechanic": "石影先压迫再短暂回气；在回气窗口反击，比连续抢攻更安全。",
+          "category": "realmPatrol",
+          "realm": "qi",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "mountain_shadow_heavy_construct"
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_mountain_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_patrol_tribulation_storm_echo_agc_n14": {
+      "battlefieldId": "battlefield_enc_patrol_tribulation_storm_echo_agc_n14",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_patrol_tribulation_storm_echo",
+          "presentationId": "combat_enc_patrol_tribulation_storm_echo_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_patrol_tribulation_storm_echo_agc_n14.png",
+          "title": "渡劫巡战·劫云残响 · 现象式路",
+          "mechanic": "雷意蓄势后连续落击；保留真元与护盾，才能在雷势回收时反制。",
+          "category": "realmPatrol",
+          "realm": "tribulation",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "tribulation_thunder_drum_lowwide_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_deity_heaven_envoy_agc_n12": {
+      "battlefieldId": "battlefield_enc_quota_deity_heaven_envoy_agc_n12",
+      "productionFamily": "realm_story_objective",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_deity_heaven_envoy",
+          "presentationId": "combat_enc_quota_deity_heaven_envoy_agc_n12",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_deity_heaven_envoy_agc_n12.png",
+          "title": "化神精英·巡界敕令使 · 战前推演",
+          "mechanic": "敕令使在禁制与重击间换挡，连续进攻会触发更强反制。",
+          "category": "realmElite",
+          "realm": "deity",
+          "productionFamily": "realm_story_objective",
+          "enemyScaleProfileId": "heaven_envoy_tall_n12"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_deity_law_beast_agc_n13": {
+      "battlefieldId": "battlefield_enc_quota_deity_law_beast_agc_n13",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_deity_law_beast",
+          "presentationId": "combat_enc_quota_deity_law_beast_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_deity_law_beast_agc_n13.png",
+          "title": "化神巡战·食律云兽 · 现象式路",
+          "mechanic": "云兽吞律后结界护体，结界破碎时会暴露被吞法则。",
+          "category": "realmQuotaOrdinary",
+          "realm": "deity",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "law_eating_cloud_beast_broad_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_deity_mortal_prayer_agc_n13": {
+      "battlefieldId": "battlefield_enc_quota_deity_mortal_prayer_agc_n13",
+      "productionFamily": "realm_story_objective",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_deity_mortal_prayer",
+          "presentationId": "combat_enc_quota_deity_mortal_prayer_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_deity_mortal_prayer_agc_n13.png",
+          "title": "化神任务·万民愿火失控 · 现象式路",
+          "mechanic": "愿火吸收重复招式，变换攻防节奏可让它吐回被吞的愿望。",
+          "category": "realmQuest",
+          "realm": "deity",
+          "productionFamily": "realm_story_objective",
+          "enemyScaleProfileId": "runaway_prayer_flame_rooted_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_foundation_broken_array_agc_n9": {
+      "battlefieldId": "battlefield_enc_quota_foundation_broken_array_agc_n9",
+      "productionFamily": "realm_story_objective",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_foundation_broken_array",
+          "presentationId": "combat_enc_quota_foundation_broken_array_agc_n9",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_foundation_broken_array_agc_n9.png",
+          "title": "筑基任务·失控护山阵 · 阵眼压制",
+          "mechanic": "旧护阵跨回合保留；真实打空屏障会提前暴露阵眼，未打空则经历闭合、蓄势、交斩后过载。",
+          "category": "realmQuest",
+          "realm": "foundation",
+          "productionFamily": "realm_story_objective",
+          "enemyScaleProfileId": "foundation_broken_array_rooted_n9"
+        }
+      ],
+      "artStatus": "source_stage",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_foundation_mirror_mist_agc_n9": {
+      "battlefieldId": "battlefield_enc_quota_foundation_mirror_mist_agc_n9",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_foundation_mirror_mist",
+          "presentationId": "combat_enc_quota_foundation_mirror_mist_agc_n9",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_foundation_mirror_mist_agc_n9.png",
+          "title": "筑基巡战·镜湖返照 · 首式记录",
+          "mechanic": "镜雾记录第一张真正结算的牌，并用剑、法、体、丹四种独立轮廓返照；异路出牌可折断镜序。",
+          "category": "realmQuotaOrdinary",
+          "realm": "foundation",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "foundation_mirror_mist_hovering_n9"
+        }
+      ],
+      "artStatus": "source_stage",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_foundation_vein_wolf_agc_n11": {
+      "battlefieldId": "battlefield_enc_quota_foundation_vein_wolf_agc_n11",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_foundation_vein_wolf",
+          "presentationId": "combat_enc_quota_foundation_vein_wolf_agc_n11",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_foundation_vein_wolf_agc_n11.png",
+          "title": "地脉岩狼 · 独立式路",
+          "mechanic": "岩甲闭合 → 贴地扑杀 → 软节暴露 → 退步归甲",
+          "category": "realmQuotaOrdinary",
+          "realm": "foundation",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "vein_wolf_low_n11"
+        }
+      ],
+      "artStatus": "source_stage",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_golden_furnace_flame_agc_n1": {
+      "battlefieldId": "battlefield_enc_quota_golden_furnace_flame_agc_n1",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_golden_furnace_flame",
+          "presentationId": "combat_enc_quota_golden_furnace_flame_agc_n1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_golden_furnace_flame_agc_n1.png",
+          "title": "金丹巡关·离炉真火 · 战前推演",
+          "mechanic": "真火蓄热后爆发；暴露期结构小、速度快，宜在热量收束时压制。",
+          "category": "realmQuotaOrdinary",
+          "realm": "golden",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "golden_furnace_flame_hovering_wisp"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_golden_lost_elixir_agc_n11": {
+      "battlefieldId": "battlefield_enc_quota_golden_lost_elixir_agc_n11",
+      "productionFamily": "realm_story_objective",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_golden_lost_elixir",
+          "presentationId": "combat_enc_quota_golden_lost_elixir_agc_n11",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_golden_lost_elixir_agc_n11.png",
+          "title": "古炉守灵 · 独立式路",
+          "mechanic": "炉压积聚 → 横口泄焰 → 火路受阻 → 炉壁回冷",
+          "category": "realmQuest",
+          "realm": "golden",
+          "productionFamily": "realm_story_objective",
+          "enemyScaleProfileId": "ancient_furnace_guardian_rooted_n11"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_golden_ore_spirit_agc_n11": {
+      "battlefieldId": "battlefield_enc_quota_golden_ore_spirit_agc_n11",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_golden_ore_spirit",
+          "presentationId": "combat_enc_quota_golden_ore_spirit_agc_n11",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_golden_ore_spirit_agc_n11.png",
+          "title": "吞金矿灵 · 独立式路",
+          "mechanic": "矿壳结晶 → 矿脊冲撞 → 晶面断裂 → 沉渣冷却",
+          "category": "realmQuotaOrdinary",
+          "realm": "golden",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "ore_spirit_rooted_n11"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_nascent_rift_rescue_agc_n13": {
+      "battlefieldId": "battlefield_enc_quota_nascent_rift_rescue_agc_n13",
+      "productionFamily": "realm_story_objective",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_nascent_rift_rescue",
+          "presentationId": "combat_enc_quota_nascent_rift_rescue_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_nascent_rift_rescue_agc_n13.png",
+          "title": "元婴任务·裂隙中的商旅 · 现象式路",
+          "mechanic": "猎影锁定灯火后蓄力，打断锁定可为商旅争取撤离时间。",
+          "category": "realmQuest",
+          "realm": "nascent",
+          "productionFamily": "realm_story_objective",
+          "enemyScaleProfileId": "rift_hunter_shadow_hovering_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_nascent_soul_echo_agc_n13": {
+      "battlefieldId": "battlefield_enc_quota_nascent_soul_echo_agc_n13",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_nascent_soul_echo",
+          "presentationId": "combat_enc_quota_nascent_soul_echo_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_nascent_soul_echo_agc_n13.png",
+          "title": "元婴巡战·离体魂响 · 现象式路",
+          "mechanic": "魂响聚念后重击，防住聚念再反击可令其失去依附。",
+          "category": "realmQuotaOrdinary",
+          "realm": "nascent",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "disembodied_soul_echo_hovering_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_nascent_void_moth_agc_n13": {
+      "battlefieldId": "battlefield_enc_quota_nascent_void_moth_agc_n13",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_nascent_void_moth",
+          "presentationId": "combat_enc_quota_nascent_void_moth_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_nascent_void_moth_agc_n13.png",
+          "title": "元婴巡战·蚀界虚蛾 · 现象式路",
+          "mechanic": "虚蛾在振翅前蓄势，施加虚弱可让它撞入自己撕开的裂隙。",
+          "category": "realmQuotaOrdinary",
+          "realm": "nascent",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "void_eating_moth_broad_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_qi_missing_disciple_agc_n8": {
+      "battlefieldId": "battlefield_enc_quota_qi_missing_disciple_agc_n8",
+      "productionFamily": "realm_story_objective",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_qi_missing_disciple",
+          "presentationId": "combat_enc_quota_qi_missing_disciple_native_v1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_qi_missing_disciple_agc_n8.png",
+          "title": "炼气任务·废弃药圃救援 · 战前推演",
+          "mechanic": "藤心先聚灵再持续贴地缠身；在根节绷紧时偏斩，可迫使它重新蓄力。",
+          "category": "realmQuest",
+          "realm": "qi",
+          "productionFamily": "realm_story_objective",
+          "enemyScaleProfileId": "spirit_devouring_vine_rooted_colony_n8"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_qi_outer_guard_agc_n8": {
+      "battlefieldId": "battlefield_enc_quota_qi_outer_guard_agc_n8",
+      "productionFamily": "realm_story_objective",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_qi_outer_guard",
+          "presentationId": "combat_enc_quota_qi_outer_guard_native_v1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_qi_outer_guard_agc_n8.png",
+          "title": "炼气精英·外门巡律使 · 战前推演",
+          "mechanic": "短刀先试律；耗尽真元会被追身问责，保留资源或偏斩可迫使巡律使回息。",
+          "category": "realmElite",
+          "realm": "qi",
+          "productionFamily": "realm_story_objective",
+          "enemyScaleProfileId": "outer_guard_disciplined_humanoid_n8"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_tribulation_fallen_ascender_agc_n14": {
+      "battlefieldId": "battlefield_enc_quota_tribulation_fallen_ascender_agc_n14",
+      "productionFamily": "realm_story_objective",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_tribulation_fallen_ascender",
+          "presentationId": "combat_enc_quota_tribulation_fallen_ascender_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_tribulation_fallen_ascender_agc_n14.png",
+          "title": "渡劫任务·坠落飞升者 · 现象式路",
+          "mechanic": "护道器在护主与噬主之间反复切换，破盾时可把控制权还给原主。",
+          "category": "realmQuest",
+          "realm": "tribulation",
+          "productionFamily": "realm_story_objective",
+          "enemyScaleProfileId": "fallen_ascender_guardian_seal_broad_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_tribulation_gate_hunter_agc_n12": {
+      "battlefieldId": "battlefield_enc_quota_tribulation_gate_hunter_agc_n12",
+      "productionFamily": "realm_story_objective",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_tribulation_gate_hunter",
+          "presentationId": "combat_enc_quota_tribulation_gate_hunter_agc_n12",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_tribulation_gate_hunter_agc_n12.png",
+          "title": "渡劫精英·天门猎道者 · 战前推演",
+          "mechanic": "猎道者会根据连续攻击或偏重防守切换封路法印。",
+          "category": "realmElite",
+          "realm": "tribulation",
+          "productionFamily": "realm_story_objective",
+          "enemyScaleProfileId": "heaven_gate_hunter_sturdy_n12"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_quota_tribulation_thunder_wraith_agc_n13": {
+      "battlefieldId": "battlefield_enc_quota_tribulation_thunder_wraith_agc_n13",
+      "productionFamily": "route_wilderness",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_quota_tribulation_thunder_wraith",
+          "presentationId": "combat_enc_quota_tribulation_thunder_wraith_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_quota_tribulation_thunder_wraith_agc_n13.png",
+          "title": "渡劫巡战·雷痕怨灵 · 现象式路",
+          "mechanic": "怨灵复现旧劫三拍，第二拍后的空隙可斩断雷痕。",
+          "category": "realmQuotaOrdinary",
+          "realm": "tribulation",
+          "productionFamily": "route_wilderness",
+          "enemyScaleProfileId": "thunder_scar_wraith_hovering_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_trial_body_immortal_agc_n11": {
+      "battlefieldId": "battlefield_enc_trial_body_immortal_agc_n11",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_body_immortal",
+          "presentationId": "combat_enc_trial_body_immortal_agc_n11",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_body_immortal_agc_n11.png",
+          "title": "不灭金身影 · 独立式路",
+          "mechanic": "金身垂幕 → 空中贯拳 → 守息受制 → 透支反震",
+          "category": "archetypeTrial",
+          "realm": "tribulation",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "immortal_golden_shadow_hovering_n11"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_trial_body_iron_native_v1": {
+      "battlefieldId": "battlefield_enc_trial_body_iron_native_v1",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_body_iron",
+          "presentationId": "combat_enc_trial_body_iron_native_v1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_body_iron_agc_v2.png",
+          "title": "体修证明·铁骨机关兽 · 战前推演",
+          "mechanic": "机关兽以低伏四足占住地面，再用铁掌压肩；先立桩承势，在它前肢落地后的空隙回击。",
+          "category": "archetypeTrial",
+          "realm": "qi",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "iron_beast_low_quadruped_j2"
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_body_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {
+        "sourcePath": "body",
+        "actorFrameSource": "data/combat/action_presentations.json"
+      },
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "source_runtime_candidate_pending_visual_review"
+      }
+    },
+    "battlefield_enc_trial_body_mountain_agc_n11": {
+      "battlefieldId": "battlefield_enc_trial_body_mountain_agc_n11",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_body_mountain",
+          "presentationId": "combat_enc_trial_body_mountain_agc_n11",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_body_mountain_agc_n11.png",
+          "title": "搬山铜人 · 独立式路",
+          "mechanic": "搬山蓄臂 → 山势重落 → 铜轴偏架 → 收轴复位",
+          "category": "archetypeTrial",
+          "realm": "golden",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "mountain_bronze_man_grounded_n11"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_trial_pill_chaos_agc_n14": {
+      "battlefieldId": "battlefield_enc_trial_pill_chaos_agc_n14",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_pill_chaos",
+          "presentationId": "combat_enc_trial_pill_chaos_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_pill_chaos_agc_n14.png",
+          "title": "丹修证明·混沌丹劫 · 现象式路",
+          "mechanic": "三拍法则攻击；治疗只能恢复局内护体值，不能抹去战败伤势。",
+          "category": "archetypeTrial",
+          "realm": "tribulation",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "chaos_elixir_tribulation_ding_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_trial_pill_poison_native_v1": {
+      "battlefieldId": "battlefield_enc_trial_pill_poison_native_v1",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_pill_poison",
+          "presentationId": "combat_enc_trial_pill_poison_native_v1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_pill_poison_agc_v2.png",
+          "title": "丹修证明·百毒炉灵 · 战前推演",
+          "mechanic": "矮炉先沉腹蓄压，再从高位喷口横送药烟；看见炉盖抬起便守势，烟尽后用丹火收束。",
+          "category": "archetypeTrial",
+          "realm": "qi",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "pill_furnace_compact_low_construct_j2"
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_pill_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {
+        "sourcePath": "pill",
+        "actorFrameSource": "data/combat/action_presentations.json"
+      },
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "source_runtime_candidate_pending_visual_review"
+      }
+    },
+    "battlefield_enc_trial_pill_spirit_agc_n13": {
+      "battlefieldId": "battlefield_enc_trial_pill_spirit_agc_n13",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_pill_spirit",
+          "presentationId": "combat_enc_trial_pill_spirit_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_pill_spirit_agc_n13.png",
+          "title": "丹修证明·丹灵问火 · 现象式路",
+          "mechanic": "攻击与防御轮换，适合用回气和治疗建立长线优势。",
+          "category": "archetypeTrial",
+          "realm": "nascent",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "asking_fire_elixir_spirit_hovering_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_trial_spell_elements_agc_n13": {
+      "battlefieldId": "battlefield_enc_trial_spell_elements_agc_n13",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_spell_elements",
+          "presentationId": "combat_enc_trial_spell_elements_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_spell_elements_agc_n13.png",
+          "title": "法修证明·五行逆阵 · 现象式路",
+          "mechanic": "攻击与防御轮换；在心防回合积攒法印。",
+          "category": "archetypeTrial",
+          "realm": "golden",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "five_element_inverse_array_rooted_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_trial_spell_seal_native_v1": {
+      "battlefieldId": "battlefield_enc_trial_spell_seal_native_v1",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_spell_seal",
+          "presentationId": "combat_enc_trial_spell_seal_native_v1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_spell_seal_agc_v3.png",
+          "title": "法修证明·三印回廊 · 战前推演",
+          "mechanic": "封符灵体悬空展翼连续施压；观察符翼收拢，在回气窗口用法印反制。",
+          "category": "archetypeTrial",
+          "realm": "qi",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "corridor_seal_spirit_hovering_core"
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_spell_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {
+        "presentationMode": "source_pc98_2d",
+        "playerActorId": "actor_yelingyun_s1_spell_agc_v6",
+        "enemyActorId": "actor_enc_trial_spell_seal_agc_l1",
+        "actionSource": "data/combat/action_presentations.json"
+      },
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "source_composite_candidate_pending_visual_review"
+      }
+    },
+    "battlefield_enc_trial_spell_void_agc_n13": {
+      "battlefieldId": "battlefield_enc_trial_spell_void_agc_n13",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_spell_void",
+          "presentationId": "combat_enc_trial_spell_void_agc_n13",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_spell_void_agc_n13.png",
+          "title": "法修证明·虚空禁式 · 现象式路",
+          "mechanic": "攻击会迎来蓄力反制；技能牌和护盾更稳定。",
+          "category": "archetypeTrial",
+          "realm": "deity",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "void_forbidden_formula_rooted_n13"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_trial_sword_array_agc_g2": {
+      "battlefieldId": "battlefield_enc_trial_sword_array_agc_g2",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_sword_array",
+          "presentationId": "combat_enc_trial_sword_array_native_v1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_sword_array_agc_g2.png",
+          "title": "剑修证明·七星剑阵 · 战前推演",
+          "mechanic": "蓄力重击明显；破盾后应集中输出。",
+          "category": "archetypeTrial",
+          "realm": "golden",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "floating_weapon_constellation"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_trial_sword_heaven_agc_n14": {
+      "battlefieldId": "battlefield_enc_trial_sword_heaven_agc_n14",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_sword_heaven",
+          "presentationId": "combat_enc_trial_sword_heaven_agc_n14",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_sword_heaven_agc_n14.png",
+          "title": "剑修证明·斩天投影 · 现象式路",
+          "mechanic": "屏障、凝势、重击三拍循环；需要攻守换挡。",
+          "category": "archetypeTrial",
+          "realm": "deity",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "heaven_cleaving_sword_shadow_diagonal_n14"
+        }
+      ],
+      "artStatus": "unbuilt",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_foundation_catalog_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_enc_trial_sword_swift_native_v1": {
+      "battlefieldId": "battlefield_enc_trial_sword_swift_native_v1",
+      "productionFamily": "cultivation_trial",
+      "sources": [
+        {
+          "sourceKind": "encounter",
+          "sourceKey": "enc_trial_sword_swift",
+          "presentationId": "combat_enc_trial_sword_swift_native_v1",
+          "sceneImage": "assets/combat/battlefields/battlefield_enc_trial_sword_swift_agc_v2.png",
+          "title": "剑修证明·一线快剑 · 战前推演",
+          "mechanic": "对手会连续抢攻，回气回合是唯一安全的反击窗口。",
+          "category": "archetypeTrial",
+          "realm": "qi",
+          "productionFamily": "cultivation_trial",
+          "enemyScaleProfileId": "quick_sword_dummy_humanoid"
+        }
+      ],
+      "artStatus": "candidate_visual_fail",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://assets/battle/hd2d/world_v17/qingyun_tutorial_hall_v17.glb",
+      "candidateScene": "res://assets/battle/hd2d/world_v6/cangmang_trial_hall_v6.glb",
+      "candidateScenes": {
+        "outdoor_v3": "res://assets/battle/hd2d/world_v3/cangmang_outdoor_court_v3.glb",
+        "trial_v4": "res://assets/battle/hd2d/world_v4/cangmang_trial_court_v4.glb",
+        "trial_v5": "res://assets/battle/hd2d/world_v5/cangmang_trial_court_v5.glb",
+        "trial_v6": "res://assets/battle/hd2d/world_v6/cangmang_trial_hall_v6.glb",
+        "trial_v7": "res://assets/battle/hd2d/world_v7/qingyun_trial_hall_v7.glb",
+        "trial_v8": "res://assets/battle/hd2d/world_v5/cangmang_trial_court_v5.glb",
+        "trial_v9": "res://assets/battle/hd2d/world_v9/cangmang_trial_hall_v9.glb",
+        "trial_v10": "res://assets/battle/hd2d/world_v10/cangmang_trial_hall_v10.glb",
+        "trial_v11": "res://assets/battle/hd2d/world_v11/cangmang_trial_hall_v11.glb",
+        "trial_v13": "res://assets/battle/hd2d/world_v6/cangmang_trial_hall_v6.glb",
+        "trial_v14": "res://assets/battle/hd2d/world_v14/cangmang_trial_hall_v14.glb",
+        "trial_v15": "res://assets/battle/hd2d/world_v15/cangmang_trial_hall_v15.glb",
+        "trial_v16": "res://assets/battle/hd2d/world_v16/cangmang_trial_hall_v16.glb",
+        "trial_v17": "res://assets/battle/hd2d/world_v17/qingyun_tutorial_hall_v17.glb"
+      },
+      "stageProfile": {
+        "playerActorScene": "res://scenes/yelingyun_s1_hd2d.tscn",
+        "enemyActorScene": "res://scenes/quick_sword_dummy_hd2d.tscn",
+        "playerHome": [
+          -3.5,
+          0.0,
+          0.15
+        ],
+        "enemyHome": [
+          3.5,
+          0.0,
+          -0.25
+        ],
+        "cameraTarget": [
+          0.0,
+          1.35,
+          -0.72
+        ],
+        "cameraHome": [
+          0.0,
+          4.55,
+          13.2
+        ],
+        "lightingProfile": "qingyun_first_fight",
+        "contactFxProfile": "s1_source_timed_sword_wood"
+      },
+      "reviewEvidence": "res://art_direction/FIRST_FIGHT_TECH_ART_WORKFLOW_20261018.md",
+      "designBrief": {
+        "status": "revision_required",
+        "visualTechnicalBaseline": "artifacts/godot-migration/first-fight-backend-qa/default-forward_plus-yaw0.png",
+        "visualBaselineDecision": "用户 2026-10-19 指定 V6 石厅的可见壁灯、暖色局部受光、阴影与石材纹理为继续迭代基线；V8 户外殿宇拼贴拒收",
+        "identity": "青云剑宗的第一场快剑木人试炼；宗门修行设施，而非通用西式城堡",
+        "sharedKit": [
+          "青灰扫描石材",
+          "潮木梁架",
+          "青云旧布旗",
+          "铜铁灯具"
+        ],
+        "foreground": "双人落脚石地要有局部磨损、积水与非重复拼缝，接触光照出地面形状",
+        "midground": "两侧建筑承托主战区，训练器械与宗门陈设明确这是一场试剑",
+        "background": "建筑开口与远处通路保留真实深度；上层廊檐和灯具须在 1280×800 战斗镜头内可见",
+        "lightingMotive": "冷色窗光/天光为主，暖灯仅照亮灯具附近，出剑瞬间短光有地面和木人响应",
+        "camera": "16:10 侧向三分之四，±20° 转镜验证真实遮挡；角色脚点与卡牌安全区同屏",
+        "hardReject": [
+          "V7 重复石地与平板墙面",
+          "角色柔绘色块与 2px 像素格不一致",
+          "接触后切回旧帧"
+        ]
+      }
+    },
+    "battlefield_f_mission_native_v1": {
+      "battlefieldId": "battlefield_f_mission_native_v1",
+      "productionFamily": "beast_lair",
+      "sources": [
+        {
+          "sourceKind": "migrated_choice",
+          "sourceKey": "f_mission:right",
+          "presentationId": "combat_f_mission_right_native_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_f_mission_native_v1.png",
+          "title": "烈焰虎巢·战前推演",
+          "mechanic": "烈焰印记逐回合升温；先削弱再爆发，避免火势叠满。",
+          "category": "migrated_choice",
+          "realm": "",
+          "productionFamily": "beast_lair",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_mission_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_realm_guardian_array_agc_v1": {
+      "battlefieldId": "battlefield_realm_guardian_array_agc_v1",
+      "productionFamily": "foundation_dungeon_array",
+      "sources": [
+        {
+          "sourceKind": "dungeon_boss",
+          "sourceKey": "realm_guardian",
+          "presentationId": "combat_realm_guardian_array_agc_v1",
+          "sceneImage": "assets/combat/battlefields/battlefield_realm_guardian_array_agc_v1.png",
+          "title": "太虚阵灵·三相",
+          "mechanic": "三相连续战斗，换相保留牌堆与伤势。",
+          "category": "dungeon_boss",
+          "realm": "foundation",
+          "productionFamily": "foundation_dungeon_array",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_guardian_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_hound_wilderness_pc98_v1": {
+      "battlefieldId": "battlefield_hound_wilderness_pc98_v1",
+      "productionFamily": "hound_wilderness",
+      "sources": [
+        {
+          "sourceKind": "quest_choice",
+          "sourceKey": "q_whiteFox_3:left",
+          "presentationId": "combat_beast_hound_pack_v1",
+          "sceneImage": "assets/combat/beast_hound_pack_v1/battlefield_hound_wilderness_pc98_v1.png",
+          "title": "白狐第三幕·猎狗群",
+          "mechanic": "猎狗先施加虚弱，再连续围咬。",
+          "category": "quest_choice",
+          "realm": "qi",
+          "productionFamily": "hound_wilderness",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_whitefox_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_it_combat_native_v1": {
+      "battlefieldId": "battlefield_it_combat_native_v1",
+      "productionFamily": "immortal_rift",
+      "sources": [
+        {
+          "sourceKind": "migrated_choice",
+          "sourceKey": "it_combat:left",
+          "presentationId": "combat_it_combat_left_native_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_it_combat_native_v1.png",
+          "title": "破碎天隙·战前推演",
+          "mechanic": "攻击牌会唤醒仙痕反噬；法术、毒、道侣与法宝触发可绕开。",
+          "category": "migrated_choice",
+          "realm": "",
+          "productionFamily": "immortal_rift",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_immortal_shadow_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_last_lesson_market_stone_street_provisional_v1": {
+      "battlefieldId": "battlefield_last_lesson_market_stone_street_provisional_v1",
+      "productionFamily": "market_stone_street_provisional",
+      "sources": [
+        {
+          "sourceKind": "migrated_choice",
+          "sourceKey": "thread_last_lesson_n3:left",
+          "presentationId": "combat_thread_last_lesson_n3_left_provisional_v1",
+          "sceneImage": "assets/cards/events/scene_gd_g_swordIntent.png",
+          "title": "三鸣旧剑·三意争锋",
+          "mechanic": "三道残念会依据玩家的过度进攻与成功偏转切换意图；防御、打断和出牌节奏共同决定最后一课的结局。",
+          "category": "migrated_choice",
+          "realm": "",
+          "productionFamily": "market_stone_street_provisional",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_last_lesson_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_n_hunt_native_v1": {
+      "battlefieldId": "battlefield_n_hunt_native_v1",
+      "productionFamily": "corrupted_hunting_ground",
+      "sources": [
+        {
+          "sourceKind": "migrated_choice",
+          "sourceKey": "n_hunt:left",
+          "presentationId": "combat_n_hunt_left_native_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_n_hunt_native_v1.png",
+          "title": "噬婴猎场·战前推演",
+          "mechanic": "魂钩会侵蚀护盾并夺取手牌节奏；保留净化与非攻击手段。",
+          "category": "migrated_choice",
+          "realm": "",
+          "productionFamily": "corrupted_hunting_ground",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_nascent_hunt_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_q_fellow_native_v1": {
+      "battlefieldId": "battlefield_q_fellow_native_v1",
+      "productionFamily": "qingyun_sparring_terrace",
+      "sources": [
+        {
+          "sourceKind": "migrated_choice",
+          "sourceKey": "q_fellow:right",
+          "presentationId": "combat_q_fellow_right_native_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_q_fellow_native_v1.png",
+          "title": "青云论剑台·切磋推演",
+          "mechanic": "对手会读取连续攻击；交替进攻与防守能积累剑势优势。",
+          "category": "migrated_choice",
+          "realm": "",
+          "productionFamily": "qingyun_sparring_terrace",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_fellow_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "pending_authored_brief"
+      }
+    },
+    "battlefield_thread_ab_village_3_left_native_v1": {
+      "battlefieldId": "battlefield_thread_ab_village_3_left_native_v1",
+      "productionFamily": "village_well_chamber",
+      "sources": [
+        {
+          "sourceKind": "migrated_choice",
+          "sourceKey": "thread_ab_village_3:left",
+          "presentationId": "combat_thread_ab_village_3_left_native_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_ab_village_3_left_native_v1.png",
+          "title": "怨村祖祠·守念推演",
+          "mechanic": "守住祖祠会承受递增诅咒；护盾与净化可保全村民因果。",
+          "category": "migrated_choice",
+          "realm": "",
+          "productionFamily": "village_well_chamber",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_village_2d.tscn",
+      "candidateScene": "res://scenes/village_well_chamber_candidate.tscn",
+      "candidateScenes": {
+        "village_well_v1": "res://scenes/village_well_chamber_candidate.tscn"
+      },
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "source_brief_ready_geometry_candidate",
+        "identity": "怨村斩怨线：村井下石室的迎战；按 data/threads/qi_threads.json 的实际剧情地点取景，旧供台与禁术石刻是此处的空间线索",
+        "canonicalStoryLocation": "井下石室",
+        "canonicalEnemy": "怨念之影",
+        "canonicalWarningTitle": "荒村旧怨 · 以剑破执",
+        "sourceReconciliationStatus": "presentation_conflict_pending_source_reconciliation",
+        "sourceConflict": "迁移展示标题写祖祠；剧情卡实际在井下石室，敌人为石壁显形的怨念之影。Godot 演出必须以剧情卡为准。",
+        "sharedKit": [
+          "潮湿砌石",
+          "井壁石圈",
+          "朽木支撑",
+          "铜铁灯具",
+          "旧供台",
+          "刻痕石板"
+        ],
+        "foreground": "双人落脚在磨损不均、局部湿润的井下石地；前景碎石只遮地面，不遮角色脚点与命中点",
+        "midground": "可行走的真实石室：左侧井口冷光、右侧供台与局部暖灯、厚重拱门；石台、壁龛、旗帜与道具具有体积和独立投影",
+        "background": "井壁、侧室和后拱廊以几何厚度、遮挡与雾层逐级退远；局部石刻可作装饰，禁止以概念图铺满背景",
+        "lightingMotive": "井口偏冷的自然光与供台局部暖灯分别照亮石材和角色接触点；受击时短时技能光应回应真实地面与墙体",
+        "camera": "1280×800 的侧向三分之四视角，两名角色在中央战区；±20° 转镜检查拱门、井圈和供台真实视差；上下保留手牌与 HUD 安全区",
+        "hardReject": [
+          "把村外道路当作剧情里的井下石室",
+          "直接复用青云石厅",
+          "把概念图铺成一张平面",
+          "发亮的荧光圆环和白色方块占主构图",
+          "均匀排列的重复柱廊"
+        ]
+      }
+    },
+    "battlefield_thread_ab_village_3_right_native_v1": {
+      "battlefieldId": "battlefield_thread_ab_village_3_right_native_v1",
+      "productionFamily": "village_well_chamber",
+      "sources": [
+        {
+          "sourceKind": "migrated_choice",
+          "sourceKey": "thread_ab_village_3:right",
+          "presentationId": "combat_thread_ab_village_3_right_native_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_ab_village_3_right_native_v1.png",
+          "title": "怨根古树·斩根推演",
+          "mechanic": "斩断怨根会令敌人先攻暴涨；虚弱与速攻构成抢节奏路线。",
+          "category": "migrated_choice",
+          "realm": "",
+          "productionFamily": "village_well_chamber",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_village_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "source_brief_ready_geometry_unbuilt",
+        "identity": "怨村超度线：仍发生在井下石室；主角以清心咒承受怨念，不能把同一剧情的地点切到室外古树",
+        "canonicalStoryLocation": "井下石室",
+        "canonicalEnemy": "怨念之影",
+        "canonicalWarningTitle": "荒村旧怨 · 清心超度",
+        "sourceReconciliationStatus": "presentation_conflict_pending_source_reconciliation",
+        "sourceConflict": "迁移展示标题写古树斩根；剧情卡右分支是井下石室清心超度。Godot 演出必须以剧情卡为准。",
+        "sharedKit": [
+          "潮湿砌石",
+          "井壁石圈",
+          "朽木支撑",
+          "铜铁灯具",
+          "旧供台",
+          "刻痕石板"
+        ],
+        "foreground": "共用井下石室的尺度和脚点；清心咒的地面法纹只在施法期间显现，石纹仍可见",
+        "midground": "石室后壁的怨念缝隙、旧供台和残剑位置与斩怨线保持因果一致；咒文出现时墙上刻痕逐次回应",
+        "background": "同一井口、拱廊和远侧室；可用怨气和暖灯的演出变化区分超度过程，不瞬间换成另一地点",
+        "lightingMotive": "井口冷光保留，清心咒以局部柔暖光回应黑雾与墙面；受击、格挡、净化各有独立光时序",
+        "camera": "与斩怨线共用石室几何、双人尺度和 UI 安全区；通过镜头和物件回应表现路线区别",
+        "hardReject": [
+          "把右分支改到室外古树",
+          "复制青云石厅",
+          "只改画面色相而没有清心咒演出",
+          "把整面墙铺成静态图片"
+        ]
+      }
+    },
+    "battlefield_thread_sword_tomb_2_native_v1": {
+      "battlefieldId": "battlefield_thread_sword_tomb_2_native_v1",
+      "productionFamily": "sword_tomb",
+      "sources": [
+        {
+          "sourceKind": "migrated_choice",
+          "sourceKey": "thread_sword_tomb_2:left",
+          "presentationId": "combat_thread_sword_tomb_2_left_native_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_sword_tomb_2_native_v1.png",
+          "title": "剑冢问心·承锋推演",
+          "mechanic": "承锋路线奖励精准格挡后的反击；过早出尽攻击牌会失去剑势。",
+          "category": "migrated_choice",
+          "realm": "",
+          "productionFamily": "sword_tomb",
+          "enemyScaleProfileId": ""
+        },
+        {
+          "sourceKind": "migrated_choice",
+          "sourceKey": "thread_sword_tomb_2:right",
+          "presentationId": "combat_thread_sword_tomb_2_right_native_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_sword_tomb_2_native_v1.png",
+          "title": "剑冢问心·破锋推演",
+          "mechanic": "破锋路线要求连续压制剑印；攻击、虚弱与法宝触发共同完成破势。",
+          "category": "migrated_choice",
+          "realm": "",
+          "productionFamily": "sword_tomb",
+          "enemyScaleProfileId": ""
+        },
+        {
+          "sourceKind": "quest_choice",
+          "sourceKey": "q_sword_3:left",
+          "presentationId": "combat_q_sword_3_left_sword_tomb_reuse_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_sword_tomb_2_native_v1.png",
+          "title": "剑冢遗承·心剑试锋",
+          "mechanic": "剑意化身凝势后斩击；以防御承锋，寻找出剑时机。败退不能领取遗承。",
+          "category": "quest_choice",
+          "realm": "foundation",
+          "productionFamily": "sword_tomb",
+          "enemyScaleProfileId": ""
+        },
+        {
+          "sourceKind": "quest_choice",
+          "sourceKey": "q_sword_3:right",
+          "presentationId": "combat_q_sword_3_right_sword_tomb_reuse_v1",
+          "sceneImage": "assets/combat/migrated_encounters_v1/battlefields/battlefield_thread_sword_tomb_2_native_v1.png",
+          "title": "剑冢遗承·铁剑试锋",
+          "mechanic": "剑意化身凝势后斩击；以防御承锋，寻找出剑时机。败退不能领取遗承。",
+          "category": "quest_choice",
+          "realm": "foundation",
+          "productionFamily": "sword_tomb",
+          "enemyScaleProfileId": ""
+        }
+      ],
+      "artStatus": "source_frame_runtime_candidate",
+      "approvedForFinalArt": false,
+      "runtimeScene": "res://scenes/duel_stage_sword_tomb_2d.tscn",
+      "candidateScene": "",
+      "candidateScenes": {},
+      "stageProfile": {},
+      "reviewEvidence": "",
+      "designBrief": {
+        "status": "source_brief_ready_geometry_unbuilt",
+        "identity": "剑冢同一几何空间承载‘守锋’与‘破锋’两个展示分支",
+        "sharedKit": [
+          "断剑与剑柄变体",
+          "风化石盘",
+          "干草",
+          "残布旗",
+          "石门"
+        ],
+        "foreground": "破损同心石纹给双人足够战区，散剑不遮手牌或剑尖接触点",
+        "midground": "围成弧线的实物残剑构成透视通道，后方石门明确空间终点",
+        "background": "山谷、逆光尘层和远剑阵逐层衰减；绝不以一张原图代替 3D 剑群",
+        "lightingMotive": "山谷自然逆光照出剪影；守锋的格挡光与破锋的压制剑印按各自 presentationId 分离",
+        "camera": "左右分支共用战场坐标和实体；演出、机制提示与接触特效随 presentationId 区分",
+        "hardReject": [
+          "左右分支建成两个不一致的剑冢",
+          "左右仅改卡牌文字而没有演出区别"
+        ]
+      }
+    }
+  }
+}

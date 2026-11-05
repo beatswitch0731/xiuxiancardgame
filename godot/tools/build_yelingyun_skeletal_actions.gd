@@ -2,8 +2,8 @@ extends SceneTree
 
 # Authoring source for engine-native, editable AnimationLibrary clips.
 # The runtime loads the generated .tres; it does not set bone poses per frame.
-const OUTPUT := "res://assets/actor_image3d_mvp/yelingyun_s1_actions.tres"
-const ACTOR = preload("res://assets/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb")
+const OUTPUT := "res://assets/characters/actor_image3d_mvp/yelingyun_s1_actions.tres"
+const ACTOR = preload("res://assets/characters/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb")
 
 var _rest_poses: Dictionary = {}
 

@@ -9,8 +9,8 @@ const SHEET_COLUMNS := 3
 
 
 func _initialize() -> void:
-	var hero_sheet: Texture2D = load("res://assets/25d/hero_swordsman_v1.png")
-	var puppet_sheet: Texture2D = load("res://assets/25d/wood_puppet_v1.png")
+	var hero_sheet: Texture2D = load("res://assets/battle/25d/hero_swordsman_v1.png")
+	var puppet_sheet: Texture2D = load("res://assets/battle/25d/wood_puppet_v1.png")
 	if hero_sheet == null or puppet_sheet == null:
 		push_error("2.5D authored sprite sheets are missing")
 		quit(1)
@@ -46,8 +46,8 @@ func _initialize() -> void:
 	_add_clip(puppet, puppet_sheet, "hurt", [3, 0], 7.0, false)
 	_add_clip(puppet, puppet_sheet, "defeat", [3, 5], 5.0, false)
 
-	var hero_code := ResourceSaver.save(hero, "res://assets/25d/hero_swordsman_v1.tres")
-	var puppet_code := ResourceSaver.save(puppet, "res://assets/25d/wood_puppet_v1.tres")
+	var hero_code := ResourceSaver.save(hero, "res://assets/battle/25d/hero_swordsman_v1.tres")
+	var puppet_code := ResourceSaver.save(puppet, "res://assets/battle/25d/wood_puppet_v1.tres")
 	if hero_code != OK or puppet_code != OK:
 		push_error("Could not save 2.5D SpriteFrames resources: %s / %s" % [hero_code, puppet_code])
 		quit(1)

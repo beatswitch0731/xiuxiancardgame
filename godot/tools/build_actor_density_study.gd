@@ -2,7 +2,7 @@ extends SceneTree
 
 # Make an isolated density comparison from the existing full-resolution key art.
 # These are review stills, not approved animation frames or replacement sprites.
-const OUT := "res://assets/actor_candidates/density_v1/"
+const OUT := "res://assets/characters/actor_candidates/density_v1/"
 const SAMPLES := [
 	{
 		"name": "yelingyun_idle_512",

@@ -3,7 +3,7 @@ extends SceneTree
 # Read-only visual comparison. Replaces the world in memory for screenshots;
 # the production battle scene and source-derived combat rules stay untouched.
 const OUTPUT := "res://../artifacts/godot-migration/hd2d-world-v2/"
-const MODEL := preload("res://assets/hd2d/world_v2/cangmang_court_v2.glb")
+const MODEL := preload("res://assets/battle/hd2d/world_v2/cangmang_court_v2.glb")
 
 
 func _initialize() -> void:

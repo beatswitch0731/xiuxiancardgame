@@ -2,7 +2,7 @@ extends SceneTree
 
 # Imports one reviewed clip into an isolated candidate resource. It must never
 # inherit old clips: that was the V4 contact-to-next-frame style jump.
-const BASE := "res://assets/source_first_fight/yelingyun_s1.tres"
+const BASE := "res://assets/battle/source_first_fight/yelingyun_s1.tres"
 const REQUIRED_FRAMES := 32
 const MIN_CHANGED_PIXELS := 12
 const MIN_MEANINGFUL_TRANSITIONS := 24
@@ -55,7 +55,7 @@ func _build(manifest: Dictionary, validate_only: bool) -> bool:
 			or art_set_id.is_empty() or visual_world_id != "cangmang_sect_pc98_v1" \
 			or int(manifest.get("logical_pixel_grid", 0)) != 2 \
 			or not sheet_path.begins_with("res://") or not index_path.begins_with("res://") \
-			or not output_path.begins_with("res://assets/actor_candidates/") \
+			or not output_path.begins_with("res://assets/characters/actor_candidates/") \
 			or ".." in output_path or "\\" in output_path or not output_path.ends_with(".tres") \
 			or float(manifest.get("scale", 0.0)) <= 0.0:
 		push_error("Invalid actor, clip, canvas, or candidate output path")

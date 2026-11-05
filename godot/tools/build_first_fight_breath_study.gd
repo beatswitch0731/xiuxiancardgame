@@ -2,7 +2,7 @@ extends SceneTree
 
 # A source-preserving motion study. It moves only upper-body pixel clusters;
 # face, hands, weapons and the ground line must be reviewed before runtime use.
-const OUTPUT := "res://assets/source_first_fight/breath_v17/"
+const OUTPUT := "res://assets/battle/source_first_fight/breath_v17/"
 const ACTORS := {
 	"yelingyun": {
 		"source": "res://content/assets/combat/protagonist/growth_matrix_agc_v6/S1_outer_novice/sword.png",

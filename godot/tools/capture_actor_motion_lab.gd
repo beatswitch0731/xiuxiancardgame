@@ -24,12 +24,12 @@ func _capture() -> void:
 	stage.seek_actor_study_attack(0.0)
 	var body: Sprite3D = stage.get_node("Viewport/World/PlayerAnchor/ModularActorHD2D/Body")
 	var original_body := body.texture
-	body.texture = load("res://assets/actor_motion_lab_v1/yelingyun_s2_idle_candidate_v2.png")
+	body.texture = load("res://assets/characters/actor_motion_lab_v1/yelingyun_s2_idle_candidate_v2.png")
 	await RenderingServer.frame_post_draw
 	if not _save("s2_idle_candidate.png"):
 		quit(1)
 		return
-	body.texture = load("res://assets/actor_motion_lab_v1/yelingyun_s2_idle_candidate_v3.png")
+	body.texture = load("res://assets/characters/actor_motion_lab_v1/yelingyun_s2_idle_candidate_v3.png")
 	await RenderingServer.frame_post_draw
 	if not _save("s2_idle_candidate_v3.png"):
 		quit(1)

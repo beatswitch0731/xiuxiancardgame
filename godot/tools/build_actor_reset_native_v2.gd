@@ -2,7 +2,7 @@ extends SceneTree
 
 # Repeatable image export: current ImageGen pose sources -> native game pixels.
 # This script never reads the earlier actor_design/ or source_first_fight/ art.
-const ROOT := "res://assets/undercurrent_pixel_v1/actor_reset_v2/"
+const ROOT := "res://assets/battle/undercurrent_pixel_v1/actor_reset_v2/"
 const MANIFEST := ROOT + "actor_pack_v2.json"
 
 

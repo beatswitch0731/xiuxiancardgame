@@ -1,6 +1,6 @@
 extends SceneTree
 ## Authored key poses, shared by every compatible outfit and both views.
-const OUTPUT := "res://assets/undercurrent_pixel_v1/paperdoll_v1/shared_actions.tres"
+const OUTPUT := "res://assets/battle/undercurrent_pixel_v1/paperdoll_v1/shared_actions.tres"
 const P := "Skeleton2D/pelvis"
 const T := P + "/torso"
 

@@ -2,8 +2,8 @@ extends SceneTree
 
 # The nine PNGs are selected frames from the archived Gemini MP4. This script
 # packages textures and markers; it never paints a character or a texture.
-const ROOT := "res://assets/undercurrent_pixel_v1/actor_gemini_video_v1/"
-const SOURCE := "res://assets/undercurrent_pixel_v1/actor_native_v1/yelingyun_native_v1.tres"
+const ROOT := "res://assets/battle/undercurrent_pixel_v1/actor_gemini_video_v1/"
+const SOURCE := "res://assets/battle/undercurrent_pixel_v1/actor_native_v1/yelingyun_native_v1.tres"
 const OUTPUT := ROOT + "yelingyun_gemini_probe_v1.tres"
 const Registry = preload("res://scripts/runtime_data_registry.gd")
 

@@ -217,8 +217,8 @@ func _capture() -> void:
 				hero_file = "yelingyun_pen_ink_512.png"
 			var dummy_file := "quick_sword_dummy_pen_ink_512.png" if actor_study == "density-512-ink" \
 				else "quick_sword_dummy_idle_512.png"
-			var image_path := "res://assets/actor_candidates/density_v1/" + hero_file if side == "player" \
-				else "res://assets/actor_candidates/density_v1/" + dummy_file
+			var image_path := "res://assets/characters/actor_candidates/density_v1/" + hero_file if side == "player" \
+				else "res://assets/characters/actor_candidates/density_v1/" + dummy_file
 			var review_texture := load(image_path) as Texture2D
 			if review_texture == null:
 				push_error("Density review texture missing: " + image_path)
@@ -525,7 +525,7 @@ func _apply_v5_art_study(stage: Node) -> void:
 
 
 func _apply_temple_study(stage: Node, open_layout: bool, keep_steps: bool) -> void:
-	var source := load("res://assets/hd2d/qingyun_temple_v8/chinese_temple_cc0.glb") as PackedScene
+	var source := load("res://assets/battle/hd2d/qingyun_temple_v8/chinese_temple_cc0.glb") as PackedScene
 	if source == null:
 		push_error("Missing imported CC0 Qingyun temple candidate")
 		return
@@ -560,7 +560,7 @@ func _apply_vista_study(stage: Node) -> void:
 	if not original is StandardMaterial3D:
 		return
 	var material := original.duplicate() as StandardMaterial3D
-	var img := Image.load_from_file(ProjectSettings.globalize_path("res://assets/hd2d/qingyun_temple_v8/far_mountains_v1.png"))
+	var img := Image.load_from_file(ProjectSettings.globalize_path("res://assets/battle/hd2d/qingyun_temple_v8/far_mountains_v1.png"))
 	if img == null:
 		push_error("Generated Qingyun distant mountain matte missing")
 		return

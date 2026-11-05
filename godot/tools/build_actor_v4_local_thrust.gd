@@ -1,7 +1,7 @@
 extends SceneTree
 
 const CONTRACT := "res://art_direction/candidates/actor_reset_v4/local_thrust_clip.json"
-const OUTPUT := "res://assets/undercurrent_pixel_v1/actor_video_v4_study/hero_local_thrust.tres"
+const OUTPUT := "res://assets/battle/undercurrent_pixel_v1/actor_video_v4_study/hero_local_thrust.tres"
 
 
 func _initialize() -> void:

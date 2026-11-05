@@ -5,10 +5,10 @@ extends SceneTree
 # come from the same source contracts used by the browser presenter.
 
 const ROOT := "res://content/"
-const OUT := "res://assets/source_first_fight/"
+const OUT := "res://assets/battle/source_first_fight/"
 const FIRST_ENCOUNTER := "enc_trial_sword_swift"
 const WORLD_ID := "cangmang_sect_pc98_v1"
-const FRAMERONIN_PROBE_SHEET := "res://assets/source_first_fight/frameronin_sword_probe_sheet.png"
+const FRAMERONIN_PROBE_SHEET := "res://assets/battle/source_first_fight/frameronin_sword_probe_sheet.png"
 
 
 func _initialize() -> void:

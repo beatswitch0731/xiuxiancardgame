@@ -4,8 +4,8 @@ extends SceneTree
 # separate from approved battle assets until the live deformation review passes.
 const SOURCE = preload(
 	"res://assets/third_party/quaternius_ual_standard/AnimationLibrary_Godot_Standard.glb")
-const TARGET = preload("res://assets/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb")
-const OUTPUT := "res://assets/actor_image3d_mvp/yelingyun_ual_retarg_candidate.tres"
+const TARGET = preload("res://assets/characters/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb")
+const OUTPUT := "res://assets/characters/actor_image3d_mvp/yelingyun_ual_retarg_candidate.tres"
 const BONE_MAP := {
 	"pelvis": ["DEF-hips"],
 	"spine": ["DEF-spine.001"],

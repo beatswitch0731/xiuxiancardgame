@@ -1,7 +1,7 @@
 extends SceneTree
 
 # Import the authored native PNGs before running this resource build.
-const ROOT := "res://assets/undercurrent_pixel_v1/actor_native_v1/"
+const ROOT := "res://assets/battle/undercurrent_pixel_v1/actor_native_v1/"
 const MANIFEST := ROOT + "actor_native_v1.json"
 const Registry = preload("res://scripts/runtime_data_registry.gd")
 

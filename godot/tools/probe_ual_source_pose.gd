@@ -2,7 +2,7 @@ extends SceneTree
 
 const SOURCE = preload(
 	"res://assets/third_party/quaternius_ual_standard/AnimationLibrary_Godot_Standard.glb")
-const TARGET = preload("res://assets/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb")
+const TARGET = preload("res://assets/characters/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb")
 
 
 func _initialize() -> void:

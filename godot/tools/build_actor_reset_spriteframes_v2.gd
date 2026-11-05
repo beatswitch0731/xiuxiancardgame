@@ -1,7 +1,7 @@
 extends SceneTree
 
 # Run after the Godot editor imports the PNGs exported by the native builder.
-const ROOT := "res://assets/undercurrent_pixel_v1/actor_reset_v2/"
+const ROOT := "res://assets/battle/undercurrent_pixel_v1/actor_reset_v2/"
 const MANIFEST := ROOT + "actor_pack_v2.json"
 
 

@@ -1,7 +1,7 @@
 extends SceneTree
 
 # Repeatable image export of room-conditioned character poses to the stage pixel grid.
-const ROOT := "res://assets/undercurrent_pixel_v1/actor_mapfit_v3/"
+const ROOT := "res://assets/battle/undercurrent_pixel_v1/actor_mapfit_v3/"
 const MANIFEST := ROOT + "actor_pack_v3.json"
 
 

@@ -6,9 +6,9 @@
   "actors": {
     "player": {
       "actorId": "yelingyun",
-      "sourceActionSet": "res://assets/source_first_fight/yelingyun_s1.tres",
+      "sourceActionSet": "res://assets/battle/source_first_fight/yelingyun_s1.tres",
       "idle": {
-        "image": "res://assets/battle_actor_style_v1/yelingyun_idle_v1.png",
+        "image": "res://assets/battle/battle_actor_style_v1/yelingyun_idle_v1.png",
         "canvas": [1254, 1254],
         "footPixelY": 1212,
         "scaleFactor": 0.24,
@@ -20,16 +20,16 @@
         }
       },
       "provenance": {
-        "identitySource": "res://assets/source_first_fight/breath_v17/yelingyun_00.png",
+        "identitySource": "res://assets/battle/source_first_fight/breath_v17/yelingyun_00.png",
         "styleReference": "artifacts/dy-note/undercurrent-07/frames/frame_05.jpg",
         "generationMethod": "built-in imagegen, transparent identity-preserving style edit"
       }
     },
     "enemy": {
       "actorId": "quick_sword_dummy",
-      "sourceActionSet": "res://assets/source_first_fight/quick_sword_dummy.tres",
+      "sourceActionSet": "res://assets/battle/source_first_fight/quick_sword_dummy.tres",
       "idle": {
-        "image": "res://assets/battle_actor_style_v1/quick_sword_dummy_idle_v2.png",
+        "image": "res://assets/battle/battle_actor_style_v1/quick_sword_dummy_idle_v2.png",
         "canvas": [1254, 1254],
         "footPixelY": 1127,
         "scaleFactor": 0.30,
@@ -41,7 +41,7 @@
         }
       },
       "provenance": {
-        "identitySource": "res://assets/source_first_fight/breath_v17/quick_sword_dummy_00.png",
+        "identitySource": "res://assets/battle/source_first_fight/breath_v17/quick_sword_dummy_00.png",
         "styleReference": "artifacts/dy-note/undercurrent-07/frames/frame_17_native.jpg",
         "paletteReference": "res://content/assets/combat/enemy_actions/enc_trial_sword_swift_agc_m2/approved_m2/hurt-1.png",
         "generationMethod": "built-in imagegen, transparent identity-preserving style edit with palette correction"
