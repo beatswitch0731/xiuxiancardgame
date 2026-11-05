@@ -3,11 +3,12 @@
 | 项 | 内容 |
 |---|---|
 | 文档性质 | **总纲入口**——汇总本分支全部工作并指向各专项文档 |
-| 编制日期 | 2026-11-05 12:25 |
+| 文档版本 | **v2.0**（v1.0 + 全量测试基线与归因） |
+| 编制日期 | 2026-11-05 12:25 / v2.0 修订 14:50 |
 | 交接对象 | Codex（接手开发/维护） |
 | 工程根 | `E:/4e/游1/2026-06-27-05-40-58/xiuxian-card-game/godot` |
 | 分支 | `remedy/noncombat-p0-2026-11-05`（本地 = 远程） |
-| 交接时 HEAD | `d57b9c8`（分支共 **22 个提交**，基线 `c268384`） |
+| 交接时 HEAD | `f685356`（分支共 **24 个提交**，基线 `c268384`） |
 
 > **上手路径**：本文档通读一遍（约 15 分钟）→ 按 §7 索引按需查专项文档 → 按 §3 待办顺序开工。所有文档中的数字遵循「口径 + 来源 + 实测/推断」纪律（详见 `HANDOFF_FINAL_2026-11-05.md` §0）。
 
@@ -15,16 +16,17 @@
 
 ## 1. 交接摘要
 
-> **项目**：仙侠卡牌抉择游戏（Reigns 式双选），浏览器版迁移 Godot 4.7.2。逻辑层完成 80~90%，表现层持续补齐中。本分支 22 个提交完成了：架构地基 → 资源全量补齐 → 结构规范化 → VFX 代码体系四件大事，并把「凭印象的状态」全部换成了「实测可复现的状态」。
+> **项目**：仙侠卡牌抉择游戏（Reigns 式双选），浏览器版迁移 Godot 4.7.2。逻辑层完成 80~90%，表现层持续补齐中。本分支 24 个提交完成了：架构地基 → 资源全量补齐 → 结构规范化 → VFX 代码体系 → **全量测试基线**五件大事，并把「凭印象的状态」全部换成了「实测可复现的状态」。
 
 | 维度 | 交接时状态【实测】 |
 |---|---|
 | 脚本 | 135 个 / 54,360 行（+ `scripts/combat_fx/` 新模块 4 文件） |
-| 测试 | 401 个文件（240 个 `SceneTree` 测试），**全量套件首次运行中** |
+| 测试 | 401 个文件（240 个 `SceneTree` 测试） |
+| **全量基线** | **pass=161 / fail=48 / timeout=31**（耗时 2h04m，报告 `output/test_suite_report.json`） |
 | 资源 | `content/assets` 4,379 文件 / 1192.5 MB，**JSON 引用口径 100%** |
 | 音频 | 33 条引用，32 本地齐全（1 个 HuggingFace URL 数据异常值） |
 | 法宝图标 | **唯一确认的真缺口**（源工程无可用图标） |
-| 已知失败测试 | **未知**——全量套件结果出来前，历史失败数从未被统计过 |
+| 归因状态 | fail 48 = **已修 2+（tests 旧路径）** + 渲染类若干 + **待逐个归因约 46**（Bucket C） |
 
 ---
 
@@ -88,6 +90,26 @@
 - `tools/run_test_suite.py`：**全量测试 runner**（此前 240 个测试无一键执行）
 - 音频总线 `default_bus_layout.tres`（Master/BGM/SFX/Voice/UI）
 
+### 2.7 全量测试基线与归因（`f685356`）——项目史上第一份
+
+```
+SCENE_TREE tests: 240
+pass=161  fail=48  timeout=31   （耗时 2h04m）
+报告: output/test_suite_report.json
+```
+
+**三 buckets 归因**：
+
+| Bucket | 数量 | 判断 | 状态 |
+|---|---|---|---|
+| A 渲染类 headless 挂 | timeout 31 中约 25 | `capture_*`(15)/`record_*`(2)/`preview_*` 等，headless 必然挂起，非代码损坏 | 待 runner 加 skip 标记 |
+| B tests 旧路径 | fail 中 Parse error 类 | **tests/*.gd 是迁移的第四类消费方**，此前漏改；已修 18 文件 / 27 处 | ✅ 已修复 |
+| C 待逐个归因 | fail 约 46 | `noncombat_warning_flow`（业务断言）、`noncombat_browser_*`(6)、live_battle 类、`hd2d_card_contact_regression`、`presentation_integration` 等；无历史基线可比对 | 接手方任务 |
+
+**核心业务抽样单独跑全绿（10 项）**：content_repository / qi_gate_entry / faction_combat / whitefox_choices / bazaar_vendor / battle_stub_contract / battle_stub_route / combat_fx_v1 / combat_fx_v3 / audio_bus_layout。
+
+**教训**：迁移消费方清单 = **①scripts ②scenes ③tools 管线 ④tests 四类**，④漏了，第一份全量基线立刻暴露。影响面检查必须穷举消费方。
+
 ---
 
 ## 3. 全量测试基线（项目史上第一份）与进行中任务
@@ -126,7 +148,7 @@ SUITE_DONE pass=161 fail=48 timeout=31 elapsed=7440s
 
 | 优先级 | 任务 | 说明 | 前置 |
 |---|---|---|---|
-| **P0-1** | 处理全量测试结果 | 见 §3.1；任何 FAIL 先归因再修 | 全量套件跑完 |
+| **P0-1** | Bucket C 逐个归因（fail 约 46 个） | 见 §3.2；先抽 5 个（`noncombat_warning_flow` / `noncombat_browser_combat_scene` / `noncombat_first_sword_live_battle` / `hd2d_card_contact_regression` / `presentation_integration`），区分历史遗留 vs 本轮引入；基线 tag `c268384` 单跑可定论 | 无 |
 | **P0-2** | T5 同步脚本三段式改造 | `tools/sync_runtime_content.py` L69-290 手工枚举 → `collect_refs()/resolve()/report()`；1,943 漏拷的根因；验收：`--dry-run` ≈3239 引用、18 条别名不丢、幂等 | 无 |
 | **P1-1** | T3 事件清单扩展 | 探针 `noncombat_event_type_probe.gd` 跑 体修/丹修/法修/转世 路线，合并 `event_type_report()` 出全量清单 | 无 |
 | **P1-2** | G4 事件常量化 | 基于全量清单把 7 处 `event.get("type")==` 裸字符串改常量；顺带处理 `KARMA_CHOSEN`/`QUEST_CHOSEN` 静默忽略 | P1-1 |
@@ -156,6 +178,8 @@ SUITE_DONE pass=161 fail=48 timeout=31 elapsed=7440s
 | D10 | 待办优先级「防复发>欠账>增强」 | 1943 漏拷事故证明：手工流程的坑比引擎能力缺口杀伤力大；T5 因此排第一（两轮质疑修正后的结论） |
 | D11 | 立绘结构（B3）降级为条件触发 | 实测 `animatedMedia` 仅 3 条且全为卡面动效，268 处场景立绘 0 帧序列——资产没做之前做结构 = 建永远走不到的分支 |
 | D12 | 战斗接线选 `contact_frame` 信号 | 它已是 contact 帧时刻的权威信号（`main.gd` 已连接），最小侵入；不动 `duel_stage_*` 结构 |
+| D13 | 影响面检查穷举**四类消费方** | ①scripts ②scenes ③tools 管线 ④tests——本轮结构迁移漏了④（18 个测试 27 处旧路径），第一份全量基线立刻暴露；任何路径/契约变更必须四类全查 |
+| D14 | 全量 runner 先跑再优化 | 2h04m 的全量首跑揭示了 79 个非通过的真实分布（渲染类挂起 vs 真失败），凭抽样永远得不到这个信息；先有基线再收敛 |
 
 ---
 
@@ -271,11 +295,11 @@ P="<repo>/godot"
 python "$P/tools/run_test_suite.py" --timeout 120
 ```
 
-**第一个开发决策点**：§3.1 的全量结果处理。之后按 §4 顺序推进。
+**第一个开发决策点**：§3.3 的 Bucket C 归因。之后按 §4 顺序推进。
 
 ---
 
-**文档版本**：v1.0  
-**编制日期**：2026-11-05 12:25  
-**对应 HEAD**：`d57b9c8`（22 commits on `remedy/noncombat-p0-2026-11-05`）  
-**修订触发**：全量测试结果出来 / T5 完成 / 抽屏完成
+**文档版本**：v2.0  
+**编制日期**：2026-11-05（v1.0 12:25 / v2.0 14:50 全量基线并入）  
+**对应 HEAD**：`f685356`（24 commits on `remedy/noncombat-p0-2026-11-05`）  
+**修订触发**：Bucket C 归因完成 / T5 完成 / 抽屏完成
