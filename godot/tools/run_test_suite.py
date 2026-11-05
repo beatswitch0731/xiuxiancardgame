@@ -93,6 +93,69 @@ def discover_tests(tests_dir: str, name_filter: str) -> tuple[list, list, list]:
     return targets, skipped, helpers
 
 
+POLICY_PATH = os.path.join(ROOT, "tools", "test_suite_policy.json")
+
+
+def load_policy() -> dict:
+    policy = {
+        "render_tokens": ["RenderingServer.frame_post_draw"],
+        "known_render_windowed": [],
+        "business_slow_seconds": {},
+        "windowed": {"timeout_sec": 300, "quit_after_frames": 240,
+                     "resolution": "1280x800", "fixed_fps": 60},
+        "visual_prefixes": ["capture_", "record_", "preview_"],
+        "suite_skip": [],
+    }
+    try:
+        with open(POLICY_PATH, encoding="utf-8") as fh:
+            policy.update(json.load(fh))
+    except (OSError, json.JSONDecodeError) as exc:
+        print(f"POLICY_FALLBACK: {exc}", flush=True)
+    return policy
+
+
+def classify_lane(name: str, policy: dict) -> tuple:
+    """返回 (lane, reason)。lane ∈ headless / headless-long / windowed。
+
+    渲染类不是 skip，而是改走 windowed 车道——headless 的 dummy 渲染器
+    不发射 frame_post_draw，也不产生可读视口纹理，硬跑必然挂死。
+    判定 = 明确名单（实测固化）∪ 静态 token（覆盖新增测试）。
+    """
+    if name in policy["business_slow_seconds"]:
+        return "headless-long", "business_slow"
+    if name in policy["known_render_windowed"]:
+        return "windowed", "known-render"
+    try:
+        text = open(os.path.join(ROOT, "tests", name + ".gd"),
+                    encoding="utf-8", errors="ignore").read()
+    except OSError:
+        return "headless", "unreadable"
+    for token in policy["render_tokens"]:
+        if token in text:
+            return "windowed", "render:" + token
+    return "headless", "static"
+
+
+def build_command(name: str, lane: str, policy: dict) -> list:
+    if lane == "windowed":
+        cfg = policy["windowed"]
+        return [GODOT, "--path", ROOT,
+                "--resolution", cfg["resolution"],
+                "--fixed-fps", str(cfg["fixed_fps"]),
+                "--quit-after", str(cfg["quit_after_frames"]),
+                "--script", f"res://tests/{name}.gd"]
+    return [GODOT, "--headless", "--path", ROOT,
+            "--script", f"res://tests/{name}.gd"]
+
+
+def lane_timeout(name: str, lane: str, policy: dict, default: int) -> int:
+    if lane == "headless-long":
+        return int(policy["business_slow_seconds"].get(name, 700))
+    if lane == "windowed":
+        return int(policy["windowed"]["timeout_sec"])
+    return SLOW.get(name, default)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--timeout", type=int, default=120)
@@ -114,19 +177,42 @@ def main() -> int:
             print(f"  HELPER {stem}")
         for stem in skipped:
             print(f"  SKIP   {stem}")
+    policy = load_policy()
+    lane_plan = {}
+    for name in targets:
+        lane, reason = classify_lane(name, policy)
+        lane_plan[name] = {
+            "lane": lane,
+            "reason": reason,
+            "visual": any(name.startswith(p) for p in policy["visual_prefixes"]),
+        }
+    counts = {"headless": 0, "headless-long": 0, "windowed": 0}
+    for info in lane_plan.values():
+        counts[info["lane"]] += 1
+    print(f"LANES headless={counts['headless']} "
+          f"headless-long={counts['headless-long']} "
+          f"windowed={counts['windowed']}", flush=True)
     if args.list_only:
+        if args.explain:
+            for name, info in sorted(lane_plan.items()):
+                if info["lane"] != "headless":
+                    print(f"  {info['lane']:<14} {name}  ({info['reason']})")
         return 0
     if not targets:
         print("SUITE_EMPTY: 未收集到任何测试，拒绝写报告（避免覆盖既有基线）")
         return 2
 
     results = {"pass": [], "fail": [], "timeout": [], "error": []}
+    lanes = {}
     started = time.time()
     for i, name in enumerate(targets):
-        timeout = SLOW.get(name, args.timeout)
-        cmd = [GODOT, "--headless", "--path", ROOT,
-               "--script", f"res://tests/{name}.gd"]
+        info = lane_plan[name]
+        lane = info["lane"]
+        timeout = lane_timeout(name, lane, policy, args.timeout)
+        cmd = build_command(name, lane, policy)
         one_started = time.time()
+        lanes[name] = {"lane": lane, "reason": info["reason"],
+                       "visual": info["visual"]}
         # 用 Popen + communicate 而非 run：超时时能保住已产生的输出
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                                 stderr=subprocess.STDOUT, text=True,
@@ -137,8 +223,12 @@ def main() -> int:
             if ("_PASS" in out) or (rc == 0 and "FAIL" not in out
                                     and "SCRIPT ERROR" not in out):
                 results["pass"].append(name)
+                lanes[name].update(outcome="pass",
+                                   sec=round(time.time() - one_started, 1))
             else:
                 results["fail"].append({"name": name, "rc": rc, "tail": out[-500:]})
+                lanes[name].update(outcome="fail",
+                                   sec=round(time.time() - one_started, 1))
         except subprocess.TimeoutExpired:
             proc.kill()
             out, _ = proc.communicate()
@@ -151,11 +241,13 @@ def main() -> int:
             lines = (out or "").strip().splitlines()
             results["timeout"].append({
                 "name": name,
+                "lane": lane,
                 "elapsedSec": round(elapsed_one, 1),
                 "stdoutBytes": len(out or ""),
                 "lastLine": lines[-1][:200] if lines else "",
                 "log": os.path.relpath(log_path, ROOT).replace("\\", "/"),
             })
+            lanes[name].update(outcome="timeout", sec=round(elapsed_one, 1))
         if (i + 1) % 20 == 0:
             print(f"  ... {i + 1}/{len(targets)} "
                   f"(pass={len(results['pass'])} fail={len(results['fail'])} "
@@ -174,7 +266,8 @@ def main() -> int:
     report = args.report or os.path.join(ROOT, "output", "test_suite_report.json")
     os.makedirs(os.path.dirname(report) or ROOT, exist_ok=True)
     with open(report, "w", encoding="utf-8") as fh:
-        json.dump({"elapsedSec": elapsed, "results": results}, fh,
+        json.dump({"elapsedSec": elapsed, "results": results,
+                   "lanes": lanes, "laneCounts": counts}, fh,
                   ensure_ascii=False, indent=1)
     print(f"report: {report}")
     return 1 if (results["fail"] or results["timeout"]) else 0

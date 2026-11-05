@@ -1,0 +1,62 @@
+{
+  "_comment": "测试车道分类策略。static token 判定优先，output/test_suite_classification.json 的 learned 结果可覆盖。修改后请跑 --list-only --explain 复核归属。",
+  "render_tokens": [
+    "RenderingServer.frame_post_draw",
+    ".get_texture()",
+    ".get_image("
+  ],
+  "_known_render_comment": "从 33 个 timeout 的实测分组固化：R1 帧同步 22 + R2 视口取图 3 + R3 3D 舞台等待 3。R3 三个只加载 main.tscn 但等 contact_frame/动画，headless 下信号不发，无法用 token 自动识别，故显式列出。",
+  "known_render_windowed": [
+    "capture_actor_identity_v4_study",
+    "capture_actor_v4_pose_study",
+    "capture_actual_battle_layout",
+    "capture_equipment_demo",
+    "capture_equipment_demo_motion",
+    "capture_equipment_demo_visual_review",
+    "capture_mapfit_v4_concept",
+    "capture_qingyun_actor_style_study",
+    "capture_qingyun_fx_profiles",
+    "capture_qingyun_mapfit_v3",
+    "capture_qingyun_native_first_slice",
+    "capture_qingyun_pixel_combat",
+    "capture_reference_battle_frontend",
+    "mapfit_v4_motion_study",
+    "mapfit_v5_motion_study",
+    "mapfit_v6_spacing_study",
+    "preview_character_e_motion",
+    "preview_character_style_trials",
+    "preview_paperdoll_reuse",
+    "record_actor_v4_local_thrust",
+    "record_actor_video_v4_study",
+    "record_qingyun_gemini_video_study",
+    "capture_experience_settings",
+    "capture_rebirth_tree_v5",
+    "capture_world_map",
+    "battle_visual_hierarchy",
+    "hd2d_stage_contract",
+    "hd2d_timeline_regression"
+  ],
+  "business_slow_seconds": {
+    "noncombat_faction_combat": 400,
+    "noncombat_choice_echo_public_seed": 400,
+    "noncombat_q_fellow_outcomes": 400,
+    "noncombat_battle_return": 700,
+    "noncombat_combat_scheduling": 700,
+    "noncombat_death_rebirth_journey": 700,
+    "noncombat_mountain_live_battle": 700,
+    "noncombat_rebirth_ghost_journey": 700
+  },
+  "windowed": {
+    "timeout_sec": 300,
+    "_quit_after_comment": "按 60fps 换算的硬上界（18000 帧 = 300s），只用于防进程不退；正常测试自己会 quit()。",
+    "quit_after_frames": 18000,
+    "resolution": "1280x800",
+    "fixed_fps": 60
+  },
+  "visual_prefixes": [
+    "capture_",
+    "record_",
+    "preview_"
+  ],
+  "suite_skip": []
+}
