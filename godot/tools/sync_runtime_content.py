@@ -9,6 +9,7 @@ import json
 import re
 import shutil
 import struct
+import sys
 from pathlib import Path
 
 from PIL import Image
@@ -64,6 +65,72 @@ def copy_source(relative_path):
     if source_hash != sha256(target):
         raise RuntimeError(f"Copy changed bytes: {relative_path}")
     return {"path": relative_path.as_posix(), "sha256": source_hash, "bytes": source.stat().st_size}
+
+
+# ---------------------------------------------------------------------------
+# 全量资产发现（2026-11-05 补）：此前的同步只认手工枚举的白名单与首战遭遇，
+# 导致 1,943 个 JSON 引用过的资产从未进入工程。下面这层只做「发现」，
+# 不做任何判定——黄名/动画抽帧/普通拷贝仍走原有逻辑，行为不变。
+# 用法：`python tools/sync_runtime_content.py --audit` 只读报告，不写磁盘。
+# ---------------------------------------------------------------------------
+IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
+AUDIO_SUFFIXES = {".wav", ".mp3", ".ogg"}
+
+
+def _iter_strings(node):
+    if isinstance(node, dict):
+        for value in node.values():
+            yield from _iter_strings(value)
+    elif isinstance(node, list):
+        for item in node:
+            yield from _iter_strings(item)
+    elif isinstance(node, str):
+        yield node
+
+
+def discover_referenced_assets():
+    """扫描源与运行时两侧 JSON，收集全部 assets 引用。
+
+    返回 (present, missing)：present 为源工程确实存在的引用，
+    missing 为引用了但源工程缺失的路径（真缺口，须人工处理）。
+    """
+    audio_root = "assets/audio/"
+    image_refs, audio_refs = set(), set()
+    alias_runtime_paths = set()
+    scan_targets = []
+    for base in (ROOT / "data", CONTENT / "data"):
+        if base.is_dir():
+            scan_targets.extend(sorted(base.rglob("*.json")))
+    # 清单本身也持有引用（animatedMedia 帧路径、别名源路径），必须一并发现
+    for manifest in (CONTENT / "source_manifest.json", ROOT / "source_manifest.json"):
+        if manifest.is_file():
+            scan_targets.append(manifest)
+            try:
+                payload = json.loads(manifest.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, OSError, UnicodeDecodeError):
+                continue
+            for entry in payload.get("runtimeAliases", []):
+                # 别名的 runtimePath 是 Godot 侧产物（.jpg），源工程只有 .png，
+                # 若不排除会被误判为源缺口
+                if isinstance(entry, dict) and isinstance(entry.get("runtimePath"), str):
+                    alias_runtime_paths.add(entry["runtimePath"])
+    for path in scan_targets:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError, UnicodeDecodeError):
+            continue
+        for text in _iter_strings(payload):
+            suffix = Path(text).suffix.lower()
+            if suffix in IMAGE_SUFFIXES and text.startswith("assets/"):
+                image_refs.add(text)
+            elif suffix in AUDIO_SUFFIXES:
+                if text.startswith(audio_root):
+                    audio_refs.add(text)
+                elif not text.startswith(("assets/", "res://", "http://", "https://")):
+                    audio_refs.add(audio_root + text)
+    referenced = (image_refs | audio_refs) - alias_runtime_paths
+    missing = {item for item in referenced if not (ROOT / item).is_file()}
+    return referenced - missing, missing
 
 
 data_files = sorted((ROOT / "data").rglob("*.json"))
@@ -285,6 +352,18 @@ for thread in last_lesson["threads"]:
             assist_id = presentation.get("storyAssist", {}).get("cardId")
             if assist_id:
                 art_paths.add(by_id[assist_id]["cardArt"]["image"])
+discovered_assets, missing_from_source = discover_referenced_assets()
+if "--audit" in sys.argv:
+    discovered_images = sorted(p for p in discovered_assets if Path(p).suffix.lower() in IMAGE_SUFFIXES)
+    discovered_audio = sorted(p for p in discovered_assets if Path(p).suffix.lower() in AUDIO_SUFFIXES)
+    print("SYNC_DISCOVERY images=%d audio=%d total=%d missingFromSource=%d"
+          % (len(discovered_images), len(discovered_audio), len(discovered_assets),
+             len(missing_from_source)))
+    for item in sorted(missing_from_source)[:20]:
+        print("  missingFromSource:", item)
+    raise SystemExit(0)
+art_paths |= {p for p in discovered_assets if Path(p).suffix.lower() in IMAGE_SUFFIXES}
+
 # Browsers sniff image bytes. Godot imports by extension.  Preserve mislabeled
 # JPEG bytes under truthful .jpg aliases and let the runtime registry translate
 # the browser's authored path; never feed a JPEG to the PNG importer.
@@ -386,6 +465,7 @@ def collect_runtime_audio(value):
 
 
 collect_runtime_audio(audio_config)
+audio_paths |= {p for p in discovered_assets if Path(p).suffix.lower() in AUDIO_SUFFIXES}
 audio = [copy_source(Path(relative)) for relative in sorted(audio_paths)]
 
 raw_saves = json.loads(SAVE_EVIDENCE.read_text(encoding="utf-8"))
