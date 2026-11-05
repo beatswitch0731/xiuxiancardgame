@@ -156,7 +156,7 @@ SUITE_DONE pass=161 fail=48 timeout=31 elapsed=7440s
 | 优先级 | 任务 | 说明 | 前置 |
 |---|---|---|---|
 | **P0-1** | Bucket C 逐个归因（fail 约 46 个） | 见 §3.2；先抽 5 个（`noncombat_warning_flow` / `noncombat_browser_combat_scene` / `noncombat_first_sword_live_battle` / `hd2d_card_contact_regression` / `presentation_integration`），区分历史遗留 vs 本轮引入；基线 tag `c268384` 单跑可定论 | 无 |
-| **P0-2** | T5 同步脚本三段式改造 | `tools/sync_runtime_content.py` L69-290 手工枚举 → `collect_refs()/resolve()/report()`；1,943 漏拷的根因；验收：`--dry-run` ≈3239 引用、18 条别名不丢、幂等 | 无 |
+| **P0-2** | ~~T5 同步脚本三段式改造~~ | ✅ **已完成（`3a84297`）** — 全量发现替代手工枚举，`--audit` 只读模式，四条验收全过（发现 3221 / 源缺口 0 / 别名 18→57 / 幂等 md5 一致） | 无 |
 | **P1-1** | T3 事件清单扩展 | 探针 `noncombat_event_type_probe.gd` 跑 体修/丹修/法修/转世 路线，合并 `event_type_report()` 出全量清单 | 无 |
 | **P1-2** | G4 事件常量化 | 基于全量清单把 7 处 `event.get("type")==` 裸字符串改常量；顺带处理 `KARMA_CHOSEN`/`QUEST_CHOSEN` 静默忽略 | P1-1 |
 | **P1-3** | T1 抽 `slot_screen.tscn` | 截图基线已备（`tests/fixtures/visual/`）；验证「基线→改造→比对」方法论 | 无 |
