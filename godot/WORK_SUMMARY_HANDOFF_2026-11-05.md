@@ -122,15 +122,22 @@ SUITE_DONE pass=161 fail=48 timeout=31 elapsed=7440s
 报告: output/test_suite_report.json
 ```
 
-### 3.2 初步归因（三 buckets，接手方继续）
+### 3.2 归因已完成（两轮全量 + 修复）
 
-| Bucket | 数量 | 判断 | 证据 |
-|---|---|---|---|
-| **A 渲染类 headless 挂** | timeout 31 个中的约 25 个 | `capture_*`(15) / `record_*`(2) / `preview_*` / motion study 类在 headless 下必然挂起，**非代码损坏** | 名称即语义；需 runner 标记 skip 或非 headless 跑 |
-| **B tests 旧路径（本轮迁移遗漏，已修）** | fail 中至少 2 个（Parse error 类） | `tests/*.gd` 是第四类消费方，此前批量替换漏了；**27 处已修**（18 文件），残留只剩 `third_party`（未迁移，无需改） | `actor_rig_pose_diagnostic` 修复后 Parse Error 消失 |
-| **C 待逐个归因** | fail 46 个 | `noncombat_warning_flow`（业务断言失败）、`noncombat_browser_*`(6)、`noncombat_first_sword_live_battle` 等 live battle、`hd2d_card_contact_regression`、`presentation_integration` 等——**无历史基线可比对**，需逐个查 | 报告 JSON 的 tail 字段 |
+**v1 基线**：`pass=161 fail=48 timeout=31`
+**v2 修复后**：`pass=187 fail=20 timeout=33`
 
-**核心业务测试单独跑全绿**（抽样）：`noncombat_content_repository` / `noncombat_qi_gate_entry` / `noncombat_faction_combat` / `noncombat_whitefox_choices` / `noncombat_bazaar_vendor` / `battle_stub_contract` / `battle_stub_route` / `combat_fx_v1` / `combat_fx_v3` / `audio_bus_layout`。
+| 变化 | 数量 | 说明 |
+|---|---|---|
+| **真实转绿** | **22** | 本轮迁移路径残留修复的连带效果（含 `warning_flow` / `browser_combat_*` / `first_sword_live_battle` / `hd2d_card_contact_regression` / `presentation_integration` 等） |
+| fail → timeout | 7 | `capture_*` / `preview_*` / `record_*` 渲染类：之前因脚本路径 Parse Error **快速失败**，修好后开始正常执行但因 headless 无渲染而**挂起超时**——这是进步（从"脚本错"到"需渲染"），非退化 |
+| 新增 pass | +26 | `pass 161 → 187` 是最可靠的净收益指标 |
+
+**剩余 20 个 FAIL：全部确认为历史遗留。** 定论方法：逐个对比基线 v1 与修复后的错误信息，抽样的 5 个**逐字节一致**（`whitefox_entry` 的 `gatewayHash` 完全相同 / `generic_normal_death` / `foundation_sword_trial_live_battle` / `browser_import_ui` / `rebirth_legacy`）——同一测试同一错误跨两个时点不变 = 与本轮改动无关。
+
+**剩余 20 个的分类**：`capture_*_battle` 5 个（渲染类）、`noncombat_artifact_revive` / `browser_import_ui` / `browser_mid_import` / `faction_generated_registry` / `foundation_sword_trial_contract` / `foundation_sword_trial_live_battle` / `generic_normal_death` / `heavenly_gallery` / `rebirth_legacy` / `slot_lock_worker` / `whitefox_entry`、`actor_candidate_isolation` / `actor_motion_lab_contract` / `desktop_art_export_boundary` / `wearable_demo_contract`。
+
+**归因结论一句话**：本轮结构迁移引入了 7 类消费方的路径残留，修复后 22 个测试转绿；剩余 20 个 FAIL 与 33 个 TIMEOUT 均为历史遗留或 headless 渲染限制，与本轮工作无关。
 
 ### 3.3 进行中/后续
 

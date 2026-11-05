@@ -1,0 +1,444 @@
+{
+ "elapsedSec": 7439.899688482285,
+ "results": {
+  "pass": [
+   "action_presenter",
+   "actor_bundle_assembler_contract",
+   "audio_bus_layout",
+   "battle_hud_narrow_layout",
+   "battle_intent_slip_ui",
+   "battle_plan_resolver_contract",
+   "battle_stub_contract",
+   "battlefield_art_registry_contract",
+   "card_hand_ui",
+   "combat_fx_v1",
+   "combat_fx_v3",
+   "noncombat_ally_arc_flow",
+   "noncombat_ally_generated_registry",
+   "noncombat_asset_import",
+   "noncombat_audio_mute",
+   "noncombat_avoid_flow",
+   "noncombat_battle_boundary",
+   "noncombat_battle_deck_rewards",
+   "noncombat_battle_revive",
+   "noncombat_bazaar_vendor",
+   "noncombat_bestiary_ui",
+   "noncombat_boss_fragment_reward",
+   "noncombat_browser_combat_result_import",
+   "noncombat_browser_combat_seal",
+   "noncombat_browser_combat_semantics",
+   "noncombat_browser_opening_import",
+   "noncombat_browser_replace",
+   "noncombat_browser_save_inspector",
+   "noncombat_browser_save_staging",
+   "noncombat_browser_trace_parity",
+   "noncombat_cadence_catalog",
+   "noncombat_cadence_director",
+   "noncombat_choice_echo_flow",
+   "noncombat_companion_arc_flow",
+   "noncombat_companion_arc_registry",
+   "noncombat_companion_events",
+   "noncombat_companion_generic_registry",
+   "noncombat_companion_milestone_registry",
+   "noncombat_companion_milestones",
+   "noncombat_companion_old_master_entry",
+   "noncombat_companion_portrait_selection",
+   "noncombat_companion_response",
+   "noncombat_companion_whisper",
+   "noncombat_content_repository",
+   "noncombat_death_card_journey",
+   "noncombat_destiny_wheel",
+   "noncombat_evidence_atlas",
+   "noncombat_experience_settings",
+   "noncombat_faction_combat",
+   "noncombat_faction_events",
+   "noncombat_first_body_live_battle",
+   "noncombat_first_body_outcomes",
+   "noncombat_first_body_rules",
+   "noncombat_first_karma",
+   "noncombat_first_market_vendor",
+   "noncombat_first_pill_defeat_ui",
+   "noncombat_first_pill_live_battle",
+   "noncombat_first_pill_outcomes",
+   "noncombat_first_pill_recycle_audio",
+   "noncombat_first_pill_rules",
+   "noncombat_first_pill_victory_ui",
+   "noncombat_first_session_route",
+   "noncombat_first_source_stage_audio",
+   "noncombat_first_spell_body_terminal_ui",
+   "noncombat_first_spell_live_battle",
+   "noncombat_first_spell_outcomes",
+   "noncombat_first_spell_rules",
+   "noncombat_foundation_sword_seed_delay",
+   "noncombat_ghost_arrival_frozen",
+   "noncombat_heaven_gaze",
+   "noncombat_identity",
+   "noncombat_karma_journal",
+   "noncombat_last_lesson_ambient_catalog",
+   "noncombat_last_lesson_direct_route",
+   "noncombat_last_lesson_identify",
+   "noncombat_last_lesson_prerequisites",
+   "noncombat_last_lesson_source_failure",
+   "noncombat_last_lesson_variants",
+   "noncombat_last_lesson_vendor_transactions",
+   "noncombat_legacy_focus",
+   "noncombat_legacy_fragments",
+   "noncombat_life_transition_store",
+   "noncombat_lineage_fragments",
+   "noncombat_lineage_rebirth_cold",
+   "noncombat_lineage_tree",
+   "noncombat_lineage_v4_cold",
+   "noncombat_market_arrival",
+   "noncombat_market_audio",
+   "noncombat_mentor_arc",
+   "noncombat_mentor_climax",
+   "noncombat_mentor_generated_registry",
+   "noncombat_mentor_heir_legacy",
+   "noncombat_milestone_fatal",
+   "noncombat_milestone_flow",
+   "noncombat_mortal_natural",
+   "noncombat_mountain_card_actions",
+   "noncombat_mountain_spell_rewards",
+   "noncombat_n4_quest_source_order",
+   "noncombat_narrative_surfacing",
+   "noncombat_nascent_revive_acquisition",
+   "noncombat_normal_draw_policy",
+   "noncombat_npc_cross_preset",
+   "noncombat_npc_generated_registry",
+   "noncombat_opening_audio",
+   "noncombat_opening_parity",
+   "noncombat_opening_ui",
+   "noncombat_path_skill_breakthrough",
+   "noncombat_path_skill_consumers",
+   "noncombat_path_skill_flow",
+   "noncombat_path_skill_hint_regen",
+   "noncombat_path_skill_legacy_cold",
+   "noncombat_path_skill_mentor_regen",
+   "noncombat_path_skill_ui",
+   "noncombat_persistence",
+   "noncombat_prologue_parity",
+   "noncombat_qi_companion_crisis",
+   "noncombat_qi_trial_milestone",
+   "noncombat_rebirth_body_karma",
+   "noncombat_rebirth_boon",
+   "noncombat_rebirth_mentor",
+   "noncombat_rebirth_quest",
+   "noncombat_rebirth_story_threads",
+   "noncombat_regulated_catalog",
+   "noncombat_ripple_template_registry",
+   "noncombat_run_session",
+   "noncombat_save_slot_ui",
+   "noncombat_save_slots",
+   "noncombat_scene_layer_flow",
+   "noncombat_second_karma",
+   "noncombat_seer_arc_flow",
+   "noncombat_seer_generated_registry",
+   "noncombat_shared_karma",
+   "noncombat_slot_lock_archive",
+   "noncombat_starter_deck",
+   "noncombat_story_high_priority_rules",
+   "noncombat_story_priority_preemption",
+   "noncombat_story_semantic_admission",
+   "noncombat_story_semantic_legacy",
+   "noncombat_surfacing_affection_registry",
+   "noncombat_surfacing_generated_registry",
+   "noncombat_sword_sect_karma",
+   "noncombat_text_presentation",
+   "noncombat_third_milestone",
+   "noncombat_thread_journal",
+   "noncombat_trade_route_state",
+   "noncombat_two_battle_pill_ui",
+   "noncombat_village_stage_vfx_contact",
+   "noncombat_whitefox_choices",
+   "noncombat_whitefox_live_battle",
+   "noncombat_whitefox_live_outcomes",
+   "noncombat_whitefox_third",
+   "noncombat_world_map",
+   "noncombat_world_pulse",
+   "noncombat_world_registry_bootstrap",
+   "quaternius_animation_import_probe",
+   "reaction_first_fight",
+   "record_qingyun_pixel_combat",
+   "replay_first_turn",
+   "replay_full_battle",
+   "stage_router_contract",
+   "test_equipment_demo_domain"
+  ],
+  "fail": [
+   {
+    "name": "actor_candidate_isolation",
+    "rc": 1,
+    "tail": "odotengine.org\n\nERROR: Resource file not found: res:// (expected type: unknown)\n   at: _load (core/io/resource_loader.cpp:325)\n   GDScript backtrace (most recent call first):\n       [0] _initialize (res://tests/actor_candidate_isolation.gd:13)\nERROR: Reviewed clip leaked old source animations or was marked runtime approved\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _initialize (res://tests/actor_candidate_isolation.gd:18)\n"
+   },
+   {
+    "name": "actor_motion_lab_contract",
+    "rc": 1,
+    "tail": "real V17 training hall\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/actor_motion_lab_contract.gd:137)\n       [1] _run (res://tests/actor_motion_lab_contract.gd:14)\nWARNING: 1 RID of type \"CanvasItem\" was leaked.\n   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)\nWARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\n"
+   },
+   {
+    "name": "actor_rig_pose_diagnostic",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nSCRIPT ERROR: Parse Error: Preload file \"res://assets/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb\" does not exist.\n   at: GDScript::reload (res://tests/actor_rig_pose_diagnostic.gd:3)\nERROR: Failed to load script \"res://tests/actor_rig_pose_diagnostic.gd\" with error \"Parse error\".\n   at: load (modules/gdscript/gdscript_resource_format.cpp:46)\n"
+   },
+   {
+    "name": "actor_ual_candidate_contract",
+    "rc": 1,
+    "tail": ".cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _ready (res://scripts/actor_image3d_demo.gd:44)\n       [1] _verify (res://tests/actor_ual_candidate_contract.gd:12)\nERROR: UAL_CANDIDATE_TECH_FAIL retarget candidate cannot mount with sword\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/actor_ual_candidate_contract.gd:84)\n       [1] _verify (res://tests/actor_ual_candidate_contract.gd:15)\n"
+   },
+   {
+    "name": "capture_actor_identity_v4_study",
+    "rc": 1,
+    "tail": "e: hero\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/capture_actor_identity_v4_study.gd:53)\n       [1] _capture (res://tests/capture_actor_identity_v4_study.gd:30)\nWARNING: 1 RID of type \"CanvasItem\" was leaked.\n   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)\nWARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\n"
+   },
+   {
+    "name": "capture_first_body_battle",
+    "rc": 1,
+    "tail": "et (./servers/rendering/dummy/storage/texture_storage.h:110)\n   GDScript backtrace (most recent call first):\n       [0] _save (res://tests/capture_first_body_battle.gd:66)\nERROR: 1280 screenshot failed\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/capture_first_body_battle.gd:75)\n       [1] _capture (res://tests/capture_first_body_battle.gd:37)\n       [2] _save (res://tests/capture_first_body_battle.gd:68)\n"
+   },
+   {
+    "name": "capture_first_pill_battle",
+    "rc": 1,
+    "tail": "et (./servers/rendering/dummy/storage/texture_storage.h:110)\n   GDScript backtrace (most recent call first):\n       [0] _save (res://tests/capture_first_pill_battle.gd:66)\nERROR: 1280 screenshot failed\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/capture_first_pill_battle.gd:75)\n       [1] _capture (res://tests/capture_first_pill_battle.gd:37)\n       [2] _save (res://tests/capture_first_pill_battle.gd:68)\n"
+   },
+   {
+    "name": "capture_first_spell_battle",
+    "rc": 1,
+    "tail": "./servers/rendering/dummy/storage/texture_storage.h:110)\n   GDScript backtrace (most recent call first):\n       [0] _save (res://tests/capture_first_spell_battle.gd:66)\nERROR: 1280 screenshot failed\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/capture_first_spell_battle.gd:75)\n       [1] _capture (res://tests/capture_first_spell_battle.gd:37)\n       [2] _save (res://tests/capture_first_spell_battle.gd:68)\n"
+   },
+   {
+    "name": "capture_mountain_battle",
+    "rc": 1,
+    "tail": "_2d_get (./servers/rendering/dummy/storage/texture_storage.h:110)\n   GDScript backtrace (most recent call first):\n       [0] _save (res://tests/capture_mountain_battle.gd:149)\nERROR: 1280 screenshot failed\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/capture_mountain_battle.gd:158)\n       [1] _capture (res://tests/capture_mountain_battle.gd:54)\n       [2] _save (res://tests/capture_mountain_battle.gd:151)\n"
+   },
+   {
+    "name": "capture_qingyun_actor_style_study",
+    "rc": 1,
+    "tail": "or_design/quick_sword_dummy_idle_concept_v1.png\" does not exist.\n   at: GDScript::reload (res://tests/capture_qingyun_actor_style_study.gd:5)\nSCRIPT ERROR: Parse Error: Cannot infer the type of \"ENEMY\" constant because the value doesn't have a set type.\n   at: GDScript::reload (res://tests/capture_qingyun_actor_style_study.gd:5)\nERROR: Failed to load script \"res://tests/capture_qingyun_actor_style_study.gd\" with error \"Parse error\".\n   at: load (modules/gdscript/gdscript_resource_format.cpp:46)\n"
+   },
+   {
+    "name": "capture_reference_battle_frontend",
+    "rc": 1,
+    "tail": "1023)\n   GDScript backtrace (most recent call first):\n       [0] _ready (res://scripts/duel_stage_hd2d.gd:253)\n       [1] _build (res://scripts/main.gd:427)\n       [2] _ready (res://scripts/main.gd:225)\n       [3] _capture (res://tests/capture_reference_battle_frontend.gd:15)\nERROR: Reference battle stage did not load\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _capture (res://tests/capture_reference_battle_frontend.gd:19)\n"
+   },
+   {
+    "name": "capture_reference_breath",
+    "rc": 1,
+    "tail": "iant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _ready (res://scripts/duel_stage_hd2d.gd:253)\n       [1] _build (res://scripts/main.gd:427)\n       [2] _ready (res://scripts/main.gd:225)\n       [3] _record (res://tests/capture_reference_breath.gd:13)\nERROR: Reference breathing scene did not load\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _record (res://tests/capture_reference_breath.gd:17)\n"
+   },
+   {
+    "name": "capture_whitefox_battle",
+    "rc": 1,
+    "tail": "t (./servers/rendering/dummy/storage/texture_storage.h:110)\n   GDScript backtrace (most recent call first):\n       [0] _save (res://tests/capture_whitefox_battle.gd:81)\nERROR: whitefox 1280 screenshot failed\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/capture_whitefox_battle.gd:90)\n       [1] _capture (res://tests/capture_whitefox_battle.gd:50)\n       [2] _save (res://tests/capture_whitefox_battle.gd:83)\n"
+   },
+   {
+    "name": "desktop_art_export_boundary",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: DESKTOP_ART_EXPORT_LEAK res://art_source/actor_v5_pixel_qa/yelingyun_idle_raw_v2.png\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _initialize (res://tests/desktop_art_export_boundary.gd:16)\n"
+   },
+   {
+    "name": "hd2d_card_contact_regression",
+    "rc": 1,
+    "tail": " [4] _run (res://tests/hd2d_card_contact_regression.gd:15)\n       [5] _game_with_card (res://tests/hd2d_card_contact_regression.gd:72)\nERROR: followthrough damage appeared before contact\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/hd2d_card_contact_regression.gd:76)\n       [1] _run (res://tests/hd2d_card_contact_regression.gd:19)\n       [2] _game_with_card (res://tests/hd2d_card_contact_regression.gd:72)\n"
+   },
+   {
+    "name": "modular_pixel_actor_demo_contract",
+    "rc": 1,
+    "tail": "main.gd:601)\n       [3] _play_card (res://scripts/main.gd:820)\n       [4] <anonymous lambda> (res://scripts/card_hand_ui.gd:220)\n       [5] _run (res://tests/modular_pixel_actor_demo_contract.gd:61)\nERROR: card input did not retain contact-gated damage\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/modular_pixel_actor_demo_contract.gd:80)\n       [1] _run (res://tests/modular_pixel_actor_demo_contract.gd:63)\n"
+   },
+   {
+    "name": "modular_pixel_armor_demo_contract",
+    "rc": 1,
+    "tail": "t_domain.gd:601)\n       [3] _play_card (res://scripts/main.gd:820)\n       [4] <anonymous lambda> (res://scripts/card_hand_ui.gd:220)\n       [5] _run (res://tests/modular_pixel_armor_demo_contract.gd:50)\nERROR: armored first card missed the real contact\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/modular_pixel_armor_demo_contract.gd:67)\n       [1] _run (res://tests/modular_pixel_armor_demo_contract.gd:56)\n"
+   },
+   {
+    "name": "noncombat_artifact_revive",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: second-life spell source checkpoint did not strictly restore\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_artifact_revive.gd:111)\n       [1] _run (res://tests/noncombat_artifact_revive.gd:35)\n"
+   },
+   {
+    "name": "noncombat_browser_combat_action_cold",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: real imported battle scene did not launch\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_browser_combat_action_cold.gd:205)\n       [1] _run (res://tests/noncombat_browser_combat_action_cold.gd:33)\n"
+   },
+   {
+    "name": "noncombat_browser_combat_enemy_turn_cold",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: source first-turn state did not hydrate\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_browser_combat_enemy_turn_cold.gd:87)\n       [1] _initialize (res://tests/noncombat_browser_combat_enemy_turn_cold.gd:41)\n"
+   },
+   {
+    "name": "noncombat_browser_combat_pending_import",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: cold battle did not resume the browser's actual card and qi state\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_browser_combat_pending_import.gd:168)\n       [1] _initialize (res://tests/noncombat_browser_combat_pending_import.gd:82)\n"
+   },
+   {
+    "name": "noncombat_browser_combat_scene",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: cold battle request or stage not available\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_browser_combat_scene.gd:54)\n       [1] _run (res://tests/noncombat_browser_combat_scene.gd:30)\n"
+   },
+   {
+    "name": "noncombat_browser_import_ui",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: real browser first-trial save was not previewed as importable\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_browser_import_ui.gd:162)\n       [1] _run (res://tests/noncombat_browser_import_ui.gd:99)\n"
+   },
+   {
+    "name": "noncombat_browser_mid_import",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: browser source changed: src/game.js\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_browser_mid_import.gd:334)\n       [1] _run (res://tests/noncombat_browser_mid_import.gd:28)\n"
+   },
+   {
+    "name": "noncombat_faction_generated_registry",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: faction generated ID lost exact source or reachability metadata\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_faction_generated_registry.gd:90)\n       [1] _initialize (res://tests/noncombat_faction_generated_registry.gd:27)\n"
+   },
+   {
+    "name": "noncombat_first_sword_live_battle",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: persisted sword battle could not start for victory route\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_first_sword_live_battle.gd:232)\n       [1] _victory_from_request (res://tests/noncombat_first_sword_live_battle.gd:153)\n       [2] _run (res://tests/noncombat_first_sword_live_battle.gd:33)\n"
+   },
+   {
+    "name": "noncombat_first_sword_stage_audio",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: source sword LaunchBattle unavailable\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_first_sword_stage_audio.gd:139)\n       [1] _run (res://tests/noncombat_first_sword_stage_audio.gd:27)\n"
+   },
+   {
+    "name": "noncombat_foundation_sword_trial_contract",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: natural q3 fixture failed strict public restore: {\"card\":null,\"faction\":\"\",\"flow\":\"\",\"legacyQiSpine\":true,\"phase\":null,\"quest\":\"\",\"store\":\"SOURCE_MISMATCH\"}\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_foundation_sword_trial_contract.gd:77)\n       [1] _run (res://tests/noncombat_foundation_sword_trial_contract.gd:31)\n"
+   },
+   {
+    "name": "noncombat_foundation_sword_trial_live_battle",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: natural sword trial did not persist battle: left\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_foundation_sword_trial_live_battle.gd:101)\n       [1] _run (res://tests/noncombat_foundation_sword_trial_live_battle.gd:34)\n"
+   },
+   {
+    "name": "noncombat_generic_normal_death",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: second-life authored spell checkpoint did not strictly restore: {\"card\":null,\"phase\":null,\"restored\":false,\"store\":\"SOURCE_MISMATCH\"}\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_generic_normal_death.gd:89)\n       [1] _run (res://tests/noncombat_generic_normal_death.gd:33)\n"
+   },
+   {
+    "name": "noncombat_heavenly_gallery",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: source catalog entries or portrait stages are missing\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_heavenly_gallery.gd:111)\n       [1] _run (res://tests/noncombat_heavenly_gallery.gd:20)\n"
+   },
+   {
+    "name": "noncombat_rebirth_legacy",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: NPC affection legacy or new-life initialization differs from source\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_rebirth_legacy.gd:257)\n       [1] _run (res://tests/noncombat_rebirth_legacy.gd:143)\n"
+   },
+   {
+    "name": "noncombat_slot_lock_worker",
+    "rc": 2,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: slot lock worker needs mode, run path and barrier path\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _initialize (res://tests/noncombat_slot_lock_worker.gd:11)\n"
+   },
+   {
+    "name": "noncombat_warning_flow",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: 真实预警与重载状态不能变成可信只读战斗计划：sword\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_warning_flow.gd:163)\n       [1] _run (res://tests/noncombat_warning_flow.gd:153)\n"
+   },
+   {
+    "name": "noncombat_whitefox_entry",
+    "rc": 1,
+    "tail": "atewayHash\": \"561ef92914bc277954f3ec2bc4196766f55c9e66a7d6ee602fa00585b467e6fd\", \"chapterHash\": <null>, \"currentChapterHash\": \"d68c29c5796cd3caa40fe3baeea266b36bb6c589461ca579ee47820ae68c4ac1\" }\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/noncombat_whitefox_entry.gd:205)\n       [1] _check_rejections (res://tests/noncombat_whitefox_entry.gd:187)\n       [2] _run (res://tests/noncombat_whitefox_entry.gd:77)\n"
+   },
+   {
+    "name": "paperdoll_reuse_contract",
+    "rc": 1,
+    "tail": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nPAPERDOLL_REUSE_CONTRACT FAIL checks=1 failures=1\nERROR: PAPERDOLL FAIL: Real study manifest and generated textures load\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _check (res://tests/paperdoll_reuse_contract.gd:14)\n       [1] _run (res://tests/paperdoll_reuse_contract.gd:33)\n"
+   },
+   {
+    "name": "pixel_dungeon_demo_contract",
+    "rc": 1,
+    "tail": "_ready (res://scripts/duel_stage_pixel_dungeon.gd:50)\n       [1] _build (res://scripts/main.gd:427)\n       [2] _ready (res://scripts/main.gd:225)\n       [3] _run (res://tests/pixel_dungeon_demo_contract.gd:11)\nERROR: source actors were not mounted in pixel dungeon\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/pixel_dungeon_demo_contract.gd:66)\n       [1] _run (res://tests/pixel_dungeon_demo_contract.gd:19)\n"
+   },
+   {
+    "name": "play_full_battle_ui",
+    "rc": 1,
+    "tail": "d not load the source treasure cue\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/play_full_battle_ui.gd:125)\n       [1] _run (res://tests/play_full_battle_ui.gd:73)\nWARNING: 1 RID of type \"CanvasItem\" was leaked.\n   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)\nWARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\n"
+   },
+   {
+    "name": "presentation_integration",
+    "rc": 1,
+    "tail": "       [1] _build (res://scripts/main.gd:427)\n       [2] _ready (res://scripts/main.gd:225)\n       [3] _run (res://tests/presentation_integration.gd:15)\nERROR: main entry did not mount HD-2D stage and source card hand {\"hand\":\"HBoxContainer\",\"ready\":false,\"stage\":true}\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/presentation_integration.gd:206)\n       [1] _run (res://tests/presentation_integration.gd:19)\n"
+   },
+   {
+    "name": "preview_character_e_motion",
+    "rc": 1,
+    "tail": "v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nERROR: CHARACTER_E_MOTION_FAIL: Missing actual-video sequence: res://assets/undercurrent_pixel_v1/character_e_motion_v1/sequence.json\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/preview_character_e_motion.gd:33)\n       [1] _load_inputs (res://tests/preview_character_e_motion.gd:39)\n       [2] _start (res://tests/preview_character_e_motion.gd:88)\n"
+   },
+   {
+    "name": "preview_paperdoll_reuse",
+    "rc": 1,
+    "tail": "(res://tests/preview_paperdoll_reuse.gd:26)\nERROR: Paperdoll assets failed to assemble\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _start (res://tests/preview_paperdoll_reuse.gd:43)\nWARNING: 1 RID of type \"CanvasItem\" was leaked.\n   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)\nWARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\n"
+   },
+   {
+    "name": "qingyun_actor_reset_contract",
+    "rc": 1,
+    "tail": "un_native_v1.tres\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/qingyun_actor_reset_contract.gd:96)\n       [1] _run (res://tests/qingyun_actor_reset_contract.gd:44)\nWARNING: 1 RID of type \"CanvasItem\" was leaked.\n   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)\nWARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\n"
+   },
+   {
+    "name": "qingyun_native_first_slice_contract",
+    "rc": 1,
+    "tail": "le\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/qingyun_native_first_slice_contract.gd:151)\n       [1] _run (res://tests/qingyun_native_first_slice_contract.gd:25)\nWARNING: 1 RID of type \"CanvasItem\" was leaked.\n   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)\nWARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\n"
+   },
+   {
+    "name": "record_actor_v4_local_thrust",
+    "rc": 1,
+    "tail": "sts/record_actor_v4_local_thrust.gd:38)\nERROR: Did not observe the extended pose\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _record (res://tests/record_actor_v4_local_thrust.gd:41)\nWARNING: 1 RID of type \"CanvasItem\" was leaked.\n   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)\nWARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\n"
+   },
+   {
+    "name": "record_qingyun_gemini_video_study",
+    "rc": 1,
+    "tail": "sing\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/record_qingyun_gemini_video_study.gd:49)\n       [1] _record (res://tests/record_qingyun_gemini_video_study.gd:25)\nWARNING: 1 RID of type \"CanvasItem\" was leaked.\n   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)\nWARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\n"
+   },
+   {
+    "name": "reference_battle_frontend_contract",
+    "rc": 1,
+    "tail": "duel_stage_hd2d.gd:253)\n       [1] _build (res://scripts/main.gd:427)\n       [2] _ready (res://scripts/main.gd:225)\n       [3] _run (res://tests/reference_battle_frontend_contract.gd:14)\nERROR: new JSON actor style was not mounted on the battle stage\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/reference_battle_frontend_contract.gd:83)\n       [1] _run (res://tests/reference_battle_frontend_contract.gd:20)\n"
+   },
+   {
+    "name": "undercurrent_fx_profiles_contract",
+    "rc": 1,
+    "tail": "/<null>\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/undercurrent_fx_profiles_contract.gd:76)\n       [1] _run (res://tests/undercurrent_fx_profiles_contract.gd:60)\nWARNING: 1 RID of type \"CanvasItem\" was leaked.\n   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)\nWARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\n"
+   },
+   {
+    "name": "undercurrent_pixel_combat_contract",
+    "rc": 1,
+    "tail": "ssing\n   at: push_error (core/variant/variant_utility.cpp:1023)\n   GDScript backtrace (most recent call first):\n       [0] _fail (res://tests/undercurrent_pixel_combat_contract.gd:66)\n       [1] _run (res://tests/undercurrent_pixel_combat_contract.gd:19)\nWARNING: 1 RID of type \"CanvasItem\" was leaked.\n   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)\nWARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).\n   at: cleanup (core/object/object.cpp:2536)\n"
+   }
+  ],
+  "timeout": [
+   "actor_grip_motion_contract",
+   "actor_image3d_action_module_contract",
+   "actor_ual_grounding_contract",
+   "battle_visual_hierarchy",
+   "capture_actor_v4_pose_study",
+   "capture_actual_battle_layout",
+   "capture_equipment_demo",
+   "capture_equipment_demo_motion",
+   "capture_equipment_demo_visual_review",
+   "capture_experience_settings",
+   "capture_mapfit_v4_concept",
+   "capture_qingyun_fx_profiles",
+   "capture_qingyun_mapfit_v3",
+   "capture_qingyun_native_first_slice",
+   "capture_qingyun_pixel_combat",
+   "capture_rebirth_tree_v5",
+   "capture_world_map",
+   "hd2d_stage_contract",
+   "hd2d_timeline_regression",
+   "mapfit_v4_motion_study",
+   "mapfit_v5_motion_study",
+   "mapfit_v6_spacing_study",
+   "noncombat_battle_return",
+   "noncombat_combat_scheduling",
+   "noncombat_death_rebirth_journey",
+   "noncombat_mountain_live_battle",
+   "noncombat_rebirth_ghost_journey",
+   "preview_character_style_trials",
+   "qingyun_stage_reuse_contract",
+   "record_actor_video_v4_study",
+   "wearable_demo_contract"
+  ],
+  "error": []
+ }
+}
