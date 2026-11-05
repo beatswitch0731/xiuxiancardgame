@@ -51,6 +51,9 @@ var _arc_material: StandardMaterial3D
 var _arc_core_material: StandardMaterial3D
 var _camera_tween: Tween
 var _camera_shake: CameraShake
+var _hit_tint_target: Node3D
+var _hit_tint_started_ms := 0
+var _hit_tint_active := false
 var _camera_orbit_x := 0.0
 var _light_tween: Tween
 var _impact_tween: Tween
@@ -336,6 +339,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_apply_camera_shake(delta)
+	_apply_hit_tint()
 	_reference_breath_elapsed += delta
 	_sync_motion_to_animation()
 	if _modular_actor != null and not _active_motion.is_empty() \
@@ -756,6 +760,9 @@ func _clip_duration(actor: Node3D, clip: String) -> float:
 func _flash_contact(side: String, contact_kind: String, clip: String) -> void:
 	var actor: Node3D = _player if side == "player" else _enemy
 	var target: Node3D = _enemy if side == "player" else _player
+	# 受击闪白：只在真正打到对方时闪，self（自伤/反噬）不闪自己
+	if contact_kind != "self":
+		_start_hit_tint(target)
 	actor.sync_billboard_attachment(_camera)
 	var profile := clip if side == "player" else "enemy_attack"
 	_impact_fx.global_position = actor.get_chest_hit().global_position if contact_kind == "self" \
@@ -1466,6 +1473,30 @@ func _sync_ground_contact_decals(actor: Node3D) -> void:
 ## 故 1px ≈ 0.02。震动幅度只有几像素，2% 的估算误差对手感无感知。
 const SHAKE_PIXELS_TO_METERS := 0.02
 
+## 受击闪白（S6）：contact 后 0.05s 过曝白 → 0.08s 衰减到偏红 → 保持红 3 帧
+## → 0.16s 归白。过曝靠 modulate 分量 >1（SpriteBase3D 的 modulate 是相乘，
+## 不做 upper clamp）。曲线只在本文件的 static func hit_tint() 里定义一次，
+## 运行时与测试共用，避免"测试验一条曲线、运行时跑另一条"的漂移。
+const HIT_TINT_FLASH_SEC := 0.05
+const HIT_TINT_FADE_SEC := 0.07
+const HIT_TINT_TOTAL_SEC := 0.16
+const HIT_TINT_FLASH := Color(1.35, 1.35, 1.35)
+const HIT_TINT_RED := Color(1.0, 0.64, 0.62)
+
+
+## 受击着色曲线。t = 距 contact 的秒数。
+static func hit_tint(t: float) -> Color:
+	if t < 0.0:
+		return Color.WHITE
+	if t < HIT_TINT_FLASH_SEC:
+		return HIT_TINT_FLASH
+	if t < HIT_TINT_FLASH_SEC + HIT_TINT_FADE_SEC:
+		var k := (t - HIT_TINT_FLASH_SEC) / HIT_TINT_FADE_SEC
+		return HIT_TINT_FLASH.lerp(HIT_TINT_RED, k)
+	if t < HIT_TINT_TOTAL_SEC:
+		return HIT_TINT_RED
+	return Color.WHITE
+
 
 ## 触发一次屏幕震动。由 main.gd 在 contact 帧调用，与 hit-stop 同一时刻。
 ## 通道所有权：本方法只写 Camera3D 的投影偏移（h_offset/v_offset），
@@ -1473,6 +1504,33 @@ const SHAKE_PIXELS_TO_METERS := 0.02
 func pulse_camera(tier: String) -> void:
 	if _camera_shake != null:
 		_camera_shake.trigger(tier)
+
+
+## 启动受击闪白。victim 为受击方 Node3D（内部再取 AnimatedSprite3D）。
+func _start_hit_tint(victim: Node3D) -> void:
+	if victim == null or not victim.has_method("get_sprite"):
+		return
+	_hit_tint_target = victim
+	_hit_tint_started_ms = Time.get_ticks_msec()
+	_hit_tint_active = true
+
+
+## 用真实时间推进着色，不用 delta 累计——hit-stop 会把 time_scale 压到 0.05，
+## 若走 delta，重击的 0.17s 闪白会被拉成 3.4s，看起来像卡死。
+func _apply_hit_tint() -> void:
+	if not _hit_tint_active:
+		return
+	var t := float(Time.get_ticks_msec() - _hit_tint_started_ms) / 1000.0
+	var sprite: AnimatedSprite3D = null
+	if _hit_tint_target != null and _hit_tint_target.has_method("get_sprite"):
+		sprite = _hit_tint_target.get_sprite() as AnimatedSprite3D
+	if sprite != null:
+		sprite.modulate = hit_tint(t)
+	if t >= HIT_TINT_TOTAL_SEC:
+		_hit_tint_active = false
+		_hit_tint_target = null
+		if sprite != null:
+			sprite.modulate = Color.WHITE
 
 
 ## 每帧把震动 offset 应用到相机投影偏移。归零时写回精确 0.0，
