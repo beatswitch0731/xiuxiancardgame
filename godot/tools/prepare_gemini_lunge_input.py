@@ -5,7 +5,7 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "godot/assets/undercurrent_pixel_v1/actor_mapfit_v3/player_idle_source.png"
+SOURCE = ROOT / "godot/assets/battle/undercurrent_pixel_v1/actor_mapfit_v3/player_idle_source.png"
 OUT = ROOT / "artifacts/godot-migration/qingyun-gemini-video-probe/source/gemini_lunge_input.png"
 original = Image.open(SOURCE).convert("RGBA")
 bbox = original.getchannel("A").getbbox()

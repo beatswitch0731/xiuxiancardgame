@@ -16,7 +16,7 @@ from mathutils.kdtree import KDTree
 from mathutils.bvhtree import BVHTree
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / 'godot/assets/actor_wearable_v2'
+OUT = ROOT / 'godot/assets/characters/actor_wearable_v2'
 SOURCE = ROOT / 'godot/art_source/actor_image3d_mvp'
 WORK = ROOT / 'godot/art_source/actor_wearable_v2'
 OUT.mkdir(parents=True, exist_ok=True)
@@ -198,7 +198,7 @@ bpy.data.objects.remove(donor, do_unlink=True)
 
 # Import sculpt, weld export-split corners, and use original rest geometry.
 before = set(bpy.context.scene.objects)
-bpy.ops.import_scene.gltf(filepath=str(ROOT / 'godot/assets/actor_image3d_mvp/yelingyun_image3d_color_candidate.glb'))
+bpy.ops.import_scene.gltf(filepath=str(ROOT / 'godot/assets/characters/actor_image3d_mvp/yelingyun_image3d_color_candidate.glb'))
 sculpt = max((o for o in bpy.context.scene.objects if o not in before and o.type == 'MESH'), key=lambda o: len(o.data.vertices))
 bpy.context.view_layer.objects.active = sculpt
 bpy.ops.object.select_all(action='DESELECT')

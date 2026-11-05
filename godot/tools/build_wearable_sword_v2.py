@@ -3,7 +3,7 @@ from pathlib import Path
 import math
 import bpy
 
-OUT=Path(__file__).resolve().parents[1]/'assets/actor_wearable_v2'
+OUT=Path(__file__).resolve().parents[1]/'assets/characters/actor_wearable_v2'
 bpy.ops.wm.read_factory_settings(use_empty=True)
 
 def mat(name,color,metal=0,rough=.7):

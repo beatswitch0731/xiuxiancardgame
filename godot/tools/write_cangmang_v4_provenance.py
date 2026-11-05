@@ -10,7 +10,7 @@ paths = [
     "tools/fetch_polyhaven_rock_moss_set.py",
     "art_source/cangmang_court_v4/build_trial_court.py",
     "art_source/cangmang_court_v4/cangmang_trial_court_v4.blend",
-    "assets/hd2d/world_v4/cangmang_trial_court_v4.glb",
+    "assets/battle/hd2d/world_v4/cangmang_trial_court_v4.glb",
     "art_source/cangmang_court_v3/cangmang_outdoor_court_v3.blend",
     "art_source/cangmang_court_v3/source_manifest.json",
     "art_source/cangmang_court_v3/textures/monastery_stone_floor_diff_2k.jpg",

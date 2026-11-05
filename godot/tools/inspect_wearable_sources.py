@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 paths = [
     ROOT / 'godot/assets/third_party/quaternius_ual_standard/AnimationLibrary_Godot_Standard.glb',
-    ROOT / 'godot/assets/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb',
+    ROOT / 'godot/assets/characters/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb',
 ]
 report = []
 for path in paths:

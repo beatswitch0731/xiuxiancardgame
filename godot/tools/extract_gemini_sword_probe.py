@@ -16,7 +16,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "artifacts/godot-migration/qingyun-gemini-video-probe/source"
 RAW = SOURCE / "raw_frames"
-OUT = ROOT / "godot/assets/undercurrent_pixel_v1/actor_gemini_video_v1"
+OUT = ROOT / "godot/assets/battle/undercurrent_pixel_v1/actor_gemini_video_v1"
 REVIEW = ROOT / "artifacts/godot-migration/qingyun-gemini-video-probe"
 OUT.mkdir(parents=True, exist_ok=True)
 
@@ -66,7 +66,7 @@ def native_frame(source: Image.Image, resampling: Image.Resampling) -> Image.Ima
 
 def main() -> None:
     movie = SOURCE / "gemini_sword_probe_raw.mp4"
-    still = ROOT / "godot/assets/undercurrent_pixel_v1/actor_mapfit_v3/player_idle_source.png"
+    still = ROOT / "godot/assets/battle/undercurrent_pixel_v1/actor_mapfit_v3/player_idle_source.png"
     manifest = {
         "generator": "Gemini video UI, actual returned model version not exposed",
         "generationConversation": "https://gemini.google.com/app/cf7a683c4a46de41",

@@ -8,7 +8,7 @@ from playwright.sync_api import sync_playwright
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "godot/assets/source_first_fight/breath_v17"
+SOURCE = ROOT / "godot/assets/battle/source_first_fight/breath_v17"
 EVIDENCE = ROOT / "artifacts/godot-migration/breath-v17-frameronin"
 EVIDENCE.mkdir(parents=True, exist_ok=True)
 

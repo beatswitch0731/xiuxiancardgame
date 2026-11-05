@@ -94,7 +94,7 @@ def main() -> None:
                     for group in GROUPS],
         "authoring": [record(V3 / "build_outdoor_court.py"),
                       record(V3 / "cangmang_outdoor_court_v3.blend")],
-        "runtime": [record(PROJECT / "assets/hd2d/world_v3/cangmang_outdoor_court_v3.glb")],
+        "runtime": [record(PROJECT / "assets/battle/hd2d/world_v3/cangmang_outdoor_court_v3.glb")],
     }
     target = V3 / "source_manifest.json"
     target.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

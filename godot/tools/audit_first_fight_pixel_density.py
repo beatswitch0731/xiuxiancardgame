@@ -27,7 +27,7 @@ def visible_height(path: Path) -> int:
 
 def clip_scale(actor: str, clip: str) -> float:
     filename = "yelingyun_s1.tres" if actor == "hero" else "quick_sword_dummy.tres"
-    resource = (GODOT / "assets/source_first_fight" / filename).read_text(encoding="utf-8")
+    resource = (GODOT / "assets/battle/source_first_fight" / filename).read_text(encoding="utf-8")
     match = re.search(rf"^metadata/scale_{re.escape(clip)} = ([0-9.]+)$", resource, re.M)
     if not match:
         raise ValueError(f"Missing scale for {actor}/{clip}")
@@ -57,4 +57,4 @@ for (actor, clip), paths in groups.items():
 print("candidate_idle_512 visible_height_px")
 for actor, filename in (("hero", "yelingyun_identity_detail_512.png"),
                         ("dummy", "quick_sword_dummy_idle_512.png")):
-    print(actor, visible_height(GODOT / "assets/actor_candidates/density_v1" / filename))
+    print(actor, visible_height(GODOT / "assets/characters/actor_candidates/density_v1" / filename))
