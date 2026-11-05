@@ -8,6 +8,9 @@ extends RefCounted
 ## 层级纪律：L2 工具，输入输出都是数据与节点，禁止引用领域层。
 
 const HIT_FLASH_SHADER := "res://shaders/fx_hit_flash.gdshader"
+const DISSOLVE_SHADER := "res://shaders/fx_dissolve.gdshader"
+const UV_STRETCH_SHADER := "res://shaders/fx_uv_stretch.gdshader"
+const IMPACT_FRAME_SHADER := "res://shaders/fx_impact_frame.gdshader"
 
 ## 各模板的粒子配方（起步参数，美术评审后调 .tres 固化）。
 ## amount/lifetime/velocity/gravity 参考 VFX 方案 §3.3。
@@ -70,6 +73,17 @@ static func _build_seq_layer(kind: String, frame_paths: Array,
 			sm.shader = shader
 			sm.set_shader_parameter("flash_strength", 0.0)
 			sprite.material = sm
+	# defeat 模板挂溶解 shader：progress 由宿主 Tween 从 0 推到 1
+	if kind == "defeat":
+		var dshader: Variant = load(DISSOLVE_SHADER)
+		if dshader is Shader:
+			var sm := ShaderMaterial.new()
+			sm.shader = dshader
+			var noise := NoiseTexture2D.new()
+			noise.noise = FastNoiseLite.new()
+			sm.set_shader_parameter("noise_tex", noise)
+			sm.set_shader_parameter("dissolve_progress", 0.0)
+			sprite.material = sm
 	return sprite
 
 
@@ -97,3 +111,32 @@ static func _build_particle_layer(kind: String) -> GPUParticles2D:
 	mat.color = Color(1.0, 0.92, 0.72, 0.9)   # 暖白灵光基色，待元素色系统替换
 	p.process_material = mat
 	return p
+
+
+## 方向性：旋转整棵特效树，并同步 UVStretch shader 的方向 uniform。
+## angle_rad 为攻击方向（弧度），宿主按出手位置 → 目标位置计算。
+static func set_direction(node: Node2D, angle_rad: float) -> void:
+	node.rotation = angle_rad
+	var seq := node.get_node_or_null("SeqLayer")
+	if seq is AnimatedSprite2D and seq.material is ShaderMaterial:
+		var sm: ShaderMaterial = seq.material
+		if sm.shader != null and sm.shader.resource_path.ends_with("fx_uv_stretch.gdshader"):
+			sm.set_shader_parameter("direction", angle_rad)
+
+
+## 构建全屏打击帧层（Impact frame）：宿主 add_child 到舞台根，
+## 重击命中时 visible=true + intensity 峰值，1~2 帧内衰减后隐藏。
+static func build_impact_frame() -> ColorRect:
+	var rect := ColorRect.new()
+	rect.name = "ImpactFrame"
+	rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var shader: Variant = load(IMPACT_FRAME_SHADER)
+	if shader is Shader:
+		var sm := ShaderMaterial.new()
+		sm.shader = shader
+		sm.set_shader_parameter("intensity", 0.0)
+		sm.set_shader_parameter("invert", 1.0)
+		rect.material = sm
+	rect.visible = false
+	return rect

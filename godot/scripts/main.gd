@@ -52,6 +52,10 @@ const INTENT_SLIP = preload("res://assets/ui/hud_materials/intent_slip_v1.png")
 var data: RefCounted
 var combat: RefCounted
 var duel_stage
+# VFX 五件套接线：hit-stop 唯一拥有者 + 待触发的伤害分级。
+# 分级在 _on_combat_event 结算时记录，contact 帧时刻触发（VFX 方案 §3.5）。
+var hitstop: HitStopController
+var _pending_damage_tier := ""
 var title_label: Label
 var player_info_back: Panel
 var enemy_info_back: Panel
@@ -424,6 +428,9 @@ func _build() -> bool:
 	duel_stage.presentation_finished.connect(_on_presentation_finished)
 	duel_stage.presentation_missing.connect(_on_presentation_missing)
 	duel_stage.contact_frame.connect(_on_contact_frame)
+	hitstop = HitStopController.new()
+	hitstop.name = "HitStop"
+	add_child(hitstop)
 	stage_assets_ready = duel_stage.has_hd2d_assets()
 	if not stage_assets_ready:
 		presentation_problem = "首战场地或角色序列未就绪"
@@ -897,10 +904,12 @@ func _on_combat_changed(event: Dictionary) -> void:
 		_held_enemy_hp = int(event.get("enemyHpBefore", combat.state["enemy"]["hp"])) if damage > 0 else -1
 		_held_enemy_block = int(event.get("enemyBlockBefore", combat.state["enemy"]["block"])) if block_spent > 0 else -1
 		_hold_outcome = String(combat.state["phase"]) == "VICTORY"
+		_pending_damage_tier = _damage_tier(damage)
 	elif kind == "ENEMY_ACTION":
 		var hp_loss := int(event.get("hpLoss", 0))
 		_held_player_hp = int(combat.state["player"]["hp"]) + hp_loss if hp_loss > 0 else -1
 		_hold_outcome = String(combat.state["phase"]) == "DEFEAT"
+		_pending_damage_tier = _damage_tier(hp_loss)
 	if kind in ["CARD_PLAY", "ENEMY_ACTION", "DEFEAT"]:
 		var visual_event: Dictionary = event.duplicate(true)
 		if kind == "CARD_PLAY":
@@ -941,6 +950,11 @@ func _on_presentation_missing(_event_type: String, reason: String) -> void:
 
 
 func _on_contact_frame(side: String) -> void:
+	# contact 帧时刻 = 打击感五件套的触发时刻（VFX 方案 §3.5）。
+	# 当前接线 hit-stop；闪白/震屏随批次 V2/V3 扩展。
+	if hitstop != null and not _pending_damage_tier.is_empty():
+		hitstop.trigger(_pending_damage_tier)
+		_pending_damage_tier = ""
 	if side == "player" and (_held_enemy_hp >= 0 or _held_enemy_block >= 0 or _hold_outcome):
 		_held_enemy_hp = -1
 		_held_enemy_block = -1
@@ -950,3 +964,16 @@ func _on_contact_frame(side: String) -> void:
 		_held_player_hp = -1
 		_hold_outcome = false
 		_render()
+
+
+## 伤害 → hit-stop 分级。阈值是 60fps 口径的起步值，后续按手感调参。
+func _damage_tier(damage: int) -> String:
+	if damage <= 0:
+		return ""
+	if damage >= 15:
+		return "crit"
+	if damage >= 8:
+		return "heavy"
+	if damage >= 3:
+		return "medium"
+	return "light"
