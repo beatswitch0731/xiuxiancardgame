@@ -2,7 +2,7 @@ extends SceneTree
 
 # Isolated playback of new, genuine Gemini frame sequences inside the room.
 # This does not dispatch a card, deal damage, or replace production resources.
-const ART := "res://assets/undercurrent_pixel_v1/actor_video_v4_study/"
+const ART := "res://assets/battle/undercurrent_pixel_v1/actor_video_v4_study/"
 const OUT := "res://../artifacts/godot-migration/actor-identity-v4/"
 var _actors: Dictionary = {}
 var _stage: Node

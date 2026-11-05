@@ -11,18 +11,18 @@ func _initialize() -> void:
 	var router = StageRouter.new(DataRegistry.new())
 	var first: Dictionary = router.resolve_encounter("enc_trial_sword_swift")
 	var first_stage: Dictionary = visual.resolve(first)
-	if first_stage.get("runtimeScene") != "res://assets/hd2d/world_v17/qingyun_tutorial_hall_v17.glb" \
+	if first_stage.get("runtimeScene") != "res://assets/battle/hd2d/world_v17/qingyun_tutorial_hall_v17.glb" \
 			or first_stage.get("selectedScene") != first_stage.get("runtimeScene") \
 			or first_stage.get("artStatus") != "candidate_visual_fail" \
 			or first_stage.get("approvedForFinalArt") != false:
 		_fail("first fight must use the V17 tutorial scene without claiming final art approval")
 		return
 	if visual.resolve(first, "trial_v16").get("selectedScene") != \
-			"res://assets/hd2d/world_v16/cangmang_trial_hall_v16.glb":
+			"res://assets/battle/hd2d/world_v16/cangmang_trial_hall_v16.glb":
 		_fail("the V16 hall must remain available for first-fight comparison")
 		return
 	if visual.resolve(first, "trial_v7").get("selectedScene") != \
-			"res://assets/hd2d/world_v7/qingyun_trial_hall_v7.glb":
+			"res://assets/battle/hd2d/world_v7/qingyun_trial_hall_v7.glb":
 		_fail("V7 may be selected only as first-fight candidate")
 		return
 	var pending := {"choice": {"reward": "unchanged"}}

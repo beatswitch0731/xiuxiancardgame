@@ -1,6 +1,6 @@
 extends SceneTree
 
-const FRAMES := "res://assets/undercurrent_pixel_v1/actor_video_v4_study/hero_local_thrust.tres"
+const FRAMES := "res://assets/battle/undercurrent_pixel_v1/actor_video_v4_study/hero_local_thrust.tres"
 const OUT := "res://../artifacts/godot-migration/actor-identity-v4/"
 
 

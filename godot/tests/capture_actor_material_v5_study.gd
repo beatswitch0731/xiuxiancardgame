@@ -1,6 +1,6 @@
 extends "res://tests/record_actor_video_v4_study.gd"
 
-const MATERIAL_SPEC := "res://assets/undercurrent_pixel_v1/actor_material_v5_study/material_study.json"
+const MATERIAL_SPEC := "res://assets/battle/undercurrent_pixel_v1/actor_material_v5_study/material_study.json"
 const MATERIAL_OUT := "res://../artifacts/godot-migration/actor-material-v5/"
 var _old_frames: Dictionary = {}
 var _new_frames: Dictionary = {}

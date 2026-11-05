@@ -1,6 +1,6 @@
 extends SceneTree
 
-const ART_ROOT := "res://assets/undercurrent_pixel_v1/actor_native_v1/"
+const ART_ROOT := "res://assets/battle/undercurrent_pixel_v1/actor_native_v1/"
 const Registry = preload("res://scripts/runtime_data_registry.gd")
 const HERO_CLIPS := ["idle", "attack", "guard", "reaction", "hurt", "defeat",
 	"sword_probe", "sword_edge", "sword_followthrough", "sword_guard", "sword_sheath_guard"]
@@ -27,9 +27,9 @@ func _run() -> void:
 	if stage.get_node("Viewport/World/PlayerAnchor").get_node_or_null("ModularActor") != null:
 		_fail("Qingyun stage instantiated previous modular actor preview")
 		return
-	for legacy_path in ["res://assets/source_first_fight/yelingyun_s1.tres",
-			"res://assets/source_first_fight/quick_sword_dummy.tres",
-			"res://assets/modular_pixel_actor_v1/yelingyun_idle_mist_blue_candidate.png"]:
+	for legacy_path in ["res://assets/battle/source_first_fight/yelingyun_s1.tres",
+			"res://assets/battle/source_first_fight/quick_sword_dummy.tres",
+			"res://assets/characters/modular_pixel_actor_v1/yelingyun_idle_mist_blue_candidate.png"]:
 		if ResourceLoader.has_cached(legacy_path):
 			_fail("first-fight entry still preloads old actor asset: " + legacy_path)
 			return

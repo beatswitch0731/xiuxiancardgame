@@ -1,6 +1,6 @@
 extends SceneTree
 
-const MANIFEST := "res://assets/undercurrent_pixel_v1/character_style_trials_v2/trials.json"
+const MANIFEST := "res://assets/battle/undercurrent_pixel_v1/character_style_trials_v2/trials.json"
 const OUT := "res://../artifacts/godot-migration/character-style-trials-v2/"
 var battle: Control
 var world: Node2D

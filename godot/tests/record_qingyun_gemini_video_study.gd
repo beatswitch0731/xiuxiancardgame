@@ -2,7 +2,7 @@ extends SceneTree
 
 # Isolated motion study. The formal first fight keeps its accepted scene
 # resource while this recording tests the real Gemini frames in that room.
-const VIDEO_FRAMES := "res://assets/undercurrent_pixel_v1/actor_gemini_video_v1/yelingyun_gemini_probe_v1.tres"
+const VIDEO_FRAMES := "res://assets/battle/undercurrent_pixel_v1/actor_gemini_video_v1/yelingyun_gemini_probe_v1.tres"
 const IDLE_SCREENSHOT := "res://../artifacts/godot-migration/qingyun-gemini-video-probe/gemini_idle_study_1280.png"
 
 

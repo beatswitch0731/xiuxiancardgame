@@ -1,6 +1,6 @@
 extends SceneTree
 
-const ACTOR = preload("res://assets/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb")
+const ACTOR = preload("res://assets/characters/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb")
 const Module = preload("res://scripts/actor_skeletal_action_module.gd")
 
 func _initialize() -> void:

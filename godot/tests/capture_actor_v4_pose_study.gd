@@ -1,7 +1,7 @@
 extends SceneTree
 
 # Static pose studies inside the real battle entrypoint, not animation proof.
-const ART := "res://assets/undercurrent_pixel_v1/actor_identity_v4_study/poses/"
+const ART := "res://assets/battle/undercurrent_pixel_v1/actor_identity_v4_study/poses/"
 const OUT := "res://../artifacts/godot-migration/actor-identity-v4/"
 
 

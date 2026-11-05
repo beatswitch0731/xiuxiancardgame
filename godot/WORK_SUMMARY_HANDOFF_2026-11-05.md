@@ -90,21 +90,33 @@
 
 ---
 
-## 3. 进行中的任务
+## 3. 全量测试基线（项目史上第一份）与进行中任务
 
-| 任务 | 进度 | 位置 |
-|---|---|---|
-| **全量测试套件首跑** | 后台运行中（240 个 `SceneTree` 测试，已跑约 25 分钟） | `tools/run_test_suite.py`；报告将写 `output/test_suite_report.json`；结束自动通知 |
-| 其余 | 无 | — |
+### 3.1 基线【实测，2026-11-05，耗时 2h04m】
 
-**接手第一件事**：查看 `output/test_suite_report.json` 是否生成。生成后按 §3.1 处理。
+```
+SCENE_TREE tests: 240
+SUITE_DONE pass=161 fail=48 timeout=31 elapsed=7440s
+报告: output/test_suite_report.json
+```
 
-### 3.1 全量结果处理流程
+### 3.2 初步归因（三 buckets，接手方继续）
 
-1. `PASS` 数为基线（此前从未统计过，任何数字都是历史第一份）
-2. `FAIL` 清单逐个排查——**先判断是不是本轮改动引入**（对照 §6.2 勘误与本轮提交），历史遗留的单独记录
-3. `TIMEOUT` 清单按任务书 §8.3 处理（单独长超时跑通后拆分测试）
-4. 结果回填 `MIGRATION_SCORECARD.md`
+| Bucket | 数量 | 判断 | 证据 |
+|---|---|---|---|
+| **A 渲染类 headless 挂** | timeout 31 个中的约 25 个 | `capture_*`(15) / `record_*`(2) / `preview_*` / motion study 类在 headless 下必然挂起，**非代码损坏** | 名称即语义；需 runner 标记 skip 或非 headless 跑 |
+| **B tests 旧路径（本轮迁移遗漏，已修）** | fail 中至少 2 个（Parse error 类） | `tests/*.gd` 是第四类消费方，此前批量替换漏了；**27 处已修**（18 文件），残留只剩 `third_party`（未迁移，无需改） | `actor_rig_pose_diagnostic` 修复后 Parse Error 消失 |
+| **C 待逐个归因** | fail 46 个 | `noncombat_warning_flow`（业务断言失败）、`noncombat_browser_*`(6)、`noncombat_first_sword_live_battle` 等 live battle、`hd2d_card_contact_regression`、`presentation_integration` 等——**无历史基线可比对**，需逐个查 | 报告 JSON 的 tail 字段 |
+
+**核心业务测试单独跑全绿**（抽样）：`noncombat_content_repository` / `noncombat_qi_gate_entry` / `noncombat_faction_combat` / `noncombat_whitefox_choices` / `noncombat_bazaar_vendor` / `battle_stub_contract` / `battle_stub_route` / `combat_fx_v1` / `combat_fx_v3` / `audio_bus_layout`。
+
+### 3.3 进行中/后续
+
+1. Bucket C 逐个归因（建议：抽 5 个先查，区分「历史遗留」与「本轮引入」——后者优先修）
+2. runner 改进：渲染类测试加 skip 标记或 `--rendering-driver` 区分
+3. 修复后重跑全量，收敛 FAIL/TIMEOUT 数
+
+其余：无。
 
 ---
 

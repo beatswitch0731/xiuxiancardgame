@@ -44,7 +44,7 @@ func _run() -> void:
 			return _fail("reward layout: source contract or four choices missing")
 		if arena == null or not arena.has_hd2d_assets() \
 				or arena.stage_art.get("selectedScene") != \
-				"res://assets/hd2d/world_v17/qingyun_tutorial_hall_v17.glb" \
+				"res://assets/battle/hd2d/world_v17/qingyun_tutorial_hall_v17.glb" \
 				or arena.get_node("Viewport").size != resolution \
 				or not arena.get_actor_model("player").visible \
 				or screen.background.visible:

@@ -1,7 +1,7 @@
 extends SceneTree
 
 # Guards the player-visible first slice, rather than counting generated PNGs.
-const ENEMY_ROOT := "res://assets/undercurrent_pixel_v1/actor_native_v1/"
+const ENEMY_ROOT := "res://assets/battle/undercurrent_pixel_v1/actor_native_v1/"
 
 
 func _initialize() -> void:
@@ -19,7 +19,7 @@ func _run() -> void:
 		return
 	var room: Sprite2D = stage.get_node_or_null("Viewport/World/QingyunRoomNative")
 	if room == null or room.texture == null \
-			or room.texture.resource_path != "res://assets/undercurrent_pixel_v1/qingyun_trial_room_v1.png" \
+			or room.texture.resource_path != "res://assets/battle/undercurrent_pixel_v1/qingyun_trial_room_v1.png" \
 			or room.texture.get_size() != Vector2(1672, 941) \
 			or room.scale.distance_to(Vector2(640.0 / 1672.0, 360.0 / 941.0)) > 0.001:
 		_fail("the approved painted Qingyun room is not mounted at the battle scale")

@@ -1,8 +1,8 @@
 extends SceneTree
 
 const OUT := "res://../artifacts/godot-migration/qingyun-pixel-combat/actor_style_study_1280.png"
-const HERO := preload("res://assets/undercurrent_pixel_v1/actor_design/yelingyun_s1_idle_concept_v1.png")
-const ENEMY := preload("res://assets/undercurrent_pixel_v1/actor_design/quick_sword_dummy_idle_concept_v1.png")
+const HERO := preload("res://assets/battle/undercurrent_pixel_v1/actor_design/yelingyun_s1_idle_concept_v1.png")
+const ENEMY := preload("res://assets/battle/undercurrent_pixel_v1/actor_design/quick_sword_dummy_idle_concept_v1.png")
 
 
 func _initialize() -> void:

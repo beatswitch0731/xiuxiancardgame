@@ -1,7 +1,7 @@
 extends SceneTree
 
 # A real-entry visual study only. It never rewrites the formal SpriteFrames.
-const ROOT := "res://assets/undercurrent_pixel_v1/actor_identity_v4_study/"
+const ROOT := "res://assets/battle/undercurrent_pixel_v1/actor_identity_v4_study/"
 const OUT := "res://../artifacts/godot-migration/actor-identity-v4/"
 
 

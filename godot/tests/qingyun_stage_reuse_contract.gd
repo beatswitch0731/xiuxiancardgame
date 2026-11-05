@@ -16,7 +16,7 @@ func _run() -> void:
 		return
 	var world: Node2D = stage.get_node("Viewport/World")
 	var room: Sprite2D = world.get_node("QingyunRoomNative")
-	if room.texture.resource_path != "res://assets/undercurrent_pixel_v1/qingyun_trial_room_v1.png":
+	if room.texture.resource_path != "res://assets/battle/undercurrent_pixel_v1/qingyun_trial_room_v1.png":
 		_fail("Approved room texture changed")
 		return
 	if not world.y_sort_enabled:

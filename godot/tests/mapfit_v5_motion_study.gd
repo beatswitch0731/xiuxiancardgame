@@ -57,7 +57,7 @@ func _run() -> void:
 	enemy_anchor.get_node("Shadow").scale = Vector2(0.6, 0.65)
 	var fx: Node = stage.get_node("Viewport/World/HitFX")
 	fx.set_script(load("res://tests/mapfit_v5_probe_fx.gd"))
-	var fx_doc: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://assets/undercurrent_pixel_v1/skill_fx_profiles_v1.json"))
+	var fx_doc: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://assets/battle/undercurrent_pixel_v1/skill_fx_profiles_v1.json"))
 	if not fx.call("configure", fx_doc):
 		push_error("Study FX configuration failed")
 		quit(1)
