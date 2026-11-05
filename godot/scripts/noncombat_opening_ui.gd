@@ -30,6 +30,7 @@ const BattleStubScript = preload("res://scripts/battle_stub.gd")
 var battle_stub_mode: bool = false
 const RewardArenaScene = preload("res://scenes/duel_stage_hd2d.tscn")
 const GameSkin = preload("res://scripts/game_ui_skin.gd")
+const NoncombatSlotScreen = preload("res://scripts/noncombat_slot_screen.gd")
 const WorldMap = preload("res://scripts/noncombat_world_map.gd")
 const WorldMapUI = preload("res://scripts/noncombat_world_map_ui.gd")
 const NpcInteractionUI = preload("res://scripts/noncombat_npc_interaction_ui.gd")
@@ -486,60 +487,19 @@ func _add_reward_choice_copy(button: Button, title: String, effect: String,
 	effect_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	copy.add_child(effect_label)
 
-
 func _build_slot_screen(parent: Control) -> void:
-	slot_screen = VBoxContainer.new()
-	slot_screen.name = "SlotSelection"
-	slot_screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	slot_screen.alignment = BoxContainer.ALIGNMENT_CENTER
-	slot_screen.add_theme_constant_override("separation", 15)
+	# S3：屏内构建搬到 NoncombatSlotScreen；对话框仍留在本脚本（浏览器导入
+	# 流程要直接读 ui.browser_save_picker 等成员），节点路径与抽取前一致。
+	slot_screen = NoncombatSlotScreen.new()
+	slot_status_label = slot_screen.status_label
+	slot_audio_button = slot_screen.audio_button
+	slot_screen.slot_pressed.connect(_on_slot_pressed)
+	slot_screen.import_requested.connect(
+		func() -> void: browser_save_picker.popup_centered_ratio(0.7))
+	slot_screen.audio_toggled.connect(_toggle_all_audio)
+	slot_screen.experience_requested.connect(_open_experience_dialog)
+	slot_screen.gallery_requested.connect(_open_heavenly_gallery)
 	parent.add_child(slot_screen)
-	var heading := _ink_label("选择独立存档", 36)
-	heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	slot_screen.add_child(heading)
-	slot_status_label = _ink_label("", 16)
-	slot_status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	slot_screen.add_child(slot_status_label)
-	for slot_id in SaveSlots.SLOT_IDS:
-		var button := Button.new()
-		button.name = "Slot_" + slot_id
-		button.custom_minimum_size = Vector2(560, 70)
-		button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		GameSkin.apply_paper_button(button, GameSkin.BRASS)
-		button.add_theme_font_size_override("font_size", 19)
-		button.pressed.connect(_on_slot_pressed.bind(slot_id))
-		slot_screen.add_child(button)
-	var import_button := Button.new()
-	import_button.name = "ImportBrowserTutorial"
-	import_button.text = "导入网页版早期存档"
-	import_button.custom_minimum_size = Vector2(320, 48)
-	import_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	GameSkin.apply_paper_button(import_button, GameSkin.JADE)
-	import_button.pressed.connect(func() -> void: browser_save_picker.popup_centered_ratio(0.7))
-	slot_screen.add_child(import_button)
-	slot_audio_button = Button.new()
-	slot_audio_button.name = "ToggleAllAudioSlots"
-	slot_audio_button.custom_minimum_size = Vector2(220, 44)
-	slot_audio_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	GameSkin.apply_paper_button(slot_audio_button, GameSkin.JADE)
-	slot_audio_button.pressed.connect(_toggle_all_audio)
-	slot_screen.add_child(slot_audio_button)
-	var slot_experience_button := Button.new()
-	slot_experience_button.name = "OpenExperienceSettingsSlots"
-	slot_experience_button.text = "体验设置"
-	slot_experience_button.custom_minimum_size = Vector2(220, 44)
-	slot_experience_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	GameSkin.apply_paper_button(slot_experience_button, GameSkin.JADE)
-	slot_experience_button.pressed.connect(_open_experience_dialog)
-	slot_screen.add_child(slot_experience_button)
-	var slot_gallery_button := Button.new()
-	slot_gallery_button.name = "OpenHeavenlyGallerySlots"
-	slot_gallery_button.text = "天道万物志"
-	slot_gallery_button.custom_minimum_size = Vector2(220, 44)
-	slot_gallery_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	GameSkin.apply_paper_button(slot_gallery_button, GameSkin.JADE)
-	slot_gallery_button.pressed.connect(_open_heavenly_gallery)
-	slot_screen.add_child(slot_gallery_button)
 	browser_save_picker = FileDialog.new()
 	browser_save_picker.name = "BrowserSavePicker"
 	browser_save_picker.access = FileDialog.ACCESS_FILESYSTEM
@@ -561,8 +521,6 @@ func _build_slot_screen(parent: Control) -> void:
 	browser_replace_confirm.ok_button_text = "备份并替换"
 	browser_replace_confirm.confirmed.connect(_confirm_browser_replace)
 	add_child(browser_replace_confirm)
-
-
 func _on_browser_save_file_selected(path: String) -> void:
 	if save_slots == null:
 		return
