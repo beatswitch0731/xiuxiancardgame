@@ -38,6 +38,84 @@ const WorldPulse = preload("res://scripts/noncombat_world_pulse.gd")
 const INK_FONT = preload("res://assets/fonts/LXGWWenKai-Regular.ttf")
 const READABLE_FONT = preload("res://assets/fonts/NotoSansSC-VF.ttf")
 const CONTENT_ROOT := "res://content/"
+const EventTypes = preload("res://scripts/noncombat_event_types.gd")
+
+# 事件处理策略（S2）。本屏的分支只驱动音频；画面由 _render() 无条件重绘，
+# 因此「无分支」的类型不影响显示，只是没有专属音效。
+# HANDLED_* 与 AUDIO_ONLY_EVENTS 的并集必须等于 EventTypes.ALL（62），
+# 交集必须为空——由 tests/noncombat_event_coverage.gd 强制。
+const HANDLED_PROLOGUE := ["STARTED", "RESTORED", "CHOICE_COMMITTED"]
+const HANDLED_COMBAT_FLOW := [
+	"ENCOUNTER_WARNING", "BATTLE_REQUEST_READY",
+	"BATTLE_RESULT_COMMITTED", "BATTLE_RESULT_ACKNOWLEDGED",
+	"FIRST_SESSION_ROUTE_CHOSEN",
+	"ENCOUNTER_AVOIDED", "FLOW_CARD_READY", "MILESTONE_CHOSEN",
+	"MENTOR_CHOSEN", "DESTINY_WHEEL_FLIPPED",
+	"DEATH_NARRATIVE", "REBIRTH_PATH_REQUIRED",
+	"REBIRTH_PATH_SELECTED",
+]
+const HANDLED_RESULT := ["RESULT_ACKNOWLEDGED"]
+const HANDLED_VENDOR := ["VENDOR_PURCHASED", "VENDOR_ACTION"]
+const HANDLED_ALL := [
+	"STARTED", "RESTORED", "CHOICE_COMMITTED",
+	"ENCOUNTER_WARNING", "BATTLE_REQUEST_READY",
+	"BATTLE_RESULT_COMMITTED", "BATTLE_RESULT_ACKNOWLEDGED",
+	"FIRST_SESSION_ROUTE_CHOSEN",
+	"ENCOUNTER_AVOIDED", "FLOW_CARD_READY", "MILESTONE_CHOSEN",
+	"MENTOR_CHOSEN", "DESTINY_WHEEL_FLIPPED",
+	"DEATH_NARRATIVE", "REBIRTH_PATH_REQUIRED",
+	"REBIRTH_PATH_SELECTED",
+	"RESULT_ACKNOWLEDGED",
+	"VENDOR_PURCHASED", "VENDOR_ACTION",
+]
+# 无专属分支的事件类型（43 个 = 62 − 19）。它们只影响显示以外的东西，
+# 画面靠 _render() 无条件重绘，故不需要在此增加分支。
+const AUDIO_ONLY_EVENTS := [
+	"ALLY_CHOSEN",
+	"BOSS_FRAGMENT_CLAIMED",
+	"CAMP_CHOSEN",
+	"CAMP_TARGET_CANCELLED",
+	"CAMP_TARGET_SELECTED",
+	"CHOICE_ECHO_CHOSEN",
+	"COMPANION_ARC_CHOSEN",
+	"COMPANION_CHOSEN",
+	"COMPANION_PORTRAIT_SELECTED",
+	"DUNGEON_ABANDONED",
+	"DUNGEON_ADVANCED",
+	"DUNGEON_ENTERED",
+	"EMERGENT_CHOSEN",
+	"FACTION_CHOSEN",
+	"GHOST_DEBT_SETTLED",
+	"HINT_CHOSEN",
+	"INNER_DEMON_CHOSEN",
+	"KARMA_CHOSEN",
+	"LEGACY_FOCUS_CHANGED",
+	"LICENSED_DELIVERY_CLAIMED",
+	"LOCATION_CHOSEN",
+	"MARKET_NARRATIVE_RESULT",
+	"MARKET_SKIPPED",
+	"NORMAL_CHOSEN",
+	"NPC_CROSS_CHOSEN",
+	"NPC_ENCOUNTER_CHOSEN",
+	"NPC_INTERACTION",
+	"QUEST_CHOSEN",
+	"REALM_EPIPHANY_CHOSEN",
+	"REBIRTH_BOON_CHOSEN",
+	"REBIRTH_TREE_CHANGED",
+	"RIPPLE_CHOSEN",
+	"SEER_CHOSEN",
+	"SHOP_SKIPPED",
+	"SURFACING_CHOSEN",
+	"THREAD_CHOSEN",
+	"TREASURE_EQUIPMENT_CHANGED",
+	"UPPER_REALM_CHOSEN",
+	"UPPER_REALM_ENTERED",
+	"VENDOR_CLOSED",
+	"VENDOR_DISMISSED",
+	"VENDOR_LOADOUT_RESOLVED",
+	"VENDOR_OPENED",
+]
+var _undeclared_event_types: Dictionary = {}
 
 @export var save_path := "user://noncombat_opening_v1.json"
 @export var slot_root_path := "user://"
@@ -1739,34 +1817,30 @@ func _on_path_pressed(path_id: String) -> void:
 
 func _on_opening_changed(event: Dictionary) -> void:
 	_choice_pending = false
-	if event.get("type") == "STARTED":
+	var t := String(event.get("type", ""))
+	if t == EventTypes.STARTED:
 		opening_audio.play_opening_music()
 		opening_audio.set_story_scene(String(event.get("cardId", "")))
-	elif event.get("type") == "RESTORED":
+	elif t == EventTypes.RESTORED:
 		opening_audio.play_opening_music()
 		opening_audio.set_story_scene(String(event.get("cardId", "")))
-	elif event.get("type") == "CHOICE_COMMITTED":
+	elif t == EventTypes.CHOICE_COMMITTED:
 		var next_card_id := String(event.get("nextCardId", ""))
 		# At the prologue threshold the spoken oath replaces the generic click.
 		if not next_card_id.begins_with("q_start_"):
 			opening_audio.play_choice_snap()
 		opening_audio.set_story_scene(next_card_id, true)
-	elif event.get("type") in ["ENCOUNTER_WARNING", "BATTLE_REQUEST_READY",
-			"BATTLE_RESULT_COMMITTED", "BATTLE_RESULT_ACKNOWLEDGED",
-			"FIRST_SESSION_ROUTE_CHOSEN",
-			"ENCOUNTER_AVOIDED", "FLOW_CARD_READY", "MILESTONE_CHOSEN",
-			"MENTOR_CHOSEN", "DESTINY_WHEEL_FLIPPED",
-			"DEATH_NARRATIVE", "REBIRTH_PATH_REQUIRED",
-			"REBIRTH_PATH_SELECTED"]:
+	elif t in HANDLED_COMBAT_FLOW:
 		opening_audio.play_choice_snap()
 		opening_audio.set_story_scene(String(event.get("cardId", "")), true)
-		if event.get("type") == "FLOW_CARD_READY" \
+		if t == EventTypes.FLOW_CARD_READY \
 				and opening.state.get("phase") == "KARMA_PENDING":
 			opening_audio.play_karma_presentation()
-	elif event.get("type") == "RESULT_ACKNOWLEDGED":
+	elif t == EventTypes.RESULT_ACKNOWLEDGED:
 		opening_audio.play_choice_snap()
-	elif event.get("type") in ["VENDOR_PURCHASED", "VENDOR_ACTION"]:
+	elif t in HANDLED_VENDOR:
 		opening_audio.play_market_transaction()
+	_report_undeclared_event(t)
 	if opening.state.get("phase") == "REBIRTH_PENDING" \
 			and opening.state.get("path") == null:
 		_show_path_screen()
@@ -1779,6 +1853,19 @@ func _on_opening_changed(event: Dictionary) -> void:
 		_render()
 		if opening.state.get("phase") == "FLOW_PENDING":
 			call_deferred("_resume_flow_if_pending")
+
+
+## 策略校验：每个事件类型都必须被显式声明为「有专属分支」或「仅音频」。
+## 新增事件类型却忘了在本屏登记时，这里会报错（按类型去重，只报一次）。
+func _report_undeclared_event(event_type: String) -> void:
+	if event_type.is_empty():
+		return
+	if HANDLED_ALL.has(event_type) or AUDIO_ONLY_EVENTS.has(event_type):
+		return
+	if _undeclared_event_types.has(event_type):
+		return
+	_undeclared_event_types[event_type] = true
+	push_error("[opening_ui] event type has no declared policy: " + event_type)
 
 
 func _fit_story_screen() -> void:
