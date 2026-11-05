@@ -31,6 +31,8 @@ var battle_stub_mode: bool = false
 const RewardArenaScene = preload("res://scenes/duel_stage_hd2d.tscn")
 const GameSkin = preload("res://scripts/game_ui_skin.gd")
 const NoncombatSlotScreen = preload("res://scripts/noncombat_slot_screen.gd")
+const NoncombatNameScreen = preload("res://scripts/noncombat_name_screen.gd")
+const NoncombatPathScreen = preload("res://scripts/noncombat_path_screen.gd")
 const WorldMap = preload("res://scripts/noncombat_world_map.gd")
 const WorldMapUI = preload("res://scripts/noncombat_world_map_ui.gd")
 const NpcInteractionUI = preload("res://scripts/noncombat_npc_interaction_ui.gd")
@@ -727,83 +729,19 @@ func _unrestorable_message() -> String:
 		return "存档提交待恢复；原文件已保留，已禁用新开局。"
 	return "存档无法校验且无法归档；为保护原文件，已禁用新开局。"
 
-
 func _build_name_screen(parent: Control) -> void:
-	name_screen = VBoxContainer.new()
-	name_screen.name = "NameCreation"
-	name_screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	name_screen.alignment = BoxContainer.ALIGNMENT_CENTER
-	name_screen.add_theme_constant_override("separation", 14)
+	# B：屏内构建搬到 NoncombatNameScreen；空名/长度校验仍在 _confirm_name，
+	# 父脚本只保留成员别名，9 处 name_status_label.text 与 2 处 name_input
+	# 的读写因此一行未改。
+	name_screen = NoncombatNameScreen.new()
+	name_screen.setup(func(path: String): return _art_texture(path),
+		save_slots != null)
+	name_input = name_screen.name_input
+	name_count_label = name_screen.count_label
+	name_status_label = name_screen.status_label
+	name_screen.confirm_requested.connect(_confirm_name)
+	name_screen.return_requested.connect(_show_slot_screen)
 	parent.add_child(name_screen)
-	var logo := TextureRect.new()
-	logo.name = "SourceLogo"
-	logo.texture = _art_texture("assets/icons/xianxia_minimal_logo.png")
-	logo.custom_minimum_size = Vector2(104, 104)
-	logo.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	name_screen.add_child(logo)
-	var title := _ink_label("一念仙途", 47)
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	name_screen.add_child(title)
-	var subtitle := _ink_label("一念入道 · 执掌因果", 21)
-	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	name_screen.add_child(subtitle)
-	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(430, 250)
-	panel.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	var panel_style := StyleBoxFlat.new()
-	panel_style.bg_color = Color(0.095, 0.078, 0.071, 0.94)
-	panel_style.border_color = Color("d9b168")
-	panel_style.set_border_width_all(1)
-	panel_style.set_corner_radius_all(8)
-	panel_style.set_content_margin_all(20)
-	panel.add_theme_stylebox_override("panel", panel_style)
-	name_screen.add_child(panel)
-	var inner := VBoxContainer.new()
-	inner.add_theme_constant_override("separation", 14)
-	panel.add_child(inner)
-	var heading := _label("玉册题名 · 开启仙途", 26)
-	heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	inner.add_child(heading)
-	var hint := _label("仙途漫漫，请于道册题写尊号（四字以内）", 16)
-	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	inner.add_child(hint)
-	name_input = LineEdit.new()
-	name_input.name = "SourceNameInput"
-	name_input.max_length = 4
-	name_input.placeholder_text = "叶凌云"
-	name_input.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	name_input.add_theme_font_size_override("font_size", 24)
-	GameSkin.apply_text_input(name_input)
-	name_input.text_submitted.connect(func(_text: String) -> void: _confirm_name())
-	inner.add_child(name_input)
-	name_count_label = _label("0/4", 14)
-	name_count_label.name = "NameCharacterCount"
-	name_count_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	inner.add_child(name_count_label)
-	name_input.text_changed.connect(func(value: String) -> void:
-		name_count_label.text = "%d/4" % value.length())
-	var confirm := Button.new()
-	confirm.name = "ConfirmName"
-	confirm.text = "朱 · 凝神定名 · 踏入仙途"
-	confirm.custom_minimum_size.y = 50
-	GameSkin.apply_action_button(confirm, GameSkin.WARM_RED)
-	confirm.pressed.connect(_confirm_name)
-	inner.add_child(confirm)
-	name_status_label = _ink_label("", 15)
-	name_status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	name_screen.add_child(name_status_label)
-	var back := Button.new()
-	back.name = "ReturnToSlots"
-	back.text = "返回玉简"
-	back.visible = save_slots != null
-	back.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	GameSkin.apply_paper_button(back, GameSkin.BRASS)
-	back.pressed.connect(_show_slot_screen)
-	name_screen.add_child(back)
-
-
 func _confirm_name() -> void:
 	if not name_input.editable:
 		return
@@ -812,95 +750,18 @@ func _confirm_name() -> void:
 		_pending_player_name = "叶凌云"
 	_show_path_screen()
 
-
 func _build_path_screen(parent: Control) -> void:
-	path_screen = VBoxContainer.new()
-	path_screen.name = "PathSelection"
-	path_screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	path_screen.alignment = BoxContainer.ALIGNMENT_CENTER
-	path_screen.add_theme_constant_override("separation", 15)
+	# B：屏内构建搬到 NoncombatPathScreen；四路数据仍由本脚本的 _source_paths()
+	# 提供，新类不碰 content_repository。
+	# 必须先 add_child 再 setup：卡片内的绝对定位依赖"入树后重设尺寸"，
+	# 若在未入树时构建，重设发生在入树前会被布局重算覆盖。
+	path_screen = NoncombatPathScreen.new()
 	parent.add_child(path_screen)
-
-	var heading := _ink_label("择道立誓 · 传承功法", 34)
-	heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	path_screen.add_child(heading)
-	var instruction := _ink_label("修仙之道，各有所长；一经选择，宿命启程", 19)
-	instruction.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	path_screen.add_child(instruction)
-	path_status_label = _ink_label("", 15)
-	path_status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	path_screen.add_child(path_status_label)
-	var grid := HBoxContainer.new()
-	grid.name = "SourcePathGrid"
-	grid.alignment = BoxContainer.ALIGNMENT_CENTER
-	grid.add_theme_constant_override("separation", 16)
-	path_screen.add_child(grid)
-
-	var paths: Dictionary = _source_paths()
-	# The four icons, captions, and accent colors come from index.html's
-	# path-floating-grid. Mechanics still come from data/config/paths.json.
-	var source_captions := {
-		"sword": ["凌霄", "霜剑斩空 · 极致杀伐", "一剑破万法，凭凌厉剑意断绝因果、一击致命"],
-		"spell": ["碧霄", "雷法通玄 · 五行变化", "诸术兼修，引天地雷霆与五行灵气运筹帷幄"],
-		"body": ["沉金", "肉身成圣 · 气血不灭", "锻淬金身，凭浩瀚血气化作坚强防壁震慑强敌"],
-		"pill": ["青木", "以丹入道 · 草木蕴灵", "灵丹妙药，炼天地草木菁华转化为修行大机缘"],
-	}
-	var accents := {"sword": Color("2a5a5b"), "spell": Color("5c425e"),
-		"body": Color("c86f3b"), "pill": Color("375945")}
-	for path_id in paths:
-		var path: Dictionary = paths[path_id]
-		var button := Button.new()
-		button.name = "Path_" + String(path_id)
-		button.custom_minimum_size = Vector2(218, 335)
-		GameSkin.apply_path_card(button, accents[path_id])
-		button.tooltip_text = "%s：%s" % [path.get("name", path_id), source_captions[path_id][1]]
-		var icon := TextureRect.new()
-		icon.name = "SourcePathIcon"
-		icon.texture = _art_texture("assets/icons/%s_ink.png" % path_id)
-		icon.position = Vector2(29, 18)
-		icon.size = Vector2(160, 160)
-		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		button.add_child(icon)
-		var title := _ink_label("%s · %s" % [path.get("name", path_id), source_captions[path_id][0]], 22)
-		title.position = Vector2(8, 187)
-		title.size = Vector2(202, 34)
-		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		title.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		button.add_child(title)
-		var calligraphy := _ink_label(source_captions[path_id][1], 17)
-		calligraphy.position = Vector2(8, 230)
-		calligraphy.size = Vector2(202, 30)
-		calligraphy.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		calligraphy.add_theme_color_override("font_color", accents[path_id])
-		calligraphy.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		button.add_child(calligraphy)
-		var desc := _ink_label(source_captions[path_id][2], 13)
-		desc.position = Vector2(13, 270)
-		desc.size = Vector2(192, 52)
-		desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		desc.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		desc.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		button.add_child(desc)
-		button.pressed.connect(_on_path_pressed.bind(String(path_id)))
-		grid.add_child(button)
-		# TextureRect and Label initialize to their authored texture/text minimum
-		# during tree entry. Size these absolute children after the button enters.
-		icon.size = Vector2(160, 160)
-		title.size = Vector2(202, 34)
-		calligraphy.size = Vector2(202, 30)
-		desc.size = Vector2(192, 52)
-	var back := Button.new()
-	back.name = "ReturnToSlots"
-	back.text = "返回玉简"
-	back.visible = save_slots != null
-	back.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	GameSkin.apply_paper_button(back, GameSkin.BRASS)
-	back.pressed.connect(_show_slot_screen)
-	path_screen.add_child(back)
-
-
+	path_screen.setup(func(path: String): return _art_texture(path),
+		_source_paths(), save_slots != null)
+	path_status_label = path_screen.status_label
+	path_screen.path_selected.connect(_on_path_pressed)
+	path_screen.return_requested.connect(_show_slot_screen)
 func _build_story_screen(parent: Control) -> void:
 	story_screen = VBoxContainer.new()
 	story_screen.name = "StoryScreen"
