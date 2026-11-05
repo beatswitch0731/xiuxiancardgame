@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/duel_stage_hd2d.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/hd2d/cangmang_distant_mountains_v1.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/battle/hd2d/cangmang_distant_mountains_v1.png" id="2"]
 
 [sub_resource type="QuadMesh" id="DistantMountainsMesh"]
 size = Vector2(48, 27.02)

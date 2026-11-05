@@ -6,7 +6,7 @@ signal frame_changed(clip: String, frame: int)
 signal contact(clip: String)
 signal action_finished(clip: String)
 
-const MANIFEST := "res://assets/equipment_demo/manifest.json"
+const MANIFEST := "res://assets/demo/equipment_demo/manifest.json"
 var current_clip := "idle"
 var current_frame := 0
 var speed_scale := 1.0

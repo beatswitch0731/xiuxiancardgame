@@ -7,7 +7,7 @@ signal action_contact(action_name: String)
 signal action_finished(action_name: String)
 
 const ACTIONS: AnimationLibrary = preload(
-	"res://assets/actor_image3d_mvp/yelingyun_s1_actions.tres")
+	"res://assets/characters/actor_image3d_mvp/yelingyun_s1_actions.tres")
 const IDLE := "idle_breath"
 
 var _skeleton: Skeleton3D

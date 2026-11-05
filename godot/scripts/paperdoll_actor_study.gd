@@ -4,8 +4,8 @@ extends Node2D
 
 signal study_contact(action: StringName)
 
-const DEFAULT_MANIFEST := "res://assets/undercurrent_pixel_v1/paperdoll_v1/paperdoll_manifest.json"
-const SHARED_ACTIONS := "res://assets/undercurrent_pixel_v1/paperdoll_v1/shared_actions.tres"
+const DEFAULT_MANIFEST := "res://assets/battle/undercurrent_pixel_v1/paperdoll_v1/paperdoll_manifest.json"
+const SHARED_ACTIONS := "res://assets/battle/undercurrent_pixel_v1/paperdoll_v1/shared_actions.tres"
 const BODY_PARTS := ["head", "torso", "pelvis", "upper_arm_l", "forearm_l", "upper_arm_r", "forearm_r", "thigh_l", "shin_l", "thigh_r", "shin_r"]
 const OPTIONAL_PARTS := ["ponytail", "grip_overlay"]
 const ACTIONS := ["idle", "thrust", "hurt"]

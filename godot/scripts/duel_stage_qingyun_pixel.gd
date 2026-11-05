@@ -2,8 +2,8 @@ extends "res://scripts/duel_stage_pixel_dungeon.gd"
 
 # Keep the approved painted room. Runtime code only places the authored art;
 # it does not redraw the room's bricks, torches or stone texture.
-const SCENE_PROFILE_PATH := "res://assets/undercurrent_pixel_v1/qingyun_scene_profile_v1.json"
-const FX_PROFILE_PATH := "res://assets/undercurrent_pixel_v1/skill_fx_profiles_v1.json"
+const SCENE_PROFILE_PATH := "res://assets/battle/undercurrent_pixel_v1/qingyun_scene_profile_v1.json"
+const FX_PROFILE_PATH := "res://assets/battle/undercurrent_pixel_v1/skill_fx_profiles_v1.json"
 const Registry = preload("res://scripts/runtime_data_registry.gd")
 const HERO_SCALE := 1.0
 const ENEMY_SCALE := 1.0

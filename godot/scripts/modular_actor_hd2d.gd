@@ -1,19 +1,19 @@
 extends Node3D
 
 # Visual-only keypose study. The existing HD-2D fighter keeps the action clock.
-const IDLE: Texture2D = preload("res://assets/modular_pixel_actor_v1/yelingyun_idle_mist_blue_candidate.png")
-const ANTICIPATION: Texture2D = preload("res://assets/actor_motion_lab_v1/yelingyun_anticipation_candidate.png")
-const THRUST: Texture2D = preload("res://assets/modular_pixel_actor_v1/yelingyun_thrust_mist_blue_candidate.png")
-const S2_IDLE: Texture2D = preload("res://assets/actor_motion_lab_v1/yelingyun_s2_idle_candidate_v3.png")
-const S2_ANTICIPATION: Texture2D = preload("res://assets/actor_motion_lab_v1/yelingyun_s2_anticipation_candidate_v3.png")
-const S2_THRUST: Texture2D = preload("res://assets/actor_motion_lab_v1/yelingyun_s2_thrust_candidate_v3.png")
-const S2_ARMOR_IDLE: Texture2D = preload("res://assets/actor_motion_lab_v1/yelingyun_s2_xuantiejia_idle_candidate.png")
-const S2_ARMOR_ANTICIPATION: Texture2D = preload("res://assets/actor_motion_lab_v1/yelingyun_s2_xuantiejia_anticipation_candidate.png")
-const S2_ARMOR_THRUST: Texture2D = preload("res://assets/actor_motion_lab_v1/yelingyun_s2_xuantiejia_thrust_candidate.png")
-const PRACTICE_SWORD: Texture2D = preload("res://assets/modular_pixel_actor_v1/practice_sword.png")
-const RUSTED_SWORD: Texture2D = preload("res://assets/modular_pixel_actor_v1/rusted_broken_sword.png")
-const LINGQUAN_HULU: Texture2D = preload("res://assets/actor_motion_lab_v1/lingquan_hulu_prop_candidate.png")
-const QINGYUN_SWORD_CASE: Texture2D = preload("res://assets/actor_motion_lab_v1/qingyun_sword_case_prop_candidate_v2.png")
+const IDLE: Texture2D = preload("res://assets/characters/modular_pixel_actor_v1/yelingyun_idle_mist_blue_candidate.png")
+const ANTICIPATION: Texture2D = preload("res://assets/characters/actor_motion_lab_v1/yelingyun_anticipation_candidate.png")
+const THRUST: Texture2D = preload("res://assets/characters/modular_pixel_actor_v1/yelingyun_thrust_mist_blue_candidate.png")
+const S2_IDLE: Texture2D = preload("res://assets/characters/actor_motion_lab_v1/yelingyun_s2_idle_candidate_v3.png")
+const S2_ANTICIPATION: Texture2D = preload("res://assets/characters/actor_motion_lab_v1/yelingyun_s2_anticipation_candidate_v3.png")
+const S2_THRUST: Texture2D = preload("res://assets/characters/actor_motion_lab_v1/yelingyun_s2_thrust_candidate_v3.png")
+const S2_ARMOR_IDLE: Texture2D = preload("res://assets/characters/actor_motion_lab_v1/yelingyun_s2_xuantiejia_idle_candidate.png")
+const S2_ARMOR_ANTICIPATION: Texture2D = preload("res://assets/characters/actor_motion_lab_v1/yelingyun_s2_xuantiejia_anticipation_candidate.png")
+const S2_ARMOR_THRUST: Texture2D = preload("res://assets/characters/actor_motion_lab_v1/yelingyun_s2_xuantiejia_thrust_candidate.png")
+const PRACTICE_SWORD: Texture2D = preload("res://assets/characters/modular_pixel_actor_v1/practice_sword.png")
+const RUSTED_SWORD: Texture2D = preload("res://assets/characters/modular_pixel_actor_v1/rusted_broken_sword.png")
+const LINGQUAN_HULU: Texture2D = preload("res://assets/characters/actor_motion_lab_v1/lingquan_hulu_prop_candidate.png")
+const QINGYUN_SWORD_CASE: Texture2D = preload("res://assets/characters/actor_motion_lab_v1/qingyun_sword_case_prop_candidate_v2.png")
 
 const BODY_PIXEL_SIZE := 0.0023
 const WEAPON_PIXEL_SIZE := BODY_PIXEL_SIZE * 0.36

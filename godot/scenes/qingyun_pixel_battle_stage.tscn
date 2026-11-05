@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/duel_stage_qingyun_pixel.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/pixel_dungeon_room.gd" id="2"]
-[ext_resource type="SpriteFrames" path="res://assets/undercurrent_pixel_v1/actor_native_v1/yelingyun_native_v1.tres" id="3"]
-[ext_resource type="SpriteFrames" path="res://assets/undercurrent_pixel_v1/actor_native_v1/quick_sword_dummy_native_v1.tres" id="4"]
+[ext_resource type="SpriteFrames" path="res://assets/battle/undercurrent_pixel_v1/actor_native_v1/yelingyun_native_v1.tres" id="3"]
+[ext_resource type="SpriteFrames" path="res://assets/battle/undercurrent_pixel_v1/actor_native_v1/quick_sword_dummy_native_v1.tres" id="4"]
 
 [node name="QingyunPixelStage" type="SubViewportContainer"]
 layout_mode = 3

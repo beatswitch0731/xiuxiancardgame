@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="PackedScene" path="res://assets/hd2d/village_shrine_left_v1/well_chamber_left_v1.glb" id="1_village"]
+[ext_resource type="PackedScene" path="res://assets/battle/hd2d/village_shrine_left_v1/well_chamber_left_v1.glb" id="1_village"]
 
 [node name="VillageWellChamberLeftCandidate" type="Node3D"]
 

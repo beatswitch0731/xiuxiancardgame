@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://scripts/duel_stage_25d.gd" id="1"]
-[ext_resource type="SpriteFrames" path="res://assets/source_first_fight/wood_contact.tres" id="2"]
+[ext_resource type="SpriteFrames" path="res://assets/battle/source_first_fight/wood_contact.tres" id="2"]
 [ext_resource type="Shader" path="res://shaders/cangmang_projected_court.gdshader" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/cangmang_trial_architecture.tscn" id="5"]
-[ext_resource type="SpriteFrames" path="res://assets/source_first_fight/sword_trace.tres" id="6"]
+[ext_resource type="SpriteFrames" path="res://assets/battle/source_first_fight/sword_trace.tres" id="6"]
 
 [sub_resource type="BoxMesh" id="FloorMesh"]
 size = Vector3(30, 0.24, 18)

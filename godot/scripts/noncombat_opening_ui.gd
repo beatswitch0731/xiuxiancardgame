@@ -305,7 +305,7 @@ func _show_teaching_reward_arena(current: Dictionary, run: Dictionary) -> bool:
 	add_child(arena)
 	move_child(arena, 0)
 	if not arena.has_hd2d_assets() or arena.stage_art.get("selectedScene") != \
-			"res://assets/hd2d/world_v17/qingyun_tutorial_hall_v17.glb":
+			"res://assets/battle/hd2d/world_v17/qingyun_tutorial_hall_v17.glb":
 		arena.queue_free()
 		return false
 	reward_arena = arena

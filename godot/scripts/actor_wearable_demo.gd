@@ -3,9 +3,9 @@ extends Control
 const Registry = preload("res://scripts/runtime_data_registry.gd")
 const Router = preload("res://scripts/combat_stage_router.gd")
 const Stage = preload("res://scenes/duel_stage_hd2d.tscn")
-const ACTOR = "res://assets/actor_wearable_v2/yelingyun_wearable_v2.glb"
-const SWORD = "res://assets/actor_wearable_v2/traded_rusted_sword_v2.glb"
-const SHEATH = "res://assets/actor_wearable_v2/residual_scabbard_v2.glb"
+const ACTOR = "res://assets/characters/actor_wearable_v2/yelingyun_wearable_v2.glb"
+const SWORD = "res://assets/characters/actor_wearable_v2/traded_rusted_sword_v2.glb"
+const SHEATH = "res://assets/characters/actor_wearable_v2/residual_scabbard_v2.glb"
 
 var stage: SubViewportContainer
 var actor_root: Node3D
@@ -66,7 +66,7 @@ func _ready() -> void:
 					var fabric := ShaderMaterial.new()
 					fabric.resource_name = mat.resource_name
 					fabric.shader = load("res://shaders/actor_fabric_v3.gdshader")
-					fabric.set_shader_parameter("fabric_albedo", load("res://assets/actor_wearable_v2/indigo_cloth_albedo_v3.png"))
+					fabric.set_shader_parameter("fabric_albedo", load("res://assets/characters/actor_wearable_v2/indigo_cloth_albedo_v3.png"))
 					fabric.set_shader_parameter("dye", fabric_colors[mat.resource_name])
 					node.set_surface_override_material(i, fabric)
 	for clip_name in animation_player.get_animation_list():

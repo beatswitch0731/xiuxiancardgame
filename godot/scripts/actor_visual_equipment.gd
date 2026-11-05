@@ -5,7 +5,7 @@ const VISUALS := {
 	"traded_rusted_sword": {
 		"slot": "weapon",
 		"bone": "hand_L",
-		"scene": "res://assets/actor_image3d_mvp/traded_rusted_sword_model_candidate.glb",
+		"scene": "res://assets/characters/actor_image3d_mvp/traded_rusted_sword_model_candidate.glb",
 	},
 }
 

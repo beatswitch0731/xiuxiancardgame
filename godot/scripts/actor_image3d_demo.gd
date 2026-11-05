@@ -5,11 +5,11 @@ extends Control
 const Registry = preload("res://scripts/runtime_data_registry.gd")
 const Router = preload("res://scripts/combat_stage_router.gd")
 const Stage = preload("res://scenes/duel_stage_hd2d.tscn")
-const ACTOR = preload("res://assets/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb")
+const ACTOR = preload("res://assets/characters/actor_image3d_mvp/yelingyun_image3d_rig_candidate.glb")
 const VisualEquipment = preload("res://scripts/actor_visual_equipment.gd")
 const SkeletalActionModule = preload("res://scripts/actor_skeletal_action_module.gd")
 const UAL_CANDIDATE: AnimationLibrary = preload(
-	"res://assets/actor_image3d_mvp/yelingyun_ual_retarg_candidate.tres")
+	"res://assets/characters/actor_image3d_mvp/yelingyun_ual_retarg_candidate.tres")
 
 @export var use_ual_candidate := false
 

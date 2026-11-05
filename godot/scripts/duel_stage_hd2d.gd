@@ -292,7 +292,7 @@ func _ready() -> void:
 		_setup_trial_v8_candidate()
 	elif use_trial_v7_candidate:
 		_setup_trial_v7_candidate()
-	elif use_trial_v17_candidate or use_trial_v16_candidate or use_trial_v15_candidate or use_trial_v14_candidate or use_trial_v13_candidate or use_trial_v11_candidate or use_trial_v10_candidate or use_trial_v9_candidate or use_trial_v6_candidate or String(stage_art.get("selectedScene", "")) in ["res://assets/hd2d/world_v6/cangmang_trial_hall_v6.glb", "res://assets/hd2d/world_v16/cangmang_trial_hall_v16.glb", "res://assets/hd2d/world_v17/qingyun_tutorial_hall_v17.glb"]:
+	elif use_trial_v17_candidate or use_trial_v16_candidate or use_trial_v15_candidate or use_trial_v14_candidate or use_trial_v13_candidate or use_trial_v11_candidate or use_trial_v10_candidate or use_trial_v9_candidate or use_trial_v6_candidate or String(stage_art.get("selectedScene", "")) in ["res://assets/battle/hd2d/world_v6/cangmang_trial_hall_v6.glb", "res://assets/battle/hd2d/world_v16/cangmang_trial_hall_v16.glb", "res://assets/battle/hd2d/world_v17/qingyun_tutorial_hall_v17.glb"]:
 		_setup_trial_v6_candidate()
 	elif use_trial_v4_candidate or use_trial_v5_candidate:
 		_setup_trial_v4_candidate()
@@ -304,10 +304,10 @@ func _ready() -> void:
 		_setup_trial_v13_candidate()
 	if use_trial_v16_candidate:
 		_setup_trial_v16_actor_keypose_candidate()
-	if String(stage_art.get("selectedScene", "")) in ["res://assets/hd2d/world_v16/cangmang_trial_hall_v16.glb", "res://assets/hd2d/world_v17/qingyun_tutorial_hall_v17.glb"]:
+	if String(stage_art.get("selectedScene", "")) in ["res://assets/battle/hd2d/world_v16/cangmang_trial_hall_v16.glb", "res://assets/battle/hd2d/world_v17/qingyun_tutorial_hall_v17.glb"]:
 		_setup_trial_v16_floor_wear()
 		_setup_trial_v16_fixture_lighting()
-	if String(stage_art.get("selectedScene", "")) == "res://assets/hd2d/world_v17/qingyun_tutorial_hall_v17.glb":
+	if String(stage_art.get("selectedScene", "")) == "res://assets/battle/hd2d/world_v17/qingyun_tutorial_hall_v17.glb":
 		_setup_tutorial_v17_lighting()
 		_setup_tutorial_actor_reflected_fill()
 		# The tutorial stage keeps both feet at their authored world anchors.
@@ -1128,8 +1128,8 @@ func _setup_trial_v16_actor_keypose_candidate() -> void:
 	# These are independently generated inhale candidates, normalized against
 	# the existing identity canvas. Keep them isolated from the source .tres.
 	var inputs := {
-		"player": "res://assets/source_first_fight/v16_keypose_candidate/yelingyun_idle_inhale_v1.png",
-		"enemy": "res://assets/source_first_fight/v16_keypose_candidate/quick_sword_dummy_idle_compression_v1.png",
+		"player": "res://assets/battle/source_first_fight/v16_keypose_candidate/yelingyun_idle_inhale_v1.png",
+		"enemy": "res://assets/battle/source_first_fight/v16_keypose_candidate/quick_sword_dummy_idle_compression_v1.png",
 	}
 	for side in ["player", "enemy"]:
 		var fighter := get_actor_model(side)
@@ -1151,12 +1151,12 @@ func _setup_trial_v16_actor_keypose_candidate() -> void:
 		frames.set_meta("foot_idle_2", foot)
 		frames.set_meta("authored_idle_breath", true)
 		if side == "player":
-			var contact := load("res://assets/source_first_fight/v16_keypose_candidate/yelingyun_sword_probe_contact_v1.png") as Texture2D
+			var contact := load("res://assets/battle/source_first_fight/v16_keypose_candidate/yelingyun_sword_probe_contact_v1.png") as Texture2D
 			if contact != null:
 				frames.set_frame("sword_probe", 3, contact, frames.get_frame_duration("sword_probe", 3))
 				frames.set_meta("blade_tip_sword_probe_3", Vector2(268, 173))
 		else:
-			var contact := load("res://assets/source_first_fight/v16_keypose_candidate/quick_sword_dummy_hurt_contact_v1.png") as Texture2D
+			var contact := load("res://assets/battle/source_first_fight/v16_keypose_candidate/quick_sword_dummy_hurt_contact_v1.png") as Texture2D
 			if contact != null:
 				frames.set_frame("hurt", 0, contact, frames.get_frame_duration("hurt", 0))
 				frames.set_meta("chest_hurt_0", Vector2(136, 172))
@@ -1174,7 +1174,7 @@ func _setup_breath_v17_candidate() -> void:
 		var frames := sprite.sprite_frames.duplicate(true) as SpriteFrames
 		var source_foot := float(frames.get_meta("foot_idle_0", 0.0))
 		var stem := "yelingyun" if side == "player" else "quick_sword_dummy"
-		var sheet_path := "res://assets/source_first_fight/breath_v17/frameronin_%s_idle_sheet.png" % stem
+		var sheet_path := "res://assets/battle/source_first_fight/breath_v17/frameronin_%s_idle_sheet.png" % stem
 		var sheet := load(sheet_path) as Texture2D
 		if sheet == null or sheet.get_width() != 640 or sheet.get_height() != 640:
 			push_error("Missing reviewed FrameRonin breath atlas: " + sheet_path)
@@ -1388,7 +1388,7 @@ func _setup_trial_v8_candidate() -> void:
 			node.visible = false
 	# The old gate's lamp occupied the new temple roof and lit it without an emitter.
 	(_world_root.get_node("GateLantern") as OmniLight3D).visible = false
-	var temple_scene := load("res://assets/hd2d/qingyun_temple_v8/chinese_temple_cc0.glb") as PackedScene
+	var temple_scene := load("res://assets/battle/hd2d/qingyun_temple_v8/chinese_temple_cc0.glb") as PackedScene
 	if temple_scene == null:
 		push_error("Missing V8 authored Chinese temple GLB")
 		return
@@ -1402,7 +1402,7 @@ func _setup_trial_v8_candidate() -> void:
 		push_error("V8 mountain material needs the original V5 vista mesh")
 		return
 	var material := vista.mesh.surface_get_material(0).duplicate() as StandardMaterial3D
-	var mountain_texture := load("res://assets/hd2d/qingyun_temple_v8/far_mountains_v1.png") as Texture2D
+	var mountain_texture := load("res://assets/battle/hd2d/qingyun_temple_v8/far_mountains_v1.png") as Texture2D
 	if mountain_texture == null:
 		push_error("Missing V8 distant mountain art")
 		return

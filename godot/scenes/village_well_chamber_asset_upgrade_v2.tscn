@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="PackedScene" path="res://assets/hd2d/well_chamber_asset_upgrade_v2/well_chamber_arch_v2.glb" id="1_village"]
+[ext_resource type="PackedScene" path="res://assets/battle/hd2d/well_chamber_asset_upgrade_v2/well_chamber_arch_v2.glb" id="1_village"]
 
 [node name="VillageWellChamberAssetUpgradeV2" type="Node3D"]
 

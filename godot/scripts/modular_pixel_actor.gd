@@ -1,12 +1,12 @@
 extends Node2D
 
 # A visual-only cutout study. Equipment never enters CombatDomain from here.
-const BODY_IDLE: Texture2D = preload("res://assets/modular_pixel_actor_v1/yelingyun_idle_mist_blue_candidate.png")
-const BODY_THRUST: Texture2D = preload("res://assets/modular_pixel_actor_v1/yelingyun_thrust_mist_blue_candidate.png")
-const PRACTICE_SWORD: Texture2D = preload("res://assets/modular_pixel_actor_v1/practice_sword.png")
-const RUSTED_SWORD: Texture2D = preload("res://assets/modular_pixel_actor_v1/rusted_broken_sword.png")
-const DARK_IRON_CUIRASS: Texture2D = preload("res://assets/modular_pixel_actor_v1/dark_iron_cuirass.png")
-const DARK_IRON_BRACER: Texture2D = preload("res://assets/modular_pixel_actor_v1/dark_iron_bracer.png")
+const BODY_IDLE: Texture2D = preload("res://assets/characters/modular_pixel_actor_v1/yelingyun_idle_mist_blue_candidate.png")
+const BODY_THRUST: Texture2D = preload("res://assets/characters/modular_pixel_actor_v1/yelingyun_thrust_mist_blue_candidate.png")
+const PRACTICE_SWORD: Texture2D = preload("res://assets/characters/modular_pixel_actor_v1/practice_sword.png")
+const RUSTED_SWORD: Texture2D = preload("res://assets/characters/modular_pixel_actor_v1/rusted_broken_sword.png")
+const DARK_IRON_CUIRASS: Texture2D = preload("res://assets/characters/modular_pixel_actor_v1/dark_iron_cuirass.png")
+const DARK_IRON_BRACER: Texture2D = preload("res://assets/characters/modular_pixel_actor_v1/dark_iron_bracer.png")
 
 const BODY_SCALE := 0.0625
 const WEAPON_SCALE := 0.035

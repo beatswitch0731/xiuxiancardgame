@@ -12,7 +12,7 @@ const LIGHT_POSITIONS := [
 	Vector2(145, 87), Vector2(495, 87), Vector2(145, 273), Vector2(495, 273)
 ]
 const MODULAR_ACTOR_SCRIPT_PATH := "res://scripts/modular_pixel_actor.gd"
-const QINGYUN_ROOM_PATH := "res://assets/modular_pixel_actor_v1/qingyun_trial_hall_candidate.png"
+const QINGYUN_ROOM_PATH := "res://assets/characters/modular_pixel_actor_v1/qingyun_trial_hall_candidate.png"
 
 @export var modular_actor_demo_preview := false
 @export var player_attack_travel := 90.0
