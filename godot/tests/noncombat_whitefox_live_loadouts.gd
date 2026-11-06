@@ -16,7 +16,7 @@ func _run() -> void:
 		return _fail("whitefox hound intent source trace is incomplete")
 	for source_path in intents.get("pins", {}):
 		var actual := FileAccess.get_sha256(ProjectSettings.globalize_path(
-			"res://").path_join("../" + source_path))
+			"res://tests/fixtures/source/").path_join(source_path))
 		if actual != intents["pins"][source_path]:
 			return _fail("whitefox hound source drift: " + source_path)
 	var cycle_by_path := {}

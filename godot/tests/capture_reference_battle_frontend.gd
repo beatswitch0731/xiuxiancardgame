@@ -1,7 +1,7 @@
 extends SceneTree
 
 const BattleScene = preload("res://scenes/reference_battle_demo.tscn")
-const OUT := "res://../artifacts/godot-migration/reference-battle-frontend/"
+const OUT := "res://output/captures/godot-migration/reference-battle-frontend/"
 
 
 func _initialize() -> void:

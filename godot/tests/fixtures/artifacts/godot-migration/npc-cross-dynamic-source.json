@@ -1,0 +1,168 @@
+[
+  {
+    "kind": "scheduled",
+    "realm": "foundation",
+    "currentLocation": "宗门",
+    "card": {
+      "id": "npc_cross_bai_ren_jian_linger_1",
+      "type": "NPC_CROSS",
+      "title": "白刃真人与剑灵儿·叙旧",
+      "description": "白刃真人和剑灵儿在青云剑宗·剑冢相遇。剑灵儿说了句什么，白刃真人罕见地笑了——你从未见过白刃真人这样的表情。",
+      "npcIds": [
+        "bai_ren",
+        "jian_linger"
+      ],
+      "manifestation": "PHYSICAL",
+      "location": "青云剑宗·剑冢",
+      "realm": "foundation",
+      "requiresPlayerPresence": true,
+      "eligibleRealms": [
+        "foundation"
+      ],
+      "relationStatus": "master-disciple",
+      "semanticKey": "npc-cross:bai_ren:jian_linger:master-disciple",
+      "once": false,
+      "repeatPolicy": {
+        "mode": "cooldown",
+        "cooldownTurns": 12
+      },
+      "weight": 0,
+      "tags": [
+        "npc_cross",
+        "dramatic"
+      ],
+      "choices": {
+        "left": {
+          "text": "上前加入他们的谈话",
+          "desc": "白刃真人为你让出半步，剑灵儿顺势把方才的话说完。你终于被纳入这段旧缘，而非只做路过的旁观者。",
+          "effects": {
+            "daoHeart": 3,
+            "wisdom": 3
+          },
+          "npcAffection": {
+            "bai_ren": 3,
+            "jian_linger": 3
+          }
+        },
+        "right": {
+          "text": "不打扰他们，远远观察",
+          "desc": "你没有惊动两人。白刃真人与剑灵儿把旧事说到尽处，你也从他们的神色里看懂了几分前因。",
+          "effects": {
+            "wisdom": 5
+          },
+          "npcAffection": {}
+        }
+      }
+    }
+  },
+  {
+    "kind": "scheduled",
+    "realm": "golden",
+    "currentLocation": "南疆·月湖",
+    "card": {
+      "id": "npc_cross_jiuwei_suyue_ds_moonmist_1",
+      "type": "NPC_CROSS",
+      "title": "问心有愧",
+      "description": "两人在南疆·月湖见面时，相对无言。九尾溯月微微侧身，月雾妖修的目光从你身上掠过——你感觉到一种说不清的张力。",
+      "npcIds": [
+        "jiuwei_suyue",
+        "ds_moonmist"
+      ],
+      "manifestation": "PHYSICAL",
+      "location": "南疆·月湖",
+      "realm": "golden",
+      "requiresPlayerPresence": true,
+      "eligibleRealms": [
+        "golden"
+      ],
+      "relationStatus": "neutral",
+      "semanticKey": "npc-cross:ds_moonmist:jiuwei_suyue:neutral",
+      "once": false,
+      "repeatPolicy": {
+        "mode": "cooldown",
+        "cooldownTurns": 12
+      },
+      "weight": 0,
+      "tags": [
+        "npc_cross",
+        "dramatic"
+      ],
+      "choices": {
+        "left": {
+          "text": "试着缓和气氛",
+          "desc": "你递出一句不偏不倚的话。九尾溯月与月雾妖修虽未就此亲近，却都肯把僵局放下一步。",
+          "effects": {
+            "daoHeart": 2,
+            "npc_relation:jiuwei_suyue:ds_moonmist": 5
+          }
+        },
+        "right": {
+          "text": "若无其事地走开",
+          "desc": "你没有介入。九尾溯月与月雾妖修各自离去，那点未说出口的芥蒂仍留在原处。",
+          "effects": {}
+        }
+      }
+    }
+  },
+  {
+    "kind": "template-only",
+    "realm": "tribulation",
+    "currentLocation": "天门裂隙",
+    "card": {
+      "id": "npc_cross_bai_ren_xuesha_laozu_1",
+      "type": "NPC_CROSS",
+      "title": "白刃真人与血煞老祖·对峙",
+      "description": "白刃真人与血煞老祖在天门裂隙不期而遇。空气骤然凝滞——浓烈的杀意在两人之间涌动。\n\n你被夹在中间。",
+      "npcIds": [
+        "bai_ren",
+        "xuesha_laozu"
+      ],
+      "manifestation": "PHYSICAL",
+      "location": "天门裂隙",
+      "realm": "tribulation",
+      "requiresPlayerPresence": true,
+      "eligibleRealms": [
+        "tribulation"
+      ],
+      "relationStatus": "rival",
+      "semanticKey": "npc-cross:bai_ren:xuesha_laozu:rival",
+      "once": false,
+      "repeatPolicy": {
+        "mode": "cooldown",
+        "cooldownTurns": 12
+      },
+      "weight": 0,
+      "tags": [
+        "npc_cross",
+        "dramatic"
+      ],
+      "choices": {
+        "left": {
+          "text": "挡在中间，以身为盾",
+          "desc": "你横在两人之间。白刃真人先按下杀意，血煞老祖也收住锋芒；这场冲突暂时止在你面前。",
+          "effects": {
+            "heroism": 5,
+            "daoHeart": 3,
+            "npc_relation:bai_ren:xuesha_laozu": 10
+          },
+          "npcAffection": {
+            "bai_ren": 2,
+            "xuesha_laozu": 2
+          }
+        },
+        "right": {
+          "text": "退后一步，让他们自己解决",
+          "desc": "你退出两人的锋芒。白刃真人与血煞老祖再无顾忌，旧怨因此更深了一层。",
+          "effects": {
+            "wisdom": 5,
+            "npc_relation:bai_ren:xuesha_laozu": -20
+          },
+          "npcAffection": {
+            "bai_ren": -1,
+            "xuesha_laozu": -1
+          }
+        }
+      }
+    }
+  }
+]

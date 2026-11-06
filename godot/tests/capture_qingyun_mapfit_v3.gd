@@ -2,7 +2,7 @@ extends SceneTree
 
 const HERO_SOURCE := "res://assets/battle/undercurrent_pixel_v1/actor_mapfit_v3/player_idle_source.png"
 const ENEMY_SOURCE := "res://assets/battle/undercurrent_pixel_v1/actor_mapfit_v3/enemy_idle_source.png"
-const OUT := "res://../artifacts/godot-migration/qingyun-pixel-combat/mapfit_v3_study_1280.png"
+const OUT := "res://tests/fixtures/artifacts/godot-migration/qingyun-pixel-combat/mapfit_v3_study_1280.png"
 
 
 func _initialize() -> void:

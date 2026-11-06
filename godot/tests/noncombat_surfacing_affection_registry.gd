@@ -6,7 +6,7 @@ const Flow = preload("res://scripts/noncombat_narrative_surfacing.gd")
 func _initialize() -> void:
 	var repo = Repository.new()
 	if not repo.build_index() or FileAccess.get_sha256(
-			"res://../src/systems/StoryNetworkSystem.js") != Repository.STORY_RULE_SHA:
+			"res://tests/fixtures/source/src/systems/StoryNetworkSystem.js") != Repository.STORY_RULE_SHA:
 		return _fail("affection source unavailable")
 	var npcs: Array = repo.read_module("npcs:core").npcs
 	if npcs.size() != 16:

@@ -10,7 +10,7 @@ func _initialize() -> void:
 		return _fail("source repository unavailable")
 	var source: Dictionary = repo.read_module("companions:arcs")
 	var mentor: Dictionary = source.mentorArc.bai_ren
-	if FileAccess.get_sha256("res://../src/systems/StoryNetworkSystem.js") != \
+	if FileAccess.get_sha256("res://tests/fixtures/source/src/systems/StoryNetworkSystem.js") != \
 			Repository.STORY_RULE_SHA or not mentor.get("revelation") == null:
 		return _fail("mentor production source changed")
 	var specs := []

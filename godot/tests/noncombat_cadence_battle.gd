@@ -12,7 +12,7 @@ func _run() -> void:
 			or fixture.get("rows", []).size() != 4:
 		return _fail("cadence production source matrix missing")
 	for source in fixture.pins:
-		var actual := FileAccess.get_sha256(ProjectSettings.globalize_path("res://").path_join("../" + source))
+		var actual := FileAccess.get_sha256(ProjectSettings.globalize_path("res://tests/fixtures/source/").path_join(source))
 		if actual != fixture.pins[source]:
 			return _fail("cadence source oracle drift: " + source)
 	for row in fixture.rows:

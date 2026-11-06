@@ -6,8 +6,8 @@ const Combat = preload("res://scripts/combat_domain.gd")
 const Registry = preload("res://scripts/runtime_data_registry.gd")
 const BattlePlan = preload("res://scripts/battle_plan_resolver.gd")
 const Seal = preload("res://scripts/noncombat_browser_combat_seal.gd")
-const SOURCE := "res://../artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
-const TURN := "res://../artifacts/godot-migration/noncombat-browser-import/combat-turn-source-sword.json"
+const SOURCE := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
+const TURN := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/combat-turn-source-sword.json"
 
 
 func _initialize() -> void:

@@ -5,7 +5,7 @@ const Domain = preload("res://scripts/noncombat_domain.gd")
 const Registry = preload("res://scripts/runtime_data_registry.gd")
 const BattlePlan = preload("res://scripts/battle_plan_resolver.gd")
 const BattleScene = preload("res://scenes/main.tscn")
-const FIXTURE := "res://../artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
+const FIXTURE := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
 
 
 func _initialize() -> void:

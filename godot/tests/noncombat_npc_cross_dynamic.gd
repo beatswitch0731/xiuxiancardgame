@@ -24,7 +24,7 @@ func _run() -> void:
 	if not duplicate.errors().has("Duplicate generated_card ID: npc_cross_rule:rival"):
 		return _fail("duplicate dynamic rule identity accepted")
 	var fixture_path := ProjectSettings.globalize_path(
-		"res://../artifacts/godot-migration/npc-cross-dynamic-source.json")
+		"res://tests/fixtures/artifacts/godot-migration/npc-cross-dynamic-source.json")
 	var source_rows: Variant = JSON.parse_string(FileAccess.get_file_as_string(fixture_path))
 	if not source_rows is Array or source_rows.size() != 3:
 		return _fail("browser dynamic pair oracle unavailable")

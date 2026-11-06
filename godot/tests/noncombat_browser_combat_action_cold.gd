@@ -7,7 +7,7 @@ const RunSession = preload("res://scripts/noncombat_run_session.gd")
 const BattlePlan = preload("res://scripts/battle_plan_resolver.gd")
 const BattleScene = preload("res://scenes/main.tscn")
 const CombatSeal = preload("res://scripts/noncombat_browser_combat_seal.gd")
-const FIXTURE := "res://../artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
+const FIXTURE := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
 
 
 func _initialize() -> void:

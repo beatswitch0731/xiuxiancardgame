@@ -1,0 +1,498 @@
+{
+ "version": 1,
+ "count": 82,
+ "files": [
+  {
+   "origin": "artifacts/godot-migration/m0-2026-10-15/slots-synthetic-raw.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/m0-2026-10-15/slots-synthetic-raw.json",
+   "sha256": "5afaba9039d3d748a268950c37b283510f01a9bc083a12248f3ecf1c745b30ff",
+   "bytes": 127023
+  },
+  {
+   "origin": "artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json",
+   "sha256": "1bbff69e6be68a2d55ba8a103344241c42656637875607fa09fb7c30c6388285",
+   "bytes": 298695
+  },
+  {
+   "origin": "artifacts/godot-migration/noncombat-browser-import/combat-turn-source-sword.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/noncombat-browser-import/combat-turn-source-sword.json",
+   "sha256": "9f06ad4fdb3a5f88103f757a3c86ddcb97217b2b6311dc934bbfdefa8c98a38b",
+   "bytes": 1072159
+  },
+  {
+   "origin": "artifacts/godot-migration/noncombat-browser-import/mid-source-save-sword-extended.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/noncombat-browser-import/mid-source-save-sword-extended.json",
+   "sha256": "84a4ba9772f7dd3186107394caa95c241392d9ba53f6fcaef980f6c9a2a51462",
+   "bytes": 471486
+  },
+  {
+   "origin": "artifacts/godot-migration/noncombat-browser-import/mid-source-save-sword-long.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/noncombat-browser-import/mid-source-save-sword-long.json",
+   "sha256": "cbc13da78283ffe8c6bed683bcf5934cf5ff8ea356f6032dbf6b6d6f01046ff1",
+   "bytes": 279301
+  },
+  {
+   "origin": "artifacts/godot-migration/noncombat-browser-import/mid-source-save-sword.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/noncombat-browser-import/mid-source-save-sword.json",
+   "sha256": "5f076f71309cd2ebd6976e6897d08872569884592156dcb02f9dd118ce0b47a2",
+   "bytes": 116038
+  },
+  {
+   "origin": "artifacts/godot-migration/noncombat-browser-import/opening-source-saves.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/noncombat-browser-import/opening-source-saves.json",
+   "sha256": "9d35bb12757e95e6374c9e6830c191e100f4a516e29d11be5045db0c722e1dbd",
+   "bytes": 67779
+  },
+  {
+   "origin": "artifacts/godot-migration/noncombat-mortal/mortal-qi-browser.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/noncombat-mortal/mortal-qi-browser.json",
+   "sha256": "7637cc06658257b29325aaaf8442f3ae053ee7734087fdd9d8292a53ce853d61",
+   "bytes": 10576
+  },
+  {
+   "origin": "artifacts/godot-migration/npc-cross-dynamic-source.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/npc-cross-dynamic-source.json",
+   "sha256": "d88faabbd33a31007d46a965603669ee3c2a9479d716af2b56ba05f6dfcb2d7f",
+   "bytes": 5188
+  },
+  {
+   "origin": "artifacts/godot-migration/npc-encounter-source.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/npc-encounter-source.json",
+   "sha256": "6bfc2f16fa21838a12182034e3e7e0ef0e342f199268b496470da059271a9ed6",
+   "bytes": 7194
+  },
+  {
+   "origin": "artifacts/godot-migration/npc-manual-source.json",
+   "fixture": "tests/fixtures/artifacts/godot-migration/npc-manual-source.json",
+   "sha256": "5aa2f0f3dd81c48d1827ecf4be7b0d55d3d0654c2f63ac61cb2525c9ec6e163b",
+   "bytes": 4265
+  },
+  {
+   "origin": "artifacts/godot-migration/qingyun-gemini-video-probe/gemini_idle_study_1280.png",
+   "fixture": "tests/fixtures/artifacts/godot-migration/qingyun-gemini-video-probe/gemini_idle_study_1280.png",
+   "sha256": "9e19756d0913ea1463d58f45dde1e6deab0bb0c15d4754e9881673a34f9d3ab6",
+   "bytes": 527183
+  },
+  {
+   "origin": "artifacts/godot-migration/qingyun-pixel-combat/actor_style_study_1280.png",
+   "fixture": "tests/fixtures/artifacts/godot-migration/qingyun-pixel-combat/actor_style_study_1280.png",
+   "sha256": "fc802bc3c2c39fb63f2a808c01093d69d779ab1a8809540644623753e9b005d6",
+   "bytes": 397991
+  },
+  {
+   "origin": "artifacts/godot-migration/qingyun-pixel-combat/mapfit_v3_study_1280.png",
+   "fixture": "tests/fixtures/artifacts/godot-migration/qingyun-pixel-combat/mapfit_v3_study_1280.png",
+   "sha256": "b1362678d536033369f7f7b332308d3e60c68bb4c972d263f97e520768b94d29",
+   "bytes": 395971
+  },
+  {
+   "origin": "artifacts/godot-migration/qingyun-pixel-combat/mapfit_v4_godot_study.png",
+   "fixture": "tests/fixtures/artifacts/godot-migration/qingyun-pixel-combat/mapfit_v4_godot_study.png",
+   "sha256": "3e449857d9109a74068de2d285a12bf533c4762040fd27fbb4f7308cc6cb0a11",
+   "bytes": 530393
+  },
+  {
+   "origin": "data/cards/battle_cards.json",
+   "fixture": "tests/fixtures/source/data/cards/battle_cards.json",
+   "sha256": "2d8e0898f898d70ca7184f67039e717fc9540225b08ce7a1f55d901c84af35a0",
+   "bytes": 149727
+  },
+  {
+   "origin": "data/cards/chapter_milestones.json",
+   "fixture": "tests/fixtures/source/data/cards/chapter_milestones.json",
+   "sha256": "d68c29c5796cd3caa40fe3baeea266b36bb6c589461ca579ee47820ae68c4ac1",
+   "bytes": 160642
+  },
+  {
+   "origin": "data/cards/karma.json",
+   "fixture": "tests/fixtures/source/data/cards/karma.json",
+   "sha256": "9becb6da3f2a7727e70db8b4c08d4a4b4d1cdbdbe069347fe97f8062e75ebbdd",
+   "bytes": 55202
+  },
+  {
+   "origin": "data/cards/qi.json",
+   "fixture": "tests/fixtures/source/data/cards/qi.json",
+   "sha256": "c38f5ccc65b643bdbe2cdf592daef5ab4167d629b0a84426f6270315b747f7d0",
+   "bytes": 41220
+  },
+  {
+   "origin": "data/combat/action_presentations.json",
+   "fixture": "tests/fixtures/source/data/combat/action_presentations.json",
+   "sha256": "52fb423ce1ba8026ede5509c139a9653892a4793e9338acbae3a7949f84e76c3",
+   "bytes": 829983
+  },
+  {
+   "origin": "data/combat/action_scale_provenance.json",
+   "fixture": "tests/fixtures/source/data/combat/action_scale_provenance.json",
+   "sha256": "ed44b561cd4c904b9d6ca01a6b730bd93e5b2d3baae6f447daf04cb9d43e5c6a",
+   "bytes": 846092
+  },
+  {
+   "origin": "data/combat/carrier_scale_provenance.json",
+   "fixture": "tests/fixtures/source/data/combat/carrier_scale_provenance.json",
+   "sha256": "12387fb224236f547a74ee4420cfc3e19d85febb47dea8f757a7fbb5f66762ef",
+   "bytes": 128456
+  },
+  {
+   "origin": "data/combat/deck_progression.json",
+   "fixture": "tests/fixtures/source/data/combat/deck_progression.json",
+   "sha256": "c9d99d658b5a4c79efcbdd18d238f81aff084389794cc11c5304ffd7923d34fd",
+   "bytes": 9045
+  },
+  {
+   "origin": "data/combat/encounter_director.json",
+   "fixture": "tests/fixtures/source/data/combat/encounter_director.json",
+   "sha256": "6f9ec68d76795cf938581ba52dc6aa07b819b5e1326b3b2cc8b023a4d594d421",
+   "bytes": 2437
+  },
+  {
+   "origin": "data/combat/encounter_presentations.json",
+   "fixture": "tests/fixtures/source/data/combat/encounter_presentations.json",
+   "sha256": "f4035e93e983df90f53400ffa9538f2af6d3f11678103882af1fdcb86c925865",
+   "bytes": 142591
+  },
+  {
+   "origin": "data/combat/encounters.json",
+   "fixture": "tests/fixtures/source/data/combat/encounters.json",
+   "sha256": "71db9f94d54556d98e3c712c78d6536697fe08d06f03b0e599e5fd7aa8e5095f",
+   "bytes": 175978
+  },
+  {
+   "origin": "data/combat/path_presentations.json",
+   "fixture": "tests/fixtures/source/data/combat/path_presentations.json",
+   "sha256": "a16fdff64d6054cd586db721954f7425799b94eae55fdf7faca254ef94c69ddb",
+   "bytes": 35473
+  },
+  {
+   "origin": "data/combat/protagonist_visual_identity.json",
+   "fixture": "tests/fixtures/source/data/combat/protagonist_visual_identity.json",
+   "sha256": "8d2869fe654080bba6fce02d4b91fa4c3346d4256d65e6e04bf7aa757f8bcae9",
+   "bytes": 5564
+  },
+  {
+   "origin": "data/combat/visual_worlds.json",
+   "fixture": "tests/fixtures/source/data/combat/visual_worlds.json",
+   "sha256": "8236086013b97bf59a50a1553398fbfd96a0bb2e7b475dad675a6d431f16bf81",
+   "bytes": 4665401
+  },
+  {
+   "origin": "data/config/path_archetypes.json",
+   "fixture": "tests/fixtures/source/data/config/path_archetypes.json",
+   "sha256": "53fd09b446cbe1d6108b184483644f4a6a87d27d3bee1ff3fbb7cba04f8845fe",
+   "bytes": 5472
+  },
+  {
+   "origin": "data/config/path_skills.json",
+   "fixture": "tests/fixtures/source/data/config/path_skills.json",
+   "sha256": "9b5b9583972d65768ebc658ed5e5682b0a23d5f4e6309adaf209af462564111a",
+   "bytes": 3753
+  },
+  {
+   "origin": "data/config/paths.json",
+   "fixture": "tests/fixtures/source/data/config/paths.json",
+   "sha256": "9d65573c1023f9b6454783f554ee87efec494231c9feebf7a34fb11cd3168b13",
+   "bytes": 1130
+  },
+  {
+   "origin": "data/config/realms.json",
+   "fixture": "tests/fixtures/source/data/config/realms.json",
+   "sha256": "9a1d9dbe0ac692e0cbb611b8bbab3f8c11bdb7588f55c07cf23b99d0522929ce",
+   "bytes": 1747
+  },
+  {
+   "origin": "data/narrative/causal_graph.json",
+   "fixture": "tests/fixtures/source/data/narrative/causal_graph.json",
+   "sha256": "475f394410c8b03beeecdc7881a9548f1356a3286534b4717325f0e8277fc989",
+   "bytes": 24377
+  },
+  {
+   "origin": "data/npcs/core_npcs.json",
+   "fixture": "tests/fixtures/source/data/npcs/core_npcs.json",
+   "sha256": "db5cac02f2be7475faf5642a5beff9d40f9a2f72ce633bd2adbb8a9c69b25cf9",
+   "bytes": 32442
+  },
+  {
+   "origin": "data/progression/first_session_cohesion.json",
+   "fixture": "tests/fixtures/source/data/progression/first_session_cohesion.json",
+   "sha256": "1706ba1a8487396cbf4128e0159ac258a5007118cbe917bc1615f28937a4cff7",
+   "bytes": 7608
+  },
+  {
+   "origin": "data/quests/white_fox.json",
+   "fixture": "tests/fixtures/source/data/quests/white_fox.json",
+   "sha256": "fbda940c9ea7c9bb51d796b0be0c3177c32d87ce5f66d61bb30000b2309219b5",
+   "bytes": 8832
+  },
+  {
+   "origin": "data/shops/treasures.json",
+   "fixture": "tests/fixtures/source/data/shops/treasures.json",
+   "sha256": "90b68fb927148a291586716e611e28f07939d2bb629b8e2d2cafbcd3a9f29689",
+   "bytes": 35574
+  },
+  {
+   "origin": "data/world/factions.json",
+   "fixture": "tests/fixtures/source/data/world/factions.json",
+   "sha256": "7c326a3c5628ae59e6a6a071b8e62ba53bf92b8bfc0ab614079601f1d06a183c",
+   "bytes": 17208
+  },
+  {
+   "origin": "data/world/trade_routes.json",
+   "fixture": "tests/fixtures/source/data/world/trade_routes.json",
+   "sha256": "20e43bc4749b87170550a476e4c00b81c426d8962256979ba2e35751f385d334",
+   "bytes": 1671
+  },
+  {
+   "origin": "src/coordinators/CombatCoordinator.js",
+   "fixture": "tests/fixtures/source/src/coordinators/CombatCoordinator.js",
+   "sha256": "a834065e633d44a9ef6a3a117ad9aee3291b0daa8abad672c20f38b2b11993b0",
+   "bytes": 77800
+  },
+  {
+   "origin": "src/core/Container.js",
+   "fixture": "tests/fixtures/source/src/core/Container.js",
+   "sha256": "2932d8742cfb60c34aa6a642a728056d45a00ba5a26ec26b828b1ffb5d20c518",
+   "bytes": 10956
+  },
+  {
+   "origin": "src/core/DataLoader.js",
+   "fixture": "tests/fixtures/source/src/core/DataLoader.js",
+   "sha256": "831121266388c1034483edde6b761b2dd2aa9e8fd4abf68478556681d24be1a9",
+   "bytes": 7262
+  },
+  {
+   "origin": "src/core/EventBus.js",
+   "fixture": "tests/fixtures/source/src/core/EventBus.js",
+   "sha256": "f691b8161a577a0fd24a65387bb8674c22c9573b09dd56ef8ceb1982ef45bd5f",
+   "bytes": 3637
+  },
+  {
+   "origin": "src/core/GameStateManager.js",
+   "fixture": "tests/fixtures/source/src/core/GameStateManager.js",
+   "sha256": "75e60d10e3284f96715c1ce9229c211215190a39eb10f920e0bb10187b741080",
+   "bytes": 140647
+  },
+  {
+   "origin": "src/game.js",
+   "fixture": "tests/fixtures/source/src/game.js",
+   "sha256": "73d5038d1427433134a644e314d9d501d772c0ba79f67f61f9a46c3e4f8e093b",
+   "bytes": 257872
+  },
+  {
+   "origin": "src/services/EffectService.js",
+   "fixture": "tests/fixtures/source/src/services/EffectService.js",
+   "sha256": "7552c41cbb707c642c1b66d434c084c33241227ada146ff9322ba707a53a72dc",
+   "bytes": 53869
+  },
+  {
+   "origin": "src/systems/CardSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/CardSystem.js",
+   "sha256": "12f99d576b413313b36c9b6b2e3d0c23a56f9eff4793f0c9737c6dc5cb2e1c5f",
+   "bytes": 101238
+  },
+  {
+   "origin": "src/systems/ChoiceEchoEngine.js",
+   "fixture": "tests/fixtures/source/src/systems/ChoiceEchoEngine.js",
+   "sha256": "9b98f72a08ee2e02e87a8cd4b8277dc693ed4dcc9afbb6c77469e67c72c87db5",
+   "bytes": 8766
+  },
+  {
+   "origin": "src/systems/ChoiceOutcomeRouter.js",
+   "fixture": "tests/fixtures/source/src/systems/ChoiceOutcomeRouter.js",
+   "sha256": "dceddee742bc3d32f611fc3155b79f7fdb48db42773109c3bd92772761f87635",
+   "bytes": 34059
+  },
+  {
+   "origin": "src/systems/CompanionSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/CompanionSystem.js",
+   "sha256": "bd6386d3fb6bae095ce312c5bac520129bbee18f692ba25cb6ccc7f13104adcb",
+   "bytes": 39221
+  },
+  {
+   "origin": "src/systems/DeckCombatSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/DeckCombatSystem.js",
+   "sha256": "25c214fbb599ac146b5d4424ce4272ba5fdb77c3a9342acd6e80caba77a01be0",
+   "bytes": 384691
+  },
+  {
+   "origin": "src/systems/DestinyWheelSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/DestinyWheelSystem.js",
+   "sha256": "15fdd6df45dad2af2ebdd941e06965f2e80cbbe9e28760c0319fd571f0899b7e",
+   "bytes": 9623
+  },
+  {
+   "origin": "src/systems/EncounterDirector.js",
+   "fixture": "tests/fixtures/source/src/systems/EncounterDirector.js",
+   "sha256": "ff77500fe64a052a6b6014cfa02ad46f5071b20de36ac81184c970aec0418496",
+   "bytes": 23312
+  },
+  {
+   "origin": "src/systems/FactionSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/FactionSystem.js",
+   "sha256": "2c15864821765f6614f8a99a5f52a648cb3221cd4d730d87293a1be5690243cc",
+   "bytes": 19801
+  },
+  {
+   "origin": "src/systems/FlowDirector.js",
+   "fixture": "tests/fixtures/source/src/systems/FlowDirector.js",
+   "sha256": "c62522bf280c6af7cb62e722c575ce6efe6b40ead5c3aa09a0be8bd1a7366b0d",
+   "bytes": 62440
+  },
+  {
+   "origin": "src/systems/HeavensHintSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/HeavensHintSystem.js",
+   "sha256": "67f2f543bbbc04f340cee18afb00d7f43cbae28dd9e65d3eb2a15cac31ef12c2",
+   "bytes": 17395
+  },
+  {
+   "origin": "src/systems/KarmaRippleSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/KarmaRippleSystem.js",
+   "sha256": "b4bb05e930b97e607059b7802b6f0feb0d3723a3ae87ae95310aa8072c065e4c",
+   "bytes": 12498
+  },
+  {
+   "origin": "src/systems/KarmaSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/KarmaSystem.js",
+   "sha256": "0d977405787abc77d42712e1d3661412d3ca3983bdde5eca008263066acf3123",
+   "bytes": 13997
+  },
+  {
+   "origin": "src/systems/LegacyFragmentSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/LegacyFragmentSystem.js",
+   "sha256": "6aa5a5b9d4fda4af633c744b601321883bf1f729964978f0a62b1206f43157c4",
+   "bytes": 32999
+  },
+  {
+   "origin": "src/systems/LineageSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/LineageSystem.js",
+   "sha256": "3076bd19e9fe0be27aa59cebe451440a680247708b5aad05fe85e6cc4b776bcd",
+   "bytes": 13350
+  },
+  {
+   "origin": "src/systems/NarrativeLedger.js",
+   "fixture": "tests/fixtures/source/src/systems/NarrativeLedger.js",
+   "sha256": "485c6d61b335db1a418900a552d3b001aea66348b8ba02ef8b82111264c9e20a",
+   "bytes": 39478
+  },
+  {
+   "origin": "src/systems/NpcSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/NpcSystem.js",
+   "sha256": "913ccdd6a3eb4464e3d3ce91ac1761c18cf8f2ce9346eb4929f2bf291046e6c8",
+   "bytes": 57451
+  },
+  {
+   "origin": "src/systems/PathArchetypeSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/PathArchetypeSystem.js",
+   "sha256": "52a719665e723bf3ad7fbfd37c1a4cade7e1bd6e9ee2bdea979d52091a23c8ef",
+   "bytes": 10512
+  },
+  {
+   "origin": "src/systems/PathSkillSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/PathSkillSystem.js",
+   "sha256": "51af48c664d1a44605d696d2695b3aef53b69adc54369e700f7147339f991058",
+   "bytes": 4910
+  },
+  {
+   "origin": "src/systems/QuestSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/QuestSystem.js",
+   "sha256": "4ff9fbeb8baed1ab4c5b26e65b80124457516d9a9eb55bb14d44bd3def20f4a0",
+   "bytes": 24687
+  },
+  {
+   "origin": "src/systems/RealmChapterSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/RealmChapterSystem.js",
+   "sha256": "80ccca04290679d451dfd549b4981572d21ce580e78f5cf564cf5a93e06d4f2f",
+   "bytes": 26510
+  },
+  {
+   "origin": "src/systems/SkillCardAcquisitionSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/SkillCardAcquisitionSystem.js",
+   "sha256": "2eff2c858d7ee9cd9065daff6bf309f08cd7ba12140a2f0d0ebdcb560e263098",
+   "bytes": 30701
+  },
+  {
+   "origin": "src/systems/StoryNetworkSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/StoryNetworkSystem.js",
+   "sha256": "08cd0d1ac24caeae35629210a0f2de0a24a563c7e3c4ea2da3ffe346f8f0a1e4",
+   "bytes": 94936
+  },
+  {
+   "origin": "src/systems/StoryThreadEngine.js",
+   "fixture": "tests/fixtures/source/src/systems/StoryThreadEngine.js",
+   "sha256": "a5f324bc2a1d8afbf63f3eb4aaf84042cb601041df3978e9cf277085d4be29b2",
+   "bytes": 52385
+  },
+  {
+   "origin": "src/systems/TradeRouteSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/TradeRouteSystem.js",
+   "sha256": "527aa8454e339fa0a67fe4f4f9d6030494616a8647943bd31defe7b39418bf3e",
+   "bytes": 6552
+  },
+  {
+   "origin": "src/systems/TreasureSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/TreasureSystem.js",
+   "sha256": "54bea3094b2cabb2cca9397a930e863672aa32d2cff31e3e5dc1258a66323d89",
+   "bytes": 32443
+  },
+  {
+   "origin": "src/systems/WorldContinuityStore.js",
+   "fixture": "tests/fixtures/source/src/systems/WorldContinuityStore.js",
+   "sha256": "470a98e0647d183c012c0d8e3b045012824f7ed280a65fb71956be4fca597409",
+   "bytes": 9477
+  },
+  {
+   "origin": "src/systems/WorldPulseSystem.js",
+   "fixture": "tests/fixtures/source/src/systems/WorldPulseSystem.js",
+   "sha256": "48eac7adf17b94a0dce900ea61c1d9dfde20f23d7a6455cfb0935c21dca2e250",
+   "bytes": 5996
+  },
+  {
+   "origin": "tools/capture_noncombat_cadence_source.js",
+   "fixture": "tests/fixtures/source/tools/capture_noncombat_cadence_source.js",
+   "sha256": "951b4969b8ad210a53d7f44180c099d8c315830b3308d18684ecb8e873f305eb",
+   "bytes": 16692
+  },
+  {
+   "origin": "tools/capture_noncombat_mountain_source.js",
+   "fixture": "tests/fixtures/source/tools/capture_noncombat_mountain_source.js",
+   "sha256": "a30364c8122191f40a611cabfb5daa09979cbe2415be0e1f84beba062e043682",
+   "bytes": 9654
+  },
+  {
+   "origin": "tools/capture_noncombat_npc_first_source.js",
+   "fixture": "tests/fixtures/source/tools/capture_noncombat_npc_first_source.js",
+   "sha256": "ccbb94cf312a670c370a6eca410c68a57cedb9fff34a966202279966dcb258c3",
+   "bytes": 4659
+  },
+  {
+   "origin": "tools/capture_noncombat_second_cadence_source.js",
+   "fixture": "tests/fixtures/source/tools/capture_noncombat_second_cadence_source.js",
+   "sha256": "2dec1db2b1ad799fc26bb4451969b700e623f774ad8e37686a0f38b516eb63e3",
+   "bytes": 3675
+  },
+  {
+   "origin": "tools/capture_noncombat_third_cadence_source.js",
+   "fixture": "tests/fixtures/source/tools/capture_noncombat_third_cadence_source.js",
+   "sha256": "53a96d5be6e6e1b3fa6988d33b4c04de9f49c439fcd9956f4d58d416ee582a79",
+   "bytes": 4693
+  },
+  {
+   "origin": "tools/capture_noncombat_whitefox_battle_source.js",
+   "fixture": "tests/fixtures/source/tools/capture_noncombat_whitefox_battle_source.js",
+   "sha256": "fb0086da330b365d9e9c27cabd5e5b5363cedd21cad3517a4f409ea32ef82932",
+   "bytes": 15944
+  },
+  {
+   "origin": "tools/capture_noncombat_whitefox_hound_intents_source.js",
+   "fixture": "tests/fixtures/source/tools/capture_noncombat_whitefox_hound_intents_source.js",
+   "sha256": "975f6582e2611efc5f337778a9af695334deb69bab0c665962af30d9c55ddc48",
+   "bytes": 3649
+  },
+  {
+   "origin": "tools/run_gdd_b12_long_runs.js",
+   "fixture": "tests/fixtures/source/tools/run_gdd_b12_long_runs.js",
+   "sha256": "03064068ad65b2a5aa0f3d28e65d86ba2b9ebf967fdaacb0a71162b1a9f6b37d",
+   "bytes": 49605
+  }
+ ]
+}

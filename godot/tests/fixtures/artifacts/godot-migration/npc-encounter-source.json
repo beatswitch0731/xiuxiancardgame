@@ -1,0 +1,247 @@
+{
+  "scenarios": [
+    {
+      "realm": "qi",
+      "path": "sword",
+      "currentLocation": "宗门",
+      "selectionRoll": 0,
+      "card": {
+        "id": "npc_encounter_bai_ren_初见",
+        "semanticKey": "npc-encounter:bai_ren:初见",
+        "title": "初见白刃真人",
+        "description": "你在青云剑宗·剑冢遇到了一位修士——青云剑宗掌门白刃真人。你拜入青云剑宗，白刃真人看了你的剑一眼，只说了四个字：剑出无悔。\n\n\"剑修……好。青云剑宗又多了一把好剑。\"",
+        "type": "NPC_ENCOUNTER",
+        "realm": "qi",
+        "npcId": "bai_ren",
+        "manifestation": "PHYSICAL",
+        "location": "青云剑宗·剑冢",
+        "requiresPlayerPresence": true,
+        "eligibleRealms": [
+          "qi",
+          "foundation",
+          "golden",
+          "nascent",
+          "deity",
+          "tribulation"
+        ],
+        "weight": 0,
+        "once": true,
+        "npcEncounter": {
+          "version": 1,
+          "npcId": "bai_ren",
+          "scene": "初见",
+          "location": "青云剑宗·剑冢",
+          "emotion": "平静"
+        },
+        "choices": {
+          "left": {
+            "text": "恭敬行礼",
+            "effects": {
+              "daoHeart": 5
+            },
+            "npcAffection": 5
+          },
+          "right": {
+            "text": "傲然以对",
+            "effects": {
+              "cultivation": 3,
+              "karmaBad": 3
+            },
+            "npcAffection": -3
+          }
+        }
+      }
+    },
+    {
+      "realm": "foundation",
+      "path": "sword",
+      "currentLocation": "宗门",
+      "selectionRoll": 0.99,
+      "card": {
+        "id": "npc_encounter_jian_linger_初见",
+        "semanticKey": "npc-encounter:jian_linger:初见",
+        "title": "初见剑灵儿",
+        "description": "你在青云剑宗·剑冢遇到了一位修士——青云剑宗·白刃关门弟子剑灵儿。'你就是师尊新收的弟子？'她抱着剑靠在剑冢的石壁上，眼神从上扫到下。'看起来……一般。来，拔剑。'",
+        "type": "NPC_ENCOUNTER",
+        "realm": "foundation",
+        "npcId": "jian_linger",
+        "manifestation": "PHYSICAL",
+        "location": "青云剑宗·剑冢",
+        "requiresPlayerPresence": true,
+        "eligibleRealms": [
+          "foundation",
+          "golden",
+          "nascent",
+          "deity",
+          "tribulation"
+        ],
+        "weight": 0,
+        "once": true,
+        "npcEncounter": {
+          "version": 1,
+          "npcId": "jian_linger",
+          "scene": "初见",
+          "location": "青云剑宗·剑冢",
+          "emotion": "平静"
+        },
+        "choices": {
+          "left": {
+            "text": "恭敬行礼",
+            "effects": {
+              "daoHeart": 5
+            },
+            "npcAffection": 5
+          },
+          "right": {
+            "text": "傲然以对",
+            "effects": {
+              "cultivation": 3,
+              "karmaBad": 3
+            },
+            "npcAffection": -3
+          }
+        }
+      }
+    },
+    {
+      "realm": "foundation",
+      "path": "spell",
+      "currentLocation": "南疆·白狐部",
+      "selectionRoll": 0,
+      "card": {
+        "id": "npc_encounter_bai_luoxuan_初见",
+        "semanticKey": "npc-encounter:bai_luoxuan:初见",
+        "title": "初见白落霜",
+        "description": "你在南疆·白狐部遇到了一位修士——白狐部·报恩者白落霜。她站在你的洞府门口，白衣银发，傍晚的光从背后透过她的发丝。'恩公——奴家白落霜，今日特来报恩。'",
+        "type": "NPC_ENCOUNTER",
+        "realm": "foundation",
+        "npcId": "bai_luoxuan",
+        "manifestation": "PHYSICAL",
+        "location": "南疆·白狐部",
+        "requiresPlayerPresence": true,
+        "eligibleRealms": [
+          "foundation",
+          "golden",
+          "nascent",
+          "deity",
+          "tribulation"
+        ],
+        "weight": 0,
+        "once": true,
+        "npcEncounter": {
+          "version": 1,
+          "npcId": "bai_luoxuan",
+          "scene": "初见",
+          "location": "南疆·白狐部",
+          "emotion": "平静"
+        },
+        "choices": {
+          "left": {
+            "text": "恭敬行礼",
+            "effects": {
+              "daoHeart": 5
+            },
+            "npcAffection": 5
+          },
+          "right": {
+            "text": "傲然以对",
+            "effects": {
+              "cultivation": 3,
+              "karmaBad": 3
+            },
+            "npcAffection": -3
+          }
+        }
+      }
+    },
+    {
+      "realm": "golden",
+      "path": "sword",
+      "currentLocation": "南疆·月湖",
+      "selectionRoll": 0.99,
+      "card": {
+        "id": "npc_encounter_ds_moonmist_初见",
+        "semanticKey": "npc-encounter:ds_moonmist:初见",
+        "title": "初见月雾妖修",
+        "description": "你在南疆·月湖遇到了一位修士——南疆月湖散修月雾妖修。月雾散开时，她在湖中抬眼，先报出了丹药的价码。",
+        "type": "NPC_ENCOUNTER",
+        "realm": "golden",
+        "npcId": "ds_moonmist",
+        "manifestation": "PHYSICAL",
+        "location": "南疆·月湖",
+        "requiresPlayerPresence": true,
+        "eligibleRealms": [
+          "golden"
+        ],
+        "weight": 0,
+        "once": true,
+        "npcEncounter": {
+          "version": 1,
+          "npcId": "ds_moonmist",
+          "scene": "初见",
+          "location": "南疆·月湖",
+          "emotion": "平静"
+        },
+        "choices": {
+          "left": {
+            "text": "恭敬行礼",
+            "effects": {
+              "daoHeart": 5
+            },
+            "npcAffection": 5
+          },
+          "right": {
+            "text": "傲然以对",
+            "effects": {
+              "cultivation": 3,
+              "karmaBad": 3
+            },
+            "npcAffection": -3
+          }
+        }
+      }
+    }
+  ],
+  "retryCard": {
+    "id": "npc_encounter_ds_moonmist_初见",
+    "semanticKey": "npc-encounter:ds_moonmist:初见",
+    "title": "初见月雾妖修",
+    "description": "你在南疆·月湖遇到了一位修士——南疆月湖散修月雾妖修。月雾散开时，她在湖中抬眼，先报出了丹药的价码。",
+    "type": "NPC_ENCOUNTER",
+    "realm": "golden",
+    "npcId": "ds_moonmist",
+    "manifestation": "PHYSICAL",
+    "location": "南疆·月湖",
+    "requiresPlayerPresence": true,
+    "eligibleRealms": [
+      "golden"
+    ],
+    "weight": 0,
+    "once": true,
+    "npcEncounter": {
+      "version": 1,
+      "npcId": "ds_moonmist",
+      "scene": "初见",
+      "location": "南疆·月湖",
+      "emotion": "平静"
+    },
+    "choices": {
+      "left": {
+        "text": "恭敬行礼",
+        "effects": {
+          "daoHeart": 5
+        },
+        "npcAffection": 5
+      },
+      "right": {
+        "text": "傲然以对",
+        "effects": {
+          "cultivation": 3,
+          "karmaBad": 3
+        },
+        "npcAffection": -3
+      }
+    }
+  },
+  "capResult": null
+}

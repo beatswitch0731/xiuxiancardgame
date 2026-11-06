@@ -3,7 +3,7 @@ extends SceneTree
 
 const SEQUENCE := "res://assets/battle/undercurrent_pixel_v1/character_e_motion_v1/sequence.json"
 const TRIALS := "res://assets/battle/undercurrent_pixel_v1/character_style_trials_v2/trials.json"
-const OUT := "res://../artifacts/godot-migration/character-e-motion-v1/"
+const OUT := "res://output/captures/godot-migration/character-e-motion-v1/"
 var sequence: Dictionary
 var reference: Dictionary
 var atlas: Texture2D

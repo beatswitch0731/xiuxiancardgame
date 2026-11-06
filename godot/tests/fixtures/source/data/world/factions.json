@@ -1,0 +1,214 @@
+{
+  "factions": [
+    {
+      "id": "qingyun_sword",
+      "name": "青云剑宗",
+      "icon": "⚔️",
+      "type": "righteous",
+      "startReputation": 10,
+      "subfactions": [
+        { "id": "qingyun_sword_spirit", "name": "剑意派（白刃）", "startReputation": 15 },
+        { "id": "qingyun_sword_ancient", "name": "古剑派（铁剑翁）", "startReputation": -5 },
+        { "id": "qingyun_sword_reform", "name": "革新派（惊鸿道人）", "startReputation": 0 }
+      ],
+      "undercurrentId": "qingyun_debate",
+      "events": [
+        { "id": "sword_1", "title": "论剑大会请柬", "minRealm": "golden", "pathRestriction": "sword", "minReputation": 10, "desc": "青云剑宗三年一度的论剑大会即将召开。三派将在剑冢前论剑——胜者主导宗门未来三年的方向。", "weight": 15, "choices": {
+          "left": { "text": "支持剑意派（白刃真人）", "reputationDelta": 15, "subfactionId": "qingyun_sword_spirit", "subReputationDelta": 20, "effectText": "剑意派声望大幅上升，但古剑派会对你不满。" },
+          "right": { "text": "支持革新派（惊鸿道人）", "reputationDelta": 5, "subfactionId": "qingyun_sword_reform", "subReputationDelta": 20, "effectText": "革新派崛起，剑意派声望略降。" }
+        }},
+        { "id": "sword_2", "title": "剑冢异动", "minRealm": "nascent", "pathRestriction": "sword", "minReputation": 30, "desc": "剑冢深处的那柄上古仙剑突然发出一声剑鸣——整个青云剑宗都听到了。白刃真人面色凝重。", "weight": 10, "choices": {
+          "left": { "text": "深入剑冢探查", "reputationDelta": 10, "effects": { "cultivation": 15, "health": -1, "karmaGood": 5 }, "undercurrentStageChange": 1 },
+          "right": { "text": "禀报白刃真人", "reputationDelta": 5, "effects": { "daoHeart": 10 }, "undercurrentStageChange": 0 }
+        }},
+        { "id": "sword_teach", "title": "剑宗秘传", "minRealm": "golden", "pathRestriction": "sword", "minReputation": 40, "once": true, "desc": "你在青云剑宗的声望极高。白刃真人亲自召见你，叹道：'你剑心通明，这本《太虚剑阵》便传予你吧。'", "weight": 20, "choices": {
+          "left": { "text": "恭敬受教", "reputationDelta": 10, "effects": { "deckCard": "sword_array", "daoHeart": 10 }, "globalFlag": "qingyun_sword_teach" },
+          "right": { "text": "婉拒好意", "reputationDelta": -5, "effects": { "daoHeart": 15 }, "globalFlag": "qingyun_sword_teach" }
+        }}
+      ]
+    },
+    {
+      "id": "tianshu_academy",
+      "name": "天枢道院",
+      "icon": "📚",
+      "type": "righteous",
+      "startReputation": 0,
+      "subfactions": [
+        { "id": "tianshu_fiveElem", "name": "五行流（玄机）", "startReputation": 10 },
+        { "id": "tianshu_thunder", "name": "雷法流（惊雷子）", "startReputation": 0 },
+        { "id": "tianshu_books", "name": "万卷流（慕青岚）", "startReputation": 5 }
+      ],
+      "undercurrentId": "tianshu_forbidden",
+      "events": [
+        { "id": "spell_0", "title": "道院初探", "minRealm": "foundation", "pathRestriction": "spell", "minReputation": 0, "desc": "天枢道院的大门向你敞开。万卷楼的慕青岚带你在书架间穿行——她指着一本封尘的《天道书》轻声说：'这本——从来没有人翻到过最后一页。'", "weight": 14, "choices": {
+          "left": { "text": "当场翻开天道书", "reputationDelta": 5, "effects": { "cultivation": 10, "daoHeart": 5 }, "undercurrentId": "tianshu_forbidden", "undercurrentStageChange": 1 },
+          "right": { "text": "记住书名，日后再读", "reputationDelta": 10, "effects": { "cultivation": 5, "fortune": 5 } }
+        }},
+        { "id": "spell_1", "title": "惊雷子的秘密会面", "minRealm": "golden", "pathRestriction": "spell", "desc": "惊雷子私下找到你，提出融合雷法与剑道的设想——这需要与青云剑宗革新派联手，但玄机真人不会同意。", "weight": 12, "choices": {
+          "left": { "text": "接受秘密会面", "reputationDelta": -5, "subfactionId": "tianshu_thunder", "subReputationDelta": 20, "effects": { "cultivation": 12, "karmaBad": 5 } },
+          "right": { "text": "上报玄机真人", "reputationDelta": 10, "subfactionId": "tianshu_fiveElem", "subReputationDelta": 10, "effects": { "karmaGood": 5 } }
+        }},
+        { "id": "spell_2", "title": "万卷楼的秘密", "minRealm": "nascent", "pathRestriction": "spell", "minReputation": 30, "desc": "慕青岚在万卷楼深处发现了一页被撕掉的《天道书》残页——上面写着\"飞升非仙路\"四个字。该不该告诉大家？", "weight": 10, "choices": {
+          "left": { "text": "保守秘密", "reputationDelta": 0, "effects": { "daoHeart": 15, "fortune": 10 }, "globalFlag": "tianshu_secret_kept" },
+          "right": { "text": "公之于众", "reputationDelta": -10, "effects": { "karmaGood": 10, "daoHeart": -5 }, "globalFlag": "tianshu_secret_revealed" }
+        }},
+        { "id": "spell_teach", "title": "万卷真解", "minRealm": "golden", "pathRestriction": "spell", "minReputation": 40, "once": true, "desc": "你在天枢道院的声望极高。慕青岚破例为你开放万卷楼顶层，你翻阅古籍，领悟了失传的雷法。", "weight": 20, "choices": {
+          "left": { "text": "沉浸参悟", "reputationDelta": 10, "effects": { "deckCard": "spell_nuke", "cultivation": 15 }, "globalFlag": "tianshu_spell_teach" },
+          "right": { "text": "浅尝辄止", "reputationDelta": 0, "effects": { "daoHeart": 10 }, "globalFlag": "tianshu_spell_teach" }
+        }}
+      ]
+    },
+    {
+      "id": "shennong_dangu",
+      "name": "神农丹谷",
+      "icon": "🧪",
+      "type": "righteous",
+      "startReputation": 0,
+      "events": [
+        { "id": "pill_0", "title": "丹道入门试", "minRealm": "foundation", "pathRestriction": "pill", "minReputation": 0, "desc": "药王谷召开炼丹学徒考核。通过者可得药圣亲传丹方。", "weight": 12, "choices": {
+          "left": { "text": "参加考核", "reputationDelta": 15, "effects": { "cultivation": 12, "pill": "golden" } },
+          "right": { "text": "在旁观摩", "reputationDelta": 5, "effects": { "cultivation": 5, "fortune": 10 } }
+        }},
+        { "id": "pill_1", "title": "禁药堂的秘密", "minRealm": "nascent", "pathRestriction": "pill", "desc": "你在禁药堂的地窖里发现了一本交易记录——上面有药圣的签名。禁药原料来自万毒门。", "weight": 10, "choices": {
+          "left": { "text": "销毁记录", "reputationDelta": 15, "effects": { "karmaBad": 10, "daoHeart": -5 }, "undercurrentId": "dangu_forbidden", "undercurrentStageChange": 1 },
+          "right": { "text": "上报宗门", "reputationDelta": -20, "effects": { "karmaGood": 20, "daoHeart": 10 } }
+        }},
+        { "id": "pill_teach", "title": "丹谷秘录", "minRealm": "golden", "pathRestriction": "pill", "minReputation": 40, "once": true, "desc": "药王见你丹心一片，决定将神农鼎内封存的一篇上古心法传授给你。", "weight": 20, "choices": {
+          "left": { "text": "潜心修习", "reputationDelta": 10, "effects": { "deckCard": "mana_potion", "cultivation": 20 }, "globalFlag": "dangu_pill_teach" },
+          "right": { "text": "归还玉简", "reputationDelta": 5, "effects": { "daoHeart": 15 }, "globalFlag": "dangu_pill_teach" }
+        }}
+      ]
+    },
+    {
+      "id": "tianji_pavilion",
+      "name": "天机阁",
+      "icon": "🔭",
+      "type": "righteous",
+      "startReputation": 0,
+      "undercurrentId": "tianji_split",
+      "events": [
+        { "id": "array_1", "title": "天机阁年轻派请愿", "minRealm": "golden", "pathRestriction": "spell", "minReputation": 0, "desc": "天机阁一批年轻阵修主张主动对抗天道——\"天机老人观察了七千年，我们不能再等了！\"", "weight": 12, "choices": {
+          "left": { "text": "支持请愿", "reputationDelta": -10, "effects": { "daoHeart": 5, "karmaBad": 5 }, "undercurrentId": "tianji_split", "undercurrentStageChange": 1 },
+          "right": { "text": "劝他们耐心", "reputationDelta": 10, "effects": { "daoHeart": 10 } }
+        }}
+      ]
+    },
+    {
+      "id": "wumeng_alliance",
+      "name": "武盟",
+      "icon": "🏋️",
+      "type": "righteous",
+      "startReputation": 0,
+      "subfactions": [
+        { "id": "wumeng_steel", "name": "钢骨流（横炼）", "startReputation": 10 },
+        { "id": "wumeng_blood", "name": "气血流（内壮）", "startReputation": 5 },
+        { "id": "wumeng_thunder", "name": "雷体流（淬雷）", "startReputation": 0 }
+      ],
+      "undercurrentId": "wumeng_split",
+      "events": [
+        { "id": "wumeng_gatekeeper_call", "title": "雷峰关道·请关", "minRealm": "foundation", "location": "宗门", "requiresPlayerPresence": true, "deliveryClass": "location_combat_invitation", "once": true, "weight": 18, "sceneImage": "assets/cards/events/scene_wumeng_gate_approach_agc_v1.png", "narrativeSource": "world_map:wumeng:sect_wumeng_pass", "desc": "宗门山门外，武盟驿使展开一卷带着雨痕的路引。路引先给你看万钧瀑布的雾、湿石阶与远处关门，再写下一句：\"不问你从哪一脉来。看清拳路，站得住，就进。\" 这不是传送阵；从此处出发，才会踏上雷峰关道。", "choices": {
+          "left": { "text": "携路引赴关", "desc": "离开山门，沿雷峰关道进入武盟雷峰的镇关石台，以一次正面试关回答他。", "triggerCombat": true, "combatEncounterId": "enc_faction_wumeng_elite", "entryEffects": { "playerLocation": "武盟雷峰" }, "combatOutcomePresentation": {
+            "victory": { "title": "镇关后·拳路留印", "description": "镇关者收拳，让你从石台边缘走回雨雾。\"你没有照着谁的路出手，\"他说，\"但你站住了。\" 武盟把这次试关记成对你的承认。" },
+            "defeat": { "title": "镇关后·记下空档", "description": "镇关者没有追击，只用指节敲了敲你失守的中线。雨雾仍压在石阶上；这次没能站住的地方，已经被武盟和你自己一同记下。" },
+            "flee": { "title": "镇关后·雾中折返", "description": "你在拳路转换前退回山道。镇关者没有拦，只让瀑声替他留下那句未完的话：下一次来，别只带着退路。" }
+          } },
+          "right": { "text": "记下关道，改日再来", "desc": "不把这场试关当成随机赌注；先收好路引，记住瀑声与关门的位置。", "effects": { "daoHeart": 1 } }
+        }},
+        { "id": "body_0", "title": "武盟入门试", "minRealm": "foundation", "pathRestriction": "body", "minReputation": 0, "desc": "\"你这身板不错！\"一个赤膊大汉拍着你的肩膀，震得你气血翻涌。\"来武盟吧，正道那帮耍剑念咒的娘们玩意有啥意思！\"", "weight": 12, "choices": {
+          "left": { "text": "接受邀请", "reputationDelta": 15, "subfactionId": "wumeng_steel", "subReputationDelta": 15, "effects": { "cultivation": 10, "health": 10 } },
+          "right": { "text": "婉拒但保持联系", "reputationDelta": 5, "effects": { "daoHeart": 5, "fortune": 5 } }
+        }},
+        { "id": "body_1", "title": "金身试炼", "minRealm": "golden", "pathRestriction": "body", "minReputation": 10, "desc": "武盟百年一度的金身试炼即将开始——在万钧瀑布下修行，能坚持三炷香者可得\"金身\"称号。七成弟子在第一炷香就跑了。", "weight": 12, "choices": {
+          "left": { "text": "坚持到底", "reputationDelta": 20, "effects": { "health": 30, "cultivation": 15, "daoHeart": 10 } },
+          "right": { "text": "量力而行", "reputationDelta": 5, "effects": { "cultivation": 8, "fortune": 5 } }
+        }},
+        { "id": "body_2", "title": "雷体之争", "minRealm": "nascent", "pathRestriction": "body", "minReputation": 30, "desc": "雷体流掌门公开挑战钢骨流——\"炼体不淬雷，等于只炼了一半！\"两派为此争执不休，武盟面临分裂。", "weight": 10, "choices": {
+          "left": { "text": "调和两派", "reputationDelta": 15, "effects": { "karmaGood": 15, "daoHeart": 10 }, "undercurrentId": "wumeng_split", "undercurrentStageChange": -1 },
+          "right": { "text": "加入雷体流", "reputationDelta": -5, "subfactionId": "wumeng_thunder", "subReputationDelta": 20, "effects": { "cultivation": 20, "health": -2 }, "undercurrentId": "wumeng_split", "undercurrentStageChange": 1 }
+        }},
+        { "id": "body_teach", "title": "武盟真意", "minRealm": "golden", "pathRestriction": "body", "minReputation": 40, "once": true, "desc": "武盟大长老在瀑布下拍了拍你的肩膀：'你的体魄已不输上古大妖。这套内门秘典，拿去练吧！'", "weight": 20, "choices": {
+          "left": { "text": "接下秘典", "reputationDelta": 10, "effects": { "deckCard": "body_guard", "health": 20 }, "globalFlag": "wumeng_body_teach" },
+          "right": { "text": "只切磋不看书", "reputationDelta": 0, "effects": { "health": 10, "daoHeart": 10 }, "globalFlag": "wumeng_body_teach" }
+        }}
+      ]
+    },
+    {
+      "id": "xuesha_sect",
+      "name": "血煞宗",
+      "icon": "💀",
+      "type": "demonic",
+      "startReputation": -10,
+      "events": [
+        { "id": "demon_1", "title": "上古凶器搜索", "minRealm": "golden", "desc": "血煞宗最近在秘密收集上古凶器——三大禁忌之器据说已经找到了一件。", "weight": 8, "choices": {
+          "left": { "text": "参与搜索", "reputationDelta": 10, "effects": { "cultivation": 15, "karmaBad": 20 } },
+          "right": { "text": "冷眼旁观", "reputationDelta": -5, "effects": { "daoHeart": 5 } }
+        }}
+      ]
+    }
+  ],
+  "undercurrents": {
+    "qingyun_debate": {
+      "id": "qingyun_debate",
+      "name": "青云论剑之争",
+      "stage": 1,
+      "maxStage": 4,
+      "stages": {
+        "0": "古剑派与剑意派暗流涌动——三年一度的论剑大会即将召开。",
+        "1": "论剑大会上，三派正面交锋。白刃真人一剑震住全场。",
+        "2": "革新派开始秘密招募弟子进行'剑法双修'实验。古剑派暗中收集白刃真人与幽冥阁有来往的证据。",
+        "3": "古剑派在宗门大会上弹劾白刃真人——青云剑宗面临分裂。",
+        "4": "分裂危机解决——青云剑宗在风雨后更加强大。"
+      }
+    },
+    "tianshu_forbidden": {
+      "id": "tianshu_forbidden",
+      "name": "万卷楼天道之谜",
+      "stage": 1,
+      "maxStage": 4,
+      "stages": {
+        "0": "慕青岚发现了《天道书》的空白最后一页——那个位置曾经有字。",
+        "1": "慕青岚在犹豫要不要告诉玄机真人。这个秘密足以颠覆整个修仙界。",
+        "2": "秘密被泄露——天枢道院内部出现裂痕。",
+        "3": "玄机真人得知真相，但他选择沉默——\"有些真相，时机未到。\"",
+        "4": "天枢道院成为对抗天道的秘密据点。"
+      }
+    },
+    "tianji_split": {
+      "id": "tianji_split",
+      "name": "天机阁的分裂",
+      "stage": 1,
+      "maxStage": 3,
+      "stages": {
+        "0": "天机阁年轻派厌倦了七千年的等待。",
+        "1": "年轻派决定成立'破天阵'——主动对抗天道。",
+        "2": "天机老人默许了年轻派的行动——他说'等得太久了，他们是对的。'",
+        "3": "老派天文与年轻破天阵合作——天机阁成为对抗天道的先锋。"
+      }
+    },
+    "dangu_forbidden": {
+      "id": "dangu_forbidden",
+      "name": "药王谷禁药之谜",
+      "stage": 1,
+      "maxStage": 3,
+      "stages": {
+        "0": "药圣的禁药原料来自万毒门——这个秘密只有你知道。",
+        "1": "药圣私下找到你，恳请你保守这个秘密——\"万毒门在用禁药控制长老会。\"",
+        "2": "你必须在揭发药圣（毁了药王谷）和沉默（任由禁药蔓延）之间做出选择。",
+        "3": "药圣在最后关头自废修为——他说\"我欠谷中的，用一命来还。\""
+      }
+    },
+    "wumeng_split": {
+      "id": "wumeng_split",
+      "name": "武盟雷体之争",
+      "stage": 1,
+      "maxStage": 4,
+      "stages": {
+        "0": "雷体流主张淬雷炼体，钢骨流坚持传统横炼——两派积怨已久。",
+        "1": "雷体流掌门在天雷峰下公开演示淬雷之术，震慑全场。",
+        "2": "钢骨流指责雷体流'误入歧途'——淬雷之术伤及根基。武盟面临分裂。",
+        "3": "两派在万钧瀑布下举行最终对决——胜者主导武盟未来。",
+        "4": "雷体与钢骨在激战中领悟——两者本是一体。武盟因此更加强大。"
+      }
+    }
+  }
+}

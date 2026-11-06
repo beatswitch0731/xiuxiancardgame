@@ -1,0 +1,474 @@
+{
+  "npcs": [
+    {
+      "id": "bai_ren",
+      "name": "白刃真人",
+      "title": "青云剑宗掌门",
+      "personality": { "benevolence": 55, "proud": 80, "persistence": 85, "affection": 30, "courage": 70 },
+      "appearRealms": ["qi","foundation","golden","nascent","deity","tribulation"],
+      "pathRestriction": "sword",
+      "defaultEmotion": "平静",
+      "defaultMindset": "执念",
+      "defaultLocation": "青云剑宗·剑冢",
+      "startAffection": 0,
+      "startTrust": 10,
+      "teachable": true,
+      "firstMeeting": "你拜入青云剑宗，白刃真人看了你的剑一眼，只说了四个字：剑出无悔。",
+      "secrets": [
+        { "level": 1, "text": "白刃喜欢喝东海醉仙酿——虽然嘴上从来不说。" },
+        { "level": 2, "text": "师弟血煞老祖是他一生之痛。他们曾经是青云最好的师兄弟。" },
+        { "level": 3, "text": "剑冢仙剑是上界监视器。白刃一直在找毁掉仙剑的方法。" }
+      ],
+      "giftPrefs": {
+        "love": ["醉仙酿","上古剑谱"],
+        "like": ["磨剑石","剑穗","灵茶"],
+        "hate": ["法宝","华丽装饰"]
+      },
+      "gossipTopics": [
+        "正魔大战可能在三年内爆发——魔道三宗最近动作频频。",
+        "天机阁最近似乎发现了什么——天机老人已经一个月没出关了。",
+        "北荒那边有异象——听说有人在冰原深处看到了一座城池。"
+      ],
+      "knownInfo": [
+        { "text": "剑冢深处有一柄上古仙剑——但没人能拔出。", "requiredAffection": 0 },
+        { "text": "白刃曾经有一个师弟，叛出了青云剑宗。", "requiredAffection": 30 },
+        { "text": "那个师弟如今是血煞宗宗主——血煞老祖。", "requiredAffection": 60 },
+        { "text": "血煞老祖叛出师门不是因为野心——是因为发现了仙剑的秘密。", "requiredAffection": 80 }
+      ],
+      "schedule": {
+        "子时": "青云剑宗·剑冢", "寅时": "青云剑宗·剑冢",
+        "辰时": "青云剑宗·宗门大殿", "午时": "青云剑宗·演武场",
+        "申时": "青云剑宗·闭关室", "戌时": "青云剑宗·山门"
+      },
+      "dialogues": [
+        { "scene": "初见", "minAffection": 0, "mindset": "通明", "text": "你叫……（看了你的剑一眼）剑骨尚可。从今日起，你就是青云弟子。记住一句话——剑出无悔。" },
+        { "scene": "修炼", "minAffection": 20, "maxAffection": 49, "text": "你的剑路太直了。正道教的剑法循规蹈矩，但真正的剑——是活的。去剑冢，跟那些残剑学学。" },
+        { "scene": "修炼", "minAffection": 50, "maxAffection": 79, "text": "今天你的剑快了半寸。但快不是一切——你出剑的时候，在想什么？没想？那就对了。想得太多，剑就重了。" },
+        { "scene": "修炼", "minAffection": 80, "text": "（罕见地露出一丝笑意）你这一剑……有点老夫当年的样子。别得意——老夫当年也输过。" },
+        { "scene": "闲聊", "minAffection": 0, "maxAffection": 79, "mindset": "执念", "text": "（面色一沉）不关你的事。回去练剑。" },
+        { "scene": "闲聊", "minAffection": 80, "mindset": "执念", "text": "（长久的沉默）他叫陆沉舟。曾经……是青云最好的剑。后来他发现了剑冢的秘密，选择了一条我不认同的路。但我至今不知道——他是对的还是错的。" },
+        { "scene": "请教", "minAffection": 15, "text": "白刃真人出剑示范，剑光如雪。他只出了一剑，但你悟了十种变化。" },
+        { "scene": "论道", "minAffection": 30, "text": "'剑道的极致是什么？'白刃真人问，然后自答：'不是快，不是强——是无悔。你出剑的那一刻，天也不能改。'" },
+        { "scene": "通用", "minAffection": 0, "text": "白刃真人站在剑冢入口，手负长剑，望向远方。他没有说话，但你知道他在。" }
+      ]
+    },
+    {
+      "id": "bai_luoxuan",
+      "name": "白落霜",
+      "title": "白狐部·报恩者",
+      "personality": { "benevolence": 75, "proud": 35, "persistence": 60, "affection": 90, "courage": 45 },
+      "appearRealms": ["foundation","golden","nascent","deity","tribulation"],
+      "defaultEmotion": "平静",
+      "defaultMindset": "通明",
+      "defaultLocation": "南疆·白狐部",
+      "startAffection": 20,
+      "startTrust": 30,
+      "teachable": true,
+      "firstMeeting": "她站在你的洞府门口，白衣银发，傍晚的光从背后透过她的发丝。'恩公——奴家白落霜，今日特来报恩。'",
+      "giftPrefs": {
+        "love": ["南疆野花","狐牙项链"],
+        "like": ["灵药","丝织物","参汤材料"],
+        "hate": ["剑","符箓"]
+      },
+      "secrets": [
+        { "level": 1, "text": "她其实每天都会在你闭关的洞府外守一个时辰——等你出来喝参汤。" },
+        { "level": 2, "text": "白狐部的狐牙是定情信物。她一直带着自己那颗——在等你送她第二颗。" },
+        { "level": 3, "text": "她是九尾天狐的后裔。当年太古浩劫中，九尾一族被天道诅咒——若与人族结为道侣，将失去长生。" }
+      ],
+      "gossipTopics": [
+        "南疆深处的太古遗迹最近有异动——各大势力都在派人探查。",
+        "白狐部的灵药采了三十年才长成一批——妖族的寿命让他们的耐心远超人族。",
+        "九尾大人在月湖边见过你。她说你的命格——'有意思'。"
+      ],
+      "knownInfo": [
+        { "text": "白狐部居住在南疆深处，与世无争。", "requiredAffection": 0 },
+        { "text": "她的参汤用了妖族独有的火候——三十年才能练成的手艺。", "requiredAffection": 30 },
+        { "text": "白狐的记忆可以传三百年。她在试图把和你的记忆传下去。", "requiredAffection": 60 },
+        { "text": "她是九尾天狐的血脉。与你结为道侣，意味着放弃长生。", "requiredAffection": 80 }
+      ],
+      "dialogueScenes": ["闲聊","修炼","危机","表白","离别","赠礼","通用"],
+      "dialogues": [
+        { "scene": "初见", "minAffection": 0, "text": "（虚弱地躺在草丛里）她只是看着你，琥珀色的眼睛里没有恐惧，只有疑惑。" },
+        { "scene": "修炼", "minAffection": 30, "maxAffection": 60, "text": "'道侣，你今天闭关太久了。我给你煮了参汤——不喝就凉了。'碗里的参汤还是热的——她已经热了三次了。" },
+        { "scene": "修炼", "minAffection": 70, "text": "'你修炼的时候……我能坐在旁边吗？不打扰。就是想看着。白狐的记忆可以传三百年。三百年后，我希望我记得的——是你在修炼时的侧脸。'" },
+        { "scene": "闲聊", "minAffection": 40, "text": "'这片山上的灵药我都认识。这株是金线莲，这个是九节菖蒲……你问为什么知道？白狐部的族人从出生就在南疆采药——这是本能。'" },
+        { "scene": "危机", "minAffection": 60, "text": "'道侣……他们在说的那些话，我都听到了。'她的声音很轻。'他们说人妖殊途……你别生气，我不在意。'但她握着你的手紧了一些。" },
+        { "scene": "表白", "minAffection": 80, "text": "'道侣，如果我的存在让你为难……我可以走。白狐的记忆可以传三百年。三百年后，这世上还有人记得你的模样——就够了。'" },
+        { "scene": "赠礼", "minAffection": 50, "text": "'这是……南疆白狐部的狐牙？'她接过项链，手指微微发抖。'你知道狐牙对白狐部意味着什么吗……这是定情信物。'" },
+        { "scene": "通用", "minAffection": 0, "text": "白落霜坐在石桌旁，双手托腮看着你。她的尾巴在身后轻轻摇摆。" }
+      ]
+    },
+    {
+      "id": "jian_linger",
+      "name": "剑灵儿",
+      "title": "青云剑宗·白刃关门弟子",
+      "personality": { "benevolence": 60, "proud": 85, "persistence": 75, "affection": 30, "courage": 90 },
+      "appearRealms": ["foundation","golden","nascent","deity","tribulation"],
+      "pathRestriction": "sword",
+      "defaultEmotion": "平静",
+      "defaultMindset": "执念",
+      "defaultLocation": "青云剑宗·剑冢",
+      "startAffection": 0,
+      "startTrust": 5,
+      "teachable": true,
+      "firstMeeting": "'你就是师尊新收的弟子？'她抱着剑靠在剑冢的石壁上，眼神从上扫到下。'看起来……一般。来，拔剑。'",
+      "giftPrefs": {
+        "love": ["名剑","亲手磨的剑"],
+        "like": ["修炼心得","冰属性丹药","剑穗"],
+        "hate": ["脂粉","华丽衣物"]
+      },
+      "secrets": [
+        { "level": 1, "text": "她其实很在意自己看起来不够\"女人味\"——所以最讨厌收脂粉当礼物。" },
+        { "level": 2, "text": "她的冰心剑意是在心魔劫中悟出的——那年她差点走火入魔，是白刃真人以命换命才把她拉回来。" },
+        { "level": 3, "text": "她对你用的剑路特意放慢了半拍——怕伤到你。白刃真人说她练剑七十年，从没对任何人留过手。" }
+      ],
+      "gossipTopics": [
+        "师尊最近老往剑冢深处跑——那里是不是有机关连着我们不知道的东西？",
+        "上次论剑大会后，古剑派铁剑翁的脸色可精彩了——师尊一剑就让他闭了嘴。",
+        "那个殷血……他来过剑冢。师尊没出手。我不知道为什么。"
+      ],
+      "knownInfo": [
+        { "text": "剑灵儿是白刃真人唯一的关门弟子——她用七十年证明了师尊没有看走眼。", "requiredAffection": 0 },
+        { "text": "她每天在剑冢练剑四个时辰。风雨无阻——不是勤奋，是把练剑当呼吸。", "requiredAffection": 30 },
+        { "text": "她的冰心剑意在心魔劫中悟出。白刃真人用自己一半修为换她活着。", "requiredAffection": 60 },
+        { "text": "她对你出剑时慢了半拍。七十年来第一次——白刃真人说她开窍了，但不是剑窍。", "requiredAffection": 80 }
+      ],
+      "dialogues": [
+        { "scene": "初见", "minAffection": 0, "text": "'三招之内你还能站着，就算我认你这个师弟。'" },
+        { "scene": "修炼", "minAffection": 20, "maxAffection": 49, "text": "'你的第三剑……方向对了，太慢了。下次快半寸。'" },
+        { "scene": "修炼", "minAffection": 50, "maxAffection": 79, "text": "你的剑……最近有点不一样。少了戾气，多了点……我也说不上来。谁教的？——不准说是我师尊。" },
+        { "scene": "修炼", "minAffection": 80, "text": "'你……今天怎么没来练剑？（顿了顿）不是关心你——是没人陪我切磋！'" },
+        { "scene": "闲聊", "minAffection": 50, "mindset": "执念", "text": "'那个魔修？你怎么会认识他……算了。我不问了。'但她握剑的指节发白了。" },
+        { "scene": "请教", "minAffection": 15, "text": "剑灵儿随手一挥，剑尖凝出一片冰晶。'冰心剑意——心要静，剑要冷。但心冷不是无情。'" },
+        { "scene": "论道", "minAffection": 40, "text": "'剑道的尽头是什么？不是天下无敌——是有一个人，值得你为他出剑。'她说完立刻别过头。'……这不是我说的。'" },
+        { "scene": "通用", "minAffection": 0, "text": "剑灵儿在剑冢中舞剑，剑光如雪。她没看你，但她的剑路明显比平时慢了半拍——在等你来看。" }
+      ]
+    },
+    {
+      "id": "mu_qinglan",
+      "name": "慕青岚",
+      "title": "天枢道院·万卷楼",
+      "personality": { "benevolence": 75, "proud": 40, "persistence": 50, "affection": 45, "courage": 30 },
+      "appearRealms": ["foundation","golden","nascent","deity","tribulation"],
+      "pathRestriction": "spell",
+      "defaultEmotion": "平静",
+      "defaultMindset": "执念",
+      "defaultLocation": "天枢道院·万卷楼",
+      "startAffection": 0,
+      "startTrust": 0,
+      "teachable": true,
+      "firstMeeting": "她从古籍后面探出头，鼻尖上沾了一点灰。'万卷楼可不是谁都能进的。你有什么事？如果是闲逛——出门左转。'",
+      "giftPrefs": {
+        "love": ["古籍残卷","稀有典籍"],
+        "like": ["灵石","丹药材料","灵茶"],
+        "hate": ["武器","法器"]
+      },
+      "secrets": [
+        { "level": 1, "text": "慕青岚每天子时偷偷在万卷楼读《天道书》——虽然没人禁止但她还是心虚。" },
+        { "level": 2, "text": "万卷楼《天道书》最后一页是空白的——上面本来有字，被'抹去'了。" },
+        { "level": 3, "text": "她已经破译了最后一页的内容——不是被抹去的，是被'隐藏'了。那种隐藏手法——来自上界。这意味着飞升不是终点，而是某种选拔。" }
+      ],
+      "gossipTopics": [
+        "天机阁的藏书和万卷楼的古籍——有些对不上。不是记错了，是有人动了手笔。",
+        "玄机真人和白刃真人暗中见过三次面——她是从借书记录推算出来的。",
+        "她在万卷楼最深处的暗格里找到了一本没有名字的日记——作者至少是三千年前的人。"
+      ],
+      "knownInfo": [
+        { "text": "慕青岚读过万卷楼三分之二的藏书——她的修为不高，但见识不输长老。", "requiredAffection": 0 },
+        { "text": "她每天泡在万卷楼12个时辰——不是勤奋，是不喜欢和人打交道。", "requiredAffection": 30 },
+        { "text": "《天道书》最后一页的秘密她已经破译了一部分——但不敢告诉任何人。", "requiredAffection": 60 },
+        { "text": "她发现飞升是一个骗局。上界不是在迎接飞升者——是在筛选。", "requiredAffection": 80 }
+      ],
+      "dialogues": [
+        { "scene": "初见", "minAffection": 0, "text": "'你要找《通玄真经》第七卷？等一下——第七卷被前院的陈师弟借走了三个月还没还。（叹气）幸好我抄了一份。'" },
+        { "scene": "闲聊", "minAffection": 30, "text": "'万卷楼里最奇怪的书？嗯……有一本没有名字的。打开全是空白。不是没写——是被'删掉'了。'" },
+        { "scene": "修炼", "minAffection": 40, "text": "'根据《通玄真经》第七卷，你现在的修炼节奏错了。'她铺开一张纸，画了一条曲线。'看，你的灵气运转在这里拐弯了——应该走这条线。'" },
+        { "scene": "论道", "minAffection": 50, "text": "'天道……你知道吗，万卷楼最深处的《天道书》最后一页是空白的。什么人能抹去天道书上的字？'" },
+        { "scene": "请教", "minAffection": 20, "text": "慕青岚从书架上搬下来七本古籍，一本本翻给你看。'你看这一页、这一页、还有这一页——结合起来就是答案。'" },
+        { "scene": "通用", "minAffection": 0, "text": "慕青岚埋在书堆后面，只能看到她的发髻和时不时翻页的手指。" }
+      ]
+    },
+    {
+      "id": "yin_xue",
+      "name": "殷血",
+      "title": "血煞宗·第一天才",
+      "personality": { "benevolence": 15, "proud": 90, "persistence": 85, "affection": 20, "courage": 95 },
+      "appearRealms": ["foundation","golden","nascent","deity","tribulation"],
+      "defaultEmotion": "平静",
+      "defaultMindset": "执念",
+      "defaultLocation": "西域·血煞绿洲",
+      "startAffection": 0,
+      "startTrust": 0,
+      "teachable": true,
+      "firstMeeting": "'你就是那个青云弟子？'他靠在枯树上，剑尖在石头上划出血槽。'听说你很能打。不过——正道教的那些花里胡哨的剑法，拿来杀鸡还行。'",
+      "giftPrefs": {
+        "love": ["好酒","对手的剑"],
+        "like": ["疗伤丹药","血属性材料"],
+        "hate": ["书","佛经","善因物品"]
+      },
+      "secrets": [
+        { "level": 1, "text": "殷血其实不嗜血——他的血魔功是被血煞老祖强行灌入的。不杀就会反噬自己。" },
+        { "level": 2, "text": "他每次和你打完都偷偷吃了一颗回春丹——嘴上说三招，其实每次都在拼命。" },
+        { "level": 3, "text": "他在找一件能切断血魔功传承的上古法宝。如果找到——他愿意洗去一身魔功，重新做人。" }
+      ],
+      "gossipTopics": [
+        "血煞老祖最近在闭关——没人知道他在准备什么。但护法们都在扩建血池。",
+        "魔道三宗里有不止一个正道卧底——殷血知道至少三个，但他一个都没揭发。",
+        "西域荒漠深处有上古血魔的陵墓——血煞宗一直在找入口。找到了就是腥风血雨。"
+      ],
+      "knownInfo": [
+        { "text": "殷血是血煞宗百年来唯一一个活着练成血魔功的弟子。", "requiredAffection": 0 },
+        { "text": "他其实很在意和你的比试结果——虽然嘴上从来不承认。", "requiredAffection": 30 },
+        { "text": "他的血魔功不是自己选的。是血煞老祖在他七岁时种下的——不杀就会死。", "requiredAffection": 60 },
+        { "text": "他在秘密寻找洗去魔功的方法。如果找到——他愿意放下血煞宗的一切。", "requiredAffection": 80 }
+      ],
+      "dialogues": [
+        { "scene": "初见", "minAffection": 0, "text": "'三招。你就这点本事？'他收了剑转身要走，走了几步又回头。'不过你的最后一剑……有点意思。下次找我——我随时有空。'" },
+        { "scene": "闲聊", "minAffection": 30, "maxAffection": 60, "text": "'你又赢了。他妈的——你到底怎么练的？正道不应该都是废物吗？（顿了顿）算了，当我没说。喝酒。'" },
+        { "scene": "闲聊", "minAffection": 70, "text": "'你知道我为什么杀人不眨眼吗？（喝了半壶）因为我见过的正道修士，没有一个手上干净的。我至少承认我杀了。'" },
+        { "scene": "修炼", "minAffection": 40, "text": "'来，老地方。三招。'——这是他独特的'我很想你'。" },
+        { "scene": "危机", "minAffection": 80, "text": "'（站在两军之间）你我为敌。今日若分生死……如果我活下来，你欠我一顿酒。'" },
+        { "scene": "通用", "minAffection": 0, "text": "殷血用剑尖在地上划痕，一道接一道，不知道在想什么。" }
+      ]
+    },
+    {
+      "id": "jiuwei_suyue",
+      "name": "九尾溯月",
+      "title": "九尾天狐·太古幸存者",
+      "personality": { "benevolence": 50, "proud": 85, "persistence": 40, "affection": 60, "courage": 70 },
+      "appearRealms": ["golden","nascent","deity","tribulation"],
+      "defaultEmotion": "平静",
+      "defaultMindset": "执念",
+      "defaultLocation": "南疆·月湖",
+      "startAffection": 0,
+      "startTrust": 0,
+      "teachable": true,
+      "firstMeeting": "'就是你救了我家那只小白狐？'她从月下走出来，九条白色的尾巴如瀑布般散落。'长得还行。就是修为太差了。'",
+      "secrets": [
+        { "level": 1, "text": "九尾在三千年前的满月之夜差点飞升——但在最后一刻回头了。" },
+        { "level": 2, "text": "她是太古浩劫的亲眼见证者。妖族在那场浩劫中死了九成。" },
+        { "level": 3, "text": "混沌之力是唯一能打破天道的东西。她一直在收集混沌碎片，已经找到了两块。" }
+      ],
+      "giftPrefs": {
+        "love": ["太古遗物","混沌碎片","月下之花"],
+        "like": ["古物","灵药","丝织品"],
+        "hate": ["凡人物品","普通灵石"]
+      },
+      "dialogues": [
+        { "scene": "初见", "minAffection": 0, "text": "'你每次遇到困难都不放弃。这点倒是跟我年轻时很像。不过——我年轻时吃了很多亏。'" },
+        { "scene": "闲聊", "minAffection": 30, "text": "'那个时代……不提也罢。你知道太古浩劫死了多少妖族吗？你知道活下来的人心里是什么样的吗？'" },
+        { "scene": "论道", "minAffection": 50, "text": "'因为我不飞升。飞升是骗局。'她第一次用认真的语气——'我三千年前就可以飞升了。但我在最后一刻回头看——看到了飞升的真相。所以我不去了。'" },
+        { "scene": "修炼", "minAffection": 40, "text": "'三千年了，你是第一个让我笑的人。不是嘲笑——是真的……笑了。'" },
+        { "scene": "危机", "minAffection": 80, "text": "'我已经孤单了三千年。如果你愿意……剩下的三千年，我想有人陪着。'她用手指在你额头上点了一下。'这不是狐族的魅术——是印记。'" },
+        { "scene": "通用", "minAffection": 0, "text": "九尾溯月坐在月湖边，九条尾巴散落在身后。她在看月亮——但月亮已经看了她三千年。" }
+      ]
+    },
+    {
+      "id": "tianji_laoren",
+      "name": "天机老人",
+      "title": "天机阁掌阁",
+      "personality": { "benevolence": 70, "proud": 30, "persistence": 60, "affection": 25, "courage": 20 },
+      "appearRealms": ["golden","nascent","deity","tribulation"],
+      "pathRestriction": "spell",
+      "defaultEmotion": "平静",
+      "defaultMindset": "通明",
+      "defaultLocation": "天机阁·观星台",
+      "startAffection": 0,
+      "startTrust": 15,
+      "teachable": true,
+      "firstMeeting": "'你来了。'（抬头看了你一眼，手中的天机盘碎片微微发光）'不对——应该说，你终于来了。老夫等了你很久了。'",
+      "secrets": [
+        { "level": 1, "text": "天机盘只有3/7碎片——剩下4块散落在混沌虚空中。" },
+        { "level": 2, "text": "天机老人是唯一知道完整天道真相的正道修士——但他不说，因为没人信。" },
+        { "level": 3, "text": "他在等一个道心够强、能承受真相的人。天机盘显示那个人是你。" }
+      ],
+      "giftPrefs": {
+        "love": ["天机盘碎片","上古阵图"],
+        "like": ["灵石","阵法材料","灵茶"],
+        "hate": ["武器","杀伐之物"]
+      },
+      "dialogues": [
+        { "scene": "初见", "minAffection": 0, "text": "'因为天机盘告诉我——你会来。不是预知，是因果。你前世、前前世，做过的事，最终把你引到了这里。'" },
+        { "scene": "闲聊", "minAffection": 30, "text": "'（看着天机盘碎片）你今天不出门更好。不是有危险——是有好东西。算了，天机不可泄太多——你自己决定。'" },
+        { "scene": "论道", "minAffection": 40, "text": "'飞升……（沉默）你知道'上界'是什么吗？不是天堂，不是仙境。是一座——牢笼。'" },
+        { "scene": "请教", "minAffection": 50, "text": "'因为说了也没用。正道六宗不会信的。魔道知道了会利用这个真相。老夫也在等——等一个道心够强的人。'" },
+        { "scene": "修炼", "minAffection": 80, "text": "'（合上天机盘碎片，第一次正面看着你）天道不是自古就有的。太古浩劫之后，上界仙庭在苍茫界设下了筛选机制——天劫是淘汰，不是考验。'" },
+        { "scene": "通用", "minAffection": 0, "text": "天机老人盘坐在观星台上，手中的天机盘碎片映射出满天星辰。" }
+      ]
+    },
+    {
+      "id": "xuesha_laozu",
+      "name": "血煞老祖",
+      "title": "血煞宗宗主",
+      "personality": { "benevolence": 10, "proud": 95, "persistence": 90, "affection": 15, "courage": 100 },
+      "appearRealms": ["golden","nascent","deity","tribulation"],
+      "defaultEmotion": "平静",
+      "defaultMindset": "执念",
+      "defaultLocation": "西域·血煞圣殿",
+      "startAffection": -10,
+      "startTrust": 0,
+      "teachable": true,
+      "firstMeeting": "'（远远看着你）哼，白刃的弟子？长得可真像他那副正人君子的嘴脸。'" ,
+      "secrets": [
+        { "level": 1, "text": "他离开青云剑宗不是因为叛变——是发现了剑冢仙剑的秘密。" },
+        { "level": 2, "text": "他杀了剑祖留下的最后一个剑灵——为了切断上界对下界的监控。" },
+        { "level": 3, "text": "他是白刃真人的师弟。两人都在用不同方式对抗天道。" }
+      ],
+      "giftPrefs": {
+        "love": ["强者头颅","上古凶器"],
+        "like": ["血属性丹药","好酒"],
+        "hate": ["善因相关物品","佛经","正道信物"]
+      },
+      "dialogues": [
+        { "scene": "初见", "minAffection": 0, "text": "'白刃收了个好徒弟嘛——（冷笑）不过好徒弟死的也快。记住，在修仙界，好人活不长。'" },
+        { "scene": "闲聊", "minAffection": 0, "maxAffection": 30, "text": "'你走吧。看在白刃的面子上，今天不杀你——但下次见面，我不会手软。'" },
+        { "scene": "闲聊", "minAffection": 40, "text": "'（盯着你看了很久）你的剑法……有白刃的影子。但也有你自己的路。不错——至少没全学他那套。'" },
+        { "scene": "修炼", "minAffection": 50, "text": "'你想知道真正的剑道？不是正道教的那套——是杀伐之道。剑不是用来切磋的，是用来杀人的。'" },
+        { "scene": "论道", "minAffection": 60, "text": "'你问我和白刃为什么反目？（长叹）不是因为我入了魔道——是因为他不敢做的事，我替他做了。'" },
+        { "scene": "通用", "minAffection": 0, "text": "血煞老祖坐在大殿深处的血玉椅上，闭目养神。但你知道他没睡着——他手里握着剑。" }
+      ]
+    },
+    {
+      "id": "ds_bloodrose",
+      "name": "血剑女修",
+      "title": "血煞宗负伤剑修",
+      "personality": { "benevolence": 25, "proud": 72, "persistence": 78, "affection": 20, "courage": 82 },
+      "appearRealms": ["foundation"],
+      "defaultEmotion": "戒备",
+      "defaultMindset": "执念",
+      "defaultLocation": "血煞魔域·荒废矿洞",
+      "startAffection": 0,
+      "startTrust": 0,
+      "teachable": false,
+      "firstMeeting": "血月下，她靠着矿洞石壁压住伤口，剑尖仍对着你。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'正道修士，别急着伸手。先说你要什么。'" }
+      ]
+    },
+    {
+      "id": "ds_moonmist",
+      "name": "月雾妖修",
+      "title": "南疆月湖散修",
+      "personality": { "benevolence": 35, "proud": 68, "persistence": 60, "affection": 28, "courage": 70 },
+      "appearRealms": ["golden"],
+      "defaultEmotion": "戏谑",
+      "defaultMindset": "通明",
+      "defaultLocation": "南疆·月湖",
+      "startAffection": 0,
+      "startTrust": 5,
+      "teachable": false,
+      "firstMeeting": "月雾散开时，她在湖中抬眼，先报出了丹药的价码。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'交易就是交易。你若舍不得，现在走还来得及。'" }
+      ]
+    },
+    {
+      "id": "ds_spiritvine",
+      "name": "藤灵阵修",
+      "title": "灵脉核心守阵人",
+      "personality": { "benevolence": 30, "proud": 76, "persistence": 88, "affection": 18, "courage": 74 },
+      "appearRealms": ["golden"],
+      "defaultEmotion": "冷静",
+      "defaultMindset": "执念",
+      "defaultLocation": "上古秘境·灵脉核心",
+      "startAffection": 0,
+      "startTrust": 0,
+      "teachable": false,
+      "firstMeeting": "灵藤与阵纹缠住她的四肢，她却像在审视误入阵心的你。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'阵不会无缘无故困人。你敢解，就要承担它松开之后的事。'" }
+      ]
+    },
+    {
+      "id": "ds_demoness",
+      "name": "绯夜",
+      "title": "魔纹魅修",
+      "personality": { "benevolence": 32, "proud": 75, "persistence": 85, "affection": 35, "courage": 80 },
+      "appearRealms": ["nascent", "deity", "tribulation"],
+      "defaultEmotion": "戒备",
+      "defaultMindset": "执念",
+      "defaultLocation": "魔域·地下拍卖场",
+      "startAffection": 10,
+      "startTrust": 10,
+      "teachable": false,
+      "firstMeeting": "她被封印在拍卖台上，没有求救，只在判断谁值得她把命压上去。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'我可以跟你走。但别把赎身当成买下一个人。'" }
+      ]
+    },
+    {
+      "id": "ds_traveler",
+      "name": "夜栈散修",
+      "title": "行走南疆的散修",
+      "personality": { "benevolence": 45, "proud": 55, "persistence": 58, "affection": 30, "courage": 62 },
+      "appearRealms": ["foundation"],
+      "defaultEmotion": "好奇",
+      "defaultMindset": "通明",
+      "defaultLocation": "南疆·驿道客栈",
+      "startAffection": 0,
+      "startTrust": 5,
+      "teachable": false,
+      "firstMeeting": "暴雨封住驿道，她推门进来时带着血与茉莉的气味。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'只借一夜避雨。天亮之前，你我都不问来处。'" }
+      ]
+    },
+    {
+      "id": "ds_alchemist",
+      "name": "丹火药师",
+      "title": "丹谷商路炼药师",
+      "personality": { "benevolence": 48, "proud": 64, "persistence": 92, "affection": 24, "courage": 58 },
+      "appearRealms": ["nascent"],
+      "defaultEmotion": "专注",
+      "defaultMindset": "通明",
+      "defaultLocation": "丹谷商路·坊市丹房",
+      "startAffection": 0,
+      "startTrust": 5,
+      "teachable": true,
+      "firstMeeting": "她守着丹炉整夜未眠，看见你时先问的是灵火稳不稳。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'炉温还差一线。要帮忙就看火，别挡着我取药。'" }
+      ]
+    },
+    {
+      "id": "ds_bandit_queen",
+      "name": "虎娘",
+      "title": "女匪寨首",
+      "personality": { "benevolence": 42, "proud": 82, "persistence": 80, "affection": 20, "courage": 96 },
+      "appearRealms": ["golden"],
+      "defaultEmotion": "挑衅",
+      "defaultMindset": "通明",
+      "defaultLocation": "武盟山道·女匪寨",
+      "startAffection": 0,
+      "startTrust": 0,
+      "teachable": true,
+      "firstMeeting": "虎娘把环首刀往寨门一横，请你先选：试刀，还是喝酒。",
+      "dialogues": [
+        { "scene": "通用", "minAffection": 0, "text": "'进了寨门就别端着。能打的上场，能喝的坐下。'" }
+      ]
+    },
+    {
+      "id": "mortal",
+      "name": "村中女子",
+      "title": "凡尘道侣",
+      "personality": { "benevolence": 70, "proud": 20, "persistence": 65, "affection": 75, "courage": 55 },
+      "appearRealms": ["qi", "foundation"],
+      "defaultEmotion": "平静",
+      "defaultMindset": "通明",
+      "defaultLocation": "山下村镇",
+      "startAffection": 50,
+      "startTrust": 20,
+      "teachable": false,
+      "firstMeeting": "你在山下村镇遇见她。她认出了你，却仍像初见那样坦然地问：你愿意留下来吗？",
+      "schedule": {
+        "子时": "山下村镇", "寅时": "山下村镇", "辰时": "山下村镇",
+        "午时": "山下村镇", "申时": "山下村镇", "戌时": "山下村镇"
+      },
+      "dialogues": [
+        { "scene": "初见", "minAffection": 0, "text": "你若愿意，我就在这里等你。" },
+        { "scene": "闲聊", "minAffection": 0, "text": "山下的日子没有仙门那样长，可今日与你同在，便已经很好。" },
+        { "scene": "通用", "minAffection": 0, "text": "她在村口等你，见你回来，先问一路可曾平安。" }
+      ]
+    }
+  ]
+}

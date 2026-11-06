@@ -11,7 +11,7 @@ func _initialize() -> void:
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(
 		"res://content/derived/companion_milestones.json"))
 	if companions.npcs.size() != 16 or catalog.milestones.size() != 5 \
-			or FileAccess.get_sha256("res://../src/systems/CompanionSystem.js") != \
+			or FileAccess.get_sha256("res://tests/fixtures/source/src/systems/CompanionSystem.js") != \
 			catalog.sourceSha:
 		return _fail("current browser milestone source or NPC family diverged")
 	for i in range(companions.npcs.size()):

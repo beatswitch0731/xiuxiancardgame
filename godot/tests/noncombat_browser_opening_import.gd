@@ -5,8 +5,8 @@ const Registry = preload("res://scripts/runtime_data_registry.gd")
 const Domain = preload("res://scripts/noncombat_domain.gd")
 const RunSession = preload("res://scripts/noncombat_run_session.gd")
 const BattleGateway = preload("res://scripts/noncombat_battle_gateway.gd")
-const FIXTURE_DIR := "../artifacts/godot-migration/noncombat-browser-import/"
-const BATTLE_FIXTURE := "../artifacts/godot-migration/m0-2026-10-15/slots-synthetic-raw.json"
+const FIXTURE_DIR := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/"
+const BATTLE_FIXTURE := "res://tests/fixtures/artifacts/godot-migration/m0-2026-10-15/slots-synthetic-raw.json"
 
 class MemoryStore extends RefCounted:
 	var snapshot: Dictionary
@@ -147,6 +147,10 @@ func _initialize() -> void:
 
 
 func _source_path(relative: String) -> String:
+	# 内化后常量是 res:// 虚拟路径，不能再 path_join 到绝对根上；
+	# 相对路径（历史写法）仍需拼绝对根才能被 FileAccess 打开。
+	if relative.begins_with("res://"):
+		return relative
 	return ProjectSettings.globalize_path("res://").path_join(relative).simplify_path()
 
 

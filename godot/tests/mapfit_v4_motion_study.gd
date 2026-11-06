@@ -3,7 +3,7 @@ extends SceneTree
 # Isolated in-memory study; the shipping scene and actor resources are untouched.
 # Large generated art is downsampled for a visual experiment, not final pixel art.
 const BASE := "res://art_direction/candidates/mapfit_v4_20261030/"
-const OUT := "res://../artifacts/godot-migration/qingyun-pixel-combat/"
+const OUT := "res://output/captures/godot-migration/qingyun-pixel-combat/"
 const ANCHOR := Vector2i(64, 80)
 const CANVAS := Vector2i(128, 96)
 var contact_seen := false

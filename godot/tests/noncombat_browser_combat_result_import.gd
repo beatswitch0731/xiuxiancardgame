@@ -5,7 +5,7 @@ const Importer = preload("res://scripts/noncombat_browser_opening_import.gd")
 const Registry = preload("res://scripts/runtime_data_registry.gd")
 const Domain = preload("res://scripts/noncombat_domain.gd")
 const Session = preload("res://scripts/noncombat_run_session.gd")
-const FIXTURE := "res://../artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
+const FIXTURE := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
 
 func _initialize() -> void:
 	var source: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(FIXTURE))

@@ -10,7 +10,7 @@ func _initialize() -> void:
 		return _fail("source repository unavailable")
 	var source: Dictionary = repo.read_module("companions:arcs")
 	var ally: Dictionary = source.allyArc.xuesha_laozu
-	if FileAccess.get_sha256("res://../src/systems/StoryNetworkSystem.js") != Repository.STORY_RULE_SHA:
+	if FileAccess.get_sha256("res://tests/fixtures/source/src/systems/StoryNetworkSystem.js") != Repository.STORY_RULE_SHA:
 		return _fail("ally browser producer changed")
 	var specs := []
 	for stage in STAGES:

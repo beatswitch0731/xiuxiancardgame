@@ -4,7 +4,7 @@ const Registry = preload("res://scripts/runtime_data_registry.gd")
 const Domain = preload("res://scripts/noncombat_domain.gd")
 const RunSession = preload("res://scripts/noncombat_run_session.gd")
 const OpeningScene = preload("res://scenes/noncombat_opening.tscn")
-const OUT := "res://../artifacts/godot-migration/whitefox-live-battle/"
+const OUT := "res://output/captures/godot-migration/whitefox-live-battle/"
 
 
 func _initialize() -> void:

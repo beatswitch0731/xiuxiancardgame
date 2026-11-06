@@ -18,7 +18,7 @@ func _initialize() -> void:
 		if not authored_ids.has(npc.id):
 			generic_ids.append(npc.id)
 	if generic_ids.size() != 8 or FileAccess.get_sha256(
-			"res://../src/systems/CompanionSystem.js") != Events.RULE_SHA:
+			"res://tests/fixtures/source/src/systems/CompanionSystem.js") != Events.RULE_SHA:
 		return _fail("generic companion source or owner inventory changed")
 	for npc_id in generic_ids:
 		for kind in GENERIC_IDS:

@@ -20,12 +20,12 @@ func _run() -> void:
 	if pins.is_empty():
 		return _fail("source rule pins missing: " + policy.last_error)
 	for source in pins:
-		var actual := FileAccess.get_sha256(ProjectSettings.globalize_path("res://").path_join("../" + source))
+		var actual := FileAccess.get_sha256(ProjectSettings.globalize_path("res://tests/fixtures/source/").path_join(source))
 		if pins[source] != actual or oracle.pins.get(source) != actual:
 			return _fail("source rule drift: " + source)
 	for source in ["src/systems/CardSystem.js", "data/combat/encounters.json"]:
 		if oracle.pins.get(source) != FileAccess.get_sha256(ProjectSettings.globalize_path(
-				"res://").path_join("../" + source)):
+				"res://tests/fixtures/source/").path_join(source)):
 			return _fail("candidate catalog source drift: " + source)
 	if not _fixture_cases(policy, oracle) or not _policy_boundaries(policy, oracle.rows[1]) \
 			or not _catalog_order(policy, content, oracle.rows[1]):

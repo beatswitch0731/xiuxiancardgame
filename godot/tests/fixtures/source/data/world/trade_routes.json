@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "routes": [
+    {
+      "id": "cloud_sword_road",
+      "name": "青云剑路",
+      "from": "宗门",
+      "to": "坊市",
+      "factions": ["qingyun_sword"],
+      "undercurrents": ["qingyun_debate"],
+      "supply": ["weapon", "armor"],
+      "initial": { "openness": 70, "danger": 18, "prosperity": 55 },
+      "flavor": "飞剑传书与护送队沿山道昼夜往返。"
+    },
+    {
+      "id": "herb_river",
+      "name": "神农药河",
+      "from": "洞府",
+      "to": "坊市",
+      "factions": ["shennong_dangu"],
+      "undercurrents": ["dangu_forbidden"],
+      "supply": ["regen", "consumable", "material"],
+      "initial": { "openness": 62, "danger": 22, "prosperity": 60 },
+      "flavor": "载满灵草的青木舟顺地下灵河进入坊市。"
+    },
+    {
+      "id": "western_blood_route",
+      "name": "西域血砂道",
+      "from": "魔域",
+      "to": "坊市",
+      "factions": ["xuesha_sect"],
+      "undercurrents": [],
+      "supply": ["artifact", "material"],
+      "initial": { "openness": 38, "danger": 58, "prosperity": 42 },
+      "flavor": "正邪都不承认这条路存在，但禁物总会准时抵达。"
+    },
+    {
+      "id": "ruin_star_path",
+      "name": "遗迹星路",
+      "from": "秘境",
+      "to": "天道虚空",
+      "factions": ["tianji_pavilion", "tianshu_academy"],
+      "undercurrents": ["tianji_split", "tianshu_forbidden"],
+      "supply": ["artifact", "tool"],
+      "initial": { "openness": 24, "danger": 66, "prosperity": 30 },
+      "flavor": "天机阁以星盘标记每一次短暂开启的空间裂隙。"
+    }
+  ]
+}

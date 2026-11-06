@@ -113,7 +113,7 @@ func _run() -> void:
 			or not flow.apply(gift, "bai_ren", "请教").is_empty():
 		return _fail("gift consumption or per-turn budget differs")
 	var fixture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(
-		"res://../artifacts/godot-migration/npc-manual-source.json"))
+		"res://tests/fixtures/artifacts/godot-migration/npc-manual-source.json"))
 	if fixture.get("catalogSize") != 16 or fixture.get("qiVisible") != ["bai_ren", "mortal"] \
 			or fixture.get("cases", []).size() != 5 \
 			or not fixture.cases.any(func(row: Variant) -> bool:

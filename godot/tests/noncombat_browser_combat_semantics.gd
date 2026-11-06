@@ -3,7 +3,7 @@ extends SceneTree
 const Semantics = preload("res://scripts/noncombat_browser_combat_semantics.gd")
 const Seal = preload("res://scripts/noncombat_browser_combat_seal.gd")
 const Registry = preload("res://scripts/runtime_data_registry.gd")
-const FIXTURE := "res://../artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
+const FIXTURE := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
 
 
 func _initialize() -> void:

@@ -1,0 +1,178 @@
+{
+  "catalogSize": 16,
+  "qiVisible": [
+    "bai_ren",
+    "mortal"
+  ],
+  "cases": [
+    {
+      "action": "闲聊",
+      "realm": "qi",
+      "affection": 0,
+      "rolls": [
+        0.4,
+        0.4
+      ],
+      "result": {
+        "npcId": "bai_ren",
+        "action": "闲聊",
+        "itemId": null,
+        "success": true,
+        "reason": null,
+        "reaction": "（面色一沉）不关你的事。回去练剑。",
+        "affDelta": 1,
+        "newAffection": 1
+      },
+      "memory": {
+        "turn": 1,
+        "action": "闲聊",
+        "reaction": "（面色一沉）不关你的事。回去练剑。",
+        "affectionDelta": 1
+      },
+      "bond": 0,
+      "inventory": {
+        "醉仙酿": 1
+      },
+      "budget": {}
+    },
+    {
+      "action": "闲聊",
+      "realm": "qi",
+      "affection": 0,
+      "rolls": [
+        0,
+        0.9
+      ],
+      "result": {
+        "npcId": "bai_ren",
+        "action": "闲聊",
+        "itemId": null,
+        "success": true,
+        "reason": null,
+        "reaction": "白刃真人站在剑冢入口，手负长剑，望向远方。他没有说话，但你知道他在。",
+        "affDelta": -1,
+        "newAffection": -1
+      },
+      "memory": {
+        "turn": 1,
+        "action": "闲聊",
+        "reaction": "白刃真人站在剑冢入口，手负长剑，望向远方。他没有说话，但你知道他在。",
+        "affectionDelta": -1
+      },
+      "bond": 0,
+      "inventory": {
+        "醉仙酿": 1
+      },
+      "budget": {}
+    },
+    {
+      "action": "赠礼",
+      "realm": "qi",
+      "affection": 30,
+      "itemId": "醉仙酿",
+      "rolls": [
+        0.4
+      ],
+      "result": {
+        "npcId": "bai_ren",
+        "action": "赠礼",
+        "itemId": "醉仙酿",
+        "success": true,
+        "reason": null,
+        "reaction": "眼中闪过一丝惊喜——这正是ta最喜欢的。",
+        "affDelta": 8,
+        "newAffection": 38
+      },
+      "memory": {
+        "turn": 1,
+        "action": "赠礼",
+        "reaction": "眼中闪过一丝惊喜——这正是ta最喜欢的。",
+        "affectionDelta": 8
+      },
+      "bond": 1,
+      "inventory": {},
+      "budget": {
+        "bai_ren": {
+          "1": {
+            "action": "赠礼",
+            "consumedAtTurn": 1
+          }
+        }
+      }
+    },
+    {
+      "action": "请教",
+      "realm": "qi",
+      "affection": 15,
+      "rolls": [
+        0.4,
+        0.4
+      ],
+      "result": {
+        "npcId": "bai_ren",
+        "action": "请教",
+        "itemId": null,
+        "success": true,
+        "reason": null,
+        "reaction": "白刃真人出剑示范，剑光如雪。他只出了一剑，但你悟了十种变化。",
+        "affDelta": 5,
+        "newAffection": 20
+      },
+      "memory": {
+        "turn": 1,
+        "action": "请教",
+        "reaction": "白刃真人出剑示范，剑光如雪。他只出了一剑，但你悟了十种变化。",
+        "affectionDelta": 5
+      },
+      "bond": 0,
+      "inventory": {
+        "醉仙酿": 1
+      },
+      "budget": {
+        "bai_ren": {
+          "1": {
+            "action": "请教",
+            "consumedAtTurn": 1
+          }
+        }
+      }
+    },
+    {
+      "action": "论道",
+      "realm": "foundation",
+      "affection": 30,
+      "rolls": [
+        0.4,
+        0.4
+      ],
+      "result": {
+        "npcId": "bai_ren",
+        "action": "论道",
+        "itemId": null,
+        "success": true,
+        "reason": null,
+        "reaction": "'剑道的极致是什么？'白刃真人问，然后自答：'不是快，不是强——是无悔。你出剑的那一刻，天也不能改。'",
+        "affDelta": 4,
+        "newAffection": 34
+      },
+      "memory": {
+        "turn": 1,
+        "action": "论道",
+        "reaction": "'剑道的极致是什么？'白刃真人问，然后自答：'不是快，不是强——是无悔。你出剑的那一刻，天也不能改。'",
+        "affectionDelta": 4
+      },
+      "bond": 1,
+      "inventory": {
+        "醉仙酿": 1
+      },
+      "budget": {
+        "bai_ren": {
+          "1": {
+            "action": "论道",
+            "consumedAtTurn": 1
+          }
+        }
+      }
+    }
+  ]
+}

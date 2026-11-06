@@ -5,7 +5,7 @@ const RunSession = preload("res://scripts/noncombat_run_session.gd")
 const LegacyStore = preload("res://scripts/noncombat_opening_store.gd")
 const Domain = preload("res://scripts/noncombat_domain.gd")
 const Registry = preload("res://scripts/runtime_data_registry.gd")
-const FIXTURE := "../artifacts/godot-migration/noncombat-browser-import/opening-source-saves.json"
+const FIXTURE := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/opening-source-saves.json"
 
 
 func _initialize() -> void:

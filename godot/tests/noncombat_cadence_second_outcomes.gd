@@ -11,7 +11,7 @@ func _run() -> void:
 	if args.size() == 2 and args[0] == "--case":
 		only = args[1]
 	for source in second.pins:
-		var actual := FileAccess.get_sha256(ProjectSettings.globalize_path("res://").path_join("../" + source))
+		var actual := FileAccess.get_sha256(ProjectSettings.globalize_path("res://tests/fixtures/source/").path_join(source))
 		if actual != second.pins[source]:
 			return _fail("second cadence source oracle drift: " + source)
 	var count := 0

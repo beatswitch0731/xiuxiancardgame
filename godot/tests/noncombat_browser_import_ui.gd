@@ -1,10 +1,10 @@
 extends SceneTree
 
 const Slots = preload("res://scripts/noncombat_save_slots.gd")
-const FIXTURE := "../artifacts/godot-migration/noncombat-browser-import/opening-source-saves.json"
-const BATTLE_FIXTURE := "../artifacts/godot-migration/m0-2026-10-15/slots-synthetic-raw.json"
-const MID_FIXTURE := "../artifacts/godot-migration/noncombat-browser-import/mid-source-save-sword-long.json"
-const EXTENDED_FIXTURE := "../artifacts/godot-migration/noncombat-browser-import/mid-source-save-sword-extended.json"
+const FIXTURE := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/opening-source-saves.json"
+const BATTLE_FIXTURE := "res://tests/fixtures/artifacts/godot-migration/m0-2026-10-15/slots-synthetic-raw.json"
+const MID_FIXTURE := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/mid-source-save-sword-long.json"
+const EXTENDED_FIXTURE := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/mid-source-save-sword-extended.json"
 
 
 func _initialize() -> void:
@@ -155,6 +155,10 @@ func _run() -> void:
 
 
 func _source_path(relative: String) -> String:
+	# 内化后常量是 res:// 虚拟路径，不能再 path_join 到绝对根上；
+	# 相对路径（历史写法）仍需拼绝对根才能被 FileAccess 打开。
+	if relative.begins_with("res://"):
+		return relative
 	return ProjectSettings.globalize_path("res://").path_join(relative).simplify_path()
 
 

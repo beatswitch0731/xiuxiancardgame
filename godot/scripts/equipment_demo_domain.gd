@@ -21,9 +21,9 @@ const SOURCE_NOTES := [
 class SourceCatalog extends RefCounted:
 	var root_path := ""
 	func _init() -> void:
-		root_path = ProjectSettings.globalize_path("res://").path_join("../")
-		if not FileAccess.file_exists(root_path.path_join("data/shops/treasures.json")):
-			root_path = "res://content/"
+		# 迁移已完成：只读 res://content/，不再回退到父目录——
+		# 父目录是浏览器版同步源，删除后不应影响运行时。
+		root_path = "res://content/"
 	func read_module(module_id: String) -> Variant:
 		return JSON.parse_string(FileAccess.get_file_as_string(module_path(module_id)))
 	func module_path(module_id: String) -> String:

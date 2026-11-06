@@ -1,0 +1,433 @@
+{
+  "source": "live browser public UI",
+  "seed": 1,
+  "constant": 0.45,
+  "pathId": "body",
+  "sourceHashes": {
+    "index.html": "5d13fd83c20c5176526d9132efca1f29fb6bc710c80557cbb96d78765656a306",
+    "src/game.js": "73d5038d1427433134a644e314d9d501d772c0ba79f67f61f9a46c3e4f8e093b",
+    "src/ui.js": "82ae0a82c1568b722992bdccc2078be99c5291887b021634cd170ff222053e29",
+    "src/systems/CompanionSystem.js": "bd6386d3fb6bae095ce312c5bac520129bbee18f692ba25cb6ccc7f13104adcb",
+    "src/systems/NpcSystem.js": "913ccdd6a3eb4464e3d3ce91ac1761c18cf8f2ce9346eb4929f2bf291046e6c8",
+    "src/systems/WorldContinuityStore.js": "470a98e0647d183c012c0d8e3b045012824f7ed280a65fb71956be4fca597409",
+    "data/cards/qi.json": "c38f5ccc65b643bdbe2cdf592daef5ab4167d629b0a84426f6270315b747f7d0",
+    "data/npcs/core_npcs.json": "db5cac02f2be7475faf5642a5beff9d40f9a2f72ce633bd2adbb8a9c69b25cf9",
+    "data/companions/qi_crisis.json": "e8953640583d339f760f665fa9079a90098a992a2f42c1ba505971b7e5f2c9f7"
+  },
+  "servedSourceHashes": {
+    "index.html": "5d13fd83c20c5176526d9132efca1f29fb6bc710c80557cbb96d78765656a306",
+    "src/game.js": "73d5038d1427433134a644e314d9d501d772c0ba79f67f61f9a46c3e4f8e093b",
+    "src/ui.js": "82ae0a82c1568b722992bdccc2078be99c5291887b021634cd170ff222053e29",
+    "src/systems/CompanionSystem.js": "bd6386d3fb6bae095ce312c5bac520129bbee18f692ba25cb6ccc7f13104adcb",
+    "src/systems/NpcSystem.js": "913ccdd6a3eb4464e3d3ce91ac1761c18cf8f2ce9346eb4929f2bf291046e6c8",
+    "src/systems/WorldContinuityStore.js": "470a98e0647d183c012c0d8e3b045012824f7ed280a65fb71956be4fca597409",
+    "data/cards/qi.json": "c38f5ccc65b643bdbe2cdf592daef5ab4167d629b0a84426f6270315b747f7d0",
+    "data/npcs/core_npcs.json": "db5cac02f2be7475faf5642a5beff9d40f9a2f72ce633bd2adbb8a9c69b25cf9",
+    "data/companions/qi_crisis.json": "e8953640583d339f760f665fa9079a90098a992a2f42c1ba505971b7e5f2c9f7"
+  },
+  "route": [
+    {
+      "cardId": "tutorial_1",
+      "decisionIndex": 0,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "tutorial_2",
+      "decisionIndex": 1,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "tutorial_3",
+      "decisionIndex": 2,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "tutorial_4",
+      "decisionIndex": 3,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "q_start_body",
+      "decisionIndex": 4,
+      "direction": "right",
+      "realm": "qi"
+    },
+    {
+      "cardId": "encounter_card_enc_trial_body_iron",
+      "decisionIndex": 5,
+      "direction": "right",
+      "realm": "qi"
+    },
+    {
+      "cardId": "promise_result_2aae4ec5",
+      "decisionIndex": 6,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "ch_qi_20",
+      "decisionIndex": 7,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "q_whiteFox_quest",
+      "decisionIndex": 8,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "ch_qi_40",
+      "decisionIndex": 9,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "bazaar_encounter",
+      "decisionIndex": 10,
+      "direction": "right",
+      "realm": "qi"
+    },
+    {
+      "cardId": "q_spiritStone",
+      "decisionIndex": 11,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "q_love",
+      "decisionIndex": 12,
+      "direction": "right",
+      "realm": "qi"
+    },
+    {
+      "cardId": "q_bodyTrial",
+      "decisionIndex": 13,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "ch_qi_60",
+      "decisionIndex": 14,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "DESTINY_WHEEL",
+      "decisionIndex": 15,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "k_chapter_body_left",
+      "decisionIndex": 15,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "mentor_bai_ren_stage_INNER_DISCIPLE",
+      "decisionIndex": 16,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "promise_result_3b3a1690",
+      "decisionIndex": 17,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "kx_ch_hoarded_manual",
+      "decisionIndex": 18,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "market_encounter",
+      "decisionIndex": 19,
+      "direction": "right",
+      "realm": "qi"
+    },
+    {
+      "cardId": "heavens_hint:slot_2:life:0:19:18",
+      "decisionIndex": 20,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "ch_qi_80",
+      "decisionIndex": 21,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "kx_ch_sword_sect_path",
+      "decisionIndex": 22,
+      "direction": "right",
+      "realm": "qi"
+    },
+    {
+      "cardId": "q_spiritStone",
+      "decisionIndex": 23,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "ally_xuesha_laozu_stage_RECOGNITION",
+      "decisionIndex": 24,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "promise_result_fb01adc0",
+      "decisionIndex": 25,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "bazaar_encounter",
+      "decisionIndex": 26,
+      "direction": "right",
+      "realm": "qi"
+    },
+    {
+      "cardId": "q_love",
+      "decisionIndex": 27,
+      "direction": "right",
+      "realm": "qi"
+    },
+    {
+      "cardId": "q_bodyTrial",
+      "decisionIndex": 28,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "q_cave",
+      "decisionIndex": 29,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "DESTINY_WHEEL",
+      "decisionIndex": 30,
+      "direction": "left",
+      "realm": "qi"
+    },
+    {
+      "cardId": "q_inherit",
+      "decisionIndex": 30,
+      "direction": "right",
+      "realm": "qi"
+    },
+    {
+      "cardId": "comp_mortal_qi_karma_crisis_good",
+      "decisionIndex": 31,
+      "direction": "left"
+    }
+  ],
+  "bonded": {
+    "cardId": "q_bodyTrial",
+    "cardType": "NORMAL",
+    "choices": {
+      "left": {
+        "text": "入阵淬炼",
+        "effects": {
+          "cultivation": 18,
+          "health": -2,
+          "fortune": 5
+        }
+      },
+      "right": {
+        "text": "留待日后",
+        "effects": {
+          "cultivation": 5
+        },
+        "karmaSeed": {
+          "id": "bodyTrialDeferred",
+          "delay": 8,
+          "realm": "golden",
+          "priority": 2
+        }
+      }
+    },
+    "realm": "qi",
+    "decisionIndex": 13,
+    "turn": 13,
+    "attributes": {
+      "cultivation": 37,
+      "daoHeart": 2,
+      "karmaGood": 5,
+      "karmaBad": 29,
+      "fortune": 51,
+      "health": 7,
+      "aura": 0,
+      "tianji": 0
+    },
+    "companions": [
+      "mortal"
+    ],
+    "mortal": {
+      "bond": 1,
+      "trust": 20,
+      "lastEventTurn": 12,
+      "lastCooldownTurn": 13,
+      "totalEvents": 0,
+      "affection": 50
+    },
+    "world": {
+      "npcId": "mortal",
+      "lifeId": 0,
+      "lifecycle": "ACTIVE",
+      "manifestation": "PHYSICAL",
+      "locationId": "山下村镇",
+      "factionId": null,
+      "changedByNode": "npc_registered",
+      "changedAtTurn": 0,
+      "reason": "initial_presence",
+      "revision": 16
+    },
+    "qLoveBuckets": [],
+    "qLoveCurrentInterval": null,
+    "pendingCrisis": null,
+    "screen": "story"
+  },
+  "crisis": {
+    "cardId": "comp_mortal_qi_karma_crisis_good",
+    "cardType": "COMPANION_EVENT",
+    "choices": {
+      "left": {
+        "text": "答应量力而行",
+        "effects": {},
+        "companionEffects": {
+          "compId": "mortal",
+          "affectionDelta": 4,
+          "bondDelta": 0,
+          "trustDelta": 2
+        }
+      },
+      "right": {
+        "text": "仍要独自担起风险",
+        "effects": {
+          "daoHeart": 2,
+          "health": -1
+        },
+        "companionEffects": {
+          "compId": "mortal",
+          "affectionDelta": -2,
+          "bondDelta": 0,
+          "trustDelta": -1
+        }
+      }
+    },
+    "realm": "qi",
+    "decisionIndex": 31,
+    "turn": 31,
+    "attributes": {
+      "cultivation": 93,
+      "daoHeart": 4,
+      "karmaGood": 44,
+      "karmaBad": 40,
+      "fortune": 80,
+      "health": 4,
+      "aura": 0,
+      "tianji": 0
+    },
+    "companions": [
+      "mortal"
+    ],
+    "mortal": {
+      "bond": 1,
+      "trust": 20,
+      "lastEventTurn": 12,
+      "lastCooldownTurn": 30,
+      "totalEvents": 0,
+      "affection": 50
+    },
+    "world": {
+      "npcId": "mortal",
+      "lifeId": 0,
+      "lifecycle": "ACTIVE",
+      "manifestation": "PHYSICAL",
+      "locationId": "山下村镇",
+      "factionId": null,
+      "changedByNode": "npc_registered",
+      "changedAtTurn": 0,
+      "reason": "initial_presence",
+      "revision": 16
+    },
+    "qLoveBuckets": [],
+    "qLoveCurrentInterval": null,
+    "pendingCrisis": null,
+    "screen": "story",
+    "choicesEnabled": {
+      "left": true,
+      "right": true
+    }
+  },
+  "after": {
+    "cardId": "promise_result_648444c4",
+    "cardType": "NARRATIVE_RESULT",
+    "choices": {
+      "left": {
+        "text": "记下这段回应",
+        "effects": {},
+        "resolution": {
+          "kind": "promise_resolved",
+          "promiseId": "promise:3159d39b"
+        },
+        "feedbackCue": {
+          "kind": "promise_resolved",
+          "text": "你在「道侣的担忧」中选择了「答应量力而行」。这段因缘已给出明确回应。",
+          "lane": "narrative"
+        },
+        "_choiceDirection": "left"
+      }
+    },
+    "realm": "qi",
+    "decisionIndex": 32,
+    "turn": 32,
+    "attributes": {
+      "cultivation": 93,
+      "daoHeart": 4,
+      "karmaGood": 44,
+      "karmaBad": 40,
+      "fortune": 80,
+      "health": 4,
+      "aura": 0,
+      "tianji": 0
+    },
+    "companions": [
+      "mortal"
+    ],
+    "mortal": {
+      "bond": 1,
+      "trust": 22,
+      "lastEventTurn": 12,
+      "lastCooldownTurn": 30,
+      "totalEvents": 0,
+      "affection": 54
+    },
+    "world": {
+      "npcId": "mortal",
+      "lifeId": 0,
+      "lifecycle": "ACTIVE",
+      "manifestation": "PHYSICAL",
+      "locationId": "山下村镇",
+      "factionId": null,
+      "changedByNode": "npc_registered",
+      "changedAtTurn": 0,
+      "reason": "initial_presence",
+      "revision": 16
+    },
+    "qLoveBuckets": [],
+    "qLoveCurrentInterval": null,
+    "pendingCrisis": null,
+    "screen": "story"
+  },
+  "errors": []
+}

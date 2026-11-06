@@ -2,7 +2,7 @@ extends SceneTree
 
 const Domain = preload("res://scripts/noncombat_domain.gd")
 const Registry = preload("res://scripts/runtime_data_registry.gd")
-const SOURCE_PATH := "res://../artifacts/godot-migration/noncombat-mortal/mortal-qi-browser.json"
+const SOURCE_PATH := "res://tests/fixtures/artifacts/godot-migration/noncombat-mortal/mortal-qi-browser.json"
 
 
 func _initialize() -> void:

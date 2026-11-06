@@ -83,7 +83,7 @@ func _run() -> void:
 		if capture:
 			await RenderingServer.frame_post_draw
 			var output_dir := ProjectSettings.globalize_path(
-				"res://../artifacts/godot-migration/reward-arena-v8")
+				"res://output/captures/godot-migration/reward-arena-v8")
 			DirAccess.make_dir_recursive_absolute(output_dir)
 			var output := output_dir.path_join("reward_%sx%s.png" % [resolution.x, resolution.y])
 			if root.get_texture().get_image().save_png(output) != OK:

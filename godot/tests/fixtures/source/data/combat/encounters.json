@@ -1,0 +1,5403 @@
+{
+  "version": "1.0.0",
+  "design": "B7 EncounterDirector 权威遭遇库；54 场目录战与 11 场迁移来源战斗合计 65 场，含剑冢遗承对同地剑意化身镜头的显式复用；六境均具最低普通、任务与精英配额。",
+  "defeatHealthLossByTier": {
+    "1": 1,
+    "2": 2,
+    "3": 3
+  },
+  "targetCounts": {
+    "migratedExisting": 11,
+    "realmBoss": 6,
+    "archetypeTrial": 12,
+    "factionElite": 6,
+    "companionQuest": 6,
+    "heavenChaos": 4,
+    "realmPatrol": 3,
+    "realmQuotaOrdinary": 8,
+    "realmQuest": 6,
+    "realmElite": 3,
+    "total": 65
+  },
+  "encounters": [
+    {
+      "id": "enc_boss_qi_thunder_gate",
+      "category": "realmBoss",
+      "encounterKind": "realm_boss",
+      "realm": "qi",
+      "title": "炼气巡关·惊雷石傀",
+      "description": "宗门以雷纹石傀检验弟子能否在压力下维持真元循环。石傀只认招式，不认身份。",
+      "enemy": {
+        "templateId": "enemy_qi_tribulation",
+        "name": "惊雷石傀",
+        "hp": 8,
+        "atk": 1,
+        "def": 1,
+        "tier": 3
+      },
+      "defeatHealthLoss": 2,
+      "mechanic": "三段雷击逐步升压；护盾必须留给第三击。",
+      "worldStory": "这是凡人迈入修士世界后的第一道实战门槛。",
+      "victoryEffects": {
+        "cultivation": 4,
+        "daoHeart": 1
+      },
+      "defeatEffects": {
+        "daoHeart": -1
+      },
+      "avoid": {
+        "text": "暂缓巡关",
+        "desc": "承认准备不足，等待下一次挑战。",
+        "effects": {
+          "daoHeart": -1
+        }
+      }
+    },
+    {
+      "id": "enc_boss_foundation_mirror",
+      "category": "realmBoss",
+      "encounterKind": "realm_boss",
+      "realm": "foundation",
+      "title": "筑基巡关·镜湖心魔",
+      "description": "镜湖照出的并非容貌，而是你最不愿承认的念头。它用你的迟疑保护自己。",
+      "enemy": {
+        "templateId": "enemy_foundation_demon",
+        "name": "镜湖心魔",
+        "hp": 11,
+        "atk": 2,
+        "def": 1,
+        "tier": 3
+      },
+      "mechanic": "攻击、心防、震爆循环；在心防回合积攒资源。",
+      "worldStory": "筑基之后，真正危险的敌人开始来自自身。",
+      "victoryEffects": {
+        "cultivation": 5,
+        "daoHeart": 2
+      },
+      "defeatEffects": {
+        "daoHeart": -2
+      },
+      "avoid": {
+        "text": "封闭镜湖",
+        "desc": "暂时不看自己的倒影。",
+        "effects": {
+          "fortune": -1
+        }
+      }
+    },
+    {
+      "id": "enc_boss_golden_yinyang",
+      "category": "realmBoss",
+      "encounterKind": "realm_boss",
+      "realm": "golden",
+      "title": "金丹巡关·阴阳雷兽",
+      "description": "雷池中的阴阳二气凝为双首雷兽，一首破盾，一首重击。",
+      "enemy": {
+        "templateId": "enemy_golden_tribulation",
+        "name": "阴阳雷兽",
+        "hp": 14,
+        "atk": 2,
+        "def": 1,
+        "tier": 3
+      },
+      "mechanic": "阴雷与阳雷交替，不能只依赖单一防御策略。",
+      "worldStory": "金丹使力量凝一，而雷兽逼你重新理解阴阳相济。",
+      "victoryEffects": {
+        "cultivation": 6,
+        "fortune": 2
+      },
+      "defeatEffects": {
+        "daoHeart": -1
+      },
+      "avoid": {
+        "text": "退出雷池",
+        "effects": {
+          "cultivation": -2
+        }
+      }
+    },
+    {
+      "id": "enc_boss_nascent_void",
+      "category": "realmBoss",
+      "encounterKind": "realm_boss",
+      "realm": "nascent",
+      "title": "元婴巡关·虚空执法影",
+      "description": "一道来自上界秩序的投影穿过裂隙，要核验你的元婴是否属于允许存在的形态。",
+      "enemy": {
+        "templateId": "enemy_nascent_tribulation",
+        "name": "虚空执法影",
+        "hp": 16,
+        "atk": 3,
+        "def": 1,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_void_enforcer_shadow_agc_n13_v1",
+          "initialState": "VERDICT",
+          "states": {
+            "VERDICT": {
+              "label": "虚裁收束",
+              "cue": "虚空执法影展开其独有的虚裁收束征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "虚裁收束：机制进入可读蓄势",
+                "actionName": "虚空执法影展开其独有的虚裁收束征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "SEVER": {
+              "label": "断界斩令",
+              "cue": "虚空执法影沿可见中线释放断界斩令。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "断界斩令：造成3点伤害",
+                "actionName": "虚空执法影沿可见中线释放断界斩令。",
+                "actionFamily": "attack"
+              }
+            },
+            "FRACTURE": {
+              "label": "裁影破裂",
+              "cue": "虚空执法影的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "裁影破裂：本轮不获得护盾",
+                "actionName": "虚空执法影的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "REFORM": {
+              "label": "虚庭重组",
+              "cue": "虚空执法影收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "虚庭重组：获得1点护盾",
+                "actionName": "虚空执法影收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "VERDICT",
+              "when": "action_resolved",
+              "to": "SEVER"
+            },
+            {
+              "from": "SEVER",
+              "when": "deflected",
+              "to": "FRACTURE"
+            },
+            {
+              "from": "SEVER",
+              "when": "enemy_block_broken",
+              "to": "FRACTURE"
+            },
+            {
+              "from": "SEVER",
+              "when": "action_resolved",
+              "to": "REFORM"
+            },
+            {
+              "from": "FRACTURE",
+              "when": "action_resolved",
+              "to": "REFORM"
+            },
+            {
+              "from": "REFORM",
+              "when": "action_resolved",
+              "to": "VERDICT"
+            }
+          ]
+        }
+      },
+      "mechanic": "聚雷后重击；攻击窗口短，过度防守会被持续压制。",
+      "worldStory": "仙庭的筛选从来不是飞升时才开始。",
+      "victoryEffects": {
+        "cultivation": 7,
+        "tianji": 1
+      },
+      "defeatEffects": {
+        "daoHeart": -2
+      },
+      "avoid": {
+        "text": "遮蔽元婴气机",
+        "effects": {
+          "tianji": -1
+        }
+      }
+    },
+    {
+      "id": "enc_boss_deity_karma_dragon",
+      "category": "realmBoss",
+      "encounterKind": "realm_boss",
+      "realm": "deity",
+      "title": "化神巡关·业火雷龙",
+      "description": "众生因果被雷云编成龙骨，恶业越重，雷龙的鳞片越亮。",
+      "enemy": {
+        "templateId": "enemy_deity_tribulation",
+        "name": "业火雷龙",
+        "hp": 18,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_karma_thunder_dragon_agc_n14_v1",
+          "initialState": "KARMA_COIL",
+          "states": {
+            "KARMA_COIL": {
+              "label": "业缠盘身",
+              "cue": "业火雷龙展开其独有的业缠盘身征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "业缠盘身：机制进入可读蓄势",
+                "actionName": "业火雷龙展开其独有的业缠盘身征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "FIRE_JUDGMENT": {
+              "label": "业火雷裁",
+              "cue": "业火雷龙沿可见中线释放业火雷裁。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "业火雷裁：造成3点伤害",
+                "actionName": "业火雷龙沿可见中线释放业火雷裁。",
+                "actionFamily": "attack"
+              }
+            },
+            "SCALE_BREAK": {
+              "label": "龙鳞震裂",
+              "cue": "业火雷龙的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "龙鳞震裂：本轮不获得护盾",
+                "actionName": "业火雷龙的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RECKONING": {
+              "label": "因果重算",
+              "cue": "业火雷龙收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "因果重算：获得1点护盾",
+                "actionName": "业火雷龙收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "KARMA_COIL",
+              "when": "action_resolved",
+              "to": "FIRE_JUDGMENT"
+            },
+            {
+              "from": "FIRE_JUDGMENT",
+              "when": "deflected",
+              "to": "SCALE_BREAK"
+            },
+            {
+              "from": "FIRE_JUDGMENT",
+              "when": "enemy_block_broken",
+              "to": "SCALE_BREAK"
+            },
+            {
+              "from": "FIRE_JUDGMENT",
+              "when": "action_resolved",
+              "to": "RECKONING"
+            },
+            {
+              "from": "SCALE_BREAK",
+              "when": "action_resolved",
+              "to": "RECKONING"
+            },
+            {
+              "from": "RECKONING",
+              "when": "action_resolved",
+              "to": "KARMA_COIL"
+            }
+          ]
+        }
+      },
+      "mechanic": "屏障与因果重击交替；必须规划破盾后的爆发回合。",
+      "worldStory": "化神不是摆脱过去，而是让过去拥有伤害你的形体。",
+      "victoryEffects": {
+        "cultivation": 8,
+        "karmaGood": 2
+      },
+      "defeatEffects": {
+        "karmaBad": 2
+      },
+      "avoid": {
+        "text": "献祭灵石平息雷龙",
+        "effects": {
+          "spiritStone": -10
+        }
+      }
+    },
+    {
+      "id": "enc_boss_tribulation_heaven_door",
+      "category": "realmBoss",
+      "encounterKind": "realm_boss",
+      "realm": "tribulation",
+      "title": "渡劫巡关·天门守序者",
+      "description": "天门并非为所有飞升者而开，守序者会抹除不符合仙庭秩序的道路。",
+      "enemy": {
+        "templateId": "enemy_tribulation_finale",
+        "name": "天门守序者",
+        "hp": 20,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_heaven_door_arbiter_agc_n14_v1",
+          "initialState": "FIRST_DECREE",
+          "states": {
+            "FIRST_DECREE": {
+              "label": "天门初诏",
+              "cue": "天门守序者展开其独有的天门初诏征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "天门初诏：机制进入可读蓄势",
+                "actionName": "天门守序者展开其独有的天门初诏征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "THUNDER_GATE": {
+              "label": "雷门横断",
+              "cue": "天门守序者沿可见中线释放雷门横断。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "雷门横断：造成3点伤害",
+                "actionName": "天门守序者沿可见中线释放雷门横断。",
+                "actionFamily": "attack"
+              }
+            },
+            "ORDER_BROKEN": {
+              "label": "门序受损",
+              "cue": "天门守序者的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "门序受损：本轮不获得护盾",
+                "actionName": "天门守序者的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "FINAL_DECREE": {
+              "label": "终诏合门",
+              "cue": "天门守序者收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "终诏合门：获得1点护盾",
+                "actionName": "天门守序者收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "FIRST_DECREE",
+              "when": "action_resolved",
+              "to": "THUNDER_GATE"
+            },
+            {
+              "from": "THUNDER_GATE",
+              "when": "deflected",
+              "to": "ORDER_BROKEN"
+            },
+            {
+              "from": "THUNDER_GATE",
+              "when": "enemy_block_broken",
+              "to": "ORDER_BROKEN"
+            },
+            {
+              "from": "THUNDER_GATE",
+              "when": "action_resolved",
+              "to": "FINAL_DECREE"
+            },
+            {
+              "from": "ORDER_BROKEN",
+              "when": "action_resolved",
+              "to": "FINAL_DECREE"
+            },
+            {
+              "from": "FINAL_DECREE",
+              "when": "action_resolved",
+              "to": "FIRST_DECREE"
+            }
+          ]
+        }
+      },
+      "mechanic": "法则蓄力后发动终极神雷；必须在第三行动前建立优势。",
+      "worldStory": "你挑战的不是雷霆，而是谁有权定义成仙。",
+      "victoryEffects": {
+        "cultivation": 10,
+        "daoHeart": 2
+      },
+      "defeatEffects": {
+        "daoHeart": -2
+      },
+      "avoid": {
+        "text": "暂离天门",
+        "effects": {
+          "lifespan": -1
+        }
+      }
+    },
+    {
+      "id": "enc_trial_sword_swift",
+      "category": "archetypeTrial",
+      "realm": "qi",
+      "path": "sword",
+      "teachingEncounter": true,
+      "title": "剑修证明·一线快剑",
+      "description": "剑堂木人只留一线破绽，考验剑修能否在凝势与出剑之间保持克制。",
+      "enemy": {
+        "templateId": "trial_aggressor_qi",
+        "name": "快剑木人",
+        "hp": 7,
+        "atk": 3,
+        "def": 0,
+        "tier": 1
+      },
+      "mechanic": "对手会连续抢攻，回气回合是唯一安全的反击窗口。",
+      "victoryEffects": {
+        "cultivation": 3,
+        "sword_insight": 1
+      },
+      "combatOutcomePresentation": {
+        "victory": {
+          "nextCard": "q_mountain_shadow_approach"
+        }
+      },
+      "avoid": {
+        "text": "继续观摩",
+        "effects": {
+          "knowledge": 1
+        }
+      }
+    },
+    {
+      "id": "enc_trial_sword_array",
+      "category": "archetypeTrial",
+      "realm": "golden",
+      "path": "sword",
+      "title": "剑修证明·七星剑阵",
+      "description": "七柄无主飞剑组成旧时代剑阵，要求挑战者用有限真元找到阵眼。",
+      "enemy": {
+        "templateId": "enemy_sword",
+        "name": "七星剑阵",
+        "hp": 12,
+        "atk": 2,
+        "def": 2,
+        "tier": 2
+      },
+      "mechanic": "蓄力重击明显；破盾后应集中输出。",
+      "victoryEffects": {
+        "cultivation": 5,
+        "sword_insight": 2
+      },
+      "avoid": {
+        "text": "记录阵图",
+        "effects": {
+          "knowledge": 2
+        }
+      },
+      "encounterRole": "elite"
+    },
+    {
+      "id": "enc_trial_sword_heaven",
+      "category": "archetypeTrial",
+      "realm": "deity",
+      "path": "sword",
+      "title": "剑修证明·斩天投影",
+      "description": "历代剑修未竟的一剑凝成投影，它会用你的剑意反过来审问你。",
+      "enemy": {
+        "templateId": "enemy_deity_tribulation",
+        "name": "斩天剑影",
+        "hp": 18,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_heaven_cleaving_sword_shadow_agc_n14_v1",
+          "initialState": "HEAVEN_EDGE",
+          "states": {
+            "HEAVEN_EDGE": {
+              "label": "斩天凝锋",
+              "cue": "斩天剑影展开其独有的斩天凝锋征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "斩天凝锋：机制进入可读蓄势",
+                "actionName": "斩天剑影展开其独有的斩天凝锋征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "CLEAVE_LINE": {
+              "label": "天线横断",
+              "cue": "斩天剑影沿可见中线释放天线横断。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "天线横断：造成3点伤害",
+                "actionName": "斩天剑影沿可见中线释放天线横断。",
+                "actionFamily": "attack"
+              }
+            },
+            "EDGE_SHATTER": {
+              "label": "剑影受挫",
+              "cue": "斩天剑影的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "剑影受挫：本轮不获得护盾",
+                "actionName": "斩天剑影的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "SWORD_RETURN": {
+              "label": "归剑重悬",
+              "cue": "斩天剑影收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "归剑重悬：获得1点护盾",
+                "actionName": "斩天剑影收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "HEAVEN_EDGE",
+              "when": "action_resolved",
+              "to": "CLEAVE_LINE"
+            },
+            {
+              "from": "CLEAVE_LINE",
+              "when": "deflected",
+              "to": "EDGE_SHATTER"
+            },
+            {
+              "from": "CLEAVE_LINE",
+              "when": "enemy_block_broken",
+              "to": "EDGE_SHATTER"
+            },
+            {
+              "from": "CLEAVE_LINE",
+              "when": "action_resolved",
+              "to": "SWORD_RETURN"
+            },
+            {
+              "from": "EDGE_SHATTER",
+              "when": "action_resolved",
+              "to": "SWORD_RETURN"
+            },
+            {
+              "from": "SWORD_RETURN",
+              "when": "action_resolved",
+              "to": "HEAVEN_EDGE"
+            }
+          ]
+        }
+      },
+      "mechanic": "屏障、凝势、重击三拍循环；需要攻守换挡。",
+      "victoryEffects": {
+        "cultivation": 8,
+        "sword_insight": 3
+      },
+      "avoid": {
+        "text": "封剑静思",
+        "effects": {
+          "daoHeart": 1
+        }
+      }
+    },
+    {
+      "id": "enc_trial_spell_seal",
+      "category": "archetypeTrial",
+      "realm": "qi",
+      "path": "spell",
+      "teachingEncounter": true,
+      "title": "法修证明·三印回廊",
+      "description": "回廊会复制施法者最后一道法印，急于出手只会让敌势越来越复杂。",
+      "enemy": {
+        "templateId": "trial_aggressor_qi",
+        "name": "回廊法灵",
+        "hp": 7,
+        "atk": 3,
+        "def": 1,
+        "tier": 1
+      },
+      "mechanic": "对手会连续施压后短暂回气；用法印和抽牌抓住回气窗口。",
+      "victoryEffects": {
+        "cultivation": 3,
+        "spellPower": 1
+      },
+      "combatOutcomePresentation": {
+        "victory": {
+          "nextCard": "q_mountain_shadow_approach"
+        }
+      },
+      "avoid": {
+        "text": "抄录符纹",
+        "effects": {
+          "knowledge": 1
+        }
+      }
+    },
+    {
+      "id": "enc_trial_spell_elements",
+      "category": "archetypeTrial",
+      "realm": "golden",
+      "path": "spell",
+      "title": "法修证明·五行逆阵",
+      "description": "五行阵灵不断改换生克次序，要求法修先观察再释放大术。",
+      "enemy": {
+        "templateId": "enemy_foundation_demon",
+        "name": "五行逆阵灵",
+        "hp": 12,
+        "atk": 2,
+        "def": 1,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_five_element_inverse_array_agc_n13_v1",
+          "initialState": "INVERT",
+          "states": {
+            "INVERT": {
+              "label": "五行逆转",
+              "cue": "五行逆阵灵展开其独有的五行逆转征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "五行逆转：机制进入可读蓄势",
+                "actionName": "五行逆阵灵展开其独有的五行逆转征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "CONVERGE": {
+              "label": "逆流合击",
+              "cue": "五行逆阵灵沿可见中线释放逆流合击。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "逆流合击：造成2点伤害",
+                "actionName": "五行逆阵灵沿可见中线释放逆流合击。",
+                "actionFamily": "attack"
+              }
+            },
+            "DISRUPT": {
+              "label": "阵序打断",
+              "cue": "五行逆阵灵的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "阵序打断：本轮不获得护盾",
+                "actionName": "五行逆阵灵的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RESET": {
+              "label": "五位归轴",
+              "cue": "五行逆阵灵收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "五位归轴：获得1点护盾",
+                "actionName": "五行逆阵灵收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "INVERT",
+              "when": "action_resolved",
+              "to": "CONVERGE"
+            },
+            {
+              "from": "CONVERGE",
+              "when": "deflected",
+              "to": "DISRUPT"
+            },
+            {
+              "from": "CONVERGE",
+              "when": "enemy_block_broken",
+              "to": "DISRUPT"
+            },
+            {
+              "from": "CONVERGE",
+              "when": "action_resolved",
+              "to": "RESET"
+            },
+            {
+              "from": "DISRUPT",
+              "when": "action_resolved",
+              "to": "RESET"
+            },
+            {
+              "from": "RESET",
+              "when": "action_resolved",
+              "to": "INVERT"
+            }
+          ]
+        }
+      },
+      "mechanic": "攻击与防御轮换；在心防回合积攒法印。",
+      "victoryEffects": {
+        "cultivation": 5,
+        "spellPower": 2
+      },
+      "avoid": {
+        "text": "推演生克",
+        "effects": {
+          "knowledge": 2
+        }
+      }
+    },
+    {
+      "id": "enc_trial_spell_void",
+      "category": "archetypeTrial",
+      "realm": "deity",
+      "path": "spell",
+      "title": "法修证明·虚空禁式",
+      "description": "禁式会锁定每一道攻击术的因果痕迹，迫使法修使用控制与护持完成战斗。",
+      "enemy": {
+        "templateId": "enemy_nascent_tribulation",
+        "name": "虚空禁式",
+        "hp": 17,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_void_forbidden_formula_agc_n13_v1",
+          "initialState": "CALCULATE",
+          "states": {
+            "CALCULATE": {
+              "label": "禁式演算",
+              "cue": "虚空禁式展开其独有的禁式演算征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "禁式演算：机制进入可读蓄势",
+                "actionName": "虚空禁式展开其独有的禁式演算征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "NULL_RAY": {
+              "label": "归零射线",
+              "cue": "虚空禁式沿可见中线释放归零射线。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "归零射线：造成3点伤害",
+                "actionName": "虚空禁式沿可见中线释放归零射线。",
+                "actionFamily": "attack"
+              }
+            },
+            "ERROR": {
+              "label": "算式错断",
+              "cue": "虚空禁式的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "算式错断：本轮不获得护盾",
+                "actionName": "虚空禁式的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RECOMPILE": {
+              "label": "虚式重编",
+              "cue": "虚空禁式收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "虚式重编：获得1点护盾",
+                "actionName": "虚空禁式收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "CALCULATE",
+              "when": "action_resolved",
+              "to": "NULL_RAY"
+            },
+            {
+              "from": "NULL_RAY",
+              "when": "deflected",
+              "to": "ERROR"
+            },
+            {
+              "from": "NULL_RAY",
+              "when": "enemy_block_broken",
+              "to": "ERROR"
+            },
+            {
+              "from": "NULL_RAY",
+              "when": "action_resolved",
+              "to": "RECOMPILE"
+            },
+            {
+              "from": "ERROR",
+              "when": "action_resolved",
+              "to": "RECOMPILE"
+            },
+            {
+              "from": "RECOMPILE",
+              "when": "action_resolved",
+              "to": "CALCULATE"
+            }
+          ]
+        }
+      },
+      "mechanic": "攻击会迎来蓄力反制；技能牌和护盾更稳定。",
+      "victoryEffects": {
+        "cultivation": 8,
+        "spellPower": 3
+      },
+      "avoid": {
+        "text": "封存禁式",
+        "effects": {
+          "tianji": 1
+        }
+      }
+    },
+    {
+      "id": "enc_trial_body_iron",
+      "category": "archetypeTrial",
+      "realm": "qi",
+      "path": "body",
+      "teachingEncounter": true,
+      "title": "体修证明·铁骨机关兽",
+      "description": "武盟以机关兽测试筋骨、步法与卸力。先立稳桩架，再把来势送回，才是体修的第一课。",
+      "enemy": {
+        "templateId": "trial_aggressor_qi",
+        "name": "铁骨机关兽",
+        "hp": 6,
+        "atk": 1,
+        "def": 0,
+        "tier": 1,
+        "randomIntents": false,
+        "intents": [
+          {
+            "type": "attack",
+            "value": 1,
+            "desc": "意图：试探压势（1点伤害）",
+            "actionName": "机关兽以沉重前肢试探中线，逼你先沉住桩架。"
+          },
+          {
+            "type": "attack",
+            "value": 2,
+            "desc": "意图：沉身压肩（2点伤害）",
+            "actionName": "机关兽沉身压近，重势已落向你尚未站稳的空档。"
+          }
+        ]
+      },
+      "mechanic": "先出【沉桩架势】获得护盾，再以攻击牌触发【借势回击】；机关兽先试探压势、后沉身压肩，护盾要留给第二拍。",
+      "victoryEffects": {
+        "cultivation": 4,
+        "rawPower": 1
+      },
+      "combatOutcomePresentation": {
+        "victory": {
+          "nextCard": "q_mountain_shadow_approach"
+        }
+      },
+      "avoid": {
+        "text": "调整桩架",
+        "effects": {
+          "health": 1
+        }
+      }
+    },
+    {
+      "id": "enc_trial_body_mountain",
+      "category": "archetypeTrial",
+      "realm": "golden",
+      "path": "body",
+      "title": "体修证明·搬山铜人",
+      "description": "铜人的力量没有上限，但每次蓄力都暴露关节。",
+      "enemy": {
+        "templateId": "enemy_charging",
+        "name": "搬山铜人",
+        "hp": 13,
+        "atk": 2,
+        "def": 2,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_mountain_bronze_man_agc_n11_v1",
+          "initialState": "WINDUP",
+          "states": {
+            "WINDUP": {
+              "label": "搬山蓄臂",
+              "cue": "铜人沉胯举臂，重击尚未落下。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "蓄臂：本轮不造成伤害",
+                "actionName": "铜人沉胯举臂，重击尚未落下。",
+                "actionFamily": "skill"
+              }
+            },
+            "HEAVY": {
+              "label": "山势重落",
+              "cue": "整条铜臂借腰胯砸向中线。",
+              "intent": {
+                "type": "attack",
+                "value": 4,
+                "desc": "重落：造成4点伤害",
+                "actionName": "整条铜臂借腰胯砸向中线。",
+                "actionFamily": "attack"
+              }
+            },
+            "OFF_BALANCE": {
+              "label": "铜轴偏架",
+              "cue": "重臂被带偏，细长支撑轴失去中线。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "失衡：本轮不获得护盾",
+                "actionName": "重臂被带偏，细长支撑轴失去中线。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RESET": {
+              "label": "收轴复位",
+              "cue": "铜人回收长臂，重新校正足底铜榫。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "复位：获得1点护盾",
+                "actionName": "铜人回收长臂，重新校正足底铜榫。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "WINDUP",
+              "when": "action_resolved",
+              "to": "HEAVY"
+            },
+            {
+              "from": "HEAVY",
+              "when": "deflected",
+              "to": "OFF_BALANCE"
+            },
+            {
+              "from": "HEAVY",
+              "when": "action_resolved",
+              "to": "RESET"
+            },
+            {
+              "from": "OFF_BALANCE",
+              "when": "action_resolved",
+              "to": "RESET"
+            },
+            {
+              "from": "RESET",
+              "when": "action_resolved",
+              "to": "WINDUP"
+            }
+          ]
+        }
+      },
+      "mechanic": "蓄力回合进攻，重击回合以罡气卸力。",
+      "victoryEffects": {
+        "cultivation": 6,
+        "rawPower": 2
+      },
+      "avoid": {
+        "text": "观摩发力",
+        "effects": {
+          "knowledge": 1
+        }
+      }
+    },
+    {
+      "id": "enc_trial_body_immortal",
+      "category": "archetypeTrial",
+      "realm": "tribulation",
+      "path": "body",
+      "title": "体修证明·不灭金身影",
+      "description": "上古体修留下的金身投影拒绝一切取巧，只有节奏、卸力与持续压迫。",
+      "enemy": {
+        "templateId": "enemy_deity_tribulation",
+        "name": "不灭金身影",
+        "hp": 20,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_immortal_golden_shadow_agc_n11_v1",
+          "initialState": "BARRIER",
+          "states": {
+            "BARRIER": {
+              "label": "金身垂幕",
+              "cue": "金影收拳垂幕，观察你保留与透支真元的选择。",
+              "intent": {
+                "type": "defend",
+                "value": 3,
+                "desc": "垂幕：获得3点护盾",
+                "actionName": "金影收拳垂幕，观察你保留与透支真元的选择。",
+                "actionFamily": "guard"
+              }
+            },
+            "PUNCH": {
+              "label": "空中贯拳",
+              "cue": "脚影离地，贯拳将沿中线压下。",
+              "intent": {
+                "type": "attack",
+                "value": 4,
+                "desc": "贯拳：造成4点伤害",
+                "actionName": "脚影离地，贯拳将沿中线压下。",
+                "actionFamily": "attack"
+              }
+            },
+            "CHECKED": {
+              "label": "守息受制",
+              "cue": "你保留真元，金影无法借透支放大拳势。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "受制：获得1点护盾",
+                "actionName": "你保留真元，金影无法借透支放大拳势。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RETRIBUTION": {
+              "label": "透支反震",
+              "cue": "你连续透支，金影将空门反震回身。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "反震：造成3点伤害",
+                "actionName": "你连续透支，金影将空门反震回身。",
+                "actionFamily": "attack"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "BARRIER",
+              "when": "player_reserved_resource",
+              "to": "CHECKED",
+              "maxCards": 1,
+              "minReservedQi": 2
+            },
+            {
+              "from": "BARRIER",
+              "when": "player_overcommitted",
+              "to": "RETRIBUTION",
+              "minCards": 5,
+              "maxReservedQi": 2
+            },
+            {
+              "from": "BARRIER",
+              "when": "action_resolved",
+              "to": "PUNCH"
+            },
+            {
+              "from": "PUNCH",
+              "when": "player_reserved_resource",
+              "to": "CHECKED",
+              "maxCards": 1,
+              "minReservedQi": 2
+            },
+            {
+              "from": "PUNCH",
+              "when": "player_overcommitted",
+              "to": "RETRIBUTION",
+              "minCards": 5,
+              "maxReservedQi": 2
+            },
+            {
+              "from": [
+                "PUNCH",
+                "CHECKED",
+                "RETRIBUTION"
+              ],
+              "when": "action_resolved",
+              "to": "BARRIER"
+            }
+          ]
+        }
+      },
+      "mechanic": "屏障和重击交替；保留资源应对因果重拳。",
+      "victoryEffects": {
+        "cultivation": 9,
+        "rawPower": 3
+      },
+      "avoid": {
+        "text": "以礼退场",
+        "effects": {
+          "daoHeart": 1
+        }
+      }
+    },
+    {
+      "id": "enc_trial_pill_poison",
+      "category": "archetypeTrial",
+      "realm": "qi",
+      "path": "pill",
+      "teachingEncounter": true,
+      "title": "丹修证明·百毒炉灵",
+      "description": "废丹积毒化成炉灵。先温炉布药，再让丹火沿药性找到出口，才是把毒势导向炉壁的方法。",
+      "enemy": {
+        "templateId": "trial_aggressor_qi",
+        "name": "百毒炉灵",
+        "hp": 6,
+        "atk": 1,
+        "def": 0,
+        "tier": 1,
+        "randomIntents": false,
+        "intents": [
+          {
+            "type": "attack",
+            "value": 1,
+            "desc": "意图：药烟试探（1点伤害）",
+            "actionName": "炉灵吐出一缕淡青药烟，试探你炉火的虚实。"
+          },
+          {
+            "type": "attack",
+            "value": 2,
+            "desc": "意图：毒焰回卷（2点伤害）",
+            "actionName": "药烟骤然回卷成毒焰，逼你在火候失控前收束丹气。"
+          }
+        ]
+      },
+      "mechanic": "先出【药雾催化】或【温炉养息】，再以【赤砂丹火】触发【丹火出炉】；炉灵先试探、后回卷，别把回气误当成输出。",
+      "victoryEffects": {
+        "cultivation": 4,
+        "alchemyYield": 1
+      },
+      "combatOutcomePresentation": {
+        "victory": {
+          "nextCard": "q_mountain_shadow_approach"
+        }
+      },
+      "avoid": {
+        "text": "封炉净化",
+        "effects": {
+          "fortune": 1
+        }
+      }
+    },
+    {
+      "id": "enc_trial_pill_spirit",
+      "category": "archetypeTrial",
+      "realm": "nascent",
+      "path": "pill",
+      "title": "丹修证明·丹灵问火",
+      "description": "丹灵会根据火候改变攻势，考验丹修是否把战斗也当作一炉药。",
+      "enemy": {
+        "templateId": "enemy_normal",
+        "name": "问火丹灵",
+        "hp": 14,
+        "atk": 2,
+        "def": 1,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_asking_fire_elixir_spirit_agc_n13_v1",
+          "initialState": "TEMPER",
+          "states": {
+            "TEMPER": {
+              "label": "问火温养",
+              "cue": "问火丹灵展开其独有的问火温养征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "问火温养：机制进入可读蓄势",
+                "actionName": "问火丹灵展开其独有的问火温养征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "PILL_FIRE": {
+              "label": "丹焰投丸",
+              "cue": "问火丹灵沿可见中线释放丹焰投丸。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "丹焰投丸：造成2点伤害",
+                "actionName": "问火丹灵沿可见中线释放丹焰投丸。",
+                "actionFamily": "attack"
+              }
+            },
+            "CRACK": {
+              "label": "炉心崩裂",
+              "cue": "问火丹灵的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "炉心崩裂：本轮不获得护盾",
+                "actionName": "问火丹灵的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RECYCLE": {
+              "label": "余火回炼",
+              "cue": "问火丹灵收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "余火回炼：获得1点护盾",
+                "actionName": "问火丹灵收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "TEMPER",
+              "when": "action_resolved",
+              "to": "PILL_FIRE"
+            },
+            {
+              "from": "PILL_FIRE",
+              "when": "deflected",
+              "to": "CRACK"
+            },
+            {
+              "from": "PILL_FIRE",
+              "when": "enemy_block_broken",
+              "to": "CRACK"
+            },
+            {
+              "from": "PILL_FIRE",
+              "when": "action_resolved",
+              "to": "RECYCLE"
+            },
+            {
+              "from": "CRACK",
+              "when": "action_resolved",
+              "to": "RECYCLE"
+            },
+            {
+              "from": "RECYCLE",
+              "when": "action_resolved",
+              "to": "TEMPER"
+            }
+          ]
+        }
+      },
+      "mechanic": "攻击与防御轮换，适合用回气和治疗建立长线优势。",
+      "victoryEffects": {
+        "cultivation": 7,
+        "alchemyYield": 2
+      },
+      "avoid": {
+        "text": "温养炉火",
+        "effects": {
+          "pills": "聚灵丹"
+        }
+      }
+    },
+    {
+      "id": "enc_trial_pill_chaos",
+      "category": "archetypeTrial",
+      "realm": "tribulation",
+      "path": "pill",
+      "title": "丹修证明·混沌丹劫",
+      "description": "混沌药性在成丹前化作劫影，治疗、毒性与反噬在一线之间。",
+      "enemy": {
+        "templateId": "enemy_tribulation_finale",
+        "name": "混沌丹劫",
+        "hp": 20,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_chaos_elixir_tribulation_core_agc_n14_v1",
+          "initialState": "CHAOS_TEMPER",
+          "states": {
+            "CHAOS_TEMPER": {
+              "label": "混沌温鼎",
+              "cue": "混沌丹劫展开其独有的混沌温鼎征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "混沌温鼎：机制进入可读蓄势",
+                "actionName": "混沌丹劫展开其独有的混沌温鼎征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "ELIXIR_BURST": {
+              "label": "丹劫横涌",
+              "cue": "混沌丹劫沿可见中线释放丹劫横涌。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "丹劫横涌：造成3点伤害",
+                "actionName": "混沌丹劫沿可见中线释放丹劫横涌。",
+                "actionFamily": "attack"
+              }
+            },
+            "DING_RECOIL": {
+              "label": "鼎身震偏",
+              "cue": "混沌丹劫的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "鼎身震偏：本轮不获得护盾",
+                "actionName": "混沌丹劫的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RESEAL": {
+              "label": "封炉归位",
+              "cue": "混沌丹劫收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "封炉归位：获得1点护盾",
+                "actionName": "混沌丹劫收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "CHAOS_TEMPER",
+              "when": "action_resolved",
+              "to": "ELIXIR_BURST"
+            },
+            {
+              "from": "ELIXIR_BURST",
+              "when": "deflected",
+              "to": "DING_RECOIL"
+            },
+            {
+              "from": "ELIXIR_BURST",
+              "when": "enemy_block_broken",
+              "to": "DING_RECOIL"
+            },
+            {
+              "from": "ELIXIR_BURST",
+              "when": "action_resolved",
+              "to": "RESEAL"
+            },
+            {
+              "from": "DING_RECOIL",
+              "when": "action_resolved",
+              "to": "RESEAL"
+            },
+            {
+              "from": "RESEAL",
+              "when": "action_resolved",
+              "to": "CHAOS_TEMPER"
+            }
+          ]
+        }
+      },
+      "mechanic": "三拍法则攻击；治疗只能恢复局内护体值，不能抹去战败伤势。",
+      "victoryEffects": {
+        "cultivation": 9,
+        "alchemyYield": 3
+      },
+      "avoid": {
+        "text": "弃炉保命",
+        "effects": {
+          "fortune": -1
+        }
+      }
+    },
+    {
+      "id": "enc_faction_qingyun_elite",
+      "category": "factionElite",
+      "realm": "foundation",
+      "title": "势力精英·青云执剑使",
+      "description": "青云执剑使要求你以实力证明合作资格。胜负都会被宗门记录。",
+      "enemy": {
+        "templateId": "sword_elder",
+        "name": "青云执剑使",
+        "hp": 8,
+        "atk": 2,
+        "def": 1,
+        "tier": 2,
+        "factionId": "qingyun_sword",
+        "planGraph": {
+          "planId": "plan_qingyun_sword_envoy_agc_n12_v1",
+          "initialState": "FOCUS",
+          "states": {
+            "FOCUS": {
+              "label": "凝锋",
+              "cue": "剑芒沿腕线收束，下一击将沿中线落下。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "凝锋：本轮观察你的架势",
+                "actionName": "剑芒沿腕线收束，下一击将沿中线落下。",
+                "actionFamily": "skill"
+              }
+            },
+            "REND": {
+              "label": "青锋截脉",
+              "cue": "执剑使压步横切，剑路直指气脉空隙。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "截脉：造成2点伤害",
+                "actionName": "执剑使压步横切，剑路直指气脉空隙。",
+                "actionFamily": "attack"
+              }
+            },
+            "OPENING": {
+              "label": "剑路被引",
+              "cue": "剑锋被偏开，持剑侧短暂暴露。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "被引：本轮不获得护盾",
+                "actionName": "剑锋被偏开，持剑侧短暂暴露。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RETURN": {
+              "label": "归剑守中",
+              "cue": "他收剑贴肘，不再借用不存在的通用格挡动作。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "守中：获得1点护盾",
+                "actionName": "他收剑贴肘，不再借用不存在的通用格挡动作。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "FOCUS",
+              "when": "action_resolved",
+              "to": "REND"
+            },
+            {
+              "from": "REND",
+              "when": "deflected",
+              "to": "OPENING"
+            },
+            {
+              "from": "REND",
+              "when": "action_resolved",
+              "to": "RETURN"
+            },
+            {
+              "from": "OPENING",
+              "when": "action_resolved",
+              "to": "RETURN"
+            },
+            {
+              "from": "RETURN",
+              "when": "action_resolved",
+              "to": "FOCUS"
+            }
+          ]
+        }
+      },
+      "mechanic": "凝剑后破空斩；胜败分别改变青云声望。",
+      "victoryEffects": {
+        "cultivation": 4
+      },
+      "outcomeLinks": {
+        "victory": {
+          "factionEffects": {
+            "factionId": "qingyun_sword",
+            "reputationDelta": 6
+          }
+        },
+        "defeat": {
+          "factionEffects": {
+            "factionId": "qingyun_sword",
+            "reputationDelta": -2
+          }
+        },
+        "flee": {
+          "factionEffects": {
+            "factionId": "qingyun_sword",
+            "reputationDelta": -4
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_faction_tianshu_elite",
+      "category": "factionElite",
+      "realm": "golden",
+      "title": "势力精英·天枢戒律官",
+      "description": "戒律官认为你的修行记录存在矛盾，要以神念斗法核验真伪。",
+      "enemy": {
+        "templateId": "enemy_foundation_demon",
+        "name": "天枢戒律官",
+        "hp": 12,
+        "atk": 2,
+        "def": 1,
+        "tier": 2,
+        "factionId": "tianshu_academy",
+        "planGraph": {
+          "planId": "plan_tianshu_discipline_officer_agc_n12_v1",
+          "initialState": "DISCIPLINE",
+          "states": {
+            "DISCIPLINE": {
+              "label": "戒律成垣",
+              "cue": "星律方印在身前合拢，逼你先决定是否透支。",
+              "intent": {
+                "type": "defend",
+                "value": 2,
+                "desc": "成垣：获得2点护盾",
+                "actionName": "星律方印在身前合拢，逼你先决定是否透支。",
+                "actionFamily": "guard"
+              }
+            },
+            "CENSURE": {
+              "label": "执简申斥",
+              "cue": "戒尺与星轨同时前压，惩戒你的进攻节奏。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "申斥：造成2点伤害",
+                "actionName": "戒尺与星轨同时前压，惩戒你的进攻节奏。",
+                "actionFamily": "attack"
+              }
+            },
+            "BREACH": {
+              "label": "律面裂隙",
+              "cue": "方印被偏开，律面出现短暂裂隙。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "裂隙：本轮不获得护盾",
+                "actionName": "方印被偏开，律面出现短暂裂隙。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RECENTER": {
+              "label": "复位归矩",
+              "cue": "戒律官收简归中，以薄印重建秩序。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "归矩：获得1点护盾",
+                "actionName": "戒律官收简归中，以薄印重建秩序。",
+                "actionFamily": "guard"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "DISCIPLINE",
+              "when": "action_resolved",
+              "to": "CENSURE"
+            },
+            {
+              "from": "CENSURE",
+              "when": "deflected",
+              "to": "BREACH"
+            },
+            {
+              "from": "CENSURE",
+              "when": "action_resolved",
+              "to": "RECENTER"
+            },
+            {
+              "from": "BREACH",
+              "when": "action_resolved",
+              "to": "RECENTER"
+            },
+            {
+              "from": "RECENTER",
+              "when": "action_resolved",
+              "to": "DISCIPLINE"
+            }
+          ]
+        }
+      },
+      "mechanic": "心防与精神重击循环。",
+      "victoryEffects": {
+        "knowledge": 2
+      },
+      "outcomeLinks": {
+        "victory": {
+          "factionEffects": {
+            "factionId": "tianshu_academy",
+            "reputationDelta": 6
+          }
+        },
+        "defeat": {
+          "factionEffects": {
+            "factionId": "tianshu_academy",
+            "reputationDelta": -2
+          }
+        },
+        "flee": {
+          "factionEffects": {
+            "factionId": "tianshu_academy",
+            "reputationDelta": -4
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_faction_dangu_elite",
+      "category": "factionElite",
+      "realm": "golden",
+      "title": "势力精英·丹谷护炉人",
+      "description": "护炉人怀疑你带走了禁药方，以炉火化形阻住去路。",
+      "enemy": {
+        "templateId": "enemy_charging",
+        "name": "丹谷护炉人",
+        "hp": 14,
+        "atk": 2,
+        "def": 2,
+        "tier": 2,
+        "factionId": "shennong_dangu",
+        "planGraph": {
+          "planId": "plan_dangu_furnace_keeper_agc_n12_v1",
+          "initialState": "STOKE",
+          "states": {
+            "STOKE": {
+              "label": "护炉蓄火",
+              "cue": "护炉人压住炉门，让药火在铁环内升压。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "蓄火：本轮不造成伤害",
+                "actionName": "护炉人压住炉门，让药火在铁环内升压。",
+                "actionFamily": "skill"
+              }
+            },
+            "BLAST": {
+              "label": "炉口横焰",
+              "cue": "炉门骤开，压缩药火沿地面扫向你。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "横焰：造成2点伤害",
+                "actionName": "炉门骤开，压缩药火沿地面扫向你。",
+                "actionFamily": "attack"
+              }
+            },
+            "DAMPED": {
+              "label": "火路受阻",
+              "cue": "焰流被偏开，回压让炉口暂时熄暗。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "受阻：本轮不获得护盾",
+                "actionName": "焰流被偏开，回压让炉口暂时熄暗。",
+                "actionFamily": "hurt"
+              }
+            },
+            "BANK": {
+              "label": "封炉回温",
+              "cue": "护炉人重新扣紧炉门，保留余温等待下一轮。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "回温：获得1点护盾",
+                "actionName": "护炉人重新扣紧炉门，保留余温等待下一轮。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "STOKE",
+              "when": "action_resolved",
+              "to": "BLAST"
+            },
+            {
+              "from": "BLAST",
+              "when": "deflected",
+              "to": "DAMPED"
+            },
+            {
+              "from": "BLAST",
+              "when": "action_resolved",
+              "to": "BANK"
+            },
+            {
+              "from": "DAMPED",
+              "when": "action_resolved",
+              "to": "BANK"
+            },
+            {
+              "from": "BANK",
+              "when": "action_resolved",
+              "to": "STOKE"
+            }
+          ]
+        }
+      },
+      "mechanic": "炉火蓄力后爆发，需提前建立护盾。",
+      "victoryEffects": {
+        "alchemyYield": 1
+      },
+      "outcomeLinks": {
+        "victory": {
+          "factionEffects": {
+            "factionId": "shennong_dangu",
+            "reputationDelta": 6
+          }
+        },
+        "defeat": {
+          "factionEffects": {
+            "factionId": "shennong_dangu",
+            "reputationDelta": -2
+          }
+        },
+        "flee": {
+          "factionEffects": {
+            "factionId": "shennong_dangu",
+            "reputationDelta": -4
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_faction_tianji_elite",
+      "category": "factionElite",
+      "realm": "nascent",
+      "title": "势力精英·天机巡算师",
+      "description": "巡算师声称你让未来出现了不应存在的分叉。",
+      "enemy": {
+        "templateId": "enemy_nascent_tribulation",
+        "name": "天机巡算师",
+        "hp": 15,
+        "atk": 3,
+        "def": 1,
+        "tier": 2,
+        "factionId": "tianji_pavilion",
+        "planGraph": {
+          "planId": "plan_tianji_diviner_agc_n12_v1",
+          "initialState": "CALCULATE",
+          "states": {
+            "CALCULATE": {
+              "label": "巡算布星",
+              "cue": "算筹星点逐格亮起，记录你本轮的出牌形状。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "布星：本轮进行推演",
+                "actionName": "算筹星点逐格亮起，记录你本轮的出牌形状。",
+                "actionFamily": "skill"
+              }
+            },
+            "LOCK": {
+              "label": "定式落签",
+              "cue": "巡算师锁定推演结果，星签直取你的中线。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "落签：造成3点伤害",
+                "actionName": "巡算师锁定推演结果，星签直取你的中线。",
+                "actionFamily": "attack"
+              }
+            },
+            "MISREAD": {
+              "label": "算路失准",
+              "cue": "星签被偏开，原先的推演格局立即作废。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "失准：本轮不获得护盾",
+                "actionName": "星签被偏开，原先的推演格局立即作废。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RECALCULATE": {
+              "label": "撤筹复算",
+              "cue": "他撤下旧筹，重新建立更窄的推演边界。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "复算：本轮重整算路",
+                "actionName": "他撤下旧筹，重新建立更窄的推演边界。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "CALCULATE",
+              "when": "action_resolved",
+              "to": "LOCK"
+            },
+            {
+              "from": "LOCK",
+              "when": "deflected",
+              "to": "MISREAD"
+            },
+            {
+              "from": "LOCK",
+              "when": "action_resolved",
+              "to": "RECALCULATE"
+            },
+            {
+              "from": "MISREAD",
+              "when": "action_resolved",
+              "to": "RECALCULATE"
+            },
+            {
+              "from": "RECALCULATE",
+              "when": "action_resolved",
+              "to": "CALCULATE"
+            }
+          ]
+        }
+      },
+      "mechanic": "聚势后锁定重击，考验提前规划。",
+      "victoryEffects": {
+        "tianji": 2
+      },
+      "outcomeLinks": {
+        "victory": {
+          "factionEffects": {
+            "factionId": "tianji_pavilion",
+            "reputationDelta": 6
+          }
+        },
+        "defeat": {
+          "factionEffects": {
+            "factionId": "tianji_pavilion",
+            "reputationDelta": -2
+          }
+        },
+        "flee": {
+          "factionEffects": {
+            "factionId": "tianji_pavilion",
+            "reputationDelta": -4
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_faction_wumeng_elite",
+      "category": "factionElite",
+      "realm": "foundation",
+      "title": "势力精英·武盟镇关者",
+      "description": "镇关者不问出身，只认你能否读懂拳路、留住真元，并在正面压力下站住脚。",
+      "enemy": {
+        "templateId": "demon_beast",
+        "name": "武盟镇关者",
+        "hp": 12,
+        "atk": 2,
+        "def": 1,
+        "tier": 2,
+        "factionId": "wumeng_alliance",
+        "planGraph": {
+          "planId": "wumeng_gatekeeper_adaptation_v1",
+          "initialState": "WINDUP",
+          "states": {
+            "WINDUP": {
+              "label": "沉腰观式",
+              "cue": "镇关者正在记住你连续使用的招式类型。",
+              "intent": {
+                "type": "defend",
+                "value": 2,
+                "desc": "观式：获得2点护盾",
+                "actionName": "镇关者沉腰架臂，借护势观察你的出牌习惯"
+              }
+            },
+            "CRUSH": {
+              "label": "正面强压",
+              "cue": "两式之后真元只余两点，镇关重拳已锁住你的空档。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "镇关重拳：造成3点重击",
+                "actionName": "镇关者踏裂石台，拳罡正面轰向真元空档"
+              }
+            },
+            "COUNTER": {
+              "label": "同式反制",
+              "cue": "连续同类招式已被看破，镇关者改用克制架势。",
+              "intent": {
+                "type": "defend",
+                "value": 3,
+                "desc": "封式：获得3点护盾",
+                "actionName": "镇关者识破重复招路，以封式架势截住同一节奏"
+              }
+            },
+            "STAGGERED": {
+              "label": "偏架失衡",
+              "cue": "偏斩带开拳路，镇关者需要重新站稳。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "失衡收架：获得1点护盾",
+                "actionName": "拳路被带偏，镇关者收肘退步重新稳住中线"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "WINDUP",
+              "when": "repeated_card_type",
+              "to": "COUNTER",
+              "minConsecutive": 2
+            },
+            {
+              "from": "WINDUP",
+              "when": "player_overcommitted",
+              "to": "CRUSH",
+              "minCards": 2,
+              "maxReservedQi": 2
+            },
+            {
+              "from": [
+                "WINDUP",
+                "CRUSH",
+                "COUNTER"
+              ],
+              "when": "deflected",
+              "to": "STAGGERED"
+            },
+            {
+              "from": "CRUSH",
+              "when": "action_resolved",
+              "to": "WINDUP"
+            },
+            {
+              "from": "COUNTER",
+              "when": "action_resolved",
+              "to": "WINDUP"
+            },
+            {
+              "from": "STAGGERED",
+              "when": "action_resolved",
+              "to": "WINDUP"
+            }
+          ]
+        },
+        "intents": [
+          {
+            "type": "buff",
+            "statusId": "sword_intent",
+            "value": 2,
+            "desc": "运劲：积蓄2层劲力",
+            "actionName": "镇关者沉腰运劲，拳罡沿石台层层扩散"
+          },
+          {
+            "type": "debuff",
+            "statusId": "vulnerable",
+            "value": 1,
+            "desc": "震岳：施加1层易伤",
+            "actionName": "镇关者踏裂地面，以震劲打散你的架势"
+          },
+          {
+            "type": "attack",
+            "value": 3,
+            "desc": "镇关重拳：造成3点重击",
+            "actionName": "积蓄的拳罡正面轰来，封死所有退路"
+          }
+        ]
+      },
+      "mechanic": "沉腰观式会记住连续同类招式；留不住真元会迎来正面强压。偏架成功后，他只剩失衡收架的短暂开口。",
+      "victoryEffects": {
+        "rawPower": 1
+      },
+      "outcomeLinks": {
+        "victory": {
+          "factionEffects": {
+            "factionId": "wumeng_alliance",
+            "reputationDelta": 6
+          }
+        },
+        "defeat": {
+          "factionEffects": {
+            "factionId": "wumeng_alliance",
+            "reputationDelta": -2
+          }
+        },
+        "flee": {
+          "factionEffects": {
+            "factionId": "wumeng_alliance",
+            "reputationDelta": -4
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_faction_xuesha_elite",
+      "category": "factionElite",
+      "realm": "nascent",
+      "title": "势力精英·血煞追魂使",
+      "description": "追魂使奉命试探你是否值得血煞宗继续投入资源。",
+      "enemy": {
+        "templateId": "seductress",
+        "name": "血煞追魂使",
+        "hp": 15,
+        "atk": 3,
+        "def": 1,
+        "tier": 2,
+        "factionId": "xuesha_sect",
+        "planGraph": {
+          "planId": "plan_xuesha_soul_pursuer_agc_n12_v1",
+          "initialState": "MARK",
+          "states": {
+            "MARK": {
+              "label": "追魂落印",
+              "cue": "链钩在地面划出血色追迹，逼迫你暴露退路。",
+              "intent": {
+                "type": "debuff",
+                "value": 1,
+                "desc": "落印：施加1层虚弱",
+                "actionName": "链钩在地面划出血色追迹，逼迫你暴露退路。",
+                "actionFamily": "skill",
+                "statusId": "weak"
+              }
+            },
+            "DRAIN": {
+              "label": "链钩索命",
+              "cue": "追魂使贴地收链，钩锋沿标记方向回卷。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "索命：造成2点伤害",
+                "actionName": "追魂使贴地收链，钩锋沿标记方向回卷。",
+                "actionFamily": "attack"
+              }
+            },
+            "REPELLED": {
+              "label": "锁链反缠",
+              "cue": "钩势被偏开，回卷锁链短暂缠住持柄手。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "反缠：本轮不获得护盾",
+                "actionName": "钩势被偏开，回卷锁链短暂缠住持柄手。",
+                "actionFamily": "hurt"
+              }
+            },
+            "STALK": {
+              "label": "伏身再追",
+              "cue": "他压低重心，重新把链钩藏回追击线。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "再追：本轮重整追迹",
+                "actionName": "他压低重心，重新把链钩藏回追击线。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "MARK",
+              "when": "action_resolved",
+              "to": "DRAIN"
+            },
+            {
+              "from": "DRAIN",
+              "when": "deflected",
+              "to": "REPELLED"
+            },
+            {
+              "from": "DRAIN",
+              "when": "action_resolved",
+              "to": "STALK"
+            },
+            {
+              "from": "REPELLED",
+              "when": "action_resolved",
+              "to": "STALK"
+            },
+            {
+              "from": "STALK",
+              "when": "action_resolved",
+              "to": "MARK"
+            }
+          ]
+        }
+      },
+      "mechanic": "随机虚弱与吸血，要求保留应急手段。",
+      "victoryEffects": {
+        "karmaBad": 1
+      },
+      "outcomeLinks": {
+        "victory": {
+          "factionEffects": {
+            "factionId": "xuesha_sect",
+            "reputationDelta": 6
+          }
+        },
+        "defeat": {
+          "factionEffects": {
+            "factionId": "xuesha_sect",
+            "reputationDelta": -2
+          }
+        },
+        "flee": {
+          "factionEffects": {
+            "factionId": "xuesha_sect",
+            "reputationDelta": -4
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_companion_bai_luoxuan_hunt",
+      "category": "companionQuest",
+      "realm": "foundation",
+      "requiredCompanion": "bai_luoxuan",
+      "title": "并肩战·白落霜的狐火",
+      "description": "白落霜被猎妖阵困住，你必须在阵火合拢前击破守阵兽。",
+      "enemy": {
+        "templateId": "demon_beast",
+        "name": "猎妖守阵兽",
+        "hp": 11,
+        "atk": 2,
+        "def": 1,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_ward_beast_agc_n11_v1",
+          "initialState": "INTIMIDATE",
+          "states": {
+            "INTIMIDATE": {
+              "label": "阵纹震慑",
+              "cue": "胸前阵纹亮起，守阵兽以低吼压住前路。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "震慑：本轮不造成伤害",
+                "actionName": "胸前阵纹亮起，守阵兽以低吼压住前路。",
+                "actionFamily": "skill"
+              }
+            },
+            "CRUSH": {
+              "label": "阔肩碾压",
+              "cue": "宽阔肩甲压低，守阵兽将整片战线一并撞开。",
+              "intent": {
+                "type": "attack",
+                "value": 4,
+                "desc": "碾压：造成4点伤害",
+                "actionName": "宽阔肩甲压低，守阵兽将整片战线一并撞开。",
+                "actionFamily": "attack"
+              }
+            },
+            "REPELLED": {
+              "label": "阵纹反冲",
+              "cue": "冲势被偏开，胸口阵纹反噬四足。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "反冲：本轮不获得护盾",
+                "actionName": "冲势被偏开，胸口阵纹反噬四足。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RESET": {
+              "label": "退爪重整",
+              "cue": "守阵兽退爪伏低，重新稳住肩背阵锁。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "重整：获得1点护盾",
+                "actionName": "守阵兽退爪伏低，重新稳住肩背阵锁。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "INTIMIDATE",
+              "when": "action_resolved",
+              "to": "CRUSH"
+            },
+            {
+              "from": "CRUSH",
+              "when": "deflected",
+              "to": "REPELLED"
+            },
+            {
+              "from": "CRUSH",
+              "when": "action_resolved",
+              "to": "RESET"
+            },
+            {
+              "from": "REPELLED",
+              "when": "action_resolved",
+              "to": "RESET"
+            },
+            {
+              "from": "RESET",
+              "when": "action_resolved",
+              "to": "INTIMIDATE"
+            }
+          ]
+        }
+      },
+      "mechanic": "先震慑再重击；保护节奏会提升白落霜的信任。",
+      "victoryEffects": {
+        "karmaGood": 2
+      },
+      "outcomeLinks": {
+        "victory": {
+          "companionEffects": {
+            "compId": "bai_luoxuan",
+            "affectionDelta": 6,
+            "trustDelta": 10
+          }
+        },
+        "defeat": {
+          "companionEffects": {
+            "compId": "bai_luoxuan",
+            "trustDelta": -3
+          }
+        },
+        "flee": {
+          "companionEffects": {
+            "compId": "bai_luoxuan",
+            "affectionDelta": -4,
+            "trustDelta": -6
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_companion_jian_linger_tomb",
+      "category": "companionQuest",
+      "realm": "golden",
+      "requiredCompanion": "jian_linger",
+      "title": "并肩战·剑灵儿的旧主",
+      "description": "旧主残念认定剑灵儿属于遗物，要把她重新封入剑冢。",
+      "enemy": {
+        "templateId": "sword_elder",
+        "name": "旧主残念",
+        "hp": 13,
+        "atk": 2,
+        "def": 1,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_sword_tomb_old_master_agc_n12_v1",
+          "initialState": "REMEMBER",
+          "states": {
+            "REMEMBER": {
+              "label": "残念凝剑",
+              "cue": "旧主残念以断续剑影重构生前守势。",
+              "intent": {
+                "type": "defend",
+                "value": 2,
+                "desc": "凝剑：获得2点护盾",
+                "actionName": "旧主残念以断续剑影重构生前守势。",
+                "actionFamily": "guard"
+              }
+            },
+            "REND": {
+              "label": "墓中回斩",
+              "cue": "残剑记忆沿旧日轨迹回斩，直逼来者。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "回斩：造成2点伤害",
+                "actionName": "残剑记忆沿旧日轨迹回斩，直逼来者。",
+                "actionFamily": "attack"
+              }
+            },
+            "DISPERSED": {
+              "label": "剑忆离散",
+              "cue": "回斩被偏开，残念与剑影短暂分离。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "离散：本轮不获得护盾",
+                "actionName": "回斩被偏开，残念与剑影短暂分离。",
+                "actionFamily": "hurt"
+              }
+            },
+            "QUIET": {
+              "label": "收念归冢",
+              "cue": "散乱剑忆回到墓门前，只留下薄薄守势。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "归冢：获得1点护盾",
+                "actionName": "散乱剑忆回到墓门前，只留下薄薄守势。",
+                "actionFamily": "guard"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "REMEMBER",
+              "when": "action_resolved",
+              "to": "REND"
+            },
+            {
+              "from": "REND",
+              "when": "deflected",
+              "to": "DISPERSED"
+            },
+            {
+              "from": "REND",
+              "when": "action_resolved",
+              "to": "QUIET"
+            },
+            {
+              "from": "DISPERSED",
+              "when": "action_resolved",
+              "to": "QUIET"
+            },
+            {
+              "from": "QUIET",
+              "when": "action_resolved",
+              "to": "REMEMBER"
+            }
+          ]
+        }
+      },
+      "mechanic": "旧主残念凝剑后爆发；能否共同撑过爆发回合将改变剑灵儿的羁绊。",
+      "victoryEffects": {
+        "sword_insight": 2
+      },
+      "combatPresentation": {
+        "presentationId": "combat_companion_jian_linger_tomb_native_v1",
+        "battlefieldId": "battlefield_sword_tomb_old_master_native_v1",
+        "battlefield": "qingyun_sword_tomb",
+        "sceneImage": "assets/combat/companion_jian_linger_tomb_v1/battlefield_sword_tomb_old_master_native_v1.png",
+        "enemyType": "剑冢残念·控剑旧主",
+        "difficultyLabel": "道侣羁绊战",
+        "mechanic": "旧主残念先凝聚剑影，下一次攻击爆发；虚弱可削减爆发，护盾可保住羁绊节奏。",
+        "actorCards": {
+          "enemy": {
+            "id": "actor_old_sword_master_remnant_idle_native_v1",
+            "name": "旧主残念",
+            "kicker": "剑冢残念·控剑旧主",
+            "portraitMode": "bust",
+            "style": "native_pixel_painted_v1",
+            "image": "assets/combat/companion_jian_linger_tomb_v1/old_sword_master_remnant_idle_native_v1.png",
+            "intentFrames": {
+              "attack": "assets/combat/companion_jian_linger_tomb_v1/old_sword_master_remnant_attack_native_v1.png",
+              "buff": "assets/combat/companion_jian_linger_tomb_v1/old_sword_master_remnant_attack_native_v1.png"
+            }
+          }
+        }
+      },
+      "outcomeLinks": {
+        "victory": {
+          "companionEffects": {
+            "compId": "jian_linger",
+            "affectionDelta": 6,
+            "bondDelta": 1
+          }
+        },
+        "defeat": {
+          "companionEffects": {
+            "compId": "jian_linger",
+            "trustDelta": -3
+          }
+        },
+        "flee": {
+          "companionEffects": {
+            "compId": "jian_linger",
+            "affectionDelta": -5
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_companion_yin_xue_pursuit",
+      "category": "companionQuest",
+      "realm": "nascent",
+      "requiredCompanion": "yin_xue",
+      "title": "并肩战·殷血的追兵",
+      "description": "血煞宗旧部追来，要求殷血回宗领罪。她把是否迎战的决定交给你。",
+      "enemy": {
+        "templateId": "seductress",
+        "name": "血煞追兵",
+        "hp": 15,
+        "atk": 3,
+        "def": 1,
+        "tier": 2,
+        "factionId": "xuesha_sect",
+        "planGraph": {
+          "planId": "plan_yin_xue_pursuit_captain_agc_n12_v1",
+          "initialState": "TRACE",
+          "states": {
+            "TRACE": {
+              "label": "寻迹锁路",
+              "cue": "追兵以捕枪划定退路，迫使你留在正面战线。",
+              "intent": {
+                "type": "debuff",
+                "value": 1,
+                "desc": "锁路：施加1层虚弱",
+                "actionName": "追兵以捕枪划定退路，迫使你留在正面战线。",
+                "actionFamily": "skill",
+                "statusId": "weak"
+              }
+            },
+            "CAPTURE": {
+              "label": "捕枪贯步",
+              "cue": "枪尖沿足迹直刺，长柄封住侧向闪避。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "贯步：造成3点伤害",
+                "actionName": "枪尖沿足迹直刺，长柄封住侧向闪避。",
+                "actionFamily": "attack"
+              }
+            },
+            "BROKEN_BIND": {
+              "label": "缚势崩断",
+              "cue": "捕枪被偏开，枪尾束索失去张力。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "崩断：本轮不获得护盾",
+                "actionName": "捕枪被偏开，枪尾束索失去张力。",
+                "actionFamily": "hurt"
+              }
+            },
+            "PRESSURE": {
+              "label": "压线续追",
+              "cue": "追兵横枪压线，再次收窄你可退的空间。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "续追：本轮重整捕获线",
+                "actionName": "追兵横枪压线，再次收窄你可退的空间。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "TRACE",
+              "when": "action_resolved",
+              "to": "CAPTURE"
+            },
+            {
+              "from": "CAPTURE",
+              "when": "deflected",
+              "to": "BROKEN_BIND"
+            },
+            {
+              "from": "CAPTURE",
+              "when": "action_resolved",
+              "to": "PRESSURE"
+            },
+            {
+              "from": "BROKEN_BIND",
+              "when": "action_resolved",
+              "to": "PRESSURE"
+            },
+            {
+              "from": "PRESSURE",
+              "when": "action_resolved",
+              "to": "TRACE"
+            }
+          ]
+        }
+      },
+      "mechanic": "虚弱与吸血交替，拖延会让追兵恢复优势。",
+      "victoryEffects": {
+        "cultivation": 6
+      },
+      "outcomeLinks": {
+        "victory": {
+          "companionEffects": {
+            "compId": "yin_xue",
+            "affectionDelta": 5,
+            "trustDelta": 12
+          },
+          "factionEffects": {
+            "factionId": "xuesha_sect",
+            "reputationDelta": -6
+          }
+        },
+        "defeat": {
+          "companionEffects": {
+            "compId": "yin_xue",
+            "trustDelta": -4
+          }
+        },
+        "flee": {
+          "companionEffects": {
+            "compId": "yin_xue",
+            "affectionDelta": -3
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_companion_mu_qinglan_medicine",
+      "category": "companionQuest",
+      "realm": "golden",
+      "requiredCompanion": "mu_qinglan",
+      "title": "并肩战·慕青岚的药田",
+      "description": "失控药灵吞噬整片药田，慕青岚需要你压制它而不是焚毁灵植。",
+      "enemy": {
+        "templateId": "enemy_charging",
+        "name": "失控药灵",
+        "hp": 12,
+        "atk": 2,
+        "def": 2,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_medicine_spirit_agc_n11_v1",
+          "initialState": "ROOT_FEED",
+          "states": {
+            "ROOT_FEED": {
+              "label": "根须摄养",
+              "cue": "药灵扎根吸收残余药性，枝节正在增生。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "摄养：本轮不造成伤害",
+                "actionName": "药灵扎根吸收残余药性，枝节正在增生。",
+                "actionFamily": "skill"
+              }
+            },
+            "OVERGROW": {
+              "label": "药枝横生",
+              "cue": "新枝沿战线疯长，缠向你的双足。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "横生：造成2点伤害",
+                "actionName": "新枝沿战线疯长，缠向你的双足。",
+                "actionFamily": "attack"
+              }
+            },
+            "RAMPANT": {
+              "label": "同性催狂",
+              "cue": "你连续使用同类招式，单一药性被它吸收并催成狂枝。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "催狂：造成3点伤害",
+                "actionName": "你连续使用同类招式，单一药性被它吸收并催成狂枝。",
+                "actionFamily": "attack"
+              }
+            },
+            "PRUNED": {
+              "label": "枝节受剪",
+              "cue": "攻势被偏开，主枝断面暴露。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "受剪：本轮不获得护盾",
+                "actionName": "攻势被偏开，主枝断面暴露。",
+                "actionFamily": "hurt"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "ROOT_FEED",
+              "when": "repeated_card_type",
+              "to": "RAMPANT",
+              "minConsecutive": 2
+            },
+            {
+              "from": "ROOT_FEED",
+              "when": "action_resolved",
+              "to": "OVERGROW"
+            },
+            {
+              "from": "OVERGROW",
+              "when": "repeated_card_type",
+              "to": "RAMPANT",
+              "minConsecutive": 2
+            },
+            {
+              "from": [
+                "OVERGROW",
+                "RAMPANT"
+              ],
+              "when": "transmuted",
+              "to": "PRUNED"
+            },
+            {
+              "from": [
+                "OVERGROW",
+                "RAMPANT",
+                "PRUNED"
+              ],
+              "when": "action_resolved",
+              "to": "ROOT_FEED"
+            }
+          ]
+        }
+      },
+      "mechanic": "蓄力明显，要求精确控制伤害窗口。",
+      "victoryEffects": {
+        "alchemyYield": 2
+      },
+      "outcomeLinks": {
+        "victory": {
+          "companionEffects": {
+            "compId": "mu_qinglan",
+            "affectionDelta": 5,
+            "trustDelta": 10
+          }
+        },
+        "defeat": {
+          "companionEffects": {
+            "compId": "mu_qinglan",
+            "trustDelta": -3
+          }
+        },
+        "flee": {
+          "companionEffects": {
+            "compId": "mu_qinglan",
+            "affectionDelta": -4
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_companion_jiuwei_memory",
+      "category": "companionQuest",
+      "realm": "deity",
+      "requiredCompanion": "jiuwei_suyue",
+      "title": "并肩战·九尾溯月的断忆",
+      "description": "一段被斩断的古老记忆化成心魔，试图替九尾溯月决定她是谁。",
+      "enemy": {
+        "templateId": "enemy_foundation_demon",
+        "name": "断忆心魔",
+        "hp": 18,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_severed_memory_demon_agc_n14_v1",
+          "initialState": "MEMORY_BIND",
+          "states": {
+            "MEMORY_BIND": {
+              "label": "断忆缚面",
+              "cue": "断忆心魔展开其独有的断忆缚面征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "断忆缚面：机制进入可读蓄势",
+                "actionName": "断忆心魔展开其独有的断忆缚面征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "FATE_TEAR": {
+              "label": "命丝撕忆",
+              "cue": "断忆心魔沿可见中线释放命丝撕忆。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "命丝撕忆：造成3点伤害",
+                "actionName": "断忆心魔沿可见中线释放命丝撕忆。",
+                "actionFamily": "attack"
+              }
+            },
+            "MASK_STAGGER": {
+              "label": "双面踉跄",
+              "cue": "断忆心魔的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "双面踉跄：本轮不获得护盾",
+                "actionName": "断忆心魔的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RECALL": {
+              "label": "残忆复结",
+              "cue": "断忆心魔收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "残忆复结：获得1点护盾",
+                "actionName": "断忆心魔收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "MEMORY_BIND",
+              "when": "action_resolved",
+              "to": "FATE_TEAR"
+            },
+            {
+              "from": "FATE_TEAR",
+              "when": "deflected",
+              "to": "MASK_STAGGER"
+            },
+            {
+              "from": "FATE_TEAR",
+              "when": "enemy_block_broken",
+              "to": "MASK_STAGGER"
+            },
+            {
+              "from": "FATE_TEAR",
+              "when": "action_resolved",
+              "to": "RECALL"
+            },
+            {
+              "from": "MASK_STAGGER",
+              "when": "action_resolved",
+              "to": "RECALL"
+            },
+            {
+              "from": "RECALL",
+              "when": "action_resolved",
+              "to": "MEMORY_BIND"
+            }
+          ]
+        }
+      },
+      "mechanic": "心防与震爆轮换；守住记忆回合比抢攻更重要。",
+      "victoryEffects": {
+        "daoHeart": 2
+      },
+      "outcomeLinks": {
+        "victory": {
+          "companionEffects": {
+            "compId": "jiuwei_suyue",
+            "affectionDelta": 7,
+            "bondDelta": 1,
+            "trustDelta": 12
+          }
+        },
+        "defeat": {
+          "companionEffects": {
+            "compId": "jiuwei_suyue",
+            "trustDelta": -5
+          }
+        },
+        "flee": {
+          "companionEffects": {
+            "compId": "jiuwei_suyue",
+            "affectionDelta": -5
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_companion_tianji_future",
+      "category": "companionQuest",
+      "realm": "tribulation",
+      "requiredCompanion": "tianji_laoren",
+      "title": "并肩战·天机老人的死局",
+      "description": "天机老人算出一条所有人都失败的未来，只有亲手击碎它才能打开新分支。",
+      "enemy": {
+        "templateId": "enemy_tribulation_finale",
+        "name": "必败未来",
+        "hp": 20,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_doomed_future_echo_agc_n14_v1",
+          "initialState": "DOUBLE_OMEN",
+          "states": {
+            "DOUBLE_OMEN": {
+              "label": "双身示兆",
+              "cue": "必败未来展开其独有的双身示兆征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "双身示兆：机制进入可读蓄势",
+                "actionName": "必败未来展开其独有的双身示兆征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "DOOMED_LINE": {
+              "label": "败局贯线",
+              "cue": "必败未来沿可见中线释放败局贯线。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "败局贯线：造成3点伤害",
+                "actionName": "必败未来沿可见中线释放败局贯线。",
+                "actionFamily": "attack"
+              }
+            },
+            "FUTURE_BROKEN": {
+              "label": "未来折断",
+              "cue": "必败未来的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "未来折断：本轮不获得护盾",
+                "actionName": "必败未来的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "LOOP_RETURN": {
+              "label": "命环复返",
+              "cue": "必败未来收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "命环复返：获得1点护盾",
+                "actionName": "必败未来收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "DOUBLE_OMEN",
+              "when": "action_resolved",
+              "to": "DOOMED_LINE"
+            },
+            {
+              "from": "DOOMED_LINE",
+              "when": "deflected",
+              "to": "FUTURE_BROKEN"
+            },
+            {
+              "from": "DOOMED_LINE",
+              "when": "enemy_block_broken",
+              "to": "FUTURE_BROKEN"
+            },
+            {
+              "from": "DOOMED_LINE",
+              "when": "action_resolved",
+              "to": "LOOP_RETURN"
+            },
+            {
+              "from": "FUTURE_BROKEN",
+              "when": "action_resolved",
+              "to": "LOOP_RETURN"
+            },
+            {
+              "from": "LOOP_RETURN",
+              "when": "action_resolved",
+              "to": "DOUBLE_OMEN"
+            }
+          ]
+        }
+      },
+      "mechanic": "三段法则攻击，第三击前必须完成资源循环。",
+      "victoryEffects": {
+        "tianji": 3
+      },
+      "outcomeLinks": {
+        "victory": {
+          "companionEffects": {
+            "compId": "tianji_laoren",
+            "affectionDelta": 6,
+            "trustDelta": 12
+          }
+        },
+        "defeat": {
+          "companionEffects": {
+            "compId": "tianji_laoren",
+            "trustDelta": -4
+          }
+        },
+        "flee": {
+          "companionEffects": {
+            "compId": "tianji_laoren",
+            "affectionDelta": -5
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_patrol_qi_mountain_shadow",
+      "category": "realmPatrol",
+      "realm": "qi",
+      "title": "炼气巡战·山影拦途",
+      "description": "外门山道的残余阵力凝成巡山石影，它不认门派身份，只会拦住气息躁动、脚步失序的修士。",
+      "enemy": {
+        "templateId": "trial_aggressor_qi",
+        "name": "巡山石影",
+        "hp": 7,
+        "atk": 2,
+        "def": 1,
+        "tier": 1
+      },
+      "mechanic": "石影先压迫再短暂回气；在回气窗口反击，比连续抢攻更安全。",
+      "victoryEffects": {
+        "cultivation": 2,
+        "fortune": 1
+      },
+      "avoid": {
+        "text": "绕走旧栈道",
+        "desc": "多耗一段寿元绕开阵影，战备得以保留。",
+        "effects": {
+          "lifespan": -1
+        }
+      }
+    },
+    {
+      "id": "enc_patrol_deity_law_echo",
+      "category": "realmPatrol",
+      "realm": "deity",
+      "title": "化神巡战·律令余响",
+      "description": "破碎天律在云海中聚成巡行法影，不问道途，只检验修士能否在威压下保留自己的出牌节奏。",
+      "enemy": {
+        "templateId": "enemy_nascent_tribulation",
+        "name": "律令巡影",
+        "hp": 16,
+        "atk": 3,
+        "def": 2,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_law_edict_echo_agc_n13_v1",
+          "initialState": "PROCLAIM",
+          "states": {
+            "PROCLAIM": {
+              "label": "空诏宣示",
+              "cue": "律令巡影展开其独有的空诏宣示征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "空诏宣示：机制进入可读蓄势",
+                "actionName": "律令巡影展开其独有的空诏宣示征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "DECREE": {
+              "label": "律条横贯",
+              "cue": "律令巡影沿可见中线释放律条横贯。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "律条横贯：造成3点伤害",
+                "actionName": "律令巡影沿可见中线释放律条横贯。",
+                "actionFamily": "attack"
+              }
+            },
+            "REBUTTED": {
+              "label": "诏令驳回",
+              "cue": "律令巡影的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "诏令驳回：本轮不获得护盾",
+                "actionName": "律令巡影的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RESTAMP": {
+              "label": "法角重印",
+              "cue": "律令巡影收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "法角重印：获得1点护盾",
+                "actionName": "律令巡影收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "PROCLAIM",
+              "when": "action_resolved",
+              "to": "DECREE"
+            },
+            {
+              "from": "DECREE",
+              "when": "deflected",
+              "to": "REBUTTED"
+            },
+            {
+              "from": "DECREE",
+              "when": "enemy_block_broken",
+              "to": "REBUTTED"
+            },
+            {
+              "from": "DECREE",
+              "when": "action_resolved",
+              "to": "RESTAMP"
+            },
+            {
+              "from": "REBUTTED",
+              "when": "action_resolved",
+              "to": "RESTAMP"
+            },
+            {
+              "from": "RESTAMP",
+              "when": "action_resolved",
+              "to": "PROCLAIM"
+            }
+          ]
+        }
+      },
+      "mechanic": "法影在施压与结界间轮换；先稳住护盾，再在结界收束前完成反击。",
+      "victoryEffects": {
+        "cultivation": 6,
+        "daoHeart": 1
+      },
+      "avoid": {
+        "text": "绕行云海",
+        "desc": "多耗一段寿元避开巡影，保留当前战备。",
+        "effects": {
+          "lifespan": -1
+        }
+      }
+    },
+    {
+      "id": "enc_patrol_tribulation_storm_echo",
+      "category": "realmPatrol",
+      "realm": "tribulation",
+      "title": "渡劫巡战·劫云残响",
+      "description": "上一位渡劫者留下的雷意仍在天路徘徊，它把每个后来者都当成尚未落定的最后一劫。",
+      "enemy": {
+        "templateId": "enemy_deity_tribulation",
+        "name": "劫云残响",
+        "hp": 19,
+        "atk": 3,
+        "def": 2,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_tribulation_storm_echo_agc_n14_v1",
+          "initialState": "CLOUD_MUSTER",
+          "states": {
+            "CLOUD_MUSTER": {
+              "label": "劫云聚鼓",
+              "cue": "劫云残响展开其独有的劫云聚鼓征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "劫云聚鼓：机制进入可读蓄势",
+                "actionName": "劫云残响展开其独有的劫云聚鼓征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "THUNDER_ECHO": {
+              "label": "雷声横渡",
+              "cue": "劫云残响沿可见中线释放雷声横渡。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "雷声横渡：造成3点伤害",
+                "actionName": "劫云残响沿可见中线释放雷声横渡。",
+                "actionFamily": "attack"
+              }
+            },
+            "DRUM_STILLED": {
+              "label": "鼓律受抑",
+              "cue": "劫云残响的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "鼓律受抑：本轮不获得护盾",
+                "actionName": "劫云残响的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RESOUND": {
+              "label": "余响重鸣",
+              "cue": "劫云残响收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "余响重鸣：获得1点护盾",
+                "actionName": "劫云残响收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "CLOUD_MUSTER",
+              "when": "action_resolved",
+              "to": "THUNDER_ECHO"
+            },
+            {
+              "from": "THUNDER_ECHO",
+              "when": "deflected",
+              "to": "DRUM_STILLED"
+            },
+            {
+              "from": "THUNDER_ECHO",
+              "when": "enemy_block_broken",
+              "to": "DRUM_STILLED"
+            },
+            {
+              "from": "THUNDER_ECHO",
+              "when": "action_resolved",
+              "to": "RESOUND"
+            },
+            {
+              "from": "DRUM_STILLED",
+              "when": "action_resolved",
+              "to": "RESOUND"
+            },
+            {
+              "from": "RESOUND",
+              "when": "action_resolved",
+              "to": "CLOUD_MUSTER"
+            }
+          ]
+        }
+      },
+      "mechanic": "雷意蓄势后连续落击；保留真元与护盾，才能在雷势回收时反制。",
+      "victoryEffects": {
+        "cultivation": 8,
+        "daoHeart": 1
+      },
+      "avoid": {
+        "text": "退回天路",
+        "desc": "消耗一段寿元等待劫云散去。",
+        "effects": {
+          "lifespan": -1
+        }
+      }
+    },
+    {
+      "id": "enc_quota_qi_outer_guard",
+      "category": "realmElite",
+      "realm": "qi",
+      "title": "炼气精英·外门巡律使",
+      "description": "外门巡律使专挑气息虚浮的新弟子试剑，胜者才有资格穿过山门内道。",
+      "enemy": {
+        "templateId": "trial_aggressor_qi",
+        "name": "外门巡律使",
+        "hp": 5,
+        "atk": 2,
+        "def": 1,
+        "tier": 2,
+        "planGraph": {
+          "planId": "enc_quota_qi_outer_guard_disciplined_pressure_v1",
+          "initialState": "PROBE",
+          "states": {
+            "PROBE": {
+              "label": "试律",
+              "cue": "巡律使压低短刀，先以短招试探你的步法与真元去向。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "试律：造成2点伤害",
+                "actionName": "巡律使沉肩进半步，以不过肩的短刀试律"
+              }
+            },
+            "PRESSURE": {
+              "label": "追身问责",
+              "cue": "你连续出牌后真元见底，巡律使已沿空门追身。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "追身问责：造成3点伤害",
+                "actionName": "巡律使踏入空门，短刀贴身问责"
+              }
+            },
+            "RECOVER": {
+              "label": "收刀回息",
+              "cue": "巡律使收脚横刀，回息时只维持一层薄护。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "回息：获得1点护盾",
+                "actionName": "巡律使收刀回息，以横刀护住胸线"
+              }
+            },
+            "BROKEN": {
+              "label": "刀路失衡",
+              "cue": "偏斩带开短刀，巡律使必须重新扎稳双脚。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "失衡：本轮不获得护盾",
+                "actionName": "巡律使刀路被带偏，退回戒备线重新立足"
+              }
+            },
+            "COUNTER": {
+              "label": "同式戒罚",
+              "cue": "连续同类招式已被记下，巡律使沿旧路切入反制。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "piercing": true,
+                "desc": "戒罚：穿透造成2点伤害",
+                "actionName": "巡律使循着重复招路切入，以短刀执行戒罚"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "PROBE",
+              "when": "repeated_card_type",
+              "to": "COUNTER",
+              "minConsecutive": 2
+            },
+            {
+              "from": "PROBE",
+              "when": "player_overcommitted",
+              "to": "PRESSURE",
+              "minCards": 2,
+              "maxReservedQi": 1
+            },
+            {
+              "from": "PROBE",
+              "when": "player_reserved_resource",
+              "to": "RECOVER",
+              "maxCards": 0,
+              "minReservedQi": 2
+            },
+            {
+              "from": [
+                "PROBE",
+                "PRESSURE",
+                "COUNTER"
+              ],
+              "when": "deflected",
+              "to": "BROKEN"
+            },
+            {
+              "from": [
+                "PRESSURE",
+                "COUNTER"
+              ],
+              "when": "action_resolved",
+              "to": "RECOVER"
+            },
+            {
+              "from": [
+                "RECOVER",
+                "BROKEN"
+              ],
+              "when": "action_resolved",
+              "to": "PROBE"
+            }
+          ]
+        }
+      },
+      "mechanic": "先以短招压迫，再在回气时留下反击窗口。",
+      "victoryEffects": {
+        "cultivation": 3,
+        "daoHeart": 1
+      },
+      "avoid": {
+        "text": "退回外门整备",
+        "effects": {
+          "lifespan": -1
+        }
+      }
+    },
+    {
+      "id": "enc_quota_qi_missing_disciple",
+      "category": "realmQuest",
+      "realm": "qi",
+      "title": "炼气任务·失踪弟子的求救符",
+      "description": "求救符把你引到废弃药圃，走失弟子正被噬灵藤困住。救人与保全灵药无法同时拖延。",
+      "enemy": {
+        "templateId": "enemy_charging",
+        "name": "噬灵藤心",
+        "hp": 5,
+        "atk": 2,
+        "def": 1,
+        "tier": 1,
+        "planGraph": {
+          "planId": "enc_quota_qi_missing_disciple_charge_lash_v1",
+          "initialState": "CHARGE",
+          "states": {
+            "CHARGE": {
+              "label": "藤心聚灵",
+              "cue": "游藤正在回收，发亮根节暴露；这是蓄势而非一次无提示攻击。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "聚灵：游藤回根，根节暴露，本轮不造成伤害",
+                "actionName": "噬灵藤心收拢游藤，让根节搏动聚灵"
+              }
+            },
+            "LASH": {
+              "label": "缠身",
+              "cue": "根节已经绷紧，根鞭将贴地抽向双足；偏斩可迫使它重新蓄力。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "缠身：造成2点伤害",
+                "actionName": "噬灵藤心从根团甩出贴地根鞭，抽向你的双足"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "CHARGE",
+              "when": "action_resolved",
+              "to": "LASH"
+            },
+            {
+              "from": "LASH",
+              "when": "deflected",
+              "to": "CHARGE"
+            }
+          ]
+        }
+      },
+      "mechanic": "藤心蓄力时会暴露根节，打断后可阻止下一轮缠身。",
+      "victoryEffects": {
+        "cultivation": 2,
+        "karmaGood": 1
+      },
+      "avoid": {
+        "text": "先带回求救符",
+        "narrativeBlock": "你没有贸然闯入药圃，而是把求救符交给执事；失踪弟子的下落被正式登记。"
+      }
+    },
+    {
+      "id": "enc_quota_foundation_vein_wolf",
+      "category": "realmQuotaOrdinary",
+      "realm": "foundation",
+      "title": "筑基巡战·地脉岩狼",
+      "description": "筑基震动唤醒了地脉岩狼，它把每一处新开的灵脉都视为领地。",
+      "enemy": {
+        "templateId": "enemy_charging",
+        "name": "地脉岩狼",
+        "hp": 9,
+        "atk": 2,
+        "def": 1,
+        "tier": 1,
+        "planGraph": {
+          "planId": "plan_vein_wolf_agc_n11_v1",
+          "initialState": "ARMOR",
+          "states": {
+            "ARMOR": {
+              "label": "岩甲闭合",
+              "cue": "岩片沿肩背咬合，先破甲才能迫使它露出地脉软节。",
+              "intent": {
+                "type": "defend",
+                "value": 3,
+                "desc": "岩甲：获得3点护盾",
+                "actionName": "岩片沿肩背咬合，先破甲才能迫使它露出地脉软节。",
+                "actionFamily": "guard"
+              }
+            },
+            "POUNCE": {
+              "label": "贴地扑杀",
+              "cue": "前爪压低，岩狼将沿地面扑向你的下盘。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "扑杀：造成3点伤害",
+                "actionName": "前爪压低，岩狼将沿地面扑向你的下盘。",
+                "actionFamily": "attack"
+              }
+            },
+            "EXPOSED": {
+              "label": "软节暴露",
+              "cue": "岩甲被打空，肩腹软节短暂暴露。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "暴露：本轮不获得护盾",
+                "actionName": "岩甲被打空，肩腹软节短暂暴露。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RECOVER": {
+              "label": "退步归甲",
+              "cue": "它拖步收肩，重新拼合被震开的岩片。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "归甲：获得1点护盾",
+                "actionName": "它拖步收肩，重新拼合被震开的岩片。",
+                "actionFamily": "guard"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "ARMOR",
+              "when": "enemy_block_broken",
+              "to": "EXPOSED"
+            },
+            {
+              "from": "ARMOR",
+              "when": "action_resolved",
+              "to": "POUNCE"
+            },
+            {
+              "from": "POUNCE",
+              "when": "enemy_block_broken",
+              "to": "EXPOSED"
+            },
+            {
+              "from": "POUNCE",
+              "when": "action_resolved",
+              "to": "RECOVER"
+            },
+            {
+              "from": "EXPOSED",
+              "when": "action_resolved",
+              "to": "POUNCE"
+            },
+            {
+              "from": "RECOVER",
+              "when": "action_resolved",
+              "to": "ARMOR"
+            }
+          ]
+        }
+      },
+      "mechanic": "岩甲与扑击交替，破甲回合是稳定输出窗口。",
+      "victoryEffects": {
+        "cultivation": 3,
+        "fortune": 1
+      },
+      "avoid": {
+        "text": "绕开狼巢",
+        "effects": {
+          "lifespan": -1
+        }
+      }
+    },
+    {
+      "id": "enc_quota_foundation_mirror_mist",
+      "category": "realmQuotaOrdinary",
+      "realm": "foundation",
+      "title": "筑基巡战·镜雾游魂",
+      "description": "镜湖散出的雾气凝成游魂，反复模仿路人的第一招。",
+      "enemy": {
+        "templateId": "enemy_foundation_demon",
+        "name": "镜雾游魂",
+        "hp": 9,
+        "atk": 2,
+        "def": 1,
+        "tier": 1,
+        "planGraph": {
+          "planId": "plan_foundation_mirror_mist_agc_n9_v1",
+          "initialState": "TRACE",
+          "states": {
+            "TRACE": {
+              "label": "照见首式",
+              "cue": "镜雾展开薄薄镜线，正在记录你下一张真正结算的牌。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "照见：等待记录首张结算牌，本轮不造成伤害",
+                "actionName": "镜雾以三片月镜扫过你的起手气机"
+              }
+            },
+            "ECHO": {
+              "label": "返照",
+              "cue": "镜雾已保存首式；本轮将以相同路线的镜像轮廓返还。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "返照：复制首式路线，造成2点伤害",
+                "actionName": "镜雾沿记录的首式轮廓反向返照"
+              }
+            },
+            "VEIL": {
+              "label": "镜帷回护",
+              "cue": "返照后镜片收束成帷；改换攻、守或术式类别可令镜序失准。",
+              "intent": {
+                "type": "defend",
+                "value": 2,
+                "desc": "镜帷：获得2点护盾",
+                "actionName": "镜雾收拢月镜碎片结成一层薄帷"
+              }
+            },
+            "REFRACTURE": {
+              "label": "镜序折断",
+              "cue": "你改换了招式类别，旧镜序与新动作互相冲撞，游魂本轮无法回护。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "折断：本轮不获得护盾",
+                "actionName": "错位镜片沿紫色断层滑落，镜雾露出空心"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "TRACE",
+              "when": "first_card_recorded",
+              "to": "ECHO"
+            },
+            {
+              "from": "ECHO",
+              "when": "action_resolved",
+              "to": "VEIL"
+            },
+            {
+              "from": "VEIL",
+              "when": "action_resolved",
+              "to": "ECHO"
+            },
+            {
+              "from": [
+                "VEIL"
+              ],
+              "when": "sequence_broken",
+              "to": "REFRACTURE"
+            },
+            {
+              "from": "REFRACTURE",
+              "when": "action_resolved",
+              "to": "ECHO"
+            }
+          ],
+          "memoryContract": {
+            "kind": "first_action_family_and_semantic_action_v2",
+            "allowedFamilies": [
+              "sword",
+              "spell",
+              "body",
+              "pill"
+            ],
+            "allowedSemanticActionFamilies": [
+              "attack",
+              "guard",
+              "skill"
+            ]
+          }
+        }
+      },
+      "mechanic": "游魂先复制攻击再转入心防，变换出牌顺序可制造破绽。",
+      "victoryEffects": {
+        "cultivation": 3,
+        "daoHeart": 1
+      },
+      "avoid": {
+        "text": "闭息穿雾",
+        "effects": {
+          "fortune": -1
+        }
+      }
+    },
+    {
+      "id": "enc_quota_foundation_broken_array",
+      "category": "realmQuest",
+      "realm": "foundation",
+      "title": "筑基任务·失控护山阵",
+      "description": "旧护山阵把归宗弟子错认成入侵者，阵眼必须在更多人受伤前被压制。",
+      "enemy": {
+        "templateId": "enemy_sword",
+        "name": "错乱阵灵",
+        "hp": 10,
+        "atk": 2,
+        "def": 1,
+        "tier": 2,
+        "block": 3,
+        "planGraph": {
+          "planId": "plan_foundation_broken_array_agc_n9_v1",
+          "initialState": "WARD",
+          "states": {
+            "WARD": {
+              "label": "护阵闭合",
+              "cue": "阵眼低伏，旧铜阵臂维持横向屏障；打空护阵可提前暴露核心。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "闭合：维持护阵并校准阵臂，本轮不造成伤害",
+                "actionName": "错乱阵灵压低四臂，让旧阵纹重新连成护幕"
+              }
+            },
+            "CHARGE": {
+              "label": "阵臂蓄势",
+              "cue": "左右阵臂向同一条斩线收紧；护阵仍可被真实打空。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "蓄势：阵臂校准交叉斩线，本轮不造成伤害",
+                "actionName": "错乱阵灵将两对阵臂压向中心斩线"
+              }
+            },
+            "CROSSCUT": {
+              "label": "交阵连斩",
+              "cue": "双阵刃已经对准左侧来路；此击从敌方右侧向玩家左侧交叉推进。",
+              "intent": {
+                "type": "attack",
+                "value": 2,
+                "desc": "交阵连斩：造成4点伤害",
+                "actionName": "错乱阵灵弹出双阵刃，自右向左交叉斩落"
+              }
+            },
+            "EXPOSED": {
+              "label": "阵眼失衡",
+              "cue": "护阵破碎或交斩过载后，低伏核心完全暴露；这是稳定输出窗口。",
+              "intent": {
+                "type": "defend",
+                "value": 3,
+                "desc": "归位：本轮结束时重建3点护阵",
+                "actionName": "错乱阵灵拖回断裂阵臂，缓慢重建护阵"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "WARD",
+              "when": "action_resolved",
+              "to": "CHARGE"
+            },
+            {
+              "from": "CHARGE",
+              "when": "action_resolved",
+              "to": "CROSSCUT"
+            },
+            {
+              "from": "CROSSCUT",
+              "when": "action_resolved",
+              "to": "EXPOSED"
+            },
+            {
+              "from": [
+                "WARD",
+                "CHARGE",
+                "CROSSCUT"
+              ],
+              "when": "enemy_block_broken",
+              "to": "EXPOSED"
+            },
+            {
+              "from": "EXPOSED",
+              "when": "action_resolved",
+              "to": "WARD"
+            }
+          ],
+          "blockContract": {
+            "retainInStates": [
+              "WARD",
+              "CHARGE",
+              "CROSSCUT"
+            ],
+            "releaseOnExit": true
+          }
+        }
+      },
+      "mechanic": "阵灵蓄势后连斩，破除屏障会令阵眼短暂失衡。",
+      "victoryEffects": {
+        "cultivation": 4,
+        "karmaGood": 1
+      },
+      "avoid": {
+        "text": "封路等待长老",
+        "narrativeBlock": "你封住山道并发出警讯，阵灵仍未解决，但归宗弟子暂时不会误入。"
+      }
+    },
+    {
+      "id": "enc_quota_golden_furnace_flame",
+      "category": "realmQuotaOrdinary",
+      "realm": "golden",
+      "title": "金丹巡战·离炉真火",
+      "description": "一缕离炉真火吞噬矿渣后生出灵智，把沿途金气都当作薪柴。",
+      "enemy": {
+        "templateId": "enemy_charging",
+        "name": "离炉真火",
+        "hp": 12,
+        "atk": 2,
+        "def": 2,
+        "tier": 1
+      },
+      "mechanic": "真火蓄热后爆发，蓄热回合可用虚弱压低下一击。",
+      "victoryEffects": {
+        "cultivation": 4,
+        "fortune": 1
+      },
+      "avoid": {
+        "text": "舍弃矿道",
+        "effects": {
+          "spiritStone": -3
+        }
+      }
+    },
+    {
+      "id": "enc_quota_golden_ore_spirit",
+      "category": "realmQuotaOrdinary",
+      "realm": "golden",
+      "title": "金丹巡战·吞金矿灵",
+      "description": "吞金矿灵沿着丹田气机追来，试图把你的金丹也当成一块矿髓。",
+      "enemy": {
+        "templateId": "enemy_sword",
+        "name": "吞金矿灵",
+        "hp": 12,
+        "atk": 2,
+        "def": 2,
+        "tier": 1,
+        "planGraph": {
+          "planId": "plan_ore_spirit_agc_n11_v1",
+          "initialState": "CRYSTALLIZE",
+          "states": {
+            "CRYSTALLIZE": {
+              "label": "矿壳结晶",
+              "cue": "矿灵收拢碎晶，硬壳正在封住核心。",
+              "intent": {
+                "type": "defend",
+                "value": 3,
+                "desc": "结晶：获得3点护盾",
+                "actionName": "矿灵收拢碎晶，硬壳正在封住核心。",
+                "actionFamily": "guard"
+              }
+            },
+            "RAM": {
+              "label": "矿脊冲撞",
+              "cue": "根足拧紧，整簇矿脊将横向撞过战线。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "冲撞：造成3点伤害",
+                "actionName": "根足拧紧，整簇矿脊将横向撞过战线。",
+                "actionFamily": "attack"
+              }
+            },
+            "FRACTURED": {
+              "label": "晶面断裂",
+              "cue": "护壳被打穿，裂纹直达吞金核心。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "断裂：本轮不获得护盾",
+                "actionName": "护壳被打穿，裂纹直达吞金核心。",
+                "actionFamily": "hurt"
+              }
+            },
+            "COOLDOWN": {
+              "label": "沉渣冷却",
+              "cue": "矿热退去，根足只能维持一层薄壳。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "冷却：获得1点护盾",
+                "actionName": "矿热退去，根足只能维持一层薄壳。",
+                "actionFamily": "guard"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "CRYSTALLIZE",
+              "when": "enemy_block_broken",
+              "to": "FRACTURED"
+            },
+            {
+              "from": "CRYSTALLIZE",
+              "when": "action_resolved",
+              "to": "RAM"
+            },
+            {
+              "from": "RAM",
+              "when": "enemy_block_broken",
+              "to": "FRACTURED"
+            },
+            {
+              "from": "RAM",
+              "when": "action_resolved",
+              "to": "COOLDOWN"
+            },
+            {
+              "from": "FRACTURED",
+              "when": "action_resolved",
+              "to": "COOLDOWN"
+            },
+            {
+              "from": "COOLDOWN",
+              "when": "action_resolved",
+              "to": "CRYSTALLIZE"
+            }
+          ]
+        }
+      },
+      "mechanic": "矿灵先结晶护体再冲撞，破盾后攻击会延缓下一次结晶。",
+      "victoryEffects": {
+        "cultivation": 4,
+        "spiritStone": 2
+      },
+      "avoid": {
+        "text": "抛下灵矿诱饵",
+        "effects": {
+          "spiritStone": -4
+        }
+      }
+    },
+    {
+      "id": "enc_quota_golden_lost_elixir",
+      "category": "realmQuest",
+      "realm": "golden",
+      "title": "金丹任务·失落丹方的守炉灵",
+      "description": "残缺丹方藏在熄灭古炉中，守炉灵要求来者先证明不会重演炸炉旧案。",
+      "enemy": {
+        "templateId": "enemy_charging",
+        "name": "古炉守灵",
+        "hp": 13,
+        "atk": 2,
+        "def": 2,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_ancient_furnace_guardian_agc_n11_v1",
+          "initialState": "PRESSURIZE",
+          "states": {
+            "PRESSURIZE": {
+              "label": "炉压积聚",
+              "cue": "旧炉封口震响，热压正在内壁一层层叠高。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "积压：本轮不造成伤害",
+                "actionName": "旧炉封口震响，热压正在内壁一层层叠高。",
+                "actionFamily": "skill"
+              }
+            },
+            "VENT": {
+              "label": "横口泄焰",
+              "cue": "炉门骤开，压缩药火将沿地面横扫。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "泄焰：造成3点伤害",
+                "actionName": "炉门骤开，压缩药火将沿地面横扫。",
+                "actionFamily": "attack"
+              }
+            },
+            "DAMPED": {
+              "label": "火路受阻",
+              "cue": "泄焰被偏开，炉心回压让守灵暂时失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "受阻：本轮不获得护盾",
+                "actionName": "泄焰被偏开，炉心回压让守灵暂时失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "COOLDOWN": {
+              "label": "炉壁回冷",
+              "cue": "铜壁褪红，守灵只能缓慢重整封口。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "回冷：获得1点护盾",
+                "actionName": "铜壁褪红，守灵只能缓慢重整封口。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "PRESSURIZE",
+              "when": "action_resolved",
+              "to": "VENT"
+            },
+            {
+              "from": "VENT",
+              "when": "deflected",
+              "to": "DAMPED"
+            },
+            {
+              "from": "VENT",
+              "when": "action_resolved",
+              "to": "COOLDOWN"
+            },
+            {
+              "from": "DAMPED",
+              "when": "action_resolved",
+              "to": "COOLDOWN"
+            },
+            {
+              "from": "COOLDOWN",
+              "when": "action_resolved",
+              "to": "PRESSURIZE"
+            }
+          ]
+        }
+      },
+      "mechanic": "炉压逐回合累积，及时打断蓄力才能保住丹方。",
+      "victoryEffects": {
+        "cultivation": 4,
+        "knowledge": 2
+      },
+      "avoid": {
+        "text": "封存古炉",
+        "narrativeBlock": "你重新封住古炉，将丹方线索刻入玉简，等待更稳妥的开炉时机。"
+      }
+    },
+    {
+      "id": "enc_quota_nascent_soul_echo",
+      "category": "realmQuotaOrdinary",
+      "realm": "nascent",
+      "title": "元婴巡战·离体魂响",
+      "description": "无主魂响误把你的元婴当作归宿，贴近识海后不断复述陌生人的遗愿。",
+      "enemy": {
+        "templateId": "enemy_nascent_tribulation",
+        "name": "离体魂响",
+        "hp": 14,
+        "atk": 3,
+        "def": 1,
+        "tier": 1,
+        "planGraph": {
+          "planId": "plan_disembodied_soul_echo_agc_n13_v1",
+          "initialState": "ECHO",
+          "states": {
+            "ECHO": {
+              "label": "离魂对照",
+              "cue": "离体魂响展开其独有的离魂对照征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "离魂对照：机制进入可读蓄势",
+                "actionName": "离体魂响展开其独有的离魂对照征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "REVERBERATE": {
+              "label": "回声贯体",
+              "cue": "离体魂响沿可见中线释放回声贯体。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "回声贯体：造成3点伤害",
+                "actionName": "离体魂响沿可见中线释放回声贯体。",
+                "actionFamily": "attack"
+              }
+            },
+            "SILENCED": {
+              "label": "魂响受抑",
+              "cue": "离体魂响的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "魂响受抑：本轮不获得护盾",
+                "actionName": "离体魂响的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RETURN": {
+              "label": "镜魂复位",
+              "cue": "离体魂响收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "镜魂复位：获得1点护盾",
+                "actionName": "离体魂响收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "ECHO",
+              "when": "action_resolved",
+              "to": "REVERBERATE"
+            },
+            {
+              "from": "REVERBERATE",
+              "when": "deflected",
+              "to": "SILENCED"
+            },
+            {
+              "from": "REVERBERATE",
+              "when": "enemy_block_broken",
+              "to": "SILENCED"
+            },
+            {
+              "from": "REVERBERATE",
+              "when": "action_resolved",
+              "to": "RETURN"
+            },
+            {
+              "from": "SILENCED",
+              "when": "action_resolved",
+              "to": "RETURN"
+            },
+            {
+              "from": "RETURN",
+              "when": "action_resolved",
+              "to": "ECHO"
+            }
+          ]
+        }
+      },
+      "mechanic": "魂响聚念后重击，防住聚念再反击可令其失去依附。",
+      "victoryEffects": {
+        "cultivation": 5,
+        "daoHeart": 1
+      },
+      "avoid": {
+        "text": "封闭识海",
+        "effects": {
+          "fortune": -1
+        }
+      }
+    },
+    {
+      "id": "enc_quota_nascent_void_moth",
+      "category": "realmQuotaOrdinary",
+      "realm": "nascent",
+      "title": "元婴巡战·蚀界虚蛾",
+      "description": "虚蛾啃食空间裂隙边缘，每次振翅都会让附近的术式偏离目标。",
+      "enemy": {
+        "templateId": "enemy_charging",
+        "name": "蚀界虚蛾",
+        "hp": 14,
+        "atk": 3,
+        "def": 1,
+        "tier": 1,
+        "planGraph": {
+          "planId": "plan_void_eating_moth_agc_n13_v1",
+          "initialState": "FEED",
+          "states": {
+            "FEED": {
+              "label": "蚀界啮隙",
+              "cue": "蚀界虚蛾展开其独有的蚀界啮隙征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "蚀界啮隙：机制进入可读蓄势",
+                "actionName": "蚀界虚蛾展开其独有的蚀界啮隙征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "WING_CUT": {
+              "label": "虚翼横切",
+              "cue": "蚀界虚蛾沿可见中线释放虚翼横切。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "虚翼横切：造成3点伤害",
+                "actionName": "蚀界虚蛾沿可见中线释放虚翼横切。",
+                "actionFamily": "attack"
+              }
+            },
+            "STUNNED": {
+              "label": "蛾核震落",
+              "cue": "蚀界虚蛾的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "蛾核震落：本轮不获得护盾",
+                "actionName": "蚀界虚蛾的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "MOLT": {
+              "label": "蜕鳞复张",
+              "cue": "蚀界虚蛾收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "蜕鳞复张：获得1点护盾",
+                "actionName": "蚀界虚蛾收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "FEED",
+              "when": "action_resolved",
+              "to": "WING_CUT"
+            },
+            {
+              "from": "WING_CUT",
+              "when": "deflected",
+              "to": "STUNNED"
+            },
+            {
+              "from": "WING_CUT",
+              "when": "enemy_block_broken",
+              "to": "STUNNED"
+            },
+            {
+              "from": "WING_CUT",
+              "when": "action_resolved",
+              "to": "MOLT"
+            },
+            {
+              "from": "STUNNED",
+              "when": "action_resolved",
+              "to": "MOLT"
+            },
+            {
+              "from": "MOLT",
+              "when": "action_resolved",
+              "to": "FEED"
+            }
+          ]
+        }
+      },
+      "mechanic": "虚蛾在振翅前蓄势，施加虚弱可让它撞入自己撕开的裂隙。",
+      "victoryEffects": {
+        "cultivation": 5,
+        "tianji": 1
+      },
+      "avoid": {
+        "text": "封住近侧裂隙",
+        "effects": {
+          "lifespan": -1
+        }
+      }
+    },
+    {
+      "id": "enc_quota_nascent_rift_rescue",
+      "category": "realmQuest",
+      "realm": "nascent",
+      "title": "元婴任务·裂隙中的商旅",
+      "description": "一队商旅被卷入半闭合裂隙，虚空猎影正沿着他们的灯火逼近。",
+      "enemy": {
+        "templateId": "enemy_nascent_tribulation",
+        "name": "虚空猎影",
+        "hp": 15,
+        "atk": 3,
+        "def": 1,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_rift_hunter_shadow_agc_n13_v1",
+          "initialState": "MARK",
+          "states": {
+            "MARK": {
+              "label": "裂隙标定",
+              "cue": "虚空猎影展开其独有的裂隙标定征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "裂隙标定：机制进入可读蓄势",
+                "actionName": "虚空猎影展开其独有的裂隙标定征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "HOOK": {
+              "label": "界钩回扯",
+              "cue": "虚空猎影沿可见中线释放界钩回扯。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "界钩回扯：造成3点伤害",
+                "actionName": "虚空猎影沿可见中线释放界钩回扯。",
+                "actionFamily": "attack"
+              }
+            },
+            "DISPLACED": {
+              "label": "影位偏移",
+              "cue": "虚空猎影的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "影位偏移：本轮不获得护盾",
+                "actionName": "虚空猎影的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "REOPEN": {
+              "label": "裂口再启",
+              "cue": "虚空猎影收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "裂口再启：获得1点护盾",
+                "actionName": "虚空猎影收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "MARK",
+              "when": "action_resolved",
+              "to": "HOOK"
+            },
+            {
+              "from": "HOOK",
+              "when": "deflected",
+              "to": "DISPLACED"
+            },
+            {
+              "from": "HOOK",
+              "when": "enemy_block_broken",
+              "to": "DISPLACED"
+            },
+            {
+              "from": "HOOK",
+              "when": "action_resolved",
+              "to": "REOPEN"
+            },
+            {
+              "from": "DISPLACED",
+              "when": "action_resolved",
+              "to": "REOPEN"
+            },
+            {
+              "from": "REOPEN",
+              "when": "action_resolved",
+              "to": "MARK"
+            }
+          ]
+        }
+      },
+      "mechanic": "猎影锁定灯火后蓄力，打断锁定可为商旅争取撤离时间。",
+      "victoryEffects": {
+        "cultivation": 5,
+        "karmaGood": 2
+      },
+      "avoid": {
+        "text": "先稳定裂隙出口",
+        "narrativeBlock": "你留下出口坐标并召集援手；商旅仍在裂隙中，但撤离路线不再继续坍塌。"
+      }
+    },
+    {
+      "id": "enc_quota_deity_law_beast",
+      "category": "realmQuotaOrdinary",
+      "realm": "deity",
+      "title": "化神巡战·食律云兽",
+      "description": "云兽以破碎法则为食，吞下一段律令后便会短暂模仿其中的威压。",
+      "enemy": {
+        "templateId": "enemy_nascent_tribulation",
+        "name": "食律云兽",
+        "hp": 17,
+        "atk": 3,
+        "def": 2,
+        "tier": 1,
+        "planGraph": {
+          "planId": "plan_law_eating_cloud_beast_agc_n13_v1",
+          "initialState": "DEVOUR",
+          "states": {
+            "DEVOUR": {
+              "label": "吞律聚云",
+              "cue": "食律云兽展开其独有的吞律聚云征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "吞律聚云：机制进入可读蓄势",
+                "actionName": "食律云兽展开其独有的吞律聚云征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "LAW_FANG": {
+              "label": "法牙横噬",
+              "cue": "食律云兽沿可见中线释放法牙横噬。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "法牙横噬：造成3点伤害",
+                "actionName": "食律云兽沿可见中线释放法牙横噬。",
+                "actionFamily": "attack"
+              }
+            },
+            "CHOKED": {
+              "label": "律骨噎断",
+              "cue": "食律云兽的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "律骨噎断：本轮不获得护盾",
+                "actionName": "食律云兽的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "DIGEST": {
+              "label": "云腹消律",
+              "cue": "食律云兽收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "云腹消律：获得1点护盾",
+                "actionName": "食律云兽收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "DEVOUR",
+              "when": "action_resolved",
+              "to": "LAW_FANG"
+            },
+            {
+              "from": "LAW_FANG",
+              "when": "deflected",
+              "to": "CHOKED"
+            },
+            {
+              "from": "LAW_FANG",
+              "when": "enemy_block_broken",
+              "to": "CHOKED"
+            },
+            {
+              "from": "LAW_FANG",
+              "when": "action_resolved",
+              "to": "DIGEST"
+            },
+            {
+              "from": "CHOKED",
+              "when": "action_resolved",
+              "to": "DIGEST"
+            },
+            {
+              "from": "DIGEST",
+              "when": "action_resolved",
+              "to": "DEVOUR"
+            }
+          ]
+        }
+      },
+      "mechanic": "云兽吞律后结界护体，结界破碎时会暴露被吞法则。",
+      "victoryEffects": {
+        "cultivation": 6,
+        "tianji": 1
+      },
+      "avoid": {
+        "text": "散去周身法意",
+        "effects": {
+          "daoHeart": -1
+        }
+      }
+    },
+    {
+      "id": "enc_quota_deity_heaven_envoy",
+      "category": "realmElite",
+      "realm": "deity",
+      "title": "化神精英·巡界敕令使",
+      "description": "巡界敕令使要求你出示仙庭许可；凡间自成的道路在它眼中都是待删除的例外。",
+      "enemy": {
+        "templateId": "enemy_deity_tribulation",
+        "name": "巡界敕令使",
+        "hp": 19,
+        "atk": 3,
+        "def": 2,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_heaven_envoy_agc_n12_v1",
+          "initialState": "EDICT",
+          "states": {
+            "EDICT": {
+              "label": "敕令定界",
+              "cue": "巡界使展开云纹敕令，标记你重复使用的路数。",
+              "intent": {
+                "type": "debuff",
+                "value": 1,
+                "desc": "定界：施加1层虚弱",
+                "actionName": "巡界使展开云纹敕令，标记你重复使用的路数。",
+                "actionFamily": "skill",
+                "statusId": "weak"
+              }
+            },
+            "ENFORCE": {
+              "label": "界线贯行",
+              "cue": "敕令化作窄束界光，沿既定边界贯穿战线。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "贯行：造成3点伤害",
+                "actionName": "敕令化作窄束界光，沿既定边界贯穿战线。",
+                "actionFamily": "attack"
+              }
+            },
+            "REPRISAL": {
+              "label": "复式追责",
+              "cue": "同类招式连续出现，敕令立即追加一次追责。",
+              "intent": {
+                "type": "attack",
+                "value": 4,
+                "desc": "追责：造成4点伤害",
+                "actionName": "同类招式连续出现，敕令立即追加一次追责。",
+                "actionFamily": "attack"
+              }
+            },
+            "BOUNDARY": {
+              "label": "收令守界",
+              "cue": "巡界使收束敕光，等待新的越界证据。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "守界：本轮重整敕令",
+                "actionName": "巡界使收束敕光，等待新的越界证据。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "EDICT",
+              "when": "repeated_card_type",
+              "to": "REPRISAL",
+              "minConsecutive": 2
+            },
+            {
+              "from": "EDICT",
+              "when": "action_resolved",
+              "to": "ENFORCE"
+            },
+            {
+              "from": "ENFORCE",
+              "when": "repeated_card_type",
+              "to": "REPRISAL",
+              "minConsecutive": 2
+            },
+            {
+              "from": [
+                "ENFORCE",
+                "REPRISAL"
+              ],
+              "when": "action_resolved",
+              "to": "BOUNDARY"
+            },
+            {
+              "from": "BOUNDARY",
+              "when": "action_resolved",
+              "to": "EDICT"
+            }
+          ]
+        }
+      },
+      "mechanic": "敕令使在禁制与重击间换挡，连续进攻会触发更强反制。",
+      "victoryEffects": {
+        "cultivation": 7,
+        "daoHeart": 1
+      },
+      "avoid": {
+        "text": "暂隐凡间道痕",
+        "effects": {
+          "tianji": -1
+        }
+      }
+    },
+    {
+      "id": "enc_quota_deity_mortal_prayer",
+      "category": "realmQuest",
+      "realm": "deity",
+      "title": "化神任务·万民愿火失控",
+      "description": "凡人祈愿汇成失控愿火，若任其焚烧，最先被吞没的正是许愿者的名字。",
+      "enemy": {
+        "templateId": "enemy_deity_tribulation",
+        "name": "失控愿火",
+        "hp": 18,
+        "atk": 3,
+        "def": 2,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_runaway_prayer_flame_agc_n13_v1",
+          "initialState": "GATHER",
+          "states": {
+            "GATHER": {
+              "label": "聚愿成焰",
+              "cue": "失控愿火展开其独有的聚愿成焰征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "聚愿成焰：机制进入可读蓄势",
+                "actionName": "失控愿火展开其独有的聚愿成焰征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "BURN": {
+              "label": "祈火横卷",
+              "cue": "失控愿火沿可见中线释放祈火横卷。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "祈火横卷：造成3点伤害",
+                "actionName": "失控愿火沿可见中线释放祈火横卷。",
+                "actionFamily": "attack"
+              }
+            },
+            "ASHEN": {
+              "label": "愿灰震散",
+              "cue": "失控愿火的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "愿灰震散：本轮不获得护盾",
+                "actionName": "失控愿火的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "REKINDLE": {
+              "label": "残愿复燃",
+              "cue": "失控愿火收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "残愿复燃：获得1点护盾",
+                "actionName": "失控愿火收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "GATHER",
+              "when": "action_resolved",
+              "to": "BURN"
+            },
+            {
+              "from": "BURN",
+              "when": "deflected",
+              "to": "ASHEN"
+            },
+            {
+              "from": "BURN",
+              "when": "enemy_block_broken",
+              "to": "ASHEN"
+            },
+            {
+              "from": "BURN",
+              "when": "action_resolved",
+              "to": "REKINDLE"
+            },
+            {
+              "from": "ASHEN",
+              "when": "action_resolved",
+              "to": "REKINDLE"
+            },
+            {
+              "from": "REKINDLE",
+              "when": "action_resolved",
+              "to": "GATHER"
+            }
+          ]
+        }
+      },
+      "mechanic": "愿火吸收重复招式，变换攻防节奏可让它吐回被吞的愿望。",
+      "victoryEffects": {
+        "cultivation": 6,
+        "karmaGood": 2
+      },
+      "avoid": {
+        "text": "先疏散香火源",
+        "narrativeBlock": "你切断最近的香火源并留下神念标记，愿火尚未熄灭，但凡人姓名暂时不再消失。"
+      }
+    },
+    {
+      "id": "enc_quota_tribulation_thunder_wraith",
+      "category": "realmQuotaOrdinary",
+      "realm": "tribulation",
+      "title": "渡劫巡战·雷痕怨灵",
+      "description": "陨落者的雷痕拒绝消散，执意把每个后来者拖回它失败的那一步。",
+      "enemy": {
+        "templateId": "enemy_deity_tribulation",
+        "name": "雷痕怨灵",
+        "hp": 19,
+        "atk": 3,
+        "def": 2,
+        "tier": 1,
+        "planGraph": {
+          "planId": "plan_thunder_scar_wraith_agc_n13_v1",
+          "initialState": "CHARGE",
+          "states": {
+            "CHARGE": {
+              "label": "劫痕蓄电",
+              "cue": "雷痕怨灵展开其独有的劫痕蓄电征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "劫痕蓄电：机制进入可读蓄势",
+                "actionName": "雷痕怨灵展开其独有的劫痕蓄电征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "SCAR_BOLT": {
+              "label": "雷枝贯线",
+              "cue": "雷痕怨灵沿可见中线释放雷枝贯线。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "雷枝贯线：造成3点伤害",
+                "actionName": "雷痕怨灵沿可见中线释放雷枝贯线。",
+                "actionFamily": "attack"
+              }
+            },
+            "GROUNDED": {
+              "label": "雷躯接地",
+              "cue": "雷痕怨灵的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "雷躯接地：本轮不获得护盾",
+                "actionName": "雷痕怨灵的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RESIDUAL": {
+              "label": "余荷回聚",
+              "cue": "雷痕怨灵收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "余荷回聚：获得1点护盾",
+                "actionName": "雷痕怨灵收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "CHARGE",
+              "when": "action_resolved",
+              "to": "SCAR_BOLT"
+            },
+            {
+              "from": "SCAR_BOLT",
+              "when": "deflected",
+              "to": "GROUNDED"
+            },
+            {
+              "from": "SCAR_BOLT",
+              "when": "enemy_block_broken",
+              "to": "GROUNDED"
+            },
+            {
+              "from": "SCAR_BOLT",
+              "when": "action_resolved",
+              "to": "RESIDUAL"
+            },
+            {
+              "from": "GROUNDED",
+              "when": "action_resolved",
+              "to": "RESIDUAL"
+            },
+            {
+              "from": "RESIDUAL",
+              "when": "action_resolved",
+              "to": "CHARGE"
+            }
+          ]
+        }
+      },
+      "mechanic": "怨灵复现旧劫三拍，第二拍后的空隙可斩断雷痕。",
+      "victoryEffects": {
+        "cultivation": 7,
+        "daoHeart": 1
+      },
+      "avoid": {
+        "text": "替怨灵立碑",
+        "effects": {
+          "lifespan": -1
+        }
+      }
+    },
+    {
+      "id": "enc_quota_tribulation_gate_hunter",
+      "category": "realmElite",
+      "realm": "tribulation",
+      "title": "渡劫精英·天门猎道者",
+      "description": "猎道者追捕所有偏离仙庭名册的飞升路线，你的道途已经被列为最高优先。",
+      "enemy": {
+        "templateId": "enemy_tribulation_finale",
+        "name": "天门猎道者",
+        "hp": 20,
+        "atk": 3,
+        "def": 2,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_heaven_gate_hunter_agc_n12_v1",
+          "initialState": "WATCH",
+          "states": {
+            "WATCH": {
+              "label": "天门巡猎",
+              "cue": "猎道者以门印记录你连续暴露的出牌习惯。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "巡猎：本轮观察重复路数",
+                "actionName": "猎道者以门印记录你连续暴露的出牌习惯。",
+                "actionFamily": "skill"
+              }
+            },
+            "HUNT": {
+              "label": "破门追刺",
+              "cue": "捕枪借门印定位，沿最短路径刺入战线。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "追刺：造成3点伤害",
+                "actionName": "捕枪借门印定位，沿最短路径刺入战线。",
+                "actionFamily": "attack"
+              }
+            },
+            "CLAMP": {
+              "label": "重式锁道",
+              "cue": "你重复同类招式，猎道者以重印封锁退路。",
+              "intent": {
+                "type": "attack",
+                "value": 4,
+                "desc": "锁道：造成4点伤害",
+                "actionName": "你重复同类招式，猎道者以重印封锁退路。",
+                "actionFamily": "attack"
+              }
+            },
+            "SEAL": {
+              "label": "门印回收",
+              "cue": "追击结束，门印回到枪尾等待下一次记录。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "回收：本轮重整门印",
+                "actionName": "追击结束，门印回到枪尾等待下一次记录。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "WATCH",
+              "when": "repeated_card_type",
+              "to": "CLAMP",
+              "minConsecutive": 2
+            },
+            {
+              "from": "WATCH",
+              "when": "action_resolved",
+              "to": "HUNT"
+            },
+            {
+              "from": "HUNT",
+              "when": "repeated_card_type",
+              "to": "CLAMP",
+              "minConsecutive": 2
+            },
+            {
+              "from": [
+                "HUNT",
+                "CLAMP"
+              ],
+              "when": "action_resolved",
+              "to": "SEAL"
+            },
+            {
+              "from": "SEAL",
+              "when": "action_resolved",
+              "to": "WATCH"
+            }
+          ]
+        }
+      },
+      "mechanic": "猎道者会根据连续攻击或偏重防守切换封路法印。",
+      "victoryEffects": {
+        "cultivation": 8,
+        "tianji": 2
+      },
+      "avoid": {
+        "text": "舍弃一段天路坐标",
+        "effects": {
+          "fortune": -2
+        }
+      }
+    },
+    {
+      "id": "enc_quota_tribulation_fallen_ascender",
+      "category": "realmQuest",
+      "realm": "tribulation",
+      "title": "渡劫任务·坠落飞升者",
+      "description": "一名飞升失败者悬在天路裂口，他的护道法器已被劫雷侵蚀成敌。",
+      "enemy": {
+        "templateId": "enemy_tribulation_finale",
+        "name": "噬主护道器",
+        "hp": 20,
+        "atk": 3,
+        "def": 2,
+        "tier": 2,
+        "planGraph": {
+          "planId": "plan_fallen_ascender_guardian_relic_agc_n14_v1",
+          "initialState": "SEAL_WAKE",
+          "states": {
+            "SEAL_WAKE": {
+              "label": "护印苏醒",
+              "cue": "噬主护道器展开其独有的护印苏醒征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "护印苏醒：机制进入可读蓄势",
+                "actionName": "噬主护道器展开其独有的护印苏醒征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "GUARDIAN_STAMP": {
+              "label": "噬主镇落",
+              "cue": "噬主护道器沿可见中线释放噬主镇落。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "噬主镇落：造成3点伤害",
+                "actionName": "噬主护道器沿可见中线释放噬主镇落。",
+                "actionFamily": "attack"
+              }
+            },
+            "JADE_CRACK": {
+              "label": "玉璧震裂",
+              "cue": "噬主护道器的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "玉璧震裂：本轮不获得护盾",
+                "actionName": "噬主护道器的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "RELIC_RESET": {
+              "label": "法器复位",
+              "cue": "噬主护道器收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "法器复位：获得1点护盾",
+                "actionName": "噬主护道器收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "SEAL_WAKE",
+              "when": "action_resolved",
+              "to": "GUARDIAN_STAMP"
+            },
+            {
+              "from": "GUARDIAN_STAMP",
+              "when": "deflected",
+              "to": "JADE_CRACK"
+            },
+            {
+              "from": "GUARDIAN_STAMP",
+              "when": "enemy_block_broken",
+              "to": "JADE_CRACK"
+            },
+            {
+              "from": "GUARDIAN_STAMP",
+              "when": "action_resolved",
+              "to": "RELIC_RESET"
+            },
+            {
+              "from": "JADE_CRACK",
+              "when": "action_resolved",
+              "to": "RELIC_RESET"
+            },
+            {
+              "from": "RELIC_RESET",
+              "when": "action_resolved",
+              "to": "SEAL_WAKE"
+            }
+          ]
+        }
+      },
+      "mechanic": "护道器在护主与噬主之间反复切换，破盾时可把控制权还给原主。",
+      "victoryEffects": {
+        "cultivation": 8,
+        "karmaGood": 2
+      },
+      "avoid": {
+        "text": "先稳固天路裂口",
+        "narrativeBlock": "你用神念钉住裂口并留下回返坐标；飞升者仍在等待，但不会立刻坠入虚无。"
+      }
+    },
+    {
+      "id": "enc_hidden_heaven_censor",
+      "category": "heavenChaos",
+      "realm": "deity",
+      "title": "隐藏战·仙庭删史官",
+      "requiresAnyFlags": [
+        "causal:ancient_truth"
+      ],
+      "description": "删史官要抹去一段证明凡人也能逆改天命的记录，而那段记录正与你有关。",
+      "enemy": {
+        "templateId": "enemy_nascent_tribulation",
+        "name": "仙庭删史官",
+        "hp": 18,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_heaven_censor_agc_n12_v1",
+          "initialState": "ANNOTATE",
+          "states": {
+            "ANNOTATE": {
+              "label": "批注命数",
+              "cue": "删史官在空白卷面标出你的因果落点。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "批注：本轮标记因果",
+                "actionName": "删史官在空白卷面标出你的因果落点。",
+                "actionFamily": "skill"
+              }
+            },
+            "ERASE": {
+              "label": "赤笔删行",
+              "cue": "赤白笔锋横切卷面，也横切你所在的战线。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "删行：造成3点伤害",
+                "actionName": "赤白笔锋横切卷面，也横切你所在的战线。",
+                "actionFamily": "attack"
+              }
+            },
+            "MARGIN_BROKEN": {
+              "label": "页边破损",
+              "cue": "删行被偏开，卷页边缘露出不可修订的裂口。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "破损：本轮不获得护盾",
+                "actionName": "删行被偏开，卷页边缘露出不可修订的裂口。",
+                "actionFamily": "hurt"
+              }
+            },
+            "REDACT": {
+              "label": "封字夺义",
+              "cue": "黑红遮条落下，削弱你下一轮的行动余地。",
+              "intent": {
+                "type": "debuff",
+                "value": 1,
+                "desc": "夺义：施加1层虚弱",
+                "actionName": "黑红遮条落下，削弱你下一轮的行动余地。",
+                "actionFamily": "skill",
+                "statusId": "weak"
+              }
+            },
+            "ARCHIVE": {
+              "label": "归档封卷",
+              "cue": "删史官合卷归档，再从空白处开始下一轮修订。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "归档：本轮重整卷宗",
+                "actionName": "删史官合卷归档，再从空白处开始下一轮修订。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "ANNOTATE",
+              "when": "action_resolved",
+              "to": "ERASE"
+            },
+            {
+              "from": "ERASE",
+              "when": "deflected",
+              "to": "MARGIN_BROKEN"
+            },
+            {
+              "from": "ERASE",
+              "when": "action_resolved",
+              "to": "REDACT"
+            },
+            {
+              "from": "MARGIN_BROKEN",
+              "when": "action_resolved",
+              "to": "REDACT"
+            },
+            {
+              "from": "REDACT",
+              "when": "action_resolved",
+              "to": "ARCHIVE"
+            },
+            {
+              "from": "ARCHIVE",
+              "when": "action_resolved",
+              "to": "ANNOTATE"
+            }
+          ]
+        }
+      },
+      "mechanic": "聚雷与删改交替，战斗会种下仙庭追索因果。",
+      "victoryEffects": {
+        "knowledge": 3,
+        "tianji": 2
+      },
+      "karmaSeed": {
+        "id": "heaven_censor_grudge",
+        "delay": 6,
+        "priority": 3
+      },
+      "karmaSeedOn": [
+        "victory",
+        "flee"
+      ],
+      "avoid": {
+        "text": "交出记录",
+        "effects": {
+          "knowledge": -2,
+          "karmaGood": -1
+        }
+      }
+    },
+    {
+      "id": "enc_hidden_heaven_chain",
+      "category": "heavenChaos",
+      "realm": "tribulation",
+      "title": "隐藏战·飞升锁链",
+      "requiresAnyFlags": [
+        "causal:prepared_for_tribulation",
+        "causal:defied_heavens"
+      ],
+      "description": "无数失败飞升者的名字铸成锁链，仙庭用它拖住所有未经许可的道路。",
+      "enemy": {
+        "templateId": "enemy_deity_tribulation",
+        "name": "飞升锁链",
+        "hp": 20,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_ascension_heaven_chain_agc_n14_v1",
+          "initialState": "ASCENSION_BIND",
+          "states": {
+            "ASCENSION_BIND": {
+              "label": "飞升封缚",
+              "cue": "飞升锁链展开其独有的飞升封缚征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "飞升封缚：机制进入可读蓄势",
+                "actionName": "飞升锁链展开其独有的飞升封缚征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "CHAIN_DECREE": {
+              "label": "锁诏横贯",
+              "cue": "飞升锁链沿可见中线释放锁诏横贯。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "锁诏横贯：造成3点伤害",
+                "actionName": "飞升锁链沿可见中线释放锁诏横贯。",
+                "actionFamily": "attack"
+              }
+            },
+            "LOCK_BROKEN": {
+              "label": "天锁受断",
+              "cue": "飞升锁链的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "天锁受断：本轮不获得护盾",
+                "actionName": "飞升锁链的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "REBIND": {
+              "label": "符链重缠",
+              "cue": "飞升锁链收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "符链重缠：获得1点护盾",
+                "actionName": "飞升锁链收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "ASCENSION_BIND",
+              "when": "action_resolved",
+              "to": "CHAIN_DECREE"
+            },
+            {
+              "from": "CHAIN_DECREE",
+              "when": "deflected",
+              "to": "LOCK_BROKEN"
+            },
+            {
+              "from": "CHAIN_DECREE",
+              "when": "enemy_block_broken",
+              "to": "LOCK_BROKEN"
+            },
+            {
+              "from": "CHAIN_DECREE",
+              "when": "action_resolved",
+              "to": "REBIND"
+            },
+            {
+              "from": "LOCK_BROKEN",
+              "when": "action_resolved",
+              "to": "REBIND"
+            },
+            {
+              "from": "REBIND",
+              "when": "action_resolved",
+              "to": "ASCENSION_BIND"
+            }
+          ]
+        }
+      },
+      "mechanic": "屏障和因果重击交替；破链会触发上界关注。",
+      "victoryEffects": {
+        "daoHeart": 3
+      },
+      "outcomeLinks": {
+        "victory": {
+          "karmaSeed": {
+            "id": "broken_ascension_chain",
+            "delay": 4,
+            "priority": 4
+          }
+        },
+        "defeat": {
+          "karmaSeed": {
+            "id": "marked_by_heaven",
+            "delay": 3,
+            "priority": 3
+          }
+        },
+        "flee": {
+          "karmaSeed": {
+            "id": "heaven_chain_unfinished",
+            "delay": 5,
+            "priority": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_hidden_chaos_reversal",
+      "category": "heavenChaos",
+      "realm": "deity",
+      "title": "隐藏战·混沌逆相",
+      "requiresAnyFlags": [
+        "causal:ancient_truth",
+        "demonFactionChosen",
+        "consumeHeavenEngine"
+      ],
+      "description": "混沌把你的强项与弱点互换，迫使你证明道路不是一组固定数值。",
+      "enemy": {
+        "templateId": "enemy_sword",
+        "name": "混沌逆相",
+        "hp": 18,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_chaos_reversal_dual_agc_n14_v1",
+          "initialState": "DUAL_INVERT",
+          "states": {
+            "DUAL_INVERT": {
+              "label": "双剑逆相",
+              "cue": "混沌逆相展开其独有的双剑逆相征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "双剑逆相：机制进入可读蓄势",
+                "actionName": "混沌逆相展开其独有的双剑逆相征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "REVERSE_CUT": {
+              "label": "反序横斩",
+              "cue": "混沌逆相沿可见中线释放反序横斩。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "反序横斩：造成3点伤害",
+                "actionName": "混沌逆相沿可见中线释放反序横斩。",
+                "actionFamily": "attack"
+              }
+            },
+            "BALANCE_BROKEN": {
+              "label": "阴阳失衡",
+              "cue": "混沌逆相的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "阴阳失衡：本轮不获得护盾",
+                "actionName": "混沌逆相的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "YINYANG_RESET": {
+              "label": "两仪复位",
+              "cue": "混沌逆相收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "两仪复位：获得1点护盾",
+                "actionName": "混沌逆相收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "DUAL_INVERT",
+              "when": "action_resolved",
+              "to": "REVERSE_CUT"
+            },
+            {
+              "from": "REVERSE_CUT",
+              "when": "deflected",
+              "to": "BALANCE_BROKEN"
+            },
+            {
+              "from": "REVERSE_CUT",
+              "when": "enemy_block_broken",
+              "to": "BALANCE_BROKEN"
+            },
+            {
+              "from": "REVERSE_CUT",
+              "when": "action_resolved",
+              "to": "YINYANG_RESET"
+            },
+            {
+              "from": "BALANCE_BROKEN",
+              "when": "action_resolved",
+              "to": "YINYANG_RESET"
+            },
+            {
+              "from": "YINYANG_RESET",
+              "when": "action_resolved",
+              "to": "DUAL_INVERT"
+            }
+          ]
+        }
+      },
+      "mechanic": "逆相先凝聚剑意再连续斩击；它只反转叙事立场，不暗改伤害规则。",
+      "victoryEffects": {
+        "fortune": 3,
+        "daoHeart": 2
+      },
+      "outcomeLinks": {
+        "victory": {
+          "karmaSeed": {
+            "id": "chaos_understood",
+            "delay": 6,
+            "priority": 3
+          }
+        },
+        "defeat": {
+          "karmaSeed": {
+            "id": "chaos_scar",
+            "delay": 4,
+            "priority": 2
+          }
+        },
+        "flee": {
+          "karmaSeed": {
+            "id": "chaos_following",
+            "delay": 5,
+            "priority": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "enc_hidden_chaos_nameless",
+      "category": "heavenChaos",
+      "realm": "tribulation",
+      "title": "隐藏战·无名天道",
+      "requiresAnyFlags": [
+        "chaos_understood",
+        "chaos_scar",
+        "chaos_following"
+      ],
+      "description": "天道之外诞生了一条没有名字的规则，它邀请你用战斗决定自己是否成为它的第一位见证者。",
+      "enemy": {
+        "templateId": "enemy_tribulation_finale",
+        "name": "无名天道",
+        "hp": 20,
+        "atk": 3,
+        "def": 2,
+        "tier": 3,
+        "planGraph": {
+          "planId": "plan_nameless_heavenly_law_agc_n14_v1",
+          "initialState": "LAW_EMERGES",
+          "states": {
+            "LAW_EMERGES": {
+              "label": "无名显律",
+              "cue": "无名天道展开其独有的无名显律征兆。",
+              "intent": {
+                "type": "buff",
+                "value": 0,
+                "desc": "无名显律：机制进入可读蓄势",
+                "actionName": "无名天道展开其独有的无名显律征兆。",
+                "actionFamily": "skill"
+              }
+            },
+            "NAMELESS_DECREE": {
+              "label": "天道无诏",
+              "cue": "无名天道沿可见中线释放天道无诏。",
+              "intent": {
+                "type": "attack",
+                "value": 3,
+                "desc": "天道无诏：造成3点伤害",
+                "actionName": "无名天道沿可见中线释放天道无诏。",
+                "actionFamily": "attack"
+              }
+            },
+            "RING_DISORDER": {
+              "label": "法环错序",
+              "cue": "无名天道的结构被打断，机制轮廓短暂失衡。",
+              "intent": {
+                "type": "defend",
+                "value": 0,
+                "desc": "法环错序：本轮不获得护盾",
+                "actionName": "无名天道的结构被打断，机制轮廓短暂失衡。",
+                "actionFamily": "hurt"
+              }
+            },
+            "LAW_REFORMS": {
+              "label": "天律重成",
+              "cue": "无名天道收束残余结构并准备重启循环。",
+              "intent": {
+                "type": "defend",
+                "value": 1,
+                "desc": "天律重成：获得1点护盾",
+                "actionName": "无名天道收束残余结构并准备重启循环。",
+                "actionFamily": "skill"
+              }
+            }
+          },
+          "transitions": [
+            {
+              "from": "LAW_EMERGES",
+              "when": "action_resolved",
+              "to": "NAMELESS_DECREE"
+            },
+            {
+              "from": "NAMELESS_DECREE",
+              "when": "deflected",
+              "to": "RING_DISORDER"
+            },
+            {
+              "from": "NAMELESS_DECREE",
+              "when": "enemy_block_broken",
+              "to": "RING_DISORDER"
+            },
+            {
+              "from": "NAMELESS_DECREE",
+              "when": "action_resolved",
+              "to": "LAW_REFORMS"
+            },
+            {
+              "from": "RING_DISORDER",
+              "when": "action_resolved",
+              "to": "LAW_REFORMS"
+            },
+            {
+              "from": "LAW_REFORMS",
+              "when": "action_resolved",
+              "to": "LAW_EMERGES"
+            }
+          ]
+        }
+      },
+      "mechanic": "终局三拍攻击；失败结算固定伤势，而不是把局内护体直接写成死亡。",
+      "victoryEffects": {
+        "daoHeart": 4,
+        "tianji": 3
+      },
+      "outcomeLinks": {
+        "victory": {
+          "karmaSeed": {
+            "id": "nameless_dao_witness",
+            "delay": 8,
+            "priority": 5
+          }
+        },
+        "defeat": {
+          "karmaSeed": {
+            "id": "nameless_dao_rejected",
+            "delay": 5,
+            "priority": 3
+          }
+        },
+        "flee": {
+          "karmaSeed": {
+            "id": "nameless_dao_waits",
+            "delay": 7,
+            "priority": 2
+          }
+        }
+      }
+    }
+  ]
+}

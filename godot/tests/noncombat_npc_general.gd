@@ -6,7 +6,7 @@ const NpcFlow = preload("res://scripts/noncombat_npc_encounter_flow.gd")
 func _run() -> void:
 	var content = Repository.new()
 	var fixture_path := ProjectSettings.globalize_path(
-		"res://../artifacts/godot-migration/npc-encounter-source.json")
+		"res://tests/fixtures/artifacts/godot-migration/npc-encounter-source.json")
 	var source_fixture: Variant = JSON.parse_string(FileAccess.get_file_as_string(fixture_path))
 	if not source_fixture is Dictionary or not source_fixture.get("scenarios") is Array \
 			or source_fixture.scenarios.size() != 4:

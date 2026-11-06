@@ -8,7 +8,7 @@ func _run() -> void:
 	if third.get("rows", []).size() != 4:
 		return _fail("third cadence source matrix missing")
 	for source in third.pins:
-		var actual := FileAccess.get_sha256(ProjectSettings.globalize_path("res://").path_join("../" + source))
+		var actual := FileAccess.get_sha256(ProjectSettings.globalize_path("res://tests/fixtures/source/").path_join(source))
 		if actual != third.pins[source]:
 			return _fail("third cadence source oracle drift: " + source)
 	var count := 0

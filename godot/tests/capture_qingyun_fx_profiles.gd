@@ -1,6 +1,6 @@
 extends SceneTree
 
-const OUT := "res://../artifacts/godot-migration/qingyun-pixel-combat/"
+const OUT := "res://output/captures/godot-migration/qingyun-pixel-combat/"
 const CARD_IDS := [
 	"sword_probe", "sword_edge", "sword_followthrough",
 	"sword_guard", "sword_sheath_guard",

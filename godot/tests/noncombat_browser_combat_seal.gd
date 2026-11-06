@@ -1,7 +1,7 @@
 extends SceneTree
 
 const Seal = preload("res://scripts/noncombat_browser_combat_seal.gd")
-const FIXTURE := "../artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
+const FIXTURE := "res://tests/fixtures/artifacts/godot-migration/noncombat-browser-import/combat-pending-source-sword.json"
 
 
 func _initialize() -> void:

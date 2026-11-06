@@ -1,7 +1,7 @@
 extends "res://tests/record_actor_video_v4_study.gd"
 
 const MATERIAL_SPEC := "res://assets/battle/undercurrent_pixel_v1/actor_material_v5_study/material_study.json"
-const MATERIAL_OUT := "res://../artifacts/godot-migration/actor-material-v5/"
+const MATERIAL_OUT := "res://output/captures/godot-migration/actor-material-v5/"
 var _old_frames: Dictionary = {}
 var _new_frames: Dictionary = {}
 var _guides: Node2D
@@ -10,7 +10,7 @@ var _size_tag := "1280"
 var _layout: Dictionary = {}
 var _scene_reuse := false
 var _occlusion_index := 0
-const REUSE_OUT := "res://../artifacts/godot-migration/scene-reuse-v1/"
+const REUSE_OUT := "res://output/captures/godot-migration/scene-reuse-v1/"
 
 
 func _review() -> void:

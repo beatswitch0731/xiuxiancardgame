@@ -1,7 +1,7 @@
 extends SceneTree
 
 const Inspector = preload("res://scripts/noncombat_browser_save_inspector.gd")
-const SOURCE_DIR := "../artifacts/godot-migration/m0-2026-10-15/"
+const SOURCE_DIR := "res://tests/fixtures/artifacts/godot-migration/m0-2026-10-15/"
 
 
 func _initialize() -> void:
@@ -57,8 +57,12 @@ func _initialize() -> void:
 
 
 func _source_path(filename: String) -> String:
+	var combined := SOURCE_DIR + filename
+	# 内化后 SOURCE_DIR 是 res:// 虚拟路径，不能再拼绝对根
+	if combined.begins_with("res://"):
+		return combined
 	return ProjectSettings.globalize_path("res://").path_join(
-		SOURCE_DIR + filename).simplify_path()
+		combined).simplify_path()
 
 
 func _fail(message: String) -> void:

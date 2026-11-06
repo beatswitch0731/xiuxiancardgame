@@ -14,7 +14,7 @@ func _run() -> void:
 	var oracle: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(
 		"res://tests/fixtures/battle_victory_source.json"))
 	var source := "src/systems/SkillCardAcquisitionSystem.js"
-	var source_path := ProjectSettings.globalize_path("res://").path_join("../" + source)
+	var source_path := ProjectSettings.globalize_path("res://tests/fixtures/source/").path_join(source)
 	if oracle.get("pins", {}).get(source) != FileAccess.get_sha256(source_path):
 		return _fail("browser acquisition oracle source drift")
 	if not acquisition.has_method("battle_reward_offers") \

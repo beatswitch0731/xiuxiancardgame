@@ -9,7 +9,7 @@ func _initialize() -> void:
 		return _fail("source repository unavailable")
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(
 		"res://content/derived/npc_encounter_templates.json"))
-	if FileAccess.get_sha256("res://../src/systems/NpcSystem.js") != catalog.sourceSha:
+	if FileAccess.get_sha256("res://tests/fixtures/source/src/systems/NpcSystem.js") != catalog.sourceSha:
 		return _fail("current browser NPC producer SHA diverged")
 	var count := 0
 	for npc_id in catalog.templates:

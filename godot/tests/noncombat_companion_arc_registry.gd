@@ -9,7 +9,7 @@ func _initialize() -> void:
 		return _fail("source index unavailable")
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(
 		"res://content/derived/companion_arc_cards.json"))
-	if FileAccess.get_sha256("res://../src/systems/StoryNetworkSystem.js") != catalog.ruleSha:
+	if FileAccess.get_sha256("res://tests/fixtures/source/src/systems/StoryNetworkSystem.js") != catalog.ruleSha:
 		return _fail("browser arc producer SHA changed")
 	var count := 0
 	for comp_id in catalog.cards:

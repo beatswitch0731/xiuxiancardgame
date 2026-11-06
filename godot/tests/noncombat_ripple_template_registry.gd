@@ -7,7 +7,7 @@ const TYPES := ["karma", "grudge", "bloodline", "fate"]
 func _initialize() -> void:
 	var repo = Repository.new()
 	if not repo.build_index() or FileAccess.get_sha256(
-			"res://../src/systems/KarmaRippleSystem.js") != Flow.SOURCE_JS_SHA:
+			"res://tests/fixtures/source/src/systems/KarmaRippleSystem.js") != Flow.SOURCE_JS_SHA:
 		return _fail("ripple source unavailable")
 	var catalog: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(
 		"res://content/derived/karma_ripple_templates.json"))

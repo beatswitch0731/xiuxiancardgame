@@ -276,7 +276,7 @@ func _capture_body_story(story: Control, label: String,
 		return false
 	await RenderingServer.frame_post_draw
 	var directory := ProjectSettings.globalize_path(
-		"res://../artifacts/godot-migration/foundation-body-completion")
+		"res://output/captures/godot-migration/foundation-body-completion")
 	if DirAccess.make_dir_recursive_absolute(directory) != OK:
 		return false
 	var output := directory.path_join("%s_%sx%s.png" % [

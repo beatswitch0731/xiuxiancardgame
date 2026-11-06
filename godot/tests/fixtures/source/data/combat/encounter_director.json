@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "contractId": "encounter_director_cadence_v1",
+  "firstEncounterDecisionMin": 4,
+  "firstEncounterDecisionMax": 6,
+  "cadenceDecisionMin": 7,
+  "cadenceDecisionMax": 9,
+  "visibleCadenceDecisionMax": 11,
+  "prioritySettlementDecisionReserve": 2,
+  "roleMicroBalance": {
+    "defaultNonBoss": { "enemyHpDelta": -1 },
+    "ordinary": { "enemyHpDelta": -4 },
+    "elite": { "enemyHpDelta": -1 },
+    "pathOverrides": {
+      "sword": {
+        "ordinary": { "enemyHpDelta": -2 },
+          "elite": { "enemyHpDelta": 1 },
+          "realmOverrides": {
+            "qi": { "elite": { "enemyHpDelta": -2 } },
+            "golden": { "ordinary": { "enemyHpDelta": 2 } },
+          "nascent": { "ordinary": { "enemyHpDelta": 2 } },
+          "deity": { "ordinary": { "enemyHpDelta": 2 } },
+          "tribulation": { "ordinary": { "enemyHpDelta": 2 } }
+        }
+      },
+      "spell": {
+        "ordinary": { "enemyHpDelta": -3 },
+        "elite": { "enemyHpDelta": -3 }
+      },
+      "body": {
+        "ordinary": { "enemyHpDelta": -5, "enemyAtkDelta": -1 },
+        "elite": { "enemyHpDelta": -1 },
+        "realmOverrides": {
+          "golden": { "ordinary": { "enemyHpDelta": -5, "enemyAtkDelta": -1 } },
+          "nascent": { "ordinary": { "enemyHpDelta": -5, "enemyAtkDelta": -1 } },
+          "deity": { "ordinary": { "enemyHpDelta": -5, "enemyAtkDelta": -1 } },
+          "tribulation": { "ordinary": { "enemyHpDelta": -5, "enemyAtkDelta": -1 } }
+        }
+      },
+      "pill": {
+        "ordinary": { "enemyHpDelta": -6, "enemyAtkDelta": -2 },
+        "elite": { "enemyHpDelta": -2 },
+        "realmOverrides": {
+          "golden": {
+            "ordinary": { "enemyHpDelta": -6, "enemyAtkDelta": -2 },
+            "elite": { "enemyHpDelta": -1 }
+          },
+          "nascent": {
+            "ordinary": { "enemyHpDelta": -6, "enemyAtkDelta": -2 },
+            "elite": { "enemyHpDelta": -1 }
+          },
+          "deity": {
+            "ordinary": { "enemyHpDelta": -6, "enemyAtkDelta": -2 },
+            "elite": { "enemyHpDelta": -1 }
+          },
+          "tribulation": {
+            "ordinary": { "enemyHpDelta": -6, "enemyAtkDelta": -2 },
+            "elite": { "enemyHpDelta": -1 }
+          }
+        }
+      }
+    },
+    "excludeTeaching": true
+  },
+  "postEncounterCooldown": 3,
+  "realmMinimums": {
+    "ordinary": 2,
+    "relationshipOrQuest": 1,
+    "elite": 1,
+    "realmBoss": 1
+  }
+}

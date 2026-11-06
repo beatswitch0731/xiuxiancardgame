@@ -145,7 +145,7 @@ func _find_card(hand: HBoxContainer, priority: Array) -> Button:
 
 func _capture_opening_frames() -> bool:
 	var directory := ProjectSettings.globalize_path(
-		"res://../artifacts/godot-migration/sword-tomb-live-battle/")
+		"res://output/captures/godot-migration/sword-tomb-live-battle/")
 	if DirAccess.make_dir_recursive_absolute(directory) != OK:
 		return false
 	for size in [Vector2i(1280, 800), Vector2i(1920, 1080)]:

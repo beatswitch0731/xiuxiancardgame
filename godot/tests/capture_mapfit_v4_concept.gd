@@ -3,7 +3,7 @@ extends SceneTree
 # Read-only visual study: temporarily overlays concept images on the real stage.
 # These large generated concepts are not native production sprites.
 const BASE := "res://art_direction/candidates/mapfit_v4_20261030/"
-const OUT := "res://../artifacts/godot-migration/qingyun-pixel-combat/mapfit_v4_godot_study.png"
+const OUT := "res://tests/fixtures/artifacts/godot-migration/qingyun-pixel-combat/mapfit_v4_godot_study.png"
 
 func _initialize() -> void:
 	call_deferred("_capture")

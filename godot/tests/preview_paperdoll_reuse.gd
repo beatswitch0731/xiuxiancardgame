@@ -1,7 +1,7 @@
 extends SceneTree
 
 const Actor = preload("res://scripts/paperdoll_actor_study.gd")
-const OUT := "res://../artifacts/godot-migration/paperdoll-v1/"
+const OUT := "res://output/captures/godot-migration/paperdoll-v1/"
 var actors: Array[Node2D] = []
 var stage: Node
 var battle: Control

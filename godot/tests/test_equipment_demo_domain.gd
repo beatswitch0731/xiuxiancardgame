@@ -19,7 +19,7 @@ func _initialize() -> void:
 		return
 	var fixture: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(reference_path))
 	for source_path in fixture.sourceSha256:
-		var actual_path := ProjectSettings.globalize_path("res://").path_join("../" + source_path)
+		var actual_path := ProjectSettings.globalize_path("res://tests/fixtures/source/").path_join(source_path)
 		check(FileAccess.get_sha256(actual_path) == fixture.sourceSha256[source_path],
 			"Browser oracle is stale: " + source_path)
 	var Domain = load(script_path)
