@@ -1304,6 +1304,9 @@ func _open_treasure_inventory() -> void:
 		if slot not in ["weapon", "armor", "accessory", "artifact"]:
 			continue
 		var row := HBoxContainer.new()
+		var icon := _treasure_icon(slot, definition)
+		if icon != null:
+			row.add_child(icon)
 		var label := Label.new()
 		label.text = "%s · %s" % [definition.get("name", instance.definitionId),
 			{"weapon": "兵刃", "armor": "护具", "accessory": "佩饰",
@@ -2158,6 +2161,30 @@ func _art_texture(path: String) -> Texture2D:
 		return null
 	var texture: Texture2D = registry.texture_for(path)
 	return texture if texture != null else registry.placeholder_texture()
+
+
+## 法宝图标：按「槽位 × 品阶」约定推导路径，不依赖 treasures.json 的字段。
+## 为什么不用字段：content/data 的每个 JSON 都在 source_manifest 里绑了 sha256，
+## 加字段会立刻触发 "Source SHA mismatch" 让整个内容索引失败。
+## 图未产出时返回 null（保持纯文字），刻意不走 placeholder_texture()——
+## 占位图是洋红块，会污染既有截图基线。
+func _treasure_icon(slot: String, definition: Dictionary) -> TextureRect:
+	if registry == null or slot.is_empty():
+		return null
+	var icon_path := String(definition.get("icon", ""))
+	if icon_path.is_empty():
+		icon_path = "assets/icons/items/%s_%s.png" % [slot, String(definition.get("rarity", ""))]
+	var texture: Texture2D = registry.texture_for(icon_path)
+	if texture == null:
+		return null
+	var rect := TextureRect.new()
+	rect.name = "TreasureIcon"
+	rect.texture = texture
+	rect.custom_minimum_size = Vector2(26, 26)
+	rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	rect.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	return rect
 
 
 func _launch_battle() -> void:
