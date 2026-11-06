@@ -53,3 +53,12 @@ JSON.stringify(\{phase
 # ============================================================
 /assets/combat/
 __pycache__/
+
+# ============================================================
+# artifacts/ is a Windows junction to D:\backup-manifests\2026-11-06\artifacts
+# (archived 2026-11-06). Git on Windows traverses junctions, so without this
+# rule `git add -A` would re-import ~2.69 GiB / 3122 archived files.
+# Historical audit scripts still resolve old artifacts/... paths through the
+# junction; ignoring only affects version control, not filesystem access.
+# ============================================================
+/artifacts/
