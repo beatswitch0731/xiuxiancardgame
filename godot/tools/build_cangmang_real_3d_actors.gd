@@ -214,7 +214,7 @@ func _save_preview(viewport: SubViewport) -> void:
 	await process_frame
 	await process_frame
 	var file_name := "real-3d-actor-attack-preview.png" if OS.get_cmdline_user_args().has("attack") else "real-3d-actor-preview.png"
-	var path := ProjectSettings.globalize_path("res://../artifacts/godot-migration/source-first-fight/" + file_name)
+	var path := ProjectSettings.globalize_path("res://output/captures/godot-migration/source-first-fight/" + file_name)
 	var image := viewport.get_texture().get_image()
 	if image == null:
 		push_error("REAL_3D_ACTOR_PREVIEW_NEEDS_RENDERING_BACKEND")

@@ -2,7 +2,7 @@ extends SceneTree
 
 # In-memory art review of the actual battle camera; never saves or mounts a
 # candidate into the runtime's original SpriteFrames resource.
-const OUTPUT := "res://../artifacts/godot-migration/actor-v3-keypose-review/"
+const OUTPUT := "res://output/captures/godot-migration/actor-v3-keypose-review/"
 const IDLE := "res://art_source/actor_v3_sprite/yelingyun_new_master_v2_256x320_review.png"
 const CONTACT := "res://art_source/actor_v3_sprite/yelingyun_sword_contact_v1_512x320_review.png"
 const DUMMY_HIT := "res://art_source/actor_v3_sprite/quick_sword_dummy_hit_v1_320x352_review.png"

@@ -92,7 +92,7 @@ func _capture() -> void:
 		suffix += "-material-" + material_study.validate_filename()
 	if hand_count >= 0:
 		suffix += "-hand%d" % hand_count
-	var output := "res://../artifacts/godot-migration/first-fight-backend-qa/%s-%s-yaw%d%s.png" % [candidate, backend, roundi(yaw), suffix]
+	var output := "res://output/captures/godot-migration/first-fight-backend-qa/%s-%s-yaw%d%s.png" % [candidate, backend, roundi(yaw), suffix]
 	var game: Control = GAME.instantiate()
 	game.trial_v7_candidate_preview = candidate == "trial_v7"
 	game.trial_v6_candidate_preview = candidate == "trial_v6"

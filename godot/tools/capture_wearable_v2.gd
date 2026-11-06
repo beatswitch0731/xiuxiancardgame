@@ -42,6 +42,6 @@ func _run() -> void:
 
 func save_frame(label: String) -> void:
 	await RenderingServer.frame_post_draw
-	var path := "res://../artifacts/godot-migration/wearable-v3/" + label + ".png"
+	var path := "res://output/captures/godot-migration/wearable-v3/" + label + ".png"
 	root.get_texture().get_image().save_png(path)
 	print("WEARABLE_CAPTURE ", label)

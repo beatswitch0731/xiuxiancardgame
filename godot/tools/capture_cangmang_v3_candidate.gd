@@ -2,7 +2,7 @@ extends SceneTree
 
 # Candidate only: replace the world in memory, keep the real first-fight UI,
 # source fighter sequences, cards and CombatDomain unchanged.
-const OUTPUT := "res://../artifacts/godot-migration/hd2d-world-v3/"
+const OUTPUT := "res://output/captures/godot-migration/hd2d-world-v3/"
 
 
 func _initialize() -> void:

@@ -3,7 +3,7 @@ extends SceneTree
 # Launch without --headless. Captures the actual Windows renderer at the
 # production main scene before and at the first source sword contact.
 
-const OUTPUT := "res://../artifacts/godot-migration/hd2d-first-fight/"
+const OUTPUT := "res://output/captures/godot-migration/hd2d-first-fight/"
 
 
 func _initialize() -> void:

@@ -52,7 +52,7 @@ func _run() -> void:
 	ui.story_screen.visible = true
 	ui._set_scene_surface(true)
 	ui._render()
-	var output := ProjectSettings.globalize_path("res://../output/godot/npc_cross")
+	var output := ProjectSettings.globalize_path("res://output/godot/npc_cross")
 	DirAccess.make_dir_recursive_absolute(output)
 	for resolution in [Vector2i(1280, 800), Vector2i(1920, 1080)]:
 		root.get_window().size = resolution

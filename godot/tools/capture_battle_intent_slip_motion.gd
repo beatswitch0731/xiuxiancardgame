@@ -3,7 +3,7 @@ extends SceneTree
 # Real first-battle render: captures the paper settling, resting in a breeze,
 # then receiving the next authoritative enemy intent after End Turn.
 const BattleScene = preload("res://scenes/main.tscn")
-const OUTPUT := "res://../artifacts/godot-migration/first-fight-backend-qa/intent-slip-motion-v1"
+const OUTPUT := "res://output/captures/godot-migration/first-fight-backend-qa/intent-slip-motion-v1"
 
 
 func _initialize() -> void:

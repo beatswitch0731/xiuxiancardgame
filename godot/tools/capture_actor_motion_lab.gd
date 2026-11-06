@@ -1,6 +1,6 @@
 extends SceneTree
 
-const OUTPUT := "res://../artifacts/godot-migration/actor-motion-lab/"
+const OUTPUT := "res://output/captures/godot-migration/actor-motion-lab/"
 
 
 func _initialize() -> void:

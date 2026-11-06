@@ -1,6 +1,6 @@
 extends SceneTree
 
-const OUTPUT := "res://../artifacts/godot-migration/hd2d-s1-card-cues/"
+const OUTPUT := "res://output/captures/godot-migration/hd2d-s1-card-cues/"
 const CARDS := ["sword_probe", "sword_followthrough", "sword_edge",
 	"sword_guard", "sword_sheath_guard"]
 

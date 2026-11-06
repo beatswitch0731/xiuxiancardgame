@@ -9,7 +9,7 @@ func _initialize() -> void:
 
 func _run() -> void:
 	var output := ProjectSettings.globalize_path(
-		"res://../output/godot/experience_effects")
+		"res://output/godot/experience_effects")
 	DirAccess.make_dir_recursive_absolute(output)
 	var ui: Control = OpeningScene.instantiate()
 	ui.slot_root_path = "user://tests/experience_effect_capture/"

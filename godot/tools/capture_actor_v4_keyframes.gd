@@ -2,7 +2,7 @@ extends SceneTree
 
 # V4 candidate is mounted only in this SceneTree process. The game assets and
 # shipped actor SpriteFrames remain untouched until the art gates pass.
-const OUTPUT := "res://../artifacts/godot-migration/actor-v4-keyframe-review/"
+const OUTPUT := "res://output/captures/godot-migration/actor-v4-keyframe-review/"
 const HERO := "res://art_source/actor_v4_keyframes/yelingyun_single_keypose_review_v1.png"
 const DUMMY := "res://art_source/actor_v4_keyframes/quick_sword_dummy_single_keypose_review_v1.png"
 const HERO_CONTACT := "res://art_source/actor_v4_keyframes/yelingyun_contact_scale_v3_single_keypose_review_v1.png"
@@ -20,7 +20,7 @@ func _capture() -> void:
 	game.trial_v7_candidate_preview = v7
 	game.trial_v6_candidate_preview = not v7
 	if v7:
-		_output_directory = "res://../artifacts/godot-migration/qingyun-v7-actor-v4-review/"
+		_output_directory = "res://output/captures/godot-migration/qingyun-v7-actor-v4-review/"
 	root.add_child(game)
 	var stage: Node = game.duel_stage
 	for tick in 32:

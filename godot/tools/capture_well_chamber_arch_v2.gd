@@ -1,7 +1,7 @@
 extends SceneTree
 
 const SCENE := preload("res://scenes/village_well_chamber_asset_upgrade_v2.tscn")
-const OUTPUT := "res://../artifacts/godot-migration/well-chamber-arch-v2/"
+const OUTPUT := "res://output/captures/godot-migration/well-chamber-arch-v2/"
 
 func _initialize() -> void:
 	call_deferred("_capture")

@@ -67,7 +67,7 @@ func _wait_action_position(demo: Control, target: float) -> bool:
 func _save(label: String) -> void:
 	await RenderingServer.frame_post_draw
 	var prefix := "ual-" if _ual_review else "action-"
-	var output := "res://../artifacts/godot-migration/actor-image3d-mvp/" + prefix + label + ".png"
+	var output := "res://output/captures/godot-migration/actor-image3d-mvp/" + prefix + label + ".png"
 	if root.get_viewport().get_texture().get_image().save_png(output) != OK:
 		push_error("Image3D frame capture failed: " + output)
 		return
